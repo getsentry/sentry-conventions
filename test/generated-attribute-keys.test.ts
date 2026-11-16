@@ -12,6 +12,7 @@ const HTTP_METHOD_ATTRIBUTE_KEYS: AttributeName[] = [
   'http.method',
   'http.request_method',
   'method',
+  'sentry.request.method',
 ];
 
 function attribute(

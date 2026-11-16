@@ -5,6 +5,7 @@ HTTP_METHOD_ATTRIBUTE_KEYS = (
     "http.method",
     "http.request_method",
     "method",
+    "sentry.request.method",
 )
 
 

@@ -3134,7 +3134,7 @@ export type _AWS_REQUEST_ID_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link URL_FULL} `url.full`, {@link HTTP_URL} `http.url`, {@link URL} `url`, {@link MESSAGING_URL} `messaging.url`
+ * Aliases: {@link URL_FULL} `url.full`, {@link HTTP_URL} `http.url`, {@link URL} `url`, {@link MESSAGING_URL} `messaging.url`, {@link SENTRY_REQUEST_URL} `sentry.request.url`
  *
  * @deprecated Use {@link URL_FULL} (url.full) instead - This attribute is being deprecated in favor of url.full, which is the OTel-aligned replacement.
  * @example "https://sqs.us-east-1.amazonaws.com/123456789/my-queue"
@@ -10626,7 +10626,7 @@ export type HTTP_HOST_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link HTTP_REQUEST_METHOD} `http.request.method`, {@link _HTTP_REQUEST_METHOD} `http.request_method`, {@link METHOD} `method`
+ * Aliases: {@link HTTP_REQUEST_METHOD} `http.request.method`, {@link _HTTP_REQUEST_METHOD} `http.request_method`, {@link METHOD} `method`, {@link SENTRY_REQUEST_METHOD} `sentry.request.method`
  *
  * @deprecated Use {@link HTTP_REQUEST_METHOD} (http.request.method) instead
  * @example "GET"
@@ -10941,7 +10941,7 @@ export type HTTP_REQUEST_HEADER_KEY_TYPE = Array<string>;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link METHOD} `method`, {@link HTTP_METHOD} `http.method`, {@link _HTTP_REQUEST_METHOD} `http.request_method`
+ * Aliases: {@link METHOD} `method`, {@link HTTP_METHOD} `http.method`, {@link _HTTP_REQUEST_METHOD} `http.request_method`, {@link SENTRY_REQUEST_METHOD} `sentry.request.method`
  *
  * @example "GET"
  */
@@ -10964,7 +10964,7 @@ export type HTTP_REQUEST_METHOD_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link METHOD} `method`, {@link HTTP_METHOD} `http.method`, {@link HTTP_REQUEST_METHOD} `http.request.method`
+ * Aliases: {@link METHOD} `method`, {@link HTTP_METHOD} `http.method`, {@link HTTP_REQUEST_METHOD} `http.request.method`, {@link SENTRY_REQUEST_METHOD} `sentry.request.method`
  *
  * @deprecated Use {@link HTTP_REQUEST_METHOD} (http.request.method) instead
  * @example "GET"
@@ -11603,7 +11603,7 @@ export type HTTP_TARGET_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link URL_FULL} `url.full`, {@link URL} `url`, {@link AWS_REQUEST_URL} `aws.request.url`, {@link MESSAGING_URL} `messaging.url`
+ * Aliases: {@link URL_FULL} `url.full`, {@link URL} `url`, {@link AWS_REQUEST_URL} `aws.request.url`, {@link MESSAGING_URL} `messaging.url`, {@link SENTRY_REQUEST_URL} `sentry.request.url`
  *
  * @deprecated Use {@link URL_FULL} (url.full) instead
  * @example "https://example.com/test?foo=bar#buzz"
@@ -14572,7 +14572,7 @@ export type MESSAGING_SYSTEM_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link URL_FULL} `url.full`, {@link HTTP_URL} `http.url`, {@link URL} `url`, {@link AWS_REQUEST_URL} `aws.request.url`
+ * Aliases: {@link URL_FULL} `url.full`, {@link HTTP_URL} `http.url`, {@link URL} `url`, {@link AWS_REQUEST_URL} `aws.request.url`, {@link SENTRY_REQUEST_URL} `sentry.request.url`
  *
  * @deprecated Use {@link URL_FULL} (url.full) instead - This attribute is being deprecated in favor of url.full.
  * @example "amqp://guest:guest@localhost:5672"
@@ -14596,7 +14596,7 @@ export type MESSAGING_URL_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link HTTP_REQUEST_METHOD} `http.request.method`, {@link _HTTP_REQUEST_METHOD} `http.request_method`, {@link HTTP_METHOD} `http.method`
+ * Aliases: {@link HTTP_REQUEST_METHOD} `http.request.method`, {@link _HTTP_REQUEST_METHOD} `http.request_method`, {@link HTTP_METHOD} `http.method`, {@link SENTRY_REQUEST_METHOD} `sentry.request.method`
  *
  * @deprecated Use {@link HTTP_REQUEST_METHOD} (http.request.method) instead
  * @example "GET"
@@ -18424,6 +18424,54 @@ export const SENTRY_REPORT_EVENT = 'sentry.report_event';
  */
 export type SENTRY_REPORT_EVENT_TYPE = string;
 
+// Path: model/attributes/sentry/sentry__request__method.json
+
+/**
+ * The HTTP method used. `sentry.request.method`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_REQUEST_METHOD_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link HTTP_REQUEST_METHOD} `http.request.method`, {@link METHOD} `method`, {@link HTTP_METHOD} `http.method`, {@link _HTTP_REQUEST_METHOD} `http.request_method`
+ *
+ * @deprecated Use {@link HTTP_REQUEST_METHOD} (http.request.method) instead
+ * @example "GET"
+ */
+export const SENTRY_REQUEST_METHOD = 'sentry.request.method';
+
+/**
+ * Type for {@link SENTRY_REQUEST_METHOD} sentry.request.method
+ */
+export type SENTRY_REQUEST_METHOD_TYPE = string;
+
+// Path: model/attributes/sentry/sentry__request__url.json
+
+/**
+ * The URL of the resource that was fetched. `sentry.request.url`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_REQUEST_URL_TYPE}
+ *
+ * Apply Scrubbing: auto
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link URL_FULL} `url.full`, {@link HTTP_URL} `http.url`, {@link URL} `url`, {@link AWS_REQUEST_URL} `aws.request.url`, {@link MESSAGING_URL} `messaging.url`
+ *
+ * @deprecated Use {@link URL_FULL} (url.full) instead
+ * @example "https://example.com/test?foo=bar#buzz"
+ */
+export const SENTRY_REQUEST_URL = 'sentry.request.url';
+
+/**
+ * Type for {@link SENTRY_REQUEST_URL} sentry.request.url
+ */
+export type SENTRY_REQUEST_URL_TYPE = string;
+
 // Path: model/attributes/sentry/sentry__sdk__integrations.json
 
 /**
@@ -20425,7 +20473,7 @@ export type UI_ELEMENT_WIDTH_TYPE = number;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link URL_FULL} `url.full`, {@link HTTP_URL} `http.url`, {@link AWS_REQUEST_URL} `aws.request.url`, {@link MESSAGING_URL} `messaging.url`
+ * Aliases: {@link URL_FULL} `url.full`, {@link HTTP_URL} `http.url`, {@link AWS_REQUEST_URL} `aws.request.url`, {@link MESSAGING_URL} `messaging.url`, {@link SENTRY_REQUEST_URL} `sentry.request.url`
  *
  * @deprecated Use {@link URL_FULL} (url.full) instead
  * @example "https://example.com/test?foo=bar#buzz"
@@ -20491,7 +20539,7 @@ export type URL_FRAGMENT_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link HTTP_URL} `http.url`, {@link URL} `url`, {@link AWS_REQUEST_URL} `aws.request.url`, {@link MESSAGING_URL} `messaging.url`
+ * Aliases: {@link HTTP_URL} `http.url`, {@link URL} `url`, {@link AWS_REQUEST_URL} `aws.request.url`, {@link MESSAGING_URL} `messaging.url`, {@link SENTRY_REQUEST_URL} `sentry.request.url`
  *
  * @example "https://example.com/test?foo=bar#buzz"
  */
@@ -22773,6 +22821,8 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'sentry.replay_id': 'string',
   'sentry.replay_is_buffering': 'boolean',
   'sentry.report_event': 'string',
+  'sentry.request.method': 'string',
+  'sentry.request.url': 'string',
   'sentry.sdk.integrations': 'string[]',
   'sentry.sdk.name': 'string',
   'sentry.sdk.version': 'string',
@@ -23747,6 +23797,8 @@ export type AttributeName =
   | typeof SENTRY_REPLAY_ID
   | typeof SENTRY_REPLAY_IS_BUFFERING
   | typeof SENTRY_REPORT_EVENT
+  | typeof SENTRY_REQUEST_METHOD
+  | typeof SENTRY_REQUEST_URL
   | typeof SENTRY_SDK_INTEGRATIONS
   | typeof SENTRY_SDK_NAME
   | typeof SENTRY_SDK_VERSION
@@ -26183,7 +26235,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'aws.request.url': {
     brief: 'The URL of the AWS API request.',
     type: 'string',
-    keys: ['url.full', 'aws.request.url', 'http.url', 'messaging.url', 'url'],
+    keys: ['url.full', 'aws.request.url', 'http.url', 'messaging.url', 'sentry.request.url', 'url'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -26195,8 +26247,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason: 'This attribute is being deprecated in favor of url.full, which is the OTel-aligned replacement.',
       status: 'backfill',
     },
-    aliases: ['url.full', 'http.url', 'url', 'messaging.url'],
+    aliases: ['url.full', 'http.url', 'url', 'messaging.url', 'sentry.request.url'],
     changelog: [
+      { version: 'next', prs: [807], description: 'Added sentry.request.url as an alias' },
       { version: '0.21.0', prs: [581], description: 'Added messaging.url as an alias' },
       {
         version: '0.19.0',
@@ -31632,7 +31685,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'http.method': {
     brief: 'The HTTP method used.',
     type: 'string',
-    keys: ['http.request.method', 'http.method', 'http.request_method', 'method'],
+    keys: ['http.request.method', 'http.method', 'http.request_method', 'method', 'sentry.request.method'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -31643,8 +31696,12 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'http.request.method',
       status: 'backfill',
     },
-    aliases: ['http.request.method', 'http.request_method', 'method'],
-    changelog: [{ version: '0.1.0', prs: [61, 127] }, { version: '0.0.0' }],
+    aliases: ['http.request.method', 'http.request_method', 'method', 'sentry.request.method'],
+    changelog: [
+      { version: 'next', prs: [807], description: 'Added sentry.request.method as an alias' },
+      { version: '0.1.0', prs: [61, 127] },
+      { version: '0.0.0' },
+    ],
   },
   'http.query': {
     brief:
@@ -31852,20 +31909,24 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'http.request.method': {
     brief: 'The HTTP method used.',
     type: 'string',
-    keys: ['http.request.method', 'http.method', 'http.request_method', 'method'],
+    keys: ['http.request.method', 'http.method', 'http.request_method', 'method', 'sentry.request.method'],
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
     example: 'GET',
-    aliases: ['method', 'http.method', 'http.request_method'],
-    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
+    aliases: ['method', 'http.method', 'http.request_method', 'sentry.request.method'],
+    changelog: [
+      { version: 'next', prs: [807], description: 'Added sentry.request.method as an alias' },
+      { version: '0.1.0', prs: [127] },
+      { version: '0.0.0' },
+    ],
   },
   'http.request_method': {
     brief: 'The HTTP method used.',
     type: 'string',
-    keys: ['http.request.method', 'http.method', 'http.request_method', 'method'],
+    keys: ['http.request.method', 'http.method', 'http.request_method', 'method', 'sentry.request.method'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -31876,8 +31937,11 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'http.request.method',
       status: 'backfill',
     },
-    aliases: ['method', 'http.method', 'http.request.method'],
-    changelog: [{ version: '0.6.0', prs: [343], description: 'Added http.request_method attribute' }],
+    aliases: ['method', 'http.method', 'http.request.method', 'sentry.request.method'],
+    changelog: [
+      { version: 'next', prs: [807], description: 'Added sentry.request.method as an alias' },
+      { version: '0.6.0', prs: [343], description: 'Added http.request_method attribute' },
+    ],
   },
   'http.request.redirect_end': {
     brief:
@@ -32343,7 +32407,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'http.url': {
     brief: 'The URL of the resource that was fetched.',
     type: 'string',
-    keys: ['url.full', 'aws.request.url', 'http.url', 'messaging.url', 'url'],
+    keys: ['url.full', 'aws.request.url', 'http.url', 'messaging.url', 'sentry.request.url', 'url'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -32354,8 +32418,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'url.full',
       status: 'backfill',
     },
-    aliases: ['url.full', 'url', 'aws.request.url', 'messaging.url'],
+    aliases: ['url.full', 'url', 'aws.request.url', 'messaging.url', 'sentry.request.url'],
     changelog: [
+      { version: 'next', prs: [807], description: 'Added sentry.request.url as an alias' },
       { version: '0.21.0', prs: [581], description: 'Added messaging.url as an alias' },
       { version: '0.1.0', prs: [61, 108] },
       { version: '0.0.0' },
@@ -34817,7 +34882,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'messaging.url': {
     brief: 'The connection string of the messaging broker.',
     type: 'string',
-    keys: ['url.full', 'aws.request.url', 'http.url', 'messaging.url', 'url'],
+    keys: ['url.full', 'aws.request.url', 'http.url', 'messaging.url', 'sentry.request.url', 'url'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -34830,13 +34895,16 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason: 'This attribute is being deprecated in favor of url.full.',
       status: 'backfill',
     },
-    aliases: ['url.full', 'http.url', 'url', 'aws.request.url'],
-    changelog: [{ version: '0.21.0', prs: [581], description: 'Added messaging.url attribute' }],
+    aliases: ['url.full', 'http.url', 'url', 'aws.request.url', 'sentry.request.url'],
+    changelog: [
+      { version: 'next', prs: [807], description: 'Added sentry.request.url as an alias' },
+      { version: '0.21.0', prs: [581], description: 'Added messaging.url attribute' },
+    ],
   },
   method: {
     brief: 'The HTTP method used.',
     type: 'string',
-    keys: ['http.request.method', 'http.method', 'http.request_method', 'method'],
+    keys: ['http.request.method', 'http.method', 'http.request_method', 'method', 'sentry.request.method'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -34847,8 +34915,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'http.request.method',
       status: 'normalize',
     },
-    aliases: ['http.request.method', 'http.request_method', 'http.method'],
+    aliases: ['http.request.method', 'http.request_method', 'http.method', 'sentry.request.method'],
     changelog: [
+      { version: 'next', prs: [807], description: 'Added sentry.request.method as an alias' },
       { version: '0.19.0', prs: [497], description: 'Configured normalization' },
       { version: '0.1.0', prs: [61, 127] },
       { version: '0.0.0' },
@@ -37537,6 +37606,52 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       { version: '0.5.0', prs: [320], description: 'Added sentry.report_event attribute' },
     ],
   },
+  'sentry.request.method': {
+    brief: 'The HTTP method used.',
+    type: 'string',
+    keys: ['http.request.method', 'http.method', 'http.request_method', 'method', 'sentry.request.method'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'GET',
+    deprecation: {
+      replacement: 'http.request.method',
+      status: 'backfill',
+    },
+    aliases: ['http.request.method', 'method', 'http.method', 'http.request_method'],
+    changelog: [
+      {
+        version: 'next',
+        prs: [807],
+        description: 'Added sentry.request.method attribute, deprecated in favor of http.request.method',
+      },
+    ],
+  },
+  'sentry.request.url': {
+    brief: 'The URL of the resource that was fetched.',
+    type: 'string',
+    keys: ['url.full', 'aws.request.url', 'http.url', 'messaging.url', 'sentry.request.url', 'url'],
+    applyScrubbing: {
+      key: 'auto',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'https://example.com/test?foo=bar#buzz',
+    deprecation: {
+      replacement: 'url.full',
+      status: 'backfill',
+    },
+    aliases: ['url.full', 'http.url', 'url', 'aws.request.url', 'messaging.url'],
+    changelog: [
+      {
+        version: 'next',
+        prs: [807],
+        description: 'Added sentry.request.url attribute, deprecated in favor of url.full',
+      },
+    ],
+  },
   'sentry.sdk.integrations': {
     brief:
       'A list of names identifying enabled integrations. The list shouldhave all enabled integrations, including default integrations. Defaultintegrations are included because different SDK releases may contain differentdefault integrations.',
@@ -39146,7 +39261,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   url: {
     brief: 'The URL of the resource that was fetched.',
     type: 'string',
-    keys: ['url.full', 'aws.request.url', 'http.url', 'messaging.url', 'url'],
+    keys: ['url.full', 'aws.request.url', 'http.url', 'messaging.url', 'sentry.request.url', 'url'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -39157,8 +39272,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'url.full',
       status: 'backfill',
     },
-    aliases: ['url.full', 'http.url', 'aws.request.url', 'messaging.url'],
+    aliases: ['url.full', 'http.url', 'aws.request.url', 'messaging.url', 'sentry.request.url'],
     changelog: [
+      { version: 'next', prs: [807], description: 'Added sentry.request.url as an alias' },
       { version: '0.21.0', prs: [581], description: 'Added messaging.url as an alias' },
       { version: '0.1.0', prs: [61] },
       { version: '0.0.0' },
@@ -39193,15 +39309,16 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'url.full': {
     brief: 'The URL of the resource that was fetched.',
     type: 'string',
-    keys: ['url.full', 'aws.request.url', 'http.url', 'messaging.url', 'url'],
+    keys: ['url.full', 'aws.request.url', 'http.url', 'messaging.url', 'sentry.request.url', 'url'],
     applyScrubbing: {
       key: 'auto',
     },
     isInOtel: true,
     visibility: 'public',
     example: 'https://example.com/test?foo=bar#buzz',
-    aliases: ['http.url', 'url', 'aws.request.url', 'messaging.url'],
+    aliases: ['http.url', 'url', 'aws.request.url', 'messaging.url', 'sentry.request.url'],
     changelog: [
+      { version: 'next', prs: [807], description: 'Added sentry.request.url as an alias' },
       { version: '0.21.0', prs: [581], description: 'Added messaging.url as an alias' },
       { version: '0.19.0', prs: [488], description: 'Added aws.request.url as an alias' },
       { version: '0.1.0', prs: [108] },
@@ -40855,6 +40972,8 @@ export type Attributes = {
   [SENTRY_REPLAY_ID]?: SENTRY_REPLAY_ID_TYPE;
   [SENTRY_REPLAY_IS_BUFFERING]?: SENTRY_REPLAY_IS_BUFFERING_TYPE;
   [SENTRY_REPORT_EVENT]?: SENTRY_REPORT_EVENT_TYPE;
+  [SENTRY_REQUEST_METHOD]?: SENTRY_REQUEST_METHOD_TYPE;
+  [SENTRY_REQUEST_URL]?: SENTRY_REQUEST_URL_TYPE;
   [SENTRY_SDK_INTEGRATIONS]?: SENTRY_SDK_INTEGRATIONS_TYPE;
   [SENTRY_SDK_NAME]?: SENTRY_SDK_NAME_TYPE;
   [SENTRY_SDK_VERSION]?: SENTRY_SDK_VERSION_TYPE;

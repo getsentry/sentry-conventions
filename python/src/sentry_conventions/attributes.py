@@ -401,6 +401,8 @@ class _AttributeNamesMeta(type):
         "SENTRY_FRAMES_SLOW",
         "SENTRY_FRAMES_TOTAL",
         "SENTRY_REPORT_EVENT",
+        "SENTRY_REQUEST_METHOD",
+        "SENTRY_REQUEST_URL",
         "_SENTRY_SEGMENT_ID",
         "SENTRY_SOURCE",
         "SENTRY_SPAN_SOURCE",
@@ -2211,7 +2213,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: auto
     Defined in OTEL: No
     Visibility: public
-    Aliases: url.full, http.url, url, messaging.url
+    Aliases: url.full, http.url, url, messaging.url, sentry.request.url
     DEPRECATED: Use url.full instead - This attribute is being deprecated in favor of url.full, which is the OTel-aligned replacement.
     Example: "https://sqs.us-east-1.amazonaws.com/123456789/my-queue"
     """
@@ -6494,7 +6496,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: http.request.method, http.request_method, method
+    Aliases: http.request.method, http.request_method, method, sentry.request.method
     DEPRECATED: Use http.request.method instead
     Example: "GET"
     """
@@ -6646,7 +6648,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: method, http.method, http.request_method
+    Aliases: method, http.method, http.request_method, sentry.request.method
     Example: "GET"
     """
 
@@ -6819,7 +6821,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
-    Aliases: method, http.method, http.request.method
+    Aliases: method, http.method, http.request.method, sentry.request.method
     DEPRECATED: Use http.request.method instead
     Example: "GET"
     """
@@ -7065,7 +7067,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: auto
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: url.full, url, aws.request.url, messaging.url
+    Aliases: url.full, url, aws.request.url, messaging.url, sentry.request.url
     DEPRECATED: Use url.full instead
     Example: "https://example.com/test?foo=bar#buzz"
     """
@@ -8785,7 +8787,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: auto
     Defined in OTEL: No
     Visibility: public
-    Aliases: url.full, http.url, url, aws.request.url
+    Aliases: url.full, http.url, url, aws.request.url, sentry.request.url
     DEPRECATED: Use url.full instead - This attribute is being deprecated in favor of url.full.
     Example: "amqp://guest:guest@localhost:5672"
     """
@@ -8798,7 +8800,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
-    Aliases: http.request.method, http.request_method, http.method
+    Aliases: http.request.method, http.request_method, http.method, sentry.request.method
     DEPRECATED: Use http.request.method instead
     Example: "GET"
     """
@@ -10931,6 +10933,32 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "pagehide"
     """
 
+    # Path: model/attributes/sentry/sentry__request__method.json
+    SENTRY_REQUEST_METHOD: Literal["sentry.request.method"] = "sentry.request.method"
+    """The HTTP method used.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: http.request.method, method, http.method, http.request_method
+    DEPRECATED: Use http.request.method instead
+    Example: "GET"
+    """
+
+    # Path: model/attributes/sentry/sentry__request__url.json
+    SENTRY_REQUEST_URL: Literal["sentry.request.url"] = "sentry.request.url"
+    """The URL of the resource that was fetched.
+
+    Type: str
+    Apply Scrubbing: auto
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: url.full, http.url, url, aws.request.url, messaging.url
+    DEPRECATED: Use url.full instead
+    Example: "https://example.com/test?foo=bar#buzz"
+    """
+
     # Path: model/attributes/sentry/sentry__sdk__integrations.json
     SENTRY_SDK_INTEGRATIONS: Literal["sentry.sdk.integrations"] = (
         "sentry.sdk.integrations"
@@ -12096,7 +12124,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: auto
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: http.url, url, aws.request.url, messaging.url
+    Aliases: http.url, url, aws.request.url, messaging.url, sentry.request.url
     Example: "https://example.com/test?foo=bar#buzz"
     """
 
@@ -12208,7 +12236,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: auto
     Defined in OTEL: No
     Visibility: public
-    Aliases: url.full, http.url, aws.request.url, messaging.url
+    Aliases: url.full, http.url, aws.request.url, messaging.url, sentry.request.url
     DEPRECATED: Use url.full instead
     Example: "https://example.com/test?foo=bar#buzz"
     """
@@ -15621,6 +15649,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "aws.request.url",
             "http.url",
             "messaging.url",
+            "sentry.request.url",
             "url",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
@@ -15632,8 +15661,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             reason="This attribute is being deprecated in favor of url.full, which is the OTel-aligned replacement.",
             status=DeprecationStatus.BACKFILL,
         ),
-        aliases=["url.full", "http.url", "url", "messaging.url"],
+        aliases=["url.full", "http.url", "url", "messaging.url", "sentry.request.url"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[807],
+                description="Added sentry.request.url as an alias",
+            ),
             ChangelogEntry(
                 version="0.21.0",
                 prs=[581],
@@ -22106,6 +22140,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "http.method",
             "http.request_method",
             "method",
+            "sentry.request.method",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
@@ -22114,8 +22149,18 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(
             replacement="http.request.method", status=DeprecationStatus.BACKFILL
         ),
-        aliases=["http.request.method", "http.request_method", "method"],
+        aliases=[
+            "http.request.method",
+            "http.request_method",
+            "method",
+            "sentry.request.method",
+        ],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[807],
+                description="Added sentry.request.method as an alias",
+            ),
             ChangelogEntry(version="0.1.0", prs=[61, 127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -22312,13 +22357,24 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "http.method",
             "http.request_method",
             "method",
+            "sentry.request.method",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="GET",
-        aliases=["method", "http.method", "http.request_method"],
+        aliases=[
+            "method",
+            "http.method",
+            "http.request_method",
+            "sentry.request.method",
+        ],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[807],
+                description="Added sentry.request.method as an alias",
+            ),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -22520,6 +22576,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "http.method",
             "http.request_method",
             "method",
+            "sentry.request.method",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
@@ -22528,8 +22585,18 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(
             replacement="http.request.method", status=DeprecationStatus.BACKFILL
         ),
-        aliases=["method", "http.method", "http.request.method"],
+        aliases=[
+            "method",
+            "http.method",
+            "http.request.method",
+            "sentry.request.method",
+        ],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[807],
+                description="Added sentry.request.method as an alias",
+            ),
             ChangelogEntry(
                 version="0.6.0",
                 prs=[343],
@@ -22924,6 +22991,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "aws.request.url",
             "http.url",
             "messaging.url",
+            "sentry.request.url",
             "url",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
@@ -22933,8 +23001,19 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(
             replacement="url.full", status=DeprecationStatus.BACKFILL
         ),
-        aliases=["url.full", "url", "aws.request.url", "messaging.url"],
+        aliases=[
+            "url.full",
+            "url",
+            "aws.request.url",
+            "messaging.url",
+            "sentry.request.url",
+        ],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[807],
+                description="Added sentry.request.url as an alias",
+            ),
             ChangelogEntry(
                 version="0.21.0",
                 prs=[581],
@@ -25642,6 +25721,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "aws.request.url",
             "http.url",
             "messaging.url",
+            "sentry.request.url",
             "url",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
@@ -25654,8 +25734,19 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             reason="This attribute is being deprecated in favor of url.full.",
             status=DeprecationStatus.BACKFILL,
         ),
-        aliases=["url.full", "http.url", "url", "aws.request.url"],
+        aliases=[
+            "url.full",
+            "http.url",
+            "url",
+            "aws.request.url",
+            "sentry.request.url",
+        ],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[807],
+                description="Added sentry.request.url as an alias",
+            ),
             ChangelogEntry(
                 version="0.21.0", prs=[581], description="Added messaging.url attribute"
             ),
@@ -25669,6 +25760,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "http.method",
             "http.request_method",
             "method",
+            "sentry.request.method",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
@@ -25677,8 +25769,18 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(
             replacement="http.request.method", status=DeprecationStatus.NORMALIZE
         ),
-        aliases=["http.request.method", "http.request_method", "http.method"],
+        aliases=[
+            "http.request.method",
+            "http.request_method",
+            "http.method",
+            "sentry.request.method",
+        ],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[807],
+                description="Added sentry.request.method as an alias",
+            ),
             ChangelogEntry(
                 version="0.19.0", prs=[497], description="Configured normalization"
             ),
@@ -28827,6 +28929,59 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
         ],
     ),
+    "sentry.request.method": AttributeMetadata(
+        brief="The HTTP method used.",
+        type=AttributeType.STRING,
+        keys=(
+            "http.request.method",
+            "http.method",
+            "http.request_method",
+            "method",
+            "sentry.request.method",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="GET",
+        deprecation=DeprecationInfo(
+            replacement="http.request.method", status=DeprecationStatus.BACKFILL
+        ),
+        aliases=["http.request.method", "method", "http.method", "http.request_method"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[807],
+                description="Added sentry.request.method attribute, deprecated in favor of http.request.method",
+            ),
+        ],
+    ),
+    "sentry.request.url": AttributeMetadata(
+        brief="The URL of the resource that was fetched.",
+        type=AttributeType.STRING,
+        keys=(
+            "url.full",
+            "aws.request.url",
+            "http.url",
+            "messaging.url",
+            "sentry.request.url",
+            "url",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="https://example.com/test?foo=bar#buzz",
+        deprecation=DeprecationInfo(
+            replacement="url.full", status=DeprecationStatus.BACKFILL
+        ),
+        aliases=["url.full", "http.url", "url", "aws.request.url", "messaging.url"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[807],
+                description="Added sentry.request.url attribute, deprecated in favor of url.full",
+            ),
+        ],
+    ),
     "sentry.sdk.integrations": AttributeMetadata(
         brief="A list of names identifying enabled integrations. The list shouldhave all enabled integrations, including default integrations. Defaultintegrations are included because different SDK releases may contain differentdefault integrations.",
         type=AttributeType.STRING_ARRAY,
@@ -30680,14 +30835,26 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "aws.request.url",
             "http.url",
             "messaging.url",
+            "sentry.request.url",
             "url",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="https://example.com/test?foo=bar#buzz",
-        aliases=["http.url", "url", "aws.request.url", "messaging.url"],
+        aliases=[
+            "http.url",
+            "url",
+            "aws.request.url",
+            "messaging.url",
+            "sentry.request.url",
+        ],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[807],
+                description="Added sentry.request.url as an alias",
+            ),
             ChangelogEntry(
                 version="0.21.0",
                 prs=[581],
@@ -30866,6 +31033,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "aws.request.url",
             "http.url",
             "messaging.url",
+            "sentry.request.url",
             "url",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
@@ -30875,8 +31043,19 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(
             replacement="url.full", status=DeprecationStatus.BACKFILL
         ),
-        aliases=["url.full", "http.url", "aws.request.url", "messaging.url"],
+        aliases=[
+            "url.full",
+            "http.url",
+            "aws.request.url",
+            "messaging.url",
+            "sentry.request.url",
+        ],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[807],
+                description="Added sentry.request.url as an alias",
+            ),
             ChangelogEntry(
                 version="0.21.0",
                 prs=[581],
@@ -32442,6 +32621,8 @@ Attributes = TypedDict(
         "sentry.replay_id": str,
         "sentry.replay_is_buffering": bool,
         "sentry.report_event": str,
+        "sentry.request.method": str,
+        "sentry.request.url": str,
         "sentry.sdk.integrations": List[str],
         "sentry.sdk.name": str,
         "sentry.sdk.version": str,
