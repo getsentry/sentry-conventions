@@ -4010,6 +4010,11 @@ export const SEARCH_OTEL__STATUS_CODE = 'otel.status_code';
 export const SEARCH_OTEL__STATUS_DESCRIPTION = 'otel.status_description';
 
 /**
+ * Search name for {@link attributes.PAGE_SERVER_RENDERING_AGE}. `page.server_rendering.age`
+ */
+export const SEARCH_PAGE__SERVER_RENDERING__AGE = 'page.server_rendering.age';
+
+/**
  * Search name for {@link attributes.PAGE_SERVER_RENDERING_TYPE}. `page.server_rendering.type`
  */
 export const SEARCH_PAGE__SERVER_RENDERING__TYPE = 'page.server_rendering.type';
@@ -6292,6 +6297,7 @@ export type AttributeSearchName =
   | typeof SEARCH_OTEL__SCOPE__VERSION
   | typeof SEARCH_OTEL__STATUS_CODE
   | typeof SEARCH_OTEL__STATUS_DESCRIPTION
+  | typeof SEARCH_PAGE__SERVER_RENDERING__AGE
   | typeof SEARCH_PAGE__SERVER_RENDERING__TYPE
   | typeof SEARCH_PARAMS__KEY
   | typeof SEARCH_PERFORMANCE__ACTIVATIONSTART
@@ -11261,6 +11267,13 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'string',
     brief: 'Description of the Status if it has a value, otherwise not set.',
     deprecationChain: ['otel.status_description'],
+  },
+  'page.server_rendering.age': {
+    canonicalName: 'page.server_rendering.age',
+    type: 'second',
+    brief:
+      'Set on a pageload span. The time in seconds from the start of the server render of the reused part of the page to the start of the span.',
+    deprecationChain: ['page.server_rendering.age'],
   },
   'page.server_rendering.type': {
     canonicalName: 'page.server_rendering.type',
