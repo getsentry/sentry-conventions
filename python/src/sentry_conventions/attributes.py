@@ -401,6 +401,7 @@ class _AttributeNamesMeta(type):
         "SENTRY_FRAMES_SLOW",
         "SENTRY_FRAMES_TOTAL",
         "SENTRY_REPORT_EVENT",
+        "SENTRY_RUNTIME_NAME",
         "_SENTRY_SEGMENT_ID",
         "SENTRY_SOURCE",
         "SENTRY_SPAN_SOURCE",
@@ -9622,7 +9623,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: runtime.name
+    Aliases: runtime.name, sentry.runtime.name
     Example: "node"
     """
 
@@ -10115,7 +10116,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
-    Aliases: process.runtime.name
+    Aliases: process.runtime.name, sentry.runtime.name
     DEPRECATED: Use process.runtime.name instead - Prefer OTel-aligned process.runtime.name
     Example: "node"
     """
@@ -10929,6 +10930,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Visibility: public
     DEPRECATED: No replacement at this time - The report event moved to browser.web_vital.lcp.report_event and browser.web_vital.cls.report_event, which are themselves deprecated without a replacement. No backfill required.
     Example: "pagehide"
+    """
+
+    # Path: model/attributes/sentry/sentry__runtime__name.json
+    SENTRY_RUNTIME_NAME: Literal["sentry.runtime.name"] = "sentry.runtime.name"
+    """The name of the runtime. Equivalent to `name` in the Sentry runtime context.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: process.runtime.name, runtime.name
+    DEPRECATED: Use process.runtime.name instead
+    Example: "node"
     """
 
     # Path: model/attributes/sentry/sentry__sdk__integrations.json
@@ -27005,13 +27019,19 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         keys=(
             "process.runtime.name",
             "runtime.name",
+            "sentry.runtime.name",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="node",
-        aliases=["runtime.name"],
+        aliases=["runtime.name", "sentry.runtime.name"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[806],
+                description="Added sentry.runtime.name as an alias",
+            ),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -27777,6 +27797,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         keys=(
             "process.runtime.name",
             "runtime.name",
+            "sentry.runtime.name",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
@@ -27787,8 +27808,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             reason="Prefer OTel-aligned process.runtime.name",
             status=DeprecationStatus.BACKFILL,
         ),
-        aliases=["process.runtime.name"],
+        aliases=["process.runtime.name", "sentry.runtime.name"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[806],
+                description="Added sentry.runtime.name as an alias",
+            ),
             ChangelogEntry(
                 version="0.11.0",
                 prs=[383],
@@ -28824,6 +28850,30 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
                 version="0.5.0",
                 prs=[320],
                 description="Added sentry.report_event attribute",
+            ),
+        ],
+    ),
+    "sentry.runtime.name": AttributeMetadata(
+        brief="The name of the runtime. Equivalent to `name` in the Sentry runtime context.",
+        type=AttributeType.STRING,
+        keys=(
+            "process.runtime.name",
+            "runtime.name",
+            "sentry.runtime.name",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="node",
+        deprecation=DeprecationInfo(
+            replacement="process.runtime.name", status=DeprecationStatus.BACKFILL
+        ),
+        aliases=["process.runtime.name", "runtime.name"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[806],
+                description="Added sentry.runtime.name attribute, deprecated in favor of process.runtime.name",
             ),
         ],
     ),
@@ -32442,6 +32492,7 @@ Attributes = TypedDict(
         "sentry.replay_id": str,
         "sentry.replay_is_buffering": bool,
         "sentry.report_event": str,
+        "sentry.runtime.name": str,
         "sentry.sdk.integrations": List[str],
         "sentry.sdk.name": str,
         "sentry.sdk.version": str,

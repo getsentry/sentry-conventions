@@ -16101,7 +16101,7 @@ export type PROCESS_RUNTIME_ENGINE_VERSION_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link RUNTIME_NAME} `runtime.name`
+ * Aliases: {@link RUNTIME_NAME} `runtime.name`, {@link SENTRY_RUNTIME_NAME} `sentry.runtime.name`
  *
  * @example "node"
  */
@@ -16967,7 +16967,7 @@ export type RUNTIME_BUILD_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link PROCESS_RUNTIME_NAME} `process.runtime.name`
+ * Aliases: {@link PROCESS_RUNTIME_NAME} `process.runtime.name`, {@link SENTRY_RUNTIME_NAME} `sentry.runtime.name`
  *
  * @deprecated Use {@link PROCESS_RUNTIME_NAME} (process.runtime.name) instead - Prefer OTel-aligned process.runtime.name
  * @example "node"
@@ -18423,6 +18423,30 @@ export const SENTRY_REPORT_EVENT = 'sentry.report_event';
  * Type for {@link SENTRY_REPORT_EVENT} sentry.report_event
  */
 export type SENTRY_REPORT_EVENT_TYPE = string;
+
+// Path: model/attributes/sentry/sentry__runtime__name.json
+
+/**
+ * The name of the runtime. Equivalent to `name` in the Sentry runtime context. `sentry.runtime.name`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_RUNTIME_NAME_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link PROCESS_RUNTIME_NAME} `process.runtime.name`, {@link RUNTIME_NAME} `runtime.name`
+ *
+ * @deprecated Use {@link PROCESS_RUNTIME_NAME} (process.runtime.name) instead
+ * @example "node"
+ */
+export const SENTRY_RUNTIME_NAME = 'sentry.runtime.name';
+
+/**
+ * Type for {@link SENTRY_RUNTIME_NAME} sentry.runtime.name
+ */
+export type SENTRY_RUNTIME_NAME_TYPE = string;
 
 // Path: model/attributes/sentry/sentry__sdk__integrations.json
 
@@ -22773,6 +22797,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'sentry.replay_id': 'string',
   'sentry.replay_is_buffering': 'boolean',
   'sentry.report_event': 'string',
+  'sentry.runtime.name': 'string',
   'sentry.sdk.integrations': 'string[]',
   'sentry.sdk.name': 'string',
   'sentry.sdk.version': 'string',
@@ -23747,6 +23772,7 @@ export type AttributeName =
   | typeof SENTRY_REPLAY_ID
   | typeof SENTRY_REPLAY_IS_BUFFERING
   | typeof SENTRY_REPORT_EVENT
+  | typeof SENTRY_RUNTIME_NAME
   | typeof SENTRY_SDK_INTEGRATIONS
   | typeof SENTRY_SDK_NAME
   | typeof SENTRY_SDK_VERSION
@@ -35936,15 +35962,19 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'process.runtime.name': {
     brief: 'The name of the runtime. Equivalent to `name` in the Sentry runtime context.',
     type: 'string',
-    keys: ['process.runtime.name', 'runtime.name'],
+    keys: ['process.runtime.name', 'runtime.name', 'sentry.runtime.name'],
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
     example: 'node',
-    aliases: ['runtime.name'],
-    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
+    aliases: ['runtime.name', 'sentry.runtime.name'],
+    changelog: [
+      { version: 'next', prs: [806], description: 'Added sentry.runtime.name as an alias' },
+      { version: '0.1.0', prs: [127] },
+      { version: '0.0.0' },
+    ],
   },
   'process.runtime.version': {
     brief:
@@ -36573,7 +36603,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'runtime.name': {
     brief: 'The name of the runtime. For example node, CPython, or rustc.',
     type: 'string',
-    keys: ['process.runtime.name', 'runtime.name'],
+    keys: ['process.runtime.name', 'runtime.name', 'sentry.runtime.name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -36585,8 +36615,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason: 'Prefer OTel-aligned process.runtime.name',
       status: 'backfill',
     },
-    aliases: ['process.runtime.name'],
+    aliases: ['process.runtime.name', 'sentry.runtime.name'],
     changelog: [
+      { version: 'next', prs: [806], description: 'Added sentry.runtime.name as an alias' },
       {
         version: '0.11.0',
         prs: [383],
@@ -37535,6 +37566,29 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
           'Updated the deprecation reason now that the browser.web_vital.*.report_event attributes are deprecated',
       },
       { version: '0.5.0', prs: [320], description: 'Added sentry.report_event attribute' },
+    ],
+  },
+  'sentry.runtime.name': {
+    brief: 'The name of the runtime. Equivalent to `name` in the Sentry runtime context.',
+    type: 'string',
+    keys: ['process.runtime.name', 'runtime.name', 'sentry.runtime.name'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'node',
+    deprecation: {
+      replacement: 'process.runtime.name',
+      status: 'backfill',
+    },
+    aliases: ['process.runtime.name', 'runtime.name'],
+    changelog: [
+      {
+        version: 'next',
+        prs: [806],
+        description: 'Added sentry.runtime.name attribute, deprecated in favor of process.runtime.name',
+      },
     ],
   },
   'sentry.sdk.integrations': {
@@ -40855,6 +40909,7 @@ export type Attributes = {
   [SENTRY_REPLAY_ID]?: SENTRY_REPLAY_ID_TYPE;
   [SENTRY_REPLAY_IS_BUFFERING]?: SENTRY_REPLAY_IS_BUFFERING_TYPE;
   [SENTRY_REPORT_EVENT]?: SENTRY_REPORT_EVENT_TYPE;
+  [SENTRY_RUNTIME_NAME]?: SENTRY_RUNTIME_NAME_TYPE;
   [SENTRY_SDK_INTEGRATIONS]?: SENTRY_SDK_INTEGRATIONS_TYPE;
   [SENTRY_SDK_NAME]?: SENTRY_SDK_NAME_TYPE;
   [SENTRY_SDK_VERSION]?: SENTRY_SDK_VERSION_TYPE;
