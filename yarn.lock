@@ -119,15 +119,15 @@
   dependencies:
     prismjs "^1.30.0"
 
-"@astrojs/svelte@9.0.1":
-  version "9.0.1"
-  resolved "https://registry.yarnpkg.com/@astrojs/svelte/-/svelte-9.0.1.tgz#01da74f4d77d72edb883fae837bc844d674fdea8"
-  integrity sha512-n5FzIR9Eqs4Kz8O0BIyGfV+wJuAbXRhZazJbq+sdU64Cho83my9/yFUiQyUeGFPnu3nytCg7Dj24LMDsCh31Jg==
+"@astrojs/svelte@9.1.2":
+  version "9.1.2"
+  resolved "https://registry.yarnpkg.com/@astrojs/svelte/-/svelte-9.1.2.tgz#edba51ea346fad59ce8c2cdf71edf548e1462572"
+  integrity sha512-gLLGQL28CPRC/74REhEmqQNUdjagURcqkSLPgjEZceql7WxdAOXyCD9SFxsl75q4R4ePAWiK7SutfqldC+WNHw==
   dependencies:
-    "@sveltejs/vite-plugin-svelte" "^7.1.0"
-    svelte2tsx "^0.7.55"
-    vite "^8.0.13"
-    vitefu "^1.1.2"
+    "@sveltejs/vite-plugin-svelte" "^7.3.1"
+    svelte2tsx "^0.7.61"
+    vite "^8.3.4"
+    vitefu "^1.1.3"
 
 "@astrojs/telemetry@3.4.2":
   version "3.4.2"
@@ -1663,13 +1663,13 @@
   resolved "https://registry.yarnpkg.com/@sveltejs/acorn-typescript/-/acorn-typescript-1.0.10.tgz#72376d9f46c04be82b714b1c33f0956911a7a6d6"
   integrity sha512-4WfKk68eTih+MiJD4fSbxN7E8kVBmTMPWHUPYjvl2N0rMs53YLTT8/YjKU5Dtnz5LqDjl7LEw4U7lXR2W3J5WA==
 
-"@sveltejs/vite-plugin-svelte@^7.1.0":
-  version "7.2.0"
-  resolved "https://registry.yarnpkg.com/@sveltejs/vite-plugin-svelte/-/vite-plugin-svelte-7.2.0.tgz#9bca690309f25e831379da3752abc35aee0e44a6"
-  integrity sha512-1SpkuMSRLfugrVX+IrKfE1RUegzo8AQzKQ6qQPfVzbcWi5IhuTPaKb5ZrLpucleFznkc4/RTeSPoRnGWFxX+EQ==
+"@sveltejs/vite-plugin-svelte@^7.3.1":
+  version "7.3.1"
+  resolved "https://registry.yarnpkg.com/@sveltejs/vite-plugin-svelte/-/vite-plugin-svelte-7.3.1.tgz#93f642883e09ef234325fb043a50821723f7fffc"
+  integrity sha512-ZPsLN8B1e/En+Ak5s4V7srFDT532oS0qieLsQwu63NGKsS+iAjoO2Js1BochlHlglcU+Pt7WAO3C5Ee+4f6gVA==
   dependencies:
     deepmerge "^4.3.1"
-    magic-string "^0.30.21"
+    magic-string "^1.0.0"
     obug "^2.1.0"
     vitefu "^1.1.2"
 
@@ -3100,7 +3100,7 @@ magic-string@^0.30.11, magic-string@^0.30.17, magic-string@^0.30.21, magic-strin
   dependencies:
     "@jridgewell/sourcemap-codec" "^1.5.5"
 
-magic-string@^1.4.5:
+magic-string@^1.0.0, magic-string@^1.4.5:
   version "1.4.5"
   resolved "https://registry.yarnpkg.com/magic-string/-/magic-string-1.4.5.tgz#201c852d51eb0664d6f66cf7ab93b20b416e48d9"
   integrity sha512-oLLC2+YvQUfAa+vxoufE/yc1icb87M9iXIRqAoR/2EhE/8cb3SF/+Gi0c2By1B+5Vz2e2vQtUvHiu1+63Znh+w==
@@ -4091,10 +4091,10 @@ supports-preserve-symlinks-flag@^1.0.0:
   resolved "https://registry.yarnpkg.com/supports-preserve-symlinks-flag/-/supports-preserve-symlinks-flag-1.0.0.tgz#6eda4bd344a3c94aea376d4cc31bc77311039e09"
   integrity sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==
 
-svelte2tsx@^0.7.55:
-  version "0.7.56"
-  resolved "https://registry.yarnpkg.com/svelte2tsx/-/svelte2tsx-0.7.56.tgz#c849a4f2dd5de207213e3865dd5b7224de740261"
-  integrity sha512-NTvqqL+goYlW8gWNajk81L07+uu7jw5V2m1Az5MZbYm3GEydcHXh+uTrLHM9SuGuaqCtF90vlMXkOVBotfH94g==
+svelte2tsx@^0.7.61:
+  version "0.7.63"
+  resolved "https://registry.yarnpkg.com/svelte2tsx/-/svelte2tsx-0.7.63.tgz#2ba0412e2b185c09e8e7fb56f153366c041c2382"
+  integrity sha512-gRgz/V6wOx0NDZhm6OMD2VIh+/HrgZc3k6ibX93rkNPEkWNn/P3Uhb1fYCqOrimEUpQd8r65dhiHZIJXSQBeow==
   dependencies:
     dedent-js "^1.0.1"
     scule "^1.3.0"
@@ -4417,7 +4417,7 @@ vfile@^6.0.0:
     "@types/unist" "^3.0.0"
     vfile-message "^4.0.0"
 
-"vite@^6.0.0 || ^7.0.0 || ^8.0.0", vite@^8.0.13, vite@^8.3.5:
+"vite@^6.0.0 || ^7.0.0 || ^8.0.0", vite@^8.3.4, vite@^8.3.5:
   version "8.3.8"
   resolved "https://registry.yarnpkg.com/vite/-/vite-8.3.8.tgz#ad713bf2e46c241f344b5e50401297b77a08621d"
   integrity sha512-LzOn3h9rG/0vhLdXrV4yJ4QFA9eEoqCl+Yx+kGJd7aB9w6nfNgVHKSYwLPZUHrz4ZGa+t+kXjV9itvcHDLQouA==
