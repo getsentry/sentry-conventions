@@ -7,9 +7,6 @@
 
 /**
  * Represents arguments passed to a tool call.
- *
- * This interface was referenced by `undefined`'s JSON-Schema
- * via the `definition` "ToolCallArguments".
  */
 export type ToolCallArguments =
   | {
