@@ -1,0 +1,13 @@
+{
+  "brief": "Runtime",
+  "operations": [
+    {
+      "name": "Garbage collection",
+      "brief": "A run of the runtime's garbage collector.",
+      "is_in_otel": false,
+      "ops": ["gc"],
+      "templates": ["Garbage collection"],
+      "examples": ["Garbage collection"]
+    }
+  ]
+}
