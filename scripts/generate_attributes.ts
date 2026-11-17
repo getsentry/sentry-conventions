@@ -1640,7 +1640,6 @@ async function generateSchemaTypes(
 
     const jsonSchema = { definitions: schemas, components: { schemas } } as Parameters<typeof compile>[0];
     const tsSource = await compile(jsonSchema, '', {
-      bannerComment: '',
       cwd: sharedSchemasDir,
       unreachableDefinitions: true,
       unknownAny: true,
@@ -1687,18 +1686,16 @@ async function generateSchemaTypes(
 
     const jsonSchema = { definitions: schemas, components: { schemas } } as Parameters<typeof compile>[0];
     const tsSource = await compile(jsonSchema, '', {
-      bannerComment: '',
       cwd: path.join(repositoryRoot, 'schemas'),
       declareExternallyReferenced: false,
       unreachableDefinitions: true,
       unknownAny: true,
     });
-    const tsImports = [...sharedRefs]
-      .map(
-        ([sharedModule, names]) => `import type { ${[...names].sort().join(', ')} } from './shared/${sharedModule}';\n`,
-      )
-      .join('');
-    fs.writeFileSync(path.join(jsOutputDir, `${modulePath}.ts`), tsImports + tsSource);
+    const tsImports = [...sharedRefs].map(
+      ([sharedModule, names]) => `import type { ${[...names].sort().join(', ')} } from './shared/${sharedModule}';\n`,
+    );
+    const tsHeader = tsImports.length > 0 ? `${tsImports.join('')}\n` : '';
+    fs.writeFileSync(path.join(jsOutputDir, `${modulePath}.ts`), tsHeader + tsSource);
 
     const refMappings = [...sharedRefs.keys()].map(
       (sharedModule) => `shared/${sharedModule}.openapi.json=.shared.${sharedModule}`,
