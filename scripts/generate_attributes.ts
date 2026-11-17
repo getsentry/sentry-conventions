@@ -1621,6 +1621,16 @@ function generateMetadata(
   return { attributeMetadata: metadataDict, searchMetadata };
 }
 
+// The schema passed to `compile` is a synthetic wrapper with no name and no references to its
+// definitions, so json-schema-to-typescript's "referenced by `undefined`" note is meaningless.
+const ROOT_REFERENCE_NOTE = String.raw` \* This interface was referenced by \`undefined\`'s JSON-Schema\n \* via the \`definition\` "[^"\n]+"\.\n`;
+
+function stripRootReferenceComments(tsSource: string): string {
+  return tsSource
+    .replace(new RegExp(String.raw`/\*\*\n${ROOT_REFERENCE_NOTE} \*/\n`, 'g'), '')
+    .replace(new RegExp(String.raw` \*\n${ROOT_REFERENCE_NOTE}`, 'g'), '');
+}
+
 async function generateSchemaTypes(
   parsedAttributes: ParsedAttribute[],
   jsOutputDir: string,
@@ -1647,10 +1657,12 @@ async function generateSchemaTypes(
     const schemaNames = Object.keys(schemas);
 
     const jsonSchema = { definitions: schemas, components: { schemas } } as Parameters<typeof compile>[0];
-    const tsSource = await compile(jsonSchema, '', {
-      unreachableDefinitions: true,
-      unknownAny: true,
-    });
+    const tsSource = stripRootReferenceComments(
+      await compile(jsonSchema, '', {
+        unreachableDefinitions: true,
+        unknownAny: true,
+      }),
+    );
     const jsFile = path.join(jsOutputDir, `${baseName}.ts`);
     fs.writeFileSync(jsFile, tsSource);
 
