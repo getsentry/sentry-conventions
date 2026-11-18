@@ -1,0 +1,21 @@
+{
+  "key": "heroku.logplex.dyno",
+  "brief": "Dyno or Heroku platform component that wrote a Heroku Logplex log line",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "never"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "examples": ["web.1", "worker.3", "router", "api", "scheduler.9593"],
+  "additional_context": [
+    "The syslog PROCID of the line, shown as dyno in source[dyno] by heroku logs and filtered with heroku logs --dyno.",
+    "Unlike heroku.dyno.name, this is the writer of the line: for HTTP router lines it is router, while heroku.dyno.name is the dyno that served the request."
+  ],
+  "changelog": [
+    {
+      "version": "next",
+      "description": "Added heroku.logplex.dyno attribute"
+    }
+  ]
+}

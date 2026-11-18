@@ -1,0 +1,20 @@
+{
+  "key": "heroku.logplex.source",
+  "brief": "Source of a Heroku Logplex log line: app for output of the app's dynos, heroku for Heroku platform components",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "never"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "examples": ["app", "heroku"],
+  "additional_context": [
+    "The syslog APP-NAME of the line, shown as source in source[dyno] by heroku logs and filtered with heroku logs --source. Heroku Platform API and some add-on lines also use the source app."
+  ],
+  "changelog": [
+    {
+      "version": "next",
+      "description": "Added heroku.logplex.source attribute"
+    }
+  ]
+}
