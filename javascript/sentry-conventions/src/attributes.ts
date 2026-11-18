@@ -2,6 +2,8 @@
 
 export type { SystemInstructions, TextPart } from './_schemas/gen_ai_system_instructions';
 
+export type { ToolCallArguments } from './_schemas/gen_ai_tool_call_arguments';
+
 export type { ToolCallResult } from './_schemas/gen_ai_tool_call_result';
 
 export type {
@@ -8565,7 +8567,7 @@ export type GEN_AI_OPERATION_TYPE_TYPE = string;
 // Path: model/attributes/gen_ai/gen_ai__output__messages.json
 
 /**
- * The model's response messages. It has to be a stringified version of an array of message objects in the format `{role: "assistant", parts: [...]}`, which can include text responses and tool calls. Each part is an object with a `type`, such as `{type: "text", content: "..."}`. Other part types include `"reasoning"` and `"tool_call"`. Put the model's thinking in a `{type: "reasoning", content: "..."}` part, not a `"text"` part. Sentry shows reasoning separately from user-visible messages. The first example shows this shape. Some operations use a different shape. See the additional context. `gen_ai.output.messages`
+ * Messages returned by the model where each message represents a specific model response (choice, candidate). It has to be a stringified version of an array of message objects in the format `{role: "assistant", parts: [...]}`, which can include text responses and tool calls. Each part is an object with a `type`, such as `{type: "text", content: "..."}`. Other part types include `"reasoning"` and `"tool_call"`. Put the model's thinking in a `{type: "reasoning", content: "..."}` part, not a `"text"` part. Sentry shows reasoning separately from user-visible messages. The first example shows this shape. Some operations use a different shape. See the additional context. `gen_ai.output.messages`
  *
  * Attribute Value Type: `string` {@link GEN_AI_OUTPUT_MESSAGES_TYPE}
  *
@@ -9166,7 +9168,7 @@ export type GEN_AI_RESPONSE_TEXT_TYPE = string;
 // Path: model/attributes/gen_ai/gen_ai__response__time_to_first_chunk.json
 
 /**
- * Time in seconds when the first response content chunk arrived in streaming responses. `gen_ai.response.time_to_first_chunk`
+ * Time from the start of a logical inference operation to the first chunk in its streaming response, in seconds. `gen_ai.response.time_to_first_chunk`
  *
  * Attribute Value Type: `number` {@link GEN_AI_RESPONSE_TIME_TO_FIRST_CHUNK_TYPE}
  *
@@ -9189,7 +9191,7 @@ export type GEN_AI_RESPONSE_TIME_TO_FIRST_CHUNK_TYPE = number;
 // Path: model/attributes/gen_ai/gen_ai__response__time_to_first_token.json
 
 /**
- * Time in seconds when the first response content chunk arrived in streaming responses. `gen_ai.response.time_to_first_token`
+ * Time from the start of a logical inference operation to the first chunk in its streaming response, in seconds. `gen_ai.response.time_to_first_token`
  *
  * Attribute Value Type: `number` {@link GEN_AI_RESPONSE_TIME_TO_FIRST_TOKEN_TYPE}
  *
@@ -9325,7 +9327,7 @@ export type GEN_AI_SYSTEM_MESSAGE_TYPE = string;
 // Path: model/attributes/gen_ai/gen_ai__tool__call__arguments.json
 
 /**
- * The arguments of the tool call. It has to be a stringified version of the arguments to the tool. `gen_ai.tool.call.arguments`
+ * The arguments of the tool call. `gen_ai.tool.call.arguments`
  *
  * Attribute Value Type: `string` {@link GEN_AI_TOOL_CALL_ARGUMENTS_TYPE}
  *
@@ -15762,6 +15764,29 @@ export const OTEL_STATUS_DESCRIPTION = 'otel.status_description';
  * Type for {@link OTEL_STATUS_DESCRIPTION} otel.status_description
  */
 export type OTEL_STATUS_DESCRIPTION_TYPE = string;
+
+// Path: model/attributes/page/page__server_rendering__age.json
+
+/**
+ * Set on a pageload span. The time in seconds from the start of the server render of the reused part of the page to the start of the span. `page.server_rendering.age`
+ *
+ * Attribute Value Type: `number` {@link PAGE_SERVER_RENDERING_AGE_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example 0
+ * @example 2520
+ * @example 259200
+ */
+export const PAGE_SERVER_RENDERING_AGE = 'page.server_rendering.age';
+
+/**
+ * Type for {@link PAGE_SERVER_RENDERING_AGE} page.server_rendering.age
+ */
+export type PAGE_SERVER_RENDERING_AGE_TYPE = number;
 
 // Path: model/attributes/page/page__server_rendering__type.json
 
@@ -22657,6 +22682,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'otel.scope.version': 'string',
   'otel.status_code': 'string',
   'otel.status_description': 'string',
+  'page.server_rendering.age': 'integer',
   'page.server_rendering.type': 'string',
   'params.<key>': 'string',
   'performance.activationStart': 'double',
@@ -23631,6 +23657,7 @@ export type AttributeName =
   | typeof OTEL_SCOPE_VERSION
   | typeof OTEL_STATUS_CODE
   | typeof OTEL_STATUS_DESCRIPTION
+  | typeof PAGE_SERVER_RENDERING_AGE
   | typeof PAGE_SERVER_RENDERING_TYPE
   | typeof PARAMS_KEY
   | typeof PERFORMANCE_ACTIVATIONSTART
@@ -29998,7 +30025,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   'gen_ai.output.messages': {
     brief:
-      'The model\'s response messages. It has to be a stringified version of an array of message objects in the format `{role: "assistant", parts: [...]}`, which can include text responses and tool calls. Each part is an object with a `type`, such as `{type: "text", content: "..."}`. Other part types include `"reasoning"` and `"tool_call"`. Put the model\'s thinking in a `{type: "reasoning", content: "..."}` part, not a `"text"` part. Sentry shows reasoning separately from user-visible messages. The first example shows this shape. Some operations use a different shape. See the additional context.',
+      'Messages returned by the model where each message represents a specific model response (choice, candidate). It has to be a stringified version of an array of message objects in the format `{role: "assistant", parts: [...]}`, which can include text responses and tool calls. Each part is an object with a `type`, such as `{type: "text", content: "..."}`. Other part types include `"reasoning"` and `"tool_call"`. Put the model\'s thinking in a `{type: "reasoning", content: "..."}` part, not a `"text"` part. Sentry shows reasoning separately from user-visible messages. The first example shows this shape. Some operations use a different shape. See the additional context.',
     type: 'string',
     keys: [
       'gen_ai.output.messages',
@@ -30023,6 +30050,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     ],
     aliases: ['ai.response.toolCalls', 'ai.response.text'],
     changelog: [
+      { version: 'next', prs: [802], description: 'Aligned the brief with OTel and added additional context.' },
       {
         version: '0.28.0',
         prs: [728],
@@ -30033,6 +30061,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       { version: '0.4.0', prs: [221] },
     ],
     additionalContext: [
+      'Each message represents a single output choice/candidate generated by the model. Each message corresponds to exactly one generation (choice/candidate) and vice versa - one choice cannot be split across multiple messages or one message cannot contain parts from multiple choices.',
+      'When an operation ends in an error, this attribute is only set when the operation produced output, including partial streamed output. Instrumentation does not synthesize output content for a failed operation.',
       'For `gen_ai.decide` operations, the array holds one object `{answers: {...}}`. `answers` holds the answers keyed by question name, as the provider returned them. The second example shows this shape.',
       'For `gen_ai.extract` operations, the array holds one object `{answers: {<name>: <answer>}, truncated: boolean, state_text?: string}`. This object is the response body as the provider returned it, without `model` and `usage`. Do not change the values. `answers` holds one answer for each field in the input, keyed by field name. A field that the model cannot determine has a `value` of `null`. `span` and `spans` are `[start, end]` character offsets into `state` (or into `state_text`, if the provider returns it), and `end` is exclusive. Set the model in `gen_ai.response.model` and the token counts in `gen_ai.usage.input_tokens` and `gen_ai.usage.output_tokens`. The third example shows this shape.',
     ],
@@ -30478,7 +30508,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     ],
   },
   'gen_ai.response.time_to_first_chunk': {
-    brief: 'Time in seconds when the first response content chunk arrived in streaming responses.',
+    brief:
+      'Time from the start of a logical inference operation to the first chunk in its streaming response, in seconds.',
     type: 'double',
     keys: ['gen_ai.response.time_to_first_chunk', 'gen_ai.response.time_to_first_token'],
     applyScrubbing: {
@@ -30488,10 +30519,19 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 0.6853435,
     aliases: ['gen_ai.response.time_to_first_token'],
-    changelog: [{ version: '0.11.0', prs: [418], description: 'Added gen_ai.response.time_to_first_chunk attribute' }],
+    changelog: [
+      { version: 'next', prs: [795], description: 'Aligned the brief with OTel and added additional context.' },
+      { version: '0.11.0', prs: [418], description: 'Added gen_ai.response.time_to_first_chunk attribute' },
+    ],
+    additionalContext: [
+      'A chunk is a decoded provider stream event carrying new, non-empty output: text, refusals, reasoning (including opaque payloads), audio, images, or tool-call names or arguments. Empty start events or events carrying only usage, roles, IDs, signatures, keep-alives, progress/status updates, or end markers are not chunks. Chunk boundaries follow provider events, not TCP reads, HTTP frames, or extra SDK callbacks.',
+      'Measure the time from the start of the logical inference operation, before authentication and the first attempt, to when the first chunk is fully received by the client, before application processing.',
+      'Set this attribute when the first chunk is received and do not set it if no chunk is received.',
+    ],
   },
   'gen_ai.response.time_to_first_token': {
-    brief: 'Time in seconds when the first response content chunk arrived in streaming responses.',
+    brief:
+      'Time from the start of a logical inference operation to the first chunk in its streaming response, in seconds.',
     type: 'double',
     keys: ['gen_ai.response.time_to_first_chunk', 'gen_ai.response.time_to_first_token'],
     applyScrubbing: {
@@ -30506,8 +30546,14 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['gen_ai.response.time_to_first_chunk'],
     changelog: [
+      { version: 'next', prs: [795], description: 'Aligned the brief with OTel and added additional context' },
       { version: '0.11.0', prs: [418], description: 'Deprecate in favor of gen_ai.response.time_to_first_chunk' },
       { version: '0.4.0', prs: [227] },
+    ],
+    additionalContext: [
+      'A chunk is a decoded provider stream event carrying new, non-empty output: text, refusals, reasoning (including opaque payloads), audio, images, or tool-call names or arguments. Empty start events or events carrying only usage, roles, IDs, signatures, keep-alives, progress/status updates, or end markers are not chunks. Chunk boundaries follow provider events, not TCP reads, HTTP frames, or extra SDK callbacks.',
+      'Measure the time from the start of the logical inference operation, before authentication and the first attempt, to when the first chunk is fully received by the client, before application processing.',
+      'Set this attribute when the first chunk is received and do not set it if no chunk is received.',
     ],
   },
   'gen_ai.response.tokens_per_second': {
@@ -30619,7 +30665,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     ],
   },
   'gen_ai.tool.call.arguments': {
-    brief: 'The arguments of the tool call. It has to be a stringified version of the arguments to the tool.',
+    brief: 'The arguments of the tool call.',
     type: 'string',
     keys: ['gen_ai.tool.call.arguments', 'ai.toolCall.args', 'gen_ai.tool.input'],
     applyScrubbing: {
@@ -30630,6 +30676,12 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: '{"location": "Paris"}',
     aliases: ['gen_ai.tool.input', 'ai.toolCall.args'],
     changelog: [
+      {
+        version: 'next',
+        prs: [793],
+        description:
+          'Remove informal format description from the brief to prevent duplication with the structured schema.',
+      },
       { version: '0.5.0', prs: [265] },
       { version: '0.4.0', prs: [221] },
     ],
@@ -35787,6 +35839,31 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'resource not found',
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
+  'page.server_rendering.age': {
+    brief:
+      'Set on a pageload span. The time in seconds from the start of the server render of the reused part of the page to the start of the span.',
+    type: 'integer',
+    keys: ['page.server_rendering.age'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 0,
+    examples: [0, 2520, 259200],
+    changelog: [{ version: 'next', prs: [799], description: 'Added page.server_rendering.age attribute' }],
+    additionalContext: [
+      'Set only by an SDK that controls the server render, when the page reuses a server render and the SDK knows when that render started. With `page.server_rendering.type: partially_static`, the value is for the static part.',
+      'If the span has a `cache_origin` link, the linked span is that render. The SDK can also set the value without a link, for example for a page from the build.',
+      'Approximate, because the render time comes from the server clock and the span start from the browser clock. Rounded down to whole seconds and clamped to 0, as `cache.item_age`. A value near 0 does not prove that the server rendered the page for this request.',
+      'The age of the render, not of its data. The render can read older cached data.',
+      'Not the HTTP `Age` response header. HTTP caches reset that header when they validate the response.',
+    ],
+    searchAlias: {
+      name: 'page.server_rendering.age',
+      type: 'second',
+    },
+  },
   'page.server_rendering.type': {
     brief:
       'Set on a pageload span. Describes how the server rendered the content of the page: to reuse it for other requests, only for this request, or a mix of both.',
@@ -40809,6 +40886,7 @@ export type Attributes = {
   [OTEL_SCOPE_VERSION]?: OTEL_SCOPE_VERSION_TYPE;
   [OTEL_STATUS_CODE]?: OTEL_STATUS_CODE_TYPE;
   [OTEL_STATUS_DESCRIPTION]?: OTEL_STATUS_DESCRIPTION_TYPE;
+  [PAGE_SERVER_RENDERING_AGE]?: PAGE_SERVER_RENDERING_AGE_TYPE;
   [PAGE_SERVER_RENDERING_TYPE]?: PAGE_SERVER_RENDERING_TYPE_TYPE;
   [PARAMS_KEY]?: PARAMS_KEY_TYPE;
   [PERFORMANCE_ACTIVATIONSTART]?: PERFORMANCE_ACTIVATIONSTART_TYPE;

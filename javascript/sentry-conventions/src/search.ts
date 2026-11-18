@@ -4010,6 +4010,11 @@ export const SEARCH_OTEL__STATUS_CODE = 'otel.status_code';
 export const SEARCH_OTEL__STATUS_DESCRIPTION = 'otel.status_description';
 
 /**
+ * Search name for {@link attributes.PAGE_SERVER_RENDERING_AGE}. `page.server_rendering.age`
+ */
+export const SEARCH_PAGE__SERVER_RENDERING__AGE = 'page.server_rendering.age';
+
+/**
  * Search name for {@link attributes.PAGE_SERVER_RENDERING_TYPE}. `page.server_rendering.type`
  */
 export const SEARCH_PAGE__SERVER_RENDERING__TYPE = 'page.server_rendering.type';
@@ -6292,6 +6297,7 @@ export type AttributeSearchName =
   | typeof SEARCH_OTEL__SCOPE__VERSION
   | typeof SEARCH_OTEL__STATUS_CODE
   | typeof SEARCH_OTEL__STATUS_DESCRIPTION
+  | typeof SEARCH_PAGE__SERVER_RENDERING__AGE
   | typeof SEARCH_PAGE__SERVER_RENDERING__TYPE
   | typeof SEARCH_PARAMS__KEY
   | typeof SEARCH_PERFORMANCE__ACTIVATIONSTART
@@ -9054,7 +9060,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'gen_ai.output.messages',
     type: 'string',
     brief:
-      'The model\'s response messages. It has to be a stringified version of an array of message objects in the format `{role: "assistant", parts: [...]}`, which can include text responses and tool calls. Each part is an object with a `type`, such as `{type: "text", content: "..."}`. Other part types include `"reasoning"` and `"tool_call"`. Put the model\'s thinking in a `{type: "reasoning", content: "..."}` part, not a `"text"` part. Sentry shows reasoning separately from user-visible messages. The first example shows this shape. Some operations use a different shape. See the additional context.',
+      'Messages returned by the model where each message represents a specific model response (choice, candidate). It has to be a stringified version of an array of message objects in the format `{role: "assistant", parts: [...]}`, which can include text responses and tool calls. Each part is an object with a `type`, such as `{type: "text", content: "..."}`. Other part types include `"reasoning"` and `"tool_call"`. Put the model\'s thinking in a `{type: "reasoning", content: "..."}` part, not a `"text"` part. Sentry shows reasoning separately from user-visible messages. The first example shows this shape. Some operations use a different shape. See the additional context.',
     deprecationChain: [
       'gen_ai.output.messages',
       'ai.response.text',
@@ -9252,13 +9258,15 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
   'gen_ai.response.time_to_first_chunk': {
     canonicalName: 'gen_ai.response.time_to_first_chunk',
     type: 'double',
-    brief: 'Time in seconds when the first response content chunk arrived in streaming responses.',
+    brief:
+      'Time from the start of a logical inference operation to the first chunk in its streaming response, in seconds.',
     deprecationChain: ['gen_ai.response.time_to_first_chunk', 'gen_ai.response.time_to_first_token'],
   },
   'gen_ai.response.time_to_first_token': {
     canonicalName: 'gen_ai.response.time_to_first_chunk',
     type: 'double',
-    brief: 'Time in seconds when the first response content chunk arrived in streaming responses.',
+    brief:
+      'Time from the start of a logical inference operation to the first chunk in its streaming response, in seconds.',
     deprecationChain: ['gen_ai.response.time_to_first_chunk', 'gen_ai.response.time_to_first_token'],
   },
   'gen_ai.response.tokens_per_second': {
@@ -9302,7 +9310,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
   'gen_ai.tool.call.arguments': {
     canonicalName: 'gen_ai.tool.call.arguments',
     type: 'string',
-    brief: 'The arguments of the tool call. It has to be a stringified version of the arguments to the tool.',
+    brief: 'The arguments of the tool call.',
     deprecationChain: ['gen_ai.tool.call.arguments', 'ai.toolCall.args', 'gen_ai.tool.input'],
   },
   'gen_ai.tool.call.result': {
@@ -11261,6 +11269,13 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'string',
     brief: 'Description of the Status if it has a value, otherwise not set.',
     deprecationChain: ['otel.status_description'],
+  },
+  'page.server_rendering.age': {
+    canonicalName: 'page.server_rendering.age',
+    type: 'second',
+    brief:
+      'Set on a pageload span. The time in seconds from the start of the server render of the reused part of the page to the start of the span.',
+    deprecationChain: ['page.server_rendering.age'],
   },
   'page.server_rendering.type': {
     canonicalName: 'page.server_rendering.type',

@@ -1,0 +1,20 @@
+{
+  "openapi": "3.2.1",
+  "info": {
+    "title": "GenAI Tool Call Arguments",
+    "description": "Schema for the gen_ai.tool.call.arguments attribute, describing the arguments passed to a tool call.",
+    "version": "0.1.0"
+  },
+  "components": {
+    "schemas": {
+      "ToolCallArguments": {
+        "description": "Represents arguments passed to a tool call.",
+        "x-otel-deviation": [
+          "Allow string in addition to object, since some providers return tool call arguments as a string that may not be valid JSON."
+        ],
+        "additionalProperties": true,
+        "type": ["object", "string"]
+      }
+    }
+  }
+}
