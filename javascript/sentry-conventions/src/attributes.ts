@@ -17308,7 +17308,7 @@ export type SENTRY_CATEGORY_TYPE = string;
 // Path: model/attributes/sentry/sentry__client_sample_rate.json
 
 /**
- * Rate at which a span was sampled in the SDK. `sentry.client_sample_rate`
+ * Rate at which a telemetry item (e.g. a span, log, or metric) was sampled in the SDK. `sentry.client_sample_rate`
  *
  * Attribute Value Type: `number` {@link SENTRY_CLIENT_SAMPLE_RATE_TYPE}
  *
@@ -36927,7 +36927,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
   },
   'sentry.client_sample_rate': {
-    brief: 'Rate at which a span was sampled in the SDK.',
+    brief: 'Rate at which a telemetry item (e.g. a span, log, or metric) was sampled in the SDK.',
     type: 'double',
     keys: ['sentry.client_sample_rate', 'client_sample_rate'],
     applyScrubbing: {
@@ -36936,7 +36936,14 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 0.5,
-    changelog: [{ version: '0.1.0', prs: [102] }],
+    changelog: [
+      {
+        version: 'next',
+        prs: [814],
+        description: 'Generalized the brief to apply to any telemetry type, not just spans',
+      },
+      { version: '0.1.0', prs: [102] },
+    ],
     searchAlias: {
       name: 'client_sample_rate',
     },
