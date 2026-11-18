@@ -9060,7 +9060,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'gen_ai.output.messages',
     type: 'string',
     brief:
-      'The model\'s response messages. It has to be a stringified version of an array of message objects in the format `{role: "assistant", parts: [...]}`, which can include text responses and tool calls. Each part is an object with a `type`, such as `{type: "text", content: "..."}`. Other part types include `"reasoning"` and `"tool_call"`. Put the model\'s thinking in a `{type: "reasoning", content: "..."}` part, not a `"text"` part. Sentry shows reasoning separately from user-visible messages. The first example shows this shape. Some operations use a different shape. See the additional context.',
+      'Messages returned by the model where each message represents a specific model response (choice, candidate). It has to be a stringified version of an array of message objects in the format `{role: "assistant", parts: [...]}`, which can include text responses and tool calls. Each part is an object with a `type`, such as `{type: "text", content: "..."}`. Other part types include `"reasoning"` and `"tool_call"`. Put the model\'s thinking in a `{type: "reasoning", content: "..."}` part, not a `"text"` part. Sentry shows reasoning separately from user-visible messages. The first example shows this shape. Some operations use a different shape. See the additional context.',
     deprecationChain: [
       'gen_ai.output.messages',
       'ai.response.text',
