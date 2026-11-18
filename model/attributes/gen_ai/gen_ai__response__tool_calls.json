@@ -9,12 +9,16 @@
   "example": "[{\"name\": \"get_weather\", \"arguments\": {\"location\": \"Paris\"}}]",
   "alias": [],
   "deprecation": {
-    "_status": "transform",
-    "replacement": "gen_ai.output.messages",
-    "transformation": "gen_ai_response_to_output_messages"
+    "_status": "normalize",
+    "replacement": "gen_ai.output.messages"
   },
   "visibility": "public",
   "changelog": [
+    {
+      "version": "next",
+      "prs": [801],
+      "description": "Revert deprecation status from `transform` to `normalize`."
+    },
     {
       "version": "0.4.0",
       "prs": [221]

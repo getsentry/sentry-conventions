@@ -24084,6 +24084,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'ai.prompt.messages',
       'ai.texts',
       'gen_ai.prompt',
+      'gen_ai.request.messages',
     ],
     applyScrubbing: {
       key: 'manual',
@@ -24262,6 +24263,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'ai.prompt.messages',
       'ai.texts',
       'gen_ai.prompt',
+      'gen_ai.request.messages',
     ],
     applyScrubbing: {
       key: 'manual',
@@ -24288,6 +24290,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'ai.prompt.messages',
       'ai.texts',
       'gen_ai.prompt',
+      'gen_ai.request.messages',
     ],
     applyScrubbing: {
       key: 'manual',
@@ -24359,7 +24362,15 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'ai.responses': {
     brief: 'The response messages sent back by the AI model.',
     type: 'string[]',
-    keys: ['gen_ai.output.messages', 'ai.response.text', 'ai.response.toolCalls', 'ai.responses', 'ai.tool_calls'],
+    keys: [
+      'gen_ai.output.messages',
+      'ai.response.text',
+      'ai.response.toolCalls',
+      'ai.responses',
+      'ai.tool_calls',
+      'gen_ai.response.text',
+      'gen_ai.response.tool_calls',
+    ],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24446,7 +24457,15 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'ai.response.text': {
     brief: 'The text response from the AI model.',
     type: 'string',
-    keys: ['gen_ai.output.messages', 'ai.response.text', 'ai.response.toolCalls', 'ai.responses', 'ai.tool_calls'],
+    keys: [
+      'gen_ai.output.messages',
+      'ai.response.text',
+      'ai.response.toolCalls',
+      'ai.responses',
+      'ai.tool_calls',
+      'gen_ai.response.text',
+      'gen_ai.response.tool_calls',
+    ],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24479,7 +24498,15 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'ai.response.toolCalls': {
     brief: 'The tool calls in the AI model response.',
     type: 'string',
-    keys: ['gen_ai.output.messages', 'ai.response.text', 'ai.response.toolCalls', 'ai.responses', 'ai.tool_calls'],
+    keys: [
+      'gen_ai.output.messages',
+      'ai.response.text',
+      'ai.response.toolCalls',
+      'ai.responses',
+      'ai.tool_calls',
+      'gen_ai.response.text',
+      'gen_ai.response.tool_calls',
+    ],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24623,6 +24650,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'ai.prompt.messages',
       'ai.texts',
       'gen_ai.prompt',
+      'gen_ai.request.messages',
     ],
     applyScrubbing: {
       key: 'manual',
@@ -24707,7 +24735,15 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'ai.tool_calls': {
     brief: 'For an AI model call, the tool calls that were made.',
     type: 'string[]',
-    keys: ['gen_ai.output.messages', 'ai.response.text', 'ai.response.toolCalls', 'ai.responses', 'ai.tool_calls'],
+    keys: [
+      'gen_ai.output.messages',
+      'ai.response.text',
+      'ai.response.toolCalls',
+      'ai.responses',
+      'ai.tool_calls',
+      'gen_ai.response.text',
+      'gen_ai.response.tool_calls',
+    ],
     applyScrubbing: {
       key: 'manual',
     },
@@ -29843,6 +29879,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'ai.prompt.messages',
       'ai.texts',
       'gen_ai.prompt',
+      'gen_ai.request.messages',
     ],
     applyScrubbing: {
       key: 'manual',
@@ -29990,7 +30027,15 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'Messages returned by the model where each message represents a specific model response (choice, candidate). It has to be a stringified version of an array of message objects in the format `{role: "assistant", parts: [...]}`, which can include text responses and tool calls. Each part is an object with a `type`, such as `{type: "text", content: "..."}`. Other part types include `"reasoning"` and `"tool_call"`. Put the model\'s thinking in a `{type: "reasoning", content: "..."}` part, not a `"text"` part. Sentry shows reasoning separately from user-visible messages. The first example shows this shape. Some operations use a different shape. See the additional context.',
     type: 'string',
-    keys: ['gen_ai.output.messages', 'ai.response.text', 'ai.response.toolCalls', 'ai.responses', 'ai.tool_calls'],
+    keys: [
+      'gen_ai.output.messages',
+      'ai.response.text',
+      'ai.response.toolCalls',
+      'ai.responses',
+      'ai.tool_calls',
+      'gen_ai.response.text',
+      'gen_ai.response.tool_calls',
+    ],
     applyScrubbing: {
       key: 'manual',
     },
@@ -30048,6 +30093,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'ai.prompt.messages',
       'ai.texts',
       'gen_ai.prompt',
+      'gen_ai.request.messages',
     ],
     applyScrubbing: {
       key: 'manual',
@@ -30173,7 +30219,15 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The messages passed to the model. It has to be a stringified version of an array of objects. The `role` attribute of each object must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. For messages of the role `"tool"`, the `content` can be a string or an arbitrary object with information about the tool call. For other messages the `content` can be either a string or a list of objects in the format `{type: "text", text:"..."}`.',
     type: 'string',
-    keys: ['gen_ai.request.messages'],
+    keys: [
+      'gen_ai.input.messages',
+      'ai.input_messages',
+      'ai.prompt',
+      'ai.prompt.messages',
+      'ai.texts',
+      'gen_ai.prompt',
+      'gen_ai.request.messages',
+    ],
     applyScrubbing: {
       key: 'manual',
     },
@@ -30183,11 +30237,11 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       '[{"role": "system", "content": "Generate a random number."}, {"role": "user", "content": [{"text": "Generate a random number between 0 and 10.", "type": "text"}]}, {"role": "tool", "content": {"toolCallId": "1", "toolName": "Weather", "output": "rainy"}}]',
     deprecation: {
       replacement: 'gen_ai.input.messages',
-      status: 'transform',
-      transformation: 'gen_ai_request_messages_to_input_messages',
+      status: 'normalize',
     },
     aliases: ['ai.input_messages'],
     changelog: [
+      { version: 'next', prs: [801], description: 'Revert deprecation status from `transform` to `normalize`.' },
       { version: '0.4.0', prs: [221] },
       { version: '0.1.0', prs: [63, 74, 108, 119, 122] },
     ],
@@ -30427,7 +30481,15 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       "The model's response text messages. It has to be a stringified version of an array of response text messages.",
     type: 'string',
-    keys: ['gen_ai.response.text'],
+    keys: [
+      'gen_ai.output.messages',
+      'ai.response.text',
+      'ai.response.toolCalls',
+      'ai.responses',
+      'ai.tool_calls',
+      'gen_ai.response.text',
+      'gen_ai.response.tool_calls',
+    ],
     applyScrubbing: {
       key: 'manual',
     },
@@ -30437,10 +30499,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       '["The weather in Paris is rainy and overcast, with temperatures around 57°F", "The weather in London is sunny and warm, with temperatures around 65°F"]',
     deprecation: {
       replacement: 'gen_ai.output.messages',
-      status: 'transform',
-      transformation: 'gen_ai_response_to_output_messages',
+      status: 'normalize',
     },
     changelog: [
+      { version: 'next', prs: [801], description: 'Revert deprecation status from `transform` to `normalize`.' },
       { version: '0.4.0', prs: [221] },
       { version: '0.1.0', prs: [63, 74] },
     ],
@@ -30512,7 +30574,15 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gen_ai.response.tool_calls': {
     brief: "The tool calls in the model's response. It has to be a stringified version of an array of objects.",
     type: 'string',
-    keys: ['gen_ai.response.tool_calls'],
+    keys: [
+      'gen_ai.output.messages',
+      'ai.response.text',
+      'ai.response.toolCalls',
+      'ai.responses',
+      'ai.tool_calls',
+      'gen_ai.response.text',
+      'gen_ai.response.tool_calls',
+    ],
     applyScrubbing: {
       key: 'manual',
     },
@@ -30521,10 +30591,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: '[{"name": "get_weather", "arguments": {"location": "Paris"}}]',
     deprecation: {
       replacement: 'gen_ai.output.messages',
-      status: 'transform',
-      transformation: 'gen_ai_response_to_output_messages',
+      status: 'normalize',
     },
     changelog: [
+      { version: 'next', prs: [801], description: 'Revert deprecation status from `transform` to `normalize`.' },
       { version: '0.4.0', prs: [221] },
       { version: '0.1.0', prs: [63, 74] },
     ],
