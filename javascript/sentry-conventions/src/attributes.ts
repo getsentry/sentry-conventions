@@ -1,5 +1,11 @@
 // This is an auto-generated file. Do not edit!
 
+export type { SystemInstructions, TextPart } from './_schemas/gen_ai_system_instructions';
+
+export type { ToolCallArguments } from './_schemas/gen_ai_tool_call_arguments';
+
+export type { ToolCallResult } from './_schemas/gen_ai_tool_call_result';
+
 export type {
   ToolDefinitions,
   ToolDefinition,
@@ -9276,7 +9282,7 @@ export type GEN_AI_SYSTEM_TYPE = string;
 // Path: model/attributes/gen_ai/gen_ai__system_instructions.json
 
 /**
- * The system instructions passed to the model. It has to be a stringified version of an array of objects in the format `{type: "text", content: "..."}`. `gen_ai.system_instructions`
+ * The system message or instructions provided to the GenAI model separately from the chat history. `gen_ai.system_instructions`
  *
  * Attribute Value Type: `string` {@link GEN_AI_SYSTEM_INSTRUCTIONS_TYPE}
  *
@@ -9321,7 +9327,7 @@ export type GEN_AI_SYSTEM_MESSAGE_TYPE = string;
 // Path: model/attributes/gen_ai/gen_ai__tool__call__arguments.json
 
 /**
- * The arguments of the tool call. It has to be a stringified version of the arguments to the tool. `gen_ai.tool.call.arguments`
+ * The arguments of the tool call. `gen_ai.tool.call.arguments`
  *
  * Attribute Value Type: `string` {@link GEN_AI_TOOL_CALL_ARGUMENTS_TYPE}
  *
@@ -9344,7 +9350,7 @@ export type GEN_AI_TOOL_CALL_ARGUMENTS_TYPE = string;
 // Path: model/attributes/gen_ai/gen_ai__tool__call__result.json
 
 /**
- * The result of the tool call. It has to be a stringified version of the result of the tool. `gen_ai.tool.call.result`
+ * The result of the tool call. `gen_ai.tool.call.result`
  *
  * Attribute Value Type: `string` {@link GEN_AI_TOOL_CALL_RESULT_TYPE}
  *
@@ -15758,6 +15764,29 @@ export const OTEL_STATUS_DESCRIPTION = 'otel.status_description';
  * Type for {@link OTEL_STATUS_DESCRIPTION} otel.status_description
  */
 export type OTEL_STATUS_DESCRIPTION_TYPE = string;
+
+// Path: model/attributes/page/page__server_rendering__age.json
+
+/**
+ * Set on a pageload span. The time in seconds from the start of the server render of the reused part of the page to the start of the span. `page.server_rendering.age`
+ *
+ * Attribute Value Type: `number` {@link PAGE_SERVER_RENDERING_AGE_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example 0
+ * @example 2520
+ * @example 259200
+ */
+export const PAGE_SERVER_RENDERING_AGE = 'page.server_rendering.age';
+
+/**
+ * Type for {@link PAGE_SERVER_RENDERING_AGE} page.server_rendering.age
+ */
+export type PAGE_SERVER_RENDERING_AGE_TYPE = number;
 
 // Path: model/attributes/page/page__server_rendering__type.json
 
@@ -22653,6 +22682,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'otel.scope.version': 'string',
   'otel.status_code': 'string',
   'otel.status_description': 'string',
+  'page.server_rendering.age': 'integer',
   'page.server_rendering.type': 'string',
   'params.<key>': 'string',
   'performance.activationStart': 'double',
@@ -23627,6 +23657,7 @@ export type AttributeName =
   | typeof OTEL_SCOPE_VERSION
   | typeof OTEL_STATUS_CODE
   | typeof OTEL_STATUS_DESCRIPTION
+  | typeof PAGE_SERVER_RENDERING_AGE
   | typeof PAGE_SERVER_RENDERING_TYPE
   | typeof PARAMS_KEY
   | typeof PERFORMANCE_ACTIVATIONSTART
@@ -30509,8 +30540,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     ],
   },
   'gen_ai.system_instructions': {
-    brief:
-      'The system instructions passed to the model. It has to be a stringified version of an array of objects in the format `{type: "text", content: "..."}`.',
+    brief: 'The system message or instructions provided to the GenAI model separately from the chat history.',
     type: 'string',
     keys: ['gen_ai.system_instructions', 'ai.preamble', 'gen_ai.system.message'],
     applyScrubbing: {
@@ -30522,8 +30552,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       '[{"type": "text", "content": "You are a helpful assistant."}, {"type": "text", "content": "Be concise and clear."}]',
     aliases: ['ai.preamble'],
     changelog: [
+      {
+        version: 'next',
+        prs: [790, 791],
+        description:
+          'Clarify that messages in the chat history only belong in gen_ai.input.messages. Remove informal format description from the brief to prevent duplication with the structured schema.',
+      },
       { version: '0.5.0', prs: [264] },
       { version: '0.4.0', prs: [221] },
+    ],
+    additionalContext: [
+      'Instructions that are part of the chat history are recorded in the gen_ai.input.messages attribute instead.',
     ],
   },
   'gen_ai.system.message': {
@@ -30546,7 +30585,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     ],
   },
   'gen_ai.tool.call.arguments': {
-    brief: 'The arguments of the tool call. It has to be a stringified version of the arguments to the tool.',
+    brief: 'The arguments of the tool call.',
     type: 'string',
     keys: ['gen_ai.tool.call.arguments', 'ai.toolCall.args', 'gen_ai.tool.input'],
     applyScrubbing: {
@@ -30557,12 +30596,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: '{"location": "Paris"}',
     aliases: ['gen_ai.tool.input', 'ai.toolCall.args'],
     changelog: [
+      {
+        version: 'next',
+        prs: [793],
+        description:
+          'Remove informal format description from the brief to prevent duplication with the structured schema.',
+      },
       { version: '0.5.0', prs: [265] },
       { version: '0.4.0', prs: [221] },
     ],
   },
   'gen_ai.tool.call.result': {
-    brief: 'The result of the tool call. It has to be a stringified version of the result of the tool.',
+    brief: 'The result of the tool call.',
     type: 'string',
     keys: [
       'gen_ai.tool.call.result',
@@ -30586,6 +30631,12 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'anthropic.tool_result.content',
     ],
     changelog: [
+      {
+        version: 'next',
+        prs: [794],
+        description:
+          'Remove informal format description from the brief to prevent duplication with the structured schema.',
+      },
       { version: '0.5.0', prs: [265] },
       { version: '0.4.0', prs: [221] },
     ],
@@ -35708,6 +35759,31 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'resource not found',
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
+  'page.server_rendering.age': {
+    brief:
+      'Set on a pageload span. The time in seconds from the start of the server render of the reused part of the page to the start of the span.',
+    type: 'integer',
+    keys: ['page.server_rendering.age'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 0,
+    examples: [0, 2520, 259200],
+    changelog: [{ version: 'next', prs: [799], description: 'Added page.server_rendering.age attribute' }],
+    additionalContext: [
+      'Set only by an SDK that controls the server render, when the page reuses a server render and the SDK knows when that render started. With `page.server_rendering.type: partially_static`, the value is for the static part.',
+      'If the span has a `cache_origin` link, the linked span is that render. The SDK can also set the value without a link, for example for a page from the build.',
+      'Approximate, because the render time comes from the server clock and the span start from the browser clock. Rounded down to whole seconds and clamped to 0, as `cache.item_age`. A value near 0 does not prove that the server rendered the page for this request.',
+      'The age of the render, not of its data. The render can read older cached data.',
+      'Not the HTTP `Age` response header. HTTP caches reset that header when they validate the response.',
+    ],
+    searchAlias: {
+      name: 'page.server_rendering.age',
+      type: 'second',
+    },
+  },
   'page.server_rendering.type': {
     brief:
       'Set on a pageload span. Describes how the server rendered the content of the page: to reuse it for other requests, only for this request, or a mix of both.',
@@ -40730,6 +40806,7 @@ export type Attributes = {
   [OTEL_SCOPE_VERSION]?: OTEL_SCOPE_VERSION_TYPE;
   [OTEL_STATUS_CODE]?: OTEL_STATUS_CODE_TYPE;
   [OTEL_STATUS_DESCRIPTION]?: OTEL_STATUS_DESCRIPTION_TYPE;
+  [PAGE_SERVER_RENDERING_AGE]?: PAGE_SERVER_RENDERING_AGE_TYPE;
   [PAGE_SERVER_RENDERING_TYPE]?: PAGE_SERVER_RENDERING_TYPE_TYPE;
   [PARAMS_KEY]?: PARAMS_KEY_TYPE;
   [PERFORMANCE_ACTIVATIONSTART]?: PERFORMANCE_ACTIVATIONSTART_TYPE;

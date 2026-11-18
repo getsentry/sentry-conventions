@@ -1,0 +1,19 @@
+{
+  "openapi": "3.2.1",
+  "info": {
+    "title": "GenAI Tool Call Result",
+    "description": "Schema for the gen_ai.tool.call.result attribute, describing the results returned by a tool call.",
+    "version": "0.1.0"
+  },
+  "components": {
+    "schemas": {
+      "ToolCallResult": {
+        "description": "Represents results returned by a tool call.",
+        "x-otel-deviation": [
+          "Allow all JSON types, since a local tool function can return any value, including primitives and null."
+        ],
+        "tsType": "unknown"
+      }
+    }
+  }
+}
