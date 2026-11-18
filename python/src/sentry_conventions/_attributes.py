@@ -6237,6 +6237,33 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "d.73ea7440-270a-435a-a0ea-adf50b4e5f5a"
     """
 
+    # Path: model/attributes/heroku/heroku__logplex__dyno.json
+    HEROKU_LOGPLEX_DYNO: Literal["heroku.logplex.dyno"] = "heroku.logplex.dyno"
+    """Dyno or Heroku platform component that wrote a Heroku Logplex log line
+
+    Type: str
+    Apply Scrubbing: never
+    Defined in OTEL: No
+    Visibility: public
+    Example: "web.1"
+    Example: "worker.3"
+    Example: "router"
+    Example: "api"
+    Example: "scheduler.9593"
+    """
+
+    # Path: model/attributes/heroku/heroku__logplex__source.json
+    HEROKU_LOGPLEX_SOURCE: Literal["heroku.logplex.source"] = "heroku.logplex.source"
+    """Source of a Heroku Logplex log line: app for output of the app's dynos, heroku for Heroku platform components
+
+    Type: str
+    Apply Scrubbing: never
+    Defined in OTEL: No
+    Visibility: public
+    Example: "app"
+    Example: "heroku"
+    """
+
     # Path: model/attributes/heroku/heroku__router__connect.json
     HEROKU_ROUTER_CONNECT: Literal["heroku.router.connect"] = "heroku.router.connect"
     """Time in milliseconds the Heroku router spent establishing a connection to the dyno
@@ -21859,6 +21886,43 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
         ],
     ),
+    "heroku.logplex.dyno": AttributeMetadata(
+        brief="Dyno or Heroku platform component that wrote a Heroku Logplex log line",
+        type=AttributeType.STRING,
+        keys=("heroku.logplex.dyno",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="web.1",
+        examples=["web.1", "worker.3", "router", "api", "scheduler.9593"],
+        changelog=[
+            ChangelogEntry(
+                version="next", description="Added heroku.logplex.dyno attribute"
+            ),
+        ],
+        additional_context=[
+            "The syslog PROCID of the line, shown as dyno in source[dyno] by heroku logs and filtered with heroku logs --dyno.",
+            "Unlike heroku.dyno.name, this is the writer of the line: for HTTP router lines it is router, while heroku.dyno.name is the dyno that served the request.",
+        ],
+    ),
+    "heroku.logplex.source": AttributeMetadata(
+        brief="Source of a Heroku Logplex log line: app for output of the app's dynos, heroku for Heroku platform components",
+        type=AttributeType.STRING,
+        keys=("heroku.logplex.source",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="app",
+        examples=["app", "heroku"],
+        changelog=[
+            ChangelogEntry(
+                version="next", description="Added heroku.logplex.source attribute"
+            ),
+        ],
+        additional_context=[
+            "The syslog APP-NAME of the line, shown as source in source[dyno] by heroku logs and filtered with heroku logs --source. Heroku Platform API and some add-on lines also use the source app."
+        ],
+    ),
     "heroku.router.connect": AttributeMetadata(
         brief="Time in milliseconds the Heroku router spent establishing a connection to the dyno",
         type=AttributeType.DOUBLE,
@@ -32063,6 +32127,8 @@ Attributes = TypedDict(
         "heroku.error.code": str,
         "heroku.error.description": str,
         "heroku.logplex.drain_token": str,
+        "heroku.logplex.dyno": str,
+        "heroku.logplex.source": str,
         "heroku.router.connect": float,
         "heroku.router.request_id": str,
         "heroku.router.service": float,

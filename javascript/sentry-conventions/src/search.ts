@@ -2619,6 +2619,16 @@ export const SEARCH_HEROKU__ERROR__DESCRIPTION = 'heroku.error.description';
 export const SEARCH_HEROKU__LOGPLEX__DRAIN_TOKEN = 'heroku.logplex.drain_token';
 
 /**
+ * Search name for {@link attributes.HEROKU_LOGPLEX_DYNO}. `heroku.logplex.dyno`
+ */
+export const SEARCH_HEROKU__LOGPLEX__DYNO = 'heroku.logplex.dyno';
+
+/**
+ * Search name for {@link attributes.HEROKU_LOGPLEX_SOURCE}. `heroku.logplex.source`
+ */
+export const SEARCH_HEROKU__LOGPLEX__SOURCE = 'heroku.logplex.source';
+
+/**
  * Search name for {@link attributes.HEROKU_ROUTER_CONNECT}. `heroku.router.connect`
  */
 export const SEARCH_HEROKU__ROUTER__CONNECT = 'heroku.router.connect';
@@ -6051,6 +6061,8 @@ export type AttributeSearchName =
   | typeof SEARCH_HEROKU__ERROR__CODE
   | typeof SEARCH_HEROKU__ERROR__DESCRIPTION
   | typeof SEARCH_HEROKU__LOGPLEX__DRAIN_TOKEN
+  | typeof SEARCH_HEROKU__LOGPLEX__DYNO
+  | typeof SEARCH_HEROKU__LOGPLEX__SOURCE
   | typeof SEARCH_HEROKU__ROUTER__CONNECT
   | typeof SEARCH_HEROKU__ROUTER__REQUEST_ID
   | typeof SEARCH_HEROKU__ROUTER__SERVICE
@@ -9658,6 +9670,19 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'string',
     brief: 'Identifier of the Heroku log drain that delivered the log, from the Logplex-Drain-Token header',
     deprecationChain: ['heroku.logplex.drain_token'],
+  },
+  'heroku.logplex.dyno': {
+    canonicalName: 'heroku.logplex.dyno',
+    type: 'string',
+    brief: 'Dyno or Heroku platform component that wrote a Heroku Logplex log line',
+    deprecationChain: ['heroku.logplex.dyno'],
+  },
+  'heroku.logplex.source': {
+    canonicalName: 'heroku.logplex.source',
+    type: 'string',
+    brief:
+      "Source of a Heroku Logplex log line: app for output of the app's dynos, heroku for Heroku platform components",
+    deprecationChain: ['heroku.logplex.source'],
   },
   'heroku.router.connect': {
     canonicalName: 'heroku.router.connect',

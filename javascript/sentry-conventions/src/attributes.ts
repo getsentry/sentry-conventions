@@ -10432,6 +10432,53 @@ export const HEROKU_LOGPLEX_DRAIN_TOKEN = 'heroku.logplex.drain_token';
  */
 export type HEROKU_LOGPLEX_DRAIN_TOKEN_TYPE = string;
 
+// Path: model/attributes/heroku/heroku__logplex__dyno.json
+
+/**
+ * Dyno or Heroku platform component that wrote a Heroku Logplex log line `heroku.logplex.dyno`
+ *
+ * Attribute Value Type: `string` {@link HEROKU_LOGPLEX_DYNO_TYPE}
+ *
+ * Apply Scrubbing: never
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "web.1"
+ * @example "worker.3"
+ * @example "router"
+ * @example "api"
+ * @example "scheduler.9593"
+ */
+export const HEROKU_LOGPLEX_DYNO = 'heroku.logplex.dyno';
+
+/**
+ * Type for {@link HEROKU_LOGPLEX_DYNO} heroku.logplex.dyno
+ */
+export type HEROKU_LOGPLEX_DYNO_TYPE = string;
+
+// Path: model/attributes/heroku/heroku__logplex__source.json
+
+/**
+ * Source of a Heroku Logplex log line: app for output of the app's dynos, heroku for Heroku platform components `heroku.logplex.source`
+ *
+ * Attribute Value Type: `string` {@link HEROKU_LOGPLEX_SOURCE_TYPE}
+ *
+ * Apply Scrubbing: never
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "app"
+ * @example "heroku"
+ */
+export const HEROKU_LOGPLEX_SOURCE = 'heroku.logplex.source';
+
+/**
+ * Type for {@link HEROKU_LOGPLEX_SOURCE} heroku.logplex.source
+ */
+export type HEROKU_LOGPLEX_SOURCE_TYPE = string;
+
 // Path: model/attributes/heroku/heroku__router__connect.json
 
 /**
@@ -22443,6 +22490,8 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'heroku.error.code': 'string',
   'heroku.error.description': 'string',
   'heroku.logplex.drain_token': 'string',
+  'heroku.logplex.dyno': 'string',
+  'heroku.logplex.source': 'string',
   'heroku.router.connect': 'double',
   'heroku.router.request_id': 'string',
   'heroku.router.service': 'double',
@@ -23418,6 +23467,8 @@ export type AttributeName =
   | typeof HEROKU_ERROR_CODE
   | typeof HEROKU_ERROR_DESCRIPTION
   | typeof HEROKU_LOGPLEX_DRAIN_TOKEN
+  | typeof HEROKU_LOGPLEX_DYNO
+  | typeof HEROKU_LOGPLEX_SOURCE
   | typeof HEROKU_ROUTER_CONNECT
   | typeof HEROKU_ROUTER_REQUEST_ID
   | typeof HEROKU_ROUTER_SERVICE
@@ -31594,6 +31645,40 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'd.73ea7440-270a-435a-a0ea-adf50b4e5f5a',
     examples: ['d.73ea7440-270a-435a-a0ea-adf50b4e5f5a'],
     changelog: [{ version: '0.31.0', prs: [772], description: 'Added heroku.logplex.drain_token attribute' }],
+  },
+  'heroku.logplex.dyno': {
+    brief: 'Dyno or Heroku platform component that wrote a Heroku Logplex log line',
+    type: 'string',
+    keys: ['heroku.logplex.dyno'],
+    applyScrubbing: {
+      key: 'never',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'web.1',
+    examples: ['web.1', 'worker.3', 'router', 'api', 'scheduler.9593'],
+    changelog: [{ version: 'next', description: 'Added heroku.logplex.dyno attribute' }],
+    additionalContext: [
+      'The syslog PROCID of the line, shown as dyno in source[dyno] by heroku logs and filtered with heroku logs --dyno.',
+      'Unlike heroku.dyno.name, this is the writer of the line: for HTTP router lines it is router, while heroku.dyno.name is the dyno that served the request.',
+    ],
+  },
+  'heroku.logplex.source': {
+    brief:
+      "Source of a Heroku Logplex log line: app for output of the app's dynos, heroku for Heroku platform components",
+    type: 'string',
+    keys: ['heroku.logplex.source'],
+    applyScrubbing: {
+      key: 'never',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'app',
+    examples: ['app', 'heroku'],
+    changelog: [{ version: 'next', description: 'Added heroku.logplex.source attribute' }],
+    additionalContext: [
+      'The syslog APP-NAME of the line, shown as source in source[dyno] by heroku logs and filtered with heroku logs --source. Heroku Platform API and some add-on lines also use the source app.',
+    ],
   },
   'heroku.router.connect': {
     brief: 'Time in milliseconds the Heroku router spent establishing a connection to the dyno',
@@ -40647,6 +40732,8 @@ export type Attributes = {
   [HEROKU_ERROR_CODE]?: HEROKU_ERROR_CODE_TYPE;
   [HEROKU_ERROR_DESCRIPTION]?: HEROKU_ERROR_DESCRIPTION_TYPE;
   [HEROKU_LOGPLEX_DRAIN_TOKEN]?: HEROKU_LOGPLEX_DRAIN_TOKEN_TYPE;
+  [HEROKU_LOGPLEX_DYNO]?: HEROKU_LOGPLEX_DYNO_TYPE;
+  [HEROKU_LOGPLEX_SOURCE]?: HEROKU_LOGPLEX_SOURCE_TYPE;
   [HEROKU_ROUTER_CONNECT]?: HEROKU_ROUTER_CONNECT_TYPE;
   [HEROKU_ROUTER_REQUEST_ID]?: HEROKU_ROUTER_REQUEST_ID_TYPE;
   [HEROKU_ROUTER_SERVICE]?: HEROKU_ROUTER_SERVICE_TYPE;
