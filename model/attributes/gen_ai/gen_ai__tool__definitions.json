@@ -1,6 +1,6 @@
 {
   "key": "gen_ai.tool.definitions",
-  "brief": "The list of source system tool definitions available to the GenAI agent or model.",
+  "brief": "The list of source system tool definitions available to the GenAI agent or model. It has to be a stringified version of an array of objects.",
   "type": "string",
   "apply_scrubbing": {
     "key": "manual"

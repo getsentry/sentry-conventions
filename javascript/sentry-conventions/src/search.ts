@@ -2599,6 +2599,41 @@ export const SEARCH_HAPI__TYPE = 'hapi.type';
 export const SEARCH_HARDWARECONCURRENCY = 'hardwareConcurrency';
 
 /**
+ * Search name for {@link attributes.HEROKU_DYNO_NAME}. `heroku.dyno.name`
+ */
+export const SEARCH_HEROKU__DYNO__NAME = 'heroku.dyno.name';
+
+/**
+ * Search name for {@link attributes.HEROKU_ERROR_CODE}. `heroku.error.code`
+ */
+export const SEARCH_HEROKU__ERROR__CODE = 'heroku.error.code';
+
+/**
+ * Search name for {@link attributes.HEROKU_ERROR_DESCRIPTION}. `heroku.error.description`
+ */
+export const SEARCH_HEROKU__ERROR__DESCRIPTION = 'heroku.error.description';
+
+/**
+ * Search name for {@link attributes.HEROKU_LOGPLEX_DRAIN_TOKEN}. `heroku.logplex.drain_token`
+ */
+export const SEARCH_HEROKU__LOGPLEX__DRAIN_TOKEN = 'heroku.logplex.drain_token';
+
+/**
+ * Search name for {@link attributes.HEROKU_ROUTER_CONNECT}. `heroku.router.connect`
+ */
+export const SEARCH_HEROKU__ROUTER__CONNECT = 'heroku.router.connect';
+
+/**
+ * Search name for {@link attributes.HEROKU_ROUTER_REQUEST_ID}. `heroku.router.request_id`
+ */
+export const SEARCH_HEROKU__ROUTER__REQUEST_ID = 'heroku.router.request_id';
+
+/**
+ * Search name for {@link attributes.HEROKU_ROUTER_SERVICE}. `heroku.router.service`
+ */
+export const SEARCH_HEROKU__ROUTER__SERVICE = 'heroku.router.service';
+
+/**
  * Search name for {@link attributes.HTTP_CLIENT_IP}. `http.client_ip`
  *
  * @deprecated Use {@link SEARCH_CLIENT__ADDRESS} (`client.address`) instead
@@ -3975,6 +4010,11 @@ export const SEARCH_OTEL__STATUS_CODE = 'otel.status_code';
 export const SEARCH_OTEL__STATUS_DESCRIPTION = 'otel.status_description';
 
 /**
+ * Search name for {@link attributes.PAGE_SERVER_RENDERING_AGE}. `page.server_rendering.age`
+ */
+export const SEARCH_PAGE__SERVER_RENDERING__AGE = 'page.server_rendering.age';
+
+/**
  * Search name for {@link attributes.PAGE_SERVER_RENDERING_TYPE}. `page.server_rendering.type`
  */
 export const SEARCH_PAGE__SERVER_RENDERING__TYPE = 'page.server_rendering.type';
@@ -4034,6 +4074,16 @@ export const SEARCH_PROCESS__PID = 'process.pid';
  * Search name for {@link attributes.PROCESS_RUNTIME_DESCRIPTION}. `process.runtime.description`
  */
 export const SEARCH_PROCESS__RUNTIME__DESCRIPTION = 'process.runtime.description';
+
+/**
+ * Search name for {@link attributes.PROCESS_RUNTIME_ELIXIR_MEMORY_TYPE}. `process.runtime.elixir.memory.type`
+ */
+export const SEARCH_PROCESS__RUNTIME__ELIXIR__MEMORY__TYPE = 'process.runtime.elixir.memory.type';
+
+/**
+ * Search name for {@link attributes.PROCESS_RUNTIME_ELIXIR_RUN_QUEUE_TYPE}. `process.runtime.elixir.run_queue.type`
+ */
+export const SEARCH_PROCESS__RUNTIME__ELIXIR__RUN_QUEUE__TYPE = 'process.runtime.elixir.run_queue.type';
 
 /**
  * Search name for {@link attributes.PROCESS_RUNTIME_ENGINE_NAME}. `process.runtime.engine.name`
@@ -4986,6 +5036,16 @@ export const SEARCH_TIME_TO_FULL_DISPLAY = 'time_to_full_display';
  * @deprecated Use {@link SEARCH_APP__VITALS__TTID__VALUE} (`app.vitals.ttid.value`) instead
  */
 export const SEARCH_TIME_TO_INITIAL_DISPLAY = 'time_to_initial_display';
+
+/**
+ * Search name for {@link attributes.TLS_PROTOCOL_NAME}. `tls.protocol.name`
+ */
+export const SEARCH_TLS__PROTOCOL__NAME = 'tls.protocol.name';
+
+/**
+ * Search name for {@link attributes.TLS_PROTOCOL_VERSION}. `tls.protocol.version`
+ */
+export const SEARCH_TLS__PROTOCOL__VERSION = 'tls.protocol.version';
 
 /**
  * Search name for {@link attributes.SENTRY_TRACE_STATUS}. `trace.status`
@@ -5987,6 +6047,13 @@ export type AttributeSearchName =
   | typeof SEARCH_HAPI__PLUGIN__NAME
   | typeof SEARCH_HAPI__TYPE
   | typeof SEARCH_HARDWARECONCURRENCY
+  | typeof SEARCH_HEROKU__DYNO__NAME
+  | typeof SEARCH_HEROKU__ERROR__CODE
+  | typeof SEARCH_HEROKU__ERROR__DESCRIPTION
+  | typeof SEARCH_HEROKU__LOGPLEX__DRAIN_TOKEN
+  | typeof SEARCH_HEROKU__ROUTER__CONNECT
+  | typeof SEARCH_HEROKU__ROUTER__REQUEST_ID
+  | typeof SEARCH_HEROKU__ROUTER__SERVICE
   | typeof SEARCH_HTTP__CLIENT_IP
   | typeof SEARCH_HTTP__DECODED_RESPONSE_CONTENT_LENGTH
   | typeof SEARCH_HTTP__FLAVOR
@@ -6230,6 +6297,7 @@ export type AttributeSearchName =
   | typeof SEARCH_OTEL__SCOPE__VERSION
   | typeof SEARCH_OTEL__STATUS_CODE
   | typeof SEARCH_OTEL__STATUS_DESCRIPTION
+  | typeof SEARCH_PAGE__SERVER_RENDERING__AGE
   | typeof SEARCH_PAGE__SERVER_RENDERING__TYPE
   | typeof SEARCH_PARAMS__KEY
   | typeof SEARCH_PERFORMANCE__ACTIVATIONSTART
@@ -6241,6 +6309,8 @@ export type AttributeSearchName =
   | typeof SEARCH_PROCESS__EXECUTABLE__NAME
   | typeof SEARCH_PROCESS__PID
   | typeof SEARCH_PROCESS__RUNTIME__DESCRIPTION
+  | typeof SEARCH_PROCESS__RUNTIME__ELIXIR__MEMORY__TYPE
+  | typeof SEARCH_PROCESS__RUNTIME__ELIXIR__RUN_QUEUE__TYPE
   | typeof SEARCH_PROCESS__RUNTIME__ENGINE__NAME
   | typeof SEARCH_PROCESS__RUNTIME__ENGINE__VERSION
   | typeof SEARCH_PROCESS__RUNTIME__NAME
@@ -6405,6 +6475,8 @@ export type AttributeSearchName =
   | typeof SEARCH_TIMBER__TAG
   | typeof SEARCH_TIME_TO_FULL_DISPLAY
   | typeof SEARCH_TIME_TO_INITIAL_DISPLAY
+  | typeof SEARCH_TLS__PROTOCOL__NAME
+  | typeof SEARCH_TLS__PROTOCOL__VERSION
   | typeof SEARCH_TRACE__STATUS
   | typeof SEARCH_TRACE_LIFECYCLE
   | typeof SEARCH_TRANSACTION
@@ -8925,7 +8997,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'gen_ai.input.messages',
     type: 'string',
     brief:
-      'The messages passed to the model. It has to be a stringified version of an array of objects. The `role` attribute of each object must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. For messages of the role `"tool"`, the `content` can be a string or an arbitrary object with information about the tool call. For other messages the `content` can be either a string or a list of objects in the format `{type: "text", text:"..."}`. The first example shows this shape. Some operations use a different shape. See the additional context.',
+      'The messages passed to the model. It has to be a stringified version of an array of objects in the format `{role: "...", parts: [...]}`. The `role` must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. Each part is an object with a `type`, such as `{type: "text", content: "..."}`. Other part types include `"reasoning"`, `"tool_call"`, and `"tool_call_response"`. Put the model\'s thinking in a `{type: "reasoning", content: "..."}` part, not a `"text"` part. Sentry shows reasoning separately from user-visible messages. The legacy format `{role, content}` is also accepted. The first example shows this shape. Some operations use a different shape. See the additional context.',
     deprecationChain: [
       'gen_ai.input.messages',
       'ai.input_messages',
@@ -8988,7 +9060,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'gen_ai.output.messages',
     type: 'string',
     brief:
-      "The model's response messages. It has to be a stringified version of an array of message objects, which can include text responses and tool calls. The first example shows this shape. Some operations use a different shape. See the additional context.",
+      'Messages returned by the model where each message represents a specific model response (choice, candidate). It has to be a stringified version of an array of message objects in the format `{role: "assistant", parts: [...]}`, which can include text responses and tool calls. Each part is an object with a `type`, such as `{type: "text", content: "..."}`. Other part types include `"reasoning"` and `"tool_call"`. Put the model\'s thinking in a `{type: "reasoning", content: "..."}` part, not a `"text"` part. Sentry shows reasoning separately from user-visible messages. The first example shows this shape. Some operations use a different shape. See the additional context.',
     deprecationChain: [
       'gen_ai.output.messages',
       'ai.response.text',
@@ -9088,7 +9160,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
   'gen_ai.request.reasoning.level': {
     canonicalName: 'gen_ai.request.reasoning.level',
     type: 'string',
-    brief: 'The reasoning or thinking effort level requested for a GenAI model.',
+    brief: 'The reasoning or thinking effort level requested for a GenAI model. Supported values vary by provider.',
     deprecationChain: ['gen_ai.request.reasoning.level'],
   },
   'gen_ai.request.schema': {
@@ -9186,13 +9258,15 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
   'gen_ai.response.time_to_first_chunk': {
     canonicalName: 'gen_ai.response.time_to_first_chunk',
     type: 'double',
-    brief: 'Time in seconds when the first response content chunk arrived in streaming responses.',
+    brief:
+      'Time from the start of a logical inference operation to the first chunk in its streaming response, in seconds.',
     deprecationChain: ['gen_ai.response.time_to_first_chunk', 'gen_ai.response.time_to_first_token'],
   },
   'gen_ai.response.time_to_first_token': {
     canonicalName: 'gen_ai.response.time_to_first_chunk',
     type: 'double',
-    brief: 'Time in seconds when the first response content chunk arrived in streaming responses.',
+    brief:
+      'Time from the start of a logical inference operation to the first chunk in its streaming response, in seconds.',
     deprecationChain: ['gen_ai.response.time_to_first_chunk', 'gen_ai.response.time_to_first_token'],
   },
   'gen_ai.response.tokens_per_second': {
@@ -9230,19 +9304,19 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
   'gen_ai.system_instructions': {
     canonicalName: 'gen_ai.system_instructions',
     type: 'string',
-    brief: 'The system instructions passed to the model.',
+    brief: 'The system message or instructions provided to the GenAI model separately from the chat history.',
     deprecationChain: ['gen_ai.system_instructions', 'ai.preamble', 'gen_ai.system.message'],
   },
   'gen_ai.tool.call.arguments': {
     canonicalName: 'gen_ai.tool.call.arguments',
     type: 'string',
-    brief: 'The arguments of the tool call. It has to be a stringified version of the arguments to the tool.',
+    brief: 'The arguments of the tool call.',
     deprecationChain: ['gen_ai.tool.call.arguments', 'ai.toolCall.args', 'gen_ai.tool.input'],
   },
   'gen_ai.tool.call.result': {
     canonicalName: 'gen_ai.tool.call.result',
     type: 'string',
-    brief: 'The result of the tool call. It has to be a stringified version of the result of the tool.',
+    brief: 'The result of the tool call.',
     deprecationChain: [
       'gen_ai.tool.call.result',
       'ai.toolCall.result',
@@ -9261,7 +9335,8 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
   'gen_ai.tool.definitions': {
     canonicalName: 'gen_ai.tool.definitions',
     type: 'string',
-    brief: 'The list of source system tool definitions available to the GenAI agent or model.',
+    brief:
+      'The list of source system tool definitions available to the GenAI agent or model. It has to be a stringified version of an array of objects.',
     deprecationChain: ['gen_ai.tool.definitions', 'ai.prompt.tools', 'ai.tools', 'gen_ai.request.available_tools'],
   },
   'gen_ai.tool.description': {
@@ -9414,7 +9489,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
   'gen_ai.usage.total_tokens': {
     canonicalName: 'gen_ai.usage.total_tokens',
     type: 'integer',
-    brief: 'The total number of tokens used to process the prompt. (input tokens plus output todkens)',
+    brief: 'The total number of tokens used to process the prompt. (input tokens plus output tokens)',
     deprecationChain: ['gen_ai.usage.total_tokens', 'ai.total_tokens.used', 'ai.usage.tokens'],
   },
   'graphql.document': {
@@ -9559,6 +9634,49 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'string',
     brief: 'The number of logical CPU cores available.',
     deprecationChain: ['device.processor_count', 'hardwareConcurrency'],
+  },
+  'heroku.dyno.name': {
+    canonicalName: 'heroku.dyno.name',
+    type: 'string',
+    brief: 'Name of the Heroku dyno serving the request or emitting telemetry',
+    deprecationChain: ['heroku.dyno.name'],
+  },
+  'heroku.error.code': {
+    canonicalName: 'heroku.error.code',
+    type: 'string',
+    brief: 'Heroku error code reported by a router or platform log',
+    deprecationChain: ['heroku.error.code'],
+  },
+  'heroku.error.description': {
+    canonicalName: 'heroku.error.description',
+    type: 'string',
+    brief: 'Description of the Heroku error reported by a router or platform log',
+    deprecationChain: ['heroku.error.description'],
+  },
+  'heroku.logplex.drain_token': {
+    canonicalName: 'heroku.logplex.drain_token',
+    type: 'string',
+    brief: 'Identifier of the Heroku log drain that delivered the log, from the Logplex-Drain-Token header',
+    deprecationChain: ['heroku.logplex.drain_token'],
+  },
+  'heroku.router.connect': {
+    canonicalName: 'heroku.router.connect',
+    type: 'double',
+    brief: 'Time in milliseconds the Heroku router spent establishing a connection to the dyno',
+    deprecationChain: ['heroku.router.connect'],
+  },
+  'heroku.router.request_id': {
+    canonicalName: 'heroku.router.request_id',
+    type: 'string',
+    brief: 'Request identifier reported by the Heroku router',
+    deprecationChain: ['heroku.router.request_id'],
+  },
+  'heroku.router.service': {
+    canonicalName: 'heroku.router.service',
+    type: 'double',
+    brief:
+      'Time in milliseconds spent proxying data between the backend dyno and the client, as reported by the Heroku router',
+    deprecationChain: ['heroku.router.service'],
   },
   'http.client_ip': {
     canonicalName: 'client.address',
@@ -10825,7 +10943,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'router.navigation.origin',
     type: 'string',
     brief:
-      'The origin of the navigation (usually client side router navigations). Should preferrably parameterized template (like url.template) or a URL path otherwise.',
+      'The origin of the navigation (usually client side router navigations). Should preferably be a parameterized template (like url.template) or a URL path otherwise.',
     deprecationChain: ['router.navigation.origin', 'navigation.origin', 'sentry.sveltekit.navigation.from'],
   },
   'navigation.route.id': {
@@ -11152,6 +11270,13 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     brief: 'Description of the Status if it has a value, otherwise not set.',
     deprecationChain: ['otel.status_description'],
   },
+  'page.server_rendering.age': {
+    canonicalName: 'page.server_rendering.age',
+    type: 'second',
+    brief:
+      'Set on a pageload span. The time in seconds from the start of the server render of the reused part of the page to the start of the span.',
+    deprecationChain: ['page.server_rendering.age'],
+  },
   'page.server_rendering.type': {
     canonicalName: 'page.server_rendering.type',
     type: 'string',
@@ -11220,6 +11345,20 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     brief:
       'An additional description about the runtime of the process, for example a specific vendor customization of the runtime environment. Equivalent to `raw_description` in the Sentry runtime context.',
     deprecationChain: ['process.runtime.description', 'runtime.raw_description'],
+  },
+  'process.runtime.elixir.memory.type': {
+    canonicalName: 'process.runtime.elixir.memory.type',
+    type: 'string',
+    brief:
+      'The kind of BEAM memory a measurement covers: processes, atom, binary, code, ets, or other for the rest of the VM total.',
+    deprecationChain: ['process.runtime.elixir.memory.type'],
+  },
+  'process.runtime.elixir.run_queue.type': {
+    canonicalName: 'process.runtime.elixir.run_queue.type',
+    type: 'string',
+    brief:
+      'The kind of BEAM run queue a measurement covers: cpu for the normal and dirty CPU scheduler run queues, io for the dirty IO run queue.',
+    deprecationChain: ['process.runtime.elixir.run_queue.type'],
   },
   'process.runtime.engine.name': {
     canonicalName: 'process.runtime.engine.name',
@@ -12155,6 +12294,18 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'double',
     brief: 'The duration of time to initial display in milliseconds',
     deprecationChain: ['app.vitals.ttid.value', 'time_to_initial_display'],
+  },
+  'tls.protocol.name': {
+    canonicalName: 'tls.protocol.name',
+    type: 'string',
+    brief: 'Normalized lowercase protocol name parsed from the negotiated SSL/TLS protocol version',
+    deprecationChain: ['tls.protocol.name'],
+  },
+  'tls.protocol.version': {
+    canonicalName: 'tls.protocol.version',
+    type: 'string',
+    brief: 'Numeric part of the version parsed from the negotiated SSL/TLS protocol version',
+    deprecationChain: ['tls.protocol.version'],
   },
   'trace.status': {
     canonicalName: 'sentry.trace.status',

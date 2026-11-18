@@ -99,6 +99,104 @@ pub const MESSAGING_BULLMQ_QUEUE_JOBS: &str = "messaging.bullmq.queue.jobs";
 /// Attributes: `messaging.system`, `messaging.operation.name`, `messaging.destination.name`, `messaging.bullmq.job.name`, `messaging.bullmq.job.state`
 pub const MESSAGING_PROCESS_DURATION: &str = "messaging.process.duration";
 
+// Path: model/metrics/process/process__runtime__elixir__atom__count.json
+
+/// Number of atoms currently existing in the BEAM.
+///
+/// Instrument: gauge
+/// Unit: none
+pub const PROCESS_RUNTIME_ELIXIR_ATOM_COUNT: &str = "process.runtime.elixir.atom.count";
+
+// Path: model/metrics/process/process__runtime__elixir__atom__limit.json
+
+/// Maximum number of atoms that can exist at the same time in the BEAM.
+///
+/// Instrument: gauge
+/// Unit: none
+pub const PROCESS_RUNTIME_ELIXIR_ATOM_LIMIT: &str = "process.runtime.elixir.atom.limit";
+
+// Path: model/metrics/process/process__runtime__elixir__atom__utilization.json
+
+/// Ratio of existing atoms to the maximum the BEAM allows, between 0.0 and 1.0.
+///
+/// Instrument: gauge
+/// Unit: ratio
+pub const PROCESS_RUNTIME_ELIXIR_ATOM_UTILIZATION: &str = "process.runtime.elixir.atom.utilization";
+
+// Path: model/metrics/process/process__runtime__elixir__memory__used.json
+
+/// Memory allocated by the BEAM, broken down by memory type. Summing across types gives the total VM memory.
+///
+/// Instrument: gauge
+/// Unit: byte
+/// Attributes: `process.runtime.elixir.memory.type`
+pub const PROCESS_RUNTIME_ELIXIR_MEMORY_USED: &str = "process.runtime.elixir.memory.used";
+
+// Path: model/metrics/process/process__runtime__elixir__port__count.json
+
+/// Number of ports currently existing in the BEAM.
+///
+/// Instrument: gauge
+/// Unit: none
+pub const PROCESS_RUNTIME_ELIXIR_PORT_COUNT: &str = "process.runtime.elixir.port.count";
+
+// Path: model/metrics/process/process__runtime__elixir__port__limit.json
+
+/// Maximum number of ports that can exist at the same time in the BEAM.
+///
+/// Instrument: gauge
+/// Unit: none
+pub const PROCESS_RUNTIME_ELIXIR_PORT_LIMIT: &str = "process.runtime.elixir.port.limit";
+
+// Path: model/metrics/process/process__runtime__elixir__port__utilization.json
+
+/// Ratio of existing ports to the maximum the BEAM allows, between 0.0 and 1.0.
+///
+/// Instrument: gauge
+/// Unit: ratio
+pub const PROCESS_RUNTIME_ELIXIR_PORT_UTILIZATION: &str = "process.runtime.elixir.port.utilization";
+
+// Path: model/metrics/process/process__runtime__elixir__process__count.json
+
+/// Number of processes currently existing in the BEAM.
+///
+/// Instrument: gauge
+/// Unit: none
+pub const PROCESS_RUNTIME_ELIXIR_PROCESS_COUNT: &str = "process.runtime.elixir.process.count";
+
+// Path: model/metrics/process/process__runtime__elixir__process__limit.json
+
+/// Maximum number of processes that can exist at the same time in the BEAM.
+///
+/// Instrument: gauge
+/// Unit: none
+pub const PROCESS_RUNTIME_ELIXIR_PROCESS_LIMIT: &str = "process.runtime.elixir.process.limit";
+
+// Path: model/metrics/process/process__runtime__elixir__process__utilization.json
+
+/// Ratio of existing processes to the maximum the BEAM allows, between 0.0 and 1.0.
+///
+/// Instrument: gauge
+/// Unit: ratio
+pub const PROCESS_RUNTIME_ELIXIR_PROCESS_UTILIZATION: &str = "process.runtime.elixir.process.utilization";
+
+// Path: model/metrics/process/process__runtime__elixir__run_queue__length.json
+
+/// Number of processes and ports ready to run but waiting in a run queue, broken down by run queue type.
+///
+/// Instrument: gauge
+/// Unit: none
+/// Attributes: `process.runtime.elixir.run_queue.type`
+pub const PROCESS_RUNTIME_ELIXIR_RUN_QUEUE_LENGTH: &str = "process.runtime.elixir.run_queue.length";
+
+// Path: model/metrics/process/process__runtime__elixir__scheduler__utilization.json
+
+/// Fraction of wall time the normal BEAM schedulers spent busy since the previous sample, between 0.0 and 1.0.
+///
+/// Instrument: gauge
+/// Unit: ratio
+pub const PROCESS_RUNTIME_ELIXIR_SCHEDULER_UTILIZATION: &str = "process.runtime.elixir.scheduler.utilization";
+
 // Path: model/metrics/ui/ui__element__load_time.json
 
 /// The time at which the resource of an element marked with the elementtiming attribute finished loading, relative to the time origin.

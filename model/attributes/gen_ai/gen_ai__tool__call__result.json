@@ -1,6 +1,6 @@
 {
   "key": "gen_ai.tool.call.result",
-  "brief": "The result of the tool call. It has to be a stringified version of the result of the tool.",
+  "brief": "The result of the tool call.",
   "type": "string",
   "apply_scrubbing": {
     "key": "manual"
@@ -16,6 +16,11 @@
   ],
   "visibility": "public",
   "changelog": [
+    {
+      "version": "next",
+      "prs": [794],
+      "description": "Remove informal format description from the brief to prevent duplication with the structured schema."
+    },
     {
       "version": "0.5.0",
       "prs": [265]

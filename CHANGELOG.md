@@ -1,3 +1,77 @@
+## 0.33.0
+
+### Bug Fixes 🐛
+
+#### Attributes
+
+- Make `gen_ai.usage.*` token examples consistent by @cleptric and @claude in [#788](https://github.com/getsentry/sentry-conventions/pull/788)
+- Note provider-specific values for `gen_ai.request.reasoning.level` by @cleptric and @claude in [#786](https://github.com/getsentry/sentry-conventions/pull/786)
+- Fix typo in `gen_ai.usage.total_tokens` brief by @cleptric and @claude in [#787](https://github.com/getsentry/sentry-conventions/pull/787)
+- Say `gen_ai.tool.definitions` must be stringified by @cleptric and @claude in [#785](https://github.com/getsentry/sentry-conventions/pull/785)
+- Document reasoning parts for `gen_ai.*.messages` by @cleptric and @claude in [#784](https://github.com/getsentry/sentry-conventions/pull/784)
+
+### Documentation 📚
+
+- Fix intro wording in README and docs landing page by @cleptric and @claude in [#777](https://github.com/getsentry/sentry-conventions/pull/777)
+
+### Internal Changes 🔧
+
+- Bump GitHub Actions to Node 24 versions by @cleptric and @claude in [#783](https://github.com/getsentry/sentry-conventions/pull/783)
+
+## 0.32.0
+
+### New Features ✨
+
+- (docs) Serve docs from conventions.sentry.dev by @cleptric in [#775](https://github.com/getsentry/sentry-conventions/pull/775)
+
+### Bug Fixes 🐛
+
+#### Attributes
+
+- Describe parts message shape for `gen_ai.input.messages` by @cleptric and @claude in [#782](https://github.com/getsentry/sentry-conventions/pull/782)
+- Document JSON parts shape for `gen_ai.system_instructions` by @andreiborza and @claude in [#779](https://github.com/getsentry/sentry-conventions/pull/779)
+
+#### Other
+
+- (docs) Collapse header nav into a menu on narrow screens by @evanpurkhiser with @sentry-junior in [#780](https://github.com/getsentry/sentry-conventions/pull/780)
+- Fix typos in attribute, op, and measurement descriptions by @cleptric in [#776](https://github.com/getsentry/sentry-conventions/pull/776)
+
+### Documentation 📚
+
+- (attributes) Reserve enrichment namespace by @vgrozdanic and @cleptric in [#773](https://github.com/getsentry/sentry-conventions/pull/773)
+
+### Internal Changes 🔧
+
+- Remove Claude settings by @cleptric and @claude in [#778](https://github.com/getsentry/sentry-conventions/pull/778)
+- Deprecate `gen_ai.rerank` op by @alexander-alderman-webb in [#765](https://github.com/getsentry/sentry-conventions/pull/765)
+- Add andreiborza as CODEOWNER by @alexander-alderman-webb in [#774](https://github.com/getsentry/sentry-conventions/pull/774)
+
+## 0.31.0
+
+### New Features ✨
+
+#### Attributes
+
+- Add Vercel AI runtime and tool context attributes by @isaacs and @claude in [#756](https://github.com/getsentry/sentry-conventions/pull/756)
+- Register user.geo.subregion and deprecated sentry.user.geo.subregion by @edwardgou-sentry in [#753](https://github.com/getsentry/sentry-conventions/pull/753)
+- Add `faas.instance` attribute by @pabloDeputter in [#748](https://github.com/getsentry/sentry-conventions/pull/748)
+- Add `faas.document.*` attributes by @pabloDeputter in [#747](https://github.com/getsentry/sentry-conventions/pull/747)
+- Add page.server_rendering.type attribute by @s1gr1d in [#740](https://github.com/getsentry/sentry-conventions/pull/740)
+
+#### Other
+
+- (heroku) Add Heroku log drain attributes by @Dav1dde in [#772](https://github.com/getsentry/sentry-conventions/pull/772)
+- (metrics) Generate metric name constants under a `metrics` subpath by @logaretm in [#757](https://github.com/getsentry/sentry-conventions/pull/757)
+
+### Bug Fixes 🐛
+
+- (attributes) Use `response` for `tool_call_response` in `gen_ai.input.messages` example by @alexander-alderman-webb in [#758](https://github.com/getsentry/sentry-conventions/pull/758)
+
+### Internal Changes 🔧
+
+- Remove `finish_reason` from `gen_ai.output.message` example by @alexander-alderman-webb in [#759](https://github.com/getsentry/sentry-conventions/pull/759)
+- Deprecate `gen_ai.handoff` op by @alexander-alderman-webb in [#754](https://github.com/getsentry/sentry-conventions/pull/754)
+
 ## 0.30.0
 
 ### New Features ✨

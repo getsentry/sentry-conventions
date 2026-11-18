@@ -45,7 +45,10 @@
     },
     {
       "name": "gen_ai.rerank",
-      "description": "Reranking of documents or results by a generative AI model"
+      "description": "Reranking of documents or results by a generative AI model",
+      "deprecation": {
+        "note": "Product does not support rerank spans. \"rerank\" is not a recognized gen_ai.operation.name in OTel."
+      }
     },
     {
       "name": "gen_ai.decide",

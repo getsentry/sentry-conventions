@@ -1,0 +1,19 @@
+{
+  "key": "heroku.router.service",
+  "brief": "Time in milliseconds spent proxying data between the backend dyno and the client, as reported by the Heroku router",
+  "type": "double",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "examples": [0, 12.5, 30001],
+  "additional_context": ["This measures the proxying phase, not necessarily the complete HTTP request duration."],
+  "changelog": [
+    {
+      "version": "0.31.0",
+      "prs": [772],
+      "description": "Added heroku.router.service attribute"
+    }
+  ]
+}

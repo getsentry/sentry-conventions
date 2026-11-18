@@ -19,7 +19,8 @@
   "examples": ["vercel.ai.settings.context.tenantId='acme'"],
   "changelog": [
     {
-      "version": "next",
+      "version": "0.31.0",
+      "prs": [756],
       "description": "Added vercel.ai.settings.context.<key> attribute"
     }
   ]

@@ -1,6 +1,6 @@
 {
   "key": "gen_ai.request.reasoning.level",
-  "brief": "The reasoning or thinking effort level requested for a GenAI model.",
+  "brief": "The reasoning or thinking effort level requested for a GenAI model. Supported values vary by provider.",
   "type": "string",
   "apply_scrubbing": {
     "key": "manual"

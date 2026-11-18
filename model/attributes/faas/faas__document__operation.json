@@ -16,7 +16,8 @@
   "examples": ["insert", "edit", "delete"],
   "changelog": [
     {
-      "version": "next",
+      "version": "0.31.0",
+      "prs": [747],
       "description": "Added faas.document.operation attribute"
     }
   ]

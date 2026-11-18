@@ -1,0 +1,21 @@
+{
+  "key": "heroku.router.request_id",
+  "brief": "Request identifier reported by the Heroku router",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "examples": ["6903a168-b79b-ec27-03c8-b8f64d8d8792"],
+  "additional_context": [
+    "Heroku generates or accepts this identifier and forwards it to the application in the X-Request-ID header."
+  ],
+  "changelog": [
+    {
+      "version": "0.31.0",
+      "prs": [772],
+      "description": "Added heroku.router.request_id attribute"
+    }
+  ]
+}

@@ -16,7 +16,7 @@
     },
     {
       "name": "resource",
-      "description": "Resource as per [Performance Resource Timing](https://w3c.github.io/resource-timing/#sec-performanceresourcetiming). Defaults to resource.other if resource cannot be indentified."
+      "description": "Resource as per [Performance Resource Timing](https://w3c.github.io/resource-timing/#sec-performanceresourcetiming). Defaults to resource.other if resource cannot be identified."
     },
     {
       "name": "resource.script"

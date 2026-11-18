@@ -6,7 +6,7 @@
     "key": "manual"
   },
   "is_in_otel": true,
-  "example": 10,
+  "example": 130,
   "additional_context": [
     "This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to count tokens, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans.",
     "This count includes reasoning tokens. gen_ai.usage.reasoning.output_tokens is a subset of this value, not an independent count — do not sum them together."

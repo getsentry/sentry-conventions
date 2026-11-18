@@ -108,7 +108,7 @@
   },
   "changelog": [
     {
-      "version": "next",
+      "version": "0.31.0",
       "prs": [753],
       "description": "Added sentry.user.geo.subregion attribute"
     }

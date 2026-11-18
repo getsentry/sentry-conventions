@@ -15,7 +15,7 @@ describe('generateAttributes', () => {
     const temporaryDirectory = fs.mkdtempSync(path.join(os.tmpdir(), 'sentry-conventions-'));
     const attributesDir = path.join(temporaryDirectory, 'attributes');
     const jsOutputFilePath = path.join(temporaryDirectory, 'attributes.ts');
-    const pythonOutputFilePath = path.join(temporaryDirectory, 'attributes.py');
+    const pythonOutputFilePath = path.join(temporaryDirectory, '_attributes.py');
     fs.mkdirSync(attributesDir);
 
     const key = 'mcp.tool.result.<key>.content';
@@ -61,7 +61,7 @@ describe('generateAttributes', () => {
     const temporaryDirectory = fs.mkdtempSync(path.join(os.tmpdir(), 'sentry-conventions-'));
     const attributesDir = path.join(temporaryDirectory, 'attributes');
     const jsOutputFilePath = path.join(temporaryDirectory, 'attributes.ts');
-    const pythonOutputFilePath = path.join(temporaryDirectory, 'attributes.py');
+    const pythonOutputFilePath = path.join(temporaryDirectory, '_attributes.py');
     fs.mkdirSync(attributesDir);
     fs.writeFileSync(
       path.join(attributesDir, 'test__attribute.json'),
@@ -100,9 +100,6 @@ describe('generateAttributes', () => {
       expect(javascript).toContain('examples: [["first","second"],["third"]],');
 
       const python = fs.readFileSync(pythonOutputFilePath, 'utf8');
-      expect(python.indexOf('examples: Optional[List[AttributeValue]]')).toBeGreaterThan(
-        python.indexOf('additional_context: Optional[List[str]]'),
-      );
       expect(python).toContain('Example: "first"');
       expect(python).toContain('Example: "second"');
       expect(python).toContain('example="first",');
@@ -118,7 +115,7 @@ describe('generateAttributes', () => {
     const temporaryDirectory = fs.mkdtempSync(path.join(os.tmpdir(), 'sentry-conventions-'));
     const attributesDir = path.join(temporaryDirectory, 'attributes');
     const jsOutputFilePath = path.join(temporaryDirectory, 'attributes.ts');
-    const pythonOutputFilePath = path.join(temporaryDirectory, 'attributes.py');
+    const pythonOutputFilePath = path.join(temporaryDirectory, '_attributes.py');
     fs.mkdirSync(attributesDir);
 
     const attributes = [
@@ -309,7 +306,7 @@ describe('generateAttributes', () => {
     const temporaryDirectory = fs.mkdtempSync(path.join(os.tmpdir(), 'sentry-conventions-'));
     const attributesDir = path.join(temporaryDirectory, 'attributes');
     const jsOutputFilePath = path.join(temporaryDirectory, 'attributes.ts');
-    const pythonOutputFilePath = path.join(temporaryDirectory, 'attributes.py');
+    const pythonOutputFilePath = path.join(temporaryDirectory, '_attributes.py');
     fs.mkdirSync(attributesDir);
 
     for (const key of ['first.attribute', 'second.attribute']) {

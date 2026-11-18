@@ -1,5 +1,18 @@
 // This is an auto-generated file. Do not edit!
 
+export type { SystemInstructions, TextPart } from './_schemas/gen_ai_system_instructions';
+
+export type { ToolCallArguments } from './_schemas/gen_ai_tool_call_arguments';
+
+export type { ToolCallResult } from './_schemas/gen_ai_tool_call_result';
+
+export type {
+  ToolDefinitions,
+  ToolDefinition,
+  FunctionToolDefinition,
+  ServerSideToolDefinition,
+} from './_schemas/gen_ai_tool_definitions';
+
 // Path: model/attributes/address.json
 
 /**
@@ -5896,7 +5909,7 @@ export type DB_RESPONSE_STATUS_CODE_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * @deprecated Use {@link DB_QUERY_PARAMETER_KEY} (db.query.parameter.<key>) instead - Instead of adding every binding in the db.sql.bindings attribute, add them as individual entires with db.query.parameter.<key>.
+ * @deprecated Use {@link DB_QUERY_PARAMETER_KEY} (db.query.parameter.<key>) instead - Instead of adding every binding in the db.sql.bindings attribute, add them as individual entries with db.query.parameter.<key>.
  * @example ["1","foo"]
  */
 export const DB_SQL_BINDINGS = 'db.sql.bindings';
@@ -8352,7 +8365,7 @@ export type GEN_AI_FUNCTION_ID_TYPE = string;
 // Path: model/attributes/gen_ai/gen_ai__input__messages.json
 
 /**
- * The messages passed to the model. It has to be a stringified version of an array of objects. The `role` attribute of each object must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. For messages of the role `"tool"`, the `content` can be a string or an arbitrary object with information about the tool call. For other messages the `content` can be either a string or a list of objects in the format `{type: "text", text:"..."}`. The first example shows this shape. Some operations use a different shape. See the additional context. `gen_ai.input.messages`
+ * The messages passed to the model. It has to be a stringified version of an array of objects in the format `{role: "...", parts: [...]}`. The `role` must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. Each part is an object with a `type`, such as `{type: "text", content: "..."}`. Other part types include `"reasoning"`, `"tool_call"`, and `"tool_call_response"`. Put the model's thinking in a `{type: "reasoning", content: "..."}` part, not a `"text"` part. Sentry shows reasoning separately from user-visible messages. The legacy format `{role, content}` is also accepted. The first example shows this shape. Some operations use a different shape. See the additional context. `gen_ai.input.messages`
  *
  * Attribute Value Type: `string` {@link GEN_AI_INPUT_MESSAGES_TYPE}
  *
@@ -8554,7 +8567,7 @@ export type GEN_AI_OPERATION_TYPE_TYPE = string;
 // Path: model/attributes/gen_ai/gen_ai__output__messages.json
 
 /**
- * The model's response messages. It has to be a stringified version of an array of message objects, which can include text responses and tool calls. The first example shows this shape. Some operations use a different shape. See the additional context. `gen_ai.output.messages`
+ * Messages returned by the model where each message represents a specific model response (choice, candidate). It has to be a stringified version of an array of message objects in the format `{role: "assistant", parts: [...]}`, which can include text responses and tool calls. Each part is an object with a `type`, such as `{type: "text", content: "..."}`. Other part types include `"reasoning"` and `"tool_call"`. Put the model's thinking in a `{type: "reasoning", content: "..."}` part, not a `"text"` part. Sentry shows reasoning separately from user-visible messages. The first example shows this shape. Some operations use a different shape. See the additional context. `gen_ai.output.messages`
  *
  * Attribute Value Type: `string` {@link GEN_AI_OUTPUT_MESSAGES_TYPE}
  *
@@ -8839,7 +8852,7 @@ export type GEN_AI_REQUEST_PRESENCE_PENALTY_TYPE = number;
 // Path: model/attributes/gen_ai/gen_ai__request__reasoning__level.json
 
 /**
- * The reasoning or thinking effort level requested for a GenAI model. `gen_ai.request.reasoning.level`
+ * The reasoning or thinking effort level requested for a GenAI model. Supported values vary by provider. `gen_ai.request.reasoning.level`
  *
  * Attribute Value Type: `string` {@link GEN_AI_REQUEST_REASONING_LEVEL_TYPE}
  *
@@ -9155,7 +9168,7 @@ export type GEN_AI_RESPONSE_TEXT_TYPE = string;
 // Path: model/attributes/gen_ai/gen_ai__response__time_to_first_chunk.json
 
 /**
- * Time in seconds when the first response content chunk arrived in streaming responses. `gen_ai.response.time_to_first_chunk`
+ * Time from the start of a logical inference operation to the first chunk in its streaming response, in seconds. `gen_ai.response.time_to_first_chunk`
  *
  * Attribute Value Type: `number` {@link GEN_AI_RESPONSE_TIME_TO_FIRST_CHUNK_TYPE}
  *
@@ -9178,7 +9191,7 @@ export type GEN_AI_RESPONSE_TIME_TO_FIRST_CHUNK_TYPE = number;
 // Path: model/attributes/gen_ai/gen_ai__response__time_to_first_token.json
 
 /**
- * Time in seconds when the first response content chunk arrived in streaming responses. `gen_ai.response.time_to_first_token`
+ * Time from the start of a logical inference operation to the first chunk in its streaming response, in seconds. `gen_ai.response.time_to_first_token`
  *
  * Attribute Value Type: `number` {@link GEN_AI_RESPONSE_TIME_TO_FIRST_TOKEN_TYPE}
  *
@@ -9269,7 +9282,7 @@ export type GEN_AI_SYSTEM_TYPE = string;
 // Path: model/attributes/gen_ai/gen_ai__system_instructions.json
 
 /**
- * The system instructions passed to the model. `gen_ai.system_instructions`
+ * The system message or instructions provided to the GenAI model separately from the chat history. `gen_ai.system_instructions`
  *
  * Attribute Value Type: `string` {@link GEN_AI_SYSTEM_INSTRUCTIONS_TYPE}
  *
@@ -9280,7 +9293,7 @@ export type GEN_AI_SYSTEM_TYPE = string;
  *
  * Aliases: {@link AI_PREAMBLE} `ai.preamble`
  *
- * @example "You are a helpful assistant"
+ * @example "[{\"type\": \"text\", \"content\": \"You are a helpful assistant.\"}, {\"type\": \"text\", \"content\": \"Be concise and clear.\"}]"
  */
 export const GEN_AI_SYSTEM_INSTRUCTIONS = 'gen_ai.system_instructions';
 
@@ -9314,7 +9327,7 @@ export type GEN_AI_SYSTEM_MESSAGE_TYPE = string;
 // Path: model/attributes/gen_ai/gen_ai__tool__call__arguments.json
 
 /**
- * The arguments of the tool call. It has to be a stringified version of the arguments to the tool. `gen_ai.tool.call.arguments`
+ * The arguments of the tool call. `gen_ai.tool.call.arguments`
  *
  * Attribute Value Type: `string` {@link GEN_AI_TOOL_CALL_ARGUMENTS_TYPE}
  *
@@ -9337,7 +9350,7 @@ export type GEN_AI_TOOL_CALL_ARGUMENTS_TYPE = string;
 // Path: model/attributes/gen_ai/gen_ai__tool__call__result.json
 
 /**
- * The result of the tool call. It has to be a stringified version of the result of the tool. `gen_ai.tool.call.result`
+ * The result of the tool call. `gen_ai.tool.call.result`
  *
  * Attribute Value Type: `string` {@link GEN_AI_TOOL_CALL_RESULT_TYPE}
  *
@@ -9382,7 +9395,7 @@ export type GEN_AI_TOOL_CALL_RESULT_SIZE_TYPE = number;
 // Path: model/attributes/gen_ai/gen_ai__tool__definitions.json
 
 /**
- * The list of source system tool definitions available to the GenAI agent or model. `gen_ai.tool.definitions`
+ * The list of source system tool definitions available to the GenAI agent or model. It has to be a stringified version of an array of objects. `gen_ai.tool.definitions`
  *
  * Attribute Value Type: `string` {@link GEN_AI_TOOL_DEFINITIONS_TYPE}
  *
@@ -9554,7 +9567,7 @@ export type GEN_AI_TOOL_TYPE_TYPE = string;
  *
  * Aliases: {@link GEN_AI_USAGE_INPUT_TOKENS_CACHE_WRITE} `gen_ai.usage.input_tokens.cache_write`, {@link _GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS} `gen_ai.usage.cache_creation_input_tokens`
  *
- * @example 100
+ * @example 20
  */
 export const GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS = 'gen_ai.usage.cache_creation.input_tokens';
 
@@ -9672,7 +9685,7 @@ export type GEN_AI_USAGE_COMPLETION_TOKENS_TYPE = number;
  *
  * Aliases: {@link AI_PROMPT_TOKENS_USED} `ai.prompt_tokens.used`, {@link GEN_AI_USAGE_PROMPT_TOKENS} `gen_ai.usage.prompt_tokens`
  *
- * @example 10
+ * @example 100
  */
 export const GEN_AI_USAGE_INPUT_TOKENS = 'gen_ai.usage.input_tokens';
 
@@ -9743,7 +9756,7 @@ export type GEN_AI_USAGE_INPUT_TOKENS_CACHE_WRITE_TYPE = number;
  *
  * Aliases: {@link AI_COMPLETION_TOKENS_USED} `ai.completion_tokens.used`, {@link GEN_AI_USAGE_COMPLETION_TOKENS} `gen_ai.usage.completion_tokens`
  *
- * @example 10
+ * @example 130
  */
 export const GEN_AI_USAGE_OUTPUT_TOKENS = 'gen_ai.usage.output_tokens';
 
@@ -9814,7 +9827,7 @@ export type GEN_AI_USAGE_PROMPT_TOKENS_TYPE = number;
  *
  * Aliases: {@link GEN_AI_USAGE_OUTPUT_TOKENS_REASONING} `gen_ai.usage.output_tokens.reasoning`
  *
- * @example 75
+ * @example 30
  */
 export const GEN_AI_USAGE_REASONING_OUTPUT_TOKENS = 'gen_ai.usage.reasoning.output_tokens';
 
@@ -9826,7 +9839,7 @@ export type GEN_AI_USAGE_REASONING_OUTPUT_TOKENS_TYPE = number;
 // Path: model/attributes/gen_ai/gen_ai__usage__total_tokens.json
 
 /**
- * The total number of tokens used to process the prompt. (input tokens plus output todkens) `gen_ai.usage.total_tokens`
+ * The total number of tokens used to process the prompt. (input tokens plus output tokens) `gen_ai.usage.total_tokens`
  *
  * Attribute Value Type: `number` {@link GEN_AI_USAGE_TOTAL_TOKENS_TYPE}
  *
@@ -9837,7 +9850,7 @@ export type GEN_AI_USAGE_REASONING_OUTPUT_TOKENS_TYPE = number;
  *
  * Aliases: {@link AI_TOTAL_TOKENS_USED} `ai.total_tokens.used`, {@link AI_USAGE_TOKENS} `ai.usage.tokens`
  *
- * @example 20
+ * @example 230
  */
 export const GEN_AI_USAGE_TOTAL_TOKENS = 'gen_ai.usage.total_tokens';
 
@@ -10330,6 +10343,161 @@ export const HARDWARECONCURRENCY = 'hardwareConcurrency';
  * Type for {@link HARDWARECONCURRENCY} hardwareConcurrency
  */
 export type HARDWARECONCURRENCY_TYPE = string;
+
+// Path: model/attributes/heroku/heroku__dyno__name.json
+
+/**
+ * Name of the Heroku dyno serving the request or emitting telemetry `heroku.dyno.name`
+ *
+ * Attribute Value Type: `string` {@link HEROKU_DYNO_NAME_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "web.1"
+ * @example "web-12a34bcd56-7efgh"
+ */
+export const HEROKU_DYNO_NAME = 'heroku.dyno.name';
+
+/**
+ * Type for {@link HEROKU_DYNO_NAME} heroku.dyno.name
+ */
+export type HEROKU_DYNO_NAME_TYPE = string;
+
+// Path: model/attributes/heroku/heroku__error__code.json
+
+/**
+ * Heroku error code reported by a router or platform log `heroku.error.code`
+ *
+ * Attribute Value Type: `string` {@link HEROKU_ERROR_CODE_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "H12"
+ * @example "R14"
+ * @example "L10"
+ */
+export const HEROKU_ERROR_CODE = 'heroku.error.code';
+
+/**
+ * Type for {@link HEROKU_ERROR_CODE} heroku.error.code
+ */
+export type HEROKU_ERROR_CODE_TYPE = string;
+
+// Path: model/attributes/heroku/heroku__error__description.json
+
+/**
+ * Description of the Heroku error reported by a router or platform log `heroku.error.description`
+ *
+ * Attribute Value Type: `string` {@link HEROKU_ERROR_DESCRIPTION_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "Request timeout"
+ * @example "Memory quota exceeded"
+ */
+export const HEROKU_ERROR_DESCRIPTION = 'heroku.error.description';
+
+/**
+ * Type for {@link HEROKU_ERROR_DESCRIPTION} heroku.error.description
+ */
+export type HEROKU_ERROR_DESCRIPTION_TYPE = string;
+
+// Path: model/attributes/heroku/heroku__logplex__drain_token.json
+
+/**
+ * Identifier of the Heroku log drain that delivered the log, from the Logplex-Drain-Token header `heroku.logplex.drain_token`
+ *
+ * Attribute Value Type: `string` {@link HEROKU_LOGPLEX_DRAIN_TOKEN_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "d.73ea7440-270a-435a-a0ea-adf50b4e5f5a"
+ */
+export const HEROKU_LOGPLEX_DRAIN_TOKEN = 'heroku.logplex.drain_token';
+
+/**
+ * Type for {@link HEROKU_LOGPLEX_DRAIN_TOKEN} heroku.logplex.drain_token
+ */
+export type HEROKU_LOGPLEX_DRAIN_TOKEN_TYPE = string;
+
+// Path: model/attributes/heroku/heroku__router__connect.json
+
+/**
+ * Time in milliseconds the Heroku router spent establishing a connection to the dyno `heroku.router.connect`
+ *
+ * Attribute Value Type: `number` {@link HEROKU_ROUTER_CONNECT_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example 0
+ * @example 0.5
+ * @example 6
+ */
+export const HEROKU_ROUTER_CONNECT = 'heroku.router.connect';
+
+/**
+ * Type for {@link HEROKU_ROUTER_CONNECT} heroku.router.connect
+ */
+export type HEROKU_ROUTER_CONNECT_TYPE = number;
+
+// Path: model/attributes/heroku/heroku__router__request_id.json
+
+/**
+ * Request identifier reported by the Heroku router `heroku.router.request_id`
+ *
+ * Attribute Value Type: `string` {@link HEROKU_ROUTER_REQUEST_ID_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "6903a168-b79b-ec27-03c8-b8f64d8d8792"
+ */
+export const HEROKU_ROUTER_REQUEST_ID = 'heroku.router.request_id';
+
+/**
+ * Type for {@link HEROKU_ROUTER_REQUEST_ID} heroku.router.request_id
+ */
+export type HEROKU_ROUTER_REQUEST_ID_TYPE = string;
+
+// Path: model/attributes/heroku/heroku__router__service.json
+
+/**
+ * Time in milliseconds spent proxying data between the backend dyno and the client, as reported by the Heroku router `heroku.router.service`
+ *
+ * Attribute Value Type: `number` {@link HEROKU_ROUTER_SERVICE_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example 0
+ * @example 12.5
+ * @example 30001
+ */
+export const HEROKU_ROUTER_SERVICE = 'heroku.router.service';
+
+/**
+ * Type for {@link HEROKU_ROUTER_SERVICE} heroku.router.service
+ */
+export type HEROKU_ROUTER_SERVICE_TYPE = number;
 
 // Path: model/attributes/http/http__client_ip.json
 
@@ -12887,7 +13055,7 @@ export type MCP_TOOL_RESULT_CONTENT_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * @deprecated  - A count can be calculcated from the value of the gen_ai.tool.call.result attribute.
+ * @deprecated  - A count can be calculated from the value of the gen_ai.tool.call.result attribute.
  * @example 1
  */
 export const MCP_TOOL_RESULT_CONTENT_COUNT = 'mcp.tool.result.content_count';
@@ -14468,7 +14636,7 @@ export type MIDDLEWARE_NAME_TYPE = string;
 // Path: model/attributes/navigation/navigation__origin.json
 
 /**
- * The origin of the navigation (usually client side router navigations). Should preferrably parameterized template (like url.template) or a URL path otherwise. `navigation.origin`
+ * The origin of the navigation (usually client side router navigations). Should preferably be a parameterized template (like url.template) or a URL path otherwise. `navigation.origin`
  *
  * Attribute Value Type: `string` {@link NAVIGATION_ORIGIN_TYPE}
  *
@@ -15597,6 +15765,29 @@ export const OTEL_STATUS_DESCRIPTION = 'otel.status_description';
  */
 export type OTEL_STATUS_DESCRIPTION_TYPE = string;
 
+// Path: model/attributes/page/page__server_rendering__age.json
+
+/**
+ * Set on a pageload span. The time in seconds from the start of the server render of the reused part of the page to the start of the span. `page.server_rendering.age`
+ *
+ * Attribute Value Type: `number` {@link PAGE_SERVER_RENDERING_AGE_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example 0
+ * @example 2520
+ * @example 259200
+ */
+export const PAGE_SERVER_RENDERING_AGE = 'page.server_rendering.age';
+
+/**
+ * Type for {@link PAGE_SERVER_RENDERING_AGE} page.server_rendering.age
+ */
+export type PAGE_SERVER_RENDERING_AGE_TYPE = number;
+
 // Path: model/attributes/page/page__server_rendering__type.json
 
 /**
@@ -15835,6 +16026,51 @@ export const PROCESS_RUNTIME_DESCRIPTION = 'process.runtime.description';
  * Type for {@link PROCESS_RUNTIME_DESCRIPTION} process.runtime.description
  */
 export type PROCESS_RUNTIME_DESCRIPTION_TYPE = string;
+
+// Path: model/attributes/process/process__runtime__elixir__memory__type.json
+
+/**
+ * The kind of BEAM memory a measurement covers: processes, atom, binary, code, ets, or other for the rest of the VM total. `process.runtime.elixir.memory.type`
+ *
+ * Attribute Value Type: `string` {@link PROCESS_RUNTIME_ELIXIR_MEMORY_TYPE_TYPE}
+ *
+ * Apply Scrubbing: never
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "processes"
+ * @example "binary"
+ * @example "other"
+ */
+export const PROCESS_RUNTIME_ELIXIR_MEMORY_TYPE = 'process.runtime.elixir.memory.type';
+
+/**
+ * Type for {@link PROCESS_RUNTIME_ELIXIR_MEMORY_TYPE} process.runtime.elixir.memory.type
+ */
+export type PROCESS_RUNTIME_ELIXIR_MEMORY_TYPE_TYPE = string;
+
+// Path: model/attributes/process/process__runtime__elixir__run_queue__type.json
+
+/**
+ * The kind of BEAM run queue a measurement covers: cpu for the normal and dirty CPU scheduler run queues, io for the dirty IO run queue. `process.runtime.elixir.run_queue.type`
+ *
+ * Attribute Value Type: `string` {@link PROCESS_RUNTIME_ELIXIR_RUN_QUEUE_TYPE_TYPE}
+ *
+ * Apply Scrubbing: never
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "cpu"
+ * @example "io"
+ */
+export const PROCESS_RUNTIME_ELIXIR_RUN_QUEUE_TYPE = 'process.runtime.elixir.run_queue.type';
+
+/**
+ * Type for {@link PROCESS_RUNTIME_ELIXIR_RUN_QUEUE_TYPE} process.runtime.elixir.run_queue.type
+ */
+export type PROCESS_RUNTIME_ELIXIR_RUN_QUEUE_TYPE_TYPE = string;
 
 // Path: model/attributes/process/process__runtime__engine__name.json
 
@@ -17681,9 +17917,9 @@ export type SENTRY_KIND_TYPE = string;
  *
  * Well-defined Values:
  * - `previous_trace` - The linked span is the root span of the trace before this trace, for example the pageload span before a navigation span.
- * - `cache_origin` - The linked span wrote the cached value that this span reads.
+ * - `cache_origin` - The linked span produced the cached value that this span uses. For example, a `cache.get` span links the `cache.put` span that wrote the cache entry. A pageload span links the span that rendered the reused part of the page (see `page.server_rendering.type`).
  * - `message_origin` - The linked span published the queue message that this span processes.
- * - `server_request` - The linked span handled the server request that rendered the document of this pageload span. Set when the trace context arrived too late for the pageload span to continue that trace.
+ * - `server_request` - The linked span handled the request for the document of this pageload span. Set only when the trace context of that request arrived too late, so the pageload span could not continue the trace. For a part of the page that the server reused from an earlier request, use `cache_origin`.
  *
  * @example "previous_trace"
  * @example "cache_origin"
@@ -19456,6 +19692,51 @@ export const TIME_TO_INITIAL_DISPLAY = 'time_to_initial_display';
  * Type for {@link TIME_TO_INITIAL_DISPLAY} time_to_initial_display
  */
 export type TIME_TO_INITIAL_DISPLAY_TYPE = number;
+
+// Path: model/attributes/tls/tls__protocol__name.json
+
+/**
+ * Normalized lowercase protocol name parsed from the negotiated SSL/TLS protocol version `tls.protocol.name`
+ *
+ * Attribute Value Type: `string` {@link TLS_PROTOCOL_NAME_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example "tls"
+ * @example "ssl"
+ */
+export const TLS_PROTOCOL_NAME = 'tls.protocol.name';
+
+/**
+ * Type for {@link TLS_PROTOCOL_NAME} tls.protocol.name
+ */
+export type TLS_PROTOCOL_NAME_TYPE = string;
+
+// Path: model/attributes/tls/tls__protocol__version.json
+
+/**
+ * Numeric part of the version parsed from the negotiated SSL/TLS protocol version `tls.protocol.version`
+ *
+ * Attribute Value Type: `string` {@link TLS_PROTOCOL_VERSION_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example "1.2"
+ * @example "1.3"
+ * @example "3"
+ */
+export const TLS_PROTOCOL_VERSION = 'tls.protocol.version';
+
+/**
+ * Type for {@link TLS_PROTOCOL_VERSION} tls.protocol.version
+ */
+export type TLS_PROTOCOL_VERSION_TYPE = string;
 
 // Path: model/attributes/transaction.json
 
@@ -22158,6 +22439,13 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'hapi.plugin.name': 'string',
   'hapi.type': 'string',
   hardwareConcurrency: 'string',
+  'heroku.dyno.name': 'string',
+  'heroku.error.code': 'string',
+  'heroku.error.description': 'string',
+  'heroku.logplex.drain_token': 'string',
+  'heroku.router.connect': 'double',
+  'heroku.router.request_id': 'string',
+  'heroku.router.service': 'double',
   'http.client_ip': 'string',
   'http.decoded_response_content_length': 'integer',
   'http.flavor': 'string',
@@ -22394,6 +22682,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'otel.scope.version': 'string',
   'otel.status_code': 'string',
   'otel.status_description': 'string',
+  'page.server_rendering.age': 'integer',
   'page.server_rendering.type': 'string',
   'params.<key>': 'string',
   'performance.activationStart': 'double',
@@ -22404,6 +22693,8 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'process.executable.name': 'string',
   'process.pid': 'integer',
   'process.runtime.description': 'string',
+  'process.runtime.elixir.memory.type': 'string',
+  'process.runtime.elixir.run_queue.type': 'string',
   'process.runtime.engine.name': 'string',
   'process.runtime.engine.version': 'string',
   'process.runtime.name': 'string',
@@ -22561,6 +22852,8 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'timber.tag': 'string',
   time_to_full_display: 'double',
   time_to_initial_display: 'double',
+  'tls.protocol.name': 'string',
+  'tls.protocol.version': 'string',
   transaction: 'string',
   'trpc.procedure_path': 'string',
   'trpc.procedure_type': 'string',
@@ -23121,6 +23414,13 @@ export type AttributeName =
   | typeof HAPI_PLUGIN_NAME
   | typeof HAPI_TYPE
   | typeof HARDWARECONCURRENCY
+  | typeof HEROKU_DYNO_NAME
+  | typeof HEROKU_ERROR_CODE
+  | typeof HEROKU_ERROR_DESCRIPTION
+  | typeof HEROKU_LOGPLEX_DRAIN_TOKEN
+  | typeof HEROKU_ROUTER_CONNECT
+  | typeof HEROKU_ROUTER_REQUEST_ID
+  | typeof HEROKU_ROUTER_SERVICE
   | typeof HTTP_CLIENT_IP
   | typeof HTTP_DECODED_RESPONSE_CONTENT_LENGTH
   | typeof HTTP_FLAVOR
@@ -23357,6 +23657,7 @@ export type AttributeName =
   | typeof OTEL_SCOPE_VERSION
   | typeof OTEL_STATUS_CODE
   | typeof OTEL_STATUS_DESCRIPTION
+  | typeof PAGE_SERVER_RENDERING_AGE
   | typeof PAGE_SERVER_RENDERING_TYPE
   | typeof PARAMS_KEY
   | typeof PERFORMANCE_ACTIVATIONSTART
@@ -23367,6 +23668,8 @@ export type AttributeName =
   | typeof PROCESS_EXECUTABLE_NAME
   | typeof PROCESS_PID
   | typeof PROCESS_RUNTIME_DESCRIPTION
+  | typeof PROCESS_RUNTIME_ELIXIR_MEMORY_TYPE
+  | typeof PROCESS_RUNTIME_ELIXIR_RUN_QUEUE_TYPE
   | typeof PROCESS_RUNTIME_ENGINE_NAME
   | typeof PROCESS_RUNTIME_ENGINE_VERSION
   | typeof PROCESS_RUNTIME_NAME
@@ -23524,6 +23827,8 @@ export type AttributeName =
   | typeof TIMBER_TAG
   | typeof TIME_TO_FULL_DISPLAY
   | typeof TIME_TO_INITIAL_DISPLAY
+  | typeof TLS_PROTOCOL_NAME
+  | typeof TLS_PROTOCOL_VERSION
   | typeof TRANSACTION
   | typeof TRPC_PROCEDURE_PATH
   | typeof TRPC_PROCEDURE_TYPE
@@ -23779,6 +24084,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'ai.prompt.messages',
       'ai.texts',
       'gen_ai.prompt',
+      'gen_ai.request.messages',
     ],
     applyScrubbing: {
       key: 'manual',
@@ -23957,6 +24263,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'ai.prompt.messages',
       'ai.texts',
       'gen_ai.prompt',
+      'gen_ai.request.messages',
     ],
     applyScrubbing: {
       key: 'manual',
@@ -23983,6 +24290,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'ai.prompt.messages',
       'ai.texts',
       'gen_ai.prompt',
+      'gen_ai.request.messages',
     ],
     applyScrubbing: {
       key: 'manual',
@@ -24054,7 +24362,15 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'ai.responses': {
     brief: 'The response messages sent back by the AI model.',
     type: 'string[]',
-    keys: ['gen_ai.output.messages', 'ai.response.text', 'ai.response.toolCalls', 'ai.responses', 'ai.tool_calls'],
+    keys: [
+      'gen_ai.output.messages',
+      'ai.response.text',
+      'ai.response.toolCalls',
+      'ai.responses',
+      'ai.tool_calls',
+      'gen_ai.response.text',
+      'gen_ai.response.tool_calls',
+    ],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24141,7 +24457,15 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'ai.response.text': {
     brief: 'The text response from the AI model.',
     type: 'string',
-    keys: ['gen_ai.output.messages', 'ai.response.text', 'ai.response.toolCalls', 'ai.responses', 'ai.tool_calls'],
+    keys: [
+      'gen_ai.output.messages',
+      'ai.response.text',
+      'ai.response.toolCalls',
+      'ai.responses',
+      'ai.tool_calls',
+      'gen_ai.response.text',
+      'gen_ai.response.tool_calls',
+    ],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24174,7 +24498,15 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'ai.response.toolCalls': {
     brief: 'The tool calls in the AI model response.',
     type: 'string',
-    keys: ['gen_ai.output.messages', 'ai.response.text', 'ai.response.toolCalls', 'ai.responses', 'ai.tool_calls'],
+    keys: [
+      'gen_ai.output.messages',
+      'ai.response.text',
+      'ai.response.toolCalls',
+      'ai.responses',
+      'ai.tool_calls',
+      'gen_ai.response.text',
+      'gen_ai.response.tool_calls',
+    ],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24318,6 +24650,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'ai.prompt.messages',
       'ai.texts',
       'gen_ai.prompt',
+      'gen_ai.request.messages',
     ],
     applyScrubbing: {
       key: 'manual',
@@ -24402,7 +24735,15 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'ai.tool_calls': {
     brief: 'For an AI model call, the tool calls that were made.',
     type: 'string[]',
-    keys: ['gen_ai.output.messages', 'ai.response.text', 'ai.response.toolCalls', 'ai.responses', 'ai.tool_calls'],
+    keys: [
+      'gen_ai.output.messages',
+      'ai.response.text',
+      'ai.response.toolCalls',
+      'ai.responses',
+      'ai.tool_calls',
+      'gen_ai.response.text',
+      'gen_ai.response.tool_calls',
+    ],
     applyScrubbing: {
       key: 'manual',
     },
@@ -27833,7 +28174,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'db.query.parameter.<key>',
       reason:
-        'Instead of adding every binding in the db.sql.bindings attribute, add them as individual entires with db.query.parameter.<key>.',
+        'Instead of adding every binding in the db.sql.bindings attribute, add them as individual entries with db.query.parameter.<key>.',
     },
     changelog: [{ version: '0.1.0', prs: [61] }, { version: '0.0.0' }],
   },
@@ -28677,7 +29018,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'myBucketName',
     examples: ['myBucketName', 'myDbName'],
-    changelog: [{ version: 'next', description: 'Added faas.document.collection attribute' }],
+    changelog: [{ version: '0.31.0', prs: [747], description: 'Added faas.document.collection attribute' }],
   },
   'faas.document.name': {
     brief:
@@ -28691,7 +29032,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'myFile.txt',
     examples: ['myFile.txt', 'myTableName'],
-    changelog: [{ version: 'next', description: 'Added faas.document.name attribute' }],
+    changelog: [{ version: '0.31.0', prs: [747], description: 'Added faas.document.name attribute' }],
   },
   'faas.document.operation': {
     brief: 'Describes the type of the operation that was performed on the data.',
@@ -28704,7 +29045,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'insert',
     examples: ['insert', 'edit', 'delete'],
-    changelog: [{ version: 'next', description: 'Added faas.document.operation attribute' }],
+    changelog: [{ version: '0.31.0', prs: [747], description: 'Added faas.document.operation attribute' }],
     additionalContext: [
       'Has the following list of well-known values. If one of them applies, then the respective value MUST be used; otherwise, a custom value MAY be used.',
       '`delete`: When an object is deleted.',
@@ -28723,7 +29064,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: '2020-01-23T13:47:06Z',
     examples: ['2020-01-23T13:47:06Z'],
-    changelog: [{ version: 'next', description: 'Added faas.document.time attribute' }],
+    changelog: [{ version: '0.31.0', prs: [747], description: 'Added faas.document.time attribute' }],
   },
   'faas.duration_in_ms': {
     brief: 'The duration a function took to run, in milliseconds.',
@@ -28825,7 +29166,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: '2021/06/28/[$LATEST]2f399eb14537447da05ab2a2e39309de',
     examples: ['2021/06/28/[$LATEST]2f399eb14537447da05ab2a2e39309de'],
-    changelog: [{ version: 'next', description: 'Added faas.instance attribute' }],
+    changelog: [{ version: '0.31.0', prs: [748], description: 'Added faas.instance attribute' }],
     additionalContext: ['For AWS Lambda, use the (full) log stream name.'],
   },
   'faas.invocation_id': {
@@ -29529,7 +29870,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   'gen_ai.input.messages': {
     brief:
-      'The messages passed to the model. It has to be a stringified version of an array of objects. The `role` attribute of each object must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. For messages of the role `"tool"`, the `content` can be a string or an arbitrary object with information about the tool call. For other messages the `content` can be either a string or a list of objects in the format `{type: "text", text:"..."}`. The first example shows this shape. Some operations use a different shape. See the additional context.',
+      'The messages passed to the model. It has to be a stringified version of an array of objects in the format `{role: "...", parts: [...]}`. The `role` must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. Each part is an object with a `type`, such as `{type: "text", content: "..."}`. Other part types include `"reasoning"`, `"tool_call"`, and `"tool_call_response"`. Put the model\'s thinking in a `{type: "reasoning", content: "..."}` part, not a `"text"` part. Sentry shows reasoning separately from user-visible messages. The legacy format `{role, content}` is also accepted. The first example shows this shape. Some operations use a different shape. See the additional context.',
     type: 'string',
     keys: [
       'gen_ai.input.messages',
@@ -29538,6 +29879,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'ai.prompt.messages',
       'ai.texts',
       'gen_ai.prompt',
+      'gen_ai.request.messages',
     ],
     applyScrubbing: {
       key: 'manual',
@@ -29683,9 +30025,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   'gen_ai.output.messages': {
     brief:
-      "The model's response messages. It has to be a stringified version of an array of message objects, which can include text responses and tool calls. The first example shows this shape. Some operations use a different shape. See the additional context.",
+      'Messages returned by the model where each message represents a specific model response (choice, candidate). It has to be a stringified version of an array of message objects in the format `{role: "assistant", parts: [...]}`, which can include text responses and tool calls. Each part is an object with a `type`, such as `{type: "text", content: "..."}`. Other part types include `"reasoning"` and `"tool_call"`. Put the model\'s thinking in a `{type: "reasoning", content: "..."}` part, not a `"text"` part. Sentry shows reasoning separately from user-visible messages. The first example shows this shape. Some operations use a different shape. See the additional context.',
     type: 'string',
-    keys: ['gen_ai.output.messages', 'ai.response.text', 'ai.response.toolCalls', 'ai.responses', 'ai.tool_calls'],
+    keys: [
+      'gen_ai.output.messages',
+      'ai.response.text',
+      'ai.response.toolCalls',
+      'ai.responses',
+      'ai.tool_calls',
+      'gen_ai.response.text',
+      'gen_ai.response.tool_calls',
+    ],
     applyScrubbing: {
       key: 'manual',
     },
@@ -29700,6 +30050,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     ],
     aliases: ['ai.response.toolCalls', 'ai.response.text'],
     changelog: [
+      { version: 'next', prs: [802], description: 'Aligned the brief with OTel and added additional context.' },
       {
         version: '0.28.0',
         prs: [728],
@@ -29710,6 +30061,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       { version: '0.4.0', prs: [221] },
     ],
     additionalContext: [
+      'Each message represents a single output choice/candidate generated by the model. Each message corresponds to exactly one generation (choice/candidate) and vice versa - one choice cannot be split across multiple messages or one message cannot contain parts from multiple choices.',
+      'When an operation ends in an error, this attribute is only set when the operation produced output, including partial streamed output. Instrumentation does not synthesize output content for a failed operation.',
       'For `gen_ai.decide` operations, the array holds one object `{answers: {...}}`. `answers` holds the answers keyed by question name, as the provider returned them. The second example shows this shape.',
       'For `gen_ai.extract` operations, the array holds one object `{answers: {<name>: <answer>}, truncated: boolean, state_text?: string}`. This object is the response body as the provider returned it, without `model` and `usage`. Do not change the values. `answers` holds one answer for each field in the input, keyed by field name. A field that the model cannot determine has a `value` of `null`. `span` and `spans` are `[start, end]` character offsets into `state` (or into `state_text`, if the provider returns it), and `end` is exclusive. Set the model in `gen_ai.response.model` and the token counts in `gen_ai.usage.input_tokens` and `gen_ai.usage.output_tokens`. The third example shows this shape.',
     ],
@@ -29740,6 +30093,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'ai.prompt.messages',
       'ai.texts',
       'gen_ai.prompt',
+      'gen_ai.request.messages',
     ],
     applyScrubbing: {
       key: 'manual',
@@ -29865,7 +30219,15 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The messages passed to the model. It has to be a stringified version of an array of objects. The `role` attribute of each object must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. For messages of the role `"tool"`, the `content` can be a string or an arbitrary object with information about the tool call. For other messages the `content` can be either a string or a list of objects in the format `{type: "text", text:"..."}`.',
     type: 'string',
-    keys: ['gen_ai.request.messages'],
+    keys: [
+      'gen_ai.input.messages',
+      'ai.input_messages',
+      'ai.prompt',
+      'ai.prompt.messages',
+      'ai.texts',
+      'gen_ai.prompt',
+      'gen_ai.request.messages',
+    ],
     applyScrubbing: {
       key: 'manual',
     },
@@ -29875,11 +30237,11 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       '[{"role": "system", "content": "Generate a random number."}, {"role": "user", "content": [{"text": "Generate a random number between 0 and 10.", "type": "text"}]}, {"role": "tool", "content": {"toolCallId": "1", "toolName": "Weather", "output": "rainy"}}]',
     deprecation: {
       replacement: 'gen_ai.input.messages',
-      status: 'transform',
-      transformation: 'gen_ai_request_messages_to_input_messages',
+      status: 'normalize',
     },
     aliases: ['ai.input_messages'],
     changelog: [
+      { version: 'next', prs: [801], description: 'Revert deprecation status from `transform` to `normalize`.' },
       { version: '0.4.0', prs: [221] },
       { version: '0.1.0', prs: [63, 74, 108, 119, 122] },
     ],
@@ -29918,7 +30280,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     ],
   },
   'gen_ai.request.reasoning.level': {
-    brief: 'The reasoning or thinking effort level requested for a GenAI model.',
+    brief: 'The reasoning or thinking effort level requested for a GenAI model. Supported values vary by provider.',
     type: 'string',
     keys: ['gen_ai.request.reasoning.level'],
     applyScrubbing: {
@@ -30119,7 +30481,15 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       "The model's response text messages. It has to be a stringified version of an array of response text messages.",
     type: 'string',
-    keys: ['gen_ai.response.text'],
+    keys: [
+      'gen_ai.output.messages',
+      'ai.response.text',
+      'ai.response.toolCalls',
+      'ai.responses',
+      'ai.tool_calls',
+      'gen_ai.response.text',
+      'gen_ai.response.tool_calls',
+    ],
     applyScrubbing: {
       key: 'manual',
     },
@@ -30129,16 +30499,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       '["The weather in Paris is rainy and overcast, with temperatures around 57°F", "The weather in London is sunny and warm, with temperatures around 65°F"]',
     deprecation: {
       replacement: 'gen_ai.output.messages',
-      status: 'transform',
-      transformation: 'gen_ai_response_to_output_messages',
+      status: 'normalize',
     },
     changelog: [
+      { version: 'next', prs: [801], description: 'Revert deprecation status from `transform` to `normalize`.' },
       { version: '0.4.0', prs: [221] },
       { version: '0.1.0', prs: [63, 74] },
     ],
   },
   'gen_ai.response.time_to_first_chunk': {
-    brief: 'Time in seconds when the first response content chunk arrived in streaming responses.',
+    brief:
+      'Time from the start of a logical inference operation to the first chunk in its streaming response, in seconds.',
     type: 'double',
     keys: ['gen_ai.response.time_to_first_chunk', 'gen_ai.response.time_to_first_token'],
     applyScrubbing: {
@@ -30148,10 +30519,19 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 0.6853435,
     aliases: ['gen_ai.response.time_to_first_token'],
-    changelog: [{ version: '0.11.0', prs: [418], description: 'Added gen_ai.response.time_to_first_chunk attribute' }],
+    changelog: [
+      { version: 'next', prs: [795], description: 'Aligned the brief with OTel and added additional context.' },
+      { version: '0.11.0', prs: [418], description: 'Added gen_ai.response.time_to_first_chunk attribute' },
+    ],
+    additionalContext: [
+      'A chunk is a decoded provider stream event carrying new, non-empty output: text, refusals, reasoning (including opaque payloads), audio, images, or tool-call names or arguments. Empty start events or events carrying only usage, roles, IDs, signatures, keep-alives, progress/status updates, or end markers are not chunks. Chunk boundaries follow provider events, not TCP reads, HTTP frames, or extra SDK callbacks.',
+      'Measure the time from the start of the logical inference operation, before authentication and the first attempt, to when the first chunk is fully received by the client, before application processing.',
+      'Set this attribute when the first chunk is received and do not set it if no chunk is received.',
+    ],
   },
   'gen_ai.response.time_to_first_token': {
-    brief: 'Time in seconds when the first response content chunk arrived in streaming responses.',
+    brief:
+      'Time from the start of a logical inference operation to the first chunk in its streaming response, in seconds.',
     type: 'double',
     keys: ['gen_ai.response.time_to_first_chunk', 'gen_ai.response.time_to_first_token'],
     applyScrubbing: {
@@ -30166,8 +30546,14 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['gen_ai.response.time_to_first_chunk'],
     changelog: [
+      { version: 'next', prs: [795], description: 'Aligned the brief with OTel and added additional context' },
       { version: '0.11.0', prs: [418], description: 'Deprecate in favor of gen_ai.response.time_to_first_chunk' },
       { version: '0.4.0', prs: [227] },
+    ],
+    additionalContext: [
+      'A chunk is a decoded provider stream event carrying new, non-empty output: text, refusals, reasoning (including opaque payloads), audio, images, or tool-call names or arguments. Empty start events or events carrying only usage, roles, IDs, signatures, keep-alives, progress/status updates, or end markers are not chunks. Chunk boundaries follow provider events, not TCP reads, HTTP frames, or extra SDK callbacks.',
+      'Measure the time from the start of the logical inference operation, before authentication and the first attempt, to when the first chunk is fully received by the client, before application processing.',
+      'Set this attribute when the first chunk is received and do not set it if no chunk is received.',
     ],
   },
   'gen_ai.response.tokens_per_second': {
@@ -30188,7 +30574,15 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gen_ai.response.tool_calls': {
     brief: "The tool calls in the model's response. It has to be a stringified version of an array of objects.",
     type: 'string',
-    keys: ['gen_ai.response.tool_calls'],
+    keys: [
+      'gen_ai.output.messages',
+      'ai.response.text',
+      'ai.response.toolCalls',
+      'ai.responses',
+      'ai.tool_calls',
+      'gen_ai.response.text',
+      'gen_ai.response.tool_calls',
+    ],
     applyScrubbing: {
       key: 'manual',
     },
@@ -30197,10 +30591,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: '[{"name": "get_weather", "arguments": {"location": "Paris"}}]',
     deprecation: {
       replacement: 'gen_ai.output.messages',
-      status: 'transform',
-      transformation: 'gen_ai_response_to_output_messages',
+      status: 'normalize',
     },
     changelog: [
+      { version: 'next', prs: [801], description: 'Revert deprecation status from `transform` to `normalize`.' },
       { version: '0.4.0', prs: [221] },
       { version: '0.1.0', prs: [63, 74] },
     ],
@@ -30226,7 +30620,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     ],
   },
   'gen_ai.system_instructions': {
-    brief: 'The system instructions passed to the model.',
+    brief: 'The system message or instructions provided to the GenAI model separately from the chat history.',
     type: 'string',
     keys: ['gen_ai.system_instructions', 'ai.preamble', 'gen_ai.system.message'],
     applyScrubbing: {
@@ -30234,11 +30628,21 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'You are a helpful assistant',
+    example:
+      '[{"type": "text", "content": "You are a helpful assistant."}, {"type": "text", "content": "Be concise and clear."}]',
     aliases: ['ai.preamble'],
     changelog: [
+      {
+        version: 'next',
+        prs: [790, 791],
+        description:
+          'Clarify that messages in the chat history only belong in gen_ai.input.messages. Remove informal format description from the brief to prevent duplication with the structured schema.',
+      },
       { version: '0.5.0', prs: [264] },
       { version: '0.4.0', prs: [221] },
+    ],
+    additionalContext: [
+      'Instructions that are part of the chat history are recorded in the gen_ai.input.messages attribute instead.',
     ],
   },
   'gen_ai.system.message': {
@@ -30261,7 +30665,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     ],
   },
   'gen_ai.tool.call.arguments': {
-    brief: 'The arguments of the tool call. It has to be a stringified version of the arguments to the tool.',
+    brief: 'The arguments of the tool call.',
     type: 'string',
     keys: ['gen_ai.tool.call.arguments', 'ai.toolCall.args', 'gen_ai.tool.input'],
     applyScrubbing: {
@@ -30272,12 +30676,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: '{"location": "Paris"}',
     aliases: ['gen_ai.tool.input', 'ai.toolCall.args'],
     changelog: [
+      {
+        version: 'next',
+        prs: [793],
+        description:
+          'Remove informal format description from the brief to prevent duplication with the structured schema.',
+      },
       { version: '0.5.0', prs: [265] },
       { version: '0.4.0', prs: [221] },
     ],
   },
   'gen_ai.tool.call.result': {
-    brief: 'The result of the tool call. It has to be a stringified version of the result of the tool.',
+    brief: 'The result of the tool call.',
     type: 'string',
     keys: [
       'gen_ai.tool.call.result',
@@ -30301,6 +30711,12 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'anthropic.tool_result.content',
     ],
     changelog: [
+      {
+        version: 'next',
+        prs: [794],
+        description:
+          'Remove informal format description from the brief to prevent duplication with the structured schema.',
+      },
       { version: '0.5.0', prs: [265] },
       { version: '0.4.0', prs: [221] },
     ],
@@ -30327,7 +30743,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
   },
   'gen_ai.tool.definitions': {
-    brief: 'The list of source system tool definitions available to the GenAI agent or model.',
+    brief:
+      'The list of source system tool definitions available to the GenAI agent or model. It has to be a stringified version of an array of objects.',
     type: 'string',
     keys: ['gen_ai.tool.definitions', 'ai.prompt.tools', 'ai.tools', 'gen_ai.request.available_tools'],
     applyScrubbing: {
@@ -30482,7 +30899,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     visibility: 'public',
-    example: 100,
+    example: 20,
     aliases: ['gen_ai.usage.input_tokens.cache_write', 'gen_ai.usage.cache_creation_input_tokens'],
     changelog: [
       { version: '0.24.0', prs: [582], description: 'Added gen_ai.usage.cache_creation_input_tokens as an alias' },
@@ -30598,7 +31015,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     visibility: 'public',
-    example: 10,
+    example: 100,
     aliases: ['ai.prompt_tokens.used', 'gen_ai.usage.prompt_tokens'],
     changelog: [
       {
@@ -30686,7 +31103,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     visibility: 'public',
-    example: 10,
+    example: 130,
     aliases: ['ai.completion_tokens.used', 'gen_ai.usage.completion_tokens'],
     changelog: [
       {
@@ -30765,7 +31182,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     visibility: 'public',
-    example: 75,
+    example: 30,
     aliases: ['gen_ai.usage.output_tokens.reasoning'],
     changelog: [{ version: '0.11.0', prs: [418], description: 'Added gen_ai.usage.reasoning.output_tokens attribute' }],
     additionalContext: [
@@ -30774,7 +31191,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     ],
   },
   'gen_ai.usage.total_tokens': {
-    brief: 'The total number of tokens used to process the prompt. (input tokens plus output todkens)',
+    brief: 'The total number of tokens used to process the prompt. (input tokens plus output tokens)',
     type: 'integer',
     keys: ['gen_ai.usage.total_tokens', 'ai.total_tokens.used', 'ai.usage.tokens'],
     applyScrubbing: {
@@ -30782,7 +31199,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     visibility: 'public',
-    example: 20,
+    example: 230,
     aliases: ['ai.total_tokens.used', 'ai.usage.tokens'],
     changelog: [
       { version: '0.21.0', prs: [583], description: 'Added ai.usage.tokens as an alias' },
@@ -31120,6 +31537,107 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
         description: "Added and deprecated attribute to document JS SDK's current behaviour",
       },
     ],
+  },
+  'heroku.dyno.name': {
+    brief: 'Name of the Heroku dyno serving the request or emitting telemetry',
+    type: 'string',
+    keys: ['heroku.dyno.name'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'web.1',
+    examples: ['web.1', 'web-12a34bcd56-7efgh'],
+    changelog: [{ version: '0.31.0', prs: [772], description: 'Added heroku.dyno.name attribute' }],
+    additionalContext: [
+      'A dyno name is distinct from the dyno ID or service.instance.id. Do not manufacture those identifiers from this value.',
+    ],
+  },
+  'heroku.error.code': {
+    brief: 'Heroku error code reported by a router or platform log',
+    type: 'string',
+    keys: ['heroku.error.code'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'H12',
+    examples: ['H12', 'R14', 'L10'],
+    changelog: [{ version: '0.31.0', prs: [772], description: 'Added heroku.error.code attribute' }],
+    additionalContext: ['Preserves the provider-specific code from the router code field or a platform error message.'],
+  },
+  'heroku.error.description': {
+    brief: 'Description of the Heroku error reported by a router or platform log',
+    type: 'string',
+    keys: ['heroku.error.description'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'Request timeout',
+    examples: ['Request timeout', 'Memory quota exceeded'],
+    changelog: [{ version: '0.31.0', prs: [772], description: 'Added heroku.error.description attribute' }],
+    additionalContext: ['A router or platform error description does not imply that an exception was thrown'],
+  },
+  'heroku.logplex.drain_token': {
+    brief: 'Identifier of the Heroku log drain that delivered the log, from the Logplex-Drain-Token header',
+    type: 'string',
+    keys: ['heroku.logplex.drain_token'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'd.73ea7440-270a-435a-a0ea-adf50b4e5f5a',
+    examples: ['d.73ea7440-270a-435a-a0ea-adf50b4e5f5a'],
+    changelog: [{ version: '0.31.0', prs: [772], description: 'Added heroku.logplex.drain_token attribute' }],
+  },
+  'heroku.router.connect': {
+    brief: 'Time in milliseconds the Heroku router spent establishing a connection to the dyno',
+    type: 'double',
+    keys: ['heroku.router.connect'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 0,
+    examples: [0, 0.5, 6],
+    changelog: [{ version: '0.31.0', prs: [772], description: 'Added heroku.router.connect attribute' }],
+  },
+  'heroku.router.request_id': {
+    brief: 'Request identifier reported by the Heroku router',
+    type: 'string',
+    keys: ['heroku.router.request_id'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: '6903a168-b79b-ec27-03c8-b8f64d8d8792',
+    examples: ['6903a168-b79b-ec27-03c8-b8f64d8d8792'],
+    changelog: [{ version: '0.31.0', prs: [772], description: 'Added heroku.router.request_id attribute' }],
+    additionalContext: [
+      'Heroku generates or accepts this identifier and forwards it to the application in the X-Request-ID header.',
+    ],
+  },
+  'heroku.router.service': {
+    brief:
+      'Time in milliseconds spent proxying data between the backend dyno and the client, as reported by the Heroku router',
+    type: 'double',
+    keys: ['heroku.router.service'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 0,
+    examples: [0, 12.5, 30001],
+    changelog: [{ version: '0.31.0', prs: [772], description: 'Added heroku.router.service attribute' }],
+    additionalContext: ['This measures the proxying phase, not necessarily the complete HTTP request duration.'],
   },
   'http.client_ip': {
     brief:
@@ -33074,7 +33592,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 1,
     deprecation: {
-      reason: 'A count can be calculcated from the value of the gen_ai.tool.call.result attribute.',
+      reason: 'A count can be calculated from the value of the gen_ai.tool.call.result attribute.',
     },
     changelog: [
       {
@@ -34492,7 +35010,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   'navigation.origin': {
     brief:
-      'The origin of the navigation (usually client side router navigations). Should preferrably parameterized template (like url.template) or a URL path otherwise.',
+      'The origin of the navigation (usually client side router navigations). Should preferably be a parameterized template (like url.template) or a URL path otherwise.',
     type: 'string',
     keys: ['router.navigation.origin', 'navigation.origin', 'sentry.sveltekit.navigation.from'],
     applyScrubbing: {
@@ -35321,6 +35839,31 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'resource not found',
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
+  'page.server_rendering.age': {
+    brief:
+      'Set on a pageload span. The time in seconds from the start of the server render of the reused part of the page to the start of the span.',
+    type: 'integer',
+    keys: ['page.server_rendering.age'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 0,
+    examples: [0, 2520, 259200],
+    changelog: [{ version: 'next', prs: [799], description: 'Added page.server_rendering.age attribute' }],
+    additionalContext: [
+      'Set only by an SDK that controls the server render, when the page reuses a server render and the SDK knows when that render started. With `page.server_rendering.type: partially_static`, the value is for the static part.',
+      'If the span has a `cache_origin` link, the linked span is that render. The SDK can also set the value without a link, for example for a page from the build.',
+      'Approximate, because the render time comes from the server clock and the span start from the browser clock. Rounded down to whole seconds and clamped to 0, as `cache.item_age`. A value near 0 does not prove that the server rendered the page for this request.',
+      'The age of the render, not of its data. The render can read older cached data.',
+      'Not the HTTP `Age` response header. HTTP caches reset that header when they validate the response.',
+    ],
+    searchAlias: {
+      name: 'page.server_rendering.age',
+      type: 'second',
+    },
+  },
   'page.server_rendering.type': {
     brief:
       'Set on a pageload span. Describes how the server rendered the content of the page: to reuse it for other requests, only for this request, or a mix of both.',
@@ -35333,12 +35876,15 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'static',
     examples: ['static', 'partially_static', 'dynamic'],
-    changelog: [{ version: 'next', prs: [740], description: 'Added page.server_rendering.type attribute' }],
+    changelog: [
+      { version: 'next', prs: [789], description: 'Added the cache_origin link to the reused part' },
+      { version: '0.31.0', prs: [740], description: 'Added page.server_rendering.type attribute' },
+    ],
     additionalContext: [
       'Set only by an SDK that controls the server render, and only when the SDK knows the value.',
       'More values can be added later.',
       'Not set when the browser renders the content of the page (client-side rendering), or when the SDK does not know the value.',
-      'With `static` and `partially_static`, the server spans that rendered the reused part are not in the trace of the pageload span. If Sentry recorded them, they are in a different trace.',
+      'With `static` and `partially_static`, the server spans that rendered the reused part are not in the trace of the pageload span. If Sentry recorded them, they are in a different trace. The pageload span can link to them with a `cache_origin` link.',
       "Describes how the server rendered the page, not how the page was delivered. A CDN or the browser cache can reuse a response with any value. For the browser's own [prerendering](https://developer.mozilla.org/en-US/docs/Web/API/Document/prerendering), see `browser.navigation.type`.",
     ],
   },
@@ -35481,6 +36027,34 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'Eclipse OpenJ9 VM openj9-0.21.0',
     aliases: ['runtime.raw_description'],
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
+  },
+  'process.runtime.elixir.memory.type': {
+    brief:
+      'The kind of BEAM memory a measurement covers: processes, atom, binary, code, ets, or other for the rest of the VM total.',
+    type: 'string',
+    keys: ['process.runtime.elixir.memory.type'],
+    applyScrubbing: {
+      key: 'never',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'processes',
+    examples: ['processes', 'binary', 'other'],
+    changelog: [{ version: 'next', description: 'Added process.runtime.elixir.memory.type attribute' }],
+  },
+  'process.runtime.elixir.run_queue.type': {
+    brief:
+      'The kind of BEAM run queue a measurement covers: cpu for the normal and dirty CPU scheduler run queues, io for the dirty IO run queue.',
+    type: 'string',
+    keys: ['process.runtime.elixir.run_queue.type'],
+    applyScrubbing: {
+      key: 'never',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'cpu',
+    examples: ['cpu', 'io'],
+    changelog: [{ version: 'next', description: 'Added process.runtime.elixir.run_queue.type attribute' }],
   },
   'process.runtime.engine.name': {
     brief: 'The name of the runtime engine.',
@@ -36753,6 +37327,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'previous_trace',
     examples: ['previous_trace', 'cache_origin', 'message_origin', 'server_request'],
     changelog: [
+      { version: 'next', prs: [789], description: 'Added pageload examples to cache_origin and server_request' },
       {
         version: '0.28.0',
         prs: [724, 738, 739],
@@ -36765,6 +37340,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'This attribute is exclusively set on span links.',
       'Sentry instrumentation setting span links, sets it to describe the relationship between the span and the linked span.',
       'Add each new link type to `enum_values`, with a brief that says what the linked span is.',
+      'A span can have links of different types. For example, a pageload span can have a `cache_origin` link and a `server_request` link.',
     ],
     searchAlias: {
       name: 'link.type',
@@ -37604,7 +38180,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       status: 'backfill',
     },
     aliases: ['user.geo.subregion'],
-    changelog: [{ version: 'next', prs: [753], description: 'Added sentry.user.geo.subregion attribute' }],
+    changelog: [{ version: '0.31.0', prs: [753], description: 'Added sentry.user.geo.subregion attribute' }],
     searchAlias: {
       name: 'user.geo.subregion',
     },
@@ -38076,6 +38652,38 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: ['app.vitals.ttid.value'],
     changelog: [
       { version: '0.5.0', prs: [313], description: 'Added and deprecated in favor of app.vitals.ttid.value' },
+    ],
+  },
+  'tls.protocol.name': {
+    brief: 'Normalized lowercase protocol name parsed from the negotiated SSL/TLS protocol version',
+    type: 'string',
+    keys: ['tls.protocol.name'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 'tls',
+    examples: ['tls', 'ssl'],
+    changelog: [{ version: '0.31.0', prs: [772], description: 'Added tls.protocol.name attribute' }],
+    additionalContext: [
+      'Extract the protocol name from the negotiated SSL/TLS version string and normalize it to lowercase, without the version. For example, TLSv1.3 becomes tls and SSLv3 becomes ssl.',
+    ],
+  },
+  'tls.protocol.version': {
+    brief: 'Numeric part of the version parsed from the negotiated SSL/TLS protocol version',
+    type: 'string',
+    keys: ['tls.protocol.version'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: '1.2',
+    examples: ['1.2', '1.3', '3'],
+    changelog: [{ version: '0.31.0', prs: [772], description: 'Added tls.protocol.version attribute' }],
+    additionalContext: [
+      'Extract only the numeric version from the negotiated SSL/TLS version string. For example, TLSv1.3 becomes 1.3 and SSLv3 becomes 3. Do not include the protocol name or the v prefix.',
     ],
   },
   transaction: {
@@ -38991,7 +39599,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: '155',
     examples: ['155', '21'],
     aliases: ['sentry.user.geo.subregion'],
-    changelog: [{ version: 'next', prs: [753], description: 'Added user.geo.subregion attribute' }],
+    changelog: [{ version: '0.31.0', prs: [753], description: 'Added user.geo.subregion attribute' }],
   },
   'user.hash': {
     brief: 'Unique user hash to correlate information for a user in anonymized form.',
@@ -39070,7 +39678,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     hasDynamicSuffix: true,
     example: "vercel.ai.settings.context.tenantId='acme'",
     examples: ["vercel.ai.settings.context.tenantId='acme'"],
-    changelog: [{ version: 'next', description: 'Added vercel.ai.settings.context.<key> attribute' }],
+    changelog: [{ version: '0.31.0', prs: [756], description: 'Added vercel.ai.settings.context.<key> attribute' }],
     additionalContext: [
       'Set on `gen_ai` spans for `invoke_agent`, `generate_content`, `execute_tool`, `embeddings`, `rerank` and `decide` operations. Spans for model calls and tool calls inside an operation copy the attributes of that operation.',
       'SDKs MUST only record the properties that the app included through `telemetry.includeRuntimeContext`. Some Vercel AI SDK versions expose the full runtime context to instrumentation. If an SDK cannot confirm that the Vercel AI SDK filtered the runtime context, it MUST NOT record it.',
@@ -39115,7 +39723,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     hasDynamicSuffix: true,
     example: "vercel.ai.tool_call.context.units='metric'",
     examples: ["vercel.ai.tool_call.context.units='metric'"],
-    changelog: [{ version: 'next', description: 'Added vercel.ai.tool_call.context.<key> attribute' }],
+    changelog: [{ version: '0.31.0', prs: [756], description: 'Added vercel.ai.tool_call.context.<key> attribute' }],
     additionalContext: [
       'Set on `gen_ai` spans for `execute_tool` operations.',
       'SDKs MUST only record the properties that the app included for the tool through `telemetry.includeToolsContext`. Some Vercel AI SDK versions expose the full tool context to instrumentation. If an SDK cannot confirm that the Vercel AI SDK filtered the tool context, it MUST NOT record it.',
@@ -40035,6 +40643,13 @@ export type Attributes = {
   [HAPI_PLUGIN_NAME]?: HAPI_PLUGIN_NAME_TYPE;
   [HAPI_TYPE]?: HAPI_TYPE_TYPE;
   [HARDWARECONCURRENCY]?: HARDWARECONCURRENCY_TYPE;
+  [HEROKU_DYNO_NAME]?: HEROKU_DYNO_NAME_TYPE;
+  [HEROKU_ERROR_CODE]?: HEROKU_ERROR_CODE_TYPE;
+  [HEROKU_ERROR_DESCRIPTION]?: HEROKU_ERROR_DESCRIPTION_TYPE;
+  [HEROKU_LOGPLEX_DRAIN_TOKEN]?: HEROKU_LOGPLEX_DRAIN_TOKEN_TYPE;
+  [HEROKU_ROUTER_CONNECT]?: HEROKU_ROUTER_CONNECT_TYPE;
+  [HEROKU_ROUTER_REQUEST_ID]?: HEROKU_ROUTER_REQUEST_ID_TYPE;
+  [HEROKU_ROUTER_SERVICE]?: HEROKU_ROUTER_SERVICE_TYPE;
   [HTTP_CLIENT_IP]?: HTTP_CLIENT_IP_TYPE;
   [HTTP_DECODED_RESPONSE_CONTENT_LENGTH]?: HTTP_DECODED_RESPONSE_CONTENT_LENGTH_TYPE;
   [HTTP_FLAVOR]?: HTTP_FLAVOR_TYPE;
@@ -40271,6 +40886,7 @@ export type Attributes = {
   [OTEL_SCOPE_VERSION]?: OTEL_SCOPE_VERSION_TYPE;
   [OTEL_STATUS_CODE]?: OTEL_STATUS_CODE_TYPE;
   [OTEL_STATUS_DESCRIPTION]?: OTEL_STATUS_DESCRIPTION_TYPE;
+  [PAGE_SERVER_RENDERING_AGE]?: PAGE_SERVER_RENDERING_AGE_TYPE;
   [PAGE_SERVER_RENDERING_TYPE]?: PAGE_SERVER_RENDERING_TYPE_TYPE;
   [PARAMS_KEY]?: PARAMS_KEY_TYPE;
   [PERFORMANCE_ACTIVATIONSTART]?: PERFORMANCE_ACTIVATIONSTART_TYPE;
@@ -40281,6 +40897,8 @@ export type Attributes = {
   [PROCESS_EXECUTABLE_NAME]?: PROCESS_EXECUTABLE_NAME_TYPE;
   [PROCESS_PID]?: PROCESS_PID_TYPE;
   [PROCESS_RUNTIME_DESCRIPTION]?: PROCESS_RUNTIME_DESCRIPTION_TYPE;
+  [PROCESS_RUNTIME_ELIXIR_MEMORY_TYPE]?: PROCESS_RUNTIME_ELIXIR_MEMORY_TYPE_TYPE;
+  [PROCESS_RUNTIME_ELIXIR_RUN_QUEUE_TYPE]?: PROCESS_RUNTIME_ELIXIR_RUN_QUEUE_TYPE_TYPE;
   [PROCESS_RUNTIME_ENGINE_NAME]?: PROCESS_RUNTIME_ENGINE_NAME_TYPE;
   [PROCESS_RUNTIME_ENGINE_VERSION]?: PROCESS_RUNTIME_ENGINE_VERSION_TYPE;
   [PROCESS_RUNTIME_NAME]?: PROCESS_RUNTIME_NAME_TYPE;
@@ -40438,6 +41056,8 @@ export type Attributes = {
   [TIMBER_TAG]?: TIMBER_TAG_TYPE;
   [TIME_TO_FULL_DISPLAY]?: TIME_TO_FULL_DISPLAY_TYPE;
   [TIME_TO_INITIAL_DISPLAY]?: TIME_TO_INITIAL_DISPLAY_TYPE;
+  [TLS_PROTOCOL_NAME]?: TLS_PROTOCOL_NAME_TYPE;
+  [TLS_PROTOCOL_VERSION]?: TLS_PROTOCOL_VERSION_TYPE;
   [TRANSACTION]?: TRANSACTION_TYPE;
   [TRPC_PROCEDURE_PATH]?: TRPC_PROCEDURE_PATH_TYPE;
   [TRPC_PROCEDURE_TYPE]?: TRPC_PROCEDURE_TYPE_TYPE;

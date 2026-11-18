@@ -10,7 +10,7 @@
   "deprecation": {
     "_status": null,
     "replacement": "db.query.parameter.<key>",
-    "reason": "Instead of adding every binding in the db.sql.bindings attribute, add them as individual entires with db.query.parameter.<key>."
+    "reason": "Instead of adding every binding in the db.sql.bindings attribute, add them as individual entries with db.query.parameter.<key>."
   },
   "visibility": "public",
   "changelog": [

@@ -101,7 +101,7 @@
   "alias": ["sentry.user.geo.subregion"],
   "changelog": [
     {
-      "version": "next",
+      "version": "0.31.0",
       "prs": [753],
       "description": "Added user.geo.subregion attribute"
     }

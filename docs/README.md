@@ -52,7 +52,9 @@ The site is automatically deployed to GitHub Pages via the `.github/workflows/do
 2. Pagefind generates the search index
 3. The `dist/` folder is deployed to GitHub Pages
 
-The site is available at: https://getsentry.github.io/sentry-conventions/
+The site is available at https://conventions.sentry.dev/ (custom domain configured in the repository's
+GitHub Pages settings). The previous URL, https://getsentry.github.io/sentry-conventions/, redirects to
+the same path on the custom domain, so existing links keep working.
 
 ### PR Previews
 
@@ -64,8 +66,8 @@ The project uses the repository root (not `docs/`) so the build can read `model/
 workspace lockfile. `vercel.json` sets the install command, docs build command, and `docs/dist`
 output directory. Use Node.js 22.x in the Vercel project settings.
 
-Vercel builds serve at `/`; GitHub Pages builds keep `/sentry-conventions/`. For example, the
-Gen AI attributes page is at `/attributes/gen_ai/` on a preview. Pagefind search is included.
+Both Vercel and GitHub Pages builds serve at `/`. For example, the Gen AI attributes page is at
+`/attributes/gen_ai/` on a preview and in production. Pagefind search is included.
 Automatic Vercel deployments of `main` are disabled; GitHub Pages remains the production host.
 Branches need this configuration (rebase older PRs onto `main` after it merges).
 
@@ -88,8 +90,8 @@ provides from repository secrets. They are deleted from `dist/` after upload so 
 
 Create a new `.astro` file in `src/pages/`. The file path determines the URL:
 
-- `src/pages/foo.astro` → `/sentry-conventions/foo/`
-- `src/pages/bar/index.astro` → `/sentry-conventions/bar/`
+- `src/pages/foo.astro` → `/foo/`
+- `src/pages/bar/index.astro` → `/bar/`
 
 ### Adding interactive components
 
