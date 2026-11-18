@@ -1,0 +1,20 @@
+{
+  "key": "heroku.source",
+  "brief": "Logplex source of a Heroku log line: app for application output, heroku for platform and router messages",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "never"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "examples": ["app", "heroku"],
+  "additional_context": [
+    "Taken from the syslog APP-NAME header that Logplex sets on every drained line, such as app[web.1] or heroku[router]."
+  ],
+  "changelog": [
+    {
+      "version": "next",
+      "description": "Added heroku.source attribute"
+    }
+  ]
+}

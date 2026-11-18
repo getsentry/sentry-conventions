@@ -2634,6 +2634,11 @@ export const SEARCH_HEROKU__ROUTER__REQUEST_ID = 'heroku.router.request_id';
 export const SEARCH_HEROKU__ROUTER__SERVICE = 'heroku.router.service';
 
 /**
+ * Search name for {@link attributes.HEROKU_SOURCE}. `heroku.source`
+ */
+export const SEARCH_HEROKU__SOURCE = 'heroku.source';
+
+/**
  * Search name for {@link attributes.HTTP_CLIENT_IP}. `http.client_ip`
  *
  * @deprecated Use {@link SEARCH_CLIENT__ADDRESS} (`client.address`) instead
@@ -6054,6 +6059,7 @@ export type AttributeSearchName =
   | typeof SEARCH_HEROKU__ROUTER__CONNECT
   | typeof SEARCH_HEROKU__ROUTER__REQUEST_ID
   | typeof SEARCH_HEROKU__ROUTER__SERVICE
+  | typeof SEARCH_HEROKU__SOURCE
   | typeof SEARCH_HTTP__CLIENT_IP
   | typeof SEARCH_HTTP__DECODED_RESPONSE_CONTENT_LENGTH
   | typeof SEARCH_HTTP__FLAVOR
@@ -9677,6 +9683,12 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     brief:
       'Time in milliseconds spent proxying data between the backend dyno and the client, as reported by the Heroku router',
     deprecationChain: ['heroku.router.service'],
+  },
+  'heroku.source': {
+    canonicalName: 'heroku.source',
+    type: 'string',
+    brief: 'Logplex source of a Heroku log line: app for application output, heroku for platform and router messages',
+    deprecationChain: ['heroku.source'],
   },
   'http.client_ip': {
     canonicalName: 'client.address',
