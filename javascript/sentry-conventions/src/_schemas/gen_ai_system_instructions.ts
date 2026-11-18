@@ -7,17 +7,11 @@
 
 /**
  * Represents the system instructions provided to the model.
- *
- * This interface was referenced by `undefined`'s JSON-Schema
- * via the `definition` "SystemInstructions".
  */
 export type SystemInstructions = TextPart[];
 
 /**
  * Represents text content sent to or received from the model.
- *
- * This interface was referenced by `undefined`'s JSON-Schema
- * via the `definition` "TextPart".
  */
 export interface TextPart {
   /**
