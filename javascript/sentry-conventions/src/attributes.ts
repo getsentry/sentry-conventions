@@ -31681,6 +31681,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     changelog: [{ version: 'next', description: 'Added heroku.source attribute' }],
     additionalContext: [
       'Taken from the syslog APP-NAME header that Logplex sets on every drained line, such as app[web.1] or heroku[router].',
+      'Only set on Cedar, since Fir does not use Logplex.',
     ],
   },
   'http.client_ip': {
