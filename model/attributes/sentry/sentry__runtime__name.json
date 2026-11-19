@@ -1,0 +1,23 @@
+{
+  "key": "sentry.runtime.name",
+  "brief": "The name of the runtime. Equivalent to `name` in the Sentry runtime context.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "example": "node",
+  "alias": ["process.runtime.name", "runtime.name"],
+  "deprecation": {
+    "_status": "backfill",
+    "replacement": "process.runtime.name"
+  },
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [806],
+      "description": "Added sentry.runtime.name attribute, deprecated in favor of process.runtime.name"
+    }
+  ]
+}

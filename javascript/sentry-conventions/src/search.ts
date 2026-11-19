@@ -528,7 +528,7 @@ export const SEARCH_APP__VITALS__TTFD__VALUE = 'app.vitals.ttfd.value';
 export const SEARCH_APP__VITALS__TTID__VALUE = 'app.vitals.ttid.value';
 
 /**
- * Search name for {@link attributes.APP_START_COLD}. `app_start_cold`
+ * Search name for {@link attributes.APP_VITALS_START_COLD_VALUE}. `app_start_cold`
  *
  * @deprecated Use {@link SEARCH_APP__VITALS__START__COLD__VALUE} (`app.vitals.start.cold.value`) instead
  */
@@ -542,7 +542,7 @@ export const SEARCH_APP_START_COLD = 'app_start_cold';
 export const SEARCH_APP_START_TYPE = 'app_start_type';
 
 /**
- * Search name for {@link attributes.APP_START_WARM}. `app_start_warm`
+ * Search name for {@link attributes.APP_VITALS_START_WARM_VALUE}. `app_start_warm`
  *
  * @deprecated Use {@link SEARCH_APP__VITALS__START__WARM__VALUE} (`app.vitals.start.warm.value`) instead
  */
@@ -1926,7 +1926,7 @@ export const SEARCH_FAAS__TRIGGER = 'faas.trigger';
 export const SEARCH_FAAS__VERSION = 'faas.version';
 
 /**
- * Search name for {@link attributes.FCP}. `fcp`
+ * Search name for {@link attributes.BROWSER_WEB_VITAL_FCP_VALUE}. `fcp`
  *
  * @deprecated Use {@link SEARCH_BROWSER__WEB_VITAL__FCP__VALUE} (`browser.web_vital.fcp.value`) instead
  */
@@ -1948,16 +1948,16 @@ export const SEARCH_FILE__SIZE = 'file.size';
 export const SEARCH_FLAG__EVALUATION__KEY = 'flag.evaluation.<key>';
 
 /**
- * Search name for {@link attributes.FP}. `fp`
+ * Search name for {@link attributes.BROWSER_WEB_VITAL_FP_VALUE}. `fp`
  *
  * @deprecated Use {@link SEARCH_BROWSER__WEB_VITAL__FP__VALUE} (`browser.web_vital.fp.value`) instead
  */
 export const SEARCH_FP = 'fp';
 
 /**
- * Search name for {@link attributes.FRAMES_DELAY}. `frames.delay`
+ * Search name for {@link attributes.APP_VITALS_FRAMES_DELAY_VALUE}. `frames.delay`
  *
- * @deprecated Use {@link SEARCH_MOBILE__FRAMES_DELAY} (`mobile.frames_delay`) instead
+ * @deprecated Use {@link SEARCH_APP__VITALS__FRAMES__DELAY__VALUE} (`app.vitals.frames.delay.value`) instead
  */
 export const SEARCH_FRAMES__DELAY = 'frames.delay';
 
@@ -1983,14 +1983,14 @@ export const SEARCH_FRAMES__SLOW = 'frames.slow';
 export const SEARCH_FRAMES__TOTAL = 'frames.total';
 
 /**
- * Search name for {@link attributes.FRAMES_FROZEN_RATE}. `frames_frozen_rate`
+ * Search name for {@link attributes.APP_VITALS_FRAMES_FROZEN_RATE}. `frames_frozen_rate`
  *
  * @deprecated Use {@link SEARCH_APP__VITALS__FRAMES__FROZEN__RATE} (`app.vitals.frames.frozen.rate`) instead
  */
 export const SEARCH_FRAMES_FROZEN_RATE = 'frames_frozen_rate';
 
 /**
- * Search name for {@link attributes.FRAMES_SLOW_RATE}. `frames_slow_rate`
+ * Search name for {@link attributes.APP_VITALS_FRAMES_SLOW_RATE}. `frames_slow_rate`
  *
  * @deprecated Use {@link SEARCH_APP__VITALS__FRAMES__SLOW__RATE} (`app.vitals.frames.slow.rate`) instead
  */
@@ -2818,9 +2818,9 @@ export const SEARCH_HTTP__RESPONSE__BODY__SIZE = 'http.response.body.size';
 export const SEARCH_HTTP__RESPONSE__HEADER__KEY = 'http.response.header.<key>';
 
 /**
- * Search name for {@link attributes.HTTP_RESPONSE_CONTENT_LENGTH}. `http.response.header.content-length`
+ * Search name for {@link attributes.HTTP_RESPONSE_BODY_SIZE}. `http.response.header.content-length`
  *
- * @deprecated Use {@link SEARCH_HTTP__RESPONSE_CONTENT_LENGTH} (`http.response_content_length`) instead
+ * @deprecated Use {@link SEARCH_HTTP__RESPONSE__BODY__SIZE} (`http.response.body.size`) instead
  */
 export const SEARCH_HTTP__RESPONSE__HEADER__CONTENT_LENGTH = 'http.response.header.content-length';
 
@@ -2928,7 +2928,7 @@ export const SEARCH_HTTP__USER_AGENT = 'http.user_agent';
 export const SEARCH_ID = 'id';
 
 /**
- * Search name for {@link attributes.INP}. `inp`
+ * Search name for {@link attributes.BROWSER_WEB_VITAL_INP_VALUE}. `inp`
  *
  * @deprecated Use {@link SEARCH_BROWSER__WEB_VITAL__INP__VALUE} (`browser.web_vital.inp.value`) instead
  */
@@ -3014,7 +3014,7 @@ export const SEARCH_KOA__TYPE = 'koa.type';
 export const SEARCH_LANGCHAIN__CHAIN__NAME = 'langchain.chain.name';
 
 /**
- * Search name for {@link attributes.LCP}. `lcp`
+ * Search name for {@link attributes.BROWSER_WEB_VITAL_LCP_VALUE}. `lcp`
  *
  * @deprecated Use {@link SEARCH_BROWSER__WEB_VITAL__LCP__VALUE} (`browser.web_vital.lcp.value`) instead
  */
@@ -4010,6 +4010,11 @@ export const SEARCH_OTEL__STATUS_CODE = 'otel.status_code';
 export const SEARCH_OTEL__STATUS_DESCRIPTION = 'otel.status_description';
 
 /**
+ * Search name for {@link attributes.PAGE_SERVER_RENDERING_AGE}. `page.server_rendering.age`
+ */
+export const SEARCH_PAGE__SERVER_RENDERING__AGE = 'page.server_rendering.age';
+
+/**
  * Search name for {@link attributes.PAGE_SERVER_RENDERING_TYPE}. `page.server_rendering.type`
  */
 export const SEARCH_PAGE__SERVER_RENDERING__TYPE = 'page.server_rendering.type';
@@ -4684,6 +4689,20 @@ export const SEARCH_SENTRY__MESSAGE__PARAMETER__KEY = 'sentry.message.parameter.
 export const SEARCH_SENTRY__MESSAGE__TEMPLATE = 'sentry.message.template';
 
 /**
+ * Search name for {@link attributes.SENTRY_MESSAGING_DESTINATION_NAME}. `sentry.messaging.destination.name`
+ *
+ * @deprecated Use {@link SEARCH_MESSAGING__DESTINATION__NAME} (`messaging.destination.name`) instead
+ */
+export const SEARCH_SENTRY__MESSAGING__DESTINATION__NAME = 'sentry.messaging.destination.name';
+
+/**
+ * Search name for {@link attributes.SENTRY_MESSAGING_MESSAGE_ID}. `sentry.messaging.message.id`
+ *
+ * @deprecated Use {@link SEARCH_MESSAGING__MESSAGE__ID} (`messaging.message.id`) instead
+ */
+export const SEARCH_SENTRY__MESSAGING__MESSAGE__ID = 'sentry.messaging.message.id';
+
+/**
  * Search name for {@link attributes.SENTRY_METRIC_SOURCE}. `sentry.metric.source`
  */
 export const SEARCH_SENTRY__METRIC__SOURCE = 'sentry.metric.source';
@@ -4805,6 +4824,13 @@ export const SEARCH_SENTRY__REPLAY_IS_BUFFERING = 'sentry.replay_is_buffering';
 export const SEARCH_SENTRY__REPORT_EVENT = 'sentry.report_event';
 
 /**
+ * Search name for {@link attributes.SENTRY_RUNTIME_NAME}. `sentry.runtime.name`
+ *
+ * @deprecated Use {@link SEARCH_PROCESS__RUNTIME__NAME} (`process.runtime.name`) instead
+ */
+export const SEARCH_SENTRY__RUNTIME__NAME = 'sentry.runtime.name';
+
+/**
  * Search name for {@link attributes.SENTRY_SDK_INTEGRATIONS}. `sentry.sdk.integrations`
  */
 export const SEARCH_SENTRY__SDK__INTEGRATIONS = 'sentry.sdk.integrations';
@@ -4911,6 +4937,13 @@ export const SEARCH_SENTRY__SVELTEKIT__NAVIGATION__TO = 'sentry.sveltekit.naviga
 export const SEARCH_SENTRY__SVELTEKIT__NAVIGATION__TYPE = 'sentry.sveltekit.navigation.type';
 
 /**
+ * Search name for {@link attributes.SENTRY_THREAD_NAME}. `sentry.thread.name`
+ *
+ * @deprecated Use {@link SEARCH_THREAD__NAME} (`thread.name`) instead
+ */
+export const SEARCH_SENTRY__THREAD__NAME = 'sentry.thread.name';
+
+/**
  * Search name for {@link attributes.SENTRY_TIMESTAMP_SEQUENCE}. `sentry.timestamp.sequence`
  */
 export const SEARCH_SENTRY__TIMESTAMP__SEQUENCE = 'sentry.timestamp.sequence';
@@ -4942,6 +4975,13 @@ export const SEARCH_SENTRY__TRACE_LIFECYCLE = 'sentry.trace_lifecycle';
  * @deprecated Use {@link SEARCH_TRANSACTION} (`transaction`) instead
  */
 export const SEARCH_SENTRY__TRANSACTION = 'sentry.transaction';
+
+/**
+ * Search name for {@link attributes.SENTRY_USER}. `sentry.user`
+ *
+ * @deprecated Use {@link SEARCH_USER} (`user`) instead
+ */
+export const SEARCH_SENTRY__USER = 'sentry.user';
 
 /**
  * Search name for {@link attributes.SENTRY_USER_IP}. `sentry.user.ip`
@@ -5056,7 +5096,7 @@ export const SEARCH_SPAN__STATUS_CODE = 'span.status_code';
 export const SEARCH_SPAN__SYSTEM = 'span.system';
 
 /**
- * Search name for {@link attributes.STALL_PERCENTAGE}. `stall_percentage`
+ * Search name for {@link attributes.APP_VITALS_STALL_PERCENTAGE}. `stall_percentage`
  *
  * @deprecated Use {@link SEARCH_APP__VITALS__STALL__PERCENTAGE} (`app.vitals.stall.percentage`) instead
  */
@@ -5131,14 +5171,14 @@ export const SEARCH_THREAD__NAME = 'thread.name';
 export const SEARCH_TIMBER__TAG = 'timber.tag';
 
 /**
- * Search name for {@link attributes.TIME_TO_FULL_DISPLAY}. `time_to_full_display`
+ * Search name for {@link attributes.APP_VITALS_TTFD_VALUE}. `time_to_full_display`
  *
  * @deprecated Use {@link SEARCH_APP__VITALS__TTFD__VALUE} (`app.vitals.ttfd.value`) instead
  */
 export const SEARCH_TIME_TO_FULL_DISPLAY = 'time_to_full_display';
 
 /**
- * Search name for {@link attributes.TIME_TO_INITIAL_DISPLAY}. `time_to_initial_display`
+ * Search name for {@link attributes.APP_VITALS_TTID_VALUE}. `time_to_initial_display`
  *
  * @deprecated Use {@link SEARCH_APP__VITALS__TTID__VALUE} (`app.vitals.ttid.value`) instead
  */
@@ -5185,7 +5225,7 @@ export const SEARCH_TRPC__PROCEDURE_PATH = 'trpc.procedure_path';
 export const SEARCH_TRPC__PROCEDURE_TYPE = 'trpc.procedure_type';
 
 /**
- * Search name for {@link attributes.TTFB}. `ttfb`
+ * Search name for {@link attributes.BROWSER_WEB_VITAL_TTFB_VALUE}. `ttfb`
  *
  * @deprecated Use {@link SEARCH_BROWSER__WEB_VITAL__TTFB__VALUE} (`browser.web_vital.ttfb.value`) instead
  */
@@ -5227,7 +5267,7 @@ export const SEARCH_TURBO_MODULE__NAME = 'turbo_module.name';
 export const SEARCH_TURBO_MODULE__TOP_MODULE = 'turbo_module.top_module';
 
 /**
- * Search name for {@link attributes.TURBO_MODULE_TOP_MODULE_DURATION_MS}. `turbo_module.top_module_duration_ms`
+ * Search name for {@link attributes.REACT_NATIVE_MODULE_TOP_DURATION}. `turbo_module.top_module_duration_ms`
  *
  * @deprecated Use {@link SEARCH_REACT_NATIVE__MODULE__TOP__DURATION} (`react_native.module.top.duration`) instead
  */
@@ -5241,7 +5281,7 @@ export const SEARCH_TURBO_MODULE__TOP_MODULE_DURATION_MS = 'turbo_module.top_mod
 export const SEARCH_TURBO_MODULE__TOTAL_CALL_COUNT = 'turbo_module.total_call_count';
 
 /**
- * Search name for {@link attributes.TURBO_MODULE_TOTAL_DURATION_MS}. `turbo_module.total_duration_ms`
+ * Search name for {@link attributes.REACT_NATIVE_MODULE_DURATION_TOTAL}. `turbo_module.total_duration_ms`
  *
  * @deprecated Use {@link SEARCH_REACT_NATIVE__MODULE__DURATION__TOTAL} (`react_native.module.duration.total`) instead
  */
@@ -5269,7 +5309,7 @@ export const SEARCH_TURBO_MODULE__UNIQUE_METHODS = 'turbo_module.unique_methods'
 export const SEARCH_TURBO_MODULES__TOTAL_CALL_COUNT = 'turbo_modules.total_call_count';
 
 /**
- * Search name for {@link attributes.TURBO_MODULES_TOTAL_DURATION_MS}. `turbo_modules.total_duration_ms`
+ * Search name for {@link attributes.REACT_NATIVE_MODULE_DURATION_TOTAL}. `turbo_modules.total_duration_ms`
  *
  * @deprecated Use {@link SEARCH_REACT_NATIVE__MODULE__DURATION__TOTAL} (`react_native.module.duration.total`) instead
  */
@@ -5419,6 +5459,11 @@ export const SEARCH_URL__SCHEME = 'url.scheme';
  * Search name for {@link attributes.URL_TEMPLATE}. `url.template`
  */
 export const SEARCH_URL__TEMPLATE = 'url.template';
+
+/**
+ * Search name for {@link attributes.SENTRY_USER}. `user`
+ */
+export const SEARCH_USER = 'user';
 
 /**
  * Search name for {@link attributes.USER_EMAIL}. `user.email`
@@ -6404,6 +6449,7 @@ export type AttributeSearchName =
   | typeof SEARCH_OTEL__SCOPE__VERSION
   | typeof SEARCH_OTEL__STATUS_CODE
   | typeof SEARCH_OTEL__STATUS_DESCRIPTION
+  | typeof SEARCH_PAGE__SERVER_RENDERING__AGE
   | typeof SEARCH_PAGE__SERVER_RENDERING__TYPE
   | typeof SEARCH_PARAMS__KEY
   | typeof SEARCH_PERFORMANCE__ACTIVATIONSTART
@@ -6520,6 +6566,8 @@ export type AttributeSearchName =
   | typeof SEARCH_SENTRY__MAIN_THREAD
   | typeof SEARCH_SENTRY__MESSAGE__PARAMETER__KEY
   | typeof SEARCH_SENTRY__MESSAGE__TEMPLATE
+  | typeof SEARCH_SENTRY__MESSAGING__DESTINATION__NAME
+  | typeof SEARCH_SENTRY__MESSAGING__MESSAGE__ID
   | typeof SEARCH_SENTRY__METRIC__SOURCE
   | typeof SEARCH_SENTRY__MOBILE
   | typeof SEARCH_SENTRY__MODULE__KEY
@@ -6541,6 +6589,7 @@ export type AttributeSearchName =
   | typeof SEARCH_SENTRY__REPLAY_ID
   | typeof SEARCH_SENTRY__REPLAY_IS_BUFFERING
   | typeof SEARCH_SENTRY__REPORT_EVENT
+  | typeof SEARCH_SENTRY__RUNTIME__NAME
   | typeof SEARCH_SENTRY__SDK__INTEGRATIONS
   | typeof SEARCH_SENTRY__SDK__NAME
   | typeof SEARCH_SENTRY__SDK__VERSION
@@ -6557,11 +6606,13 @@ export type AttributeSearchName =
   | typeof SEARCH_SENTRY__SVELTEKIT__NAVIGATION__FROM
   | typeof SEARCH_SENTRY__SVELTEKIT__NAVIGATION__TO
   | typeof SEARCH_SENTRY__SVELTEKIT__NAVIGATION__TYPE
+  | typeof SEARCH_SENTRY__THREAD__NAME
   | typeof SEARCH_SENTRY__TIMESTAMP__SEQUENCE
   | typeof SEARCH_SENTRY__TRACE__PARENT_SPAN_ID
   | typeof SEARCH_SENTRY__TRACE__STATUS
   | typeof SEARCH_SENTRY__TRACE_LIFECYCLE
   | typeof SEARCH_SENTRY__TRANSACTION
+  | typeof SEARCH_SENTRY__USER
   | typeof SEARCH_SENTRY__USER__IP
   | typeof SEARCH_SENTRY__USER__USERNAME
   | typeof SEARCH_SERVER__ADDRESS
@@ -6645,6 +6696,7 @@ export type AttributeSearchName =
   | typeof SEARCH_URL__SAME_ORIGIN
   | typeof SEARCH_URL__SCHEME
   | typeof SEARCH_URL__TEMPLATE
+  | typeof SEARCH_USER
   | typeof SEARCH_USER__EMAIL
   | typeof SEARCH_USER__FULL_NAME
   | typeof SEARCH_USER__GEO__CITY
@@ -7182,7 +7234,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
   },
   'app.vitals.frames.delay.value': {
     canonicalName: 'app.vitals.frames.delay.value',
-    type: 'integer',
+    type: 'second',
     brief:
       'The sum of all delayed frame durations in seconds during the lifetime of the span. For more information see [frames delay](https://develop.sentry.dev/sdk/performance/frames-delay/).',
     deprecationChain: ['app.vitals.frames.delay.value', 'frames.delay', 'mobile.frames_delay'],
@@ -7200,7 +7252,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
   },
   'app.vitals.frames.frozen.rate': {
     canonicalName: 'app.vitals.frames.frozen.rate',
-    type: 'double',
+    type: 'percentage',
     brief:
       'The fraction of rendered frames that were frozen, calculated as `app.vitals.frames.frozen.count` divided by `app.vitals.frames.total.count`. This is computed by Relay.',
     deprecationChain: ['app.vitals.frames.frozen.rate', 'frames_frozen_rate'],
@@ -7213,7 +7265,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
   },
   'app.vitals.frames.slow.rate': {
     canonicalName: 'app.vitals.frames.slow.rate',
-    type: 'double',
+    type: 'percentage',
     brief:
       'The fraction of rendered frames that were slow, calculated as `app.vitals.frames.slow.count` divided by `app.vitals.frames.total.count`. This is computed by Relay.',
     deprecationChain: ['app.vitals.frames.slow.rate', 'frames_slow_rate'],
@@ -7233,14 +7285,14 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
   },
   'app.vitals.stall.percentage': {
     canonicalName: 'app.vitals.stall.percentage',
-    type: 'double',
+    type: 'percentage',
     brief:
       'The fraction of transaction duration during which the app was stalled, between 0.0 and 1.0. For example, 0.8 represents 80%. Only applies to React Native. This is computed by Relay.',
     deprecationChain: ['app.vitals.stall.percentage', 'stall_percentage'],
   },
   'app.vitals.start.cold.value': {
     canonicalName: 'app.vitals.start.cold.value',
-    type: 'double',
+    type: 'millisecond',
     brief: 'The duration of a cold app start in milliseconds',
     deprecationChain: ['app.vitals.start.cold.value', 'app_start_cold'],
   },
@@ -7271,19 +7323,19 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
   },
   'app.vitals.start.warm.value': {
     canonicalName: 'app.vitals.start.warm.value',
-    type: 'double',
+    type: 'millisecond',
     brief: 'The duration of a warm app start in milliseconds',
     deprecationChain: ['app.vitals.start.warm.value', 'app_start_warm'],
   },
   'app.vitals.ttfd.value': {
     canonicalName: 'app.vitals.ttfd.value',
-    type: 'double',
+    type: 'millisecond',
     brief: 'The duration of time to full display in milliseconds',
     deprecationChain: ['app.vitals.ttfd.value', 'time_to_full_display'],
   },
   'app.vitals.ttid.value': {
     canonicalName: 'app.vitals.ttid.value',
-    type: 'double',
+    type: 'millisecond',
     brief: 'The duration of time to initial display in milliseconds',
     deprecationChain: ['app.vitals.ttid.value', 'time_to_initial_display'],
   },
@@ -7872,13 +7924,13 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
   },
   'browser.web_vital.fcp.value': {
     canonicalName: 'browser.web_vital.fcp.value',
-    type: 'double',
+    type: 'millisecond',
     brief: 'The time it takes for the browser to render the first piece of meaningful content on the screen',
     deprecationChain: ['browser.web_vital.fcp.value', 'fcp'],
   },
   'browser.web_vital.fp.value': {
     canonicalName: 'browser.web_vital.fp.value',
-    type: 'double',
+    type: 'millisecond',
     brief: 'The time in milliseconds it takes for the browser to render the first pixel on the screen',
     deprecationChain: ['browser.web_vital.fp.value', 'fp'],
   },
@@ -7917,7 +7969,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
   },
   'browser.web_vital.inp.value': {
     canonicalName: 'browser.web_vital.inp.value',
-    type: 'double',
+    type: 'millisecond',
     brief: 'The value of the recorded Interaction to Next Paint (INP) web vital',
     deprecationChain: ['browser.web_vital.inp.value', 'inp'],
   },
@@ -7985,7 +8037,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
   },
   'browser.web_vital.lcp.value': {
     canonicalName: 'browser.web_vital.lcp.value',
-    type: 'double',
+    type: 'millisecond',
     brief: 'The value of the recorded Largest Contentful Paint (LCP) web vital',
     deprecationChain: ['browser.web_vital.lcp.value', 'lcp'],
   },
@@ -7998,7 +8050,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
   },
   'browser.web_vital.ttfb.value': {
     canonicalName: 'browser.web_vital.ttfb.value',
-    type: 'double',
+    type: 'millisecond',
     brief: 'The value of the recorded Time To First Byte (TTFB) web vital in Milliseconds',
     deprecationChain: ['browser.web_vital.ttfb.value', 'ttfb'],
   },
@@ -8896,7 +8948,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
   },
   'faas.max_memory': {
     canonicalName: 'faas.max_memory',
-    type: 'integer',
+    type: 'byte',
     brief: 'The amount of memory available to the serverless function, in bytes.',
     deprecationChain: ['faas.max_memory'],
   },
@@ -9068,37 +9120,37 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
   },
   'gen_ai.cost.cache_creation.input_tokens': {
     canonicalName: 'gen_ai.cost.cache_creation.input_tokens',
-    type: 'double',
+    type: 'currency',
     brief: 'The cost of input tokens written to cache in USD.',
     deprecationChain: ['gen_ai.cost.cache_creation.input_tokens'],
   },
   'gen_ai.cost.cache_read.input_tokens': {
     canonicalName: 'gen_ai.cost.cache_read.input_tokens',
-    type: 'double',
+    type: 'currency',
     brief: 'The cost of cached input tokens in USD.',
     deprecationChain: ['gen_ai.cost.cache_read.input_tokens'],
   },
   'gen_ai.cost.input_tokens': {
     canonicalName: 'gen_ai.cost.input_tokens',
-    type: 'double',
+    type: 'currency',
     brief: 'The total cost of all input tokens in USD (includes cached and cache creation tokens).',
     deprecationChain: ['gen_ai.cost.input_tokens'],
   },
   'gen_ai.cost.output_tokens': {
     canonicalName: 'gen_ai.cost.output_tokens',
-    type: 'double',
+    type: 'currency',
     brief: 'The total cost of all output tokens in USD (includes reasoning tokens).',
     deprecationChain: ['gen_ai.cost.output_tokens'],
   },
   'gen_ai.cost.reasoning.output_tokens': {
     canonicalName: 'gen_ai.cost.reasoning.output_tokens',
-    type: 'double',
+    type: 'currency',
     brief: 'The cost of reasoning output tokens in USD.',
     deprecationChain: ['gen_ai.cost.reasoning.output_tokens'],
   },
   'gen_ai.cost.total_tokens': {
     canonicalName: 'gen_ai.cost.total_tokens',
-    type: 'double',
+    type: 'currency',
     brief: 'The total cost for the tokens used.',
     deprecationChain: ['gen_ai.cost.total_tokens', 'ai.total_cost'],
   },
@@ -9182,7 +9234,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'gen_ai.output.messages',
     type: 'string',
     brief:
-      'The model\'s response messages. It has to be a stringified version of an array of message objects in the format `{role: "assistant", parts: [...]}`, which can include text responses and tool calls. Each part is an object with a `type`, such as `{type: "text", content: "..."}`. Other part types include `"reasoning"` and `"tool_call"`. Put the model\'s thinking in a `{type: "reasoning", content: "..."}` part, not a `"text"` part. Sentry shows reasoning separately from user-visible messages. The first example shows this shape. Some operations use a different shape. See the additional context.',
+      'Messages returned by the model where each message represents a specific model response (choice, candidate). It has to be a stringified version of an array of message objects in the format `{role: "assistant", parts: [...]}`, which can include text responses and tool calls. Each part is an object with a `type`, such as `{type: "text", content: "..."}`. Other part types include `"reasoning"` and `"tool_call"`. Put the model\'s thinking in a `{type: "reasoning", content: "..."}` part, not a `"text"` part. Sentry shows reasoning separately from user-visible messages. The first example shows this shape. Some operations use a different shape. See the additional context.',
     deprecationChain: [
       'gen_ai.output.messages',
       'ai.response.text',
@@ -9380,13 +9432,15 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
   'gen_ai.response.time_to_first_chunk': {
     canonicalName: 'gen_ai.response.time_to_first_chunk',
     type: 'double',
-    brief: 'Time in seconds when the first response content chunk arrived in streaming responses.',
+    brief:
+      'Time from the start of a logical inference operation to the first chunk in its streaming response, in seconds.',
     deprecationChain: ['gen_ai.response.time_to_first_chunk', 'gen_ai.response.time_to_first_token'],
   },
   'gen_ai.response.time_to_first_token': {
     canonicalName: 'gen_ai.response.time_to_first_chunk',
     type: 'double',
-    brief: 'Time in seconds when the first response content chunk arrived in streaming responses.',
+    brief:
+      'Time from the start of a logical inference operation to the first chunk in its streaming response, in seconds.',
     deprecationChain: ['gen_ai.response.time_to_first_chunk', 'gen_ai.response.time_to_first_token'],
   },
   'gen_ai.response.tokens_per_second': {
@@ -9430,7 +9484,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
   'gen_ai.tool.call.arguments': {
     canonicalName: 'gen_ai.tool.call.arguments',
     type: 'string',
-    brief: 'The arguments of the tool call. It has to be a stringified version of the arguments to the tool.',
+    brief: 'The arguments of the tool call.',
     deprecationChain: ['gen_ai.tool.call.arguments', 'ai.toolCall.args', 'gen_ai.tool.input'],
   },
   'gen_ai.tool.call.result': {
@@ -10013,7 +10067,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
   },
   'http.response.body.decoded_size': {
     canonicalName: 'http.response.body.decoded_size',
-    type: 'integer',
+    type: 'byte',
     brief: 'The decoded body size of the response (in bytes).',
     deprecationChain: [
       'http.response.body.decoded_size',
@@ -10023,7 +10077,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
   },
   'http.response.body.size': {
     canonicalName: 'http.response.body.size',
-    type: 'integer',
+    type: 'byte',
     brief: 'The encoded body size of the response (in bytes).',
     deprecationChain: [
       'http.response.body.size',
@@ -10050,7 +10104,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
   },
   'http.response.size': {
     canonicalName: 'http.response.size',
-    type: 'integer',
+    type: 'byte',
     brief: 'The transfer size of the response (in bytes).',
     deprecationChain: ['http.response.size', 'http.response_transfer_size'],
   },
@@ -10867,7 +10921,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'messaging.destination.name',
     type: 'string',
     brief: 'The message destination name.',
-    deprecationChain: ['messaging.destination.name', 'messaging.destination'],
+    deprecationChain: ['messaging.destination.name', 'messaging.destination', 'sentry.messaging.destination.name'],
   },
   'messaging.destination.connection': {
     canonicalName: 'messaging.destination.connection',
@@ -10879,7 +10933,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'messaging.destination.name',
     type: 'string',
     brief: 'The message destination name.',
-    deprecationChain: ['messaging.destination.name', 'messaging.destination'],
+    deprecationChain: ['messaging.destination.name', 'messaging.destination', 'sentry.messaging.destination.name'],
   },
   'messaging.destination.partition.id': {
     canonicalName: 'messaging.destination.partition.id',
@@ -10937,7 +10991,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'messaging.message.id',
     type: 'string',
     brief: 'A value used by the messaging system as an identifier for the message, represented as a string.',
-    deprecationChain: ['messaging.message.id', 'messaging.message_id'],
+    deprecationChain: ['messaging.message.id', 'messaging.message_id', 'sentry.messaging.message.id'],
   },
   'messaging.message.receive.latency': {
     canonicalName: 'messaging.message.receive.latency',
@@ -10955,7 +11009,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'messaging.message.id',
     type: 'string',
     brief: 'A value used by the messaging system as an identifier for the message, represented as a string.',
-    deprecationChain: ['messaging.message.id', 'messaging.message_id'],
+    deprecationChain: ['messaging.message.id', 'messaging.message_id', 'sentry.messaging.message.id'],
   },
   'messaging.operation': {
     canonicalName: 'messaging.operation.name',
@@ -11390,6 +11444,13 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     brief: 'Description of the Status if it has a value, otherwise not set.',
     deprecationChain: ['otel.status_description'],
   },
+  'page.server_rendering.age': {
+    canonicalName: 'page.server_rendering.age',
+    type: 'second',
+    brief:
+      'Set on a pageload span. The time in seconds from the start of the server render of the reused part of the page to the start of the span.',
+    deprecationChain: ['page.server_rendering.age'],
+  },
   'page.server_rendering.type': {
     canonicalName: 'page.server_rendering.type',
     type: 'string',
@@ -11489,7 +11550,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'process.runtime.name',
     type: 'string',
     brief: 'The name of the runtime. Equivalent to `name` in the Sentry runtime context.',
-    deprecationChain: ['process.runtime.name', 'runtime.name'],
+    deprecationChain: ['process.runtime.name', 'runtime.name', 'sentry.runtime.name'],
   },
   'process.runtime.version': {
     canonicalName: 'process.runtime.version',
@@ -11566,14 +11627,14 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
   },
   'react_native.module.duration.max': {
     canonicalName: 'react_native.module.duration.max',
-    type: 'double',
+    type: 'millisecond',
     brief:
       'The duration of the slowest single native module call observed during the lifetime of the span, in milliseconds.',
     deprecationChain: ['react_native.module.duration.max'],
   },
   'react_native.module.duration.total': {
     canonicalName: 'react_native.module.duration.total',
-    type: 'double',
+    type: 'millisecond',
     brief:
       'The combined wall-clock duration of all native module calls observed during the lifetime of the span, in milliseconds. Calls overlap, so this can exceed the span duration.',
     deprecationChain: [
@@ -11615,7 +11676,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
   },
   'react_native.module.top.duration': {
     canonicalName: 'react_native.module.top.duration',
-    type: 'double',
+    type: 'millisecond',
     brief: 'The total duration attributed to `react_native.module.top.name`, in milliseconds.',
     deprecationChain: ['react_native.module.top.duration', 'turbo_module.top_module_duration_ms'],
   },
@@ -11770,7 +11831,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'process.runtime.name',
     type: 'string',
     brief: 'The name of the runtime. For example node, CPython, or rustc.',
-    deprecationChain: ['process.runtime.name', 'runtime.name'],
+    deprecationChain: ['process.runtime.name', 'runtime.name', 'sentry.runtime.name'],
   },
   'runtime.raw_description': {
     canonicalName: 'process.runtime.description',
@@ -12108,6 +12169,18 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     brief: 'The parameterized template string.',
     deprecationChain: ['sentry.message.template'],
   },
+  'sentry.messaging.destination.name': {
+    canonicalName: 'messaging.destination.name',
+    type: 'string',
+    brief: 'The message destination name.',
+    deprecationChain: ['messaging.destination.name', 'messaging.destination', 'sentry.messaging.destination.name'],
+  },
+  'sentry.messaging.message.id': {
+    canonicalName: 'messaging.message.id',
+    type: 'string',
+    brief: 'A value used by the messaging system as an identifier for the message, represented as a string.',
+    deprecationChain: ['messaging.message.id', 'messaging.message_id', 'sentry.messaging.message.id'],
+  },
   'sentry.metric.source': {
     canonicalName: 'sentry.metric.source',
     type: 'string',
@@ -12200,6 +12273,12 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     deprecated: true,
     deprecationChain: ['sentry.report_event'],
   },
+  'sentry.runtime.name': {
+    canonicalName: 'process.runtime.name',
+    type: 'string',
+    brief: 'The name of the runtime. Equivalent to `name` in the Sentry runtime context.',
+    deprecationChain: ['process.runtime.name', 'runtime.name', 'sentry.runtime.name'],
+  },
   'sentry.sdk.integrations': {
     canonicalName: 'sentry.sdk.integrations',
     type: 'string[]',
@@ -12252,6 +12331,12 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'string',
     brief: 'The type of navigation event emitted from the sveltekit client router',
     deprecationChain: ['router.navigation.type', 'navigation.type', 'sentry.sveltekit.navigation.type'],
+  },
+  'sentry.thread.name': {
+    canonicalName: 'thread.name',
+    type: 'string',
+    brief: 'Current thread name.',
+    deprecationChain: ['thread.name', 'sentry.thread.name'],
   },
   'sentry.timestamp.sequence': {
     canonicalName: 'sentry.timestamp.sequence',
@@ -12485,7 +12570,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'thread.name',
     type: 'string',
     brief: 'Current thread name.',
-    deprecationChain: ['thread.name'],
+    deprecationChain: ['thread.name', 'sentry.thread.name'],
   },
   'timber.tag': {
     canonicalName: 'timber.tag',
@@ -12840,6 +12925,13 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'string',
     brief: 'The low-cardinality template of an absolute URL path reference.',
     deprecationChain: ['url.template'],
+  },
+  user: {
+    canonicalName: 'sentry.user',
+    type: 'string',
+    brief:
+      "Combined identifier of the user, used for the `user` tag and for counting unique users. Set to the first available of the user's ID, username, email address, or IP address, prefixed with which one it is: `id:`, `username:`, `email:`, or `ip:`.",
+    deprecationChain: ['user', 'sentry.user'],
   },
   'user.email': {
     canonicalName: 'user.email',

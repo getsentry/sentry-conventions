@@ -7,9 +7,14 @@
   },
   "is_in_otel": true,
   "example": "f47ac10b58cc4372a5670e02b2c3d479",
-  "alias": ["messaging.message_id"],
+  "alias": ["messaging.message_id", "sentry.messaging.message.id"],
   "visibility": "public",
   "changelog": [
+    {
+      "version": "next",
+      "prs": [809],
+      "description": "Added sentry.messaging.message.id as an alias"
+    },
     {
       "version": "0.21.0",
       "prs": [581],

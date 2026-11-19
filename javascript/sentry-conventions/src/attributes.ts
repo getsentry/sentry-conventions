@@ -1,6 +1,25 @@
 // This is an auto-generated file. Do not edit!
 
-export type { SystemInstructions, TextPart } from './_schemas/gen_ai_system_instructions';
+export type { TextPart } from './_schemas/shared/gen_ai_parts';
+
+export type {
+  OutputMessages,
+  BlobPart,
+  ChatMessage,
+  CompactionPart,
+  FilePart,
+  GenericPart,
+  Modality,
+  ReasoningPart,
+  Role,
+  ToolCallRequestPart,
+  ToolCallResponsePart,
+  UriPart,
+} from './_schemas/gen_ai_output_messages';
+
+export type { SystemInstructions } from './_schemas/gen_ai_system_instructions';
+
+export type { ToolCallArguments } from './_schemas/gen_ai_tool_call_arguments';
 
 export type { ToolCallResult } from './_schemas/gen_ai_tool_call_result';
 
@@ -8597,7 +8616,7 @@ export type GEN_AI_OPERATION_TYPE_TYPE = string;
 // Path: model/attributes/gen_ai/gen_ai__output__messages.json
 
 /**
- * The model's response messages. It has to be a stringified version of an array of message objects in the format `{role: "assistant", parts: [...]}`, which can include text responses and tool calls. Each part is an object with a `type`, such as `{type: "text", content: "..."}`. Other part types include `"reasoning"` and `"tool_call"`. Put the model's thinking in a `{type: "reasoning", content: "..."}` part, not a `"text"` part. Sentry shows reasoning separately from user-visible messages. The first example shows this shape. Some operations use a different shape. See the additional context. `gen_ai.output.messages`
+ * Messages returned by the model where each message represents a specific model response (choice, candidate). It has to be a stringified version of an array of message objects in the format `{role: "assistant", parts: [...]}`, which can include text responses and tool calls. Each part is an object with a `type`, such as `{type: "text", content: "..."}`. Other part types include `"reasoning"` and `"tool_call"`. Put the model's thinking in a `{type: "reasoning", content: "..."}` part, not a `"text"` part. Sentry shows reasoning separately from user-visible messages. The first example shows this shape. Some operations use a different shape. See the additional context. `gen_ai.output.messages`
  *
  * Attribute Value Type: `string` {@link GEN_AI_OUTPUT_MESSAGES_TYPE}
  *
@@ -9198,7 +9217,7 @@ export type GEN_AI_RESPONSE_TEXT_TYPE = string;
 // Path: model/attributes/gen_ai/gen_ai__response__time_to_first_chunk.json
 
 /**
- * Time in seconds when the first response content chunk arrived in streaming responses. `gen_ai.response.time_to_first_chunk`
+ * Time from the start of a logical inference operation to the first chunk in its streaming response, in seconds. `gen_ai.response.time_to_first_chunk`
  *
  * Attribute Value Type: `number` {@link GEN_AI_RESPONSE_TIME_TO_FIRST_CHUNK_TYPE}
  *
@@ -9221,7 +9240,7 @@ export type GEN_AI_RESPONSE_TIME_TO_FIRST_CHUNK_TYPE = number;
 // Path: model/attributes/gen_ai/gen_ai__response__time_to_first_token.json
 
 /**
- * Time in seconds when the first response content chunk arrived in streaming responses. `gen_ai.response.time_to_first_token`
+ * Time from the start of a logical inference operation to the first chunk in its streaming response, in seconds. `gen_ai.response.time_to_first_token`
  *
  * Attribute Value Type: `number` {@link GEN_AI_RESPONSE_TIME_TO_FIRST_TOKEN_TYPE}
  *
@@ -9357,7 +9376,7 @@ export type GEN_AI_SYSTEM_MESSAGE_TYPE = string;
 // Path: model/attributes/gen_ai/gen_ai__tool__call__arguments.json
 
 /**
- * The arguments of the tool call. It has to be a stringified version of the arguments to the tool. `gen_ai.tool.call.arguments`
+ * The arguments of the tool call. `gen_ai.tool.call.arguments`
  *
  * Attribute Value Type: `string` {@link GEN_AI_TOOL_CALL_ARGUMENTS_TYPE}
  *
@@ -14092,7 +14111,7 @@ export type MESSAGING_CONVERSATION_ID_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link MESSAGING_DESTINATION_NAME} `messaging.destination.name`
+ * Aliases: {@link MESSAGING_DESTINATION_NAME} `messaging.destination.name`, {@link SENTRY_MESSAGING_DESTINATION_NAME} `sentry.messaging.destination.name`
  *
  * @deprecated Use {@link MESSAGING_DESTINATION_NAME} (messaging.destination.name) instead - This attribute is being deprecated in favor of messaging.destination.name, which is the OTel-aligned replacement.
  * @example "BestTopic"
@@ -14159,7 +14178,7 @@ export type MESSAGING_DESTINATION_KIND_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link MESSAGING_DESTINATION} `messaging.destination`
+ * Aliases: {@link MESSAGING_DESTINATION} `messaging.destination`, {@link SENTRY_MESSAGING_DESTINATION_NAME} `sentry.messaging.destination.name`
  *
  * @example "BestTopic"
  */
@@ -14331,7 +14350,7 @@ export type MESSAGING_MESSAGE_ENVELOPE_SIZE_TYPE = number;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link _MESSAGING_MESSAGE_ID} `messaging.message_id`
+ * Aliases: {@link _MESSAGING_MESSAGE_ID} `messaging.message_id`, {@link SENTRY_MESSAGING_MESSAGE_ID} `sentry.messaging.message.id`
  *
  * @example "f47ac10b58cc4372a5670e02b2c3d479"
  */
@@ -14354,7 +14373,7 @@ export type MESSAGING_MESSAGE_ID_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link MESSAGING_MESSAGE_ID} `messaging.message.id`
+ * Aliases: {@link MESSAGING_MESSAGE_ID} `messaging.message.id`, {@link SENTRY_MESSAGING_MESSAGE_ID} `sentry.messaging.message.id`
  *
  * @deprecated Use {@link MESSAGING_MESSAGE_ID} (messaging.message.id) instead - This attribute is being deprecated in favor of messaging.message.id.
  * @example "452a7c7c7c7048c2f887f0e7"
@@ -15795,6 +15814,29 @@ export const OTEL_STATUS_DESCRIPTION = 'otel.status_description';
  */
 export type OTEL_STATUS_DESCRIPTION_TYPE = string;
 
+// Path: model/attributes/page/page__server_rendering__age.json
+
+/**
+ * Set on a pageload span. The time in seconds from the start of the server render of the reused part of the page to the start of the span. `page.server_rendering.age`
+ *
+ * Attribute Value Type: `number` {@link PAGE_SERVER_RENDERING_AGE_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example 0
+ * @example 2520
+ * @example 259200
+ */
+export const PAGE_SERVER_RENDERING_AGE = 'page.server_rendering.age';
+
+/**
+ * Type for {@link PAGE_SERVER_RENDERING_AGE} page.server_rendering.age
+ */
+export type PAGE_SERVER_RENDERING_AGE_TYPE = number;
+
 // Path: model/attributes/page/page__server_rendering__type.json
 
 /**
@@ -16133,7 +16175,7 @@ export type PROCESS_RUNTIME_ENGINE_VERSION_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link RUNTIME_NAME} `runtime.name`
+ * Aliases: {@link RUNTIME_NAME} `runtime.name`, {@link SENTRY_RUNTIME_NAME} `sentry.runtime.name`
  *
  * @example "node"
  */
@@ -16999,7 +17041,7 @@ export type RUNTIME_BUILD_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link PROCESS_RUNTIME_NAME} `process.runtime.name`
+ * Aliases: {@link PROCESS_RUNTIME_NAME} `process.runtime.name`, {@link SENTRY_RUNTIME_NAME} `sentry.runtime.name`
  *
  * @deprecated Use {@link PROCESS_RUNTIME_NAME} (process.runtime.name) instead - Prefer OTel-aligned process.runtime.name
  * @example "node"
@@ -18387,6 +18429,54 @@ export const SENTRY_MESSAGE_TEMPLATE = 'sentry.message.template';
  */
 export type SENTRY_MESSAGE_TEMPLATE_TYPE = string;
 
+// Path: model/attributes/sentry/sentry__messaging__destination__name.json
+
+/**
+ * The message destination name. `sentry.messaging.destination.name`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_MESSAGING_DESTINATION_NAME_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link MESSAGING_DESTINATION_NAME} `messaging.destination.name`, {@link MESSAGING_DESTINATION} `messaging.destination`
+ *
+ * @deprecated Use {@link MESSAGING_DESTINATION_NAME} (messaging.destination.name) instead
+ * @example "BestTopic"
+ */
+export const SENTRY_MESSAGING_DESTINATION_NAME = 'sentry.messaging.destination.name';
+
+/**
+ * Type for {@link SENTRY_MESSAGING_DESTINATION_NAME} sentry.messaging.destination.name
+ */
+export type SENTRY_MESSAGING_DESTINATION_NAME_TYPE = string;
+
+// Path: model/attributes/sentry/sentry__messaging__message__id.json
+
+/**
+ * A value used by the messaging system as an identifier for the message, represented as a string. `sentry.messaging.message.id`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_MESSAGING_MESSAGE_ID_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link MESSAGING_MESSAGE_ID} `messaging.message.id`, {@link _MESSAGING_MESSAGE_ID} `messaging.message_id`
+ *
+ * @deprecated Use {@link MESSAGING_MESSAGE_ID} (messaging.message.id) instead
+ * @example "f47ac10b58cc4372a5670e02b2c3d479"
+ */
+export const SENTRY_MESSAGING_MESSAGE_ID = 'sentry.messaging.message.id';
+
+/**
+ * Type for {@link SENTRY_MESSAGING_MESSAGE_ID} sentry.messaging.message.id
+ */
+export type SENTRY_MESSAGING_MESSAGE_ID_TYPE = string;
+
 // Path: model/attributes/sentry/sentry__metric__source.json
 
 /**
@@ -18840,6 +18930,30 @@ export const SENTRY_REPORT_EVENT = 'sentry.report_event';
  */
 export type SENTRY_REPORT_EVENT_TYPE = string;
 
+// Path: model/attributes/sentry/sentry__runtime__name.json
+
+/**
+ * The name of the runtime. Equivalent to `name` in the Sentry runtime context. `sentry.runtime.name`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_RUNTIME_NAME_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link PROCESS_RUNTIME_NAME} `process.runtime.name`, {@link RUNTIME_NAME} `runtime.name`
+ *
+ * @deprecated Use {@link PROCESS_RUNTIME_NAME} (process.runtime.name) instead
+ * @example "node"
+ */
+export const SENTRY_RUNTIME_NAME = 'sentry.runtime.name';
+
+/**
+ * Type for {@link SENTRY_RUNTIME_NAME} sentry.runtime.name
+ */
+export type SENTRY_RUNTIME_NAME_TYPE = string;
+
 // Path: model/attributes/sentry/sentry__sdk__integrations.json
 
 /**
@@ -19243,6 +19357,30 @@ export const SENTRY_THREAD_ID = 'sentry.thread.id';
  */
 export type SENTRY_THREAD_ID_TYPE = number;
 
+// Path: model/attributes/sentry/sentry__thread__name.json
+
+/**
+ * Current thread name. `sentry.thread.name`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_THREAD_NAME_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link THREAD_NAME} `thread.name`
+ *
+ * @deprecated Use {@link THREAD_NAME} (thread.name) instead
+ * @example "main"
+ */
+export const SENTRY_THREAD_NAME = 'sentry.thread.name';
+
+/**
+ * Type for {@link SENTRY_THREAD_NAME} sentry.thread.name
+ */
+export type SENTRY_THREAD_NAME_TYPE = string;
+
 // Path: model/attributes/sentry/sentry__timestamp__sequence.json
 
 /**
@@ -19351,6 +19489,30 @@ export const SENTRY_TRANSACTION = 'sentry.transaction';
  * Type for {@link SENTRY_TRANSACTION} sentry.transaction
  */
 export type SENTRY_TRANSACTION_TYPE = string;
+
+// Path: model/attributes/sentry/sentry__user.json
+
+/**
+ * Combined identifier of the user, used for the `user` tag and for counting unique users. Set to the first available of the user's ID, username, email address, or IP address, prefixed with which one it is: `id:`, `username:`, `email:`, or `ip:`. `sentry.user`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_USER_TYPE}
+ *
+ * Apply Scrubbing: auto
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "id:123"
+ * @example "username:j.smith"
+ * @example "email:test@example.com"
+ * @example "ip:192.168.1.1"
+ */
+export const SENTRY_USER = 'sentry.user';
+
+/**
+ * Type for {@link SENTRY_USER} sentry.user
+ */
+export type SENTRY_USER_TYPE = string;
 
 // Path: model/attributes/sentry/sentry__user__email.json
 
@@ -20005,6 +20167,8 @@ export type THREAD_ID_TYPE = number;
  *
  * Attribute defined in OTEL: Yes
  * Visibility: public
+ *
+ * Aliases: {@link SENTRY_THREAD_NAME} `sentry.thread.name`
  *
  * @example "main"
  */
@@ -23073,6 +23237,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'otel.scope.version': 'string',
   'otel.status_code': 'string',
   'otel.status_description': 'string',
+  'page.server_rendering.age': 'integer',
   'page.server_rendering.type': 'string',
   'params.<key>': 'string',
   'performance.activationStart': 'double',
@@ -23184,6 +23349,8 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'sentry.main_thread': 'boolean',
   'sentry.message.parameter.<key>': 'string',
   'sentry.message.template': 'string',
+  'sentry.messaging.destination.name': 'string',
+  'sentry.messaging.message.id': 'string',
   'sentry.metric.source': 'string',
   'sentry.mobile': 'boolean',
   'sentry.module.<key>': 'string',
@@ -23205,6 +23372,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'sentry.replay_id': 'string',
   'sentry.replay_is_buffering': 'boolean',
   'sentry.report_event': 'string',
+  'sentry.runtime.name': 'string',
   'sentry.sdk.integrations': 'string[]',
   'sentry.sdk.name': 'string',
   'sentry.sdk.version': 'string',
@@ -23222,11 +23390,13 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'sentry.sveltekit.navigation.to': 'string',
   'sentry.sveltekit.navigation.type': 'string',
   'sentry.thread.id': 'integer',
+  'sentry.thread.name': 'string',
   'sentry.timestamp.sequence': 'integer',
   'sentry.trace_lifecycle': 'string',
   'sentry.trace.parent_span_id': 'string',
   'sentry.trace.status': 'string',
   'sentry.transaction': 'string',
+  'sentry.user': 'string',
   'sentry.user.email': 'string',
   'sentry.user.geo.city': 'string',
   'sentry.user.geo.country_code': 'string',
@@ -24063,6 +24233,7 @@ export type AttributeName =
   | typeof OTEL_SCOPE_VERSION
   | typeof OTEL_STATUS_CODE
   | typeof OTEL_STATUS_DESCRIPTION
+  | typeof PAGE_SERVER_RENDERING_AGE
   | typeof PAGE_SERVER_RENDERING_TYPE
   | typeof PARAMS_KEY
   | typeof PERFORMANCE_ACTIVATIONSTART
@@ -24174,6 +24345,8 @@ export type AttributeName =
   | typeof SENTRY_MAIN_THREAD
   | typeof SENTRY_MESSAGE_PARAMETER_KEY
   | typeof SENTRY_MESSAGE_TEMPLATE
+  | typeof SENTRY_MESSAGING_DESTINATION_NAME
+  | typeof SENTRY_MESSAGING_MESSAGE_ID
   | typeof SENTRY_METRIC_SOURCE
   | typeof SENTRY_MOBILE
   | typeof SENTRY_MODULE_KEY
@@ -24195,6 +24368,7 @@ export type AttributeName =
   | typeof SENTRY_REPLAY_ID
   | typeof SENTRY_REPLAY_IS_BUFFERING
   | typeof SENTRY_REPORT_EVENT
+  | typeof SENTRY_RUNTIME_NAME
   | typeof SENTRY_SDK_INTEGRATIONS
   | typeof SENTRY_SDK_NAME
   | typeof SENTRY_SDK_VERSION
@@ -24212,11 +24386,13 @@ export type AttributeName =
   | typeof SENTRY_SVELTEKIT_NAVIGATION_TO
   | typeof SENTRY_SVELTEKIT_NAVIGATION_TYPE
   | typeof SENTRY_THREAD_ID
+  | typeof SENTRY_THREAD_NAME
   | typeof SENTRY_TIMESTAMP_SEQUENCE
   | typeof SENTRY_TRACE_LIFECYCLE
   | typeof SENTRY_TRACE_PARENT_SPAN_ID
   | typeof SENTRY_TRACE_STATUS
   | typeof SENTRY_TRANSACTION
+  | typeof SENTRY_USER
   | typeof SENTRY_USER_EMAIL
   | typeof SENTRY_USER_GEO_CITY
   | typeof SENTRY_USER_GEO_COUNTRY_CODE
@@ -24505,6 +24681,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'ai.prompt.messages',
       'ai.texts',
       'gen_ai.prompt',
+      'gen_ai.request.messages',
     ],
     applyScrubbing: {
       key: 'manual',
@@ -24683,6 +24860,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'ai.prompt.messages',
       'ai.texts',
       'gen_ai.prompt',
+      'gen_ai.request.messages',
     ],
     applyScrubbing: {
       key: 'manual',
@@ -24709,6 +24887,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'ai.prompt.messages',
       'ai.texts',
       'gen_ai.prompt',
+      'gen_ai.request.messages',
     ],
     applyScrubbing: {
       key: 'manual',
@@ -24780,7 +24959,15 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'ai.responses': {
     brief: 'The response messages sent back by the AI model.',
     type: 'string[]',
-    keys: ['gen_ai.output.messages', 'ai.response.text', 'ai.response.toolCalls', 'ai.responses', 'ai.tool_calls'],
+    keys: [
+      'gen_ai.output.messages',
+      'ai.response.text',
+      'ai.response.toolCalls',
+      'ai.responses',
+      'ai.tool_calls',
+      'gen_ai.response.text',
+      'gen_ai.response.tool_calls',
+    ],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24867,7 +25054,15 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'ai.response.text': {
     brief: 'The text response from the AI model.',
     type: 'string',
-    keys: ['gen_ai.output.messages', 'ai.response.text', 'ai.response.toolCalls', 'ai.responses', 'ai.tool_calls'],
+    keys: [
+      'gen_ai.output.messages',
+      'ai.response.text',
+      'ai.response.toolCalls',
+      'ai.responses',
+      'ai.tool_calls',
+      'gen_ai.response.text',
+      'gen_ai.response.tool_calls',
+    ],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24900,7 +25095,15 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'ai.response.toolCalls': {
     brief: 'The tool calls in the AI model response.',
     type: 'string',
-    keys: ['gen_ai.output.messages', 'ai.response.text', 'ai.response.toolCalls', 'ai.responses', 'ai.tool_calls'],
+    keys: [
+      'gen_ai.output.messages',
+      'ai.response.text',
+      'ai.response.toolCalls',
+      'ai.responses',
+      'ai.tool_calls',
+      'gen_ai.response.text',
+      'gen_ai.response.tool_calls',
+    ],
     applyScrubbing: {
       key: 'manual',
     },
@@ -25044,6 +25247,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'ai.prompt.messages',
       'ai.texts',
       'gen_ai.prompt',
+      'gen_ai.request.messages',
     ],
     applyScrubbing: {
       key: 'manual',
@@ -25128,7 +25332,15 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'ai.tool_calls': {
     brief: 'For an AI model call, the tool calls that were made.',
     type: 'string[]',
-    keys: ['gen_ai.output.messages', 'ai.response.text', 'ai.response.toolCalls', 'ai.responses', 'ai.tool_calls'],
+    keys: [
+      'gen_ai.output.messages',
+      'ai.response.text',
+      'ai.response.toolCalls',
+      'ai.responses',
+      'ai.tool_calls',
+      'gen_ai.response.text',
+      'gen_ai.response.tool_calls',
+    ],
     applyScrubbing: {
       key: 'manual',
     },
@@ -25594,8 +25806,13 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 5,
     aliases: ['frames.delay'],
     changelog: [
+      { version: 'next', description: 'Added search_alias with type second' },
       { version: '0.5.0', prs: [313], description: 'Added app.vitals.frames.delay.value to replace frames.delay' },
     ],
+    searchAlias: {
+      name: 'app.vitals.frames.delay.value',
+      type: 'second',
+    },
   },
   'app.vitals.frames.frozen.count': {
     brief: 'The number of frozen frames rendered during the lifetime of the span.',
@@ -25625,7 +25842,14 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 0.5,
     aliases: ['frames_frozen_rate'],
-    changelog: [{ version: '0.19.0', prs: [493], description: 'Added app.vitals.frames.frozen.rate attribute' }],
+    changelog: [
+      { version: 'next', description: 'Added search_alias with type percentage' },
+      { version: '0.19.0', prs: [493], description: 'Added app.vitals.frames.frozen.rate attribute' },
+    ],
+    searchAlias: {
+      name: 'app.vitals.frames.frozen.rate',
+      type: 'percentage',
+    },
   },
   'app.vitals.frames.slow.count': {
     brief: 'The number of slow frames rendered during the lifetime of the span.',
@@ -25655,7 +25879,14 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 0.25,
     aliases: ['frames_slow_rate'],
-    changelog: [{ version: '0.19.0', prs: [493], description: 'Added app.vitals.frames.slow.rate attribute' }],
+    changelog: [
+      { version: 'next', description: 'Added search_alias with type percentage' },
+      { version: '0.19.0', prs: [493], description: 'Added app.vitals.frames.slow.rate attribute' },
+    ],
+    searchAlias: {
+      name: 'app.vitals.frames.slow.rate',
+      type: 'percentage',
+    },
   },
   'app.vitals.frames.total.count': {
     brief: 'The number of total frames rendered during the lifetime of the span.',
@@ -25699,7 +25930,14 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 0.8,
     aliases: ['stall_percentage'],
-    changelog: [{ version: '0.19.0', prs: [493], description: 'Added app.vitals.stall.percentage attribute' }],
+    changelog: [
+      { version: 'next', description: 'Added search_alias with type percentage' },
+      { version: '0.19.0', prs: [493], description: 'Added app.vitals.stall.percentage attribute' },
+    ],
+    searchAlias: {
+      name: 'app.vitals.stall.percentage',
+      type: 'percentage',
+    },
   },
   'app.vitals.start.cold.value': {
     brief: 'The duration of a cold app start in milliseconds',
@@ -25712,7 +25950,14 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 1234.56,
     aliases: ['app_start_cold'],
-    changelog: [{ version: '0.5.0', prs: [313], description: 'Added app.vitals.start.cold.value attribute' }],
+    changelog: [
+      { version: 'next', description: 'Added search_alias with type millisecond' },
+      { version: '0.5.0', prs: [313], description: 'Added app.vitals.start.cold.value attribute' },
+    ],
+    searchAlias: {
+      name: 'app.vitals.start.cold.value',
+      type: 'millisecond',
+    },
   },
   'app.vitals.start.prewarmed': {
     brief: 'Whether the app start was prewarmed.',
@@ -25775,7 +26020,14 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 1234.56,
     aliases: ['app_start_warm'],
-    changelog: [{ version: '0.5.0', prs: [313], description: 'Added app.vitals.start.warm.value attribute' }],
+    changelog: [
+      { version: 'next', description: 'Added search_alias with type millisecond' },
+      { version: '0.5.0', prs: [313], description: 'Added app.vitals.start.warm.value attribute' },
+    ],
+    searchAlias: {
+      name: 'app.vitals.start.warm.value',
+      type: 'millisecond',
+    },
   },
   'app.vitals.ttfd.value': {
     brief: 'The duration of time to full display in milliseconds',
@@ -25788,7 +26040,14 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 1234.56,
     aliases: ['time_to_full_display'],
-    changelog: [{ version: '0.5.0', prs: [313], description: 'Added app.vitals.ttfd.value attribute' }],
+    changelog: [
+      { version: 'next', description: 'Added search_alias with type millisecond' },
+      { version: '0.5.0', prs: [313], description: 'Added app.vitals.ttfd.value attribute' },
+    ],
+    searchAlias: {
+      name: 'app.vitals.ttfd.value',
+      type: 'millisecond',
+    },
   },
   'app.vitals.ttid.value': {
     brief: 'The duration of time to initial display in milliseconds',
@@ -25801,7 +26060,14 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 1234.56,
     aliases: ['time_to_initial_display'],
-    changelog: [{ version: '0.5.0', prs: [313], description: 'Added app.vitals.ttid.value attribute' }],
+    changelog: [
+      { version: 'next', description: 'Added search_alias with type millisecond' },
+      { version: '0.5.0', prs: [313], description: 'Added app.vitals.ttid.value attribute' },
+    ],
+    searchAlias: {
+      name: 'app.vitals.ttid.value',
+      type: 'millisecond',
+    },
   },
   'art.gc.blocking_count': {
     brief: 'Total number of blocking (stop-the-world) garbage collections performed by the Android Runtime',
@@ -27174,7 +27440,14 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 547.6951,
     aliases: ['fcp'],
-    changelog: [{ version: '0.5.0', prs: [235] }],
+    changelog: [
+      { version: 'next', description: 'Added search_alias with type millisecond' },
+      { version: '0.5.0', prs: [235] },
+    ],
+    searchAlias: {
+      name: 'browser.web_vital.fcp.value',
+      type: 'millisecond',
+    },
   },
   'browser.web_vital.fp.value': {
     brief: 'The time in milliseconds it takes for the browser to render the first pixel on the screen',
@@ -27187,7 +27460,14 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 477.1926,
     aliases: ['fp'],
-    changelog: [{ version: '0.5.0', prs: [235] }],
+    changelog: [
+      { version: 'next', description: 'Added search_alias with type millisecond' },
+      { version: '0.5.0', prs: [235] },
+    ],
+    searchAlias: {
+      name: 'browser.web_vital.fp.value',
+      type: 'millisecond',
+    },
   },
   'browser.web_vital.inp.input_delay': {
     brief:
@@ -27298,7 +27578,14 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 200,
     aliases: ['inp'],
-    changelog: [{ version: '0.5.0', prs: [229], description: 'Added browser.web_vital.inp.value attribute' }],
+    changelog: [
+      { version: 'next', description: 'Added search_alias with type millisecond' },
+      { version: '0.5.0', prs: [229], description: 'Added browser.web_vital.inp.value attribute' },
+    ],
+    searchAlias: {
+      name: 'browser.web_vital.inp.value',
+      type: 'millisecond',
+    },
   },
   'browser.web_vital.lcp.element': {
     brief: 'The HTML element selector or component name for which LCP was reported',
@@ -27473,7 +27760,14 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 2500,
     aliases: ['lcp'],
-    changelog: [{ version: '0.5.0', prs: [229], description: 'Added browser.web_vital.lcp.value attribute' }],
+    changelog: [
+      { version: 'next', description: 'Added search_alias with type millisecond' },
+      { version: '0.5.0', prs: [229], description: 'Added browser.web_vital.lcp.value attribute' },
+    ],
+    searchAlias: {
+      name: 'browser.web_vital.lcp.value',
+      type: 'millisecond',
+    },
   },
   'browser.web_vital.ttfb.request_time': {
     brief:
@@ -27500,7 +27794,14 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 194.3322,
     aliases: ['ttfb'],
-    changelog: [{ version: '0.5.0', prs: [235] }],
+    changelog: [
+      { version: 'next', description: 'Added search_alias with type millisecond' },
+      { version: '0.5.0', prs: [235] },
+    ],
+    searchAlias: {
+      name: 'browser.web_vital.ttfb.value',
+      type: 'millisecond',
+    },
   },
   'cache.hit': {
     brief: 'If the cache was hit during this span.',
@@ -29679,10 +29980,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 134217728,
     examples: [134217728, 1073741824],
-    changelog: [{ version: '0.30.0', prs: [715], description: 'Added faas.max_memory attribute' }],
+    changelog: [
+      { version: 'next', description: 'Added search_alias with type byte' },
+      { version: '0.30.0', prs: [715], description: 'Added faas.max_memory attribute' },
+    ],
     additionalContext: [
       'On AWS Lambda, multiply AWS_LAMBDA_FUNCTION_MEMORY_SIZE by 1,048,576 to convert the configured memory from MiB to bytes.',
     ],
+    searchAlias: {
+      name: 'faas.max_memory',
+      type: 'byte',
+    },
   },
   'faas.name': {
     brief: 'The name of the serverless function',
@@ -30185,12 +30493,19 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 12.34,
-    changelog: [{ version: '0.16.0', description: 'Added gen_ai.cost.cache_creation.input_tokens attribute' }],
+    changelog: [
+      { version: 'next', description: 'Added search_alias with type currency' },
+      { version: '0.16.0', description: 'Added gen_ai.cost.cache_creation.input_tokens attribute' },
+    ],
     additionalContext: [
       'This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to calculate total cost, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans.',
       "Despite the name 'cost.cache_creation.input_tokens', this value is cost in USD, not a token count. For token counts, use gen_ai.usage.cache_creation.input_tokens.",
       'This is a subset of gen_ai.cost.input_tokens, not an independent cost. Do not sum this with gen_ai.cost.input_tokens — it is already included.',
     ],
+    searchAlias: {
+      name: 'gen_ai.cost.cache_creation.input_tokens',
+      type: 'currency',
+    },
   },
   'gen_ai.cost.cache_read.input_tokens': {
     brief: 'The cost of cached input tokens in USD.',
@@ -30202,12 +30517,19 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 12.34,
-    changelog: [{ version: '0.16.0', description: 'Added gen_ai.cost.cache_read.input_tokens attribute' }],
+    changelog: [
+      { version: 'next', description: 'Added search_alias with type currency' },
+      { version: '0.16.0', description: 'Added gen_ai.cost.cache_read.input_tokens attribute' },
+    ],
     additionalContext: [
       'This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to calculate total cost, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans.',
       "Despite the name 'cost.cache_read.input_tokens', this value is cost in USD, not a token count. For token counts, use gen_ai.usage.cache_read.input_tokens.",
       'This is a subset of gen_ai.cost.input_tokens, not an independent cost. Do not sum this with gen_ai.cost.input_tokens — it is already included.',
     ],
+    searchAlias: {
+      name: 'gen_ai.cost.cache_read.input_tokens',
+      type: 'currency',
+    },
   },
   'gen_ai.cost.input_tokens': {
     brief: 'The total cost of all input tokens in USD (includes cached and cache creation tokens).',
@@ -30220,6 +30542,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 123.45,
     changelog: [
+      { version: 'next', description: 'Added search_alias with type currency' },
       { version: '0.9.0', prs: [397], description: 'Add additional_context' },
       { version: '0.4.0', prs: [228] },
       { version: '0.1.0', prs: [112] },
@@ -30229,6 +30552,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       "Despite the name 'cost.input_tokens', this value is cost in USD, not a token count. For token counts, use gen_ai.usage.input_tokens.",
       'This is the total cost of all input tokens, including cached and cache creation tokens at their respective rates. For the cached portion, see gen_ai.cost.cache_read.input_tokens. For the cache creation portion, see gen_ai.cost.cache_creation.input_tokens.',
     ],
+    searchAlias: {
+      name: 'gen_ai.cost.input_tokens',
+      type: 'currency',
+    },
   },
   'gen_ai.cost.output_tokens': {
     brief: 'The total cost of all output tokens in USD (includes reasoning tokens).',
@@ -30241,6 +30568,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 123.45,
     changelog: [
+      { version: 'next', description: 'Added search_alias with type currency' },
       { version: '0.9.0', prs: [397], description: 'Add additional_context' },
       { version: '0.4.0', prs: [228] },
       { version: '0.1.0', prs: [112] },
@@ -30250,6 +30578,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       "Despite the name 'cost.output_tokens', this value is cost in USD, not a token count. For token counts, use gen_ai.usage.output_tokens.",
       'This is the total cost of all output tokens, including reasoning tokens at their respective rate. For the reasoning portion, see gen_ai.cost.reasoning.output_tokens.',
     ],
+    searchAlias: {
+      name: 'gen_ai.cost.output_tokens',
+      type: 'currency',
+    },
   },
   'gen_ai.cost.reasoning.output_tokens': {
     brief: 'The cost of reasoning output tokens in USD.',
@@ -30261,12 +30593,19 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 12.34,
-    changelog: [{ version: '0.16.0', description: 'Added gen_ai.cost.reasoning.output_tokens attribute' }],
+    changelog: [
+      { version: 'next', description: 'Added search_alias with type currency' },
+      { version: '0.16.0', description: 'Added gen_ai.cost.reasoning.output_tokens attribute' },
+    ],
     additionalContext: [
       'This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to calculate total cost, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans.',
       "Despite the name 'cost.reasoning.output_tokens', this value is cost in USD, not a token count. For token counts, use gen_ai.usage.reasoning.output_tokens.",
       'This is a subset of gen_ai.cost.output_tokens, not an independent cost. Do not sum this with gen_ai.cost.output_tokens — it is already included.',
     ],
+    searchAlias: {
+      name: 'gen_ai.cost.reasoning.output_tokens',
+      type: 'currency',
+    },
   },
   'gen_ai.cost.total_tokens': {
     brief: 'The total cost for the tokens used.',
@@ -30280,6 +30619,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 12.34,
     aliases: ['ai.total_cost'],
     changelog: [
+      { version: 'next', description: 'Added search_alias with type currency' },
       { version: '0.9.0', prs: [397], description: 'Add additional_context' },
       { version: '0.5.0', prs: [264] },
       { version: '0.4.0', prs: [228] },
@@ -30289,6 +30629,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to calculate total cost, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans.',
       "Despite the name 'cost.total_tokens', this value is cost in USD, not a token count. For token counts, use gen_ai.usage.total_tokens.",
     ],
+    searchAlias: {
+      name: 'gen_ai.cost.total_tokens',
+      type: 'currency',
+    },
   },
   'gen_ai.embeddings.input': {
     brief: 'The input to the embeddings model.',
@@ -30326,6 +30670,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'ai.prompt.messages',
       'ai.texts',
       'gen_ai.prompt',
+      'gen_ai.request.messages',
     ],
     applyScrubbing: {
       key: 'manual',
@@ -30471,9 +30816,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   'gen_ai.output.messages': {
     brief:
-      'The model\'s response messages. It has to be a stringified version of an array of message objects in the format `{role: "assistant", parts: [...]}`, which can include text responses and tool calls. Each part is an object with a `type`, such as `{type: "text", content: "..."}`. Other part types include `"reasoning"` and `"tool_call"`. Put the model\'s thinking in a `{type: "reasoning", content: "..."}` part, not a `"text"` part. Sentry shows reasoning separately from user-visible messages. The first example shows this shape. Some operations use a different shape. See the additional context.',
+      'Messages returned by the model where each message represents a specific model response (choice, candidate). It has to be a stringified version of an array of message objects in the format `{role: "assistant", parts: [...]}`, which can include text responses and tool calls. Each part is an object with a `type`, such as `{type: "text", content: "..."}`. Other part types include `"reasoning"` and `"tool_call"`. Put the model\'s thinking in a `{type: "reasoning", content: "..."}` part, not a `"text"` part. Sentry shows reasoning separately from user-visible messages. The first example shows this shape. Some operations use a different shape. See the additional context.',
     type: 'string',
-    keys: ['gen_ai.output.messages', 'ai.response.text', 'ai.response.toolCalls', 'ai.responses', 'ai.tool_calls'],
+    keys: [
+      'gen_ai.output.messages',
+      'ai.response.text',
+      'ai.response.toolCalls',
+      'ai.responses',
+      'ai.tool_calls',
+      'gen_ai.response.text',
+      'gen_ai.response.tool_calls',
+    ],
     applyScrubbing: {
       key: 'manual',
     },
@@ -30488,6 +30841,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     ],
     aliases: ['ai.response.toolCalls', 'ai.response.text'],
     changelog: [
+      { version: '0.34.0', prs: [802], description: 'Aligned the brief with OTel and added additional context.' },
       {
         version: '0.28.0',
         prs: [728],
@@ -30498,6 +30852,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       { version: '0.4.0', prs: [221] },
     ],
     additionalContext: [
+      'Each message represents a single output choice/candidate generated by the model. Each message corresponds to exactly one generation (choice/candidate) and vice versa - one choice cannot be split across multiple messages or one message cannot contain parts from multiple choices.',
+      'When an operation ends in an error, this attribute is only set when the operation produced output, including partial streamed output. Instrumentation does not synthesize output content for a failed operation.',
       'For `gen_ai.decide` operations, the array holds one object `{answers: {...}}`. `answers` holds the answers keyed by question name, as the provider returned them. The second example shows this shape.',
       'For `gen_ai.extract` operations, the array holds one object `{answers: {<name>: <answer>}, truncated: boolean, state_text?: string}`. This object is the response body as the provider returned it, without `model` and `usage`. Do not change the values. `answers` holds one answer for each field in the input, keyed by field name. A field that the model cannot determine has a `value` of `null`. `span` and `spans` are `[start, end]` character offsets into `state` (or into `state_text`, if the provider returns it), and `end` is exclusive. Set the model in `gen_ai.response.model` and the token counts in `gen_ai.usage.input_tokens` and `gen_ai.usage.output_tokens`. The third example shows this shape.',
     ],
@@ -30528,6 +30884,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'ai.prompt.messages',
       'ai.texts',
       'gen_ai.prompt',
+      'gen_ai.request.messages',
     ],
     applyScrubbing: {
       key: 'manual',
@@ -30653,7 +31010,15 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The messages passed to the model. It has to be a stringified version of an array of objects. The `role` attribute of each object must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. For messages of the role `"tool"`, the `content` can be a string or an arbitrary object with information about the tool call. For other messages the `content` can be either a string or a list of objects in the format `{type: "text", text:"..."}`.',
     type: 'string',
-    keys: ['gen_ai.request.messages'],
+    keys: [
+      'gen_ai.input.messages',
+      'ai.input_messages',
+      'ai.prompt',
+      'ai.prompt.messages',
+      'ai.texts',
+      'gen_ai.prompt',
+      'gen_ai.request.messages',
+    ],
     applyScrubbing: {
       key: 'manual',
     },
@@ -30663,11 +31028,11 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       '[{"role": "system", "content": "Generate a random number."}, {"role": "user", "content": [{"text": "Generate a random number between 0 and 10.", "type": "text"}]}, {"role": "tool", "content": {"toolCallId": "1", "toolName": "Weather", "output": "rainy"}}]',
     deprecation: {
       replacement: 'gen_ai.input.messages',
-      status: 'transform',
-      transformation: 'gen_ai_request_messages_to_input_messages',
+      status: 'normalize',
     },
     aliases: ['ai.input_messages'],
     changelog: [
+      { version: '0.34.0', prs: [801], description: 'Revert deprecation status from `transform` to `normalize`.' },
       { version: '0.4.0', prs: [221] },
       { version: '0.1.0', prs: [63, 74, 108, 119, 122] },
     ],
@@ -30907,7 +31272,15 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       "The model's response text messages. It has to be a stringified version of an array of response text messages.",
     type: 'string',
-    keys: ['gen_ai.response.text'],
+    keys: [
+      'gen_ai.output.messages',
+      'ai.response.text',
+      'ai.response.toolCalls',
+      'ai.responses',
+      'ai.tool_calls',
+      'gen_ai.response.text',
+      'gen_ai.response.tool_calls',
+    ],
     applyScrubbing: {
       key: 'manual',
     },
@@ -30917,16 +31290,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       '["The weather in Paris is rainy and overcast, with temperatures around 57°F", "The weather in London is sunny and warm, with temperatures around 65°F"]',
     deprecation: {
       replacement: 'gen_ai.output.messages',
-      status: 'transform',
-      transformation: 'gen_ai_response_to_output_messages',
+      status: 'normalize',
     },
     changelog: [
+      { version: '0.34.0', prs: [801], description: 'Revert deprecation status from `transform` to `normalize`.' },
       { version: '0.4.0', prs: [221] },
       { version: '0.1.0', prs: [63, 74] },
     ],
   },
   'gen_ai.response.time_to_first_chunk': {
-    brief: 'Time in seconds when the first response content chunk arrived in streaming responses.',
+    brief:
+      'Time from the start of a logical inference operation to the first chunk in its streaming response, in seconds.',
     type: 'double',
     keys: ['gen_ai.response.time_to_first_chunk', 'gen_ai.response.time_to_first_token'],
     applyScrubbing: {
@@ -30936,10 +31310,19 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 0.6853435,
     aliases: ['gen_ai.response.time_to_first_token'],
-    changelog: [{ version: '0.11.0', prs: [418], description: 'Added gen_ai.response.time_to_first_chunk attribute' }],
+    changelog: [
+      { version: '0.34.0', prs: [795], description: 'Aligned the brief with OTel and added additional context.' },
+      { version: '0.11.0', prs: [418], description: 'Added gen_ai.response.time_to_first_chunk attribute' },
+    ],
+    additionalContext: [
+      'A chunk is a decoded provider stream event carrying new, non-empty output: text, refusals, reasoning (including opaque payloads), audio, images, or tool-call names or arguments. Empty start events or events carrying only usage, roles, IDs, signatures, keep-alives, progress/status updates, or end markers are not chunks. Chunk boundaries follow provider events, not TCP reads, HTTP frames, or extra SDK callbacks.',
+      'Measure the time from the start of the logical inference operation, before authentication and the first attempt, to when the first chunk is fully received by the client, before application processing.',
+      'Set this attribute when the first chunk is received and do not set it if no chunk is received.',
+    ],
   },
   'gen_ai.response.time_to_first_token': {
-    brief: 'Time in seconds when the first response content chunk arrived in streaming responses.',
+    brief:
+      'Time from the start of a logical inference operation to the first chunk in its streaming response, in seconds.',
     type: 'double',
     keys: ['gen_ai.response.time_to_first_chunk', 'gen_ai.response.time_to_first_token'],
     applyScrubbing: {
@@ -30954,8 +31337,14 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['gen_ai.response.time_to_first_chunk'],
     changelog: [
+      { version: '0.34.0', prs: [795], description: 'Aligned the brief with OTel and added additional context' },
       { version: '0.11.0', prs: [418], description: 'Deprecate in favor of gen_ai.response.time_to_first_chunk' },
       { version: '0.4.0', prs: [227] },
+    ],
+    additionalContext: [
+      'A chunk is a decoded provider stream event carrying new, non-empty output: text, refusals, reasoning (including opaque payloads), audio, images, or tool-call names or arguments. Empty start events or events carrying only usage, roles, IDs, signatures, keep-alives, progress/status updates, or end markers are not chunks. Chunk boundaries follow provider events, not TCP reads, HTTP frames, or extra SDK callbacks.',
+      'Measure the time from the start of the logical inference operation, before authentication and the first attempt, to when the first chunk is fully received by the client, before application processing.',
+      'Set this attribute when the first chunk is received and do not set it if no chunk is received.',
     ],
   },
   'gen_ai.response.tokens_per_second': {
@@ -30976,7 +31365,15 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gen_ai.response.tool_calls': {
     brief: "The tool calls in the model's response. It has to be a stringified version of an array of objects.",
     type: 'string',
-    keys: ['gen_ai.response.tool_calls'],
+    keys: [
+      'gen_ai.output.messages',
+      'ai.response.text',
+      'ai.response.toolCalls',
+      'ai.responses',
+      'ai.tool_calls',
+      'gen_ai.response.text',
+      'gen_ai.response.tool_calls',
+    ],
     applyScrubbing: {
       key: 'manual',
     },
@@ -30985,10 +31382,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: '[{"name": "get_weather", "arguments": {"location": "Paris"}}]',
     deprecation: {
       replacement: 'gen_ai.output.messages',
-      status: 'transform',
-      transformation: 'gen_ai_response_to_output_messages',
+      status: 'normalize',
     },
     changelog: [
+      { version: '0.34.0', prs: [801], description: 'Revert deprecation status from `transform` to `normalize`.' },
       { version: '0.4.0', prs: [221] },
       { version: '0.1.0', prs: [63, 74] },
     ],
@@ -31027,7 +31424,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: ['ai.preamble'],
     changelog: [
       {
-        version: 'next',
+        version: '0.34.0',
         prs: [790, 791],
         description:
           'Clarify that messages in the chat history only belong in gen_ai.input.messages. Remove informal format description from the brief to prevent duplication with the structured schema.',
@@ -31059,7 +31456,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     ],
   },
   'gen_ai.tool.call.arguments': {
-    brief: 'The arguments of the tool call. It has to be a stringified version of the arguments to the tool.',
+    brief: 'The arguments of the tool call.',
     type: 'string',
     keys: ['gen_ai.tool.call.arguments', 'ai.toolCall.args', 'gen_ai.tool.input'],
     applyScrubbing: {
@@ -31070,6 +31467,12 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: '{"location": "Paris"}',
     aliases: ['gen_ai.tool.input', 'ai.toolCall.args'],
     changelog: [
+      {
+        version: '0.34.0',
+        prs: [793],
+        description:
+          'Remove informal format description from the brief to prevent duplication with the structured schema.',
+      },
       { version: '0.5.0', prs: [265] },
       { version: '0.4.0', prs: [221] },
     ],
@@ -31100,7 +31503,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     ],
     changelog: [
       {
-        version: 'next',
+        version: '0.34.0',
         prs: [794],
         description:
           'Remove informal format description from the brief to prevent duplication with the structured schema.',
@@ -32541,11 +32944,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 456,
     aliases: ['http.decoded_response_content_length', 'http.response_content_length_uncompressed'],
-    changelog: [{ version: '0.21.0', prs: [574], description: 'Added http.response.body.decoded_size attribute' }],
+    changelog: [
+      { version: 'next', description: 'Added search_alias with type byte' },
+      { version: '0.21.0', prs: [574], description: 'Added http.response.body.decoded_size attribute' },
+    ],
     additionalContext: [
       'This is the size after content decoding. Set it only when the decoded size is actually known, for example from the browser Resource Timing `decodedBodySize` or by measuring a decompressed response stream.',
       'Do not derive this from the `content-length` header, which always carries the encoded size. Use `http.response.body.size` for that.',
     ],
+    searchAlias: {
+      name: 'http.response.body.decoded_size',
+      type: 'byte',
+    },
   },
   'http.response.body.size': {
     brief: 'The encoded body size of the response (in bytes).',
@@ -32558,7 +32968,16 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 123,
     aliases: ['http.response_content_length', 'http.response.header.content-length'],
-    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [106] }, { version: '0.0.0' }],
+    changelog: [
+      { version: 'next', description: 'Added search_alias with type byte' },
+      { version: '0.4.0', prs: [228] },
+      { version: '0.1.0', prs: [106] },
+      { version: '0.0.0' },
+    ],
+    searchAlias: {
+      name: 'http.response.body.size',
+      type: 'byte',
+    },
   },
   'http.response_content_length': {
     brief: 'The encoded body size of the response (in bytes).',
@@ -32651,7 +33070,15 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 456,
     aliases: ['http.response_transfer_size'],
-    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
+    changelog: [
+      { version: 'next', description: 'Added search_alias with type byte' },
+      { version: '0.4.0', prs: [228] },
+      { version: '0.0.0' },
+    ],
+    searchAlias: {
+      name: 'http.response.size',
+      type: 'byte',
+    },
   },
   'http.response.status_code': {
     brief: 'The status code of the HTTP response.',
@@ -34956,7 +35383,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'messaging.destination': {
     brief: 'The message destination name.',
     type: 'string',
-    keys: ['messaging.destination.name', 'messaging.destination'],
+    keys: ['messaging.destination.name', 'messaging.destination', 'sentry.messaging.destination.name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -34969,8 +35396,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
         'This attribute is being deprecated in favor of messaging.destination.name, which is the OTel-aligned replacement.',
       status: 'backfill',
     },
-    aliases: ['messaging.destination.name'],
+    aliases: ['messaging.destination.name', 'sentry.messaging.destination.name'],
     changelog: [
+      { version: 'next', description: 'Added sentry.messaging.destination.name as an alias' },
       {
         version: '0.16.0',
         prs: [482],
@@ -35016,15 +35444,16 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'messaging.destination.name': {
     brief: 'The message destination name.',
     type: 'string',
-    keys: ['messaging.destination.name', 'messaging.destination'],
+    keys: ['messaging.destination.name', 'messaging.destination', 'sentry.messaging.destination.name'],
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
     example: 'BestTopic',
-    aliases: ['messaging.destination'],
+    aliases: ['messaging.destination', 'sentry.messaging.destination.name'],
     changelog: [
+      { version: 'next', prs: [796], description: 'Added sentry.messaging.destination.name as an alias' },
       { version: '0.16.0', prs: [482], description: 'Added messaging.destination as an alias' },
       { version: '0.1.0', prs: [127] },
       { version: '0.0.0' },
@@ -35128,15 +35557,16 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'messaging.message.id': {
     brief: 'A value used by the messaging system as an identifier for the message, represented as a string.',
     type: 'string',
-    keys: ['messaging.message.id', 'messaging.message_id'],
+    keys: ['messaging.message.id', 'messaging.message_id', 'sentry.messaging.message.id'],
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
     example: 'f47ac10b58cc4372a5670e02b2c3d479',
-    aliases: ['messaging.message_id'],
+    aliases: ['messaging.message_id', 'sentry.messaging.message.id'],
     changelog: [
+      { version: 'next', prs: [809], description: 'Added sentry.messaging.message.id as an alias' },
       { version: '0.21.0', prs: [581], description: 'Added messaging.message_id as an alias' },
       { version: '0.1.0', prs: [127] },
       { version: '0.0.0' },
@@ -35145,7 +35575,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'messaging.message_id': {
     brief: 'A value used by the messaging system as an identifier for the message, represented as a string.',
     type: 'string',
-    keys: ['messaging.message.id', 'messaging.message_id'],
+    keys: ['messaging.message.id', 'messaging.message_id', 'sentry.messaging.message.id'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -35158,8 +35588,11 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason: 'This attribute is being deprecated in favor of messaging.message.id.',
       status: 'backfill',
     },
-    aliases: ['messaging.message.id'],
-    changelog: [{ version: '0.21.0', prs: [581], description: 'Added messaging.message_id attribute' }],
+    aliases: ['messaging.message.id', 'sentry.messaging.message.id'],
+    changelog: [
+      { version: 'next', prs: [809], description: 'Added sentry.messaging.message.id as an alias' },
+      { version: '0.21.0', prs: [581], description: 'Added messaging.message_id attribute' },
+    ],
   },
   'messaging.message.receive.latency': {
     brief: 'The latency between when the message was published and received.',
@@ -36227,6 +36660,31 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'resource not found',
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
+  'page.server_rendering.age': {
+    brief:
+      'Set on a pageload span. The time in seconds from the start of the server render of the reused part of the page to the start of the span.',
+    type: 'integer',
+    keys: ['page.server_rendering.age'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 0,
+    examples: [0, 2520, 259200],
+    changelog: [{ version: '0.34.0', prs: [799], description: 'Added page.server_rendering.age attribute' }],
+    additionalContext: [
+      'Set only by an SDK that controls the server render, when the page reuses a server render and the SDK knows when that render started. With `page.server_rendering.type: partially_static`, the value is for the static part.',
+      'If the span has a `cache_origin` link, the linked span is that render. The SDK can also set the value without a link, for example for a page from the build.',
+      'Approximate, because the render time comes from the server clock and the span start from the browser clock. Rounded down to whole seconds and clamped to 0, as `cache.item_age`. A value near 0 does not prove that the server rendered the page for this request.',
+      'The age of the render, not of its data. The render can read older cached data.',
+      'Not the HTTP `Age` response header. HTTP caches reset that header when they validate the response.',
+    ],
+    searchAlias: {
+      name: 'page.server_rendering.age',
+      type: 'second',
+    },
+  },
   'page.server_rendering.type': {
     brief:
       'Set on a pageload span. Describes how the server rendered the content of the page: to reuse it for other requests, only for this request, or a mix of both.',
@@ -36240,7 +36698,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'static',
     examples: ['static', 'partially_static', 'dynamic'],
     changelog: [
-      { version: 'next', prs: [789], description: 'Added the cache_origin link to the reused part' },
+      { version: '0.34.0', prs: [789], description: 'Added the cache_origin link to the reused part' },
       { version: '0.31.0', prs: [740], description: 'Added page.server_rendering.type attribute' },
     ],
     additionalContext: [
@@ -36403,7 +36861,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'processes',
     examples: ['processes', 'binary', 'other'],
-    changelog: [{ version: 'next', description: 'Added process.runtime.elixir.memory.type attribute' }],
+    changelog: [{ version: '0.34.0', prs: [768], description: 'Added process.runtime.elixir.memory.type attribute' }],
   },
   'process.runtime.elixir.run_queue.type': {
     brief:
@@ -36417,7 +36875,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'cpu',
     examples: ['cpu', 'io'],
-    changelog: [{ version: 'next', description: 'Added process.runtime.elixir.run_queue.type attribute' }],
+    changelog: [
+      { version: '0.34.0', prs: [768], description: 'Added process.runtime.elixir.run_queue.type attribute' },
+    ],
   },
   'process.runtime.engine.name': {
     brief: 'The name of the runtime engine.',
@@ -36446,15 +36906,19 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'process.runtime.name': {
     brief: 'The name of the runtime. Equivalent to `name` in the Sentry runtime context.',
     type: 'string',
-    keys: ['process.runtime.name', 'runtime.name'],
+    keys: ['process.runtime.name', 'runtime.name', 'sentry.runtime.name'],
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
     example: 'node',
-    aliases: ['runtime.name'],
-    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
+    aliases: ['runtime.name', 'sentry.runtime.name'],
+    changelog: [
+      { version: 'next', prs: [806], description: 'Added sentry.runtime.name as an alias' },
+      { version: '0.1.0', prs: [127] },
+      { version: '0.0.0' },
+    ],
   },
   'process.runtime.version': {
     brief:
@@ -36583,7 +37047,14 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 512.5,
     examples: [512.5],
-    changelog: [{ version: '0.24.0', prs: [564], description: 'Added react_native.module.duration.max attribute' }],
+    changelog: [
+      { version: 'next', description: 'Added search_alias with type millisecond' },
+      { version: '0.24.0', prs: [564], description: 'Added react_native.module.duration.max attribute' },
+    ],
+    searchAlias: {
+      name: 'react_native.module.duration.max',
+      type: 'millisecond',
+    },
   },
   'react_native.module.duration.total': {
     brief:
@@ -36598,7 +37069,14 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 128.45,
     examples: [128.45],
     aliases: ['turbo_module.total_duration_ms', 'turbo_modules.total_duration_ms'],
-    changelog: [{ version: '0.24.0', prs: [564], description: 'Added react_native.module.duration.total attribute' }],
+    changelog: [
+      { version: 'next', description: 'Added search_alias with type millisecond' },
+      { version: '0.24.0', prs: [564], description: 'Added react_native.module.duration.total attribute' },
+    ],
+    searchAlias: {
+      name: 'react_native.module.duration.total',
+      type: 'millisecond',
+    },
   },
   'react_native.module.error.count': {
     brief:
@@ -36674,7 +37152,14 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 87.25,
     examples: [87.25],
     aliases: ['turbo_module.top_module_duration_ms'],
-    changelog: [{ version: '0.24.0', prs: [564], description: 'Added react_native.module.top.duration attribute' }],
+    changelog: [
+      { version: 'next', description: 'Added search_alias with type millisecond' },
+      { version: '0.24.0', prs: [564], description: 'Added react_native.module.top.duration attribute' },
+    ],
+    searchAlias: {
+      name: 'react_native.module.top.duration',
+      type: 'millisecond',
+    },
   },
   'react_native.module.top.name': {
     brief:
@@ -37083,7 +37568,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'runtime.name': {
     brief: 'The name of the runtime. For example node, CPython, or rustc.',
     type: 'string',
-    keys: ['process.runtime.name', 'runtime.name'],
+    keys: ['process.runtime.name', 'runtime.name', 'sentry.runtime.name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -37095,8 +37580,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason: 'Prefer OTel-aligned process.runtime.name',
       status: 'backfill',
     },
-    aliases: ['process.runtime.name'],
+    aliases: ['process.runtime.name', 'sentry.runtime.name'],
     changelog: [
+      { version: 'next', prs: [806], description: 'Added sentry.runtime.name as an alias' },
       {
         version: '0.11.0',
         prs: [383],
@@ -38061,7 +38547,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'previous_trace',
     examples: ['previous_trace', 'cache_origin', 'message_origin', 'server_request'],
     changelog: [
-      { version: 'next', prs: [789], description: 'Added pageload examples to cache_origin and server_request' },
+      { version: '0.34.0', prs: [789], description: 'Added pageload examples to cache_origin and server_request' },
       {
         version: '0.28.0',
         prs: [724, 738, 739],
@@ -38116,6 +38602,53 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'Hello, {name}!',
     changelog: [{ version: '0.1.0', prs: [116] }],
+  },
+  'sentry.messaging.destination.name': {
+    brief: 'The message destination name.',
+    type: 'string',
+    keys: ['messaging.destination.name', 'messaging.destination', 'sentry.messaging.destination.name'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'BestTopic',
+    deprecation: {
+      replacement: 'messaging.destination.name',
+      status: 'backfill',
+    },
+    aliases: ['messaging.destination.name', 'messaging.destination'],
+    changelog: [
+      {
+        version: 'next',
+        prs: [796],
+        description:
+          'Added sentry.messaging.destination.name attribute, deprecated in favor of messaging.destination.name',
+      },
+    ],
+  },
+  'sentry.messaging.message.id': {
+    brief: 'A value used by the messaging system as an identifier for the message, represented as a string.',
+    type: 'string',
+    keys: ['messaging.message.id', 'messaging.message_id', 'sentry.messaging.message.id'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'f47ac10b58cc4372a5670e02b2c3d479',
+    deprecation: {
+      replacement: 'messaging.message.id',
+      status: 'backfill',
+    },
+    aliases: ['messaging.message.id', 'messaging.message_id'],
+    changelog: [
+      {
+        version: 'next',
+        prs: [809],
+        description: 'Added sentry.messaging.message.id attribute, deprecated in favor of messaging.message.id',
+      },
+    ],
   },
   'sentry.metric.source': {
     brief:
@@ -38416,6 +38949,29 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
           'Updated the deprecation reason now that the browser.web_vital.*.report_event attributes are deprecated',
       },
       { version: '0.5.0', prs: [320], description: 'Added sentry.report_event attribute' },
+    ],
+  },
+  'sentry.runtime.name': {
+    brief: 'The name of the runtime. Equivalent to `name` in the Sentry runtime context.',
+    type: 'string',
+    keys: ['process.runtime.name', 'runtime.name', 'sentry.runtime.name'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'node',
+    deprecation: {
+      replacement: 'process.runtime.name',
+      status: 'backfill',
+    },
+    aliases: ['process.runtime.name', 'runtime.name'],
+    changelog: [
+      {
+        version: 'next',
+        prs: [806],
+        description: 'Added sentry.runtime.name attribute, deprecated in favor of process.runtime.name',
+      },
     ],
   },
   'sentry.sdk.integrations': {
@@ -38720,6 +39276,29 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       name: 'thread.id',
     },
   },
+  'sentry.thread.name': {
+    brief: 'Current thread name.',
+    type: 'string',
+    keys: ['thread.name', 'sentry.thread.name'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'main',
+    deprecation: {
+      replacement: 'thread.name',
+      status: 'backfill',
+    },
+    aliases: ['thread.name'],
+    changelog: [
+      {
+        version: 'next',
+        prs: [808],
+        description: 'Added sentry.thread.name attribute, deprecated in favor of thread.name',
+      },
+    ],
+  },
   'sentry.timestamp.sequence': {
     brief:
       'A sequencing counter for deterministic ordering of logs or metrics when timestamps share the same integer millisecond. Starts at 0 on SDK initialization, increments by 1 for each captured item, and resets to 0 when the integer millisecond of the current item differs from the previous one.',
@@ -38801,6 +39380,26 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       { version: '0.6.0', prs: [345], description: 'Deprecated sentry.transaction in favor of sentry.segment.name' },
       { version: '0.0.0' },
     ],
+  },
+  'sentry.user': {
+    brief:
+      "Combined identifier of the user, used for the `user` tag and for counting unique users. Set to the first available of the user's ID, username, email address, or IP address, prefixed with which one it is: `id:`, `username:`, `email:`, or `ip:`.",
+    type: 'string',
+    keys: ['sentry.user', 'user'],
+    applyScrubbing: {
+      key: 'auto',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'id:123',
+    examples: ['id:123', 'username:j.smith', 'email:test@example.com', 'ip:192.168.1.1'],
+    changelog: [{ version: '0.34.0', prs: [817], description: 'Added sentry.user attribute' }],
+    additionalContext: [
+      'Derived by Sentry during ingestion from `user.id`, `user.name`, `user.email`, and `user.ip_address`. SDKs do not set it.',
+    ],
+    searchAlias: {
+      name: 'user',
+    },
   },
   'sentry.user.email': {
     brief: 'User email address.',
@@ -39325,14 +39924,19 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'thread.name': {
     brief: 'Current thread name.',
     type: 'string',
-    keys: ['thread.name'],
+    keys: ['thread.name', 'sentry.thread.name'],
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
     example: 'main',
-    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
+    aliases: ['sentry.thread.name'],
+    changelog: [
+      { version: 'next', prs: [808], description: 'Added sentry.thread.name as an alias' },
+      { version: '0.1.0', prs: [127] },
+      { version: '0.0.0' },
+    ],
   },
   'timber.tag': {
     brief: 'The log tag provided by the timber logging framework.',
@@ -41620,6 +42224,7 @@ export type Attributes = {
   [OTEL_SCOPE_VERSION]?: OTEL_SCOPE_VERSION_TYPE;
   [OTEL_STATUS_CODE]?: OTEL_STATUS_CODE_TYPE;
   [OTEL_STATUS_DESCRIPTION]?: OTEL_STATUS_DESCRIPTION_TYPE;
+  [PAGE_SERVER_RENDERING_AGE]?: PAGE_SERVER_RENDERING_AGE_TYPE;
   [PAGE_SERVER_RENDERING_TYPE]?: PAGE_SERVER_RENDERING_TYPE_TYPE;
   [PARAMS_KEY]?: PARAMS_KEY_TYPE;
   [PERFORMANCE_ACTIVATIONSTART]?: PERFORMANCE_ACTIVATIONSTART_TYPE;
@@ -41731,6 +42336,8 @@ export type Attributes = {
   [SENTRY_MAIN_THREAD]?: SENTRY_MAIN_THREAD_TYPE;
   [SENTRY_MESSAGE_PARAMETER_KEY]?: SENTRY_MESSAGE_PARAMETER_KEY_TYPE;
   [SENTRY_MESSAGE_TEMPLATE]?: SENTRY_MESSAGE_TEMPLATE_TYPE;
+  [SENTRY_MESSAGING_DESTINATION_NAME]?: SENTRY_MESSAGING_DESTINATION_NAME_TYPE;
+  [SENTRY_MESSAGING_MESSAGE_ID]?: SENTRY_MESSAGING_MESSAGE_ID_TYPE;
   [SENTRY_METRIC_SOURCE]?: SENTRY_METRIC_SOURCE_TYPE;
   [SENTRY_MOBILE]?: SENTRY_MOBILE_TYPE;
   [SENTRY_MODULE_KEY]?: SENTRY_MODULE_KEY_TYPE;
@@ -41752,6 +42359,7 @@ export type Attributes = {
   [SENTRY_REPLAY_ID]?: SENTRY_REPLAY_ID_TYPE;
   [SENTRY_REPLAY_IS_BUFFERING]?: SENTRY_REPLAY_IS_BUFFERING_TYPE;
   [SENTRY_REPORT_EVENT]?: SENTRY_REPORT_EVENT_TYPE;
+  [SENTRY_RUNTIME_NAME]?: SENTRY_RUNTIME_NAME_TYPE;
   [SENTRY_SDK_INTEGRATIONS]?: SENTRY_SDK_INTEGRATIONS_TYPE;
   [SENTRY_SDK_NAME]?: SENTRY_SDK_NAME_TYPE;
   [SENTRY_SDK_VERSION]?: SENTRY_SDK_VERSION_TYPE;
@@ -41769,11 +42377,13 @@ export type Attributes = {
   [SENTRY_SVELTEKIT_NAVIGATION_TO]?: SENTRY_SVELTEKIT_NAVIGATION_TO_TYPE;
   [SENTRY_SVELTEKIT_NAVIGATION_TYPE]?: SENTRY_SVELTEKIT_NAVIGATION_TYPE_TYPE;
   [SENTRY_THREAD_ID]?: SENTRY_THREAD_ID_TYPE;
+  [SENTRY_THREAD_NAME]?: SENTRY_THREAD_NAME_TYPE;
   [SENTRY_TIMESTAMP_SEQUENCE]?: SENTRY_TIMESTAMP_SEQUENCE_TYPE;
   [SENTRY_TRACE_LIFECYCLE]?: SENTRY_TRACE_LIFECYCLE_TYPE;
   [SENTRY_TRACE_PARENT_SPAN_ID]?: SENTRY_TRACE_PARENT_SPAN_ID_TYPE;
   [SENTRY_TRACE_STATUS]?: SENTRY_TRACE_STATUS_TYPE;
   [SENTRY_TRANSACTION]?: SENTRY_TRANSACTION_TYPE;
+  [SENTRY_USER]?: SENTRY_USER_TYPE;
   [SENTRY_USER_EMAIL]?: SENTRY_USER_EMAIL_TYPE;
   [SENTRY_USER_GEO_CITY]?: SENTRY_USER_GEO_CITY_TYPE;
   [SENTRY_USER_GEO_COUNTRY_CODE]?: SENTRY_USER_GEO_COUNTRY_CODE_TYPE;

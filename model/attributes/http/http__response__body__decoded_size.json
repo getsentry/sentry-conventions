@@ -13,7 +13,15 @@
   "example": 456,
   "alias": ["http.decoded_response_content_length", "http.response_content_length_uncompressed"],
   "visibility": "public",
+  "search_alias": {
+    "name": "http.response.body.decoded_size",
+    "type": "byte"
+  },
   "changelog": [
+    {
+      "version": "next",
+      "description": "Added search_alias with type byte"
+    },
     {
       "version": "0.21.0",
       "prs": [574],
