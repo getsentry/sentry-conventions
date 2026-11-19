@@ -1,21 +1,23 @@
 // This is an auto-generated file. Do not edit!
 
-export type { TextPart } from './_schemas/shared/gen_ai_parts';
+export type { ChatMessage, Role } from './_schemas/shared/gen_ai_chat_message';
 
 export type {
-  OutputMessages,
-  BlobPart,
-  ChatMessage,
-  CompactionPart,
-  FilePart,
-  GenericPart,
-  Modality,
-  ReasoningPart,
-  Role,
+  TextPart,
   ToolCallRequestPart,
   ToolCallResponsePart,
+  BlobPart,
+  FilePart,
   UriPart,
-} from './_schemas/gen_ai_output_messages';
+  ReasoningPart,
+  CompactionPart,
+  GenericPart,
+  Modality,
+} from './_schemas/shared/gen_ai_parts';
+
+export type { InputMessages } from './_schemas/gen_ai_input_messages';
+
+export type { OutputMessages } from './_schemas/gen_ai_output_messages';
 
 export type { SystemInstructions } from './_schemas/gen_ai_system_instructions';
 
