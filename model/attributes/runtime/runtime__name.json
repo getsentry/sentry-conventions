@@ -13,8 +13,13 @@
     "reason": "Prefer OTel-aligned process.runtime.name",
     "_status": "backfill"
   },
-  "alias": ["process.runtime.name"],
+  "alias": ["process.runtime.name", "sentry.runtime.name"],
   "changelog": [
+    {
+      "version": "next",
+      "prs": [806],
+      "description": "Added sentry.runtime.name as an alias"
+    },
     {
       "version": "0.11.0",
       "prs": [383],

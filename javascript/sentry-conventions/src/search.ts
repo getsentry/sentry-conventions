@@ -4712,6 +4712,13 @@ export const SEARCH_SENTRY__REPLAY_IS_BUFFERING = 'sentry.replay_is_buffering';
 export const SEARCH_SENTRY__REPORT_EVENT = 'sentry.report_event';
 
 /**
+ * Search name for {@link attributes.SENTRY_RUNTIME_NAME}. `sentry.runtime.name`
+ *
+ * @deprecated Use {@link SEARCH_PROCESS__RUNTIME__NAME} (`process.runtime.name`) instead
+ */
+export const SEARCH_SENTRY__RUNTIME__NAME = 'sentry.runtime.name';
+
+/**
  * Search name for {@link attributes.SENTRY_SDK_INTEGRATIONS}. `sentry.sdk.integrations`
  */
 export const SEARCH_SENTRY__SDK__INTEGRATIONS = 'sentry.sdk.integrations';
@@ -6454,6 +6461,7 @@ export type AttributeSearchName =
   | typeof SEARCH_SENTRY__REPLAY_ID
   | typeof SEARCH_SENTRY__REPLAY_IS_BUFFERING
   | typeof SEARCH_SENTRY__REPORT_EVENT
+  | typeof SEARCH_SENTRY__RUNTIME__NAME
   | typeof SEARCH_SENTRY__SDK__INTEGRATIONS
   | typeof SEARCH_SENTRY__SDK__NAME
   | typeof SEARCH_SENTRY__SDK__VERSION
@@ -11414,7 +11422,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'process.runtime.name',
     type: 'string',
     brief: 'The name of the runtime. Equivalent to `name` in the Sentry runtime context.',
-    deprecationChain: ['process.runtime.name', 'runtime.name'],
+    deprecationChain: ['process.runtime.name', 'runtime.name', 'sentry.runtime.name'],
   },
   'process.runtime.version': {
     canonicalName: 'process.runtime.version',
@@ -11695,7 +11703,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'process.runtime.name',
     type: 'string',
     brief: 'The name of the runtime. For example node, CPython, or rustc.',
-    deprecationChain: ['process.runtime.name', 'runtime.name'],
+    deprecationChain: ['process.runtime.name', 'runtime.name', 'sentry.runtime.name'],
   },
   'runtime.raw_description': {
     canonicalName: 'process.runtime.description',
@@ -12039,6 +12047,12 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     brief: '(Deprecated) The event that caused the SDK to report CLS or LCP (pagehide or navigation)',
     deprecated: true,
     deprecationChain: ['sentry.report_event'],
+  },
+  'sentry.runtime.name': {
+    canonicalName: 'process.runtime.name',
+    type: 'string',
+    brief: 'The name of the runtime. Equivalent to `name` in the Sentry runtime context.',
+    deprecationChain: ['process.runtime.name', 'runtime.name', 'sentry.runtime.name'],
   },
   'sentry.sdk.integrations': {
     canonicalName: 'sentry.sdk.integrations',
