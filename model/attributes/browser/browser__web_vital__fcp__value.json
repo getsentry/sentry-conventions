@@ -9,7 +9,15 @@
   "example": 547.6951,
   "alias": ["fcp"],
   "visibility": "public",
+  "search_alias": {
+    "name": "browser.web_vital.fcp.value",
+    "type": "millisecond"
+  },
   "changelog": [
+    {
+      "version": "next",
+      "description": "Added search_alias with type millisecond"
+    },
     {
       "version": "0.5.0",
       "prs": [235]

@@ -13,7 +13,15 @@
     "Despite the name 'cost.input_tokens', this value is cost in USD, not a token count. For token counts, use gen_ai.usage.input_tokens.",
     "This is the total cost of all input tokens, including cached and cache creation tokens at their respective rates. For the cached portion, see gen_ai.cost.cache_read.input_tokens. For the cache creation portion, see gen_ai.cost.cache_creation.input_tokens."
   ],
+  "search_alias": {
+    "name": "gen_ai.cost.input_tokens",
+    "type": "currency"
+  },
   "changelog": [
+    {
+      "version": "next",
+      "description": "Added search_alias with type currency"
+    },
     {
       "version": "0.9.0",
       "prs": [397],
