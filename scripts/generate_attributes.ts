@@ -575,7 +575,7 @@ function writeToPython(parsedAttributes: ParsedAttribute[], outputFilePath: stri
   content += 'if sys.version_info >= (3, 8):\n';
   content += '    from typing import Literal, TypedDict\n';
   content += 'else:\n';
-  content += '    # from: https://stackoverflow.com/a/71944042/300572\n';
+  content += '    # typing.Literal str standin for Python 3.7: https://stackoverflow.com/a/71944042/300572\n';
   content += '    class _Literal:\n';
   content += '        def __getitem__(self, _):\n';
   content += '            return str\n\n';
