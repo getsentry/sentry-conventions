@@ -4837,6 +4837,13 @@ export const SEARCH_SENTRY__TRACE_LIFECYCLE = 'sentry.trace_lifecycle';
 export const SEARCH_SENTRY__TRANSACTION = 'sentry.transaction';
 
 /**
+ * Search name for {@link attributes.SENTRY_USER}. `sentry.user`
+ *
+ * @deprecated Use {@link SEARCH_USER} (`user`) instead
+ */
+export const SEARCH_SENTRY__USER = 'sentry.user';
+
+/**
  * Search name for {@link attributes.SENTRY_USER_IP}. `sentry.user.ip`
  *
  * @deprecated Use {@link SEARCH_USER__IP} (`user.ip`) instead
@@ -5312,6 +5319,11 @@ export const SEARCH_URL__SCHEME = 'url.scheme';
  * Search name for {@link attributes.URL_TEMPLATE}. `url.template`
  */
 export const SEARCH_URL__TEMPLATE = 'url.template';
+
+/**
+ * Search name for {@link attributes.SENTRY_USER}. `user`
+ */
+export const SEARCH_USER = 'user';
 
 /**
  * Search name for {@link attributes.USER_EMAIL}. `user.email`
@@ -6440,6 +6452,7 @@ export type AttributeSearchName =
   | typeof SEARCH_SENTRY__TRACE__STATUS
   | typeof SEARCH_SENTRY__TRACE_LIFECYCLE
   | typeof SEARCH_SENTRY__TRANSACTION
+  | typeof SEARCH_SENTRY__USER
   | typeof SEARCH_SENTRY__USER__IP
   | typeof SEARCH_SENTRY__USER__USERNAME
   | typeof SEARCH_SERVER__ADDRESS
@@ -6523,6 +6536,7 @@ export type AttributeSearchName =
   | typeof SEARCH_URL__SAME_ORIGIN
   | typeof SEARCH_URL__SCHEME
   | typeof SEARCH_URL__TEMPLATE
+  | typeof SEARCH_USER
   | typeof SEARCH_USER__EMAIL
   | typeof SEARCH_USER__FULL_NAME
   | typeof SEARCH_USER__GEO__CITY
@@ -12630,6 +12644,13 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'string',
     brief: 'The low-cardinality template of an absolute URL path reference.',
     deprecationChain: ['url.template'],
+  },
+  user: {
+    canonicalName: 'sentry.user',
+    type: 'string',
+    brief:
+      "Combined identifier of the user, used for the `user` tag and for counting unique users. Set to the first available of the user's ID, username, email address, or IP address, prefixed with which one it is: `id:`, `username:`, `email:`, or `ip:`.",
+    deprecationChain: ['user', 'sentry.user'],
   },
   'user.email': {
     canonicalName: 'user.email',

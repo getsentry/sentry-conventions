@@ -1,3 +1,51 @@
+## 0.34.0
+
+### New Features ✨
+
+#### Attributes
+
+- Add `sentry.user` attribute by @ArthurKnaus and @claude in [#817](https://github.com/getsentry/sentry-conventions/pull/817)
+- Add schema for `gen_ai.tool.call.arguments` by @alexander-alderman-webb in [#793](https://github.com/getsentry/sentry-conventions/pull/793)
+- Add page.server_rendering.age attribute by @s1gr1d in [#799](https://github.com/getsentry/sentry-conventions/pull/799)
+- Add schema for `gen_ai.tool.call.result` by @alexander-alderman-webb in [#794](https://github.com/getsentry/sentry-conventions/pull/794)
+- Add schema for `gen_ai.system_instructions` by @alexander-alderman-webb in [#791](https://github.com/getsentry/sentry-conventions/pull/791)
+- Add TypeScript type generation from OpenAPI schemas by @alexander-alderman-webb in [#771](https://github.com/getsentry/sentry-conventions/pull/771)
+- Add Python type generation from OpenAPI schemas by @alexander-alderman-webb in [#769](https://github.com/getsentry/sentry-conventions/pull/769)
+- Add schema for `gen_ai.tool.definitions` by @alexander-alderman-webb in [#767](https://github.com/getsentry/sentry-conventions/pull/767)
+
+#### Other
+
+- (model) Add Elixir runtime metrics by @solnic in [#768](https://github.com/getsentry/sentry-conventions/pull/768)
+- Put schema types in type checking block by @alexander-alderman-webb in [#813](https://github.com/getsentry/sentry-conventions/pull/813)
+
+### Bug Fixes 🐛
+
+- (attributes) Describe pageload links for `cache_origin` and `server_request` by @s1gr1d in [#789](https://github.com/getsentry/sentry-conventions/pull/789)
+- (scripts) Remove `undefined` reference notes from generated schema types by @andreiborza and @claude in [#811](https://github.com/getsentry/sentry-conventions/pull/811)
+
+### Internal Changes 🔧
+
+#### Attributes
+
+- Disambiguate `gen_ai.output.messages` by @alexander-alderman-webb in [#802](https://github.com/getsentry/sentry-conventions/pull/802)
+- Prevent splicing system messages out of `gen_ai.input.messages` by @alexander-alderman-webb in [#790](https://github.com/getsentry/sentry-conventions/pull/790)
+
+#### Deps
+
+- Bump @astrojs/svelte from 9.0.1 to 9.1.2 by @dependabot in [#798](https://github.com/getsentry/sentry-conventions/pull/798)
+- Bump astro from 7.3.3 to 7.4.7 in /docs by @andreiborza with @dependabot and @sentry-junior in [#800](https://github.com/getsentry/sentry-conventions/pull/800)
+
+#### Other
+
+- (attribute) Disambiguate `gen_ai.response.time_to_first_chunk` by @alexander-alderman-webb in [#795](https://github.com/getsentry/sentry-conventions/pull/795)
+- (codeowners) Move gen_ai attribute ownership to agent-tracing by @shellmayr in [#792](https://github.com/getsentry/sentry-conventions/pull/792)
+- (python) Add srothh as CODEOWNER for Python codegen by @alexander-alderman-webb in [#812](https://github.com/getsentry/sentry-conventions/pull/812)
+- (release) Bump craft to 3.9.0 and update config by @BYK with @sentry-junior in [#764](https://github.com/getsentry/sentry-conventions/pull/764)
+
+### Other
+
+- revert: Remove incomplete attribute transformations by @alexander-alderman-webb in [#801](https://github.com/getsentry/sentry-conventions/pull/801)
+
 ## 0.33.0
 
 ### Bug Fixes 🐛
