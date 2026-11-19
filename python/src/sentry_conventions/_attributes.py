@@ -11100,6 +11100,20 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "GET /"
     """
 
+    # Path: model/attributes/sentry/sentry__user.json
+    SENTRY_USER: Literal["sentry.user"] = "sentry.user"
+    """Combined identifier of the user, used for the `user` tag and for counting unique users. Set to the first available of the user's ID, username, email address, or IP address, prefixed with which one it is: `id:`, `username:`, `email:`, or `ip:`.
+
+    Type: str
+    Apply Scrubbing: auto
+    Defined in OTEL: No
+    Visibility: public
+    Example: "id:123"
+    Example: "username:j.smith"
+    Example: "email:test@example.com"
+    Example: "ip:192.168.1.1"
+    """
+
     # Path: model/attributes/sentry/sentry__user__email.json
     SENTRY_USER_EMAIL: Literal["sentry.user.email"] = "sentry.user.email"
     """User email address.
@@ -29234,6 +29248,33 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
+    "sentry.user": AttributeMetadata(
+        brief="Combined identifier of the user, used for the `user` tag and for counting unique users. Set to the first available of the user's ID, username, email address, or IP address, prefixed with which one it is: `id:`, `username:`, `email:`, or `ip:`.",
+        type=AttributeType.STRING,
+        keys=(
+            "sentry.user",
+            "user",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="id:123",
+        examples=[
+            "id:123",
+            "username:j.smith",
+            "email:test@example.com",
+            "ip:192.168.1.1",
+        ],
+        changelog=[
+            ChangelogEntry(
+                version="next", prs=[817], description="Added sentry.user attribute"
+            ),
+        ],
+        additional_context=[
+            "Derived by Sentry during ingestion from `user.id`, `user.name`, `user.email`, and `user.ip_address`. SDKs do not set it."
+        ],
+        search_alias=SearchAlias(name="user"),
+    ),
     "sentry.user.email": AttributeMetadata(
         brief="User email address.",
         type=AttributeType.STRING,
@@ -32441,6 +32482,7 @@ Attributes = TypedDict(
         "sentry.trace.status": str,
         "sentry.trace_lifecycle": str,
         "sentry.transaction": str,
+        "sentry.user": str,
         "sentry.user.email": str,
         "sentry.user.geo.city": str,
         "sentry.user.geo.country_code": str,
