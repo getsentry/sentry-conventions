@@ -1,6 +1,6 @@
 version = 1
 revision = 5
-requires-python = ">=3.8"
+requires-python = ">=3.7"
 resolution-markers = [
     "python_full_version >= '3.15' and sys_platform != 'emscripten'",
     "python_full_version >= '3.15' and sys_platform == 'emscripten'",
@@ -8,10 +8,10 @@ resolution-markers = [
     "python_full_version == '3.14.*' and sys_platform == 'emscripten'",
     "python_full_version >= '3.11' and python_full_version < '3.14' and sys_platform != 'emscripten'",
     "python_full_version >= '3.11' and python_full_version < '3.14' and sys_platform == 'emscripten'",
-    "python_full_version == '3.10.*' and sys_platform != 'emscripten'",
-    "python_full_version == '3.10.*' and sys_platform == 'emscripten'",
+    "python_full_version == '3.10.*'",
     "python_full_version == '3.9.*'",
-    "python_full_version < '3.9'",
+    "python_full_version == '3.8.*'",
+    "python_full_version < '3.8'",
 ]
 
 [[package]]
@@ -166,7 +166,7 @@ name = "isort"
 version = "5.13.2"
 source = { registry = "https://sfw.security.sentry.io/pypi/simple" }
 resolution-markers = [
-    "python_full_version < '3.9'",
+    "python_full_version == '3.8.*'",
 ]
 sdist = { url = "https://sfw.security.sentry.io/pypi/packages/87/f9/c1eb8635a24e87ade2efce21e3ce8cd6b8630bb685ddc9cdaca1349b2eb5/isort-5.13.2.tar.gz", hash = "sha256:48fdfcb9face5d58a4f6dde2e72a1fb8dcaf8ab26f95ab49fab84c2ddefb0109", size = 175303, upload-time = "2023-12-13T20:37:26.124Z" }
 wheels = [
@@ -184,8 +184,7 @@ resolution-markers = [
     "python_full_version == '3.14.*' and sys_platform == 'emscripten'",
     "python_full_version >= '3.11' and python_full_version < '3.14' and sys_platform != 'emscripten'",
     "python_full_version >= '3.11' and python_full_version < '3.14' and sys_platform == 'emscripten'",
-    "python_full_version == '3.10.*' and sys_platform != 'emscripten'",
-    "python_full_version == '3.10.*' and sys_platform == 'emscripten'",
+    "python_full_version == '3.10.*'",
     "python_full_version == '3.9.*'",
 ]
 sdist = { url = "https://sfw.security.sentry.io/pypi/packages/b8/21/1e2a441f74a653a144224d7d21afe8f4169e6c7c20bb13aec3a2dc3815e0/isort-6.0.1.tar.gz", hash = "sha256:1cb5df28dfbc742e490c5e41bad6da41b805b0a8be7bc93cd0fb2a8a890ac450", size = 821955, upload-time = "2025-02-26T21:13:16.955Z" }
@@ -389,7 +388,7 @@ name = "mypy"
 version = "1.14.1"
 source = { registry = "https://sfw.security.sentry.io/pypi/simple" }
 resolution-markers = [
-    "python_full_version < '3.9'",
+    "python_full_version == '3.8.*'",
 ]
 dependencies = [
     { name = "mypy-extensions" },
@@ -448,8 +447,7 @@ resolution-markers = [
     "python_full_version == '3.14.*' and sys_platform == 'emscripten'",
     "python_full_version >= '3.11' and python_full_version < '3.14' and sys_platform != 'emscripten'",
     "python_full_version >= '3.11' and python_full_version < '3.14' and sys_platform == 'emscripten'",
-    "python_full_version == '3.10.*' and sys_platform != 'emscripten'",
-    "python_full_version == '3.10.*' and sys_platform == 'emscripten'",
+    "python_full_version == '3.10.*'",
     "python_full_version == '3.9.*'",
 ]
 dependencies = [
@@ -542,8 +540,7 @@ resolution-markers = [
     "python_full_version == '3.14.*' and sys_platform == 'emscripten'",
     "python_full_version >= '3.11' and python_full_version < '3.14' and sys_platform != 'emscripten'",
     "python_full_version >= '3.11' and python_full_version < '3.14' and sys_platform == 'emscripten'",
-    "python_full_version == '3.10.*' and sys_platform != 'emscripten'",
-    "python_full_version == '3.10.*' and sys_platform == 'emscripten'",
+    "python_full_version == '3.10.*'",
 ]
 sdist = { url = "https://sfw.security.sentry.io/pypi/packages/5a/82/42f767fc1c1143d6fd36efb827202a2d997a375e160a71eb2888a925aac1/pathspec-1.1.1.tar.gz", hash = "sha256:17db5ecd524104a120e173814c90367a96a98d07c45b2e10c2f3919fff91bf5a", size = 135180, upload-time = "2026-04-27T01:46:08.907Z" }
 wheels = [
@@ -739,7 +736,7 @@ name = "pyflakes"
 version = "3.2.0"
 source = { registry = "https://sfw.security.sentry.io/pypi/simple" }
 resolution-markers = [
-    "python_full_version < '3.9'",
+    "python_full_version == '3.8.*'",
 ]
 sdist = { url = "https://sfw.security.sentry.io/pypi/packages/57/f9/669d8c9c86613c9d568757c7f5824bd3197d7b1c6c27553bc5618a27cce2/pyflakes-3.2.0.tar.gz", hash = "sha256:1c61603ff154621fb2a9172037d84dca3500def8c8b630657d1701f026f8af3f", size = 63788, upload-time = "2024-01-05T00:28:47.703Z" }
 wheels = [
@@ -757,8 +754,7 @@ resolution-markers = [
     "python_full_version == '3.14.*' and sys_platform == 'emscripten'",
     "python_full_version >= '3.11' and python_full_version < '3.14' and sys_platform != 'emscripten'",
     "python_full_version >= '3.11' and python_full_version < '3.14' and sys_platform == 'emscripten'",
-    "python_full_version == '3.10.*' and sys_platform != 'emscripten'",
-    "python_full_version == '3.10.*' and sys_platform == 'emscripten'",
+    "python_full_version == '3.10.*'",
     "python_full_version == '3.9.*'",
 ]
 sdist = { url = "https://sfw.security.sentry.io/pypi/packages/45/dc/fd034dc20b4b264b3d015808458391acbf9df40b1e54750ef175d39180b1/pyflakes-3.4.0.tar.gz", hash = "sha256:b24f96fafb7d2ab0ec5075b7350b3d2d2218eab42003821c06344973d3ea2f58", size = 64669, upload-time = "2025-06-20T18:45:27.834Z" }
@@ -930,11 +926,11 @@ source = { virtual = "." }
 [package.dev-dependencies]
 dev = [
     { name = "black", marker = "python_full_version >= '3.10'" },
-    { name = "isort", version = "5.13.2", source = { registry = "https://sfw.security.sentry.io/pypi/simple" }, marker = "python_full_version < '3.9'" },
+    { name = "isort", version = "5.13.2", source = { registry = "https://sfw.security.sentry.io/pypi/simple" }, marker = "python_full_version == '3.8.*'" },
     { name = "isort", version = "6.0.1", source = { registry = "https://sfw.security.sentry.io/pypi/simple" }, marker = "python_full_version >= '3.9'" },
-    { name = "mypy", version = "1.14.1", source = { registry = "https://sfw.security.sentry.io/pypi/simple" }, marker = "python_full_version < '3.9'" },
+    { name = "mypy", version = "1.14.1", source = { registry = "https://sfw.security.sentry.io/pypi/simple" }, marker = "python_full_version == '3.8.*'" },
     { name = "mypy", version = "1.17.1", source = { registry = "https://sfw.security.sentry.io/pypi/simple" }, marker = "python_full_version >= '3.9'" },
-    { name = "pyflakes", version = "3.2.0", source = { registry = "https://sfw.security.sentry.io/pypi/simple" }, marker = "python_full_version < '3.9'" },
+    { name = "pyflakes", version = "3.2.0", source = { registry = "https://sfw.security.sentry.io/pypi/simple" }, marker = "python_full_version == '3.8.*'" },
     { name = "pyflakes", version = "3.4.0", source = { registry = "https://sfw.security.sentry.io/pypi/simple" }, marker = "python_full_version >= '3.9'" },
     { name = "pytest", marker = "python_full_version >= '3.10'" },
 ]
@@ -947,9 +943,9 @@ schema-codegen = [
 [package.metadata.requires-dev]
 dev = [
     { name = "black", marker = "python_full_version >= '3.10'", specifier = ">=26.3.1" },
-    { name = "isort", specifier = ">=5.13.2" },
-    { name = "mypy", specifier = ">=1.14.1" },
-    { name = "pyflakes", specifier = ">=3.2.0" },
+    { name = "isort", marker = "python_full_version >= '3.8'", specifier = ">=5.13.2" },
+    { name = "mypy", marker = "python_full_version >= '3.8'", specifier = ">=1.14.1" },
+    { name = "pyflakes", marker = "python_full_version >= '3.8'", specifier = ">=3.2.0" },
     { name = "pytest", marker = "python_full_version >= '3.10'", specifier = ">=9.0.3" },
 ]
 schema-codegen = [{ name = "datamodel-code-generator", marker = "python_full_version >= '3.11'", specifier = ">=0.89.0" }]
@@ -1010,7 +1006,7 @@ name = "typing-extensions"
 version = "4.13.2"
 source = { registry = "https://sfw.security.sentry.io/pypi/simple" }
 resolution-markers = [
-    "python_full_version < '3.9'",
+    "python_full_version == '3.8.*'",
 ]
 sdist = { url = "https://sfw.security.sentry.io/pypi/packages/f6/37/23083fcd6e35492953e8d2aaaa68b860eb422b34627b13f2ce3eb6106061/typing_extensions-4.13.2.tar.gz", hash = "sha256:e6c81219bd689f51865d9e372991c540bda33a0379d5573cddb9a3a23f7caaef", size = 106967, upload-time = "2025-04-10T14:19:05.416Z" }
 wheels = [
@@ -1040,8 +1036,7 @@ resolution-markers = [
     "python_full_version == '3.14.*' and sys_platform == 'emscripten'",
     "python_full_version >= '3.11' and python_full_version < '3.14' and sys_platform != 'emscripten'",
     "python_full_version >= '3.11' and python_full_version < '3.14' and sys_platform == 'emscripten'",
-    "python_full_version == '3.10.*' and sys_platform != 'emscripten'",
-    "python_full_version == '3.10.*' and sys_platform == 'emscripten'",
+    "python_full_version == '3.10.*'",
 ]
 sdist = { url = "https://sfw.security.sentry.io/pypi/packages/f6/cc/6253133b5bb138fc3306cebfbda2c520f545d36b5be2c7255cc528bb45d6/typing_extensions-4.16.0.tar.gz", hash = "sha256:dc983d19a509c94dba722ee6abd33940f7c05a89e243c47e907eb4db6f1a43e5", size = 113555, upload-time = "2026-07-02T08:40:05.92Z" }
 wheels = [

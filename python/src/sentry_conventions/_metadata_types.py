@@ -1,6 +1,6 @@
+import sys
 from dataclasses import dataclass
 from enum import Enum
-import sys
 from typing import List, Optional, Tuple, Union
 
 AttributeValue = Union[
@@ -71,6 +71,7 @@ class ChangelogEntry:
 
 if sys.version_info >= (3, 8):
     from typing import Literal
+
     SearchAliasType = Literal["byte", "currency", "millisecond", "percentage", "second"]
 else:
     SearchAliasType = str
@@ -88,6 +89,7 @@ class SearchAlias:
 
     deprecated_aliases: Optional[List[str]] = None
     """Deprecated aliases still accepted in search queries"""
+
 
 @dataclass
 class AttributeMetadata:
