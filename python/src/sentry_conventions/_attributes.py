@@ -6278,12 +6278,15 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     # Path: model/attributes/heroku/heroku__source.json
     HEROKU_SOURCE: Literal["heroku.source"] = "heroku.source"
-    """Logplex source of a Heroku log line: app for application output, heroku for platform and router messages
+    """Logplex source of a Heroku log line.
 
     Type: str
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
+    Well-defined Values:
+    - `app` - Output written by the application's own processes, such as app[web.1].
+    - `heroku` - Messages from the Heroku platform and router, such as heroku[router].
     Example: "app"
     Example: "heroku"
     """
@@ -21929,7 +21932,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "heroku.source": AttributeMetadata(
-        brief="Logplex source of a Heroku log line: app for application output, heroku for platform and router messages",
+        brief="Logplex source of a Heroku log line.",
         type=AttributeType.STRING,
         keys=("heroku.source",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),

@@ -9687,7 +9687,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
   'heroku.source': {
     canonicalName: 'heroku.source',
     type: 'string',
-    brief: 'Logplex source of a Heroku log line: app for application output, heroku for platform and router messages',
+    brief: 'Logplex source of a Heroku log line.',
     deprecationChain: ['heroku.source'],
   },
   'http.client_ip': {

@@ -10502,7 +10502,7 @@ export type HEROKU_ROUTER_SERVICE_TYPE = number;
 // Path: model/attributes/heroku/heroku__source.json
 
 /**
- * Logplex source of a Heroku log line: app for application output, heroku for platform and router messages `heroku.source`
+ * Logplex source of a Heroku log line. `heroku.source`
  *
  * Attribute Value Type: `string` {@link HEROKU_SOURCE_TYPE}
  *
@@ -10510,6 +10510,10 @@ export type HEROKU_ROUTER_SERVICE_TYPE = number;
  *
  * Attribute defined in OTEL: No
  * Visibility: public
+ *
+ * Well-defined Values:
+ * - `app` - Output written by the application's own processes, such as app[web.1].
+ * - `heroku` - Messages from the Heroku platform and router, such as heroku[router].
  *
  * @example "app"
  * @example "heroku"
@@ -31664,7 +31668,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     additionalContext: ['This measures the proxying phase, not necessarily the complete HTTP request duration.'],
   },
   'heroku.source': {
-    brief: 'Logplex source of a Heroku log line: app for application output, heroku for platform and router messages',
+    brief: 'Logplex source of a Heroku log line.',
     type: 'string',
     keys: ['heroku.source'],
     applyScrubbing: {
