@@ -4584,6 +4584,13 @@ export const SEARCH_SENTRY__MESSAGE__TEMPLATE = 'sentry.message.template';
 export const SEARCH_SENTRY__MESSAGING__DESTINATION__NAME = 'sentry.messaging.destination.name';
 
 /**
+ * Search name for {@link attributes.SENTRY_MESSAGING_MESSAGE_ID}. `sentry.messaging.message.id`
+ *
+ * @deprecated Use {@link SEARCH_MESSAGING__MESSAGE__ID} (`messaging.message.id`) instead
+ */
+export const SEARCH_SENTRY__MESSAGING__MESSAGE__ID = 'sentry.messaging.message.id';
+
+/**
  * Search name for {@link attributes.SENTRY_METRIC_SOURCE}. `sentry.metric.source`
  */
 export const SEARCH_SENTRY__METRIC__SOURCE = 'sentry.metric.source';
@@ -6418,6 +6425,7 @@ export type AttributeSearchName =
   | typeof SEARCH_SENTRY__MESSAGE__PARAMETER__KEY
   | typeof SEARCH_SENTRY__MESSAGE__TEMPLATE
   | typeof SEARCH_SENTRY__MESSAGING__DESTINATION__NAME
+  | typeof SEARCH_SENTRY__MESSAGING__MESSAGE__ID
   | typeof SEARCH_SENTRY__METRIC__SOURCE
   | typeof SEARCH_SENTRY__MOBILE
   | typeof SEARCH_SENTRY__MODULE__KEY
@@ -10839,7 +10847,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'messaging.message.id',
     type: 'string',
     brief: 'A value used by the messaging system as an identifier for the message, represented as a string.',
-    deprecationChain: ['messaging.message.id', 'messaging.message_id'],
+    deprecationChain: ['messaging.message.id', 'messaging.message_id', 'sentry.messaging.message.id'],
   },
   'messaging.message.receive.latency': {
     canonicalName: 'messaging.message.receive.latency',
@@ -10857,7 +10865,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'messaging.message.id',
     type: 'string',
     brief: 'A value used by the messaging system as an identifier for the message, represented as a string.',
-    deprecationChain: ['messaging.message.id', 'messaging.message_id'],
+    deprecationChain: ['messaging.message.id', 'messaging.message_id', 'sentry.messaging.message.id'],
   },
   'messaging.operation': {
     canonicalName: 'messaging.operation.name',
@@ -11925,6 +11933,12 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'string',
     brief: 'The message destination name.',
     deprecationChain: ['messaging.destination.name', 'messaging.destination', 'sentry.messaging.destination.name'],
+  },
+  'sentry.messaging.message.id': {
+    canonicalName: 'messaging.message.id',
+    type: 'string',
+    brief: 'A value used by the messaging system as an identifier for the message, represented as a string.',
+    deprecationChain: ['messaging.message.id', 'messaging.message_id', 'sentry.messaging.message.id'],
   },
   'sentry.metric.source': {
     canonicalName: 'sentry.metric.source',

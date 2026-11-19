@@ -14318,7 +14318,7 @@ export type MESSAGING_MESSAGE_ENVELOPE_SIZE_TYPE = number;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link _MESSAGING_MESSAGE_ID} `messaging.message_id`
+ * Aliases: {@link _MESSAGING_MESSAGE_ID} `messaging.message_id`, {@link SENTRY_MESSAGING_MESSAGE_ID} `sentry.messaging.message.id`
  *
  * @example "f47ac10b58cc4372a5670e02b2c3d479"
  */
@@ -14341,7 +14341,7 @@ export type MESSAGING_MESSAGE_ID_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link MESSAGING_MESSAGE_ID} `messaging.message.id`
+ * Aliases: {@link MESSAGING_MESSAGE_ID} `messaging.message.id`, {@link SENTRY_MESSAGING_MESSAGE_ID} `sentry.messaging.message.id`
  *
  * @deprecated Use {@link MESSAGING_MESSAGE_ID} (messaging.message.id) instead - This attribute is being deprecated in favor of messaging.message.id.
  * @example "452a7c7c7c7048c2f887f0e7"
@@ -18036,6 +18036,30 @@ export const SENTRY_MESSAGING_DESTINATION_NAME = 'sentry.messaging.destination.n
  * Type for {@link SENTRY_MESSAGING_DESTINATION_NAME} sentry.messaging.destination.name
  */
 export type SENTRY_MESSAGING_DESTINATION_NAME_TYPE = string;
+
+// Path: model/attributes/sentry/sentry__messaging__message__id.json
+
+/**
+ * A value used by the messaging system as an identifier for the message, represented as a string. `sentry.messaging.message.id`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_MESSAGING_MESSAGE_ID_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link MESSAGING_MESSAGE_ID} `messaging.message.id`, {@link _MESSAGING_MESSAGE_ID} `messaging.message_id`
+ *
+ * @deprecated Use {@link MESSAGING_MESSAGE_ID} (messaging.message.id) instead
+ * @example "f47ac10b58cc4372a5670e02b2c3d479"
+ */
+export const SENTRY_MESSAGING_MESSAGE_ID = 'sentry.messaging.message.id';
+
+/**
+ * Type for {@link SENTRY_MESSAGING_MESSAGE_ID} sentry.messaging.message.id
+ */
+export type SENTRY_MESSAGING_MESSAGE_ID_TYPE = string;
 
 // Path: model/attributes/sentry/sentry__metric__source.json
 
@@ -22844,6 +22868,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'sentry.message.parameter.<key>': 'string',
   'sentry.message.template': 'string',
   'sentry.messaging.destination.name': 'string',
+  'sentry.messaging.message.id': 'string',
   'sentry.metric.source': 'string',
   'sentry.mobile': 'boolean',
   'sentry.module.<key>': 'string',
@@ -23821,6 +23846,7 @@ export type AttributeName =
   | typeof SENTRY_MESSAGE_PARAMETER_KEY
   | typeof SENTRY_MESSAGE_TEMPLATE
   | typeof SENTRY_MESSAGING_DESTINATION_NAME
+  | typeof SENTRY_MESSAGING_MESSAGE_ID
   | typeof SENTRY_METRIC_SOURCE
   | typeof SENTRY_MOBILE
   | typeof SENTRY_MODULE_KEY
@@ -34811,15 +34837,16 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'messaging.message.id': {
     brief: 'A value used by the messaging system as an identifier for the message, represented as a string.',
     type: 'string',
-    keys: ['messaging.message.id', 'messaging.message_id'],
+    keys: ['messaging.message.id', 'messaging.message_id', 'sentry.messaging.message.id'],
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
     example: 'f47ac10b58cc4372a5670e02b2c3d479',
-    aliases: ['messaging.message_id'],
+    aliases: ['messaging.message_id', 'sentry.messaging.message.id'],
     changelog: [
+      { version: 'next', prs: [809], description: 'Added sentry.messaging.message.id as an alias' },
       { version: '0.21.0', prs: [581], description: 'Added messaging.message_id as an alias' },
       { version: '0.1.0', prs: [127] },
       { version: '0.0.0' },
@@ -34828,7 +34855,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'messaging.message_id': {
     brief: 'A value used by the messaging system as an identifier for the message, represented as a string.',
     type: 'string',
-    keys: ['messaging.message.id', 'messaging.message_id'],
+    keys: ['messaging.message.id', 'messaging.message_id', 'sentry.messaging.message.id'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -34841,8 +34868,11 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason: 'This attribute is being deprecated in favor of messaging.message.id.',
       status: 'backfill',
     },
-    aliases: ['messaging.message.id'],
-    changelog: [{ version: '0.21.0', prs: [581], description: 'Added messaging.message_id attribute' }],
+    aliases: ['messaging.message.id', 'sentry.messaging.message.id'],
+    changelog: [
+      { version: 'next', prs: [809], description: 'Added sentry.messaging.message.id as an alias' },
+      { version: '0.21.0', prs: [581], description: 'Added messaging.message_id attribute' },
+    ],
   },
   'messaging.message.receive.latency': {
     brief: 'The latency between when the message was published and received.',
@@ -37477,6 +37507,29 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
         prs: [796],
         description:
           'Added sentry.messaging.destination.name attribute, deprecated in favor of messaging.destination.name',
+      },
+    ],
+  },
+  'sentry.messaging.message.id': {
+    brief: 'A value used by the messaging system as an identifier for the message, represented as a string.',
+    type: 'string',
+    keys: ['messaging.message.id', 'messaging.message_id', 'sentry.messaging.message.id'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'f47ac10b58cc4372a5670e02b2c3d479',
+    deprecation: {
+      replacement: 'messaging.message.id',
+      status: 'backfill',
+    },
+    aliases: ['messaging.message.id', 'messaging.message_id'],
+    changelog: [
+      {
+        version: 'next',
+        prs: [809],
+        description: 'Added sentry.messaging.message.id attribute, deprecated in favor of messaging.message.id',
       },
     ],
   },
@@ -41100,6 +41153,7 @@ export type Attributes = {
   [SENTRY_MESSAGE_PARAMETER_KEY]?: SENTRY_MESSAGE_PARAMETER_KEY_TYPE;
   [SENTRY_MESSAGE_TEMPLATE]?: SENTRY_MESSAGE_TEMPLATE_TYPE;
   [SENTRY_MESSAGING_DESTINATION_NAME]?: SENTRY_MESSAGING_DESTINATION_NAME_TYPE;
+  [SENTRY_MESSAGING_MESSAGE_ID]?: SENTRY_MESSAGING_MESSAGE_ID_TYPE;
   [SENTRY_METRIC_SOURCE]?: SENTRY_METRIC_SOURCE_TYPE;
   [SENTRY_MOBILE]?: SENTRY_MOBILE_TYPE;
   [SENTRY_MODULE_KEY]?: SENTRY_MODULE_KEY_TYPE;
