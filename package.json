@@ -49,6 +49,7 @@
     "tar": "^7.5.19",
     "tsx": "^4.22.4",
     "typescript": "^6.0.3",
+    "unbuild": "^3.6.1",
     "vitest": "^4.1.12"
   },
   "resolutions": {
@@ -56,7 +57,6 @@
     "esbuild": "~0.28.1"
   },
   "workspaces": [
-    "javascript/*",
     "python/*",
     "rust/*",
     "docs"

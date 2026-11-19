@@ -4,13 +4,12 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
-    "build:conventions": "yarn workspace @sentry/conventions build",
-    "dev": "yarn build:conventions && astro dev",
-    "build": "yarn build:conventions && astro build && yarn postbuild",
+    "dev": "astro dev",
+    "build": "astro build && yarn postbuild",
     "postbuild": "pagefind --site dist --output-subdir pagefind",
     "preview": "astro preview",
     "astro": "astro",
-    "lint:types": "yarn build:conventions && astro sync && tsc --noEmit"
+    "lint:types": "astro sync && tsc --noEmit"
   },
   "dependencies": {
     "@astrojs/svelte": "9.1.2",
