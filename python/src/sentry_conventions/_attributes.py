@@ -20048,7 +20048,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["ai.response.toolCalls", "ai.response.text"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.34.0",
                 prs=[802],
                 description="Aligned the brief with OTel and added additional context.",
             ),
@@ -20274,7 +20274,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["ai.input_messages"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.34.0",
                 prs=[801],
                 description="Revert deprecation status from `transform` to `normalize`.",
             ),
@@ -20581,7 +20581,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ),
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.34.0",
                 prs=[801],
                 description="Revert deprecation status from `transform` to `normalize`.",
             ),
@@ -20603,7 +20603,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["gen_ai.response.time_to_first_token"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.34.0",
                 prs=[795],
                 description="Aligned the brief with OTel and added additional context.",
             ),
@@ -20637,7 +20637,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["gen_ai.response.time_to_first_chunk"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.34.0",
                 prs=[795],
                 description="Aligned the brief with OTel and added additional context",
             ),
@@ -20688,7 +20688,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ),
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.34.0",
                 prs=[801],
                 description="Revert deprecation status from `transform` to `normalize`.",
             ),
@@ -20752,7 +20752,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["ai.preamble"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.34.0",
                 prs=[790, 791],
                 description="Clarify that messages in the chat history only belong in gen_ai.input.messages. Remove informal format description from the brief to prevent duplication with the structured schema.",
             ),
@@ -20778,7 +20778,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["gen_ai.tool.input", "ai.toolCall.args"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.34.0",
                 prs=[793],
                 description="Remove informal format description from the brief to prevent duplication with the structured schema.",
             ),
@@ -20810,7 +20810,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.34.0",
                 prs=[794],
                 description="Remove informal format description from the brief to prevent duplication with the structured schema.",
             ),
@@ -26711,7 +26711,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=[0, 2520, 259200],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.34.0",
                 prs=[799],
                 description="Added page.server_rendering.age attribute",
             ),
@@ -26736,7 +26736,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=["static", "partially_static", "dynamic"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.34.0",
                 prs=[789],
                 description="Added the cache_origin link to the reused part",
             ),
@@ -26944,7 +26944,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=["processes", "binary", "other"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.34.0",
+                prs=[768],
                 description="Added process.runtime.elixir.memory.type attribute",
             ),
         ],
@@ -26960,7 +26961,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=["cpu", "io"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.34.0",
+                prs=[768],
                 description="Added process.runtime.elixir.run_queue.type attribute",
             ),
         ],
@@ -28432,7 +28434,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=["previous_trace", "cache_origin", "message_origin", "server_request"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.34.0",
                 prs=[789],
                 description="Added pageload examples to cache_origin and server_request",
             ),
@@ -29267,7 +29269,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         changelog=[
             ChangelogEntry(
-                version="next", prs=[817], description="Added sentry.user attribute"
+                version="0.34.0", prs=[817], description="Added sentry.user attribute"
             ),
         ],
         additional_context=[

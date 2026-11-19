@@ -30076,7 +30076,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     ],
     aliases: ['ai.response.toolCalls', 'ai.response.text'],
     changelog: [
-      { version: 'next', prs: [802], description: 'Aligned the brief with OTel and added additional context.' },
+      { version: '0.34.0', prs: [802], description: 'Aligned the brief with OTel and added additional context.' },
       {
         version: '0.28.0',
         prs: [728],
@@ -30267,7 +30267,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['ai.input_messages'],
     changelog: [
-      { version: 'next', prs: [801], description: 'Revert deprecation status from `transform` to `normalize`.' },
+      { version: '0.34.0', prs: [801], description: 'Revert deprecation status from `transform` to `normalize`.' },
       { version: '0.4.0', prs: [221] },
       { version: '0.1.0', prs: [63, 74, 108, 119, 122] },
     ],
@@ -30528,7 +30528,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       status: 'normalize',
     },
     changelog: [
-      { version: 'next', prs: [801], description: 'Revert deprecation status from `transform` to `normalize`.' },
+      { version: '0.34.0', prs: [801], description: 'Revert deprecation status from `transform` to `normalize`.' },
       { version: '0.4.0', prs: [221] },
       { version: '0.1.0', prs: [63, 74] },
     ],
@@ -30546,7 +30546,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 0.6853435,
     aliases: ['gen_ai.response.time_to_first_token'],
     changelog: [
-      { version: 'next', prs: [795], description: 'Aligned the brief with OTel and added additional context.' },
+      { version: '0.34.0', prs: [795], description: 'Aligned the brief with OTel and added additional context.' },
       { version: '0.11.0', prs: [418], description: 'Added gen_ai.response.time_to_first_chunk attribute' },
     ],
     additionalContext: [
@@ -30572,7 +30572,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['gen_ai.response.time_to_first_chunk'],
     changelog: [
-      { version: 'next', prs: [795], description: 'Aligned the brief with OTel and added additional context' },
+      { version: '0.34.0', prs: [795], description: 'Aligned the brief with OTel and added additional context' },
       { version: '0.11.0', prs: [418], description: 'Deprecate in favor of gen_ai.response.time_to_first_chunk' },
       { version: '0.4.0', prs: [227] },
     ],
@@ -30620,7 +30620,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       status: 'normalize',
     },
     changelog: [
-      { version: 'next', prs: [801], description: 'Revert deprecation status from `transform` to `normalize`.' },
+      { version: '0.34.0', prs: [801], description: 'Revert deprecation status from `transform` to `normalize`.' },
       { version: '0.4.0', prs: [221] },
       { version: '0.1.0', prs: [63, 74] },
     ],
@@ -30659,7 +30659,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: ['ai.preamble'],
     changelog: [
       {
-        version: 'next',
+        version: '0.34.0',
         prs: [790, 791],
         description:
           'Clarify that messages in the chat history only belong in gen_ai.input.messages. Remove informal format description from the brief to prevent duplication with the structured schema.',
@@ -30703,7 +30703,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: ['gen_ai.tool.input', 'ai.toolCall.args'],
     changelog: [
       {
-        version: 'next',
+        version: '0.34.0',
         prs: [793],
         description:
           'Remove informal format description from the brief to prevent duplication with the structured schema.',
@@ -30738,7 +30738,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     ],
     changelog: [
       {
-        version: 'next',
+        version: '0.34.0',
         prs: [794],
         description:
           'Remove informal format description from the brief to prevent duplication with the structured schema.',
@@ -35877,7 +35877,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 0,
     examples: [0, 2520, 259200],
-    changelog: [{ version: 'next', prs: [799], description: 'Added page.server_rendering.age attribute' }],
+    changelog: [{ version: '0.34.0', prs: [799], description: 'Added page.server_rendering.age attribute' }],
     additionalContext: [
       'Set only by an SDK that controls the server render, when the page reuses a server render and the SDK knows when that render started. With `page.server_rendering.type: partially_static`, the value is for the static part.',
       'If the span has a `cache_origin` link, the linked span is that render. The SDK can also set the value without a link, for example for a page from the build.',
@@ -35903,7 +35903,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'static',
     examples: ['static', 'partially_static', 'dynamic'],
     changelog: [
-      { version: 'next', prs: [789], description: 'Added the cache_origin link to the reused part' },
+      { version: '0.34.0', prs: [789], description: 'Added the cache_origin link to the reused part' },
       { version: '0.31.0', prs: [740], description: 'Added page.server_rendering.type attribute' },
     ],
     additionalContext: [
@@ -36066,7 +36066,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'processes',
     examples: ['processes', 'binary', 'other'],
-    changelog: [{ version: 'next', description: 'Added process.runtime.elixir.memory.type attribute' }],
+    changelog: [{ version: '0.34.0', prs: [768], description: 'Added process.runtime.elixir.memory.type attribute' }],
   },
   'process.runtime.elixir.run_queue.type': {
     brief:
@@ -36080,7 +36080,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'cpu',
     examples: ['cpu', 'io'],
-    changelog: [{ version: 'next', description: 'Added process.runtime.elixir.run_queue.type attribute' }],
+    changelog: [
+      { version: '0.34.0', prs: [768], description: 'Added process.runtime.elixir.run_queue.type attribute' },
+    ],
   },
   'process.runtime.engine.name': {
     brief: 'The name of the runtime engine.',
@@ -37353,7 +37355,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'previous_trace',
     examples: ['previous_trace', 'cache_origin', 'message_origin', 'server_request'],
     changelog: [
-      { version: 'next', prs: [789], description: 'Added pageload examples to cache_origin and server_request' },
+      { version: '0.34.0', prs: [789], description: 'Added pageload examples to cache_origin and server_request' },
       {
         version: '0.28.0',
         prs: [724, 738, 739],
@@ -38106,7 +38108,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'id:123',
     examples: ['id:123', 'username:j.smith', 'email:test@example.com', 'ip:192.168.1.1'],
-    changelog: [{ version: 'next', prs: [817], description: 'Added sentry.user attribute' }],
+    changelog: [{ version: '0.34.0', prs: [817], description: 'Added sentry.user attribute' }],
     additionalContext: [
       'Derived by Sentry during ingestion from `user.id`, `user.name`, `user.email`, and `user.ip_address`. SDKs do not set it.',
     ],
