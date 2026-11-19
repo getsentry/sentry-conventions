@@ -38106,7 +38106,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'id:123',
     examples: ['id:123', 'username:j.smith', 'email:test@example.com', 'ip:192.168.1.1'],
-    changelog: [{ version: 'next', description: 'Added sentry.user attribute' }],
+    changelog: [{ version: 'next', prs: [817], description: 'Added sentry.user attribute' }],
     additionalContext: [
       'Derived by Sentry during ingestion from `user.id`, `user.name`, `user.email`, and `user.ip_address`. SDKs do not set it.',
     ],

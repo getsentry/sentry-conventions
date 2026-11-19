@@ -29266,7 +29266,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "ip:192.168.1.1",
         ],
         changelog=[
-            ChangelogEntry(version="next", description="Added sentry.user attribute"),
+            ChangelogEntry(
+                version="next", prs=[817], description="Added sentry.user attribute"
+            ),
         ],
         additional_context=[
             "Derived by Sentry during ingestion from `user.id`, `user.name`, `user.email`, and `user.ip_address`. SDKs do not set it."
