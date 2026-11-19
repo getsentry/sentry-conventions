@@ -4010,6 +4010,11 @@ export const SEARCH_OTEL__STATUS_CODE = 'otel.status_code';
 export const SEARCH_OTEL__STATUS_DESCRIPTION = 'otel.status_description';
 
 /**
+ * Search name for {@link attributes.PAGE_SERVER_RENDERING_AGE}. `page.server_rendering.age`
+ */
+export const SEARCH_PAGE__SERVER_RENDERING__AGE = 'page.server_rendering.age';
+
+/**
  * Search name for {@link attributes.PAGE_SERVER_RENDERING_TYPE}. `page.server_rendering.type`
  */
 export const SEARCH_PAGE__SERVER_RENDERING__TYPE = 'page.server_rendering.type';
@@ -4839,6 +4844,13 @@ export const SEARCH_SENTRY__TRACE_LIFECYCLE = 'sentry.trace_lifecycle';
 export const SEARCH_SENTRY__TRANSACTION = 'sentry.transaction';
 
 /**
+ * Search name for {@link attributes.SENTRY_USER}. `sentry.user`
+ *
+ * @deprecated Use {@link SEARCH_USER} (`user`) instead
+ */
+export const SEARCH_SENTRY__USER = 'sentry.user';
+
+/**
  * Search name for {@link attributes.SENTRY_USER_IP}. `sentry.user.ip`
  *
  * @deprecated Use {@link SEARCH_USER__IP} (`user.ip`) instead
@@ -5314,6 +5326,11 @@ export const SEARCH_URL__SCHEME = 'url.scheme';
  * Search name for {@link attributes.URL_TEMPLATE}. `url.template`
  */
 export const SEARCH_URL__TEMPLATE = 'url.template';
+
+/**
+ * Search name for {@link attributes.SENTRY_USER}. `user`
+ */
+export const SEARCH_USER = 'user';
 
 /**
  * Search name for {@link attributes.USER_EMAIL}. `user.email`
@@ -6299,6 +6316,7 @@ export type AttributeSearchName =
   | typeof SEARCH_OTEL__SCOPE__VERSION
   | typeof SEARCH_OTEL__STATUS_CODE
   | typeof SEARCH_OTEL__STATUS_DESCRIPTION
+  | typeof SEARCH_PAGE__SERVER_RENDERING__AGE
   | typeof SEARCH_PAGE__SERVER_RENDERING__TYPE
   | typeof SEARCH_PARAMS__KEY
   | typeof SEARCH_PERFORMANCE__ACTIVATIONSTART
@@ -6442,6 +6460,7 @@ export type AttributeSearchName =
   | typeof SEARCH_SENTRY__TRACE__STATUS
   | typeof SEARCH_SENTRY__TRACE_LIFECYCLE
   | typeof SEARCH_SENTRY__TRANSACTION
+  | typeof SEARCH_SENTRY__USER
   | typeof SEARCH_SENTRY__USER__IP
   | typeof SEARCH_SENTRY__USER__USERNAME
   | typeof SEARCH_SERVER__ADDRESS
@@ -6525,6 +6544,7 @@ export type AttributeSearchName =
   | typeof SEARCH_URL__SAME_ORIGIN
   | typeof SEARCH_URL__SCHEME
   | typeof SEARCH_URL__TEMPLATE
+  | typeof SEARCH_USER
   | typeof SEARCH_USER__EMAIL
   | typeof SEARCH_USER__FULL_NAME
   | typeof SEARCH_USER__GEO__CITY
@@ -9062,7 +9082,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'gen_ai.output.messages',
     type: 'string',
     brief:
-      'The model\'s response messages. It has to be a stringified version of an array of message objects in the format `{role: "assistant", parts: [...]}`, which can include text responses and tool calls. Each part is an object with a `type`, such as `{type: "text", content: "..."}`. Other part types include `"reasoning"` and `"tool_call"`. Put the model\'s thinking in a `{type: "reasoning", content: "..."}` part, not a `"text"` part. Sentry shows reasoning separately from user-visible messages. The first example shows this shape. Some operations use a different shape. See the additional context.',
+      'Messages returned by the model where each message represents a specific model response (choice, candidate). It has to be a stringified version of an array of message objects in the format `{role: "assistant", parts: [...]}`, which can include text responses and tool calls. Each part is an object with a `type`, such as `{type: "text", content: "..."}`. Other part types include `"reasoning"` and `"tool_call"`. Put the model\'s thinking in a `{type: "reasoning", content: "..."}` part, not a `"text"` part. Sentry shows reasoning separately from user-visible messages. The first example shows this shape. Some operations use a different shape. See the additional context.',
     deprecationChain: [
       'gen_ai.output.messages',
       'ai.response.text',
@@ -9260,13 +9280,15 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
   'gen_ai.response.time_to_first_chunk': {
     canonicalName: 'gen_ai.response.time_to_first_chunk',
     type: 'double',
-    brief: 'Time in seconds when the first response content chunk arrived in streaming responses.',
+    brief:
+      'Time from the start of a logical inference operation to the first chunk in its streaming response, in seconds.',
     deprecationChain: ['gen_ai.response.time_to_first_chunk', 'gen_ai.response.time_to_first_token'],
   },
   'gen_ai.response.time_to_first_token': {
     canonicalName: 'gen_ai.response.time_to_first_chunk',
     type: 'double',
-    brief: 'Time in seconds when the first response content chunk arrived in streaming responses.',
+    brief:
+      'Time from the start of a logical inference operation to the first chunk in its streaming response, in seconds.',
     deprecationChain: ['gen_ai.response.time_to_first_chunk', 'gen_ai.response.time_to_first_token'],
   },
   'gen_ai.response.tokens_per_second': {
@@ -9304,20 +9326,19 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
   'gen_ai.system_instructions': {
     canonicalName: 'gen_ai.system_instructions',
     type: 'string',
-    brief:
-      'The system instructions passed to the model. It has to be a stringified version of an array of objects in the format `{type: "text", content: "..."}`.',
+    brief: 'The system message or instructions provided to the GenAI model separately from the chat history.',
     deprecationChain: ['gen_ai.system_instructions', 'ai.preamble', 'gen_ai.system.message'],
   },
   'gen_ai.tool.call.arguments': {
     canonicalName: 'gen_ai.tool.call.arguments',
     type: 'string',
-    brief: 'The arguments of the tool call. It has to be a stringified version of the arguments to the tool.',
+    brief: 'The arguments of the tool call.',
     deprecationChain: ['gen_ai.tool.call.arguments', 'ai.toolCall.args', 'gen_ai.tool.input'],
   },
   'gen_ai.tool.call.result': {
     canonicalName: 'gen_ai.tool.call.result',
     type: 'string',
-    brief: 'The result of the tool call. It has to be a stringified version of the result of the tool.',
+    brief: 'The result of the tool call.',
     deprecationChain: [
       'gen_ai.tool.call.result',
       'ai.toolCall.result',
@@ -11271,6 +11292,13 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     brief: 'Description of the Status if it has a value, otherwise not set.',
     deprecationChain: ['otel.status_description'],
   },
+  'page.server_rendering.age': {
+    canonicalName: 'page.server_rendering.age',
+    type: 'second',
+    brief:
+      'Set on a pageload span. The time in seconds from the start of the server render of the reused part of the page to the start of the span.',
+    deprecationChain: ['page.server_rendering.age'],
+  },
   'page.server_rendering.type': {
     canonicalName: 'page.server_rendering.type',
     type: 'string',
@@ -12630,6 +12658,13 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'string',
     brief: 'The low-cardinality template of an absolute URL path reference.',
     deprecationChain: ['url.template'],
+  },
+  user: {
+    canonicalName: 'sentry.user',
+    type: 'string',
+    brief:
+      "Combined identifier of the user, used for the `user` tag and for counting unique users. Set to the first available of the user's ID, username, email address, or IP address, prefixed with which one it is: `id:`, `username:`, `email:`, or `ip:`.",
+    deprecationChain: ['user', 'sentry.user'],
   },
   'user.email': {
     canonicalName: 'user.email',
