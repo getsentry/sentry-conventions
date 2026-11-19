@@ -7,8 +7,14 @@
   },
   "is_in_otel": true,
   "example": "main",
+  "alias": ["sentry.thread.name"],
   "visibility": "public",
   "changelog": [
+    {
+      "version": "next",
+      "prs": [808],
+      "description": "Added sentry.thread.name as an alias"
+    },
     {
       "version": "0.1.0",
       "prs": [127]

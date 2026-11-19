@@ -4818,6 +4818,13 @@ export const SEARCH_SENTRY__SVELTEKIT__NAVIGATION__TO = 'sentry.sveltekit.naviga
 export const SEARCH_SENTRY__SVELTEKIT__NAVIGATION__TYPE = 'sentry.sveltekit.navigation.type';
 
 /**
+ * Search name for {@link attributes.SENTRY_THREAD_NAME}. `sentry.thread.name`
+ *
+ * @deprecated Use {@link SEARCH_THREAD__NAME} (`thread.name`) instead
+ */
+export const SEARCH_SENTRY__THREAD__NAME = 'sentry.thread.name';
+
+/**
  * Search name for {@link attributes.SENTRY_TIMESTAMP_SEQUENCE}. `sentry.timestamp.sequence`
  */
 export const SEARCH_SENTRY__TIMESTAMP__SEQUENCE = 'sentry.timestamp.sequence';
@@ -6463,6 +6470,7 @@ export type AttributeSearchName =
   | typeof SEARCH_SENTRY__SVELTEKIT__NAVIGATION__FROM
   | typeof SEARCH_SENTRY__SVELTEKIT__NAVIGATION__TO
   | typeof SEARCH_SENTRY__SVELTEKIT__NAVIGATION__TYPE
+  | typeof SEARCH_SENTRY__THREAD__NAME
   | typeof SEARCH_SENTRY__TIMESTAMP__SEQUENCE
   | typeof SEARCH_SENTRY__TRACE__PARENT_SPAN_ID
   | typeof SEARCH_SENTRY__TRACE__STATUS
@@ -12085,6 +12093,12 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     brief: 'The type of navigation event emitted from the sveltekit client router',
     deprecationChain: ['router.navigation.type', 'navigation.type', 'sentry.sveltekit.navigation.type'],
   },
+  'sentry.thread.name': {
+    canonicalName: 'thread.name',
+    type: 'string',
+    brief: 'Current thread name.',
+    deprecationChain: ['thread.name', 'sentry.thread.name'],
+  },
   'sentry.timestamp.sequence': {
     canonicalName: 'sentry.timestamp.sequence',
     type: 'integer',
@@ -12317,7 +12331,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'thread.name',
     type: 'string',
     brief: 'Current thread name.',
-    deprecationChain: ['thread.name'],
+    deprecationChain: ['thread.name', 'sentry.thread.name'],
   },
   'timber.tag': {
     canonicalName: 'timber.tag',
