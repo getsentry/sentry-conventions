@@ -18961,6 +18961,30 @@ export const SENTRY_TRANSACTION = 'sentry.transaction';
  */
 export type SENTRY_TRANSACTION_TYPE = string;
 
+// Path: model/attributes/sentry/sentry__user.json
+
+/**
+ * Combined identifier of the user, used for the `user` tag and for counting unique users. Set to the first available of the user's ID, username, email address, or IP address, prefixed with which one it is: `id:`, `username:`, `email:`, or `ip:`. `sentry.user`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_USER_TYPE}
+ *
+ * Apply Scrubbing: auto
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "id:123"
+ * @example "username:j.smith"
+ * @example "email:test@example.com"
+ * @example "ip:192.168.1.1"
+ */
+export const SENTRY_USER = 'sentry.user';
+
+/**
+ * Type for {@link SENTRY_USER} sentry.user
+ */
+export type SENTRY_USER_TYPE = string;
+
 // Path: model/attributes/sentry/sentry__user__email.json
 
 /**
@@ -22821,6 +22845,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'sentry.trace.parent_span_id': 'string',
   'sentry.trace.status': 'string',
   'sentry.transaction': 'string',
+  'sentry.user': 'string',
   'sentry.user.email': 'string',
   'sentry.user.geo.city': 'string',
   'sentry.user.geo.country_code': 'string',
@@ -23796,6 +23821,7 @@ export type AttributeName =
   | typeof SENTRY_TRACE_PARENT_SPAN_ID
   | typeof SENTRY_TRACE_STATUS
   | typeof SENTRY_TRANSACTION
+  | typeof SENTRY_USER
   | typeof SENTRY_USER_EMAIL
   | typeof SENTRY_USER_GEO_CITY
   | typeof SENTRY_USER_GEO_COUNTRY_CODE
@@ -38068,6 +38094,26 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       { version: '0.0.0' },
     ],
   },
+  'sentry.user': {
+    brief:
+      "Combined identifier of the user, used for the `user` tag and for counting unique users. Set to the first available of the user's ID, username, email address, or IP address, prefixed with which one it is: `id:`, `username:`, `email:`, or `ip:`.",
+    type: 'string',
+    keys: ['sentry.user', 'user'],
+    applyScrubbing: {
+      key: 'auto',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'id:123',
+    examples: ['id:123', 'username:j.smith', 'email:test@example.com', 'ip:192.168.1.1'],
+    changelog: [{ version: 'next', description: 'Added sentry.user attribute' }],
+    additionalContext: [
+      'Derived by Sentry during ingestion from `user.id`, `user.name`, `user.email`, and `user.ip_address`. SDKs do not set it.',
+    ],
+    searchAlias: {
+      name: 'user',
+    },
+  },
   'sentry.user.email': {
     brief: 'User email address.',
     type: 'string',
@@ -41025,6 +41071,7 @@ export type Attributes = {
   [SENTRY_TRACE_PARENT_SPAN_ID]?: SENTRY_TRACE_PARENT_SPAN_ID_TYPE;
   [SENTRY_TRACE_STATUS]?: SENTRY_TRACE_STATUS_TYPE;
   [SENTRY_TRANSACTION]?: SENTRY_TRANSACTION_TYPE;
+  [SENTRY_USER]?: SENTRY_USER_TYPE;
   [SENTRY_USER_EMAIL]?: SENTRY_USER_EMAIL_TYPE;
   [SENTRY_USER_GEO_CITY]?: SENTRY_USER_GEO_CITY_TYPE;
   [SENTRY_USER_GEO_COUNTRY_CODE]?: SENTRY_USER_GEO_COUNTRY_CODE_TYPE;

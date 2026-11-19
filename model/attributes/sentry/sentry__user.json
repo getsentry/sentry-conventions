@@ -1,0 +1,23 @@
+{
+  "key": "sentry.user",
+  "brief": "Combined identifier of the user, used for the `user` tag and for counting unique users. Set to the first available of the user's ID, username, email address, or IP address, prefixed with which one it is: `id:`, `username:`, `email:`, or `ip:`.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "auto"
+  },
+  "additional_context": [
+    "Derived by Sentry during ingestion from `user.id`, `user.name`, `user.email`, and `user.ip_address`. SDKs do not set it."
+  ],
+  "is_in_otel": false,
+  "visibility": "public",
+  "examples": ["id:123", "username:j.smith", "email:test@example.com", "ip:192.168.1.1"],
+  "search_alias": {
+    "name": "user"
+  },
+  "changelog": [
+    {
+      "version": "next",
+      "description": "Added sentry.user attribute"
+    }
+  ]
+}
