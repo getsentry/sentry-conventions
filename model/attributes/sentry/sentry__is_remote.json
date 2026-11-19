@@ -1,6 +1,6 @@
 {
   "key": "sentry.is_remote",
-  "brief": "Indicates whether a span's parent is remote.",
+  "brief": "Indicates whether a span's parent is remote, meaning the parent span was created in another process, typically another service. This is `true` when the span's trace context (trace ID, parent span ID, sample rate, etc.) was received through trace propagation across a network or process boundary, rather than from a parent span in the same process. Mirrors OpenTelemetry's [`SpanContext.IsRemote`](https://opentelemetry.io/docs/specs/otel/trace/api/#isremote), which is a field on the span context rather than an attribute.",
   "type": "boolean",
   "apply_scrubbing": {
     "key": "never"
@@ -9,6 +9,10 @@
   "example": true,
   "visibility": "public",
   "changelog": [
+    {
+      "version": "next",
+      "description": "Clarified what a remote parent means"
+    },
     {
       "version": "0.3.1",
       "prs": [190]

@@ -11906,7 +11906,8 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
   'sentry.is_remote': {
     canonicalName: 'sentry.is_remote',
     type: 'boolean',
-    brief: "Indicates whether a span's parent is remote.",
+    brief:
+      "Indicates whether a span's parent is remote, meaning the parent span was created in another process, typically another service. This is `true` when the span's trace context (trace ID, parent span ID, sample rate, etc.) was received through trace propagation across a network or process boundary, rather than from a parent span in the same process. Mirrors OpenTelemetry's [`SpanContext.IsRemote`](https://opentelemetry.io/docs/specs/otel/trace/api/#isremote), which is a field on the span context rather than an attribute.",
     deprecationChain: ['sentry.is_remote'],
   },
   'sentry.main_thread': {
