@@ -1,0 +1,33 @@
+{
+  "openapi": "3.2.1",
+  "info": {
+    "title": "GenAI Message Parts",
+    "description": "Message part schemas shared by multiple GenAI attributes.",
+    "version": "0.1.0"
+  },
+  "components": {
+    "schemas": {
+      "TextPart": {
+        "description": "Represents text content sent to or received from the model.",
+        "x-otel-deviation": [
+          "OTel allows arbitrary additional properties, while this definition does not.",
+          "The content field is optional because users may pass a text part without content."
+        ],
+        "properties": {
+          "type": {
+            "const": "text",
+            "description": "The type of the content captured in this part.",
+            "type": "string"
+          },
+          "content": {
+            "description": "Text content sent to or received from the model.",
+            "type": "string"
+          }
+        },
+        "additionalProperties": false,
+        "required": ["type"],
+        "type": "object"
+      }
+    }
+  }
+}

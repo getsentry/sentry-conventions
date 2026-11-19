@@ -1,4 +1,4 @@
-import { execSync } from 'node:child_process';
+import { execFileSync } from 'node:child_process';
 import * as fs from 'node:fs';
 import * as path from 'node:path';
 import { compile } from 'json-schema-to-typescript';
@@ -24,9 +24,9 @@ type AttributeDefinition = {
 };
 
 interface SchemaTypeInfo {
-  baseName: string;
+  modulePath: string;
   schemaNames: string[];
-  attributeKey: string;
+  attributeKey?: string;
 }
 
 /**
@@ -194,7 +194,7 @@ export async function generateAttributes(options?: Partial<GenerateAttributesOpt
       ? path.join(path.dirname(options.jsOutputFilePath), 'search.ts')
       : path.join(repositoryRoot, 'javascript', 'sentry-conventions', 'src', 'search.ts'));
   const pythonOutputFilePath =
-    options?.pythonOutputFilePath ?? path.join(repositoryRoot, 'python', 'src', 'sentry_conventions', 'attributes.py');
+    options?.pythonOutputFilePath ?? path.join(repositoryRoot, 'python', 'src', 'sentry_conventions', '_attributes.py');
   const jsSchemaOutputDir = path.join(path.dirname(jsOutputFilePath), '_schemas');
   const pythonSchemaOutputDir = path.join(path.dirname(pythonOutputFilePath), '_schemas');
 
@@ -218,7 +218,7 @@ export async function generateAttributes(options?: Partial<GenerateAttributesOpt
   writeToJs(parsedAttributes, jsOutputFilePath, jsSearchOutputFilePath, schemaInfo);
 
   // Generate and write Python code
-  writeToPython(parsedAttributes, pythonOutputFilePath, schemaInfo);
+  writeToPython(parsedAttributes, pythonOutputFilePath);
 }
 
 async function getAllJsonFiles(dir: string): Promise<string[]> {
@@ -251,8 +251,8 @@ function writeToJs(
 ) {
   let attributesContent = '// This is an auto-generated file. Do not edit!\n\n';
 
-  for (const { baseName, schemaNames } of schemaInfo) {
-    attributesContent += `export type { ${schemaNames.join(', ')} } from './_schemas/${baseName}';\n\n`;
+  for (const { modulePath, schemaNames } of schemaInfo) {
+    attributesContent += `export type { ${schemaNames.join(', ')} } from './_schemas/${modulePath}';\n\n`;
   }
 
   // Reset memoization for fresh calculation
@@ -563,152 +563,25 @@ function getTsType(type: AttributeJson['type']): string {
   }
 }
 
-function writeToPython(parsedAttributes: ParsedAttribute[], outputFilePath: string, schemaInfo: SchemaTypeInfo[] = []) {
+function writeToPython(parsedAttributes: ParsedAttribute[], outputFilePath: string) {
   let content = `"""`;
   content +=
     "A collection of attribute names with helpers to retrieve an attribute's metadata, as defined in the Sentry Semantic Conventions registry.";
   content += '"""\n\n';
   content += '# This is an auto-generated file. Do not edit!\n\n';
   content += 'import warnings\n';
-  content += 'from dataclasses import dataclass\n';
-  content += 'from enum import Enum\n';
-  content += 'from typing import Dict, List, Literal, Optional, Tuple, TypedDict, Union\n\n';
-
-  for (const { baseName, schemaNames } of schemaInfo) {
-    content += `from ._schemas.${baseName} import ${schemaNames.join(', ')}  # noqa: E402\n`;
-  }
-  if (schemaInfo.length > 0) {
-    content += '\n';
-  }
-
-  content += 'AttributeValue = Union[str, int, float, bool, List[str], List[int], List[float], List[bool]]\n\n';
-
-  content += 'class AttributeType(Enum):\n';
-  content += '    STRING = "string"\n';
-  content += '    BOOLEAN = "boolean"\n';
-  content += '    INTEGER = "integer"\n';
-  content += '    DOUBLE = "double"\n';
-  content += '    STRING_ARRAY = "string[]"\n';
-  content += '    BOOLEAN_ARRAY = "boolean[]"\n';
-  content += '    INTEGER_ARRAY = "integer[]"\n';
-  content += '    DOUBLE_ARRAY = "double[]"\n';
-  content += '    ANY = "any"\n\n';
-
-  content += 'class ApplyScrubbing(Enum):\n';
-  content += '    AUTO = "auto"\n';
-  content += '    MANUAL = "manual"\n';
-  content += '    NEVER = "never"\n\n';
-
-  content += 'class Visibility(Enum):\n';
-  content += '    PUBLIC = "public"\n';
-  content += '    INTERNAL = "internal"\n\n';
-
-  content += '@dataclass\n';
-  content += 'class ApplyScrubbingInfo:\n';
-  content += `    """Holds information about how PII scrubbing should be applied to an attribute's values."""\n`;
-  content += '    key: ApplyScrubbing\n';
-  content += '    reason: Optional[str] = None\n\n';
-
-  content += 'class DeprecationStatus(Enum):\n';
-  content += '    BACKFILL = "backfill"\n';
-  content += '    NORMALIZE = "normalize"\n';
-  content += '    TRANSFORM = "transform"\n\n';
-
-  content += '@dataclass\n';
-  content += 'class DeprecationInfo:\n';
-  content += '    """Holds information about a deprecation."""\n';
-  content += '    replacement: Optional[str] = None\n';
-  content += '    reason: Optional[str] = None\n';
-  content += '    status: Optional[DeprecationStatus] = None\n';
-  content += '    transformation: Optional[str] = None\n\n';
-
-  content += '@dataclass\n';
-  content += 'class ChangelogEntry:\n';
-  content += '    """A changelog entry tracking a change to an attribute."""\n\n';
-  content += '    version: str\n';
-  content += '    """The sentry-conventions release version"""\n';
-  content += '    \n';
-  content += '    prs: Optional[List[int]] = None\n';
-  content += '    """GitHub PR numbers"""\n';
-  content += '    \n';
-  content += '    description: Optional[str] = None\n';
-  content += '    """Optional description of what changed"""\n\n';
-
-  content += 'SearchAliasType = Literal[\n';
-  content += '    "byte",\n';
-  content += '    "currency",\n';
-  content += '    "millisecond",\n';
-  content += '    "percentage",\n';
-  content += '    "second",\n';
-  content += ']\n\n';
-
-  content += '@dataclass\n';
-  content += 'class SearchAlias:\n';
-  content += '    """How an attribute is exposed in Sentry search."""\n\n';
-  content += '    name: str\n';
-  content += '    """The public name exposed in Sentry search"""\n';
-  content += '    \n';
-  content += '    type: Optional[SearchAliasType] = None\n';
-  content += '    """The type exposed by Sentry search. Defaults to the attribute\'s primary type if omitted"""\n';
-  content += '    \n';
-  content += '    deprecated_aliases: Optional[List[str]] = None\n';
-  content += '    """Deprecated aliases still accepted in search queries"""\n\n';
-
-  content += '@dataclass\n';
-  content += 'class AttributeMetadata:\n';
-  content += '    """The metadata for an attribute."""\n\n';
-  content += '    brief: str\n';
-  content += '    """A description of the attribute"""\n';
-  content += '    \n';
-  content += '    type: AttributeType\n';
-  content += '    """The type of the attribute value"""\n';
-  content += '    \n';
-  content += '    apply_scrubbing: ApplyScrubbingInfo\n';
-  content +=
-    '    """How PII scrubbing should be applied to the attribute value. Is either auto, manual or never. Optionally include a reason about why this mode applies"""\n';
-  content += '    \n';
-  content += '    is_in_otel: bool\n';
-  content += '    """Whether the attribute is defined in OpenTelemetry Semantic Conventions"""\n';
-  content += '    \n';
-  content += '    visibility: Visibility\n';
-  content += '    """Whether the attribute is public or internal to Sentry"""\n';
-  content += '    \n';
-  content += '    keys: Tuple[str, ...]\n';
-  content += `    """Every key this attribute's value may be readable under, preferred key first.\n\n`;
-  content +=
-    '    All members of a family share one chain, so a read prefers the same key no matter\n' +
-    '    which member you look up. Only ``backfill`` and ``normalize`` deprecations join their\n' +
-    "    replacement's chain, because only for those is the value rewritten onto the replacement.\n" +
-    '    An attribute with any other deprecation therefore has a chain of just its own names, and\n' +
-    '    the first key is not guaranteed to be non-deprecated -- check ``deprecation`` if that\n' +
-    '    matters.\n';
-  content += '    """\n';
-  content += '    \n';
-  content += '    has_dynamic_suffix: Optional[bool] = None\n';
-  content +=
-    '    """If an attribute has a dynamic suffix, for example http.response.header.<key> where <key> is dynamic"""\n';
-  content += '    \n';
-  content += '    example: Optional[AttributeValue] = None\n';
-  content += '    """An example value of the attribute"""\n';
-  content += '    \n';
-  content += '    deprecation: Optional[DeprecationInfo] = None\n';
-  content += '    """If an attribute was deprecated, and what it was replaced with"""\n';
-  content += '    \n';
-  content += '    aliases: Optional[List[str]] = None\n';
-  content += '    """If there are attributes that alias to this attribute"""\n';
-  content += '    \n';
-  content += '    changelog: Optional[List[ChangelogEntry]] = None\n';
-  content += '    """Changelog entries tracking how this attribute has changed across versions"""\n';
-  content += '    \n';
-  content += '    additional_context: Optional[List[str]] = None\n';
-  content +=
-    '    """A list of freeform notes providing additional context about how this attribute behaves, common pitfalls, or query-time nuances"""\n';
-  content += '    \n';
-  content += '    examples: Optional[List[AttributeValue]] = None\n';
-  content += '    """Example values of the attribute"""\n';
-  content += '    \n';
-  content += '    search_alias: Optional[SearchAlias] = None\n';
-  content += '    """How this attribute is exposed in Sentry search"""\n\n';
+  content += 'from typing import Dict, List, Literal, TypedDict\n\n';
+  content += 'from ._metadata_types import (\n';
+  content += '    ApplyScrubbing,\n';
+  content += '    ApplyScrubbingInfo,\n';
+  content += '    AttributeMetadata,\n';
+  content += '    AttributeType,\n';
+  content += '    ChangelogEntry,\n';
+  content += '    DeprecationInfo,\n';
+  content += '    DeprecationStatus,\n';
+  content += '    SearchAlias,\n';
+  content += '    Visibility,\n';
+  content += ')\n\n';
 
   let attributesTypeMembers = '';
   let deprecatedAttributesTypeMembers = '';
@@ -945,18 +818,6 @@ function writeToPython(parsedAttributes: ParsedAttribute[], outputFilePath: stri
   content += '}, total=False)\n';
   content +=
     '"""TypedDict representing a collection of attributes, including deprecated and non-deprecated ones."""\n\n';
-
-  // Add __all__ list for exports
-  content += '__all__ = [\n';
-  content += '    "ATTRIBUTE_METADATA",\n';
-  content += '    "Attributes",\n';
-  content += '    "ATTRIBUTE_NAMES",\n';
-  for (const { schemaNames } of schemaInfo) {
-    for (const name of schemaNames) {
-      content += `    "${name}",\n`;
-    }
-  }
-  content += ']\n\n';
 
   // Write the generated content to the file
   fs.writeFileSync(outputFilePath, content);
@@ -1621,6 +1482,22 @@ function generateMetadata(
   return { attributeMetadata: metadataDict, searchMetadata };
 }
 
+const TS_BANNER_COMMENT = `/**
+ * This file was automatically generated by json-schema-to-typescript.
+ * DO NOT MODIFY IT BY HAND. Instead, modify the source JSONSchema file,
+ * and run json-schema-to-typescript to regenerate this file.
+ */`;
+
+// The schema passed to `compile` is a synthetic wrapper with no name and no references to its
+// definitions, so json-schema-to-typescript's "referenced by `undefined`" note is meaningless.
+const ROOT_REFERENCE_NOTE = String.raw` \* This interface was referenced by \`undefined\`'s JSON-Schema\n \* via the \`definition\` "[^"\n]+"\.\n`;
+
+function stripRootReferenceComments(tsSource: string): string {
+  return tsSource
+    .replace(new RegExp(String.raw`/\*\*\n${ROOT_REFERENCE_NOTE} \*/\n`, 'g'), '')
+    .replace(new RegExp(String.raw` \*\n${ROOT_REFERENCE_NOTE}`, 'g'), '');
+}
+
 async function generateSchemaTypes(
   parsedAttributes: ParsedAttribute[],
   jsOutputDir: string,
@@ -1629,6 +1506,50 @@ async function generateSchemaTypes(
 ): Promise<SchemaTypeInfo[]> {
   const results: SchemaTypeInfo[] = [];
 
+  const sharedSchemasDir = path.join(repositoryRoot, 'schemas', 'shared');
+  for (const file of fs.readdirSync(sharedSchemasDir).sort()) {
+    const openapiFile = path.join(sharedSchemasDir, file);
+    const modulePath = `shared/${file.replace('.openapi.json', '')}`;
+    const schemas = (
+      JSON.parse(fs.readFileSync(openapiFile, 'utf-8')) as { components?: { schemas?: Record<string, unknown> } }
+    ).components?.schemas;
+    if (!schemas) continue;
+
+    const jsonSchema = { definitions: schemas, components: { schemas } } as Parameters<typeof compile>[0];
+    const tsSource = stripRootReferenceComments(
+      await compile(jsonSchema, '', {
+        bannerComment: TS_BANNER_COMMENT,
+        cwd: sharedSchemasDir,
+        unreachableDefinitions: true,
+        unknownAny: true,
+      }),
+    );
+    fs.writeFileSync(path.join(jsOutputDir, `${modulePath}.ts`), tsSource);
+
+    execFileSync(
+      'uv',
+      [
+        'run',
+        '--group',
+        'schema-codegen',
+        'datamodel-codegen',
+        '--input-file-type',
+        'openapi',
+        '--output-model-type',
+        'typing.TypedDict',
+        '--no-use-closed-typed-dict',
+        '--disable-timestamp',
+        '--input',
+        openapiFile,
+        '--output',
+        path.join(pythonOutputDir, `${modulePath}.py`),
+      ],
+      { cwd: path.join(repositoryRoot, 'python'), stdio: 'pipe' },
+    );
+
+    results.push({ modulePath, schemaNames: Object.keys(schemas) });
+  }
+
   for (const { attributeJson } of parsedAttributes) {
     const openapiFile = path.join(
       repositoryRoot,
@@ -1636,32 +1557,70 @@ async function generateSchemaTypes(
       attributeKeyToFileName(attributeJson.key).replace('.json', '.openapi.json'),
     );
     if (!fs.existsSync(openapiFile)) continue;
-
-    const openapi = JSON.parse(fs.readFileSync(openapiFile, 'utf-8')) as {
-      components?: { schemas?: Record<string, unknown> };
-    };
-    const schemas = openapi?.components?.schemas;
+    const modulePath = attributeJson.key.replaceAll('.', '_');
+    const openapiSource = fs.readFileSync(openapiFile, 'utf-8');
+    const schemas = (JSON.parse(openapiSource) as { components?: { schemas?: Record<string, unknown> } }).components
+      ?.schemas;
     if (!schemas) continue;
-
-    const baseName = attributeJson.key.replaceAll('.', '_');
-    const schemaNames = Object.keys(schemas);
+    const sharedRefs = collectSharedRefs(openapiSource);
 
     const jsonSchema = { definitions: schemas, components: { schemas } } as Parameters<typeof compile>[0];
-    const tsSource = await compile(jsonSchema, '', {
-      unreachableDefinitions: true,
-      unknownAny: true,
-    });
-    const jsFile = path.join(jsOutputDir, `${baseName}.ts`);
-    fs.writeFileSync(jsFile, tsSource);
+    const tsSource = stripRootReferenceComments(
+      await compile(jsonSchema, '', {
+        bannerComment: TS_BANNER_COMMENT,
+        cwd: path.join(repositoryRoot, 'schemas'),
+        declareExternallyReferenced: false,
+        unreachableDefinitions: true,
+        unknownAny: true,
+      }),
+    );
+    const tsImports = [...sharedRefs].map(
+      ([sharedModule, names]) => `import type { ${[...names].sort().join(', ')} } from './shared/${sharedModule}';\n`,
+    );
+    const tsHeader = tsImports.length > 0 ? `${tsImports.join('')}\n` : '';
+    fs.writeFileSync(path.join(jsOutputDir, `${modulePath}.ts`), tsHeader + tsSource);
 
-    const pythonFile = path.join(pythonOutputDir, `${baseName}.py`);
-    execSync(
-      `uv run --group schema-codegen datamodel-codegen --input ${openapiFile} --input-file-type openapi --output-model-type typing.TypedDict --no-use-closed-typed-dict --disable-timestamp --output ${pythonFile}`,
+    const refMappings = [...sharedRefs.keys()].map(
+      (sharedModule) => `shared/${sharedModule}.openapi.json=.shared.${sharedModule}`,
+    );
+    execFileSync(
+      'uv',
+      [
+        'run',
+        '--group',
+        'schema-codegen',
+        'datamodel-codegen',
+        '--input-file-type',
+        'openapi',
+        '--output-model-type',
+        'typing.TypedDict',
+        '--no-use-closed-typed-dict',
+        '--disable-timestamp',
+        '--input',
+        openapiFile,
+        '--output',
+        path.join(pythonOutputDir, `${modulePath}.py`),
+        ...(refMappings.length > 0 ? ['--external-ref-mapping', ...refMappings] : []),
+      ],
       { cwd: path.join(repositoryRoot, 'python'), stdio: 'pipe' },
     );
 
-    results.push({ baseName, schemaNames, attributeKey: attributeJson.key });
+    results.push({ modulePath, schemaNames: Object.keys(schemas), attributeKey: attributeJson.key });
   }
 
   return results;
+}
+
+function collectSharedRefs(openapiSource: string) {
+  const refs = new Map<string, Set<string>>();
+  for (const [, refFile, name] of openapiSource.matchAll(/"\$ref":\s*"([^"#]+)#\/components\/schemas\/([^"]+)"/g)) {
+    const sharedModule = path.basename(refFile!, '.openapi.json');
+    let names = refs.get(sharedModule);
+    if (!names) {
+      names = new Set();
+      refs.set(sharedModule, names);
+    }
+    names.add(name!);
+  }
+  return refs;
 }
