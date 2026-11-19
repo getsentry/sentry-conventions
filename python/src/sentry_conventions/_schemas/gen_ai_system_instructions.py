@@ -3,14 +3,8 @@
 
 from __future__ import annotations
 
-from typing import Literal, TypeAlias, TypedDict
+from typing import TypeAlias
 
-from typing_extensions import NotRequired
-
-
-class TextPart(TypedDict):
-    type: Literal["text"]
-    content: NotRequired[str]
-
+from .shared.gen_ai_parts import TextPart
 
 SystemInstructions: TypeAlias = list[TextPart]

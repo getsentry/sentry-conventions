@@ -1,6 +1,23 @@
 // This is an auto-generated file. Do not edit!
 
-export type { SystemInstructions, TextPart } from './_schemas/gen_ai_system_instructions';
+export type { TextPart } from './_schemas/shared/gen_ai_parts';
+
+export type {
+  OutputMessages,
+  BlobPart,
+  ChatMessage,
+  CompactionPart,
+  FilePart,
+  GenericPart,
+  Modality,
+  ReasoningPart,
+  Role,
+  ToolCallRequestPart,
+  ToolCallResponsePart,
+  UriPart,
+} from './_schemas/gen_ai_output_messages';
+
+export type { SystemInstructions } from './_schemas/gen_ai_system_instructions';
 
 export type { ToolCallArguments } from './_schemas/gen_ai_tool_call_arguments';
 

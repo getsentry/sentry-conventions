@@ -17,6 +17,7 @@ describe('generateAttributes', () => {
     const jsOutputFilePath = path.join(temporaryDirectory, 'attributes.ts');
     const pythonOutputFilePath = path.join(temporaryDirectory, '_attributes.py');
     fs.mkdirSync(attributesDir);
+    fs.mkdirSync(path.join(temporaryDirectory, '_schemas', 'shared'), { recursive: true });
 
     const key = 'mcp.tool.result.<key>.content';
     const attributes = [{ key }, { key: 'mcp.request.argument.<key>', has_dynamic_suffix: true }];
@@ -63,6 +64,7 @@ describe('generateAttributes', () => {
     const jsOutputFilePath = path.join(temporaryDirectory, 'attributes.ts');
     const pythonOutputFilePath = path.join(temporaryDirectory, '_attributes.py');
     fs.mkdirSync(attributesDir);
+    fs.mkdirSync(path.join(temporaryDirectory, '_schemas', 'shared'), { recursive: true });
     fs.writeFileSync(
       path.join(attributesDir, 'test__attribute.json'),
       JSON.stringify({
@@ -117,6 +119,7 @@ describe('generateAttributes', () => {
     const jsOutputFilePath = path.join(temporaryDirectory, 'attributes.ts');
     const pythonOutputFilePath = path.join(temporaryDirectory, '_attributes.py');
     fs.mkdirSync(attributesDir);
+    fs.mkdirSync(path.join(temporaryDirectory, '_schemas', 'shared'), { recursive: true });
 
     const attributes = [
       {
@@ -308,6 +311,7 @@ describe('generateAttributes', () => {
     const jsOutputFilePath = path.join(temporaryDirectory, 'attributes.ts');
     const pythonOutputFilePath = path.join(temporaryDirectory, '_attributes.py');
     fs.mkdirSync(attributesDir);
+    fs.mkdirSync(path.join(temporaryDirectory, '_schemas', 'shared'), { recursive: true });
 
     for (const key of ['first.attribute', 'second.attribute']) {
       fs.writeFileSync(
