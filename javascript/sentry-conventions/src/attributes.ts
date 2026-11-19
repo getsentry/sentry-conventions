@@ -34707,7 +34707,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'BestTopic',
     aliases: ['messaging.destination', 'sentry.messaging.destination.name'],
     changelog: [
-      { version: 'next', description: 'Added sentry.messaging.destination.name as an alias' },
+      { version: 'next', prs: [796], description: 'Added sentry.messaging.destination.name as an alias' },
       { version: '0.16.0', prs: [482], description: 'Added messaging.destination as an alias' },
       { version: '0.1.0', prs: [127] },
       { version: '0.0.0' },
@@ -37474,6 +37474,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     changelog: [
       {
         version: 'next',
+        prs: [796],
         description:
           'Added sentry.messaging.destination.name attribute, deprecated in favor of messaging.destination.name',
       },

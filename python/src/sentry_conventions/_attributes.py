@@ -25215,6 +25215,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(
                 version="next",
+                prs=[796],
                 description="Added sentry.messaging.destination.name as an alias",
             ),
             ChangelogEntry(
@@ -28541,6 +28542,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(
                 version="next",
+                prs=[796],
                 description="Added sentry.messaging.destination.name attribute, deprecated in favor of messaging.destination.name",
             ),
         ],

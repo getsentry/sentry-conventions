@@ -16,6 +16,7 @@
   "changelog": [
     {
       "version": "next",
+      "prs": [796],
       "description": "Added sentry.messaging.destination.name attribute, deprecated in favor of messaging.destination.name"
     }
   ]
