@@ -569,8 +569,17 @@ function writeToPython(parsedAttributes: ParsedAttribute[], outputFilePath: stri
     "A collection of attribute names with helpers to retrieve an attribute's metadata, as defined in the Sentry Semantic Conventions registry.";
   content += '"""\n\n';
   content += '# This is an auto-generated file. Do not edit!\n\n';
+  content += 'import sys\n';
   content += 'import warnings\n';
-  content += 'from typing import Dict, List, Literal, TypedDict\n\n';
+  content += 'from typing import Dict, List\n\n';
+  content += 'if sys.version_info >= (3, 8):\n';
+  content += '    from typing import Literal, TypedDict\n';
+  content += 'else:\n';
+  content += '    # from: https://stackoverflow.com/a/71944042/300572\n';
+  content += '    class _Literal:\n';
+  content += '        def __getitem__(self, _):\n';
+  content += '            return str\n\n';
+  content += '    Literal = _Literal()\n\n';
   content += 'from ._metadata_types import (\n';
   content += '    ApplyScrubbing,\n';
   content += '    ApplyScrubbingInfo,\n';
@@ -813,9 +822,12 @@ function writeToPython(parsedAttributes: ParsedAttribute[], outputFilePath: stri
   content += '"""\n\n';
 
   // Add TypedDict definitions using hardcoded string keys
-  content += 'Attributes = TypedDict("Attributes", {\n';
+  content += 'if sys.version_info >= (3, 8):\n';
+  content += '    Attributes = TypedDict("Attributes", {\n';
   content += fullAttributesTypeMembers;
-  content += '}, total=False)\n';
+  content += '    }, total=False)\n';
+  content += 'else:\n';
+  content += '    Attributes = dict\n';
   content +=
     '"""TypedDict representing a collection of attributes, including deprecated and non-deprecated ones."""\n\n';
 

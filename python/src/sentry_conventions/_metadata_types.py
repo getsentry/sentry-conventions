@@ -1,6 +1,7 @@
 from dataclasses import dataclass
 from enum import Enum
-from typing import List, Literal, Optional, Tuple, Union
+import sys
+from typing import List, Optional, Tuple, Union
 
 AttributeValue = Union[
     str, int, float, bool, List[str], List[int], List[float], List[bool]
@@ -68,13 +69,11 @@ class ChangelogEntry:
     """Optional description of what changed"""
 
 
-SearchAliasType = Literal[
-    "byte",
-    "currency",
-    "millisecond",
-    "percentage",
-    "second",
-]
+if sys.version_info >= (3, 8):
+    from typing import Literal
+    SearchAliasType = Literal["byte", "currency", "millisecond", "percentage", "second"]
+else:
+    SearchAliasType = str
 
 
 @dataclass
@@ -89,7 +88,6 @@ class SearchAlias:
 
     deprecated_aliases: Optional[List[str]] = None
     """Deprecated aliases still accepted in search queries"""
-
 
 @dataclass
 class AttributeMetadata:
