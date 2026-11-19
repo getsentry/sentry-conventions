@@ -29,9 +29,9 @@ def test_chains_only_contain_keys_holding_the_same_value() -> None:
         for key, metadata in ATTRIBUTE_METADATA.items()
         for chain_key in metadata.keys
         if chain_key != key
-        and (chain_metadata := ATTRIBUTE_METADATA.get(chain_key)) is not None
-        and chain_metadata.deprecation is not None
-        and chain_metadata.deprecation.status not in rewriting
+        and (ATTRIBUTE_METADATA.get(chain_key)) is not None
+        and ATTRIBUTE_METADATA.get(chain_key).deprecation is not None
+        and ATTRIBUTE_METADATA.get(chain_key).deprecation.status not in rewriting
     ]
 
     assert leaked == []
