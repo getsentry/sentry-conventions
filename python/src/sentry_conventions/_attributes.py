@@ -10471,7 +10471,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     # Path: model/attributes/sentry/sentry__is_remote.json
     SENTRY_IS_REMOTE: Literal["sentry.is_remote"] = "sentry.is_remote"
-    """Indicates whether a span's parent is remote, meaning the parent span was created in another process, typically another service. This is `true` when the span's trace context (trace ID, parent span ID, etc.) was received through trace propagation across a network or process boundary, rather than from a parent span in the same process. Mirrors OpenTelemetry's [`SpanContext.IsRemote`](https://opentelemetry.io/docs/specs/otel/trace/api/#isremote).
+    """Indicates whether a span's parent is remote, i.e. created in another process, typically another service. See OpenTelemetry's [`SpanContext.IsRemote`](https://opentelemetry.io/docs/specs/otel/trace/api/#isremote).
 
     Type: bool
     Apply Scrubbing: never
@@ -28567,7 +28567,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "sentry.is_remote": AttributeMetadata(
-        brief="Indicates whether a span's parent is remote, meaning the parent span was created in another process, typically another service. This is `true` when the span's trace context (trace ID, parent span ID, etc.) was received through trace propagation across a network or process boundary, rather than from a parent span in the same process. Mirrors OpenTelemetry's [`SpanContext.IsRemote`](https://opentelemetry.io/docs/specs/otel/trace/api/#isremote).",
+        brief="Indicates whether a span's parent is remote, i.e. created in another process, typically another service. See OpenTelemetry's [`SpanContext.IsRemote`](https://opentelemetry.io/docs/specs/otel/trace/api/#isremote).",
         type=AttributeType.BOOLEAN,
         keys=("sentry.is_remote",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
