@@ -37,7 +37,7 @@
   ],
   "changelog": [
     {
-      "version": "next",
+      "version": "0.34.0",
       "prs": [789],
       "description": "Added pageload examples to cache_origin and server_request"
     },

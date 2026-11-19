@@ -7,8 +7,14 @@
   },
   "is_in_otel": false,
   "example": "Apple",
+  "alias": ["sentry.device.brand"],
   "visibility": "public",
   "changelog": [
+    {
+      "version": "next",
+      "prs": [804],
+      "description": "Added sentry.device.brand as an alias"
+    },
     {
       "version": "0.1.0",
       "prs": [116, 127]
