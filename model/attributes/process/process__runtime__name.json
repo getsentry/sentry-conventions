@@ -7,9 +7,14 @@
   },
   "is_in_otel": true,
   "example": "node",
-  "alias": ["runtime.name"],
+  "alias": ["runtime.name", "sentry.runtime.name"],
   "visibility": "public",
   "changelog": [
+    {
+      "version": "next",
+      "prs": [806],
+      "description": "Added sentry.runtime.name as an alias"
+    },
     {
       "version": "0.1.0",
       "prs": [127]

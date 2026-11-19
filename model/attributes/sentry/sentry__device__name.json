@@ -1,0 +1,23 @@
+{
+  "key": "sentry.device.name",
+  "brief": "The user-assigned name of the mobile device.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "auto"
+  },
+  "is_in_otel": false,
+  "example": "localhost",
+  "alias": ["device.name"],
+  "deprecation": {
+    "_status": "backfill",
+    "replacement": "device.name"
+  },
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [804],
+      "description": "Added sentry.device.name attribute, deprecated in favor of device.name"
+    }
+  ]
+}

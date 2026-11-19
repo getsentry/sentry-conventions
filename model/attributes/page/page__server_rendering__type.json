@@ -31,7 +31,7 @@
   ],
   "changelog": [
     {
-      "version": "next",
+      "version": "0.34.0",
       "prs": [789],
       "description": "Added the cache_origin link to the reused part"
     },
