@@ -25304,8 +25304,13 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 5,
     aliases: ['frames.delay'],
     changelog: [
+      { version: 'next', description: 'Added search_alias with type second' },
       { version: '0.5.0', prs: [313], description: 'Added app.vitals.frames.delay.value to replace frames.delay' },
     ],
+    searchAlias: {
+      name: 'app.vitals.frames.delay.value',
+      type: 'second',
+    },
   },
   'app.vitals.frames.frozen.count': {
     brief: 'The number of frozen frames rendered during the lifetime of the span.',
@@ -25335,7 +25340,14 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 0.5,
     aliases: ['frames_frozen_rate'],
-    changelog: [{ version: '0.19.0', prs: [493], description: 'Added app.vitals.frames.frozen.rate attribute' }],
+    changelog: [
+      { version: 'next', description: 'Added search_alias with type percentage' },
+      { version: '0.19.0', prs: [493], description: 'Added app.vitals.frames.frozen.rate attribute' },
+    ],
+    searchAlias: {
+      name: 'app.vitals.frames.frozen.rate',
+      type: 'percentage',
+    },
   },
   'app.vitals.frames.slow.count': {
     brief: 'The number of slow frames rendered during the lifetime of the span.',
@@ -25365,7 +25377,14 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 0.25,
     aliases: ['frames_slow_rate'],
-    changelog: [{ version: '0.19.0', prs: [493], description: 'Added app.vitals.frames.slow.rate attribute' }],
+    changelog: [
+      { version: 'next', description: 'Added search_alias with type percentage' },
+      { version: '0.19.0', prs: [493], description: 'Added app.vitals.frames.slow.rate attribute' },
+    ],
+    searchAlias: {
+      name: 'app.vitals.frames.slow.rate',
+      type: 'percentage',
+    },
   },
   'app.vitals.frames.total.count': {
     brief: 'The number of total frames rendered during the lifetime of the span.',
@@ -25409,7 +25428,14 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 0.8,
     aliases: ['stall_percentage'],
-    changelog: [{ version: '0.19.0', prs: [493], description: 'Added app.vitals.stall.percentage attribute' }],
+    changelog: [
+      { version: 'next', description: 'Added search_alias with type percentage' },
+      { version: '0.19.0', prs: [493], description: 'Added app.vitals.stall.percentage attribute' },
+    ],
+    searchAlias: {
+      name: 'app.vitals.stall.percentage',
+      type: 'percentage',
+    },
   },
   'app.vitals.start.cold.value': {
     brief: 'The duration of a cold app start in milliseconds',
@@ -25422,7 +25448,14 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 1234.56,
     aliases: ['app_start_cold'],
-    changelog: [{ version: '0.5.0', prs: [313], description: 'Added app.vitals.start.cold.value attribute' }],
+    changelog: [
+      { version: 'next', description: 'Added search_alias with type millisecond' },
+      { version: '0.5.0', prs: [313], description: 'Added app.vitals.start.cold.value attribute' },
+    ],
+    searchAlias: {
+      name: 'app.vitals.start.cold.value',
+      type: 'millisecond',
+    },
   },
   'app.vitals.start.prewarmed': {
     brief: 'Whether the app start was prewarmed.',
@@ -25485,7 +25518,14 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 1234.56,
     aliases: ['app_start_warm'],
-    changelog: [{ version: '0.5.0', prs: [313], description: 'Added app.vitals.start.warm.value attribute' }],
+    changelog: [
+      { version: 'next', description: 'Added search_alias with type millisecond' },
+      { version: '0.5.0', prs: [313], description: 'Added app.vitals.start.warm.value attribute' },
+    ],
+    searchAlias: {
+      name: 'app.vitals.start.warm.value',
+      type: 'millisecond',
+    },
   },
   'app.vitals.ttfd.value': {
     brief: 'The duration of time to full display in milliseconds',
@@ -25498,7 +25538,14 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 1234.56,
     aliases: ['time_to_full_display'],
-    changelog: [{ version: '0.5.0', prs: [313], description: 'Added app.vitals.ttfd.value attribute' }],
+    changelog: [
+      { version: 'next', description: 'Added search_alias with type millisecond' },
+      { version: '0.5.0', prs: [313], description: 'Added app.vitals.ttfd.value attribute' },
+    ],
+    searchAlias: {
+      name: 'app.vitals.ttfd.value',
+      type: 'millisecond',
+    },
   },
   'app.vitals.ttid.value': {
     brief: 'The duration of time to initial display in milliseconds',
@@ -25511,7 +25558,14 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 1234.56,
     aliases: ['time_to_initial_display'],
-    changelog: [{ version: '0.5.0', prs: [313], description: 'Added app.vitals.ttid.value attribute' }],
+    changelog: [
+      { version: 'next', description: 'Added search_alias with type millisecond' },
+      { version: '0.5.0', prs: [313], description: 'Added app.vitals.ttid.value attribute' },
+    ],
+    searchAlias: {
+      name: 'app.vitals.ttid.value',
+      type: 'millisecond',
+    },
   },
   'art.gc.blocking_count': {
     brief: 'Total number of blocking (stop-the-world) garbage collections performed by the Android Runtime',
@@ -26884,7 +26938,14 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 547.6951,
     aliases: ['fcp'],
-    changelog: [{ version: '0.5.0', prs: [235] }],
+    changelog: [
+      { version: 'next', description: 'Added search_alias with type millisecond' },
+      { version: '0.5.0', prs: [235] },
+    ],
+    searchAlias: {
+      name: 'browser.web_vital.fcp.value',
+      type: 'millisecond',
+    },
   },
   'browser.web_vital.fp.value': {
     brief: 'The time in milliseconds it takes for the browser to render the first pixel on the screen',
@@ -26897,7 +26958,14 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 477.1926,
     aliases: ['fp'],
-    changelog: [{ version: '0.5.0', prs: [235] }],
+    changelog: [
+      { version: 'next', description: 'Added search_alias with type millisecond' },
+      { version: '0.5.0', prs: [235] },
+    ],
+    searchAlias: {
+      name: 'browser.web_vital.fp.value',
+      type: 'millisecond',
+    },
   },
   'browser.web_vital.inp.input_delay': {
     brief:
@@ -27008,7 +27076,14 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 200,
     aliases: ['inp'],
-    changelog: [{ version: '0.5.0', prs: [229], description: 'Added browser.web_vital.inp.value attribute' }],
+    changelog: [
+      { version: 'next', description: 'Added search_alias with type millisecond' },
+      { version: '0.5.0', prs: [229], description: 'Added browser.web_vital.inp.value attribute' },
+    ],
+    searchAlias: {
+      name: 'browser.web_vital.inp.value',
+      type: 'millisecond',
+    },
   },
   'browser.web_vital.lcp.element': {
     brief: 'The HTML element selector or component name for which LCP was reported',
@@ -27183,7 +27258,14 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 2500,
     aliases: ['lcp'],
-    changelog: [{ version: '0.5.0', prs: [229], description: 'Added browser.web_vital.lcp.value attribute' }],
+    changelog: [
+      { version: 'next', description: 'Added search_alias with type millisecond' },
+      { version: '0.5.0', prs: [229], description: 'Added browser.web_vital.lcp.value attribute' },
+    ],
+    searchAlias: {
+      name: 'browser.web_vital.lcp.value',
+      type: 'millisecond',
+    },
   },
   'browser.web_vital.ttfb.request_time': {
     brief:
@@ -27210,7 +27292,14 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 194.3322,
     aliases: ['ttfb'],
-    changelog: [{ version: '0.5.0', prs: [235] }],
+    changelog: [
+      { version: 'next', description: 'Added search_alias with type millisecond' },
+      { version: '0.5.0', prs: [235] },
+    ],
+    searchAlias: {
+      name: 'browser.web_vital.ttfb.value',
+      type: 'millisecond',
+    },
   },
   'cache.hit': {
     brief: 'If the cache was hit during this span.',
@@ -29327,10 +29416,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 134217728,
     examples: [134217728, 1073741824],
-    changelog: [{ version: '0.30.0', prs: [715], description: 'Added faas.max_memory attribute' }],
+    changelog: [
+      { version: 'next', description: 'Added search_alias with type byte' },
+      { version: '0.30.0', prs: [715], description: 'Added faas.max_memory attribute' },
+    ],
     additionalContext: [
       'On AWS Lambda, multiply AWS_LAMBDA_FUNCTION_MEMORY_SIZE by 1,048,576 to convert the configured memory from MiB to bytes.',
     ],
+    searchAlias: {
+      name: 'faas.max_memory',
+      type: 'byte',
+    },
   },
   'faas.name': {
     brief: 'The name of the serverless function',
@@ -29833,12 +29929,19 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 12.34,
-    changelog: [{ version: '0.16.0', description: 'Added gen_ai.cost.cache_creation.input_tokens attribute' }],
+    changelog: [
+      { version: 'next', description: 'Added search_alias with type currency' },
+      { version: '0.16.0', description: 'Added gen_ai.cost.cache_creation.input_tokens attribute' },
+    ],
     additionalContext: [
       'This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to calculate total cost, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans.',
       "Despite the name 'cost.cache_creation.input_tokens', this value is cost in USD, not a token count. For token counts, use gen_ai.usage.cache_creation.input_tokens.",
       'This is a subset of gen_ai.cost.input_tokens, not an independent cost. Do not sum this with gen_ai.cost.input_tokens — it is already included.',
     ],
+    searchAlias: {
+      name: 'gen_ai.cost.cache_creation.input_tokens',
+      type: 'currency',
+    },
   },
   'gen_ai.cost.cache_read.input_tokens': {
     brief: 'The cost of cached input tokens in USD.',
@@ -29850,12 +29953,19 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 12.34,
-    changelog: [{ version: '0.16.0', description: 'Added gen_ai.cost.cache_read.input_tokens attribute' }],
+    changelog: [
+      { version: 'next', description: 'Added search_alias with type currency' },
+      { version: '0.16.0', description: 'Added gen_ai.cost.cache_read.input_tokens attribute' },
+    ],
     additionalContext: [
       'This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to calculate total cost, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans.',
       "Despite the name 'cost.cache_read.input_tokens', this value is cost in USD, not a token count. For token counts, use gen_ai.usage.cache_read.input_tokens.",
       'This is a subset of gen_ai.cost.input_tokens, not an independent cost. Do not sum this with gen_ai.cost.input_tokens — it is already included.',
     ],
+    searchAlias: {
+      name: 'gen_ai.cost.cache_read.input_tokens',
+      type: 'currency',
+    },
   },
   'gen_ai.cost.input_tokens': {
     brief: 'The total cost of all input tokens in USD (includes cached and cache creation tokens).',
@@ -29868,6 +29978,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 123.45,
     changelog: [
+      { version: 'next', description: 'Added search_alias with type currency' },
       { version: '0.9.0', prs: [397], description: 'Add additional_context' },
       { version: '0.4.0', prs: [228] },
       { version: '0.1.0', prs: [112] },
@@ -29877,6 +29988,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       "Despite the name 'cost.input_tokens', this value is cost in USD, not a token count. For token counts, use gen_ai.usage.input_tokens.",
       'This is the total cost of all input tokens, including cached and cache creation tokens at their respective rates. For the cached portion, see gen_ai.cost.cache_read.input_tokens. For the cache creation portion, see gen_ai.cost.cache_creation.input_tokens.',
     ],
+    searchAlias: {
+      name: 'gen_ai.cost.input_tokens',
+      type: 'currency',
+    },
   },
   'gen_ai.cost.output_tokens': {
     brief: 'The total cost of all output tokens in USD (includes reasoning tokens).',
@@ -29889,6 +30004,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 123.45,
     changelog: [
+      { version: 'next', description: 'Added search_alias with type currency' },
       { version: '0.9.0', prs: [397], description: 'Add additional_context' },
       { version: '0.4.0', prs: [228] },
       { version: '0.1.0', prs: [112] },
@@ -29898,6 +30014,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       "Despite the name 'cost.output_tokens', this value is cost in USD, not a token count. For token counts, use gen_ai.usage.output_tokens.",
       'This is the total cost of all output tokens, including reasoning tokens at their respective rate. For the reasoning portion, see gen_ai.cost.reasoning.output_tokens.',
     ],
+    searchAlias: {
+      name: 'gen_ai.cost.output_tokens',
+      type: 'currency',
+    },
   },
   'gen_ai.cost.reasoning.output_tokens': {
     brief: 'The cost of reasoning output tokens in USD.',
@@ -29909,12 +30029,19 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 12.34,
-    changelog: [{ version: '0.16.0', description: 'Added gen_ai.cost.reasoning.output_tokens attribute' }],
+    changelog: [
+      { version: 'next', description: 'Added search_alias with type currency' },
+      { version: '0.16.0', description: 'Added gen_ai.cost.reasoning.output_tokens attribute' },
+    ],
     additionalContext: [
       'This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to calculate total cost, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans.',
       "Despite the name 'cost.reasoning.output_tokens', this value is cost in USD, not a token count. For token counts, use gen_ai.usage.reasoning.output_tokens.",
       'This is a subset of gen_ai.cost.output_tokens, not an independent cost. Do not sum this with gen_ai.cost.output_tokens — it is already included.',
     ],
+    searchAlias: {
+      name: 'gen_ai.cost.reasoning.output_tokens',
+      type: 'currency',
+    },
   },
   'gen_ai.cost.total_tokens': {
     brief: 'The total cost for the tokens used.',
@@ -29928,6 +30055,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 12.34,
     aliases: ['ai.total_cost'],
     changelog: [
+      { version: 'next', description: 'Added search_alias with type currency' },
       { version: '0.9.0', prs: [397], description: 'Add additional_context' },
       { version: '0.5.0', prs: [264] },
       { version: '0.4.0', prs: [228] },
@@ -29937,6 +30065,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to calculate total cost, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans.',
       "Despite the name 'cost.total_tokens', this value is cost in USD, not a token count. For token counts, use gen_ai.usage.total_tokens.",
     ],
+    searchAlias: {
+      name: 'gen_ai.cost.total_tokens',
+      type: 'currency',
+    },
   },
   'gen_ai.embeddings.input': {
     brief: 'The input to the embeddings model.',
@@ -32248,11 +32380,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 456,
     aliases: ['http.decoded_response_content_length', 'http.response_content_length_uncompressed'],
-    changelog: [{ version: '0.21.0', prs: [574], description: 'Added http.response.body.decoded_size attribute' }],
+    changelog: [
+      { version: 'next', description: 'Added search_alias with type byte' },
+      { version: '0.21.0', prs: [574], description: 'Added http.response.body.decoded_size attribute' },
+    ],
     additionalContext: [
       'This is the size after content decoding. Set it only when the decoded size is actually known, for example from the browser Resource Timing `decodedBodySize` or by measuring a decompressed response stream.',
       'Do not derive this from the `content-length` header, which always carries the encoded size. Use `http.response.body.size` for that.',
     ],
+    searchAlias: {
+      name: 'http.response.body.decoded_size',
+      type: 'byte',
+    },
   },
   'http.response.body.size': {
     brief: 'The encoded body size of the response (in bytes).',
@@ -32265,7 +32404,16 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 123,
     aliases: ['http.response_content_length', 'http.response.header.content-length'],
-    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [106] }, { version: '0.0.0' }],
+    changelog: [
+      { version: 'next', description: 'Added search_alias with type byte' },
+      { version: '0.4.0', prs: [228] },
+      { version: '0.1.0', prs: [106] },
+      { version: '0.0.0' },
+    ],
+    searchAlias: {
+      name: 'http.response.body.size',
+      type: 'byte',
+    },
   },
   'http.response_content_length': {
     brief: 'The encoded body size of the response (in bytes).',
@@ -32358,7 +32506,15 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 456,
     aliases: ['http.response_transfer_size'],
-    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
+    changelog: [
+      { version: 'next', description: 'Added search_alias with type byte' },
+      { version: '0.4.0', prs: [228] },
+      { version: '0.0.0' },
+    ],
+    searchAlias: {
+      name: 'http.response.size',
+      type: 'byte',
+    },
   },
   'http.response.status_code': {
     brief: 'The status code of the HTTP response.',
@@ -36323,7 +36479,14 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 512.5,
     examples: [512.5],
-    changelog: [{ version: '0.24.0', prs: [564], description: 'Added react_native.module.duration.max attribute' }],
+    changelog: [
+      { version: 'next', description: 'Added search_alias with type millisecond' },
+      { version: '0.24.0', prs: [564], description: 'Added react_native.module.duration.max attribute' },
+    ],
+    searchAlias: {
+      name: 'react_native.module.duration.max',
+      type: 'millisecond',
+    },
   },
   'react_native.module.duration.total': {
     brief:
@@ -36338,7 +36501,14 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 128.45,
     examples: [128.45],
     aliases: ['turbo_module.total_duration_ms', 'turbo_modules.total_duration_ms'],
-    changelog: [{ version: '0.24.0', prs: [564], description: 'Added react_native.module.duration.total attribute' }],
+    changelog: [
+      { version: 'next', description: 'Added search_alias with type millisecond' },
+      { version: '0.24.0', prs: [564], description: 'Added react_native.module.duration.total attribute' },
+    ],
+    searchAlias: {
+      name: 'react_native.module.duration.total',
+      type: 'millisecond',
+    },
   },
   'react_native.module.error.count': {
     brief:
@@ -36414,7 +36584,14 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 87.25,
     examples: [87.25],
     aliases: ['turbo_module.top_module_duration_ms'],
-    changelog: [{ version: '0.24.0', prs: [564], description: 'Added react_native.module.top.duration attribute' }],
+    changelog: [
+      { version: 'next', description: 'Added search_alias with type millisecond' },
+      { version: '0.24.0', prs: [564], description: 'Added react_native.module.top.duration attribute' },
+    ],
+    searchAlias: {
+      name: 'react_native.module.top.duration',
+      type: 'millisecond',
+    },
   },
   'react_native.module.top.name': {
     brief:

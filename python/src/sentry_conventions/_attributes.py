@@ -14146,11 +14146,15 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["frames.delay"],
         changelog=[
             ChangelogEntry(
+                version="next", description="Added search_alias with type second"
+            ),
+            ChangelogEntry(
                 version="0.5.0",
                 prs=[313],
                 description="Added app.vitals.frames.delay.value to replace frames.delay",
             ),
         ],
+        search_alias=SearchAlias(name="app.vitals.frames.delay.value", type="second"),
     ),
     "app.vitals.frames.frozen.count": AttributeMetadata(
         brief="The number of frozen frames rendered during the lifetime of the span.",
@@ -14193,11 +14197,17 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["frames_frozen_rate"],
         changelog=[
             ChangelogEntry(
+                version="next", description="Added search_alias with type percentage"
+            ),
+            ChangelogEntry(
                 version="0.19.0",
                 prs=[493],
                 description="Added app.vitals.frames.frozen.rate attribute",
             ),
         ],
+        search_alias=SearchAlias(
+            name="app.vitals.frames.frozen.rate", type="percentage"
+        ),
     ),
     "app.vitals.frames.slow.count": AttributeMetadata(
         brief="The number of slow frames rendered during the lifetime of the span.",
@@ -14240,11 +14250,15 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["frames_slow_rate"],
         changelog=[
             ChangelogEntry(
+                version="next", description="Added search_alias with type percentage"
+            ),
+            ChangelogEntry(
                 version="0.19.0",
                 prs=[493],
                 description="Added app.vitals.frames.slow.rate attribute",
             ),
         ],
+        search_alias=SearchAlias(name="app.vitals.frames.slow.rate", type="percentage"),
     ),
     "app.vitals.frames.total.count": AttributeMetadata(
         brief="The number of total frames rendered during the lifetime of the span.",
@@ -14307,11 +14321,15 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["stall_percentage"],
         changelog=[
             ChangelogEntry(
+                version="next", description="Added search_alias with type percentage"
+            ),
+            ChangelogEntry(
                 version="0.19.0",
                 prs=[493],
                 description="Added app.vitals.stall.percentage attribute",
             ),
         ],
+        search_alias=SearchAlias(name="app.vitals.stall.percentage", type="percentage"),
     ),
     "app.vitals.start.cold.value": AttributeMetadata(
         brief="The duration of a cold app start in milliseconds",
@@ -14327,11 +14345,17 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["app_start_cold"],
         changelog=[
             ChangelogEntry(
+                version="next", description="Added search_alias with type millisecond"
+            ),
+            ChangelogEntry(
                 version="0.5.0",
                 prs=[313],
                 description="Added app.vitals.start.cold.value attribute",
             ),
         ],
+        search_alias=SearchAlias(
+            name="app.vitals.start.cold.value", type="millisecond"
+        ),
     ),
     "app.vitals.start.prewarmed": AttributeMetadata(
         brief="Whether the app start was prewarmed.",
@@ -14415,11 +14439,17 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["app_start_warm"],
         changelog=[
             ChangelogEntry(
+                version="next", description="Added search_alias with type millisecond"
+            ),
+            ChangelogEntry(
                 version="0.5.0",
                 prs=[313],
                 description="Added app.vitals.start.warm.value attribute",
             ),
         ],
+        search_alias=SearchAlias(
+            name="app.vitals.start.warm.value", type="millisecond"
+        ),
     ),
     "app.vitals.ttfd.value": AttributeMetadata(
         brief="The duration of time to full display in milliseconds",
@@ -14435,11 +14465,15 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["time_to_full_display"],
         changelog=[
             ChangelogEntry(
+                version="next", description="Added search_alias with type millisecond"
+            ),
+            ChangelogEntry(
                 version="0.5.0",
                 prs=[313],
                 description="Added app.vitals.ttfd.value attribute",
             ),
         ],
+        search_alias=SearchAlias(name="app.vitals.ttfd.value", type="millisecond"),
     ),
     "app.vitals.ttid.value": AttributeMetadata(
         brief="The duration of time to initial display in milliseconds",
@@ -14455,11 +14489,15 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["time_to_initial_display"],
         changelog=[
             ChangelogEntry(
+                version="next", description="Added search_alias with type millisecond"
+            ),
+            ChangelogEntry(
                 version="0.5.0",
                 prs=[313],
                 description="Added app.vitals.ttid.value attribute",
             ),
         ],
+        search_alias=SearchAlias(name="app.vitals.ttid.value", type="millisecond"),
     ),
     "app_start_cold": AttributeMetadata(
         brief="The duration of a cold app start in milliseconds",
@@ -16269,8 +16307,14 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=547.6951,
         aliases=["fcp"],
         changelog=[
+            ChangelogEntry(
+                version="next", description="Added search_alias with type millisecond"
+            ),
             ChangelogEntry(version="0.5.0", prs=[235]),
         ],
+        search_alias=SearchAlias(
+            name="browser.web_vital.fcp.value", type="millisecond"
+        ),
     ),
     "browser.web_vital.fp.value": AttributeMetadata(
         brief="The time in milliseconds it takes for the browser to render the first pixel on the screen",
@@ -16285,8 +16329,12 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=477.1926,
         aliases=["fp"],
         changelog=[
+            ChangelogEntry(
+                version="next", description="Added search_alias with type millisecond"
+            ),
             ChangelogEntry(version="0.5.0", prs=[235]),
         ],
+        search_alias=SearchAlias(name="browser.web_vital.fp.value", type="millisecond"),
     ),
     "browser.web_vital.inp.input_delay": AttributeMetadata(
         brief="The time between the user interacting with the page and the browser starting to run the event handlers, for the interaction INP was reported on, in milliseconds",
@@ -16411,11 +16459,17 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["inp"],
         changelog=[
             ChangelogEntry(
+                version="next", description="Added search_alias with type millisecond"
+            ),
+            ChangelogEntry(
                 version="0.5.0",
                 prs=[229],
                 description="Added browser.web_vital.inp.value attribute",
             ),
         ],
+        search_alias=SearchAlias(
+            name="browser.web_vital.inp.value", type="millisecond"
+        ),
     ),
     "browser.web_vital.lcp.element": AttributeMetadata(
         brief="The HTML element selector or component name for which LCP was reported",
@@ -16617,11 +16671,17 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["lcp"],
         changelog=[
             ChangelogEntry(
+                version="next", description="Added search_alias with type millisecond"
+            ),
+            ChangelogEntry(
                 version="0.5.0",
                 prs=[229],
                 description="Added browser.web_vital.lcp.value attribute",
             ),
         ],
+        search_alias=SearchAlias(
+            name="browser.web_vital.lcp.value", type="millisecond"
+        ),
     ),
     "browser.web_vital.ttfb.request_time": AttributeMetadata(
         brief="The time it takes for the server to process the initial request and send the first byte of a response to the user's browser",
@@ -16652,8 +16712,14 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=194.3322,
         aliases=["ttfb"],
         changelog=[
+            ChangelogEntry(
+                version="next", description="Added search_alias with type millisecond"
+            ),
             ChangelogEntry(version="0.5.0", prs=[235]),
         ],
+        search_alias=SearchAlias(
+            name="browser.web_vital.ttfb.value", type="millisecond"
+        ),
     ),
     "cache.hit": AttributeMetadata(
         brief="If the cache was hit during this span.",
@@ -19124,6 +19190,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=[134217728, 1073741824],
         changelog=[
             ChangelogEntry(
+                version="next", description="Added search_alias with type byte"
+            ),
+            ChangelogEntry(
                 version="0.30.0",
                 prs=[715],
                 description="Added faas.max_memory attribute",
@@ -19132,6 +19201,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         additional_context=[
             "On AWS Lambda, multiply AWS_LAMBDA_FUNCTION_MEMORY_SIZE by 1,048,576 to convert the configured memory from MiB to bytes."
         ],
+        search_alias=SearchAlias(name="faas.max_memory", type="byte"),
     ),
     "faas.name": AttributeMetadata(
         brief="The name of the serverless function",
@@ -19741,6 +19811,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=12.34,
         changelog=[
             ChangelogEntry(
+                version="next", description="Added search_alias with type currency"
+            ),
+            ChangelogEntry(
                 version="0.16.0",
                 description="Added gen_ai.cost.cache_creation.input_tokens attribute",
             ),
@@ -19750,6 +19823,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "Despite the name 'cost.cache_creation.input_tokens', this value is cost in USD, not a token count. For token counts, use gen_ai.usage.cache_creation.input_tokens.",
             "This is a subset of gen_ai.cost.input_tokens, not an independent cost. Do not sum this with gen_ai.cost.input_tokens — it is already included.",
         ],
+        search_alias=SearchAlias(
+            name="gen_ai.cost.cache_creation.input_tokens", type="currency"
+        ),
     ),
     "gen_ai.cost.cache_read.input_tokens": AttributeMetadata(
         brief="The cost of cached input tokens in USD.",
@@ -19761,6 +19837,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=12.34,
         changelog=[
             ChangelogEntry(
+                version="next", description="Added search_alias with type currency"
+            ),
+            ChangelogEntry(
                 version="0.16.0",
                 description="Added gen_ai.cost.cache_read.input_tokens attribute",
             ),
@@ -19770,6 +19849,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "Despite the name 'cost.cache_read.input_tokens', this value is cost in USD, not a token count. For token counts, use gen_ai.usage.cache_read.input_tokens.",
             "This is a subset of gen_ai.cost.input_tokens, not an independent cost. Do not sum this with gen_ai.cost.input_tokens — it is already included.",
         ],
+        search_alias=SearchAlias(
+            name="gen_ai.cost.cache_read.input_tokens", type="currency"
+        ),
     ),
     "gen_ai.cost.input_tokens": AttributeMetadata(
         brief="The total cost of all input tokens in USD (includes cached and cache creation tokens).",
@@ -19781,6 +19863,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=123.45,
         changelog=[
             ChangelogEntry(
+                version="next", description="Added search_alias with type currency"
+            ),
+            ChangelogEntry(
                 version="0.9.0", prs=[397], description="Add additional_context"
             ),
             ChangelogEntry(version="0.4.0", prs=[228]),
@@ -19791,6 +19876,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "Despite the name 'cost.input_tokens', this value is cost in USD, not a token count. For token counts, use gen_ai.usage.input_tokens.",
             "This is the total cost of all input tokens, including cached and cache creation tokens at their respective rates. For the cached portion, see gen_ai.cost.cache_read.input_tokens. For the cache creation portion, see gen_ai.cost.cache_creation.input_tokens.",
         ],
+        search_alias=SearchAlias(name="gen_ai.cost.input_tokens", type="currency"),
     ),
     "gen_ai.cost.output_tokens": AttributeMetadata(
         brief="The total cost of all output tokens in USD (includes reasoning tokens).",
@@ -19802,6 +19888,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=123.45,
         changelog=[
             ChangelogEntry(
+                version="next", description="Added search_alias with type currency"
+            ),
+            ChangelogEntry(
                 version="0.9.0", prs=[397], description="Add additional_context"
             ),
             ChangelogEntry(version="0.4.0", prs=[228]),
@@ -19812,6 +19901,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "Despite the name 'cost.output_tokens', this value is cost in USD, not a token count. For token counts, use gen_ai.usage.output_tokens.",
             "This is the total cost of all output tokens, including reasoning tokens at their respective rate. For the reasoning portion, see gen_ai.cost.reasoning.output_tokens.",
         ],
+        search_alias=SearchAlias(name="gen_ai.cost.output_tokens", type="currency"),
     ),
     "gen_ai.cost.reasoning.output_tokens": AttributeMetadata(
         brief="The cost of reasoning output tokens in USD.",
@@ -19823,6 +19913,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=12.34,
         changelog=[
             ChangelogEntry(
+                version="next", description="Added search_alias with type currency"
+            ),
+            ChangelogEntry(
                 version="0.16.0",
                 description="Added gen_ai.cost.reasoning.output_tokens attribute",
             ),
@@ -19832,6 +19925,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "Despite the name 'cost.reasoning.output_tokens', this value is cost in USD, not a token count. For token counts, use gen_ai.usage.reasoning.output_tokens.",
             "This is a subset of gen_ai.cost.output_tokens, not an independent cost. Do not sum this with gen_ai.cost.output_tokens — it is already included.",
         ],
+        search_alias=SearchAlias(
+            name="gen_ai.cost.reasoning.output_tokens", type="currency"
+        ),
     ),
     "gen_ai.cost.total_tokens": AttributeMetadata(
         brief="The total cost for the tokens used.",
@@ -19847,6 +19943,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["ai.total_cost"],
         changelog=[
             ChangelogEntry(
+                version="next", description="Added search_alias with type currency"
+            ),
+            ChangelogEntry(
                 version="0.9.0", prs=[397], description="Add additional_context"
             ),
             ChangelogEntry(version="0.5.0", prs=[264]),
@@ -19857,6 +19956,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to calculate total cost, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans.",
             "Despite the name 'cost.total_tokens', this value is cost in USD, not a token count. For token counts, use gen_ai.usage.total_tokens.",
         ],
+        search_alias=SearchAlias(name="gen_ai.cost.total_tokens", type="currency"),
     ),
     "gen_ai.embeddings.input": AttributeMetadata(
         brief="The input to the embeddings model.",
@@ -22552,6 +22652,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         changelog=[
             ChangelogEntry(
+                version="next", description="Added search_alias with type byte"
+            ),
+            ChangelogEntry(
                 version="0.21.0",
                 prs=[574],
                 description="Added http.response.body.decoded_size attribute",
@@ -22561,6 +22664,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "This is the size after content decoding. Set it only when the decoded size is actually known, for example from the browser Resource Timing `decodedBodySize` or by measuring a decompressed response stream.",
             "Do not derive this from the `content-length` header, which always carries the encoded size. Use `http.response.body.size` for that.",
         ],
+        search_alias=SearchAlias(name="http.response.body.decoded_size", type="byte"),
     ),
     "http.response.body.size": AttributeMetadata(
         brief="The encoded body size of the response (in bytes).",
@@ -22576,10 +22680,14 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=123,
         aliases=["http.response_content_length", "http.response.header.content-length"],
         changelog=[
+            ChangelogEntry(
+                version="next", description="Added search_alias with type byte"
+            ),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.1.0", prs=[106]),
             ChangelogEntry(version="0.0.0"),
         ],
+        search_alias=SearchAlias(name="http.response.body.size", type="byte"),
     ),
     "http.response.header.<key>": AttributeMetadata(
         brief="HTTP response headers, <key> being the lower-cased, but otherwise unchanged HTTP Header name, the value being the header values.",
@@ -22630,9 +22738,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=456,
         aliases=["http.response_transfer_size"],
         changelog=[
+            ChangelogEntry(
+                version="next", description="Added search_alias with type byte"
+            ),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.0.0"),
         ],
+        search_alias=SearchAlias(name="http.response.size", type="byte"),
     ),
     "http.response.status_code": AttributeMetadata(
         brief="The status code of the HTTP response.",
@@ -27234,11 +27346,17 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=[512.5],
         changelog=[
             ChangelogEntry(
+                version="next", description="Added search_alias with type millisecond"
+            ),
+            ChangelogEntry(
                 version="0.24.0",
                 prs=[564],
                 description="Added react_native.module.duration.max attribute",
             ),
         ],
+        search_alias=SearchAlias(
+            name="react_native.module.duration.max", type="millisecond"
+        ),
     ),
     "react_native.module.duration.total": AttributeMetadata(
         brief="The combined wall-clock duration of all native module calls observed during the lifetime of the span, in milliseconds. Calls overlap, so this can exceed the span duration.",
@@ -27256,11 +27374,17 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["turbo_module.total_duration_ms", "turbo_modules.total_duration_ms"],
         changelog=[
             ChangelogEntry(
+                version="next", description="Added search_alias with type millisecond"
+            ),
+            ChangelogEntry(
                 version="0.24.0",
                 prs=[564],
                 description="Added react_native.module.duration.total attribute",
             ),
         ],
+        search_alias=SearchAlias(
+            name="react_native.module.duration.total", type="millisecond"
+        ),
     ),
     "react_native.module.error.count": AttributeMetadata(
         brief="The number of native module calls that failed during the lifetime of the span. A call counts as failed when it threw, rejected, or — on the Old Architecture bridge only — invoked its failure callback.",
@@ -27364,11 +27488,17 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["turbo_module.top_module_duration_ms"],
         changelog=[
             ChangelogEntry(
+                version="next", description="Added search_alias with type millisecond"
+            ),
+            ChangelogEntry(
                 version="0.24.0",
                 prs=[564],
                 description="Added react_native.module.top.duration attribute",
             ),
         ],
+        search_alias=SearchAlias(
+            name="react_native.module.top.duration", type="millisecond"
+        ),
     ),
     "react_native.module.top.name": AttributeMetadata(
         brief="The native module and method that accounted for the most total duration during the lifetime of the span, formatted as `<module>.<method>`.",
