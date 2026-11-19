@@ -16,7 +16,7 @@
   },
   "changelog": [
     {
-      "version": "next",
+      "version": "0.34.0",
       "prs": [817],
       "description": "Added sentry.user attribute"
     }
