@@ -1,6 +1,10 @@
 # Global ownership
 * @Lms24 @alexander-alderman-webb @andreiborza @cleptric @getsentry/ingest @mjq @nsdeschenes @giortzisg
 
+/python/ @srothh @Lms24 @alexander-alderman-webb @andreiborza @cleptric @getsentry/ingest @mjq @nsdeschenes @giortzisg
+/scripts/generate_attributes.ts @srothh @Lms24 @alexander-alderman-webb @andreiborza @cleptric @getsentry/ingest @mjq @nsdeschenes @giortzisg
+/test/generate_attributes.test.ts @srothh @Lms24 @alexander-alderman-webb @andreiborza @cleptric @getsentry/ingest @mjq @nsdeschenes @giortzisg
+
 # Generated files that aggregate every attribute namespace; left unowned so
 # individual namespace owners aren't required reviewers on unrelated diffs
 javascript/sentry-conventions/

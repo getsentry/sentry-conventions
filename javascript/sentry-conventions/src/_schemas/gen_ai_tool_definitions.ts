@@ -4,24 +4,14 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-/**
- * This interface was referenced by `undefined`'s JSON-Schema
- * via the `definition` "ToolDefinition".
- */
 export type ToolDefinition = FunctionToolDefinition | ServerSideToolDefinition;
 /**
  * Represents the list of tool definitions available to the GenAI model.
- *
- * This interface was referenced by `undefined`'s JSON-Schema
- * via the `definition` "ToolDefinitions".
  */
 export type ToolDefinitions = ToolDefinition[];
 
 /**
  * Represents a tool definition in the form of a function that is executed on the client.
- *
- * This interface was referenced by `undefined`'s JSON-Schema
- * via the `definition` "FunctionToolDefinition".
  */
 export interface FunctionToolDefinition {
   /**
@@ -45,9 +35,6 @@ export interface FunctionToolDefinition {
 }
 /**
  * Represents a tool definition for a capability that the model provider manages on the server.
- *
- * This interface was referenced by `undefined`'s JSON-Schema
- * via the `definition` "ServerSideToolDefinition".
  */
 export interface ServerSideToolDefinition {
   /**
