@@ -11,7 +11,15 @@
   "additional_context": [
     "On AWS Lambda, multiply AWS_LAMBDA_FUNCTION_MEMORY_SIZE by 1,048,576 to convert the configured memory from MiB to bytes."
   ],
+  "search_alias": {
+    "name": "faas.max_memory",
+    "type": "byte"
+  },
   "changelog": [
+    {
+      "version": "next",
+      "description": "Added search_alias with type byte"
+    },
     {
       "version": "0.30.0",
       "prs": [715],

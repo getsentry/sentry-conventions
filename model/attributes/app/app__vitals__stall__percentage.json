@@ -9,7 +9,15 @@
   "visibility": "public",
   "example": 0.8,
   "alias": ["stall_percentage"],
+  "search_alias": {
+    "name": "app.vitals.stall.percentage",
+    "type": "percentage"
+  },
   "changelog": [
+    {
+      "version": "next",
+      "description": "Added search_alias with type percentage"
+    },
     {
       "version": "0.19.0",
       "prs": [493],

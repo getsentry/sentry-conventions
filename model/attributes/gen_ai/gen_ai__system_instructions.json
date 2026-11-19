@@ -14,9 +14,9 @@
   ],
   "changelog": [
     {
-      "version": "next",
-      "description": "Clarify that messages in the chat history only belong in gen_ai.input.messages. Remove informal format description from the brief to prevent duplication with the structured schema.",
-      "prs": [790, 791]
+      "version": "0.34.0",
+      "prs": [790, 791],
+      "description": "Clarify that messages in the chat history only belong in gen_ai.input.messages. Remove informal format description from the brief to prevent duplication with the structured schema."
     },
     {
       "version": "0.5.0",

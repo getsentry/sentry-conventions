@@ -7,6 +7,7 @@ export type {
   ApplyScrubbingInfo,
   DeprecationInfo,
   AttributeMetadata,
+  ToolCallArguments,
   ToolCallResult,
   ToolDefinition,
   ToolDefinitions,
@@ -14,6 +15,18 @@ export type {
   ServerSideToolDefinition,
   SystemInstructions,
   TextPart,
+  OutputMessages,
+  ChatMessage,
+  Role,
+  Modality,
+  ToolCallRequestPart,
+  ToolCallResponsePart,
+  BlobPart,
+  FilePart,
+  UriPart,
+  ReasoningPart,
+  CompactionPart,
+  GenericPart,
 } from './attributes';
 
 export { ATTRIBUTE_METADATA, ATTRIBUTE_TYPE } from './attributes';

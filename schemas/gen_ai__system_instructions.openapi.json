@@ -12,29 +12,8 @@
         "x-otel-deviation": [
           "Only text instructions are allowed, because this schema omits OTel's GenericSystemInstructionPart fallback."
         ],
-        "items": { "$ref": "#/components/schemas/TextPart" },
+        "items": { "$ref": "./shared/gen_ai_parts.openapi.json#/components/schemas/TextPart" },
         "type": "array"
-      },
-      "TextPart": {
-        "description": "Represents text content sent to or received from the model.",
-        "x-otel-deviation": [
-          "OTel allows arbitrary additional properties, while this definition does not.",
-          "The content field is optional because users may pass a text part without content."
-        ],
-        "properties": {
-          "type": {
-            "const": "text",
-            "description": "The type of the content captured in this part.",
-            "type": "string"
-          },
-          "content": {
-            "description": "Text content sent to or received from the model.",
-            "type": "string"
-          }
-        },
-        "additionalProperties": false,
-        "required": ["type"],
-        "type": "object"
       }
     }
   }
