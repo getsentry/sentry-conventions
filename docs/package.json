@@ -4,16 +4,17 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
-    "dev": "astro dev",
-    "build": "astro build && yarn postbuild",
+    "build:conventions": "yarn workspace @sentry/conventions build",
+    "dev": "yarn build:conventions && astro dev",
+    "build": "yarn build:conventions && astro build && yarn postbuild",
     "postbuild": "pagefind --site dist --output-subdir pagefind",
     "preview": "astro preview",
     "astro": "astro",
-    "lint:types": "astro sync && tsc --noEmit"
+    "lint:types": "yarn build:conventions && astro sync && tsc --noEmit"
   },
   "dependencies": {
     "@astrojs/svelte": "9.1.2",
-    "@sentry/astro": "^11.0.0-alpha.0",
+    "@sentry/astro": "^11.14.0",
     "@tailwindcss/vite": "^4.3.1",
     "astro": "7.4.7",
     "dompurify": "^3.4.17",
