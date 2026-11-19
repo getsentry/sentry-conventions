@@ -10506,7 +10506,7 @@ export type HEROKU_ROUTER_SERVICE_TYPE = number;
  *
  * Attribute Value Type: `string` {@link HEROKU_SOURCE_TYPE}
  *
- * Apply Scrubbing: never
+ * Apply Scrubbing: manual
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -31668,7 +31668,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     type: 'string',
     keys: ['heroku.source'],
     applyScrubbing: {
-      key: 'never',
+      key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',

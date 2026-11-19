@@ -6281,7 +6281,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Logplex source of a Heroku log line: app for application output, heroku for platform and router messages
 
     Type: str
-    Apply Scrubbing: never
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "app"
@@ -21932,7 +21932,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         brief="Logplex source of a Heroku log line: app for application output, heroku for platform and router messages",
         type=AttributeType.STRING,
         keys=("heroku.source",),
-        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="app",

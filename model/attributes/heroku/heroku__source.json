@@ -3,7 +3,7 @@
   "brief": "Logplex source of a Heroku log line: app for application output, heroku for platform and router messages",
   "type": "string",
   "apply_scrubbing": {
-    "key": "never"
+    "key": "manual"
   },
   "is_in_otel": false,
   "visibility": "public",
