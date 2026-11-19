@@ -273,6 +273,8 @@ class _AttributeNamesMeta(type):
         "SENTRY_FRAMES_TOTAL",
         "SENTRY_MESSAGING_DESTINATION_NAME",
         "SENTRY_MESSAGING_MESSAGE_ID",
+        "SENTRY_OS_NAME",
+        "SENTRY_OS_ROOTED",
         "SENTRY_REPORT_EVENT",
         "SENTRY_RUNTIME_NAME",
         "_SENTRY_SEGMENT_ID",
@@ -9199,6 +9201,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
+    Aliases: sentry.os.name
     Example: "Ubuntu"
     """
 
@@ -9221,6 +9224,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
+    Aliases: sentry.os.rooted
     Example: true
     """
 
@@ -10969,6 +10973,32 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: No
     Visibility: public
     Example: "auto.http.otel.fastify"
+    """
+
+    # Path: model/attributes/sentry/sentry__os__name.json
+    SENTRY_OS_NAME: Literal["sentry.os.name"] = "sentry.os.name"
+    """Human readable operating system name.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: os.name
+    DEPRECATED: Use os.name instead
+    Example: "Ubuntu"
+    """
+
+    # Path: model/attributes/sentry/sentry__os__rooted.json
+    SENTRY_OS_ROOTED: Literal["sentry.os.rooted"] = "sentry.os.rooted"
+    """Whether the operating system has been jailbroken or rooted.
+
+    Type: bool
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: os.rooted
+    DEPRECATED: Use os.rooted instead
+    Example: true
     """
 
     # Path: model/attributes/sentry/sentry__pageload__span_id.json
@@ -27138,12 +27168,21 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "os.name": AttributeMetadata(
         brief="Human readable operating system name.",
         type=AttributeType.STRING,
-        keys=("os.name",),
+        keys=(
+            "os.name",
+            "sentry.os.name",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="Ubuntu",
+        aliases=["sentry.os.name"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[805],
+                description="Added sentry.os.name as an alias",
+            ),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -27167,12 +27206,21 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "os.rooted": AttributeMetadata(
         brief="Whether the operating system has been jailbroken or rooted.",
         type=AttributeType.BOOLEAN,
-        keys=("os.rooted",),
+        keys=(
+            "os.rooted",
+            "sentry.os.rooted",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=True,
+        aliases=["sentry.os.rooted"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[805],
+                description="Added sentry.os.rooted as an alias",
+            ),
             ChangelogEntry(
                 version="0.5.0", prs=[301], description="Added os.rooted attribute"
             ),
@@ -29681,6 +29729,52 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
         search_alias=SearchAlias(name="origin"),
+    ),
+    "sentry.os.name": AttributeMetadata(
+        brief="Human readable operating system name.",
+        type=AttributeType.STRING,
+        keys=(
+            "os.name",
+            "sentry.os.name",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="Ubuntu",
+        deprecation=DeprecationInfo(
+            replacement="os.name", status=DeprecationStatus.BACKFILL
+        ),
+        aliases=["os.name"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[805],
+                description="Added sentry.os.name attribute, deprecated in favor of os.name",
+            ),
+        ],
+    ),
+    "sentry.os.rooted": AttributeMetadata(
+        brief="Whether the operating system has been jailbroken or rooted.",
+        type=AttributeType.BOOLEAN,
+        keys=(
+            "os.rooted",
+            "sentry.os.rooted",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=True,
+        deprecation=DeprecationInfo(
+            replacement="os.rooted", status=DeprecationStatus.BACKFILL
+        ),
+        aliases=["os.rooted"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[805],
+                description="Added sentry.os.rooted attribute, deprecated in favor of os.rooted",
+            ),
+        ],
     ),
     "sentry.pageload.span_id": AttributeMetadata(
         brief="The id of the pageload span, set by web vital spans and metrics",
@@ -33566,6 +33660,8 @@ Attributes = TypedDict(
         "sentry.observed_timestamp_nanos": str,
         "sentry.op": str,
         "sentry.origin": str,
+        "sentry.os.name": str,
+        "sentry.os.rooted": bool,
         "sentry.pageload.span_id": str,
         "sentry.platform": str,
         "sentry.profile_id": str,

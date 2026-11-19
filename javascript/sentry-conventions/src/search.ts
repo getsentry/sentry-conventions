@@ -4762,6 +4762,20 @@ export const SEARCH_SENTRY__OP = 'sentry.op';
 export const SEARCH_SENTRY__ORIGIN = 'sentry.origin';
 
 /**
+ * Search name for {@link attributes.SENTRY_OS_NAME}. `sentry.os.name`
+ *
+ * @deprecated Use {@link SEARCH_OS__NAME} (`os.name`) instead
+ */
+export const SEARCH_SENTRY__OS__NAME = 'sentry.os.name';
+
+/**
+ * Search name for {@link attributes.SENTRY_OS_ROOTED}. `sentry.os.rooted`
+ *
+ * @deprecated Use {@link SEARCH_OS__ROOTED} (`os.rooted`) instead
+ */
+export const SEARCH_SENTRY__OS__ROOTED = 'sentry.os.rooted';
+
+/**
  * Search name for {@link attributes.SENTRY_PAGELOAD_SPAN_ID}. `sentry.pageload.span_id`
  */
 export const SEARCH_SENTRY__PAGELOAD__SPAN_ID = 'sentry.pageload.span_id';
@@ -6579,6 +6593,8 @@ export type AttributeSearchName =
   | typeof SEARCH_SENTRY__OBSERVED_TIMESTAMP_NANOS
   | typeof SEARCH_SENTRY__OP
   | typeof SEARCH_SENTRY__ORIGIN
+  | typeof SEARCH_SENTRY__OS__NAME
+  | typeof SEARCH_SENTRY__OS__ROOTED
   | typeof SEARCH_SENTRY__PAGELOAD__SPAN_ID
   | typeof SEARCH_SENTRY__PLATFORM
   | typeof SEARCH_SENTRY__PROFILE_ID
@@ -11380,7 +11396,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'os.name',
     type: 'string',
     brief: 'Human readable operating system name.',
-    deprecationChain: ['os.name'],
+    deprecationChain: ['os.name', 'sentry.os.name'],
   },
   'os.raw_description': {
     canonicalName: 'os.raw_description',
@@ -11393,7 +11409,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'os.rooted',
     type: 'boolean',
     brief: 'Whether the operating system has been jailbroken or rooted.',
-    deprecationChain: ['os.rooted'],
+    deprecationChain: ['os.rooted', 'sentry.os.rooted'],
   },
   'os.theme': {
     canonicalName: 'os.theme',
@@ -12238,6 +12254,18 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'string',
     brief: 'The timestamp at which an envelope was received by Relay, in nanoseconds.',
     deprecationChain: ['sentry.observed_timestamp_nanos'],
+  },
+  'sentry.os.name': {
+    canonicalName: 'os.name',
+    type: 'string',
+    brief: 'Human readable operating system name.',
+    deprecationChain: ['os.name', 'sentry.os.name'],
+  },
+  'sentry.os.rooted': {
+    canonicalName: 'os.rooted',
+    type: 'boolean',
+    brief: 'Whether the operating system has been jailbroken or rooted.',
+    deprecationChain: ['os.rooted', 'sentry.os.rooted'],
   },
   'sentry.pageload.span_id': {
     canonicalName: 'sentry.pageload.span_id',
