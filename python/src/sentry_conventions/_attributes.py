@@ -9,7 +9,7 @@ from typing import Dict, List
 if sys.version_info >= (3, 8):
     from typing import Literal, TypedDict
 else:
-    # from: https://stackoverflow.com/a/71944042/300572
+    # typing.Literal str standin for Python 3.7: https://stackoverflow.com/a/71944042/300572
     class _Literal:
         def __getitem__(self, _):
             return str
