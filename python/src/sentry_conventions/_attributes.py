@@ -6316,6 +6316,21 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: 30001
     """
 
+    # Path: model/attributes/heroku/heroku__source.json
+    HEROKU_SOURCE: Literal["heroku.source"] = "heroku.source"
+    """Logplex source of a Heroku log line.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Well-defined Values:
+    - `app` - Output written by the application's own processes, such as app[web.1].
+    - `heroku` - Messages from the Heroku platform and router, such as heroku[router].
+    Example: "app"
+    Example: "heroku"
+    """
+
     # Path: model/attributes/http/http__client_ip.json
     HTTP_CLIENT_IP: Literal["http.client_ip"] = "http.client_ip"
     """Client address - domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.
@@ -22553,6 +22568,23 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "This measures the proxying phase, not necessarily the complete HTTP request duration."
         ],
     ),
+    "heroku.source": AttributeMetadata(
+        brief="Logplex source of a Heroku log line.",
+        type=AttributeType.STRING,
+        keys=("heroku.source",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="app",
+        examples=["app", "heroku"],
+        changelog=[
+            ChangelogEntry(version="next", description="Added heroku.source attribute"),
+        ],
+        additional_context=[
+            "Taken from the syslog APP-NAME header that Logplex sets on every drained line, such as app[web.1] or heroku[router].",
+            "Only set on Cedar, since Fir does not use Logplex.",
+        ],
+    ),
     "http.client_ip": AttributeMetadata(
         brief="Client address - domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.",
         type=AttributeType.STRING,
@@ -33483,6 +33515,7 @@ Attributes = TypedDict(
         "heroku.router.connect": float,
         "heroku.router.request_id": str,
         "heroku.router.service": float,
+        "heroku.source": str,
         "http.client_ip": str,
         "http.decoded_response_content_length": int,
         "http.flavor": str,

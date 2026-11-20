@@ -10548,6 +10548,32 @@ export const HEROKU_ROUTER_SERVICE = 'heroku.router.service';
  */
 export type HEROKU_ROUTER_SERVICE_TYPE = number;
 
+// Path: model/attributes/heroku/heroku__source.json
+
+/**
+ * Logplex source of a Heroku log line. `heroku.source`
+ *
+ * Attribute Value Type: `string` {@link HEROKU_SOURCE_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Well-defined Values:
+ * - `app` - Output written by the application's own processes, such as app[web.1].
+ * - `heroku` - Messages from the Heroku platform and router, such as heroku[router].
+ *
+ * @example "app"
+ * @example "heroku"
+ */
+export const HEROKU_SOURCE = 'heroku.source';
+
+/**
+ * Type for {@link HEROKU_SOURCE} heroku.source
+ */
+export type HEROKU_SOURCE_TYPE = string;
+
 // Path: model/attributes/http/http__client_ip.json
 
 /**
@@ -23101,6 +23127,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'heroku.router.connect': 'double',
   'heroku.router.request_id': 'string',
   'heroku.router.service': 'double',
+  'heroku.source': 'string',
   'http.client_ip': 'string',
   'http.decoded_response_content_length': 'integer',
   'http.flavor': 'string',
@@ -24101,6 +24128,7 @@ export type AttributeName =
   | typeof HEROKU_ROUTER_CONNECT
   | typeof HEROKU_ROUTER_REQUEST_ID
   | typeof HEROKU_ROUTER_SERVICE
+  | typeof HEROKU_SOURCE
   | typeof HTTP_CLIENT_IP
   | typeof HTTP_DECODED_RESPONSE_CONTENT_LENGTH
   | typeof HTTP_FLAVOR
@@ -32538,6 +32566,23 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     examples: [0, 12.5, 30001],
     changelog: [{ version: '0.31.0', prs: [772], description: 'Added heroku.router.service attribute' }],
     additionalContext: ['This measures the proxying phase, not necessarily the complete HTTP request duration.'],
+  },
+  'heroku.source': {
+    brief: 'Logplex source of a Heroku log line.',
+    type: 'string',
+    keys: ['heroku.source'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'app',
+    examples: ['app', 'heroku'],
+    changelog: [{ version: 'next', description: 'Added heroku.source attribute' }],
+    additionalContext: [
+      'Taken from the syslog APP-NAME header that Logplex sets on every drained line, such as app[web.1] or heroku[router].',
+      'Only set on Cedar, since Fir does not use Logplex.',
+    ],
   },
   'http.client_ip': {
     brief:
@@ -42219,6 +42264,7 @@ export type Attributes = {
   [HEROKU_ROUTER_CONNECT]?: HEROKU_ROUTER_CONNECT_TYPE;
   [HEROKU_ROUTER_REQUEST_ID]?: HEROKU_ROUTER_REQUEST_ID_TYPE;
   [HEROKU_ROUTER_SERVICE]?: HEROKU_ROUTER_SERVICE_TYPE;
+  [HEROKU_SOURCE]?: HEROKU_SOURCE_TYPE;
   [HTTP_CLIENT_IP]?: HTTP_CLIENT_IP_TYPE;
   [HTTP_DECODED_RESPONSE_CONTENT_LENGTH]?: HTTP_DECODED_RESPONSE_CONTENT_LENGTH_TYPE;
   [HTTP_FLAVOR]?: HTTP_FLAVOR_TYPE;
