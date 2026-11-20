@@ -7,9 +7,14 @@
   },
   "is_in_otel": true,
   "example": "GET",
-  "alias": ["method", "http.method", "http.request_method"],
+  "alias": ["method", "http.method", "http.request_method", "sentry.request.method"],
   "visibility": "public",
   "changelog": [
+    {
+      "version": "next",
+      "prs": [807],
+      "description": "Added sentry.request.method as an alias"
+    },
     {
       "version": "0.1.0",
       "prs": [127]

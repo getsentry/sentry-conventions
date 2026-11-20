@@ -4838,6 +4838,20 @@ export const SEARCH_SENTRY__REPLAY_IS_BUFFERING = 'sentry.replay_is_buffering';
 export const SEARCH_SENTRY__REPORT_EVENT = 'sentry.report_event';
 
 /**
+ * Search name for {@link attributes.SENTRY_REQUEST_METHOD}. `sentry.request.method`
+ *
+ * @deprecated Use {@link SEARCH_HTTP__REQUEST__METHOD} (`http.request.method`) instead
+ */
+export const SEARCH_SENTRY__REQUEST__METHOD = 'sentry.request.method';
+
+/**
+ * Search name for {@link attributes.SENTRY_REQUEST_URL}. `sentry.request.url`
+ *
+ * @deprecated Use {@link SEARCH_URL__FULL} (`url.full`) instead
+ */
+export const SEARCH_SENTRY__REQUEST__URL = 'sentry.request.url';
+
+/**
  * Search name for {@link attributes.SENTRY_RUNTIME_NAME}. `sentry.runtime.name`
  *
  * @deprecated Use {@link SEARCH_PROCESS__RUNTIME__NAME} (`process.runtime.name`) instead
@@ -6605,6 +6619,8 @@ export type AttributeSearchName =
   | typeof SEARCH_SENTRY__REPLAY_ID
   | typeof SEARCH_SENTRY__REPLAY_IS_BUFFERING
   | typeof SEARCH_SENTRY__REPORT_EVENT
+  | typeof SEARCH_SENTRY__REQUEST__METHOD
+  | typeof SEARCH_SENTRY__REQUEST__URL
   | typeof SEARCH_SENTRY__RUNTIME__NAME
   | typeof SEARCH_SENTRY__SDK__INTEGRATIONS
   | typeof SEARCH_SENTRY__SDK__NAME
@@ -7711,7 +7727,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'url.full',
     type: 'string',
     brief: 'The URL of the AWS API request.',
-    deprecationChain: ['url.full', 'aws.request.url', 'http.url', 'messaging.url', 'url'],
+    deprecationChain: ['url.full', 'aws.request.url', 'http.url', 'messaging.url', 'sentry.request.url', 'url'],
   },
   'aws.request_id': {
     canonicalName: 'aws.request_id',
@@ -9916,7 +9932,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'http.request.method',
     type: 'string',
     brief: 'The HTTP method used.',
-    deprecationChain: ['http.request.method', 'http.method', 'http.request_method', 'method'],
+    deprecationChain: ['http.request.method', 'http.method', 'http.request_method', 'method', 'sentry.request.method'],
   },
   'http.query': {
     canonicalName: 'http.query',
@@ -9994,7 +10010,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'http.request.method',
     type: 'string',
     brief: 'The HTTP method used.',
-    deprecationChain: ['http.request.method', 'http.method', 'http.request_method', 'method'],
+    deprecationChain: ['http.request.method', 'http.method', 'http.request_method', 'method', 'sentry.request.method'],
   },
   'http.request.redirect_end': {
     canonicalName: 'http.request.redirect_end',
@@ -10079,7 +10095,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'http.request.method',
     type: 'string',
     brief: 'The HTTP method used.',
-    deprecationChain: ['http.request.method', 'http.method', 'http.request_method', 'method'],
+    deprecationChain: ['http.request.method', 'http.method', 'http.request_method', 'method', 'sentry.request.method'],
   },
   'http.response.body.decoded_size': {
     canonicalName: 'http.response.body.decoded_size',
@@ -10218,7 +10234,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'url.full',
     type: 'string',
     brief: 'The URL of the resource that was fetched.',
-    deprecationChain: ['url.full', 'aws.request.url', 'http.url', 'messaging.url', 'url'],
+    deprecationChain: ['url.full', 'aws.request.url', 'http.url', 'messaging.url', 'sentry.request.url', 'url'],
   },
   'http.user_agent': {
     canonicalName: 'user_agent.original',
@@ -11079,13 +11095,13 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'url.full',
     type: 'string',
     brief: 'The connection string of the messaging broker.',
-    deprecationChain: ['url.full', 'aws.request.url', 'http.url', 'messaging.url', 'url'],
+    deprecationChain: ['url.full', 'aws.request.url', 'http.url', 'messaging.url', 'sentry.request.url', 'url'],
   },
   method: {
     canonicalName: 'http.request.method',
     type: 'string',
     brief: 'The HTTP method used.',
-    deprecationChain: ['http.request.method', 'http.method', 'http.request_method', 'method'],
+    deprecationChain: ['http.request.method', 'http.method', 'http.request_method', 'method', 'sentry.request.method'],
   },
   'middleware.name': {
     canonicalName: 'middleware.name',
@@ -12301,6 +12317,18 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     deprecated: true,
     deprecationChain: ['sentry.report_event'],
   },
+  'sentry.request.method': {
+    canonicalName: 'http.request.method',
+    type: 'string',
+    brief: 'The HTTP method used.',
+    deprecationChain: ['http.request.method', 'http.method', 'http.request_method', 'method', 'sentry.request.method'],
+  },
+  'sentry.request.url': {
+    canonicalName: 'url.full',
+    type: 'string',
+    brief: 'The URL of the resource that was fetched.',
+    deprecationChain: ['url.full', 'aws.request.url', 'http.url', 'messaging.url', 'sentry.request.url', 'url'],
+  },
   'sentry.runtime.name': {
     canonicalName: 'process.runtime.name',
     type: 'string',
@@ -12881,7 +12909,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'url.full',
     type: 'string',
     brief: 'The URL of the resource that was fetched.',
-    deprecationChain: ['url.full', 'aws.request.url', 'http.url', 'messaging.url', 'url'],
+    deprecationChain: ['url.full', 'aws.request.url', 'http.url', 'messaging.url', 'sentry.request.url', 'url'],
   },
   'url.domain': {
     canonicalName: 'url.domain',
@@ -12901,7 +12929,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'url.full',
     type: 'string',
     brief: 'The URL of the resource that was fetched.',
-    deprecationChain: ['url.full', 'aws.request.url', 'http.url', 'messaging.url', 'url'],
+    deprecationChain: ['url.full', 'aws.request.url', 'http.url', 'messaging.url', 'sentry.request.url', 'url'],
   },
   'url.path': {
     canonicalName: 'url.path',
