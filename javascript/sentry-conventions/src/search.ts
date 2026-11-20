@@ -2869,6 +2869,11 @@ export const SEARCH_HTTP__RESPONSE_CONTENT_LENGTH = 'http.response_content_lengt
 export const SEARCH_HTTP__RESPONSE_CONTENT_LENGTH_UNCOMPRESSED = 'http.response_content_length_uncompressed';
 
 /**
+ * Search name for {@link attributes.HTTP_RESPONSE_DELIVERY_TYPE}. `http.response_delivery_type`
+ */
+export const SEARCH_HTTP__RESPONSE_DELIVERY_TYPE = 'http.response_delivery_type';
+
+/**
  * Search name for {@link attributes.HTTP_RESPONSE_STATUS_CODE}. `http.response_status_code`
  */
 export const SEARCH_HTTP__RESPONSE_STATUS_CODE = 'http.response_status_code';
@@ -6292,6 +6297,7 @@ export type AttributeSearchName =
   | typeof SEARCH_HTTP__RESPONSE__STATUS_TEXT
   | typeof SEARCH_HTTP__RESPONSE_CONTENT_LENGTH
   | typeof SEARCH_HTTP__RESPONSE_CONTENT_LENGTH_UNCOMPRESSED
+  | typeof SEARCH_HTTP__RESPONSE_DELIVERY_TYPE
   | typeof SEARCH_HTTP__RESPONSE_STATUS_CODE
   | typeof SEARCH_HTTP__RESPONSE_TRANSFER_SIZE
   | typeof SEARCH_HTTP__ROUTE
@@ -10201,6 +10207,13 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
       'http.decoded_response_content_length',
       'http.response_content_length_uncompressed',
     ],
+  },
+  'http.response_delivery_type': {
+    canonicalName: 'http.response_delivery_type',
+    type: 'string',
+    brief:
+      "The delivery type of the resource, as reported by the browser's PerformanceResourceTiming.deliveryType property. An empty string means the resource was not delivered from a cache or by navigational prefetch.",
+    deprecationChain: ['http.response_delivery_type'],
   },
   'http.response_status_code': {
     canonicalName: 'http.response.status_code',

@@ -6469,6 +6469,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: 456
     """
 
+    # Path: model/attributes/http/http__response_delivery_type.json
+    HTTP_RESPONSE_DELIVERY_TYPE = "http.response_delivery_type"
+    """The delivery type of the resource, as reported by the browser's PerformanceResourceTiming.deliveryType property. An empty string means the resource was not delivered from a cache or by navigational prefetch.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: "cache"
+    Example: "navigational-prefetch"
+    Example: ""
+    """
+
     # Path: model/attributes/http/http__response_transfer_size.json
     HTTP_RESPONSE_TRANSFER_SIZE = "http.response_transfer_size"
     """The transfer size of the response (in bytes).
@@ -22749,6 +22762,23 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
                 version="0.21.0",
                 prs=[574],
                 description="Added http.response_content_length_uncompressed attribute, deprecated in favor of http.response.body.decoded_size",
+            ),
+        ],
+    ),
+    "http.response_delivery_type": AttributeMetadata(
+        brief="The delivery type of the resource, as reported by the browser's PerformanceResourceTiming.deliveryType property. An empty string means the resource was not delivered from a cache or by navigational prefetch.",
+        type=AttributeType.STRING,
+        keys=("http.response_delivery_type",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="cache",
+        examples=["cache", "navigational-prefetch", ""],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[825],
+                description="Added http.response_delivery_type attribute",
             ),
         ],
     ),

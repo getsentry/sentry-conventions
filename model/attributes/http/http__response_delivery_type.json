@@ -1,0 +1,18 @@
+{
+  "key": "http.response_delivery_type",
+  "brief": "The delivery type of the resource, as reported by the browser's PerformanceResourceTiming.deliveryType property. An empty string means the resource was not delivered from a cache or by navigational prefetch.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "examples": ["cache", "navigational-prefetch", ""],
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [825],
+      "description": "Added http.response_delivery_type attribute"
+    }
+  ]
+}
