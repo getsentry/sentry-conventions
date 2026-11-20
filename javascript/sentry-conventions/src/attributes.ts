@@ -11333,6 +11333,29 @@ export const HTTP_RESPONSE_CONTENT_LENGTH_UNCOMPRESSED = 'http.response_content_
  */
 export type HTTP_RESPONSE_CONTENT_LENGTH_UNCOMPRESSED_TYPE = number;
 
+// Path: model/attributes/http/http__response_delivery_type.json
+
+/**
+ * The delivery type of the resource, as reported by the browser's PerformanceResourceTiming.deliveryType property. An empty string means the resource was not delivered from a cache or by navigational prefetch. `http.response_delivery_type`
+ *
+ * Attribute Value Type: `string` {@link HTTP_RESPONSE_DELIVERY_TYPE_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "cache"
+ * @example "navigational-prefetch"
+ * @example ""
+ */
+export const HTTP_RESPONSE_DELIVERY_TYPE = 'http.response_delivery_type';
+
+/**
+ * Type for {@link HTTP_RESPONSE_DELIVERY_TYPE} http.response_delivery_type
+ */
+export type HTTP_RESPONSE_DELIVERY_TYPE_TYPE = string;
+
 // Path: model/attributes/http/http__response__header__content-length.json
 
 /**
@@ -23088,6 +23111,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'http.response.body.size': 'integer',
   'http.response_content_length': 'integer',
   'http.response_content_length_uncompressed': 'integer',
+  'http.response_delivery_type': 'string',
   'http.response.header.content-length': 'string',
   'http.response.header.<key>': 'string[]',
   'http.response.size': 'integer',
@@ -24086,6 +24110,7 @@ export type AttributeName =
   | typeof HTTP_RESPONSE_BODY_SIZE
   | typeof HTTP_RESPONSE_CONTENT_LENGTH
   | typeof HTTP_RESPONSE_CONTENT_LENGTH_UNCOMPRESSED
+  | typeof HTTP_RESPONSE_DELIVERY_TYPE
   | typeof HTTP_RESPONSE_HEADER_CONTENT_LENGTH
   | typeof HTTP_RESPONSE_HEADER_KEY
   | typeof HTTP_RESPONSE_SIZE
@@ -33083,6 +33108,20 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
           'Added http.response_content_length_uncompressed attribute, deprecated in favor of http.response.body.decoded_size',
       },
     ],
+  },
+  'http.response_delivery_type': {
+    brief:
+      "The delivery type of the resource, as reported by the browser's PerformanceResourceTiming.deliveryType property. An empty string means the resource was not delivered from a cache or by navigational prefetch.",
+    type: 'string',
+    keys: ['http.response_delivery_type'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'cache',
+    examples: ['cache', 'navigational-prefetch', ''],
+    changelog: [{ version: 'next', prs: [825], description: 'Added http.response_delivery_type attribute' }],
   },
   'http.response.header.content-length': {
     brief: 'The size of the message body sent to the recipient (in bytes)',
@@ -42130,6 +42169,7 @@ export type Attributes = {
   [HTTP_RESPONSE_BODY_SIZE]?: HTTP_RESPONSE_BODY_SIZE_TYPE;
   [HTTP_RESPONSE_CONTENT_LENGTH]?: HTTP_RESPONSE_CONTENT_LENGTH_TYPE;
   [HTTP_RESPONSE_CONTENT_LENGTH_UNCOMPRESSED]?: HTTP_RESPONSE_CONTENT_LENGTH_UNCOMPRESSED_TYPE;
+  [HTTP_RESPONSE_DELIVERY_TYPE]?: HTTP_RESPONSE_DELIVERY_TYPE_TYPE;
   [HTTP_RESPONSE_HEADER_CONTENT_LENGTH]?: HTTP_RESPONSE_HEADER_CONTENT_LENGTH_TYPE;
   [HTTP_RESPONSE_HEADER_KEY]?: HTTP_RESPONSE_HEADER_KEY_TYPE;
   [HTTP_RESPONSE_SIZE]?: HTTP_RESPONSE_SIZE_TYPE;
