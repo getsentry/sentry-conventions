@@ -1,0 +1,23 @@
+{
+  "key": "sentry.device.charging",
+  "brief": "Whether the device was charging or not.",
+  "type": "boolean",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "example": false,
+  "alias": ["device.charging"],
+  "deprecation": {
+    "_status": "backfill",
+    "replacement": "device.charging"
+  },
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [804],
+      "description": "Added sentry.device.charging attribute, deprecated in favor of device.charging"
+    }
+  ]
+}

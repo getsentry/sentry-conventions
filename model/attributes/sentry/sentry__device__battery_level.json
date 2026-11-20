@@ -1,0 +1,23 @@
+{
+  "key": "sentry.device.battery_level",
+  "brief": "The battery level of the device as a percentage (0-100).",
+  "type": "double",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "example": 100,
+  "alias": ["device.battery_level"],
+  "deprecation": {
+    "_status": "backfill",
+    "replacement": "device.battery_level"
+  },
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [804],
+      "description": "Added sentry.device.battery_level attribute, deprecated in favor of device.battery_level"
+    }
+  ]
+}

@@ -7,8 +7,14 @@
   },
   "is_in_otel": false,
   "example": false,
+  "alias": ["sentry.device.charging"],
   "visibility": "public",
   "changelog": [
+    {
+      "version": "next",
+      "prs": [804],
+      "description": "Added sentry.device.charging as an alias"
+    },
     {
       "version": "0.5.0",
       "prs": [303],

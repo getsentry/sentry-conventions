@@ -7,8 +7,14 @@
   },
   "is_in_otel": false,
   "example": 420,
+  "alias": ["sentry.device.screen_dpi"],
   "visibility": "public",
   "changelog": [
+    {
+      "version": "next",
+      "prs": [804],
+      "description": "Added sentry.device.screen_dpi as an alias"
+    },
     {
       "version": "0.5.0",
       "prs": [303],

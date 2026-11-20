@@ -1,0 +1,23 @@
+{
+  "key": "sentry.device.brand",
+  "brief": "The brand of the device.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "example": "Apple",
+  "alias": ["device.brand"],
+  "deprecation": {
+    "_status": "backfill",
+    "replacement": "device.brand"
+  },
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [804],
+      "description": "Added sentry.device.brand attribute, deprecated in favor of device.brand"
+    }
+  ]
+}
