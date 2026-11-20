@@ -7,8 +7,14 @@
   },
   "is_in_otel": false,
   "example": "N861AP",
+  "alias": ["sentry.device.model_id"],
   "visibility": "public",
   "changelog": [
+    {
+      "version": "next",
+      "prs": [804],
+      "description": "Added sentry.device.model_id as an alias"
+    },
     {
       "version": "0.5.0",
       "prs": [300],

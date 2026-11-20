@@ -21,7 +21,7 @@
   ],
   "changelog": [
     {
-      "version": "next",
+      "version": "0.34.0",
       "prs": [802],
       "description": "Aligned the brief with OTel and added additional context."
     },

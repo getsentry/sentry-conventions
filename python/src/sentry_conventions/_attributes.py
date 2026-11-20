@@ -252,10 +252,33 @@ class _AttributeNamesMeta(type):
         "RUNTIME_VERSION",
         "SENTRY_BROWSER_NAME",
         "SENTRY_BROWSER_VERSION",
+        "SENTRY_DEVICE_BATTERY_LEVEL",
+        "SENTRY_DEVICE_BRAND",
+        "SENTRY_DEVICE_CHARGING",
+        "SENTRY_DEVICE_CLASS",
+        "SENTRY_DEVICE_FAMILY",
+        "SENTRY_DEVICE_LOCALE",
+        "SENTRY_DEVICE_MODEL",
+        "SENTRY_DEVICE_MODEL_ID",
+        "SENTRY_DEVICE_NAME",
+        "SENTRY_DEVICE_ONLINE",
+        "SENTRY_DEVICE_ORIENTATION",
+        "SENTRY_DEVICE_SCREEN_DENSITY",
+        "SENTRY_DEVICE_SCREEN_DPI",
+        "SENTRY_DEVICE_SCREEN_HEIGHT_PIXELS",
+        "SENTRY_DEVICE_SCREEN_WIDTH_PIXELS",
+        "SENTRY_DEVICE_SIMULATOR",
         "SENTRY_FRAMES_FROZEN",
         "SENTRY_FRAMES_SLOW",
         "SENTRY_FRAMES_TOTAL",
+        "SENTRY_MESSAGING_DESTINATION_NAME",
+        "SENTRY_MESSAGING_MESSAGE_ID",
+        "SENTRY_OS_NAME",
+        "SENTRY_OS_ROOTED",
         "SENTRY_REPORT_EVENT",
+        "SENTRY_REQUEST_METHOD",
+        "SENTRY_REQUEST_URL",
+        "SENTRY_RUNTIME_NAME",
         "_SENTRY_SEGMENT_ID",
         "SENTRY_SOURCE",
         "SENTRY_SPAN_SOURCE",
@@ -263,6 +286,7 @@ class _AttributeNamesMeta(type):
         "SENTRY_SVELTEKIT_NAVIGATION_TO",
         "SENTRY_SVELTEKIT_NAVIGATION_TYPE",
         "SENTRY_THREAD_ID",
+        "SENTRY_THREAD_NAME",
         "SENTRY_TRACE_PARENT_SPAN_ID",
         "SENTRY_TRANSACTION",
         "SENTRY_USER_EMAIL",
@@ -2066,7 +2090,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: auto
     Defined in OTEL: No
     Visibility: public
-    Aliases: url.full, http.url, url, messaging.url
+    Aliases: url.full, http.url, url, messaging.url, sentry.request.url
     DEPRECATED: Use url.full instead - This attribute is being deprecated in favor of url.full, which is the OTel-aligned replacement.
     Example: "https://sqs.us-east-1.amazonaws.com/123456789/my-queue"
     """
@@ -3755,6 +3779,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
+    Aliases: sentry.device.battery_level
     Example: 100
     """
 
@@ -3790,6 +3815,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
+    Aliases: sentry.device.brand
     Example: "Apple"
     """
 
@@ -3801,6 +3827,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
+    Aliases: sentry.device.charging
     Example: false
     """
 
@@ -3823,6 +3850,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
+    Aliases: sentry.device.class
     Example: "medium"
     """
 
@@ -3884,6 +3912,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
+    Aliases: sentry.device.family
     Example: "iPhone"
     """
 
@@ -3928,6 +3957,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
+    Aliases: sentry.device.locale
     Example: "en-US"
     """
 
@@ -3997,6 +4027,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
+    Aliases: sentry.device.model
     Example: "iPhone 15 Pro Max"
     """
 
@@ -4008,6 +4039,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
+    Aliases: sentry.device.model_id
     Example: "N861AP"
     """
 
@@ -4019,6 +4051,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: auto
     Defined in OTEL: No
     Visibility: public
+    Aliases: sentry.device.name
     Example: "localhost"
     """
 
@@ -4030,6 +4063,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
+    Aliases: sentry.device.online
     Example: true
     """
 
@@ -4041,6 +4075,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
+    Aliases: sentry.device.orientation
     Example: "portrait"
     """
 
@@ -4077,6 +4112,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
+    Aliases: sentry.device.screen_density
     Example: 2.625
     """
 
@@ -4088,6 +4124,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
+    Aliases: sentry.device.screen_dpi
     Example: 420
     """
 
@@ -4101,6 +4138,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
+    Aliases: sentry.device.screen_height_pixels
     Example: 2400
     """
 
@@ -4114,6 +4152,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
+    Aliases: sentry.device.screen_width_pixels
     Example: 1080
     """
 
@@ -4125,6 +4164,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
+    Aliases: sentry.device.simulator
     Example: false
     """
 
@@ -6364,7 +6404,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: http.request.method, http.request_method, method
+    Aliases: http.request.method, http.request_method, method, sentry.request.method
     DEPRECATED: Use http.request.method instead
     Example: "GET"
     """
@@ -6516,7 +6556,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: method, http.method, http.request_method
+    Aliases: method, http.method, http.request_method, sentry.request.method
     Example: "GET"
     """
 
@@ -6689,7 +6729,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
-    Aliases: method, http.method, http.request.method
+    Aliases: method, http.method, http.request.method, sentry.request.method
     DEPRECATED: Use http.request.method instead
     Example: "GET"
     """
@@ -6935,7 +6975,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: auto
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: url.full, url, aws.request.url, messaging.url
+    Aliases: url.full, url, aws.request.url, messaging.url, sentry.request.url
     DEPRECATED: Use url.full instead
     Example: "https://example.com/test?foo=bar#buzz"
     """
@@ -8352,7 +8392,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
-    Aliases: messaging.destination.name
+    Aliases: messaging.destination.name, sentry.messaging.destination.name
     DEPRECATED: Use messaging.destination.name instead - This attribute is being deprecated in favor of messaging.destination.name, which is the OTel-aligned replacement.
     Example: "BestTopic"
     """
@@ -8380,7 +8420,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: messaging.destination
+    Aliases: messaging.destination, sentry.messaging.destination.name
     Example: "BestTopic"
     """
 
@@ -8496,7 +8536,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: messaging.message_id
+    Aliases: messaging.message_id, sentry.messaging.message.id
     Example: "f47ac10b58cc4372a5670e02b2c3d479"
     """
 
@@ -8534,7 +8574,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
-    Aliases: messaging.message.id
+    Aliases: messaging.message.id, sentry.messaging.message.id
     DEPRECATED: Use messaging.message.id instead - This attribute is being deprecated in favor of messaging.message.id.
     Example: "452a7c7c7c7048c2f887f0e7"
     """
@@ -8655,7 +8695,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: auto
     Defined in OTEL: No
     Visibility: public
-    Aliases: url.full, http.url, url, aws.request.url
+    Aliases: url.full, http.url, url, aws.request.url, sentry.request.url
     DEPRECATED: Use url.full instead - This attribute is being deprecated in favor of url.full.
     Example: "amqp://guest:guest@localhost:5672"
     """
@@ -8668,7 +8708,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
-    Aliases: http.request.method, http.request_method, http.method
+    Aliases: http.request.method, http.request_method, http.method, sentry.request.method
     DEPRECATED: Use http.request.method instead
     Example: "GET"
     """
@@ -9178,6 +9218,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
+    Aliases: sentry.os.name
     Example: "Ubuntu"
     """
 
@@ -9200,6 +9241,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
+    Aliases: sentry.os.rooted
     Example: true
     """
 
@@ -9507,7 +9549,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: runtime.name
+    Aliases: runtime.name, sentry.runtime.name
     Example: "node"
     """
 
@@ -10000,7 +10042,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
-    Aliases: process.runtime.name
+    Aliases: process.runtime.name, sentry.runtime.name
     DEPRECATED: Use process.runtime.name instead - Prefer OTel-aligned process.runtime.name
     Example: "node"
     """
@@ -10182,7 +10224,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     SENTRY_CLIENT_SAMPLE_RATE: Literal["sentry.client_sample_rate"] = (
         "sentry.client_sample_rate"
     )
-    """Rate at which a span was sampled in the SDK.
+    """Rate at which a telemetry item (e.g. a span, or metric) was sampled in the SDK.
 
     Type: float
     Apply Scrubbing: never
@@ -10200,6 +10242,228 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: No
     Visibility: public
     Example: "index view query"
+    """
+
+    # Path: model/attributes/sentry/sentry__device__battery_level.json
+    SENTRY_DEVICE_BATTERY_LEVEL: Literal["sentry.device.battery_level"] = (
+        "sentry.device.battery_level"
+    )
+    """The battery level of the device as a percentage (0-100).
+
+    Type: float
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: device.battery_level
+    DEPRECATED: Use device.battery_level instead
+    Example: 100
+    """
+
+    # Path: model/attributes/sentry/sentry__device__brand.json
+    SENTRY_DEVICE_BRAND: Literal["sentry.device.brand"] = "sentry.device.brand"
+    """The brand of the device.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: device.brand
+    DEPRECATED: Use device.brand instead
+    Example: "Apple"
+    """
+
+    # Path: model/attributes/sentry/sentry__device__charging.json
+    SENTRY_DEVICE_CHARGING: Literal["sentry.device.charging"] = "sentry.device.charging"
+    """Whether the device was charging or not.
+
+    Type: bool
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: device.charging
+    DEPRECATED: Use device.charging instead
+    Example: false
+    """
+
+    # Path: model/attributes/sentry/sentry__device__class.json
+    SENTRY_DEVICE_CLASS: Literal["sentry.device.class"] = "sentry.device.class"
+    """The classification of the device. For example, `low`, `medium`, or `high`. Typically inferred by Relay - SDKs generally do not need to set this directly.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: device.class
+    DEPRECATED: Use device.class instead
+    Example: "medium"
+    """
+
+    # Path: model/attributes/sentry/sentry__device__family.json
+    SENTRY_DEVICE_FAMILY: Literal["sentry.device.family"] = "sentry.device.family"
+    """The family of the device.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: device.family
+    DEPRECATED: Use device.family instead
+    Example: "iPhone"
+    """
+
+    # Path: model/attributes/sentry/sentry__device__locale.json
+    SENTRY_DEVICE_LOCALE: Literal["sentry.device.locale"] = "sentry.device.locale"
+    """The locale of the device.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: device.locale
+    DEPRECATED: Use device.locale instead
+    Example: "en-US"
+    """
+
+    # Path: model/attributes/sentry/sentry__device__model.json
+    SENTRY_DEVICE_MODEL: Literal["sentry.device.model"] = "sentry.device.model"
+    """The model of the device.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: device.model
+    DEPRECATED: Use device.model instead
+    Example: "iPhone 15 Pro Max"
+    """
+
+    # Path: model/attributes/sentry/sentry__device__model_id.json
+    SENTRY_DEVICE_MODEL_ID: Literal["sentry.device.model_id"] = "sentry.device.model_id"
+    """An internal hardware revision to identify the device exactly.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: device.model_id
+    DEPRECATED: Use device.model_id instead
+    Example: "N861AP"
+    """
+
+    # Path: model/attributes/sentry/sentry__device__name.json
+    SENTRY_DEVICE_NAME: Literal["sentry.device.name"] = "sentry.device.name"
+    """The user-assigned name of the mobile device.
+
+    Type: str
+    Apply Scrubbing: auto
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: device.name
+    DEPRECATED: Use device.name instead
+    Example: "localhost"
+    """
+
+    # Path: model/attributes/sentry/sentry__device__online.json
+    SENTRY_DEVICE_ONLINE: Literal["sentry.device.online"] = "sentry.device.online"
+    """Whether the device was online or not.
+
+    Type: bool
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: device.online
+    DEPRECATED: Use device.online instead
+    Example: true
+    """
+
+    # Path: model/attributes/sentry/sentry__device__orientation.json
+    SENTRY_DEVICE_ORIENTATION: Literal["sentry.device.orientation"] = (
+        "sentry.device.orientation"
+    )
+    """The orientation of the device, either "portrait" or "landscape".
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: device.orientation
+    DEPRECATED: Use device.orientation instead
+    Example: "portrait"
+    """
+
+    # Path: model/attributes/sentry/sentry__device__screen_density.json
+    SENTRY_DEVICE_SCREEN_DENSITY: Literal["sentry.device.screen_density"] = (
+        "sentry.device.screen_density"
+    )
+    """The screen density of the device.
+
+    Type: float
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: device.screen_density
+    DEPRECATED: Use device.screen_density instead
+    Example: 2.625
+    """
+
+    # Path: model/attributes/sentry/sentry__device__screen_dpi.json
+    SENTRY_DEVICE_SCREEN_DPI: Literal["sentry.device.screen_dpi"] = (
+        "sentry.device.screen_dpi"
+    )
+    """The screen density in dots-per-inch (DPI) of the device.
+
+    Type: int
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: device.screen_dpi
+    DEPRECATED: Use device.screen_dpi instead
+    Example: 420
+    """
+
+    # Path: model/attributes/sentry/sentry__device__screen_height_pixels.json
+    SENTRY_DEVICE_SCREEN_HEIGHT_PIXELS: Literal[
+        "sentry.device.screen_height_pixels"
+    ] = "sentry.device.screen_height_pixels"
+    """The height of the device screen in pixels.
+
+    Type: int
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: device.screen_height_pixels
+    DEPRECATED: Use device.screen_height_pixels instead
+    Example: 2400
+    """
+
+    # Path: model/attributes/sentry/sentry__device__screen_width_pixels.json
+    SENTRY_DEVICE_SCREEN_WIDTH_PIXELS: Literal["sentry.device.screen_width_pixels"] = (
+        "sentry.device.screen_width_pixels"
+    )
+    """The width of the device screen in pixels.
+
+    Type: int
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: device.screen_width_pixels
+    DEPRECATED: Use device.screen_width_pixels instead
+    Example: 1080
+    """
+
+    # Path: model/attributes/sentry/sentry__device__simulator.json
+    SENTRY_DEVICE_SIMULATOR: Literal["sentry.device.simulator"] = (
+        "sentry.device.simulator"
+    )
+    """Whether the device is a simulator or an actual device.
+
+    Type: bool
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: device.simulator
+    DEPRECATED: Use device.simulator instead
+    Example: false
     """
 
     # Path: model/attributes/sentry/sentry__dist.json
@@ -10565,6 +10829,36 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "Hello, {name}!"
     """
 
+    # Path: model/attributes/sentry/sentry__messaging__destination__name.json
+    SENTRY_MESSAGING_DESTINATION_NAME: Literal["sentry.messaging.destination.name"] = (
+        "sentry.messaging.destination.name"
+    )
+    """The message destination name.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: messaging.destination.name, messaging.destination
+    DEPRECATED: Use messaging.destination.name instead
+    Example: "BestTopic"
+    """
+
+    # Path: model/attributes/sentry/sentry__messaging__message__id.json
+    SENTRY_MESSAGING_MESSAGE_ID: Literal["sentry.messaging.message.id"] = (
+        "sentry.messaging.message.id"
+    )
+    """A value used by the messaging system as an identifier for the message, represented as a string.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: messaging.message.id, messaging.message_id
+    DEPRECATED: Use messaging.message.id instead
+    Example: "f47ac10b58cc4372a5670e02b2c3d479"
+    """
+
     # Path: model/attributes/sentry/sentry__metric__source.json
     SENTRY_METRIC_SOURCE: Literal["sentry.metric.source"] = "sentry.metric.source"
     """The provenance of a metric.  For example, this can be set to indicate if a metric was generated by Relay from a span.
@@ -10698,6 +10992,32 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "auto.http.otel.fastify"
     """
 
+    # Path: model/attributes/sentry/sentry__os__name.json
+    SENTRY_OS_NAME: Literal["sentry.os.name"] = "sentry.os.name"
+    """Human readable operating system name.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: os.name
+    DEPRECATED: Use os.name instead
+    Example: "Ubuntu"
+    """
+
+    # Path: model/attributes/sentry/sentry__os__rooted.json
+    SENTRY_OS_ROOTED: Literal["sentry.os.rooted"] = "sentry.os.rooted"
+    """Whether the operating system has been jailbroken or rooted.
+
+    Type: bool
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: os.rooted
+    DEPRECATED: Use os.rooted instead
+    Example: true
+    """
+
     # Path: model/attributes/sentry/sentry__pageload__span_id.json
     SENTRY_PAGELOAD_SPAN_ID: Literal["sentry.pageload.span_id"] = (
         "sentry.pageload.span_id"
@@ -10814,6 +11134,45 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Visibility: public
     DEPRECATED: No replacement at this time - The report event moved to browser.web_vital.lcp.report_event and browser.web_vital.cls.report_event, which are themselves deprecated without a replacement. No backfill required.
     Example: "pagehide"
+    """
+
+    # Path: model/attributes/sentry/sentry__request__method.json
+    SENTRY_REQUEST_METHOD: Literal["sentry.request.method"] = "sentry.request.method"
+    """The HTTP method used.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: http.request.method, method, http.method, http.request_method
+    DEPRECATED: Use http.request.method instead
+    Example: "GET"
+    """
+
+    # Path: model/attributes/sentry/sentry__request__url.json
+    SENTRY_REQUEST_URL: Literal["sentry.request.url"] = "sentry.request.url"
+    """The URL of the resource that was fetched.
+
+    Type: str
+    Apply Scrubbing: auto
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: url.full, http.url, url, aws.request.url, messaging.url
+    DEPRECATED: Use url.full instead
+    Example: "https://example.com/test?foo=bar#buzz"
+    """
+
+    # Path: model/attributes/sentry/sentry__runtime__name.json
+    SENTRY_RUNTIME_NAME: Literal["sentry.runtime.name"] = "sentry.runtime.name"
+    """The name of the runtime. Equivalent to `name` in the Sentry runtime context.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: process.runtime.name, runtime.name
+    DEPRECATED: Use process.runtime.name instead
+    Example: "node"
     """
 
     # Path: model/attributes/sentry/sentry__sdk__integrations.json
@@ -11053,6 +11412,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: 56
     """
 
+    # Path: model/attributes/sentry/sentry__thread__name.json
+    SENTRY_THREAD_NAME: Literal["sentry.thread.name"] = "sentry.thread.name"
+    """Current thread name.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: thread.name
+    DEPRECATED: Use thread.name instead
+    Example: "main"
+    """
+
     # Path: model/attributes/sentry/sentry__timestamp__sequence.json
     SENTRY_TIMESTAMP_SEQUENCE: Literal["sentry.timestamp.sequence"] = (
         "sentry.timestamp.sequence"
@@ -11113,6 +11485,20 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Aliases: sentry.segment.name, transaction
     DEPRECATED: Use sentry.segment.name instead - This attribute is being deprecated in favor of sentry.segment.name
     Example: "GET /"
+    """
+
+    # Path: model/attributes/sentry/sentry__user.json
+    SENTRY_USER: Literal["sentry.user"] = "sentry.user"
+    """Combined identifier of the user, used for the `user` tag and for counting unique users. Set to the first available of the user's ID, username, email address, or IP address, prefixed with which one it is: `id:`, `username:`, `email:`, or `ip:`.
+
+    Type: str
+    Apply Scrubbing: auto
+    Defined in OTEL: No
+    Visibility: public
+    Example: "id:123"
+    Example: "username:j.smith"
+    Example: "email:test@example.com"
+    Example: "ip:192.168.1.1"
     """
 
     # Path: model/attributes/sentry/sentry__user__email.json
@@ -11490,6 +11876,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
+    Aliases: sentry.thread.name
     Example: "main"
     """
 
@@ -11981,7 +12368,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: auto
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: http.url, url, aws.request.url, messaging.url
+    Aliases: http.url, url, aws.request.url, messaging.url, sentry.request.url
     Example: "https://example.com/test?foo=bar#buzz"
     """
 
@@ -12093,7 +12480,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: auto
     Defined in OTEL: No
     Visibility: public
-    Aliases: url.full, http.url, aws.request.url, messaging.url
+    Aliases: url.full, http.url, aws.request.url, messaging.url, sentry.request.url
     DEPRECATED: Use url.full instead
     Example: "https://example.com/test?foo=bar#buzz"
     """
@@ -14115,11 +14502,15 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["frames.delay"],
         changelog=[
             ChangelogEntry(
+                version="next", description="Added search_alias with type second"
+            ),
+            ChangelogEntry(
                 version="0.5.0",
                 prs=[313],
                 description="Added app.vitals.frames.delay.value to replace frames.delay",
             ),
         ],
+        search_alias=SearchAlias(name="app.vitals.frames.delay.value", type="second"),
     ),
     "app.vitals.frames.frozen.count": AttributeMetadata(
         brief="The number of frozen frames rendered during the lifetime of the span.",
@@ -14162,11 +14553,17 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["frames_frozen_rate"],
         changelog=[
             ChangelogEntry(
+                version="next", description="Added search_alias with type percentage"
+            ),
+            ChangelogEntry(
                 version="0.19.0",
                 prs=[493],
                 description="Added app.vitals.frames.frozen.rate attribute",
             ),
         ],
+        search_alias=SearchAlias(
+            name="app.vitals.frames.frozen.rate", type="percentage"
+        ),
     ),
     "app.vitals.frames.slow.count": AttributeMetadata(
         brief="The number of slow frames rendered during the lifetime of the span.",
@@ -14209,11 +14606,15 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["frames_slow_rate"],
         changelog=[
             ChangelogEntry(
+                version="next", description="Added search_alias with type percentage"
+            ),
+            ChangelogEntry(
                 version="0.19.0",
                 prs=[493],
                 description="Added app.vitals.frames.slow.rate attribute",
             ),
         ],
+        search_alias=SearchAlias(name="app.vitals.frames.slow.rate", type="percentage"),
     ),
     "app.vitals.frames.total.count": AttributeMetadata(
         brief="The number of total frames rendered during the lifetime of the span.",
@@ -14276,11 +14677,15 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["stall_percentage"],
         changelog=[
             ChangelogEntry(
+                version="next", description="Added search_alias with type percentage"
+            ),
+            ChangelogEntry(
                 version="0.19.0",
                 prs=[493],
                 description="Added app.vitals.stall.percentage attribute",
             ),
         ],
+        search_alias=SearchAlias(name="app.vitals.stall.percentage", type="percentage"),
     ),
     "app.vitals.start.cold.value": AttributeMetadata(
         brief="The duration of a cold app start in milliseconds",
@@ -14296,11 +14701,17 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["app_start_cold"],
         changelog=[
             ChangelogEntry(
+                version="next", description="Added search_alias with type millisecond"
+            ),
+            ChangelogEntry(
                 version="0.5.0",
                 prs=[313],
                 description="Added app.vitals.start.cold.value attribute",
             ),
         ],
+        search_alias=SearchAlias(
+            name="app.vitals.start.cold.value", type="millisecond"
+        ),
     ),
     "app.vitals.start.prewarmed": AttributeMetadata(
         brief="Whether the app start was prewarmed.",
@@ -14384,11 +14795,17 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["app_start_warm"],
         changelog=[
             ChangelogEntry(
+                version="next", description="Added search_alias with type millisecond"
+            ),
+            ChangelogEntry(
                 version="0.5.0",
                 prs=[313],
                 description="Added app.vitals.start.warm.value attribute",
             ),
         ],
+        search_alias=SearchAlias(
+            name="app.vitals.start.warm.value", type="millisecond"
+        ),
     ),
     "app.vitals.ttfd.value": AttributeMetadata(
         brief="The duration of time to full display in milliseconds",
@@ -14404,11 +14821,15 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["time_to_full_display"],
         changelog=[
             ChangelogEntry(
+                version="next", description="Added search_alias with type millisecond"
+            ),
+            ChangelogEntry(
                 version="0.5.0",
                 prs=[313],
                 description="Added app.vitals.ttfd.value attribute",
             ),
         ],
+        search_alias=SearchAlias(name="app.vitals.ttfd.value", type="millisecond"),
     ),
     "app.vitals.ttid.value": AttributeMetadata(
         brief="The duration of time to initial display in milliseconds",
@@ -14424,11 +14845,15 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["time_to_initial_display"],
         changelog=[
             ChangelogEntry(
+                version="next", description="Added search_alias with type millisecond"
+            ),
+            ChangelogEntry(
                 version="0.5.0",
                 prs=[313],
                 description="Added app.vitals.ttid.value attribute",
             ),
         ],
+        search_alias=SearchAlias(name="app.vitals.ttid.value", type="millisecond"),
     ),
     "app_start_cold": AttributeMetadata(
         brief="The duration of a cold app start in milliseconds",
@@ -15518,6 +15943,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "aws.request.url",
             "http.url",
             "messaging.url",
+            "sentry.request.url",
             "url",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
@@ -15529,8 +15955,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             reason="This attribute is being deprecated in favor of url.full, which is the OTel-aligned replacement.",
             status=DeprecationStatus.BACKFILL,
         ),
-        aliases=["url.full", "http.url", "url", "messaging.url"],
+        aliases=["url.full", "http.url", "url", "messaging.url", "sentry.request.url"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[807],
+                description="Added sentry.request.url as an alias",
+            ),
             ChangelogEntry(
                 version="0.21.0",
                 prs=[581],
@@ -16238,8 +16669,14 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=547.6951,
         aliases=["fcp"],
         changelog=[
+            ChangelogEntry(
+                version="next", description="Added search_alias with type millisecond"
+            ),
             ChangelogEntry(version="0.5.0", prs=[235]),
         ],
+        search_alias=SearchAlias(
+            name="browser.web_vital.fcp.value", type="millisecond"
+        ),
     ),
     "browser.web_vital.fp.value": AttributeMetadata(
         brief="The time in milliseconds it takes for the browser to render the first pixel on the screen",
@@ -16254,8 +16691,12 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=477.1926,
         aliases=["fp"],
         changelog=[
+            ChangelogEntry(
+                version="next", description="Added search_alias with type millisecond"
+            ),
             ChangelogEntry(version="0.5.0", prs=[235]),
         ],
+        search_alias=SearchAlias(name="browser.web_vital.fp.value", type="millisecond"),
     ),
     "browser.web_vital.inp.input_delay": AttributeMetadata(
         brief="The time between the user interacting with the page and the browser starting to run the event handlers, for the interaction INP was reported on, in milliseconds",
@@ -16380,11 +16821,17 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["inp"],
         changelog=[
             ChangelogEntry(
+                version="next", description="Added search_alias with type millisecond"
+            ),
+            ChangelogEntry(
                 version="0.5.0",
                 prs=[229],
                 description="Added browser.web_vital.inp.value attribute",
             ),
         ],
+        search_alias=SearchAlias(
+            name="browser.web_vital.inp.value", type="millisecond"
+        ),
     ),
     "browser.web_vital.lcp.element": AttributeMetadata(
         brief="The HTML element selector or component name for which LCP was reported",
@@ -16586,11 +17033,17 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["lcp"],
         changelog=[
             ChangelogEntry(
+                version="next", description="Added search_alias with type millisecond"
+            ),
+            ChangelogEntry(
                 version="0.5.0",
                 prs=[229],
                 description="Added browser.web_vital.lcp.value attribute",
             ),
         ],
+        search_alias=SearchAlias(
+            name="browser.web_vital.lcp.value", type="millisecond"
+        ),
     ),
     "browser.web_vital.ttfb.request_time": AttributeMetadata(
         brief="The time it takes for the server to process the initial request and send the first byte of a response to the user's browser",
@@ -16621,8 +17074,14 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=194.3322,
         aliases=["ttfb"],
         changelog=[
+            ChangelogEntry(
+                version="next", description="Added search_alias with type millisecond"
+            ),
             ChangelogEntry(version="0.5.0", prs=[235]),
         ],
+        search_alias=SearchAlias(
+            name="browser.web_vital.ttfb.value", type="millisecond"
+        ),
     ),
     "cache.hit": AttributeMetadata(
         brief="If the cache was hit during this span.",
@@ -17977,12 +18436,21 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.battery_level": AttributeMetadata(
         brief="The battery level of the device as a percentage (0-100).",
         type=AttributeType.DOUBLE,
-        keys=("device.battery_level",),
+        keys=(
+            "device.battery_level",
+            "sentry.device.battery_level",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=100,
+        aliases=["sentry.device.battery_level"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[804],
+                description="Added sentry.device.battery_level as an alias",
+            ),
             ChangelogEntry(
                 version="0.5.0",
                 prs=[303],
@@ -18025,24 +18493,42 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.brand": AttributeMetadata(
         brief="The brand of the device.",
         type=AttributeType.STRING,
-        keys=("device.brand",),
+        keys=(
+            "device.brand",
+            "sentry.device.brand",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="Apple",
+        aliases=["sentry.device.brand"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[804],
+                description="Added sentry.device.brand as an alias",
+            ),
             ChangelogEntry(version="0.1.0", prs=[116, 127]),
         ],
     ),
     "device.charging": AttributeMetadata(
         brief="Whether the device was charging or not.",
         type=AttributeType.BOOLEAN,
-        keys=("device.charging",),
+        keys=(
+            "device.charging",
+            "sentry.device.charging",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=False,
+        aliases=["sentry.device.charging"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[804],
+                description="Added sentry.device.charging as an alias",
+            ),
             ChangelogEntry(
                 version="0.5.0",
                 prs=[303],
@@ -18067,12 +18553,21 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.class": AttributeMetadata(
         brief="The classification of the device. For example, `low`, `medium`, or `high`. Typically inferred by Relay - SDKs generally do not need to set this directly.",
         type=AttributeType.STRING,
-        keys=("device.class",),
+        keys=(
+            "device.class",
+            "sentry.device.class",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="medium",
+        aliases=["sentry.device.class"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[804],
+                description="Added sentry.device.class as an alias",
+            ),
             ChangelogEntry(
                 version="0.5.0", prs=[300], description="Added device.class attribute"
             ),
@@ -18155,12 +18650,21 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.family": AttributeMetadata(
         brief="The family of the device.",
         type=AttributeType.STRING,
-        keys=("device.family",),
+        keys=(
+            "device.family",
+            "sentry.device.family",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="iPhone",
+        aliases=["sentry.device.family"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[804],
+                description="Added sentry.device.family as an alias",
+            ),
             ChangelogEntry(version="0.1.0", prs=[116, 127]),
         ],
     ),
@@ -18213,12 +18717,21 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.locale": AttributeMetadata(
         brief="The locale of the device.",
         type=AttributeType.STRING,
-        keys=("device.locale",),
+        keys=(
+            "device.locale",
+            "sentry.device.locale",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="en-US",
+        aliases=["sentry.device.locale"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[804],
+                description="Added sentry.device.locale as an alias",
+            ),
             ChangelogEntry(
                 version="0.5.0", prs=[303], description="Added device.locale attribute"
             ),
@@ -18311,24 +18824,42 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.model": AttributeMetadata(
         brief="The model of the device.",
         type=AttributeType.STRING,
-        keys=("device.model",),
+        keys=(
+            "device.model",
+            "sentry.device.model",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="iPhone 15 Pro Max",
+        aliases=["sentry.device.model"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[804],
+                description="Added sentry.device.model as an alias",
+            ),
             ChangelogEntry(version="0.1.0", prs=[116, 127]),
         ],
     ),
     "device.model_id": AttributeMetadata(
         brief="An internal hardware revision to identify the device exactly.",
         type=AttributeType.STRING,
-        keys=("device.model_id",),
+        keys=(
+            "device.model_id",
+            "sentry.device.model_id",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="N861AP",
+        aliases=["sentry.device.model_id"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[804],
+                description="Added sentry.device.model_id as an alias",
+            ),
             ChangelogEntry(
                 version="0.5.0",
                 prs=[300],
@@ -18339,12 +18870,21 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.name": AttributeMetadata(
         brief="The user-assigned name of the mobile device.",
         type=AttributeType.STRING,
-        keys=("device.name",),
+        keys=(
+            "device.name",
+            "sentry.device.name",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="localhost",
+        aliases=["sentry.device.name"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[804],
+                description="Added sentry.device.name as an alias",
+            ),
             ChangelogEntry(
                 version="0.24.0",
                 prs=[647],
@@ -18361,12 +18901,21 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.online": AttributeMetadata(
         brief="Whether the device was online or not.",
         type=AttributeType.BOOLEAN,
-        keys=("device.online",),
+        keys=(
+            "device.online",
+            "sentry.device.online",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=True,
+        aliases=["sentry.device.online"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[804],
+                description="Added sentry.device.online as an alias",
+            ),
             ChangelogEntry(
                 version="0.5.0", prs=[303], description="Added device.online attribute"
             ),
@@ -18375,12 +18924,21 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.orientation": AttributeMetadata(
         brief='The orientation of the device, either "portrait" or "landscape".',
         type=AttributeType.STRING,
-        keys=("device.orientation",),
+        keys=(
+            "device.orientation",
+            "sentry.device.orientation",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="portrait",
+        aliases=["sentry.device.orientation"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[804],
+                description="Added sentry.device.orientation as an alias",
+            ),
             ChangelogEntry(
                 version="0.5.0",
                 prs=[303],
@@ -18427,12 +18985,21 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.screen_density": AttributeMetadata(
         brief="The screen density of the device.",
         type=AttributeType.DOUBLE,
-        keys=("device.screen_density",),
+        keys=(
+            "device.screen_density",
+            "sentry.device.screen_density",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=2.625,
+        aliases=["sentry.device.screen_density"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[804],
+                description="Added sentry.device.screen_density as an alias",
+            ),
             ChangelogEntry(
                 version="0.5.0",
                 prs=[303],
@@ -18443,12 +19010,21 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.screen_dpi": AttributeMetadata(
         brief="The screen density in dots-per-inch (DPI) of the device.",
         type=AttributeType.INTEGER,
-        keys=("device.screen_dpi",),
+        keys=(
+            "device.screen_dpi",
+            "sentry.device.screen_dpi",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=420,
+        aliases=["sentry.device.screen_dpi"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[804],
+                description="Added sentry.device.screen_dpi as an alias",
+            ),
             ChangelogEntry(
                 version="0.5.0",
                 prs=[303],
@@ -18459,12 +19035,21 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.screen_height_pixels": AttributeMetadata(
         brief="The height of the device screen in pixels.",
         type=AttributeType.INTEGER,
-        keys=("device.screen_height_pixels",),
+        keys=(
+            "device.screen_height_pixels",
+            "sentry.device.screen_height_pixels",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=2400,
+        aliases=["sentry.device.screen_height_pixels"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[804],
+                description="Added sentry.device.screen_height_pixels as an alias",
+            ),
             ChangelogEntry(
                 version="0.5.0",
                 prs=[303],
@@ -18475,12 +19060,21 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.screen_width_pixels": AttributeMetadata(
         brief="The width of the device screen in pixels.",
         type=AttributeType.INTEGER,
-        keys=("device.screen_width_pixels",),
+        keys=(
+            "device.screen_width_pixels",
+            "sentry.device.screen_width_pixels",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=1080,
+        aliases=["sentry.device.screen_width_pixels"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[804],
+                description="Added sentry.device.screen_width_pixels as an alias",
+            ),
             ChangelogEntry(
                 version="0.5.0",
                 prs=[303],
@@ -18491,12 +19085,21 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.simulator": AttributeMetadata(
         brief="Whether the device is a simulator or an actual device.",
         type=AttributeType.BOOLEAN,
-        keys=("device.simulator",),
+        keys=(
+            "device.simulator",
+            "sentry.device.simulator",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=False,
+        aliases=["sentry.device.simulator"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[804],
+                description="Added sentry.device.simulator as an alias",
+            ),
             ChangelogEntry(
                 version="0.5.0",
                 prs=[300],
@@ -19093,6 +19696,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=[134217728, 1073741824],
         changelog=[
             ChangelogEntry(
+                version="next", description="Added search_alias with type byte"
+            ),
+            ChangelogEntry(
                 version="0.30.0",
                 prs=[715],
                 description="Added faas.max_memory attribute",
@@ -19101,6 +19707,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         additional_context=[
             "On AWS Lambda, multiply AWS_LAMBDA_FUNCTION_MEMORY_SIZE by 1,048,576 to convert the configured memory from MiB to bytes."
         ],
+        search_alias=SearchAlias(name="faas.max_memory", type="byte"),
     ),
     "faas.name": AttributeMetadata(
         brief="The name of the serverless function",
@@ -19710,6 +20317,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=12.34,
         changelog=[
             ChangelogEntry(
+                version="next", description="Added search_alias with type currency"
+            ),
+            ChangelogEntry(
                 version="0.16.0",
                 description="Added gen_ai.cost.cache_creation.input_tokens attribute",
             ),
@@ -19719,6 +20329,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "Despite the name 'cost.cache_creation.input_tokens', this value is cost in USD, not a token count. For token counts, use gen_ai.usage.cache_creation.input_tokens.",
             "This is a subset of gen_ai.cost.input_tokens, not an independent cost. Do not sum this with gen_ai.cost.input_tokens — it is already included.",
         ],
+        search_alias=SearchAlias(
+            name="gen_ai.cost.cache_creation.input_tokens", type="currency"
+        ),
     ),
     "gen_ai.cost.cache_read.input_tokens": AttributeMetadata(
         brief="The cost of cached input tokens in USD.",
@@ -19730,6 +20343,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=12.34,
         changelog=[
             ChangelogEntry(
+                version="next", description="Added search_alias with type currency"
+            ),
+            ChangelogEntry(
                 version="0.16.0",
                 description="Added gen_ai.cost.cache_read.input_tokens attribute",
             ),
@@ -19739,6 +20355,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "Despite the name 'cost.cache_read.input_tokens', this value is cost in USD, not a token count. For token counts, use gen_ai.usage.cache_read.input_tokens.",
             "This is a subset of gen_ai.cost.input_tokens, not an independent cost. Do not sum this with gen_ai.cost.input_tokens — it is already included.",
         ],
+        search_alias=SearchAlias(
+            name="gen_ai.cost.cache_read.input_tokens", type="currency"
+        ),
     ),
     "gen_ai.cost.input_tokens": AttributeMetadata(
         brief="The total cost of all input tokens in USD (includes cached and cache creation tokens).",
@@ -19750,6 +20369,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=123.45,
         changelog=[
             ChangelogEntry(
+                version="next", description="Added search_alias with type currency"
+            ),
+            ChangelogEntry(
                 version="0.9.0", prs=[397], description="Add additional_context"
             ),
             ChangelogEntry(version="0.4.0", prs=[228]),
@@ -19760,6 +20382,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "Despite the name 'cost.input_tokens', this value is cost in USD, not a token count. For token counts, use gen_ai.usage.input_tokens.",
             "This is the total cost of all input tokens, including cached and cache creation tokens at their respective rates. For the cached portion, see gen_ai.cost.cache_read.input_tokens. For the cache creation portion, see gen_ai.cost.cache_creation.input_tokens.",
         ],
+        search_alias=SearchAlias(name="gen_ai.cost.input_tokens", type="currency"),
     ),
     "gen_ai.cost.output_tokens": AttributeMetadata(
         brief="The total cost of all output tokens in USD (includes reasoning tokens).",
@@ -19771,6 +20394,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=123.45,
         changelog=[
             ChangelogEntry(
+                version="next", description="Added search_alias with type currency"
+            ),
+            ChangelogEntry(
                 version="0.9.0", prs=[397], description="Add additional_context"
             ),
             ChangelogEntry(version="0.4.0", prs=[228]),
@@ -19781,6 +20407,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "Despite the name 'cost.output_tokens', this value is cost in USD, not a token count. For token counts, use gen_ai.usage.output_tokens.",
             "This is the total cost of all output tokens, including reasoning tokens at their respective rate. For the reasoning portion, see gen_ai.cost.reasoning.output_tokens.",
         ],
+        search_alias=SearchAlias(name="gen_ai.cost.output_tokens", type="currency"),
     ),
     "gen_ai.cost.reasoning.output_tokens": AttributeMetadata(
         brief="The cost of reasoning output tokens in USD.",
@@ -19792,6 +20419,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=12.34,
         changelog=[
             ChangelogEntry(
+                version="next", description="Added search_alias with type currency"
+            ),
+            ChangelogEntry(
                 version="0.16.0",
                 description="Added gen_ai.cost.reasoning.output_tokens attribute",
             ),
@@ -19801,6 +20431,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "Despite the name 'cost.reasoning.output_tokens', this value is cost in USD, not a token count. For token counts, use gen_ai.usage.reasoning.output_tokens.",
             "This is a subset of gen_ai.cost.output_tokens, not an independent cost. Do not sum this with gen_ai.cost.output_tokens — it is already included.",
         ],
+        search_alias=SearchAlias(
+            name="gen_ai.cost.reasoning.output_tokens", type="currency"
+        ),
     ),
     "gen_ai.cost.total_tokens": AttributeMetadata(
         brief="The total cost for the tokens used.",
@@ -19816,6 +20449,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["ai.total_cost"],
         changelog=[
             ChangelogEntry(
+                version="next", description="Added search_alias with type currency"
+            ),
+            ChangelogEntry(
                 version="0.9.0", prs=[397], description="Add additional_context"
             ),
             ChangelogEntry(version="0.5.0", prs=[264]),
@@ -19826,6 +20462,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to calculate total cost, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans.",
             "Despite the name 'cost.total_tokens', this value is cost in USD, not a token count. For token counts, use gen_ai.usage.total_tokens.",
         ],
+        search_alias=SearchAlias(name="gen_ai.cost.total_tokens", type="currency"),
     ),
     "gen_ai.embeddings.input": AttributeMetadata(
         brief="The input to the embeddings model.",
@@ -20049,7 +20686,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["ai.response.toolCalls", "ai.response.text"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.34.0",
                 prs=[802],
                 description="Aligned the brief with OTel and added additional context.",
             ),
@@ -20275,7 +20912,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["ai.input_messages"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.34.0",
                 prs=[801],
                 description="Revert deprecation status from `transform` to `normalize`.",
             ),
@@ -20582,7 +21219,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ),
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.34.0",
                 prs=[801],
                 description="Revert deprecation status from `transform` to `normalize`.",
             ),
@@ -20604,7 +21241,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["gen_ai.response.time_to_first_token"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.34.0",
                 prs=[795],
                 description="Aligned the brief with OTel and added additional context.",
             ),
@@ -20638,7 +21275,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["gen_ai.response.time_to_first_chunk"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.34.0",
                 prs=[795],
                 description="Aligned the brief with OTel and added additional context",
             ),
@@ -20689,7 +21326,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ),
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.34.0",
                 prs=[801],
                 description="Revert deprecation status from `transform` to `normalize`.",
             ),
@@ -20753,7 +21390,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["ai.preamble"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.34.0",
                 prs=[790, 791],
                 description="Clarify that messages in the chat history only belong in gen_ai.input.messages. Remove informal format description from the brief to prevent duplication with the structured schema.",
             ),
@@ -20779,7 +21416,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["gen_ai.tool.input", "ai.toolCall.args"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.34.0",
                 prs=[793],
                 description="Remove informal format description from the brief to prevent duplication with the structured schema.",
             ),
@@ -20811,7 +21448,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.34.0",
                 prs=[794],
                 description="Remove informal format description from the brief to prevent duplication with the structured schema.",
             ),
@@ -22089,6 +22726,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "http.method",
             "http.request_method",
             "method",
+            "sentry.request.method",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
@@ -22097,8 +22735,18 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(
             replacement="http.request.method", status=DeprecationStatus.BACKFILL
         ),
-        aliases=["http.request.method", "http.request_method", "method"],
+        aliases=[
+            "http.request.method",
+            "http.request_method",
+            "method",
+            "sentry.request.method",
+        ],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[807],
+                description="Added sentry.request.method as an alias",
+            ),
             ChangelogEntry(version="0.1.0", prs=[61, 127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -22295,13 +22943,24 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "http.method",
             "http.request_method",
             "method",
+            "sentry.request.method",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="GET",
-        aliases=["method", "http.method", "http.request_method"],
+        aliases=[
+            "method",
+            "http.method",
+            "http.request_method",
+            "sentry.request.method",
+        ],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[807],
+                description="Added sentry.request.method as an alias",
+            ),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -22503,6 +23162,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "http.method",
             "http.request_method",
             "method",
+            "sentry.request.method",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
@@ -22511,8 +23171,18 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(
             replacement="http.request.method", status=DeprecationStatus.BACKFILL
         ),
-        aliases=["method", "http.method", "http.request.method"],
+        aliases=[
+            "method",
+            "http.method",
+            "http.request.method",
+            "sentry.request.method",
+        ],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[807],
+                description="Added sentry.request.method as an alias",
+            ),
             ChangelogEntry(
                 version="0.6.0",
                 prs=[343],
@@ -22538,6 +23208,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         changelog=[
             ChangelogEntry(
+                version="next", description="Added search_alias with type byte"
+            ),
+            ChangelogEntry(
                 version="0.21.0",
                 prs=[574],
                 description="Added http.response.body.decoded_size attribute",
@@ -22547,6 +23220,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "This is the size after content decoding. Set it only when the decoded size is actually known, for example from the browser Resource Timing `decodedBodySize` or by measuring a decompressed response stream.",
             "Do not derive this from the `content-length` header, which always carries the encoded size. Use `http.response.body.size` for that.",
         ],
+        search_alias=SearchAlias(name="http.response.body.decoded_size", type="byte"),
     ),
     "http.response.body.size": AttributeMetadata(
         brief="The encoded body size of the response (in bytes).",
@@ -22562,10 +23236,14 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=123,
         aliases=["http.response_content_length", "http.response.header.content-length"],
         changelog=[
+            ChangelogEntry(
+                version="next", description="Added search_alias with type byte"
+            ),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.1.0", prs=[106]),
             ChangelogEntry(version="0.0.0"),
         ],
+        search_alias=SearchAlias(name="http.response.body.size", type="byte"),
     ),
     "http.response.header.<key>": AttributeMetadata(
         brief="HTTP response headers, <key> being the lower-cased, but otherwise unchanged HTTP Header name, the value being the header values.",
@@ -22616,9 +23294,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=456,
         aliases=["http.response_transfer_size"],
         changelog=[
+            ChangelogEntry(
+                version="next", description="Added search_alias with type byte"
+            ),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.0.0"),
         ],
+        search_alias=SearchAlias(name="http.response.size", type="byte"),
     ),
     "http.response.status_code": AttributeMetadata(
         brief="The status code of the HTTP response.",
@@ -22907,6 +23589,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "aws.request.url",
             "http.url",
             "messaging.url",
+            "sentry.request.url",
             "url",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
@@ -22916,8 +23599,19 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(
             replacement="url.full", status=DeprecationStatus.BACKFILL
         ),
-        aliases=["url.full", "url", "aws.request.url", "messaging.url"],
+        aliases=[
+            "url.full",
+            "url",
+            "aws.request.url",
+            "messaging.url",
+            "sentry.request.url",
+        ],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[807],
+                description="Added sentry.request.url as an alias",
+            ),
             ChangelogEntry(
                 version="0.21.0",
                 prs=[581],
@@ -25164,6 +25858,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         keys=(
             "messaging.destination.name",
             "messaging.destination",
+            "sentry.messaging.destination.name",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
@@ -25174,8 +25869,12 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             reason="This attribute is being deprecated in favor of messaging.destination.name, which is the OTel-aligned replacement.",
             status=DeprecationStatus.BACKFILL,
         ),
-        aliases=["messaging.destination.name"],
+        aliases=["messaging.destination.name", "sentry.messaging.destination.name"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Added sentry.messaging.destination.name as an alias",
+            ),
             ChangelogEntry(
                 version="0.16.0",
                 prs=[482],
@@ -25202,13 +25901,19 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         keys=(
             "messaging.destination.name",
             "messaging.destination",
+            "sentry.messaging.destination.name",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="BestTopic",
-        aliases=["messaging.destination"],
+        aliases=["messaging.destination", "sentry.messaging.destination.name"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[796],
+                description="Added sentry.messaging.destination.name as an alias",
+            ),
             ChangelogEntry(
                 version="0.16.0",
                 prs=[482],
@@ -25359,13 +26064,19 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         keys=(
             "messaging.message.id",
             "messaging.message_id",
+            "sentry.messaging.message.id",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="f47ac10b58cc4372a5670e02b2c3d479",
-        aliases=["messaging.message_id"],
+        aliases=["messaging.message_id", "sentry.messaging.message.id"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[809],
+                description="Added sentry.messaging.message.id as an alias",
+            ),
             ChangelogEntry(
                 version="0.21.0",
                 prs=[581],
@@ -25410,6 +26121,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         keys=(
             "messaging.message.id",
             "messaging.message_id",
+            "sentry.messaging.message.id",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
@@ -25421,8 +26133,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             reason="This attribute is being deprecated in favor of messaging.message.id.",
             status=DeprecationStatus.BACKFILL,
         ),
-        aliases=["messaging.message.id"],
+        aliases=["messaging.message.id", "sentry.messaging.message.id"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[809],
+                description="Added sentry.messaging.message.id as an alias",
+            ),
             ChangelogEntry(
                 version="0.21.0",
                 prs=[581],
@@ -25625,6 +26342,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "aws.request.url",
             "http.url",
             "messaging.url",
+            "sentry.request.url",
             "url",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
@@ -25637,8 +26355,19 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             reason="This attribute is being deprecated in favor of url.full.",
             status=DeprecationStatus.BACKFILL,
         ),
-        aliases=["url.full", "http.url", "url", "aws.request.url"],
+        aliases=[
+            "url.full",
+            "http.url",
+            "url",
+            "aws.request.url",
+            "sentry.request.url",
+        ],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[807],
+                description="Added sentry.request.url as an alias",
+            ),
             ChangelogEntry(
                 version="0.21.0", prs=[581], description="Added messaging.url attribute"
             ),
@@ -25652,6 +26381,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "http.method",
             "http.request_method",
             "method",
+            "sentry.request.method",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
@@ -25660,8 +26390,18 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(
             replacement="http.request.method", status=DeprecationStatus.NORMALIZE
         ),
-        aliases=["http.request.method", "http.request_method", "http.method"],
+        aliases=[
+            "http.request.method",
+            "http.request_method",
+            "http.method",
+            "sentry.request.method",
+        ],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[807],
+                description="Added sentry.request.method as an alias",
+            ),
             ChangelogEntry(
                 version="0.19.0", prs=[497], description="Configured normalization"
             ),
@@ -26562,12 +27302,21 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "os.name": AttributeMetadata(
         brief="Human readable operating system name.",
         type=AttributeType.STRING,
-        keys=("os.name",),
+        keys=(
+            "os.name",
+            "sentry.os.name",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="Ubuntu",
+        aliases=["sentry.os.name"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[805],
+                description="Added sentry.os.name as an alias",
+            ),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -26591,12 +27340,21 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "os.rooted": AttributeMetadata(
         brief="Whether the operating system has been jailbroken or rooted.",
         type=AttributeType.BOOLEAN,
-        keys=("os.rooted",),
+        keys=(
+            "os.rooted",
+            "sentry.os.rooted",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=True,
+        aliases=["sentry.os.rooted"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[805],
+                description="Added sentry.os.rooted as an alias",
+            ),
             ChangelogEntry(
                 version="0.5.0", prs=[301], description="Added os.rooted attribute"
             ),
@@ -26729,7 +27487,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=[0, 2520, 259200],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.34.0",
                 prs=[799],
                 description="Added page.server_rendering.age attribute",
             ),
@@ -26754,7 +27512,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=["static", "partially_static", "dynamic"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.34.0",
                 prs=[789],
                 description="Added the cache_origin link to the reused part",
             ),
@@ -26962,7 +27720,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=["processes", "binary", "other"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.34.0",
+                prs=[768],
                 description="Added process.runtime.elixir.memory.type attribute",
             ),
         ],
@@ -26978,7 +27737,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=["cpu", "io"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.34.0",
+                prs=[768],
                 description="Added process.runtime.elixir.run_queue.type attribute",
             ),
         ],
@@ -27013,13 +27773,19 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         keys=(
             "process.runtime.name",
             "runtime.name",
+            "sentry.runtime.name",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="node",
-        aliases=["runtime.name"],
+        aliases=["runtime.name", "sentry.runtime.name"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[806],
+                description="Added sentry.runtime.name as an alias",
+            ),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -27195,11 +27961,17 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=[512.5],
         changelog=[
             ChangelogEntry(
+                version="next", description="Added search_alias with type millisecond"
+            ),
+            ChangelogEntry(
                 version="0.24.0",
                 prs=[564],
                 description="Added react_native.module.duration.max attribute",
             ),
         ],
+        search_alias=SearchAlias(
+            name="react_native.module.duration.max", type="millisecond"
+        ),
     ),
     "react_native.module.duration.total": AttributeMetadata(
         brief="The combined wall-clock duration of all native module calls observed during the lifetime of the span, in milliseconds. Calls overlap, so this can exceed the span duration.",
@@ -27217,11 +27989,17 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["turbo_module.total_duration_ms", "turbo_modules.total_duration_ms"],
         changelog=[
             ChangelogEntry(
+                version="next", description="Added search_alias with type millisecond"
+            ),
+            ChangelogEntry(
                 version="0.24.0",
                 prs=[564],
                 description="Added react_native.module.duration.total attribute",
             ),
         ],
+        search_alias=SearchAlias(
+            name="react_native.module.duration.total", type="millisecond"
+        ),
     ),
     "react_native.module.error.count": AttributeMetadata(
         brief="The number of native module calls that failed during the lifetime of the span. A call counts as failed when it threw, rejected, or — on the Old Architecture bridge only — invoked its failure callback.",
@@ -27325,11 +28103,17 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["turbo_module.top_module_duration_ms"],
         changelog=[
             ChangelogEntry(
+                version="next", description="Added search_alias with type millisecond"
+            ),
+            ChangelogEntry(
                 version="0.24.0",
                 prs=[564],
                 description="Added react_native.module.top.duration attribute",
             ),
         ],
+        search_alias=SearchAlias(
+            name="react_native.module.top.duration", type="millisecond"
+        ),
     ),
     "react_native.module.top.name": AttributeMetadata(
         brief="The native module and method that accounted for the most total duration during the lifetime of the span, formatted as `<module>.<method>`.",
@@ -27785,6 +28569,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         keys=(
             "process.runtime.name",
             "runtime.name",
+            "sentry.runtime.name",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
@@ -27795,8 +28580,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             reason="Prefer OTel-aligned process.runtime.name",
             status=DeprecationStatus.BACKFILL,
         ),
-        aliases=["process.runtime.name"],
+        aliases=["process.runtime.name", "sentry.runtime.name"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[806],
+                description="Added sentry.runtime.name as an alias",
+            ),
             ChangelogEntry(
                 version="0.11.0",
                 prs=[383],
@@ -28005,7 +28795,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         search_alias=SearchAlias(name="span.category"),
     ),
     "sentry.client_sample_rate": AttributeMetadata(
-        brief="Rate at which a span was sampled in the SDK.",
+        brief="Rate at which a telemetry item (e.g. a span, or metric) was sampled in the SDK.",
         type=AttributeType.DOUBLE,
         keys=(
             "sentry.client_sample_rate",
@@ -28016,6 +28806,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example=0.5,
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[814],
+                description="Generalized the brief to apply to any telemetry type, not just spans",
+            ),
             ChangelogEntry(version="0.1.0", prs=[102]),
         ],
         search_alias=SearchAlias(name="client_sample_rate"),
@@ -28030,6 +28825,374 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="index view query",
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[135]),
+        ],
+    ),
+    "sentry.device.battery_level": AttributeMetadata(
+        brief="The battery level of the device as a percentage (0-100).",
+        type=AttributeType.DOUBLE,
+        keys=(
+            "device.battery_level",
+            "sentry.device.battery_level",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=100,
+        deprecation=DeprecationInfo(
+            replacement="device.battery_level", status=DeprecationStatus.BACKFILL
+        ),
+        aliases=["device.battery_level"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[804],
+                description="Added sentry.device.battery_level attribute, deprecated in favor of device.battery_level",
+            ),
+        ],
+    ),
+    "sentry.device.brand": AttributeMetadata(
+        brief="The brand of the device.",
+        type=AttributeType.STRING,
+        keys=(
+            "device.brand",
+            "sentry.device.brand",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="Apple",
+        deprecation=DeprecationInfo(
+            replacement="device.brand", status=DeprecationStatus.BACKFILL
+        ),
+        aliases=["device.brand"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[804],
+                description="Added sentry.device.brand attribute, deprecated in favor of device.brand",
+            ),
+        ],
+    ),
+    "sentry.device.charging": AttributeMetadata(
+        brief="Whether the device was charging or not.",
+        type=AttributeType.BOOLEAN,
+        keys=(
+            "device.charging",
+            "sentry.device.charging",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=False,
+        deprecation=DeprecationInfo(
+            replacement="device.charging", status=DeprecationStatus.BACKFILL
+        ),
+        aliases=["device.charging"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[804],
+                description="Added sentry.device.charging attribute, deprecated in favor of device.charging",
+            ),
+        ],
+    ),
+    "sentry.device.class": AttributeMetadata(
+        brief="The classification of the device. For example, `low`, `medium`, or `high`. Typically inferred by Relay - SDKs generally do not need to set this directly.",
+        type=AttributeType.STRING,
+        keys=(
+            "device.class",
+            "sentry.device.class",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="medium",
+        deprecation=DeprecationInfo(
+            replacement="device.class", status=DeprecationStatus.BACKFILL
+        ),
+        aliases=["device.class"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[804],
+                description="Added sentry.device.class attribute, deprecated in favor of device.class",
+            ),
+        ],
+    ),
+    "sentry.device.family": AttributeMetadata(
+        brief="The family of the device.",
+        type=AttributeType.STRING,
+        keys=(
+            "device.family",
+            "sentry.device.family",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="iPhone",
+        deprecation=DeprecationInfo(
+            replacement="device.family", status=DeprecationStatus.BACKFILL
+        ),
+        aliases=["device.family"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[804],
+                description="Added sentry.device.family attribute, deprecated in favor of device.family",
+            ),
+        ],
+    ),
+    "sentry.device.locale": AttributeMetadata(
+        brief="The locale of the device.",
+        type=AttributeType.STRING,
+        keys=(
+            "device.locale",
+            "sentry.device.locale",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="en-US",
+        deprecation=DeprecationInfo(
+            replacement="device.locale", status=DeprecationStatus.BACKFILL
+        ),
+        aliases=["device.locale"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[804],
+                description="Added sentry.device.locale attribute, deprecated in favor of device.locale",
+            ),
+        ],
+    ),
+    "sentry.device.model": AttributeMetadata(
+        brief="The model of the device.",
+        type=AttributeType.STRING,
+        keys=(
+            "device.model",
+            "sentry.device.model",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="iPhone 15 Pro Max",
+        deprecation=DeprecationInfo(
+            replacement="device.model", status=DeprecationStatus.BACKFILL
+        ),
+        aliases=["device.model"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[804],
+                description="Added sentry.device.model attribute, deprecated in favor of device.model",
+            ),
+        ],
+    ),
+    "sentry.device.model_id": AttributeMetadata(
+        brief="An internal hardware revision to identify the device exactly.",
+        type=AttributeType.STRING,
+        keys=(
+            "device.model_id",
+            "sentry.device.model_id",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="N861AP",
+        deprecation=DeprecationInfo(
+            replacement="device.model_id", status=DeprecationStatus.BACKFILL
+        ),
+        aliases=["device.model_id"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[804],
+                description="Added sentry.device.model_id attribute, deprecated in favor of device.model_id",
+            ),
+        ],
+    ),
+    "sentry.device.name": AttributeMetadata(
+        brief="The user-assigned name of the mobile device.",
+        type=AttributeType.STRING,
+        keys=(
+            "device.name",
+            "sentry.device.name",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="localhost",
+        deprecation=DeprecationInfo(
+            replacement="device.name", status=DeprecationStatus.BACKFILL
+        ),
+        aliases=["device.name"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[804],
+                description="Added sentry.device.name attribute, deprecated in favor of device.name",
+            ),
+        ],
+    ),
+    "sentry.device.online": AttributeMetadata(
+        brief="Whether the device was online or not.",
+        type=AttributeType.BOOLEAN,
+        keys=(
+            "device.online",
+            "sentry.device.online",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=True,
+        deprecation=DeprecationInfo(
+            replacement="device.online", status=DeprecationStatus.BACKFILL
+        ),
+        aliases=["device.online"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[804],
+                description="Added sentry.device.online attribute, deprecated in favor of device.online",
+            ),
+        ],
+    ),
+    "sentry.device.orientation": AttributeMetadata(
+        brief='The orientation of the device, either "portrait" or "landscape".',
+        type=AttributeType.STRING,
+        keys=(
+            "device.orientation",
+            "sentry.device.orientation",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="portrait",
+        deprecation=DeprecationInfo(
+            replacement="device.orientation", status=DeprecationStatus.BACKFILL
+        ),
+        aliases=["device.orientation"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[804],
+                description="Added sentry.device.orientation attribute, deprecated in favor of device.orientation",
+            ),
+        ],
+    ),
+    "sentry.device.screen_density": AttributeMetadata(
+        brief="The screen density of the device.",
+        type=AttributeType.DOUBLE,
+        keys=(
+            "device.screen_density",
+            "sentry.device.screen_density",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=2.625,
+        deprecation=DeprecationInfo(
+            replacement="device.screen_density", status=DeprecationStatus.BACKFILL
+        ),
+        aliases=["device.screen_density"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[804],
+                description="Added sentry.device.screen_density attribute, deprecated in favor of device.screen_density",
+            ),
+        ],
+    ),
+    "sentry.device.screen_dpi": AttributeMetadata(
+        brief="The screen density in dots-per-inch (DPI) of the device.",
+        type=AttributeType.INTEGER,
+        keys=(
+            "device.screen_dpi",
+            "sentry.device.screen_dpi",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=420,
+        deprecation=DeprecationInfo(
+            replacement="device.screen_dpi", status=DeprecationStatus.BACKFILL
+        ),
+        aliases=["device.screen_dpi"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[804],
+                description="Added sentry.device.screen_dpi attribute, deprecated in favor of device.screen_dpi",
+            ),
+        ],
+    ),
+    "sentry.device.screen_height_pixels": AttributeMetadata(
+        brief="The height of the device screen in pixels.",
+        type=AttributeType.INTEGER,
+        keys=(
+            "device.screen_height_pixels",
+            "sentry.device.screen_height_pixels",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=2400,
+        deprecation=DeprecationInfo(
+            replacement="device.screen_height_pixels", status=DeprecationStatus.BACKFILL
+        ),
+        aliases=["device.screen_height_pixels"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[804],
+                description="Added sentry.device.screen_height_pixels attribute, deprecated in favor of device.screen_height_pixels",
+            ),
+        ],
+    ),
+    "sentry.device.screen_width_pixels": AttributeMetadata(
+        brief="The width of the device screen in pixels.",
+        type=AttributeType.INTEGER,
+        keys=(
+            "device.screen_width_pixels",
+            "sentry.device.screen_width_pixels",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=1080,
+        deprecation=DeprecationInfo(
+            replacement="device.screen_width_pixels", status=DeprecationStatus.BACKFILL
+        ),
+        aliases=["device.screen_width_pixels"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[804],
+                description="Added sentry.device.screen_width_pixels attribute, deprecated in favor of device.screen_width_pixels",
+            ),
+        ],
+    ),
+    "sentry.device.simulator": AttributeMetadata(
+        brief="Whether the device is a simulator or an actual device.",
+        type=AttributeType.BOOLEAN,
+        keys=(
+            "device.simulator",
+            "sentry.device.simulator",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=False,
+        deprecation=DeprecationInfo(
+            replacement="device.simulator", status=DeprecationStatus.BACKFILL
+        ),
+        aliases=["device.simulator"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[804],
+                description="Added sentry.device.simulator attribute, deprecated in favor of device.simulator",
+            ),
         ],
     ),
     "sentry.dist": AttributeMetadata(
@@ -28450,7 +29613,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=["previous_trace", "cache_origin", "message_origin", "server_request"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.34.0",
                 prs=[789],
                 description="Added pageload examples to cache_origin and server_request",
             ),
@@ -28510,6 +29673,54 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="Hello, {name}!",
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[116]),
+        ],
+    ),
+    "sentry.messaging.destination.name": AttributeMetadata(
+        brief="The message destination name.",
+        type=AttributeType.STRING,
+        keys=(
+            "messaging.destination.name",
+            "messaging.destination",
+            "sentry.messaging.destination.name",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="BestTopic",
+        deprecation=DeprecationInfo(
+            replacement="messaging.destination.name", status=DeprecationStatus.BACKFILL
+        ),
+        aliases=["messaging.destination.name", "messaging.destination"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[796],
+                description="Added sentry.messaging.destination.name attribute, deprecated in favor of messaging.destination.name",
+            ),
+        ],
+    ),
+    "sentry.messaging.message.id": AttributeMetadata(
+        brief="A value used by the messaging system as an identifier for the message, represented as a string.",
+        type=AttributeType.STRING,
+        keys=(
+            "messaging.message.id",
+            "messaging.message_id",
+            "sentry.messaging.message.id",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="f47ac10b58cc4372a5670e02b2c3d479",
+        deprecation=DeprecationInfo(
+            replacement="messaging.message.id", status=DeprecationStatus.BACKFILL
+        ),
+        aliases=["messaging.message.id", "messaging.message_id"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[809],
+                description="Added sentry.messaging.message.id attribute, deprecated in favor of messaging.message.id",
+            ),
         ],
     ),
     "sentry.metric.source": AttributeMetadata(
@@ -28657,6 +29868,52 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
         search_alias=SearchAlias(name="origin"),
+    ),
+    "sentry.os.name": AttributeMetadata(
+        brief="Human readable operating system name.",
+        type=AttributeType.STRING,
+        keys=(
+            "os.name",
+            "sentry.os.name",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="Ubuntu",
+        deprecation=DeprecationInfo(
+            replacement="os.name", status=DeprecationStatus.BACKFILL
+        ),
+        aliases=["os.name"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[805],
+                description="Added sentry.os.name attribute, deprecated in favor of os.name",
+            ),
+        ],
+    ),
+    "sentry.os.rooted": AttributeMetadata(
+        brief="Whether the operating system has been jailbroken or rooted.",
+        type=AttributeType.BOOLEAN,
+        keys=(
+            "os.rooted",
+            "sentry.os.rooted",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=True,
+        deprecation=DeprecationInfo(
+            replacement="os.rooted", status=DeprecationStatus.BACKFILL
+        ),
+        aliases=["os.rooted"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[805],
+                description="Added sentry.os.rooted attribute, deprecated in favor of os.rooted",
+            ),
+        ],
     ),
     "sentry.pageload.span_id": AttributeMetadata(
         brief="The id of the pageload span, set by web vital spans and metrics",
@@ -28832,6 +30089,83 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
                 version="0.5.0",
                 prs=[320],
                 description="Added sentry.report_event attribute",
+            ),
+        ],
+    ),
+    "sentry.request.method": AttributeMetadata(
+        brief="The HTTP method used.",
+        type=AttributeType.STRING,
+        keys=(
+            "http.request.method",
+            "http.method",
+            "http.request_method",
+            "method",
+            "sentry.request.method",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="GET",
+        deprecation=DeprecationInfo(
+            replacement="http.request.method", status=DeprecationStatus.BACKFILL
+        ),
+        aliases=["http.request.method", "method", "http.method", "http.request_method"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[807],
+                description="Added sentry.request.method attribute, deprecated in favor of http.request.method",
+            ),
+        ],
+    ),
+    "sentry.request.url": AttributeMetadata(
+        brief="The URL of the resource that was fetched.",
+        type=AttributeType.STRING,
+        keys=(
+            "url.full",
+            "aws.request.url",
+            "http.url",
+            "messaging.url",
+            "sentry.request.url",
+            "url",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="https://example.com/test?foo=bar#buzz",
+        deprecation=DeprecationInfo(
+            replacement="url.full", status=DeprecationStatus.BACKFILL
+        ),
+        aliases=["url.full", "http.url", "url", "aws.request.url", "messaging.url"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[807],
+                description="Added sentry.request.url attribute, deprecated in favor of url.full",
+            ),
+        ],
+    ),
+    "sentry.runtime.name": AttributeMetadata(
+        brief="The name of the runtime. Equivalent to `name` in the Sentry runtime context.",
+        type=AttributeType.STRING,
+        keys=(
+            "process.runtime.name",
+            "runtime.name",
+            "sentry.runtime.name",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="node",
+        deprecation=DeprecationInfo(
+            replacement="process.runtime.name", status=DeprecationStatus.BACKFILL
+        ),
+        aliases=["process.runtime.name", "runtime.name"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[806],
+                description="Added sentry.runtime.name attribute, deprecated in favor of process.runtime.name",
             ),
         ],
     ),
@@ -29173,6 +30507,29 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         search_alias=SearchAlias(name="thread.id"),
     ),
+    "sentry.thread.name": AttributeMetadata(
+        brief="Current thread name.",
+        type=AttributeType.STRING,
+        keys=(
+            "thread.name",
+            "sentry.thread.name",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="main",
+        deprecation=DeprecationInfo(
+            replacement="thread.name", status=DeprecationStatus.BACKFILL
+        ),
+        aliases=["thread.name"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[808],
+                description="Added sentry.thread.name attribute, deprecated in favor of thread.name",
+            ),
+        ],
+    ),
     "sentry.timestamp.sequence": AttributeMetadata(
         brief="A sequencing counter for deterministic ordering of logs or metrics when timestamps share the same integer millisecond. Starts at 0 on SDK initialization, increments by 1 for each captured item, and resets to 0 when the integer millisecond of the current item differs from the previous one.",
         type=AttributeType.INTEGER,
@@ -29265,6 +30622,33 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
             ChangelogEntry(version="0.0.0"),
         ],
+    ),
+    "sentry.user": AttributeMetadata(
+        brief="Combined identifier of the user, used for the `user` tag and for counting unique users. Set to the first available of the user's ID, username, email address, or IP address, prefixed with which one it is: `id:`, `username:`, `email:`, or `ip:`.",
+        type=AttributeType.STRING,
+        keys=(
+            "sentry.user",
+            "user",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="id:123",
+        examples=[
+            "id:123",
+            "username:j.smith",
+            "email:test@example.com",
+            "ip:192.168.1.1",
+        ],
+        changelog=[
+            ChangelogEntry(
+                version="0.34.0", prs=[817], description="Added sentry.user attribute"
+            ),
+        ],
+        additional_context=[
+            "Derived by Sentry during ingestion from `user.id`, `user.name`, `user.email`, and `user.ip_address`. SDKs do not set it."
+        ],
+        search_alias=SearchAlias(name="user"),
     ),
     "sentry.user.email": AttributeMetadata(
         brief="User email address.",
@@ -29882,12 +31266,21 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "thread.name": AttributeMetadata(
         brief="Current thread name.",
         type=AttributeType.STRING,
-        keys=("thread.name",),
+        keys=(
+            "thread.name",
+            "sentry.thread.name",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="main",
+        aliases=["sentry.thread.name"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[808],
+                description="Added sentry.thread.name as an alias",
+            ),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -30688,14 +32081,26 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "aws.request.url",
             "http.url",
             "messaging.url",
+            "sentry.request.url",
             "url",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="https://example.com/test?foo=bar#buzz",
-        aliases=["http.url", "url", "aws.request.url", "messaging.url"],
+        aliases=[
+            "http.url",
+            "url",
+            "aws.request.url",
+            "messaging.url",
+            "sentry.request.url",
+        ],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[807],
+                description="Added sentry.request.url as an alias",
+            ),
             ChangelogEntry(
                 version="0.21.0",
                 prs=[581],
@@ -30874,6 +32279,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "aws.request.url",
             "http.url",
             "messaging.url",
+            "sentry.request.url",
             "url",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
@@ -30883,8 +32289,19 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(
             replacement="url.full", status=DeprecationStatus.BACKFILL
         ),
-        aliases=["url.full", "http.url", "aws.request.url", "messaging.url"],
+        aliases=[
+            "url.full",
+            "http.url",
+            "aws.request.url",
+            "messaging.url",
+            "sentry.request.url",
+        ],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[807],
+                description="Added sentry.request.url as an alias",
+            ),
             ChangelogEntry(
                 version="0.21.0",
                 prs=[581],
@@ -32401,6 +33818,22 @@ Attributes = TypedDict(
         "sentry.category": str,
         "sentry.client_sample_rate": float,
         "sentry.description": str,
+        "sentry.device.battery_level": float,
+        "sentry.device.brand": str,
+        "sentry.device.charging": bool,
+        "sentry.device.class": str,
+        "sentry.device.family": str,
+        "sentry.device.locale": str,
+        "sentry.device.model": str,
+        "sentry.device.model_id": str,
+        "sentry.device.name": str,
+        "sentry.device.online": bool,
+        "sentry.device.orientation": str,
+        "sentry.device.screen_density": float,
+        "sentry.device.screen_dpi": int,
+        "sentry.device.screen_height_pixels": int,
+        "sentry.device.screen_width_pixels": int,
+        "sentry.device.simulator": bool,
         "sentry.dist": str,
         "sentry.domain": str,
         "sentry.dsc.environment": str,
@@ -32431,6 +33864,8 @@ Attributes = TypedDict(
         "sentry.main_thread": bool,
         "sentry.message.parameter.<key>": str,
         "sentry.message.template": str,
+        "sentry.messaging.destination.name": str,
+        "sentry.messaging.message.id": str,
         "sentry.metric.source": str,
         "sentry.mobile": bool,
         "sentry.module.<key>": str,
@@ -32442,6 +33877,8 @@ Attributes = TypedDict(
         "sentry.observed_timestamp_nanos": str,
         "sentry.op": str,
         "sentry.origin": str,
+        "sentry.os.name": str,
+        "sentry.os.rooted": bool,
         "sentry.pageload.span_id": str,
         "sentry.platform": str,
         "sentry.profile_id": str,
@@ -32452,6 +33889,9 @@ Attributes = TypedDict(
         "sentry.replay_id": str,
         "sentry.replay_is_buffering": bool,
         "sentry.report_event": str,
+        "sentry.request.method": str,
+        "sentry.request.url": str,
+        "sentry.runtime.name": str,
         "sentry.sdk.integrations": List[str],
         "sentry.sdk.name": str,
         "sentry.sdk.version": str,
@@ -32469,11 +33909,13 @@ Attributes = TypedDict(
         "sentry.sveltekit.navigation.to": str,
         "sentry.sveltekit.navigation.type": str,
         "sentry.thread.id": int,
+        "sentry.thread.name": str,
         "sentry.timestamp.sequence": int,
         "sentry.trace.parent_span_id": str,
         "sentry.trace.status": str,
         "sentry.trace_lifecycle": str,
         "sentry.transaction": str,
+        "sentry.user": str,
         "sentry.user.email": str,
         "sentry.user.geo.city": str,
         "sentry.user.geo.country_code": str,

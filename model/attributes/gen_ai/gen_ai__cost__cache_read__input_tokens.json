@@ -13,7 +13,15 @@
     "Despite the name 'cost.cache_read.input_tokens', this value is cost in USD, not a token count. For token counts, use gen_ai.usage.cache_read.input_tokens.",
     "This is a subset of gen_ai.cost.input_tokens, not an independent cost. Do not sum this with gen_ai.cost.input_tokens — it is already included."
   ],
+  "search_alias": {
+    "name": "gen_ai.cost.cache_read.input_tokens",
+    "type": "currency"
+  },
   "changelog": [
+    {
+      "version": "next",
+      "description": "Added search_alias with type currency"
+    },
     {
       "version": "0.16.0",
       "prs": [],

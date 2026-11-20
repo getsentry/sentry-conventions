@@ -7,8 +7,14 @@
   },
   "is_in_otel": true,
   "example": "Ubuntu",
+  "alias": ["sentry.os.name"],
   "visibility": "public",
   "changelog": [
+    {
+      "version": "next",
+      "prs": [805],
+      "description": "Added sentry.os.name as an alias"
+    },
     {
       "version": "0.1.0",
       "prs": [127]

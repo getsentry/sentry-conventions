@@ -6,7 +6,7 @@
     "key": "manual"
   },
   "is_in_otel": false,
-  "example": "[\"The weather in Paris is rainy and overcast, with temperatures around 57\u00b0F\", \"The weather in London is sunny and warm, with temperatures around 65\u00b0F\"]",
+  "example": "[\"The weather in Paris is rainy and overcast, with temperatures around 57°F\", \"The weather in London is sunny and warm, with temperatures around 65°F\"]",
   "alias": [],
   "deprecation": {
     "_status": "normalize",
@@ -15,7 +15,7 @@
   "visibility": "public",
   "changelog": [
     {
-      "version": "next",
+      "version": "0.34.0",
       "prs": [801],
       "description": "Revert deprecation status from `transform` to `normalize`."
     },

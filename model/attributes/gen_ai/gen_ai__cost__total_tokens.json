@@ -13,7 +13,15 @@
   ],
   "alias": ["ai.total_cost"],
   "visibility": "public",
+  "search_alias": {
+    "name": "gen_ai.cost.total_tokens",
+    "type": "currency"
+  },
   "changelog": [
+    {
+      "version": "next",
+      "description": "Added search_alias with type currency"
+    },
     {
       "version": "0.9.0",
       "prs": [397],
