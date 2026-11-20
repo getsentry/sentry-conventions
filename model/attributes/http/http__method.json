@@ -15,7 +15,7 @@
   "visibility": "public",
   "changelog": [
     {
-      "version": "next",
+      "version": "0.35.0",
       "prs": [807],
       "description": "Added sentry.request.method as an alias"
     },

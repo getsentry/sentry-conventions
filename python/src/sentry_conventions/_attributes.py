@@ -14502,7 +14502,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["frames.delay"],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added search_alias with type second"
+                version="0.35.0",
+                prs=[815],
+                description="Added search_alias with type second",
             ),
             ChangelogEntry(
                 version="0.5.0",
@@ -14553,7 +14555,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["frames_frozen_rate"],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added search_alias with type percentage"
+                version="0.35.0",
+                prs=[815],
+                description="Added search_alias with type percentage",
             ),
             ChangelogEntry(
                 version="0.19.0",
@@ -14606,7 +14610,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["frames_slow_rate"],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added search_alias with type percentage"
+                version="0.35.0",
+                prs=[815],
+                description="Added search_alias with type percentage",
             ),
             ChangelogEntry(
                 version="0.19.0",
@@ -14677,7 +14683,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["stall_percentage"],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added search_alias with type percentage"
+                version="0.35.0",
+                prs=[815],
+                description="Added search_alias with type percentage",
             ),
             ChangelogEntry(
                 version="0.19.0",
@@ -14701,7 +14709,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["app_start_cold"],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added search_alias with type millisecond"
+                version="0.35.0",
+                prs=[815],
+                description="Added search_alias with type millisecond",
             ),
             ChangelogEntry(
                 version="0.5.0",
@@ -14795,7 +14805,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["app_start_warm"],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added search_alias with type millisecond"
+                version="0.35.0",
+                prs=[815],
+                description="Added search_alias with type millisecond",
             ),
             ChangelogEntry(
                 version="0.5.0",
@@ -14821,7 +14833,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["time_to_full_display"],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added search_alias with type millisecond"
+                version="0.35.0",
+                prs=[815],
+                description="Added search_alias with type millisecond",
             ),
             ChangelogEntry(
                 version="0.5.0",
@@ -14845,7 +14859,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["time_to_initial_display"],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added search_alias with type millisecond"
+                version="0.35.0",
+                prs=[815],
+                description="Added search_alias with type millisecond",
             ),
             ChangelogEntry(
                 version="0.5.0",
@@ -15958,7 +15974,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["url.full", "http.url", "url", "messaging.url", "sentry.request.url"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.35.0",
                 prs=[807],
                 description="Added sentry.request.url as an alias",
             ),
@@ -16670,7 +16686,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["fcp"],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added search_alias with type millisecond"
+                version="0.35.0",
+                prs=[815],
+                description="Added search_alias with type millisecond",
             ),
             ChangelogEntry(version="0.5.0", prs=[235]),
         ],
@@ -16692,7 +16710,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["fp"],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added search_alias with type millisecond"
+                version="0.35.0",
+                prs=[815],
+                description="Added search_alias with type millisecond",
             ),
             ChangelogEntry(version="0.5.0", prs=[235]),
         ],
@@ -16821,7 +16841,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["inp"],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added search_alias with type millisecond"
+                version="0.35.0",
+                prs=[815],
+                description="Added search_alias with type millisecond",
             ),
             ChangelogEntry(
                 version="0.5.0",
@@ -17033,7 +17055,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["lcp"],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added search_alias with type millisecond"
+                version="0.35.0",
+                prs=[815],
+                description="Added search_alias with type millisecond",
             ),
             ChangelogEntry(
                 version="0.5.0",
@@ -17075,7 +17099,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["ttfb"],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added search_alias with type millisecond"
+                version="0.35.0",
+                prs=[815],
+                description="Added search_alias with type millisecond",
             ),
             ChangelogEntry(version="0.5.0", prs=[235]),
         ],
@@ -18447,7 +18473,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["sentry.device.battery_level"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.35.0",
                 prs=[804],
                 description="Added sentry.device.battery_level as an alias",
             ),
@@ -18504,7 +18530,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["sentry.device.brand"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.35.0",
                 prs=[804],
                 description="Added sentry.device.brand as an alias",
             ),
@@ -18525,7 +18551,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["sentry.device.charging"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.35.0",
                 prs=[804],
                 description="Added sentry.device.charging as an alias",
             ),
@@ -18564,7 +18590,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["sentry.device.class"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.35.0",
                 prs=[804],
                 description="Added sentry.device.class as an alias",
             ),
@@ -18661,7 +18687,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["sentry.device.family"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.35.0",
                 prs=[804],
                 description="Added sentry.device.family as an alias",
             ),
@@ -18728,7 +18754,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["sentry.device.locale"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.35.0",
                 prs=[804],
                 description="Added sentry.device.locale as an alias",
             ),
@@ -18835,7 +18861,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["sentry.device.model"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.35.0",
                 prs=[804],
                 description="Added sentry.device.model as an alias",
             ),
@@ -18856,7 +18882,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["sentry.device.model_id"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.35.0",
                 prs=[804],
                 description="Added sentry.device.model_id as an alias",
             ),
@@ -18881,7 +18907,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["sentry.device.name"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.35.0",
                 prs=[804],
                 description="Added sentry.device.name as an alias",
             ),
@@ -18912,7 +18938,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["sentry.device.online"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.35.0",
                 prs=[804],
                 description="Added sentry.device.online as an alias",
             ),
@@ -18935,7 +18961,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["sentry.device.orientation"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.35.0",
                 prs=[804],
                 description="Added sentry.device.orientation as an alias",
             ),
@@ -18996,7 +19022,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["sentry.device.screen_density"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.35.0",
                 prs=[804],
                 description="Added sentry.device.screen_density as an alias",
             ),
@@ -19021,7 +19047,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["sentry.device.screen_dpi"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.35.0",
                 prs=[804],
                 description="Added sentry.device.screen_dpi as an alias",
             ),
@@ -19046,7 +19072,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["sentry.device.screen_height_pixels"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.35.0",
                 prs=[804],
                 description="Added sentry.device.screen_height_pixels as an alias",
             ),
@@ -19071,7 +19097,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["sentry.device.screen_width_pixels"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.35.0",
                 prs=[804],
                 description="Added sentry.device.screen_width_pixels as an alias",
             ),
@@ -19096,7 +19122,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["sentry.device.simulator"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.35.0",
                 prs=[804],
                 description="Added sentry.device.simulator as an alias",
             ),
@@ -19696,7 +19722,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=[134217728, 1073741824],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added search_alias with type byte"
+                version="0.35.0",
+                prs=[815],
+                description="Added search_alias with type byte",
             ),
             ChangelogEntry(
                 version="0.30.0",
@@ -20317,7 +20345,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=12.34,
         changelog=[
             ChangelogEntry(
-                version="next", description="Added search_alias with type currency"
+                version="0.35.0",
+                prs=[815],
+                description="Added search_alias with type currency",
             ),
             ChangelogEntry(
                 version="0.16.0",
@@ -20343,7 +20373,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=12.34,
         changelog=[
             ChangelogEntry(
-                version="next", description="Added search_alias with type currency"
+                version="0.35.0",
+                prs=[815],
+                description="Added search_alias with type currency",
             ),
             ChangelogEntry(
                 version="0.16.0",
@@ -20369,7 +20401,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=123.45,
         changelog=[
             ChangelogEntry(
-                version="next", description="Added search_alias with type currency"
+                version="0.35.0",
+                prs=[815],
+                description="Added search_alias with type currency",
             ),
             ChangelogEntry(
                 version="0.9.0", prs=[397], description="Add additional_context"
@@ -20394,7 +20428,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=123.45,
         changelog=[
             ChangelogEntry(
-                version="next", description="Added search_alias with type currency"
+                version="0.35.0",
+                prs=[815],
+                description="Added search_alias with type currency",
             ),
             ChangelogEntry(
                 version="0.9.0", prs=[397], description="Add additional_context"
@@ -20419,7 +20455,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=12.34,
         changelog=[
             ChangelogEntry(
-                version="next", description="Added search_alias with type currency"
+                version="0.35.0",
+                prs=[815],
+                description="Added search_alias with type currency",
             ),
             ChangelogEntry(
                 version="0.16.0",
@@ -20449,7 +20487,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["ai.total_cost"],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added search_alias with type currency"
+                version="0.35.0",
+                prs=[815],
+                description="Added search_alias with type currency",
             ),
             ChangelogEntry(
                 version="0.9.0", prs=[397], description="Add additional_context"
@@ -22578,7 +22618,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="app",
         examples=["app", "heroku"],
         changelog=[
-            ChangelogEntry(version="next", description="Added heroku.source attribute"),
+            ChangelogEntry(
+                version="0.35.0", prs=[816], description="Added heroku.source attribute"
+            ),
         ],
         additional_context=[
             "Taken from the syslog APP-NAME header that Logplex sets on every drained line, such as app[web.1] or heroku[router].",
@@ -22743,7 +22785,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.35.0",
                 prs=[807],
                 description="Added sentry.request.method as an alias",
             ),
@@ -22957,7 +22999,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.35.0",
                 prs=[807],
                 description="Added sentry.request.method as an alias",
             ),
@@ -23179,7 +23221,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.35.0",
                 prs=[807],
                 description="Added sentry.request.method as an alias",
             ),
@@ -23208,7 +23250,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added search_alias with type byte"
+                version="0.35.0",
+                prs=[815],
+                description="Added search_alias with type byte",
             ),
             ChangelogEntry(
                 version="0.21.0",
@@ -23237,7 +23281,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["http.response_content_length", "http.response.header.content-length"],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added search_alias with type byte"
+                version="0.35.0",
+                prs=[815],
+                description="Added search_alias with type byte",
             ),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.1.0", prs=[106]),
@@ -23295,7 +23341,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["http.response_transfer_size"],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added search_alias with type byte"
+                version="0.35.0",
+                prs=[815],
+                description="Added search_alias with type byte",
             ),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.0.0"),
@@ -23608,7 +23656,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.35.0",
                 prs=[807],
                 description="Added sentry.request.url as an alias",
             ),
@@ -25872,7 +25920,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["messaging.destination.name", "sentry.messaging.destination.name"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.35.0",
+                prs=[796],
                 description="Added sentry.messaging.destination.name as an alias",
             ),
             ChangelogEntry(
@@ -25910,7 +25959,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["messaging.destination", "sentry.messaging.destination.name"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.35.0",
                 prs=[796],
                 description="Added sentry.messaging.destination.name as an alias",
             ),
@@ -26073,7 +26122,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["messaging.message_id", "sentry.messaging.message.id"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.35.0",
                 prs=[809],
                 description="Added sentry.messaging.message.id as an alias",
             ),
@@ -26136,7 +26185,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["messaging.message.id", "sentry.messaging.message.id"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.35.0",
                 prs=[809],
                 description="Added sentry.messaging.message.id as an alias",
             ),
@@ -26364,7 +26413,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.35.0",
                 prs=[807],
                 description="Added sentry.request.url as an alias",
             ),
@@ -26398,7 +26447,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.35.0",
                 prs=[807],
                 description="Added sentry.request.method as an alias",
             ),
@@ -27313,7 +27362,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["sentry.os.name"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.35.0",
                 prs=[805],
                 description="Added sentry.os.name as an alias",
             ),
@@ -27351,7 +27400,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["sentry.os.rooted"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.35.0",
                 prs=[805],
                 description="Added sentry.os.rooted as an alias",
             ),
@@ -27782,7 +27831,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["runtime.name", "sentry.runtime.name"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.35.0",
                 prs=[806],
                 description="Added sentry.runtime.name as an alias",
             ),
@@ -27961,7 +28010,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=[512.5],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added search_alias with type millisecond"
+                version="0.35.0",
+                prs=[815],
+                description="Added search_alias with type millisecond",
             ),
             ChangelogEntry(
                 version="0.24.0",
@@ -27989,7 +28040,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["turbo_module.total_duration_ms", "turbo_modules.total_duration_ms"],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added search_alias with type millisecond"
+                version="0.35.0",
+                prs=[815],
+                description="Added search_alias with type millisecond",
             ),
             ChangelogEntry(
                 version="0.24.0",
@@ -28103,7 +28156,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["turbo_module.top_module_duration_ms"],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added search_alias with type millisecond"
+                version="0.35.0",
+                prs=[815],
+                description="Added search_alias with type millisecond",
             ),
             ChangelogEntry(
                 version="0.24.0",
@@ -28583,7 +28638,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["process.runtime.name", "sentry.runtime.name"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.35.0",
                 prs=[806],
                 description="Added sentry.runtime.name as an alias",
             ),
@@ -28807,7 +28862,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=0.5,
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.35.0",
                 prs=[814],
                 description="Generalized the brief to apply to any telemetry type, not just spans",
             ),
@@ -28844,7 +28899,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["device.battery_level"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.35.0",
                 prs=[804],
                 description="Added sentry.device.battery_level attribute, deprecated in favor of device.battery_level",
             ),
@@ -28867,7 +28922,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["device.brand"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.35.0",
                 prs=[804],
                 description="Added sentry.device.brand attribute, deprecated in favor of device.brand",
             ),
@@ -28890,7 +28945,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["device.charging"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.35.0",
                 prs=[804],
                 description="Added sentry.device.charging attribute, deprecated in favor of device.charging",
             ),
@@ -28913,7 +28968,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["device.class"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.35.0",
                 prs=[804],
                 description="Added sentry.device.class attribute, deprecated in favor of device.class",
             ),
@@ -28936,7 +28991,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["device.family"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.35.0",
                 prs=[804],
                 description="Added sentry.device.family attribute, deprecated in favor of device.family",
             ),
@@ -28959,7 +29014,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["device.locale"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.35.0",
                 prs=[804],
                 description="Added sentry.device.locale attribute, deprecated in favor of device.locale",
             ),
@@ -28982,7 +29037,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["device.model"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.35.0",
                 prs=[804],
                 description="Added sentry.device.model attribute, deprecated in favor of device.model",
             ),
@@ -29005,7 +29060,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["device.model_id"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.35.0",
                 prs=[804],
                 description="Added sentry.device.model_id attribute, deprecated in favor of device.model_id",
             ),
@@ -29028,7 +29083,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["device.name"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.35.0",
                 prs=[804],
                 description="Added sentry.device.name attribute, deprecated in favor of device.name",
             ),
@@ -29051,7 +29106,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["device.online"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.35.0",
                 prs=[804],
                 description="Added sentry.device.online attribute, deprecated in favor of device.online",
             ),
@@ -29074,7 +29129,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["device.orientation"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.35.0",
                 prs=[804],
                 description="Added sentry.device.orientation attribute, deprecated in favor of device.orientation",
             ),
@@ -29097,7 +29152,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["device.screen_density"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.35.0",
                 prs=[804],
                 description="Added sentry.device.screen_density attribute, deprecated in favor of device.screen_density",
             ),
@@ -29120,7 +29175,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["device.screen_dpi"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.35.0",
                 prs=[804],
                 description="Added sentry.device.screen_dpi attribute, deprecated in favor of device.screen_dpi",
             ),
@@ -29143,7 +29198,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["device.screen_height_pixels"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.35.0",
                 prs=[804],
                 description="Added sentry.device.screen_height_pixels attribute, deprecated in favor of device.screen_height_pixels",
             ),
@@ -29166,7 +29221,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["device.screen_width_pixels"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.35.0",
                 prs=[804],
                 description="Added sentry.device.screen_width_pixels attribute, deprecated in favor of device.screen_width_pixels",
             ),
@@ -29189,7 +29244,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["device.simulator"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.35.0",
                 prs=[804],
                 description="Added sentry.device.simulator attribute, deprecated in favor of device.simulator",
             ),
@@ -29693,7 +29748,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["messaging.destination.name", "messaging.destination"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.35.0",
                 prs=[796],
                 description="Added sentry.messaging.destination.name attribute, deprecated in favor of messaging.destination.name",
             ),
@@ -29717,7 +29772,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["messaging.message.id", "messaging.message_id"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.35.0",
                 prs=[809],
                 description="Added sentry.messaging.message.id attribute, deprecated in favor of messaging.message.id",
             ),
@@ -29886,7 +29941,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["os.name"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.35.0",
                 prs=[805],
                 description="Added sentry.os.name attribute, deprecated in favor of os.name",
             ),
@@ -29909,7 +29964,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["os.rooted"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.35.0",
                 prs=[805],
                 description="Added sentry.os.rooted attribute, deprecated in favor of os.rooted",
             ),
@@ -30112,7 +30167,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["http.request.method", "method", "http.method", "http.request_method"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.35.0",
                 prs=[807],
                 description="Added sentry.request.method attribute, deprecated in favor of http.request.method",
             ),
@@ -30139,7 +30194,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["url.full", "http.url", "url", "aws.request.url", "messaging.url"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.35.0",
                 prs=[807],
                 description="Added sentry.request.url attribute, deprecated in favor of url.full",
             ),
@@ -30163,7 +30218,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["process.runtime.name", "runtime.name"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.35.0",
                 prs=[806],
                 description="Added sentry.runtime.name attribute, deprecated in favor of process.runtime.name",
             ),
@@ -30524,7 +30579,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["thread.name"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.35.0",
                 prs=[808],
                 description="Added sentry.thread.name attribute, deprecated in favor of thread.name",
             ),
@@ -31277,7 +31332,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["sentry.thread.name"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.35.0",
                 prs=[808],
                 description="Added sentry.thread.name as an alias",
             ),
@@ -32097,7 +32152,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.35.0",
                 prs=[807],
                 description="Added sentry.request.url as an alias",
             ),
@@ -32298,7 +32353,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.35.0",
                 prs=[807],
                 description="Added sentry.request.url as an alias",
             ),

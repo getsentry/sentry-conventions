@@ -25942,7 +25942,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 5,
     aliases: ['frames.delay'],
     changelog: [
-      { version: 'next', description: 'Added search_alias with type second' },
+      { version: '0.35.0', prs: [815], description: 'Added search_alias with type second' },
       { version: '0.5.0', prs: [313], description: 'Added app.vitals.frames.delay.value to replace frames.delay' },
     ],
     searchAlias: {
@@ -25979,7 +25979,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 0.5,
     aliases: ['frames_frozen_rate'],
     changelog: [
-      { version: 'next', description: 'Added search_alias with type percentage' },
+      { version: '0.35.0', prs: [815], description: 'Added search_alias with type percentage' },
       { version: '0.19.0', prs: [493], description: 'Added app.vitals.frames.frozen.rate attribute' },
     ],
     searchAlias: {
@@ -26016,7 +26016,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 0.25,
     aliases: ['frames_slow_rate'],
     changelog: [
-      { version: 'next', description: 'Added search_alias with type percentage' },
+      { version: '0.35.0', prs: [815], description: 'Added search_alias with type percentage' },
       { version: '0.19.0', prs: [493], description: 'Added app.vitals.frames.slow.rate attribute' },
     ],
     searchAlias: {
@@ -26067,7 +26067,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 0.8,
     aliases: ['stall_percentage'],
     changelog: [
-      { version: 'next', description: 'Added search_alias with type percentage' },
+      { version: '0.35.0', prs: [815], description: 'Added search_alias with type percentage' },
       { version: '0.19.0', prs: [493], description: 'Added app.vitals.stall.percentage attribute' },
     ],
     searchAlias: {
@@ -26087,7 +26087,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 1234.56,
     aliases: ['app_start_cold'],
     changelog: [
-      { version: 'next', description: 'Added search_alias with type millisecond' },
+      { version: '0.35.0', prs: [815], description: 'Added search_alias with type millisecond' },
       { version: '0.5.0', prs: [313], description: 'Added app.vitals.start.cold.value attribute' },
     ],
     searchAlias: {
@@ -26157,7 +26157,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 1234.56,
     aliases: ['app_start_warm'],
     changelog: [
-      { version: 'next', description: 'Added search_alias with type millisecond' },
+      { version: '0.35.0', prs: [815], description: 'Added search_alias with type millisecond' },
       { version: '0.5.0', prs: [313], description: 'Added app.vitals.start.warm.value attribute' },
     ],
     searchAlias: {
@@ -26177,7 +26177,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 1234.56,
     aliases: ['time_to_full_display'],
     changelog: [
-      { version: 'next', description: 'Added search_alias with type millisecond' },
+      { version: '0.35.0', prs: [815], description: 'Added search_alias with type millisecond' },
       { version: '0.5.0', prs: [313], description: 'Added app.vitals.ttfd.value attribute' },
     ],
     searchAlias: {
@@ -26197,7 +26197,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 1234.56,
     aliases: ['time_to_initial_display'],
     changelog: [
-      { version: 'next', description: 'Added search_alias with type millisecond' },
+      { version: '0.35.0', prs: [815], description: 'Added search_alias with type millisecond' },
       { version: '0.5.0', prs: [313], description: 'Added app.vitals.ttid.value attribute' },
     ],
     searchAlias: {
@@ -27047,7 +27047,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['url.full', 'http.url', 'url', 'messaging.url', 'sentry.request.url'],
     changelog: [
-      { version: 'next', prs: [807], description: 'Added sentry.request.url as an alias' },
+      { version: '0.35.0', prs: [807], description: 'Added sentry.request.url as an alias' },
       { version: '0.21.0', prs: [581], description: 'Added messaging.url as an alias' },
       {
         version: '0.19.0',
@@ -27578,7 +27578,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 547.6951,
     aliases: ['fcp'],
     changelog: [
-      { version: 'next', description: 'Added search_alias with type millisecond' },
+      { version: '0.35.0', prs: [815], description: 'Added search_alias with type millisecond' },
       { version: '0.5.0', prs: [235] },
     ],
     searchAlias: {
@@ -27598,7 +27598,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 477.1926,
     aliases: ['fp'],
     changelog: [
-      { version: 'next', description: 'Added search_alias with type millisecond' },
+      { version: '0.35.0', prs: [815], description: 'Added search_alias with type millisecond' },
       { version: '0.5.0', prs: [235] },
     ],
     searchAlias: {
@@ -27716,7 +27716,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 200,
     aliases: ['inp'],
     changelog: [
-      { version: 'next', description: 'Added search_alias with type millisecond' },
+      { version: '0.35.0', prs: [815], description: 'Added search_alias with type millisecond' },
       { version: '0.5.0', prs: [229], description: 'Added browser.web_vital.inp.value attribute' },
     ],
     searchAlias: {
@@ -27898,7 +27898,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 2500,
     aliases: ['lcp'],
     changelog: [
-      { version: 'next', description: 'Added search_alias with type millisecond' },
+      { version: '0.35.0', prs: [815], description: 'Added search_alias with type millisecond' },
       { version: '0.5.0', prs: [229], description: 'Added browser.web_vital.lcp.value attribute' },
     ],
     searchAlias: {
@@ -27932,7 +27932,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 194.3322,
     aliases: ['ttfb'],
     changelog: [
-      { version: 'next', description: 'Added search_alias with type millisecond' },
+      { version: '0.35.0', prs: [815], description: 'Added search_alias with type millisecond' },
       { version: '0.5.0', prs: [235] },
     ],
     searchAlias: {
@@ -29138,7 +29138,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 100,
     aliases: ['sentry.device.battery_level'],
     changelog: [
-      { version: 'next', prs: [804], description: 'Added sentry.device.battery_level as an alias' },
+      { version: '0.35.0', prs: [804], description: 'Added sentry.device.battery_level as an alias' },
       { version: '0.5.0', prs: [303], description: 'Added device.battery_level attribute' },
     ],
   },
@@ -29178,7 +29178,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'Apple',
     aliases: ['sentry.device.brand'],
     changelog: [
-      { version: 'next', prs: [804], description: 'Added sentry.device.brand as an alias' },
+      { version: '0.35.0', prs: [804], description: 'Added sentry.device.brand as an alias' },
       { version: '0.1.0', prs: [116, 127] },
     ],
   },
@@ -29194,7 +29194,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: false,
     aliases: ['sentry.device.charging'],
     changelog: [
-      { version: 'next', prs: [804], description: 'Added sentry.device.charging as an alias' },
+      { version: '0.35.0', prs: [804], description: 'Added sentry.device.charging as an alias' },
       { version: '0.5.0', prs: [303], description: 'Added device.charging attribute' },
     ],
   },
@@ -29223,7 +29223,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'medium',
     aliases: ['sentry.device.class'],
     changelog: [
-      { version: 'next', prs: [804], description: 'Added sentry.device.class as an alias' },
+      { version: '0.35.0', prs: [804], description: 'Added sentry.device.class as an alias' },
       { version: '0.5.0', prs: [300], description: 'Added device.class attribute' },
     ],
   },
@@ -29299,7 +29299,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'iPhone',
     aliases: ['sentry.device.family'],
     changelog: [
-      { version: 'next', prs: [804], description: 'Added sentry.device.family as an alias' },
+      { version: '0.35.0', prs: [804], description: 'Added sentry.device.family as an alias' },
       { version: '0.1.0', prs: [116, 127] },
     ],
   },
@@ -29351,7 +29351,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'en-US',
     aliases: ['sentry.device.locale'],
     changelog: [
-      { version: 'next', prs: [804], description: 'Added sentry.device.locale as an alias' },
+      { version: '0.35.0', prs: [804], description: 'Added sentry.device.locale as an alias' },
       { version: '0.5.0', prs: [303], description: 'Added device.locale attribute' },
     ],
   },
@@ -29435,7 +29435,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'iPhone 15 Pro Max',
     aliases: ['sentry.device.model'],
     changelog: [
-      { version: 'next', prs: [804], description: 'Added sentry.device.model as an alias' },
+      { version: '0.35.0', prs: [804], description: 'Added sentry.device.model as an alias' },
       { version: '0.1.0', prs: [116, 127] },
     ],
   },
@@ -29451,7 +29451,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'N861AP',
     aliases: ['sentry.device.model_id'],
     changelog: [
-      { version: 'next', prs: [804], description: 'Added sentry.device.model_id as an alias' },
+      { version: '0.35.0', prs: [804], description: 'Added sentry.device.model_id as an alias' },
       { version: '0.5.0', prs: [300], description: 'Added device.model_id attribute' },
     ],
   },
@@ -29467,7 +29467,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'localhost',
     aliases: ['sentry.device.name'],
     changelog: [
-      { version: 'next', prs: [804], description: 'Added sentry.device.name as an alias' },
+      { version: '0.35.0', prs: [804], description: 'Added sentry.device.name as an alias' },
       { version: '0.24.0', prs: [647], description: 'Limit brief to mobile attributes and remove server_name alias' },
       { version: '0.21.0', prs: [602], description: 'Added server_name as an alias' },
       { version: '0.5.0', prs: [303], description: 'Added device.name attribute' },
@@ -29485,7 +29485,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: true,
     aliases: ['sentry.device.online'],
     changelog: [
-      { version: 'next', prs: [804], description: 'Added sentry.device.online as an alias' },
+      { version: '0.35.0', prs: [804], description: 'Added sentry.device.online as an alias' },
       { version: '0.5.0', prs: [303], description: 'Added device.online attribute' },
     ],
   },
@@ -29501,7 +29501,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'portrait',
     aliases: ['sentry.device.orientation'],
     changelog: [
-      { version: 'next', prs: [804], description: 'Added sentry.device.orientation as an alias' },
+      { version: '0.35.0', prs: [804], description: 'Added sentry.device.orientation as an alias' },
       { version: '0.5.0', prs: [303], description: 'Added device.orientation attribute' },
     ],
   },
@@ -29548,7 +29548,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 2.625,
     aliases: ['sentry.device.screen_density'],
     changelog: [
-      { version: 'next', prs: [804], description: 'Added sentry.device.screen_density as an alias' },
+      { version: '0.35.0', prs: [804], description: 'Added sentry.device.screen_density as an alias' },
       { version: '0.5.0', prs: [303], description: 'Added device.screen_density attribute' },
     ],
   },
@@ -29564,7 +29564,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 420,
     aliases: ['sentry.device.screen_dpi'],
     changelog: [
-      { version: 'next', prs: [804], description: 'Added sentry.device.screen_dpi as an alias' },
+      { version: '0.35.0', prs: [804], description: 'Added sentry.device.screen_dpi as an alias' },
       { version: '0.5.0', prs: [303], description: 'Added device.screen_dpi attribute' },
     ],
   },
@@ -29580,7 +29580,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 2400,
     aliases: ['sentry.device.screen_height_pixels'],
     changelog: [
-      { version: 'next', prs: [804], description: 'Added sentry.device.screen_height_pixels as an alias' },
+      { version: '0.35.0', prs: [804], description: 'Added sentry.device.screen_height_pixels as an alias' },
       { version: '0.5.0', prs: [303], description: 'Added device.screen_height_pixels attribute' },
     ],
   },
@@ -29596,7 +29596,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 1080,
     aliases: ['sentry.device.screen_width_pixels'],
     changelog: [
-      { version: 'next', prs: [804], description: 'Added sentry.device.screen_width_pixels as an alias' },
+      { version: '0.35.0', prs: [804], description: 'Added sentry.device.screen_width_pixels as an alias' },
       { version: '0.5.0', prs: [303], description: 'Added device.screen_width_pixels attribute' },
     ],
   },
@@ -29612,7 +29612,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: false,
     aliases: ['sentry.device.simulator'],
     changelog: [
-      { version: 'next', prs: [804], description: 'Added sentry.device.simulator as an alias' },
+      { version: '0.35.0', prs: [804], description: 'Added sentry.device.simulator as an alias' },
       { version: '0.5.0', prs: [300], description: 'Added device.simulator attribute' },
     ],
   },
@@ -30118,7 +30118,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 134217728,
     examples: [134217728, 1073741824],
     changelog: [
-      { version: 'next', description: 'Added search_alias with type byte' },
+      { version: '0.35.0', prs: [815], description: 'Added search_alias with type byte' },
       { version: '0.30.0', prs: [715], description: 'Added faas.max_memory attribute' },
     ],
     additionalContext: [
@@ -30631,7 +30631,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 12.34,
     changelog: [
-      { version: 'next', description: 'Added search_alias with type currency' },
+      { version: '0.35.0', prs: [815], description: 'Added search_alias with type currency' },
       { version: '0.16.0', description: 'Added gen_ai.cost.cache_creation.input_tokens attribute' },
     ],
     additionalContext: [
@@ -30655,7 +30655,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 12.34,
     changelog: [
-      { version: 'next', description: 'Added search_alias with type currency' },
+      { version: '0.35.0', prs: [815], description: 'Added search_alias with type currency' },
       { version: '0.16.0', description: 'Added gen_ai.cost.cache_read.input_tokens attribute' },
     ],
     additionalContext: [
@@ -30679,7 +30679,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 123.45,
     changelog: [
-      { version: 'next', description: 'Added search_alias with type currency' },
+      { version: '0.35.0', prs: [815], description: 'Added search_alias with type currency' },
       { version: '0.9.0', prs: [397], description: 'Add additional_context' },
       { version: '0.4.0', prs: [228] },
       { version: '0.1.0', prs: [112] },
@@ -30705,7 +30705,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 123.45,
     changelog: [
-      { version: 'next', description: 'Added search_alias with type currency' },
+      { version: '0.35.0', prs: [815], description: 'Added search_alias with type currency' },
       { version: '0.9.0', prs: [397], description: 'Add additional_context' },
       { version: '0.4.0', prs: [228] },
       { version: '0.1.0', prs: [112] },
@@ -30731,7 +30731,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 12.34,
     changelog: [
-      { version: 'next', description: 'Added search_alias with type currency' },
+      { version: '0.35.0', prs: [815], description: 'Added search_alias with type currency' },
       { version: '0.16.0', description: 'Added gen_ai.cost.reasoning.output_tokens attribute' },
     ],
     additionalContext: [
@@ -30756,7 +30756,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 12.34,
     aliases: ['ai.total_cost'],
     changelog: [
-      { version: 'next', description: 'Added search_alias with type currency' },
+      { version: '0.35.0', prs: [815], description: 'Added search_alias with type currency' },
       { version: '0.9.0', prs: [397], description: 'Add additional_context' },
       { version: '0.5.0', prs: [264] },
       { version: '0.4.0', prs: [228] },
@@ -32578,7 +32578,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'app',
     examples: ['app', 'heroku'],
-    changelog: [{ version: 'next', description: 'Added heroku.source attribute' }],
+    changelog: [{ version: '0.35.0', prs: [816], description: 'Added heroku.source attribute' }],
     additionalContext: [
       'Taken from the syslog APP-NAME header that Logplex sets on every drained line, such as app[web.1] or heroku[router].',
       'Only set on Cedar, since Fir does not use Logplex.',
@@ -32712,7 +32712,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['http.request.method', 'http.request_method', 'method', 'sentry.request.method'],
     changelog: [
-      { version: 'next', prs: [807], description: 'Added sentry.request.method as an alias' },
+      { version: '0.35.0', prs: [807], description: 'Added sentry.request.method as an alias' },
       { version: '0.1.0', prs: [61, 127] },
       { version: '0.0.0' },
     ],
@@ -32932,7 +32932,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'GET',
     aliases: ['method', 'http.method', 'http.request_method', 'sentry.request.method'],
     changelog: [
-      { version: 'next', prs: [807], description: 'Added sentry.request.method as an alias' },
+      { version: '0.35.0', prs: [807], description: 'Added sentry.request.method as an alias' },
       { version: '0.1.0', prs: [127] },
       { version: '0.0.0' },
     ],
@@ -32953,7 +32953,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['method', 'http.method', 'http.request.method', 'sentry.request.method'],
     changelog: [
-      { version: 'next', prs: [807], description: 'Added sentry.request.method as an alias' },
+      { version: '0.35.0', prs: [807], description: 'Added sentry.request.method as an alias' },
       { version: '0.6.0', prs: [343], description: 'Added http.request_method attribute' },
     ],
   },
@@ -33110,7 +33110,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 456,
     aliases: ['http.decoded_response_content_length', 'http.response_content_length_uncompressed'],
     changelog: [
-      { version: 'next', description: 'Added search_alias with type byte' },
+      { version: '0.35.0', prs: [815], description: 'Added search_alias with type byte' },
       { version: '0.21.0', prs: [574], description: 'Added http.response.body.decoded_size attribute' },
     ],
     additionalContext: [
@@ -33134,7 +33134,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 123,
     aliases: ['http.response_content_length', 'http.response.header.content-length'],
     changelog: [
-      { version: 'next', description: 'Added search_alias with type byte' },
+      { version: '0.35.0', prs: [815], description: 'Added search_alias with type byte' },
       { version: '0.4.0', prs: [228] },
       { version: '0.1.0', prs: [106] },
       { version: '0.0.0' },
@@ -33236,7 +33236,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 456,
     aliases: ['http.response_transfer_size'],
     changelog: [
-      { version: 'next', description: 'Added search_alias with type byte' },
+      { version: '0.35.0', prs: [815], description: 'Added search_alias with type byte' },
       { version: '0.4.0', prs: [228] },
       { version: '0.0.0' },
     ],
@@ -33458,7 +33458,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['url.full', 'url', 'aws.request.url', 'messaging.url', 'sentry.request.url'],
     changelog: [
-      { version: 'next', prs: [807], description: 'Added sentry.request.url as an alias' },
+      { version: '0.35.0', prs: [807], description: 'Added sentry.request.url as an alias' },
       { version: '0.21.0', prs: [581], description: 'Added messaging.url as an alias' },
       { version: '0.1.0', prs: [61, 108] },
       { version: '0.0.0' },
@@ -35564,7 +35564,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['messaging.destination.name', 'sentry.messaging.destination.name'],
     changelog: [
-      { version: 'next', description: 'Added sentry.messaging.destination.name as an alias' },
+      { version: '0.35.0', prs: [796], description: 'Added sentry.messaging.destination.name as an alias' },
       {
         version: '0.16.0',
         prs: [482],
@@ -35619,7 +35619,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'BestTopic',
     aliases: ['messaging.destination', 'sentry.messaging.destination.name'],
     changelog: [
-      { version: 'next', prs: [796], description: 'Added sentry.messaging.destination.name as an alias' },
+      { version: '0.35.0', prs: [796], description: 'Added sentry.messaging.destination.name as an alias' },
       { version: '0.16.0', prs: [482], description: 'Added messaging.destination as an alias' },
       { version: '0.1.0', prs: [127] },
       { version: '0.0.0' },
@@ -35732,7 +35732,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'f47ac10b58cc4372a5670e02b2c3d479',
     aliases: ['messaging.message_id', 'sentry.messaging.message.id'],
     changelog: [
-      { version: 'next', prs: [809], description: 'Added sentry.messaging.message.id as an alias' },
+      { version: '0.35.0', prs: [809], description: 'Added sentry.messaging.message.id as an alias' },
       { version: '0.21.0', prs: [581], description: 'Added messaging.message_id as an alias' },
       { version: '0.1.0', prs: [127] },
       { version: '0.0.0' },
@@ -35756,7 +35756,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['messaging.message.id', 'sentry.messaging.message.id'],
     changelog: [
-      { version: 'next', prs: [809], description: 'Added sentry.messaging.message.id as an alias' },
+      { version: '0.35.0', prs: [809], description: 'Added sentry.messaging.message.id as an alias' },
       { version: '0.21.0', prs: [581], description: 'Added messaging.message_id attribute' },
     ],
   },
@@ -35941,7 +35941,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['url.full', 'http.url', 'url', 'aws.request.url', 'sentry.request.url'],
     changelog: [
-      { version: 'next', prs: [807], description: 'Added sentry.request.url as an alias' },
+      { version: '0.35.0', prs: [807], description: 'Added sentry.request.url as an alias' },
       { version: '0.21.0', prs: [581], description: 'Added messaging.url attribute' },
     ],
   },
@@ -35961,7 +35961,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['http.request.method', 'http.request_method', 'http.method', 'sentry.request.method'],
     changelog: [
-      { version: 'next', prs: [807], description: 'Added sentry.request.method as an alias' },
+      { version: '0.35.0', prs: [807], description: 'Added sentry.request.method as an alias' },
       { version: '0.19.0', prs: [497], description: 'Configured normalization' },
       { version: '0.1.0', prs: [61, 127] },
       { version: '0.0.0' },
@@ -36702,7 +36702,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'Ubuntu',
     aliases: ['sentry.os.name'],
     changelog: [
-      { version: 'next', prs: [805], description: 'Added sentry.os.name as an alias' },
+      { version: '0.35.0', prs: [805], description: 'Added sentry.os.name as an alias' },
       { version: '0.1.0', prs: [127] },
       { version: '0.0.0' },
     ],
@@ -36732,7 +36732,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: true,
     aliases: ['sentry.os.rooted'],
     changelog: [
-      { version: 'next', prs: [805], description: 'Added sentry.os.rooted as an alias' },
+      { version: '0.35.0', prs: [805], description: 'Added sentry.os.rooted as an alias' },
       { version: '0.5.0', prs: [301], description: 'Added os.rooted attribute' },
     ],
   },
@@ -37094,7 +37094,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'node',
     aliases: ['runtime.name', 'sentry.runtime.name'],
     changelog: [
-      { version: 'next', prs: [806], description: 'Added sentry.runtime.name as an alias' },
+      { version: '0.35.0', prs: [806], description: 'Added sentry.runtime.name as an alias' },
       { version: '0.1.0', prs: [127] },
       { version: '0.0.0' },
     ],
@@ -37227,7 +37227,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 512.5,
     examples: [512.5],
     changelog: [
-      { version: 'next', description: 'Added search_alias with type millisecond' },
+      { version: '0.35.0', prs: [815], description: 'Added search_alias with type millisecond' },
       { version: '0.24.0', prs: [564], description: 'Added react_native.module.duration.max attribute' },
     ],
     searchAlias: {
@@ -37249,7 +37249,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     examples: [128.45],
     aliases: ['turbo_module.total_duration_ms', 'turbo_modules.total_duration_ms'],
     changelog: [
-      { version: 'next', description: 'Added search_alias with type millisecond' },
+      { version: '0.35.0', prs: [815], description: 'Added search_alias with type millisecond' },
       { version: '0.24.0', prs: [564], description: 'Added react_native.module.duration.total attribute' },
     ],
     searchAlias: {
@@ -37332,7 +37332,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     examples: [87.25],
     aliases: ['turbo_module.top_module_duration_ms'],
     changelog: [
-      { version: 'next', description: 'Added search_alias with type millisecond' },
+      { version: '0.35.0', prs: [815], description: 'Added search_alias with type millisecond' },
       { version: '0.24.0', prs: [564], description: 'Added react_native.module.top.duration attribute' },
     ],
     searchAlias: {
@@ -37761,7 +37761,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['process.runtime.name', 'sentry.runtime.name'],
     changelog: [
-      { version: 'next', prs: [806], description: 'Added sentry.runtime.name as an alias' },
+      { version: '0.35.0', prs: [806], description: 'Added sentry.runtime.name as an alias' },
       {
         version: '0.11.0',
         prs: [383],
@@ -37966,7 +37966,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 0.5,
     changelog: [
       {
-        version: 'next',
+        version: '0.35.0',
         prs: [814],
         description: 'Generalized the brief to apply to any telemetry type, not just spans',
       },
@@ -38005,7 +38005,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: ['device.battery_level'],
     changelog: [
       {
-        version: 'next',
+        version: '0.35.0',
         prs: [804],
         description: 'Added sentry.device.battery_level attribute, deprecated in favor of device.battery_level',
       },
@@ -38028,7 +38028,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: ['device.brand'],
     changelog: [
       {
-        version: 'next',
+        version: '0.35.0',
         prs: [804],
         description: 'Added sentry.device.brand attribute, deprecated in favor of device.brand',
       },
@@ -38051,7 +38051,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: ['device.charging'],
     changelog: [
       {
-        version: 'next',
+        version: '0.35.0',
         prs: [804],
         description: 'Added sentry.device.charging attribute, deprecated in favor of device.charging',
       },
@@ -38075,7 +38075,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: ['device.class'],
     changelog: [
       {
-        version: 'next',
+        version: '0.35.0',
         prs: [804],
         description: 'Added sentry.device.class attribute, deprecated in favor of device.class',
       },
@@ -38098,7 +38098,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: ['device.family'],
     changelog: [
       {
-        version: 'next',
+        version: '0.35.0',
         prs: [804],
         description: 'Added sentry.device.family attribute, deprecated in favor of device.family',
       },
@@ -38121,7 +38121,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: ['device.locale'],
     changelog: [
       {
-        version: 'next',
+        version: '0.35.0',
         prs: [804],
         description: 'Added sentry.device.locale attribute, deprecated in favor of device.locale',
       },
@@ -38144,7 +38144,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: ['device.model'],
     changelog: [
       {
-        version: 'next',
+        version: '0.35.0',
         prs: [804],
         description: 'Added sentry.device.model attribute, deprecated in favor of device.model',
       },
@@ -38167,7 +38167,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: ['device.model_id'],
     changelog: [
       {
-        version: 'next',
+        version: '0.35.0',
         prs: [804],
         description: 'Added sentry.device.model_id attribute, deprecated in favor of device.model_id',
       },
@@ -38190,7 +38190,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: ['device.name'],
     changelog: [
       {
-        version: 'next',
+        version: '0.35.0',
         prs: [804],
         description: 'Added sentry.device.name attribute, deprecated in favor of device.name',
       },
@@ -38213,7 +38213,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: ['device.online'],
     changelog: [
       {
-        version: 'next',
+        version: '0.35.0',
         prs: [804],
         description: 'Added sentry.device.online attribute, deprecated in favor of device.online',
       },
@@ -38236,7 +38236,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: ['device.orientation'],
     changelog: [
       {
-        version: 'next',
+        version: '0.35.0',
         prs: [804],
         description: 'Added sentry.device.orientation attribute, deprecated in favor of device.orientation',
       },
@@ -38259,7 +38259,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: ['device.screen_density'],
     changelog: [
       {
-        version: 'next',
+        version: '0.35.0',
         prs: [804],
         description: 'Added sentry.device.screen_density attribute, deprecated in favor of device.screen_density',
       },
@@ -38282,7 +38282,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: ['device.screen_dpi'],
     changelog: [
       {
-        version: 'next',
+        version: '0.35.0',
         prs: [804],
         description: 'Added sentry.device.screen_dpi attribute, deprecated in favor of device.screen_dpi',
       },
@@ -38305,7 +38305,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: ['device.screen_height_pixels'],
     changelog: [
       {
-        version: 'next',
+        version: '0.35.0',
         prs: [804],
         description:
           'Added sentry.device.screen_height_pixels attribute, deprecated in favor of device.screen_height_pixels',
@@ -38329,7 +38329,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: ['device.screen_width_pixels'],
     changelog: [
       {
-        version: 'next',
+        version: '0.35.0',
         prs: [804],
         description:
           'Added sentry.device.screen_width_pixels attribute, deprecated in favor of device.screen_width_pixels',
@@ -38353,7 +38353,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: ['device.simulator'],
     changelog: [
       {
-        version: 'next',
+        version: '0.35.0',
         prs: [804],
         description: 'Added sentry.device.simulator attribute, deprecated in favor of device.simulator',
       },
@@ -38806,7 +38806,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: ['messaging.destination.name', 'messaging.destination'],
     changelog: [
       {
-        version: 'next',
+        version: '0.35.0',
         prs: [796],
         description:
           'Added sentry.messaging.destination.name attribute, deprecated in favor of messaging.destination.name',
@@ -38830,7 +38830,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: ['messaging.message.id', 'messaging.message_id'],
     changelog: [
       {
-        version: 'next',
+        version: '0.35.0',
         prs: [809],
         description: 'Added sentry.messaging.message.id attribute, deprecated in favor of messaging.message.id',
       },
@@ -38997,7 +38997,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['os.name'],
     changelog: [
-      { version: 'next', prs: [805], description: 'Added sentry.os.name attribute, deprecated in favor of os.name' },
+      { version: '0.35.0', prs: [805], description: 'Added sentry.os.name attribute, deprecated in favor of os.name' },
     ],
   },
   'sentry.os.rooted': {
@@ -39017,7 +39017,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: ['os.rooted'],
     changelog: [
       {
-        version: 'next',
+        version: '0.35.0',
         prs: [805],
         description: 'Added sentry.os.rooted attribute, deprecated in favor of os.rooted',
       },
@@ -39196,7 +39196,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: ['http.request.method', 'method', 'http.method', 'http.request_method'],
     changelog: [
       {
-        version: 'next',
+        version: '0.35.0',
         prs: [807],
         description: 'Added sentry.request.method attribute, deprecated in favor of http.request.method',
       },
@@ -39219,7 +39219,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: ['url.full', 'http.url', 'url', 'aws.request.url', 'messaging.url'],
     changelog: [
       {
-        version: 'next',
+        version: '0.35.0',
         prs: [807],
         description: 'Added sentry.request.url attribute, deprecated in favor of url.full',
       },
@@ -39242,7 +39242,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: ['process.runtime.name', 'runtime.name'],
     changelog: [
       {
-        version: 'next',
+        version: '0.35.0',
         prs: [806],
         description: 'Added sentry.runtime.name attribute, deprecated in favor of process.runtime.name',
       },
@@ -39567,7 +39567,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: ['thread.name'],
     changelog: [
       {
-        version: 'next',
+        version: '0.35.0',
         prs: [808],
         description: 'Added sentry.thread.name attribute, deprecated in favor of thread.name',
       },
@@ -40207,7 +40207,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'main',
     aliases: ['sentry.thread.name'],
     changelog: [
-      { version: 'next', prs: [808], description: 'Added sentry.thread.name as an alias' },
+      { version: '0.35.0', prs: [808], description: 'Added sentry.thread.name as an alias' },
       { version: '0.1.0', prs: [127] },
       { version: '0.0.0' },
     ],
@@ -40918,7 +40918,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['url.full', 'http.url', 'aws.request.url', 'messaging.url', 'sentry.request.url'],
     changelog: [
-      { version: 'next', prs: [807], description: 'Added sentry.request.url as an alias' },
+      { version: '0.35.0', prs: [807], description: 'Added sentry.request.url as an alias' },
       { version: '0.21.0', prs: [581], description: 'Added messaging.url as an alias' },
       { version: '0.1.0', prs: [61] },
       { version: '0.0.0' },
@@ -40962,7 +40962,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'https://example.com/test?foo=bar#buzz',
     aliases: ['http.url', 'url', 'aws.request.url', 'messaging.url', 'sentry.request.url'],
     changelog: [
-      { version: 'next', prs: [807], description: 'Added sentry.request.url as an alias' },
+      { version: '0.35.0', prs: [807], description: 'Added sentry.request.url as an alias' },
       { version: '0.21.0', prs: [581], description: 'Added messaging.url as an alias' },
       { version: '0.19.0', prs: [488], description: 'Added aws.request.url as an alias' },
       { version: '0.1.0', prs: [108] },
