@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 from enum import Enum
-from typing import List, Literal, Optional, Tuple, Union
+from typing import TYPE_CHECKING, List, Optional, Tuple, Union
 
 AttributeValue = Union[
     str, int, float, bool, List[str], List[int], List[float], List[bool]
@@ -68,13 +68,18 @@ class ChangelogEntry:
     """Optional description of what changed"""
 
 
-SearchAliasType = Literal[
-    "byte",
-    "currency",
-    "millisecond",
-    "percentage",
-    "second",
-]
+if TYPE_CHECKING:
+    from typing import Literal
+
+    SearchAliasType = Literal[
+        "byte",
+        "currency",
+        "millisecond",
+        "percentage",
+        "second",
+    ]
+else:
+    SearchAliasType = str
 
 
 @dataclass
