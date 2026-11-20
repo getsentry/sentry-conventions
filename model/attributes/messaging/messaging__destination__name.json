@@ -11,7 +11,7 @@
   "visibility": "public",
   "changelog": [
     {
-      "version": "next",
+      "version": "0.35.0",
       "prs": [796],
       "description": "Added sentry.messaging.destination.name as an alias"
     },
