@@ -570,12 +570,13 @@ function writeToPython(parsedAttributes: ParsedAttribute[], outputFilePath: stri
   content += '"""\n\n';
   content += '# This is an auto-generated file. Do not edit!\n\n';
   content += 'import warnings\n';
-  content += 'from typing import Dict, List, Literal, TypedDict\n\n';
+  content += 'from typing import Dict\n\n';
   content += 'from ._metadata_types import (\n';
   content += '    ApplyScrubbing,\n';
   content += '    ApplyScrubbingInfo,\n';
   content += '    AttributeMetadata,\n';
   content += '    AttributeType,\n';
+  content += '    AttributeValue,\n';
   content += '    ChangelogEntry,\n';
   content += '    DeprecationInfo,\n';
   content += '    DeprecationStatus,\n';
@@ -583,11 +584,7 @@ function writeToPython(parsedAttributes: ParsedAttribute[], outputFilePath: stri
   content += '    Visibility,\n';
   content += ')\n\n';
 
-  let attributesTypeMembers = '';
-  let deprecatedAttributesTypeMembers = '';
-  let fullAttributesTypeMembers = '';
   let metadataDict = '';
-  const attributeNames: string[] = [];
   const deprecatedAttributes: { name: string; replacement?: string }[] = [];
   const allAttributes: AttributeDefinition[] = parsedAttributes.map(({ attributeJson }) => ({
     key: attributeJson.key,
@@ -645,7 +642,7 @@ function writeToPython(parsedAttributes: ParsedAttribute[], outputFilePath: stri
 
     content += `    # Path: model/attributes/${file}\n`;
 
-    content += `    ${constantName}: Literal["${key}"] = "${key}"\n`;
+    content += `    ${constantName} = "${key}"\n`;
     content += `    """${brief}\n\n`;
     content += `    Type: ${pythonType}\n`;
     content += `    Apply Scrubbing: ${apply_scrubbing.key}${apply_scrubbing.reason ? ` - ${apply_scrubbing.reason}` : ''}\n`;
@@ -686,19 +683,6 @@ function writeToPython(parsedAttributes: ParsedAttribute[], outputFilePath: stri
     if (!keyChain) {
       throw new Error(`Attribute key chain for "${key}" does not exist`);
     }
-
-    // Collect attribute names for the literal type
-    attributeNames.push(constantName);
-
-    // Build type members using ATTRIBUTE_NAMES class attributes for TypedDict
-    const typeMember = `    "${key}": ${pythonType}`;
-
-    if (deprecation) {
-      deprecatedAttributesTypeMembers += `${typeMember},\n`;
-    } else {
-      attributesTypeMembers += `${typeMember},\n`;
-    }
-    fullAttributesTypeMembers += `${typeMember},\n`;
 
     // Build metadata dictionary entry using hardcoded string keys
     metadataDict += `    "${key}": AttributeMetadata(\n`;
@@ -812,12 +796,9 @@ function writeToPython(parsedAttributes: ParsedAttribute[], outputFilePath: stri
     'If a key is not present in this dictionary, it means that attribute is not defined in the Sentry Semantic Conventions.\n';
   content += '"""\n\n';
 
-  // Add TypedDict definitions using hardcoded string keys
-  content += 'Attributes = TypedDict("Attributes", {\n';
-  content += fullAttributesTypeMembers;
-  content += '}, total=False)\n';
-  content +=
-    '"""TypedDict representing a collection of attributes, including deprecated and non-deprecated ones."""\n\n';
+  // Add the Attributes type alias
+  content += 'Attributes = Dict[str, AttributeValue]\n';
+  content += '"""A collection of attribute values, keyed by attribute name."""\n';
 
   // Write the generated content to the file
   fs.writeFileSync(outputFilePath, content);
