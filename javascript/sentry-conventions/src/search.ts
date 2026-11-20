@@ -10212,7 +10212,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'http.response_delivery_type',
     type: 'string',
     brief:
-      "The delivery type of the resource, as reported by the browser's PerformanceResourceTiming.deliveryType property. An empty string means the resource was not delivered from a cache or by navigational prefetch.",
+      "The delivery type of the resource, as reported by the browser's PerformanceResourceTiming.deliveryType property.",
     deprecationChain: ['http.response_delivery_type'],
   },
   'http.response_status_code': {

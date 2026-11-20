@@ -6471,12 +6471,16 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     # Path: model/attributes/http/http__response_delivery_type.json
     HTTP_RESPONSE_DELIVERY_TYPE = "http.response_delivery_type"
-    """The delivery type of the resource, as reported by the browser's PerformanceResourceTiming.deliveryType property. An empty string means the resource was not delivered from a cache or by navigational prefetch.
+    """The delivery type of the resource, as reported by the browser's PerformanceResourceTiming.deliveryType property.
 
     Type: str
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
+    Well-defined Values:
+    - `cache` - The resource was retrieved from a cache.
+    - `navigational-prefetch` - The resource was retrieved from a prefetched response, for example one that the Speculation Rules API stored.
+    - `` - The resource was not retrieved from a cache or by navigational prefetch.
     Example: "cache"
     Example: "navigational-prefetch"
     Example: ""
@@ -22766,7 +22770,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "http.response_delivery_type": AttributeMetadata(
-        brief="The delivery type of the resource, as reported by the browser's PerformanceResourceTiming.deliveryType property. An empty string means the resource was not delivered from a cache or by navigational prefetch.",
+        brief="The delivery type of the resource, as reported by the browser's PerformanceResourceTiming.deliveryType property.",
         type=AttributeType.STRING,
         keys=("http.response_delivery_type",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
@@ -22781,6 +22785,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
                 description="Added http.response_delivery_type attribute",
             ),
         ],
+        additional_context=["Browsers may add more values later."],
     ),
     "http.response_transfer_size": AttributeMetadata(
         brief="The transfer size of the response (in bytes).",
