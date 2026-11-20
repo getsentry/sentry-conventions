@@ -11336,7 +11336,7 @@ export type HTTP_RESPONSE_CONTENT_LENGTH_UNCOMPRESSED_TYPE = number;
 // Path: model/attributes/http/http__response_delivery_type.json
 
 /**
- * The delivery type of the resource, as reported by the browser's PerformanceResourceTiming.deliveryType property. An empty string means the resource was not delivered from a cache or by navigational prefetch. `http.response_delivery_type`
+ * The delivery type of the resource, as reported by the browser's PerformanceResourceTiming.deliveryType property. `http.response_delivery_type`
  *
  * Attribute Value Type: `string` {@link HTTP_RESPONSE_DELIVERY_TYPE_TYPE}
  *
@@ -11344,6 +11344,11 @@ export type HTTP_RESPONSE_CONTENT_LENGTH_UNCOMPRESSED_TYPE = number;
  *
  * Attribute defined in OTEL: No
  * Visibility: public
+ *
+ * Well-defined Values:
+ * - `cache` - The resource was retrieved from a cache.
+ * - `navigational-prefetch` - The resource was retrieved from a prefetched response, for example one that the Speculation Rules API stored.
+ * - `` - The resource was not retrieved from a cache or by navigational prefetch.
  *
  * @example "cache"
  * @example "navigational-prefetch"
@@ -33111,7 +33116,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   'http.response_delivery_type': {
     brief:
-      "The delivery type of the resource, as reported by the browser's PerformanceResourceTiming.deliveryType property. An empty string means the resource was not delivered from a cache or by navigational prefetch.",
+      "The delivery type of the resource, as reported by the browser's PerformanceResourceTiming.deliveryType property.",
     type: 'string',
     keys: ['http.response_delivery_type'],
     applyScrubbing: {
@@ -33122,6 +33127,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'cache',
     examples: ['cache', 'navigational-prefetch', ''],
     changelog: [{ version: 'next', prs: [825], description: 'Added http.response_delivery_type attribute' }],
+    additionalContext: ['Browsers may add more values later.'],
   },
   'http.response.header.content-length': {
     brief: 'The size of the message body sent to the recipient (in bytes)',
