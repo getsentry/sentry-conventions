@@ -18295,7 +18295,7 @@ export type SENTRY_IS_LOCALHOST_TYPE = boolean;
 // Path: model/attributes/sentry/sentry__is_remote.json
 
 /**
- * Indicates whether a span's parent is remote. `sentry.is_remote`
+ * Indicates whether a span's parent is remote, i.e. created in another process, typically another service. See OpenTelemetry's [`SpanContext.IsRemote`](https://opentelemetry.io/docs/specs/otel/trace/api/#isremote). `sentry.is_remote`
  *
  * Attribute Value Type: `boolean` {@link SENTRY_IS_REMOTE_TYPE}
  *
@@ -38574,7 +38574,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     ],
   },
   'sentry.is_remote': {
-    brief: "Indicates whether a span's parent is remote.",
+    brief:
+      "Indicates whether a span's parent is remote, i.e. created in another process, typically another service. See OpenTelemetry's [`SpanContext.IsRemote`](https://opentelemetry.io/docs/specs/otel/trace/api/#isremote).",
     type: 'boolean',
     keys: ['sentry.is_remote'],
     applyScrubbing: {
@@ -38583,7 +38584,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: true,
-    changelog: [{ version: '0.3.1', prs: [190] }],
+    changelog: [
+      { version: 'next', description: 'Clarified what a remote parent means' },
+      { version: '0.3.1', prs: [190] },
+    ],
   },
   'sentry.kind': {
     brief:
