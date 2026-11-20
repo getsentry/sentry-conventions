@@ -10207,7 +10207,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     SENTRY_CLIENT_SAMPLE_RATE: Literal["sentry.client_sample_rate"] = (
         "sentry.client_sample_rate"
     )
-    """Rate at which a span was sampled in the SDK.
+    """Rate at which a telemetry item (e.g. a span, or metric) was sampled in the SDK.
 
     Type: float
     Apply Scrubbing: never
@@ -28661,7 +28661,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         search_alias=SearchAlias(name="span.category"),
     ),
     "sentry.client_sample_rate": AttributeMetadata(
-        brief="Rate at which a span was sampled in the SDK.",
+        brief="Rate at which a telemetry item (e.g. a span, or metric) was sampled in the SDK.",
         type=AttributeType.DOUBLE,
         keys=(
             "sentry.client_sample_rate",
@@ -28672,6 +28672,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example=0.5,
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[814],
+                description="Generalized the brief to apply to any telemetry type, not just spans",
+            ),
             ChangelogEntry(version="0.1.0", prs=[102]),
         ],
         search_alias=SearchAlias(name="client_sample_rate"),

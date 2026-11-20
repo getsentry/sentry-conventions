@@ -8140,7 +8140,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
   client_sample_rate: {
     canonicalName: 'sentry.client_sample_rate',
     type: 'double',
-    brief: 'Rate at which a span was sampled in the SDK.',
+    brief: 'Rate at which a telemetry item (e.g. a span, or metric) was sampled in the SDK.',
     deprecationChain: ['client_sample_rate', 'sentry.client_sample_rate'],
   },
   'cloud.account.id': {
