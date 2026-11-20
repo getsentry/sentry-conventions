@@ -22,7 +22,7 @@
 The package exports:
 
 - `attributes.ATTRIBUTE_NAMES`: contains constants for all attribute names and their types, as defined in the Sentry semantic conventions
-- `attributes.Attributes`: represents a bag of typed attributes
+- `attributes.Attributes`: represents a collection of attribute values, keyed by attribute name
 - `attributes.ATTRIBUTE_METADATA`: provides metadata about attributes, such as their type, scrubbing definition, deprecation info, and lookup keys
 
 ## Attribute Key Chains
