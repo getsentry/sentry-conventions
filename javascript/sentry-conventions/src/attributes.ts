@@ -11333,10 +11333,10 @@ export const HTTP_RESPONSE_CONTENT_LENGTH_UNCOMPRESSED = 'http.response_content_
  */
 export type HTTP_RESPONSE_CONTENT_LENGTH_UNCOMPRESSED_TYPE = number;
 
-// Path: model/attributes/http/http__response_delivery_type.json
+// Path: model/attributes/http/http__response__delivery_type.json
 
 /**
- * The delivery type of the resource, as reported by the browser's PerformanceResourceTiming.deliveryType property. `http.response_delivery_type`
+ * The delivery type of the resource, as reported by the browser's PerformanceResourceTiming.deliveryType property. `http.response.delivery_type`
  *
  * Attribute Value Type: `string` {@link HTTP_RESPONSE_DELIVERY_TYPE_TYPE}
  *
@@ -11350,16 +11350,44 @@ export type HTTP_RESPONSE_CONTENT_LENGTH_UNCOMPRESSED_TYPE = number;
  * - `navigational-prefetch` - The resource was retrieved from a prefetched response, for example one that the Speculation Rules API stored.
  * - `` - The resource was not retrieved from a cache or by navigational prefetch.
  *
+ * Aliases: {@link _HTTP_RESPONSE_DELIVERY_TYPE} `http.response_delivery_type`
+ *
  * @example "cache"
  * @example "navigational-prefetch"
  * @example ""
  */
-export const HTTP_RESPONSE_DELIVERY_TYPE = 'http.response_delivery_type';
+export const HTTP_RESPONSE_DELIVERY_TYPE = 'http.response.delivery_type';
 
 /**
- * Type for {@link HTTP_RESPONSE_DELIVERY_TYPE} http.response_delivery_type
+ * Type for {@link HTTP_RESPONSE_DELIVERY_TYPE} http.response.delivery_type
  */
 export type HTTP_RESPONSE_DELIVERY_TYPE_TYPE = string;
+
+// Path: model/attributes/http/http__response_delivery_type.json
+
+/**
+ * The delivery type of the resource, as reported by the browser's PerformanceResourceTiming.deliveryType property. `http.response_delivery_type`
+ *
+ * Attribute Value Type: `string` {@link _HTTP_RESPONSE_DELIVERY_TYPE_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link HTTP_RESPONSE_DELIVERY_TYPE} `http.response.delivery_type`
+ *
+ * @deprecated Use {@link HTTP_RESPONSE_DELIVERY_TYPE} (http.response.delivery_type) instead - Use http.response.delivery_type, which follows the http.response.* namespace.
+ * @example "cache"
+ * @example "navigational-prefetch"
+ * @example ""
+ */
+export const _HTTP_RESPONSE_DELIVERY_TYPE = 'http.response_delivery_type';
+
+/**
+ * Type for {@link _HTTP_RESPONSE_DELIVERY_TYPE} http.response_delivery_type
+ */
+export type _HTTP_RESPONSE_DELIVERY_TYPE_TYPE = string;
 
 // Path: model/attributes/http/http__response__header__content-length.json
 
@@ -23116,6 +23144,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'http.response.body.size': 'integer',
   'http.response_content_length': 'integer',
   'http.response_content_length_uncompressed': 'integer',
+  'http.response.delivery_type': 'string',
   'http.response_delivery_type': 'string',
   'http.response.header.content-length': 'string',
   'http.response.header.<key>': 'string[]',
@@ -24116,6 +24145,7 @@ export type AttributeName =
   | typeof HTTP_RESPONSE_CONTENT_LENGTH
   | typeof HTTP_RESPONSE_CONTENT_LENGTH_UNCOMPRESSED
   | typeof HTTP_RESPONSE_DELIVERY_TYPE
+  | typeof _HTTP_RESPONSE_DELIVERY_TYPE
   | typeof HTTP_RESPONSE_HEADER_CONTENT_LENGTH
   | typeof HTTP_RESPONSE_HEADER_KEY
   | typeof HTTP_RESPONSE_SIZE
@@ -33114,11 +33144,11 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       },
     ],
   },
-  'http.response_delivery_type': {
+  'http.response.delivery_type': {
     brief:
       "The delivery type of the resource, as reported by the browser's PerformanceResourceTiming.deliveryType property.",
     type: 'string',
-    keys: ['http.response_delivery_type'],
+    keys: ['http.response.delivery_type', 'http.response_delivery_type'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -33126,8 +33156,35 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'cache',
     examples: ['cache', 'navigational-prefetch', ''],
-    changelog: [{ version: 'next', prs: [825], description: 'Added http.response_delivery_type attribute' }],
+    aliases: ['http.response_delivery_type'],
+    changelog: [{ version: 'next', prs: [825], description: 'Added http.response.delivery_type attribute' }],
     additionalContext: ['Browsers may add more values later.'],
+  },
+  'http.response_delivery_type': {
+    brief:
+      "The delivery type of the resource, as reported by the browser's PerformanceResourceTiming.deliveryType property.",
+    type: 'string',
+    keys: ['http.response.delivery_type', 'http.response_delivery_type'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'cache',
+    examples: ['cache', 'navigational-prefetch', ''],
+    deprecation: {
+      replacement: 'http.response.delivery_type',
+      reason: 'Use http.response.delivery_type, which follows the http.response.* namespace.',
+      status: 'backfill',
+    },
+    aliases: ['http.response.delivery_type'],
+    changelog: [
+      {
+        version: 'next',
+        prs: [825],
+        description: 'Added http.response_delivery_type attribute, deprecated in favor of http.response.delivery_type',
+      },
+    ],
   },
   'http.response.header.content-length': {
     brief: 'The size of the message body sent to the recipient (in bytes)',
@@ -42176,6 +42233,7 @@ export type Attributes = {
   [HTTP_RESPONSE_CONTENT_LENGTH]?: HTTP_RESPONSE_CONTENT_LENGTH_TYPE;
   [HTTP_RESPONSE_CONTENT_LENGTH_UNCOMPRESSED]?: HTTP_RESPONSE_CONTENT_LENGTH_UNCOMPRESSED_TYPE;
   [HTTP_RESPONSE_DELIVERY_TYPE]?: HTTP_RESPONSE_DELIVERY_TYPE_TYPE;
+  [_HTTP_RESPONSE_DELIVERY_TYPE]?: _HTTP_RESPONSE_DELIVERY_TYPE_TYPE;
   [HTTP_RESPONSE_HEADER_CONTENT_LENGTH]?: HTTP_RESPONSE_HEADER_CONTENT_LENGTH_TYPE;
   [HTTP_RESPONSE_HEADER_KEY]?: HTTP_RESPONSE_HEADER_KEY_TYPE;
   [HTTP_RESPONSE_SIZE]?: HTTP_RESPONSE_SIZE_TYPE;

@@ -5,29 +5,20 @@
   "apply_scrubbing": {
     "key": "manual"
   },
-  "additional_context": ["Browsers may add more values later."],
   "is_in_otel": false,
   "visibility": "public",
   "examples": ["cache", "navigational-prefetch", ""],
-  "enum_values": [
-    {
-      "value": "cache",
-      "brief": "The resource was retrieved from a cache."
-    },
-    {
-      "value": "navigational-prefetch",
-      "brief": "The resource was retrieved from a prefetched response, for example one that the Speculation Rules API stored."
-    },
-    {
-      "value": "",
-      "brief": "The resource was not retrieved from a cache or by navigational prefetch."
-    }
-  ],
+  "alias": ["http.response.delivery_type"],
+  "deprecation": {
+    "_status": "backfill",
+    "replacement": "http.response.delivery_type",
+    "reason": "Use http.response.delivery_type, which follows the http.response.* namespace."
+  },
   "changelog": [
     {
       "version": "next",
       "prs": [825],
-      "description": "Added http.response_delivery_type attribute"
+      "description": "Added http.response_delivery_type attribute, deprecated in favor of http.response.delivery_type"
     }
   ]
 }

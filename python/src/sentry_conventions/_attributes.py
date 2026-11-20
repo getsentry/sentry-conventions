@@ -159,6 +159,7 @@ class _AttributeNamesMeta(type):
         "_HTTP_REQUEST_METHOD",
         "HTTP_RESPONSE_CONTENT_LENGTH",
         "HTTP_RESPONSE_CONTENT_LENGTH_UNCOMPRESSED",
+        "_HTTP_RESPONSE_DELIVERY_TYPE",
         "HTTP_RESPONSE_TRANSFER_SIZE",
         "HTTP_SCHEME",
         "HTTP_SERVER_NAME",
@@ -6745,6 +6746,26 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: 123
     """
 
+    # Path: model/attributes/http/http__response__delivery_type.json
+    HTTP_RESPONSE_DELIVERY_TYPE: Literal["http.response.delivery_type"] = (
+        "http.response.delivery_type"
+    )
+    """The delivery type of the resource, as reported by the browser's PerformanceResourceTiming.deliveryType property.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Well-defined Values:
+    - `cache` - The resource was retrieved from a cache.
+    - `navigational-prefetch` - The resource was retrieved from a prefetched response, for example one that the Speculation Rules API stored.
+    - `` - The resource was not retrieved from a cache or by navigational prefetch.
+    Aliases: http.response_delivery_type
+    Example: "cache"
+    Example: "navigational-prefetch"
+    Example: ""
+    """
+
     # Path: model/attributes/http/http__response__header__[key].json
     HTTP_RESPONSE_HEADER_KEY: Literal["http.response.header.<key>"] = (
         "http.response.header.<key>"
@@ -6845,7 +6866,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/http/http__response_delivery_type.json
-    HTTP_RESPONSE_DELIVERY_TYPE: Literal["http.response_delivery_type"] = (
+    _HTTP_RESPONSE_DELIVERY_TYPE: Literal["http.response_delivery_type"] = (
         "http.response_delivery_type"
     )
     """The delivery type of the resource, as reported by the browser's PerformanceResourceTiming.deliveryType property.
@@ -6854,10 +6875,8 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
-    Well-defined Values:
-    - `cache` - The resource was retrieved from a cache.
-    - `navigational-prefetch` - The resource was retrieved from a prefetched response, for example one that the Speculation Rules API stored.
-    - `` - The resource was not retrieved from a cache or by navigational prefetch.
+    Aliases: http.response.delivery_type
+    DEPRECATED: Use http.response.delivery_type instead - Use http.response.delivery_type, which follows the http.response.* namespace.
     Example: "cache"
     Example: "navigational-prefetch"
     Example: ""
@@ -23165,6 +23184,28 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         search_alias=SearchAlias(name="http.response.body.size", type="byte"),
     ),
+    "http.response.delivery_type": AttributeMetadata(
+        brief="The delivery type of the resource, as reported by the browser's PerformanceResourceTiming.deliveryType property.",
+        type=AttributeType.STRING,
+        keys=(
+            "http.response.delivery_type",
+            "http.response_delivery_type",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="cache",
+        examples=["cache", "navigational-prefetch", ""],
+        aliases=["http.response_delivery_type"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[825],
+                description="Added http.response.delivery_type attribute",
+            ),
+        ],
+        additional_context=["Browsers may add more values later."],
+    ),
     "http.response.header.<key>": AttributeMetadata(
         brief="HTTP response headers, <key> being the lower-cased, but otherwise unchanged HTTP Header name, the value being the header values.",
         type=AttributeType.STRING_ARRAY,
@@ -23318,20 +23359,28 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.response_delivery_type": AttributeMetadata(
         brief="The delivery type of the resource, as reported by the browser's PerformanceResourceTiming.deliveryType property.",
         type=AttributeType.STRING,
-        keys=("http.response_delivery_type",),
+        keys=(
+            "http.response.delivery_type",
+            "http.response_delivery_type",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="cache",
         examples=["cache", "navigational-prefetch", ""],
+        deprecation=DeprecationInfo(
+            replacement="http.response.delivery_type",
+            reason="Use http.response.delivery_type, which follows the http.response.* namespace.",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["http.response.delivery_type"],
         changelog=[
             ChangelogEntry(
                 version="next",
                 prs=[825],
-                description="Added http.response_delivery_type attribute",
+                description="Added http.response_delivery_type attribute, deprecated in favor of http.response.delivery_type",
             ),
         ],
-        additional_context=["Browsers may add more values later."],
     ),
     "http.response_transfer_size": AttributeMetadata(
         brief="The transfer size of the response (in bytes).",
@@ -33369,6 +33418,7 @@ Attributes = TypedDict(
         "http.request_method": str,
         "http.response.body.decoded_size": int,
         "http.response.body.size": int,
+        "http.response.delivery_type": str,
         "http.response.header.<key>": List[str],
         "http.response.header.content-length": str,
         "http.response.size": int,
