@@ -1514,17 +1514,25 @@ async function generateSchemaTypes(
       JSON.parse(fs.readFileSync(openapiFile, 'utf-8')) as { components?: { schemas?: Record<string, unknown> } }
     ).components?.schemas;
     if (!schemas) continue;
+    const sharedRefs = collectSharedRefs(fs.readFileSync(openapiFile, 'utf-8'));
 
     const jsonSchema = { definitions: schemas, components: { schemas } } as Parameters<typeof compile>[0];
     const tsSource = stripRootReferenceComments(
       await compile(jsonSchema, '', {
         bannerComment: TS_BANNER_COMMENT,
         cwd: sharedSchemasDir,
+        declareExternallyReferenced: false,
         unreachableDefinitions: true,
         unknownAny: true,
       }),
     );
-    fs.writeFileSync(path.join(jsOutputDir, `${modulePath}.ts`), tsSource);
+    const tsImports = [...sharedRefs].map(
+      ([sharedModule, names]) => `import type { ${[...names].sort().join(', ')} } from './${sharedModule}';\n`,
+    );
+    const tsHeader = tsImports.length > 0 ? `${tsImports.join('')}\n` : '';
+    fs.writeFileSync(path.join(jsOutputDir, `${modulePath}.ts`), tsHeader + tsSource);
+
+    const refMappings = [...sharedRefs.keys()].map((sharedModule) => `${sharedModule}.openapi.json=.${sharedModule}`);
 
     execFileSync(
       'uv',
@@ -1543,6 +1551,7 @@ async function generateSchemaTypes(
         openapiFile,
         '--output',
         path.join(pythonOutputDir, `${modulePath}.py`),
+        ...(refMappings.length > 0 ? ['--external-ref-mapping', ...refMappings] : []),
       ],
       { cwd: path.join(repositoryRoot, 'python'), stdio: 'pipe' },
     );
