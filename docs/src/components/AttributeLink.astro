@@ -10,4 +10,4 @@ const { name } = Astro.props;
 const href = attributeUrl(name, import.meta.env.BASE_URL);
 ---
 
-<a href={href} class="text-accent hover:text-accent-hover"><code class="text-xs"><DottedName name={name} /></code></a>
+<a href={href} class="text-accent hover:text-accent-hover"><code class="inline-block text-xs"><DottedName name={name} /></code></a>
