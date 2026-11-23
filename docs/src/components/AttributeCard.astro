@@ -96,8 +96,8 @@ const examples = attribute.examples ?? (attribute.example !== undefined ? [attri
         <ul class="flex flex-col gap-1 m-0 list-none p-0">
           {attribute.enum_values.map(({ value, brief }) => (
             <li class="flex items-baseline gap-2">
-              <code class="text-xs">{value}</code>
-              {brief && <span class="text-xs text-text-secondary" set:html={renderInlineMarkdown(brief)} />}
+              <code class="text-xs shrink-0 max-w-full">{value}</code>
+              {brief && <span class="text-xs text-text-secondary min-w-0" set:html={renderInlineMarkdown(brief)} />}
             </li>
           ))}
         </ul>
