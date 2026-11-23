@@ -10,7 +10,6 @@ from ._metadata_types import (
     ApplyScrubbingInfo,
     AttributeMetadata,
     AttributeType,
-    AttributeValue,
     ChangelogEntry,
     DeprecationInfo,
     DeprecationStatus,
@@ -32403,6 +32402,3 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
 A dictionary that maps each attribute's name to its metadata.
 If a key is not present in this dictionary, it means that attribute is not defined in the Sentry Semantic Conventions.
 """
-
-Attributes = Dict[str, AttributeValue]
-"""A collection of attribute values, keyed by attribute name."""

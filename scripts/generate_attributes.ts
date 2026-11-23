@@ -576,7 +576,6 @@ function writeToPython(parsedAttributes: ParsedAttribute[], outputFilePath: stri
   content += '    ApplyScrubbingInfo,\n';
   content += '    AttributeMetadata,\n';
   content += '    AttributeType,\n';
-  content += '    AttributeValue,\n';
   content += '    ChangelogEntry,\n';
   content += '    DeprecationInfo,\n';
   content += '    DeprecationStatus,\n';
@@ -795,10 +794,6 @@ function writeToPython(parsedAttributes: ParsedAttribute[], outputFilePath: stri
   content +=
     'If a key is not present in this dictionary, it means that attribute is not defined in the Sentry Semantic Conventions.\n';
   content += '"""\n\n';
-
-  // Add the Attributes type alias
-  content += 'Attributes = Dict[str, AttributeValue]\n';
-  content += '"""A collection of attribute values, keyed by attribute name."""\n';
 
   // Write the generated content to the file
   fs.writeFileSync(outputFilePath, content);

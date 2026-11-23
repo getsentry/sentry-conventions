@@ -11,10 +11,6 @@ AttributeValue = Union[
     List[bool],
     List[float],
     List[int],
-    Tuple[str, ...],
-    Tuple[bool, ...],
-    Tuple[float, ...],
-    Tuple[int, ...],
 ]
 
 
