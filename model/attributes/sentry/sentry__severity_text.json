@@ -7,11 +7,7 @@
   },
   "is_in_otel": false,
   "visibility": "public",
-  "examples": [
-    "info",
-    "warn",
-    "error"
-  ],
+  "examples": ["info", "warn", "error"],
   "enum_values": [
     { "value": "trace" },
     { "value": "debug" },
@@ -27,9 +23,7 @@
   "changelog": [
     {
       "version": "next",
-      "prs": [
-        831
-      ],
+      "prs": [831],
       "description": "Added sentry.severity_text attribute"
     }
   ]

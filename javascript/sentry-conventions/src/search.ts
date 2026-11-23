@@ -3090,6 +3090,20 @@ export const SEARCH_LINK__TYPE = 'link.type';
 export const SEARCH_LITESTAR__MIDDLEWARE_NAME = 'litestar.middleware_name';
 
 /**
+ * Search name for {@link attributes.SENTRY_SEVERITY_NUMBER}. `log.severity_number`
+ *
+ * @deprecated Use {@link SEARCH_SEVERITY_NUMBER} (`severity_number`) instead
+ */
+export const SEARCH_LOG__SEVERITY_NUMBER = 'log.severity_number';
+
+/**
+ * Search name for {@link attributes.SENTRY_SEVERITY_TEXT}. `log.severity_text`
+ *
+ * @deprecated Use {@link SEARCH_SEVERITY} (`severity`) instead
+ */
+export const SEARCH_LOG__SEVERITY_TEXT = 'log.severity_text';
+
+/**
  * Search name for {@link attributes.LOGGER_NAME}. `logger.name`
  */
 export const SEARCH_LOGGER__NAME = 'logger.name';
@@ -4924,6 +4938,20 @@ export const SEARCH_SENTRY__SEGMENT_ID = 'sentry.segment_id';
 export const SEARCH_SENTRY__SERVER_SAMPLE_RATE = 'sentry.server_sample_rate';
 
 /**
+ * Search name for {@link attributes.SENTRY_SEVERITY_NUMBER}. `sentry.severity_number`
+ *
+ * @deprecated Use {@link SEARCH_SEVERITY_NUMBER} (`severity_number`) instead
+ */
+export const SEARCH_SENTRY__SEVERITY_NUMBER = 'sentry.severity_number';
+
+/**
+ * Search name for {@link attributes.SENTRY_SEVERITY_TEXT}. `sentry.severity_text`
+ *
+ * @deprecated Use {@link SEARCH_SEVERITY} (`severity`) instead
+ */
+export const SEARCH_SENTRY__SEVERITY_TEXT = 'sentry.severity_text';
+
+/**
  * Search name for {@link attributes.SENTRY_SOURCE}. `sentry.source`
  *
  * @deprecated
@@ -5085,6 +5113,23 @@ export const SEARCH_SERVICE__VERSION = 'service.version';
  * Search name for {@link attributes.SESSION_ID}. `session.id`
  */
 export const SEARCH_SESSION__ID = 'session.id';
+
+/**
+ * Search name for {@link attributes.SENTRY_SEVERITY_TEXT}. `severity`
+ */
+export const SEARCH_SEVERITY = 'severity';
+
+/**
+ * Search name for {@link attributes.SENTRY_SEVERITY_NUMBER}. `severity_number`
+ */
+export const SEARCH_SEVERITY_NUMBER = 'severity_number';
+
+/**
+ * Search name for {@link attributes.SENTRY_SEVERITY_TEXT}. `severity_text`
+ *
+ * @deprecated Use {@link SEARCH_SEVERITY} (`severity`) instead
+ */
+export const SEARCH_SEVERITY_TEXT = 'severity_text';
 
 /**
  * Search name for {@link attributes.SENTRY_ACTION}. `span.action`
@@ -6329,6 +6374,8 @@ export type AttributeSearchName =
   | typeof SEARCH_LCP__URL
   | typeof SEARCH_LINK__TYPE
   | typeof SEARCH_LITESTAR__MIDDLEWARE_NAME
+  | typeof SEARCH_LOG__SEVERITY_NUMBER
+  | typeof SEARCH_LOG__SEVERITY_TEXT
   | typeof SEARCH_LOGGER__NAME
   | typeof SEARCH_MCP__AUTH__CLIENT__NAME
   | typeof SEARCH_MCP__CANCELLED__REASON
@@ -6648,6 +6695,8 @@ export type AttributeSearchName =
   | typeof SEARCH_SENTRY__SEGMENT__NAME__SOURCE
   | typeof SEARCH_SENTRY__SEGMENT_ID
   | typeof SEARCH_SENTRY__SERVER_SAMPLE_RATE
+  | typeof SEARCH_SENTRY__SEVERITY_NUMBER
+  | typeof SEARCH_SENTRY__SEVERITY_TEXT
   | typeof SEARCH_SENTRY__SOURCE
   | typeof SEARCH_SENTRY__SPAN__SOURCE
   | typeof SEARCH_SENTRY__STATUS
@@ -6673,6 +6722,9 @@ export type AttributeSearchName =
   | typeof SEARCH_SERVICE__NAME
   | typeof SEARCH_SERVICE__VERSION
   | typeof SEARCH_SESSION__ID
+  | typeof SEARCH_SEVERITY
+  | typeof SEARCH_SEVERITY_NUMBER
+  | typeof SEARCH_SEVERITY_TEXT
   | typeof SEARCH_SPAN__ACTION
   | typeof SEARCH_SPAN__CATEGORY
   | typeof SEARCH_SPAN__DOMAIN
@@ -12516,6 +12568,18 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'string',
     brief: 'A unique id identifying the active session at the time of setting this attribute',
     deprecationChain: ['session.id'],
+  },
+  severity: {
+    canonicalName: 'sentry.severity_text',
+    type: 'string',
+    brief: 'The severity level of a log, as text.',
+    deprecationChain: ['severity', 'sentry.severity_text', 'severity_text', 'log.severity_text'],
+  },
+  severity_number: {
+    canonicalName: 'sentry.severity_number',
+    type: 'integer',
+    brief: 'The severity of a log, as an OpenTelemetry severity number from 1 to 24. Higher numbers are more severe.',
+    deprecationChain: ['severity_number', 'sentry.severity_number', 'log.severity_number'],
   },
   'span.action': {
     canonicalName: 'sentry.action',
