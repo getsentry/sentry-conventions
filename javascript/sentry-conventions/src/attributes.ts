@@ -3153,7 +3153,7 @@ export type _AWS_REQUEST_ID_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link URL_FULL} `url.full`, {@link HTTP_URL} `http.url`, {@link URL} `url`, {@link MESSAGING_URL} `messaging.url`
+ * Aliases: {@link URL_FULL} `url.full`, {@link HTTP_URL} `http.url`, {@link URL} `url`, {@link MESSAGING_URL} `messaging.url`, {@link SENTRY_REQUEST_URL} `sentry.request.url`
  *
  * @deprecated Use {@link URL_FULL} (url.full) instead - This attribute is being deprecated in favor of url.full, which is the OTel-aligned replacement.
  * @example "https://sqs.us-east-1.amazonaws.com/123456789/my-queue"
@@ -4599,6 +4599,48 @@ export const CLIENT_ADDRESS = 'client.address';
  * Type for {@link CLIENT_ADDRESS} client.address
  */
 export type CLIENT_ADDRESS_TYPE = string;
+
+// Path: model/attributes/client/client__as__number.json
+
+/**
+ * Autonomous system number (ASN) associated with the client IP address. `client.as.number`
+ *
+ * Attribute Value Type: `number` {@link CLIENT_AS_NUMBER_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example 64496
+ */
+export const CLIENT_AS_NUMBER = 'client.as.number';
+
+/**
+ * Type for {@link CLIENT_AS_NUMBER} client.as.number
+ */
+export type CLIENT_AS_NUMBER_TYPE = number;
+
+// Path: model/attributes/client/client__as__organization.json
+
+/**
+ * The name of the organization associated with the autonomous system of the client IP address. `client.as.organization`
+ *
+ * Attribute Value Type: `string` {@link CLIENT_AS_ORGANIZATION_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example "Example Networks Inc."
+ */
+export const CLIENT_AS_ORGANIZATION = 'client.as.organization';
+
+/**
+ * Type for {@link CLIENT_AS_ORGANIZATION} client.as.organization
+ */
+export type CLIENT_AS_ORGANIZATION_TYPE = string;
 
 // Path: model/attributes/client/client__port.json
 
@@ -6106,6 +6148,8 @@ export type DEVICE_ARCHS_TYPE = Array<string>;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
+ * Aliases: {@link SENTRY_DEVICE_BATTERY_LEVEL} `sentry.device.battery_level`
+ *
  * @example 100
  */
 export const DEVICE_BATTERY_LEVEL = 'device.battery_level';
@@ -6169,6 +6213,8 @@ export type DEVICE_BOOT_TIME_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
+ * Aliases: {@link SENTRY_DEVICE_BRAND} `sentry.device.brand`
+ *
  * @example "Apple"
  */
 export const DEVICE_BRAND = 'device.brand';
@@ -6189,6 +6235,8 @@ export type DEVICE_BRAND_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * Visibility: public
+ *
+ * Aliases: {@link SENTRY_DEVICE_CHARGING} `sentry.device.charging`
  *
  * @example false
  */
@@ -6231,6 +6279,8 @@ export type DEVICE_CHIPSET_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * Visibility: public
+ *
+ * Aliases: {@link SENTRY_DEVICE_CLASS} `sentry.device.class`
  *
  * @example "medium"
  */
@@ -6340,6 +6390,8 @@ export type DEVICE_EXTERNAL_STORAGE_SIZE_TYPE = number;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
+ * Aliases: {@link SENTRY_DEVICE_FAMILY} `sentry.device.family`
+ *
  * @example "iPhone"
  */
 export const DEVICE_FAMILY = 'device.family';
@@ -6423,6 +6475,8 @@ export type DEVICE_ID_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * Visibility: public
+ *
+ * Aliases: {@link SENTRY_DEVICE_LOCALE} `sentry.device.locale`
  *
  * @example "en-US"
  */
@@ -6552,6 +6606,8 @@ export type DEVICE_MEMORY_SIZE_TYPE = number;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
+ * Aliases: {@link SENTRY_DEVICE_MODEL} `sentry.device.model`
+ *
  * @example "iPhone 15 Pro Max"
  */
 export const DEVICE_MODEL = 'device.model';
@@ -6572,6 +6628,8 @@ export type DEVICE_MODEL_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * Visibility: public
+ *
+ * Aliases: {@link SENTRY_DEVICE_MODEL_ID} `sentry.device.model_id`
  *
  * @example "N861AP"
  */
@@ -6594,6 +6652,8 @@ export type DEVICE_MODEL_ID_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
+ * Aliases: {@link SENTRY_DEVICE_NAME} `sentry.device.name`
+ *
  * @example "localhost"
  */
 export const DEVICE_NAME = 'device.name';
@@ -6615,6 +6675,8 @@ export type DEVICE_NAME_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
+ * Aliases: {@link SENTRY_DEVICE_ONLINE} `sentry.device.online`
+ *
  * @example true
  */
 export const DEVICE_ONLINE = 'device.online';
@@ -6635,6 +6697,8 @@ export type DEVICE_ONLINE_TYPE = boolean;
  *
  * Attribute defined in OTEL: No
  * Visibility: public
+ *
+ * Aliases: {@link SENTRY_DEVICE_ORIENTATION} `sentry.device.orientation`
  *
  * @example "portrait"
  */
@@ -6701,6 +6765,8 @@ export type DEVICE_PROCESSOR_FREQUENCY_TYPE = number;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
+ * Aliases: {@link SENTRY_DEVICE_SCREEN_DENSITY} `sentry.device.screen_density`
+ *
  * @example 2.625
  */
 export const DEVICE_SCREEN_DENSITY = 'device.screen_density';
@@ -6721,6 +6787,8 @@ export type DEVICE_SCREEN_DENSITY_TYPE = number;
  *
  * Attribute defined in OTEL: No
  * Visibility: public
+ *
+ * Aliases: {@link SENTRY_DEVICE_SCREEN_DPI} `sentry.device.screen_dpi`
  *
  * @example 420
  */
@@ -6743,6 +6811,8 @@ export type DEVICE_SCREEN_DPI_TYPE = number;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
+ * Aliases: {@link SENTRY_DEVICE_SCREEN_HEIGHT_PIXELS} `sentry.device.screen_height_pixels`
+ *
  * @example 2400
  */
 export const DEVICE_SCREEN_HEIGHT_PIXELS = 'device.screen_height_pixels';
@@ -6764,6 +6834,8 @@ export type DEVICE_SCREEN_HEIGHT_PIXELS_TYPE = number;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
+ * Aliases: {@link SENTRY_DEVICE_SCREEN_WIDTH_PIXELS} `sentry.device.screen_width_pixels`
+ *
  * @example 1080
  */
 export const DEVICE_SCREEN_WIDTH_PIXELS = 'device.screen_width_pixels';
@@ -6784,6 +6856,8 @@ export type DEVICE_SCREEN_WIDTH_PIXELS_TYPE = number;
  *
  * Attribute defined in OTEL: No
  * Visibility: public
+ *
+ * Aliases: {@link SENTRY_DEVICE_SIMULATOR} `sentry.device.simulator`
  *
  * @example false
  */
@@ -10516,6 +10590,32 @@ export const HEROKU_ROUTER_SERVICE = 'heroku.router.service';
  */
 export type HEROKU_ROUTER_SERVICE_TYPE = number;
 
+// Path: model/attributes/heroku/heroku__source.json
+
+/**
+ * Logplex source of a Heroku log line. `heroku.source`
+ *
+ * Attribute Value Type: `string` {@link HEROKU_SOURCE_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Well-defined Values:
+ * - `app` - Output written by the application's own processes, such as app[web.1].
+ * - `heroku` - Messages from the Heroku platform and router, such as heroku[router].
+ *
+ * @example "app"
+ * @example "heroku"
+ */
+export const HEROKU_SOURCE = 'heroku.source';
+
+/**
+ * Type for {@link HEROKU_SOURCE} heroku.source
+ */
+export type HEROKU_SOURCE_TYPE = string;
+
 // Path: model/attributes/http/http__client_ip.json
 
 /**
@@ -10645,7 +10745,7 @@ export type HTTP_HOST_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link HTTP_REQUEST_METHOD} `http.request.method`, {@link _HTTP_REQUEST_METHOD} `http.request_method`, {@link METHOD} `method`
+ * Aliases: {@link HTTP_REQUEST_METHOD} `http.request.method`, {@link _HTTP_REQUEST_METHOD} `http.request_method`, {@link METHOD} `method`, {@link SENTRY_REQUEST_METHOD} `sentry.request.method`
  *
  * @deprecated Use {@link HTTP_REQUEST_METHOD} (http.request.method) instead
  * @example "GET"
@@ -10960,7 +11060,7 @@ export type HTTP_REQUEST_HEADER_KEY_TYPE = Array<string>;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link METHOD} `method`, {@link HTTP_METHOD} `http.method`, {@link _HTTP_REQUEST_METHOD} `http.request_method`
+ * Aliases: {@link METHOD} `method`, {@link HTTP_METHOD} `http.method`, {@link _HTTP_REQUEST_METHOD} `http.request_method`, {@link SENTRY_REQUEST_METHOD} `sentry.request.method`
  *
  * @example "GET"
  */
@@ -10983,7 +11083,7 @@ export type HTTP_REQUEST_METHOD_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link METHOD} `method`, {@link HTTP_METHOD} `http.method`, {@link HTTP_REQUEST_METHOD} `http.request.method`
+ * Aliases: {@link METHOD} `method`, {@link HTTP_METHOD} `http.method`, {@link HTTP_REQUEST_METHOD} `http.request.method`, {@link SENTRY_REQUEST_METHOD} `sentry.request.method`
  *
  * @deprecated Use {@link HTTP_REQUEST_METHOD} (http.request.method) instead
  * @example "GET"
@@ -11622,7 +11722,7 @@ export type HTTP_TARGET_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link URL_FULL} `url.full`, {@link URL} `url`, {@link AWS_REQUEST_URL} `aws.request.url`, {@link MESSAGING_URL} `messaging.url`
+ * Aliases: {@link URL_FULL} `url.full`, {@link URL} `url`, {@link AWS_REQUEST_URL} `aws.request.url`, {@link MESSAGING_URL} `messaging.url`, {@link SENTRY_REQUEST_URL} `sentry.request.url`
  *
  * @deprecated Use {@link URL_FULL} (url.full) instead
  * @example "https://example.com/test?foo=bar#buzz"
@@ -14591,7 +14691,7 @@ export type MESSAGING_SYSTEM_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link URL_FULL} `url.full`, {@link HTTP_URL} `http.url`, {@link URL} `url`, {@link AWS_REQUEST_URL} `aws.request.url`
+ * Aliases: {@link URL_FULL} `url.full`, {@link HTTP_URL} `http.url`, {@link URL} `url`, {@link AWS_REQUEST_URL} `aws.request.url`, {@link SENTRY_REQUEST_URL} `sentry.request.url`
  *
  * @deprecated Use {@link URL_FULL} (url.full) instead - This attribute is being deprecated in favor of url.full.
  * @example "amqp://guest:guest@localhost:5672"
@@ -14615,7 +14715,7 @@ export type MESSAGING_URL_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link HTTP_REQUEST_METHOD} `http.request.method`, {@link _HTTP_REQUEST_METHOD} `http.request_method`, {@link HTTP_METHOD} `http.method`
+ * Aliases: {@link HTTP_REQUEST_METHOD} `http.request.method`, {@link _HTTP_REQUEST_METHOD} `http.request_method`, {@link HTTP_METHOD} `http.method`, {@link SENTRY_REQUEST_METHOD} `sentry.request.method`
  *
  * @deprecated Use {@link HTTP_REQUEST_METHOD} (http.request.method) instead
  * @example "GET"
@@ -15560,6 +15660,8 @@ export type OS_KERNEL_VERSION_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
+ * Aliases: {@link SENTRY_OS_NAME} `sentry.os.name`
+ *
  * @example "Ubuntu"
  */
 export const OS_NAME = 'os.name';
@@ -15601,6 +15703,8 @@ export type OS_RAW_DESCRIPTION_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * Visibility: public
+ *
+ * Aliases: {@link SENTRY_OS_ROOTED} `sentry.os.rooted`
  *
  * @example true
  */
@@ -16143,7 +16247,7 @@ export type PROCESS_RUNTIME_ENGINE_VERSION_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link RUNTIME_NAME} `runtime.name`
+ * Aliases: {@link RUNTIME_NAME} `runtime.name`, {@link SENTRY_RUNTIME_NAME} `sentry.runtime.name`
  *
  * @example "node"
  */
@@ -17009,7 +17113,7 @@ export type RUNTIME_BUILD_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link PROCESS_RUNTIME_NAME} `process.runtime.name`
+ * Aliases: {@link PROCESS_RUNTIME_NAME} `process.runtime.name`, {@link SENTRY_RUNTIME_NAME} `sentry.runtime.name`
  *
  * @deprecated Use {@link PROCESS_RUNTIME_NAME} (process.runtime.name) instead - Prefer OTel-aligned process.runtime.name
  * @example "node"
@@ -17325,7 +17429,7 @@ export type SENTRY_CATEGORY_TYPE = string;
 // Path: model/attributes/sentry/sentry__client_sample_rate.json
 
 /**
- * Rate at which a span was sampled in the SDK. `sentry.client_sample_rate`
+ * Rate at which a telemetry item (e.g. a span, or metric) was sampled in the SDK. `sentry.client_sample_rate`
  *
  * Attribute Value Type: `number` {@link SENTRY_CLIENT_SAMPLE_RATE_TYPE}
  *
@@ -17363,6 +17467,390 @@ export const SENTRY_DESCRIPTION = 'sentry.description';
  * Type for {@link SENTRY_DESCRIPTION} sentry.description
  */
 export type SENTRY_DESCRIPTION_TYPE = string;
+
+// Path: model/attributes/sentry/sentry__device__battery_level.json
+
+/**
+ * The battery level of the device as a percentage (0-100). `sentry.device.battery_level`
+ *
+ * Attribute Value Type: `number` {@link SENTRY_DEVICE_BATTERY_LEVEL_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link DEVICE_BATTERY_LEVEL} `device.battery_level`
+ *
+ * @deprecated Use {@link DEVICE_BATTERY_LEVEL} (device.battery_level) instead
+ * @example 100
+ */
+export const SENTRY_DEVICE_BATTERY_LEVEL = 'sentry.device.battery_level';
+
+/**
+ * Type for {@link SENTRY_DEVICE_BATTERY_LEVEL} sentry.device.battery_level
+ */
+export type SENTRY_DEVICE_BATTERY_LEVEL_TYPE = number;
+
+// Path: model/attributes/sentry/sentry__device__brand.json
+
+/**
+ * The brand of the device. `sentry.device.brand`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_DEVICE_BRAND_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link DEVICE_BRAND} `device.brand`
+ *
+ * @deprecated Use {@link DEVICE_BRAND} (device.brand) instead
+ * @example "Apple"
+ */
+export const SENTRY_DEVICE_BRAND = 'sentry.device.brand';
+
+/**
+ * Type for {@link SENTRY_DEVICE_BRAND} sentry.device.brand
+ */
+export type SENTRY_DEVICE_BRAND_TYPE = string;
+
+// Path: model/attributes/sentry/sentry__device__charging.json
+
+/**
+ * Whether the device was charging or not. `sentry.device.charging`
+ *
+ * Attribute Value Type: `boolean` {@link SENTRY_DEVICE_CHARGING_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link DEVICE_CHARGING} `device.charging`
+ *
+ * @deprecated Use {@link DEVICE_CHARGING} (device.charging) instead
+ * @example false
+ */
+export const SENTRY_DEVICE_CHARGING = 'sentry.device.charging';
+
+/**
+ * Type for {@link SENTRY_DEVICE_CHARGING} sentry.device.charging
+ */
+export type SENTRY_DEVICE_CHARGING_TYPE = boolean;
+
+// Path: model/attributes/sentry/sentry__device__class.json
+
+/**
+ * The classification of the device. For example, `low`, `medium`, or `high`. Typically inferred by Relay - SDKs generally do not need to set this directly. `sentry.device.class`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_DEVICE_CLASS_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link DEVICE_CLASS} `device.class`
+ *
+ * @deprecated Use {@link DEVICE_CLASS} (device.class) instead
+ * @example "medium"
+ */
+export const SENTRY_DEVICE_CLASS = 'sentry.device.class';
+
+/**
+ * Type for {@link SENTRY_DEVICE_CLASS} sentry.device.class
+ */
+export type SENTRY_DEVICE_CLASS_TYPE = string;
+
+// Path: model/attributes/sentry/sentry__device__family.json
+
+/**
+ * The family of the device. `sentry.device.family`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_DEVICE_FAMILY_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link DEVICE_FAMILY} `device.family`
+ *
+ * @deprecated Use {@link DEVICE_FAMILY} (device.family) instead
+ * @example "iPhone"
+ */
+export const SENTRY_DEVICE_FAMILY = 'sentry.device.family';
+
+/**
+ * Type for {@link SENTRY_DEVICE_FAMILY} sentry.device.family
+ */
+export type SENTRY_DEVICE_FAMILY_TYPE = string;
+
+// Path: model/attributes/sentry/sentry__device__locale.json
+
+/**
+ * The locale of the device. `sentry.device.locale`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_DEVICE_LOCALE_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link DEVICE_LOCALE} `device.locale`
+ *
+ * @deprecated Use {@link DEVICE_LOCALE} (device.locale) instead
+ * @example "en-US"
+ */
+export const SENTRY_DEVICE_LOCALE = 'sentry.device.locale';
+
+/**
+ * Type for {@link SENTRY_DEVICE_LOCALE} sentry.device.locale
+ */
+export type SENTRY_DEVICE_LOCALE_TYPE = string;
+
+// Path: model/attributes/sentry/sentry__device__model.json
+
+/**
+ * The model of the device. `sentry.device.model`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_DEVICE_MODEL_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link DEVICE_MODEL} `device.model`
+ *
+ * @deprecated Use {@link DEVICE_MODEL} (device.model) instead
+ * @example "iPhone 15 Pro Max"
+ */
+export const SENTRY_DEVICE_MODEL = 'sentry.device.model';
+
+/**
+ * Type for {@link SENTRY_DEVICE_MODEL} sentry.device.model
+ */
+export type SENTRY_DEVICE_MODEL_TYPE = string;
+
+// Path: model/attributes/sentry/sentry__device__model_id.json
+
+/**
+ * An internal hardware revision to identify the device exactly. `sentry.device.model_id`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_DEVICE_MODEL_ID_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link DEVICE_MODEL_ID} `device.model_id`
+ *
+ * @deprecated Use {@link DEVICE_MODEL_ID} (device.model_id) instead
+ * @example "N861AP"
+ */
+export const SENTRY_DEVICE_MODEL_ID = 'sentry.device.model_id';
+
+/**
+ * Type for {@link SENTRY_DEVICE_MODEL_ID} sentry.device.model_id
+ */
+export type SENTRY_DEVICE_MODEL_ID_TYPE = string;
+
+// Path: model/attributes/sentry/sentry__device__name.json
+
+/**
+ * The user-assigned name of the mobile device. `sentry.device.name`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_DEVICE_NAME_TYPE}
+ *
+ * Apply Scrubbing: auto
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link DEVICE_NAME} `device.name`
+ *
+ * @deprecated Use {@link DEVICE_NAME} (device.name) instead
+ * @example "localhost"
+ */
+export const SENTRY_DEVICE_NAME = 'sentry.device.name';
+
+/**
+ * Type for {@link SENTRY_DEVICE_NAME} sentry.device.name
+ */
+export type SENTRY_DEVICE_NAME_TYPE = string;
+
+// Path: model/attributes/sentry/sentry__device__online.json
+
+/**
+ * Whether the device was online or not. `sentry.device.online`
+ *
+ * Attribute Value Type: `boolean` {@link SENTRY_DEVICE_ONLINE_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link DEVICE_ONLINE} `device.online`
+ *
+ * @deprecated Use {@link DEVICE_ONLINE} (device.online) instead
+ * @example true
+ */
+export const SENTRY_DEVICE_ONLINE = 'sentry.device.online';
+
+/**
+ * Type for {@link SENTRY_DEVICE_ONLINE} sentry.device.online
+ */
+export type SENTRY_DEVICE_ONLINE_TYPE = boolean;
+
+// Path: model/attributes/sentry/sentry__device__orientation.json
+
+/**
+ * The orientation of the device, either "portrait" or "landscape". `sentry.device.orientation`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_DEVICE_ORIENTATION_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link DEVICE_ORIENTATION} `device.orientation`
+ *
+ * @deprecated Use {@link DEVICE_ORIENTATION} (device.orientation) instead
+ * @example "portrait"
+ */
+export const SENTRY_DEVICE_ORIENTATION = 'sentry.device.orientation';
+
+/**
+ * Type for {@link SENTRY_DEVICE_ORIENTATION} sentry.device.orientation
+ */
+export type SENTRY_DEVICE_ORIENTATION_TYPE = string;
+
+// Path: model/attributes/sentry/sentry__device__screen_density.json
+
+/**
+ * The screen density of the device. `sentry.device.screen_density`
+ *
+ * Attribute Value Type: `number` {@link SENTRY_DEVICE_SCREEN_DENSITY_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link DEVICE_SCREEN_DENSITY} `device.screen_density`
+ *
+ * @deprecated Use {@link DEVICE_SCREEN_DENSITY} (device.screen_density) instead
+ * @example 2.625
+ */
+export const SENTRY_DEVICE_SCREEN_DENSITY = 'sentry.device.screen_density';
+
+/**
+ * Type for {@link SENTRY_DEVICE_SCREEN_DENSITY} sentry.device.screen_density
+ */
+export type SENTRY_DEVICE_SCREEN_DENSITY_TYPE = number;
+
+// Path: model/attributes/sentry/sentry__device__screen_dpi.json
+
+/**
+ * The screen density in dots-per-inch (DPI) of the device. `sentry.device.screen_dpi`
+ *
+ * Attribute Value Type: `number` {@link SENTRY_DEVICE_SCREEN_DPI_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link DEVICE_SCREEN_DPI} `device.screen_dpi`
+ *
+ * @deprecated Use {@link DEVICE_SCREEN_DPI} (device.screen_dpi) instead
+ * @example 420
+ */
+export const SENTRY_DEVICE_SCREEN_DPI = 'sentry.device.screen_dpi';
+
+/**
+ * Type for {@link SENTRY_DEVICE_SCREEN_DPI} sentry.device.screen_dpi
+ */
+export type SENTRY_DEVICE_SCREEN_DPI_TYPE = number;
+
+// Path: model/attributes/sentry/sentry__device__screen_height_pixels.json
+
+/**
+ * The height of the device screen in pixels. `sentry.device.screen_height_pixels`
+ *
+ * Attribute Value Type: `number` {@link SENTRY_DEVICE_SCREEN_HEIGHT_PIXELS_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link DEVICE_SCREEN_HEIGHT_PIXELS} `device.screen_height_pixels`
+ *
+ * @deprecated Use {@link DEVICE_SCREEN_HEIGHT_PIXELS} (device.screen_height_pixels) instead
+ * @example 2400
+ */
+export const SENTRY_DEVICE_SCREEN_HEIGHT_PIXELS = 'sentry.device.screen_height_pixels';
+
+/**
+ * Type for {@link SENTRY_DEVICE_SCREEN_HEIGHT_PIXELS} sentry.device.screen_height_pixels
+ */
+export type SENTRY_DEVICE_SCREEN_HEIGHT_PIXELS_TYPE = number;
+
+// Path: model/attributes/sentry/sentry__device__screen_width_pixels.json
+
+/**
+ * The width of the device screen in pixels. `sentry.device.screen_width_pixels`
+ *
+ * Attribute Value Type: `number` {@link SENTRY_DEVICE_SCREEN_WIDTH_PIXELS_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link DEVICE_SCREEN_WIDTH_PIXELS} `device.screen_width_pixels`
+ *
+ * @deprecated Use {@link DEVICE_SCREEN_WIDTH_PIXELS} (device.screen_width_pixels) instead
+ * @example 1080
+ */
+export const SENTRY_DEVICE_SCREEN_WIDTH_PIXELS = 'sentry.device.screen_width_pixels';
+
+/**
+ * Type for {@link SENTRY_DEVICE_SCREEN_WIDTH_PIXELS} sentry.device.screen_width_pixels
+ */
+export type SENTRY_DEVICE_SCREEN_WIDTH_PIXELS_TYPE = number;
+
+// Path: model/attributes/sentry/sentry__device__simulator.json
+
+/**
+ * Whether the device is a simulator or an actual device. `sentry.device.simulator`
+ *
+ * Attribute Value Type: `boolean` {@link SENTRY_DEVICE_SIMULATOR_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link DEVICE_SIMULATOR} `device.simulator`
+ *
+ * @deprecated Use {@link DEVICE_SIMULATOR} (device.simulator) instead
+ * @example false
+ */
+export const SENTRY_DEVICE_SIMULATOR = 'sentry.device.simulator';
+
+/**
+ * Type for {@link SENTRY_DEVICE_SIMULATOR} sentry.device.simulator
+ */
+export type SENTRY_DEVICE_SIMULATOR_TYPE = boolean;
 
 // Path: model/attributes/sentry/sentry__dist.json
 
@@ -18297,6 +18785,54 @@ export const SENTRY_ORIGIN = 'sentry.origin';
  */
 export type SENTRY_ORIGIN_TYPE = string;
 
+// Path: model/attributes/sentry/sentry__os__name.json
+
+/**
+ * Human readable operating system name. `sentry.os.name`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_OS_NAME_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link OS_NAME} `os.name`
+ *
+ * @deprecated Use {@link OS_NAME} (os.name) instead
+ * @example "Ubuntu"
+ */
+export const SENTRY_OS_NAME = 'sentry.os.name';
+
+/**
+ * Type for {@link SENTRY_OS_NAME} sentry.os.name
+ */
+export type SENTRY_OS_NAME_TYPE = string;
+
+// Path: model/attributes/sentry/sentry__os__rooted.json
+
+/**
+ * Whether the operating system has been jailbroken or rooted. `sentry.os.rooted`
+ *
+ * Attribute Value Type: `boolean` {@link SENTRY_OS_ROOTED_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link OS_ROOTED} `os.rooted`
+ *
+ * @deprecated Use {@link OS_ROOTED} (os.rooted) instead
+ * @example true
+ */
+export const SENTRY_OS_ROOTED = 'sentry.os.rooted';
+
+/**
+ * Type for {@link SENTRY_OS_ROOTED} sentry.os.rooted
+ */
+export type SENTRY_OS_ROOTED_TYPE = boolean;
+
 // Path: model/attributes/sentry/sentry__pageload__span_id.json
 
 /**
@@ -18513,6 +19049,78 @@ export const SENTRY_REPORT_EVENT = 'sentry.report_event';
  * Type for {@link SENTRY_REPORT_EVENT} sentry.report_event
  */
 export type SENTRY_REPORT_EVENT_TYPE = string;
+
+// Path: model/attributes/sentry/sentry__request__method.json
+
+/**
+ * The HTTP method used. `sentry.request.method`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_REQUEST_METHOD_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link HTTP_REQUEST_METHOD} `http.request.method`, {@link METHOD} `method`, {@link HTTP_METHOD} `http.method`, {@link _HTTP_REQUEST_METHOD} `http.request_method`
+ *
+ * @deprecated Use {@link HTTP_REQUEST_METHOD} (http.request.method) instead
+ * @example "GET"
+ */
+export const SENTRY_REQUEST_METHOD = 'sentry.request.method';
+
+/**
+ * Type for {@link SENTRY_REQUEST_METHOD} sentry.request.method
+ */
+export type SENTRY_REQUEST_METHOD_TYPE = string;
+
+// Path: model/attributes/sentry/sentry__request__url.json
+
+/**
+ * The URL of the resource that was fetched. `sentry.request.url`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_REQUEST_URL_TYPE}
+ *
+ * Apply Scrubbing: auto
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link URL_FULL} `url.full`, {@link HTTP_URL} `http.url`, {@link URL} `url`, {@link AWS_REQUEST_URL} `aws.request.url`, {@link MESSAGING_URL} `messaging.url`
+ *
+ * @deprecated Use {@link URL_FULL} (url.full) instead
+ * @example "https://example.com/test?foo=bar#buzz"
+ */
+export const SENTRY_REQUEST_URL = 'sentry.request.url';
+
+/**
+ * Type for {@link SENTRY_REQUEST_URL} sentry.request.url
+ */
+export type SENTRY_REQUEST_URL_TYPE = string;
+
+// Path: model/attributes/sentry/sentry__runtime__name.json
+
+/**
+ * The name of the runtime. Equivalent to `name` in the Sentry runtime context. `sentry.runtime.name`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_RUNTIME_NAME_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link PROCESS_RUNTIME_NAME} `process.runtime.name`, {@link RUNTIME_NAME} `runtime.name`
+ *
+ * @deprecated Use {@link PROCESS_RUNTIME_NAME} (process.runtime.name) instead
+ * @example "node"
+ */
+export const SENTRY_RUNTIME_NAME = 'sentry.runtime.name';
+
+/**
+ * Type for {@link SENTRY_RUNTIME_NAME} sentry.runtime.name
+ */
+export type SENTRY_RUNTIME_NAME_TYPE = string;
 
 // Path: model/attributes/sentry/sentry__sdk__integrations.json
 
@@ -18916,6 +19524,30 @@ export const SENTRY_THREAD_ID = 'sentry.thread.id';
  * Type for {@link SENTRY_THREAD_ID} sentry.thread.id
  */
 export type SENTRY_THREAD_ID_TYPE = number;
+
+// Path: model/attributes/sentry/sentry__thread__name.json
+
+/**
+ * Current thread name. `sentry.thread.name`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_THREAD_NAME_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link THREAD_NAME} `thread.name`
+ *
+ * @deprecated Use {@link THREAD_NAME} (thread.name) instead
+ * @example "main"
+ */
+export const SENTRY_THREAD_NAME = 'sentry.thread.name';
+
+/**
+ * Type for {@link SENTRY_THREAD_NAME} sentry.thread.name
+ */
+export type SENTRY_THREAD_NAME_TYPE = string;
 
 // Path: model/attributes/sentry/sentry__timestamp__sequence.json
 
@@ -19703,6 +20335,8 @@ export type THREAD_ID_TYPE = number;
  *
  * Attribute defined in OTEL: Yes
  * Visibility: public
+ *
+ * Aliases: {@link SENTRY_THREAD_NAME} `sentry.thread.name`
  *
  * @example "main"
  */
@@ -20539,7 +21173,7 @@ export type UI_ELEMENT_WIDTH_TYPE = number;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link URL_FULL} `url.full`, {@link HTTP_URL} `http.url`, {@link AWS_REQUEST_URL} `aws.request.url`, {@link MESSAGING_URL} `messaging.url`
+ * Aliases: {@link URL_FULL} `url.full`, {@link HTTP_URL} `http.url`, {@link AWS_REQUEST_URL} `aws.request.url`, {@link MESSAGING_URL} `messaging.url`, {@link SENTRY_REQUEST_URL} `sentry.request.url`
  *
  * @deprecated Use {@link URL_FULL} (url.full) instead
  * @example "https://example.com/test?foo=bar#buzz"
@@ -20605,7 +21239,7 @@ export type URL_FRAGMENT_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link HTTP_URL} `http.url`, {@link URL} `url`, {@link AWS_REQUEST_URL} `aws.request.url`, {@link MESSAGING_URL} `messaging.url`
+ * Aliases: {@link HTTP_URL} `http.url`, {@link URL} `url`, {@link AWS_REQUEST_URL} `aws.request.url`, {@link MESSAGING_URL} `messaging.url`, {@link SENTRY_REQUEST_URL} `sentry.request.url`
  *
  * @example "https://example.com/test?foo=bar#buzz"
  */
@@ -22270,6 +22904,8 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'cache.write': 'boolean',
   channel: 'string',
   'client.address': 'string',
+  'client.as.number': 'integer',
+  'client.as.organization': 'string',
   'client.port': 'integer',
   'cloudflare.d1.duration': 'integer',
   'cloudflare.d1.query_type': 'string',
@@ -22535,6 +23171,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'heroku.router.connect': 'double',
   'heroku.router.request_id': 'string',
   'heroku.router.service': 'double',
+  'heroku.source': 'string',
   'http.client_ip': 'string',
   'http.decoded_response_content_length': 'integer',
   'http.flavor': 'string',
@@ -22837,6 +23474,22 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'sentry.category': 'string',
   'sentry.client_sample_rate': 'double',
   'sentry.description': 'string',
+  'sentry.device.battery_level': 'double',
+  'sentry.device.brand': 'string',
+  'sentry.device.charging': 'boolean',
+  'sentry.device.class': 'string',
+  'sentry.device.family': 'string',
+  'sentry.device.locale': 'string',
+  'sentry.device.model': 'string',
+  'sentry.device.model_id': 'string',
+  'sentry.device.name': 'string',
+  'sentry.device.online': 'boolean',
+  'sentry.device.orientation': 'string',
+  'sentry.device.screen_density': 'double',
+  'sentry.device.screen_dpi': 'integer',
+  'sentry.device.screen_height_pixels': 'integer',
+  'sentry.device.screen_width_pixels': 'integer',
+  'sentry.device.simulator': 'boolean',
   'sentry.dist': 'string',
   'sentry.domain': 'string',
   'sentry.dsc.environment': 'string',
@@ -22880,6 +23533,8 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'sentry.observed_timestamp_nanos': 'string',
   'sentry.op': 'string',
   'sentry.origin': 'string',
+  'sentry.os.name': 'string',
+  'sentry.os.rooted': 'boolean',
   'sentry.pageload.span_id': 'string',
   'sentry.platform': 'string',
   'sentry.profiler_id': 'string',
@@ -22890,6 +23545,9 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'sentry.replay_id': 'string',
   'sentry.replay_is_buffering': 'boolean',
   'sentry.report_event': 'string',
+  'sentry.request.method': 'string',
+  'sentry.request.url': 'string',
+  'sentry.runtime.name': 'string',
   'sentry.sdk.integrations': 'string[]',
   'sentry.sdk.name': 'string',
   'sentry.sdk.version': 'string',
@@ -22907,6 +23565,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'sentry.sveltekit.navigation.to': 'string',
   'sentry.sveltekit.navigation.type': 'string',
   'sentry.thread.id': 'integer',
+  'sentry.thread.name': 'string',
   'sentry.timestamp.sequence': 'integer',
   'sentry.trace_lifecycle': 'string',
   'sentry.trace.parent_span_id': 'string',
@@ -23248,6 +23907,8 @@ export type AttributeName =
   | typeof CACHE_WRITE
   | typeof CHANNEL
   | typeof CLIENT_ADDRESS
+  | typeof CLIENT_AS_NUMBER
+  | typeof CLIENT_AS_ORGANIZATION
   | typeof CLIENT_PORT
   | typeof CLOUDFLARE_D1_DURATION
   | typeof CLOUDFLARE_D1_QUERY_TYPE
@@ -23513,6 +24174,7 @@ export type AttributeName =
   | typeof HEROKU_ROUTER_CONNECT
   | typeof HEROKU_ROUTER_REQUEST_ID
   | typeof HEROKU_ROUTER_SERVICE
+  | typeof HEROKU_SOURCE
   | typeof HTTP_CLIENT_IP
   | typeof HTTP_DECODED_RESPONSE_CONTENT_LENGTH
   | typeof HTTP_FLAVOR
@@ -23815,6 +24477,22 @@ export type AttributeName =
   | typeof SENTRY_CATEGORY
   | typeof SENTRY_CLIENT_SAMPLE_RATE
   | typeof SENTRY_DESCRIPTION
+  | typeof SENTRY_DEVICE_BATTERY_LEVEL
+  | typeof SENTRY_DEVICE_BRAND
+  | typeof SENTRY_DEVICE_CHARGING
+  | typeof SENTRY_DEVICE_CLASS
+  | typeof SENTRY_DEVICE_FAMILY
+  | typeof SENTRY_DEVICE_LOCALE
+  | typeof SENTRY_DEVICE_MODEL
+  | typeof SENTRY_DEVICE_MODEL_ID
+  | typeof SENTRY_DEVICE_NAME
+  | typeof SENTRY_DEVICE_ONLINE
+  | typeof SENTRY_DEVICE_ORIENTATION
+  | typeof SENTRY_DEVICE_SCREEN_DENSITY
+  | typeof SENTRY_DEVICE_SCREEN_DPI
+  | typeof SENTRY_DEVICE_SCREEN_HEIGHT_PIXELS
+  | typeof SENTRY_DEVICE_SCREEN_WIDTH_PIXELS
+  | typeof SENTRY_DEVICE_SIMULATOR
   | typeof SENTRY_DIST
   | typeof SENTRY_DOMAIN
   | typeof SENTRY_DSC_ENVIRONMENT
@@ -23858,6 +24536,8 @@ export type AttributeName =
   | typeof SENTRY_OBSERVED_TIMESTAMP_NANOS
   | typeof SENTRY_OP
   | typeof SENTRY_ORIGIN
+  | typeof SENTRY_OS_NAME
+  | typeof SENTRY_OS_ROOTED
   | typeof SENTRY_PAGELOAD_SPAN_ID
   | typeof SENTRY_PLATFORM
   | typeof SENTRY_PROFILER_ID
@@ -23868,6 +24548,9 @@ export type AttributeName =
   | typeof SENTRY_REPLAY_ID
   | typeof SENTRY_REPLAY_IS_BUFFERING
   | typeof SENTRY_REPORT_EVENT
+  | typeof SENTRY_REQUEST_METHOD
+  | typeof SENTRY_REQUEST_URL
+  | typeof SENTRY_RUNTIME_NAME
   | typeof SENTRY_SDK_INTEGRATIONS
   | typeof SENTRY_SDK_NAME
   | typeof SENTRY_SDK_VERSION
@@ -23885,6 +24568,7 @@ export type AttributeName =
   | typeof SENTRY_SVELTEKIT_NAVIGATION_TO
   | typeof SENTRY_SVELTEKIT_NAVIGATION_TYPE
   | typeof SENTRY_THREAD_ID
+  | typeof SENTRY_THREAD_NAME
   | typeof SENTRY_TIMESTAMP_SEQUENCE
   | typeof SENTRY_TRACE_LIFECYCLE
   | typeof SENTRY_TRACE_PARENT_SPAN_ID
@@ -25304,7 +25988,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 5,
     aliases: ['frames.delay'],
     changelog: [
-      { version: 'next', description: 'Added search_alias with type second' },
+      { version: '0.35.0', prs: [815], description: 'Added search_alias with type second' },
       { version: '0.5.0', prs: [313], description: 'Added app.vitals.frames.delay.value to replace frames.delay' },
     ],
     searchAlias: {
@@ -25341,7 +26025,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 0.5,
     aliases: ['frames_frozen_rate'],
     changelog: [
-      { version: 'next', description: 'Added search_alias with type percentage' },
+      { version: '0.35.0', prs: [815], description: 'Added search_alias with type percentage' },
       { version: '0.19.0', prs: [493], description: 'Added app.vitals.frames.frozen.rate attribute' },
     ],
     searchAlias: {
@@ -25378,7 +26062,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 0.25,
     aliases: ['frames_slow_rate'],
     changelog: [
-      { version: 'next', description: 'Added search_alias with type percentage' },
+      { version: '0.35.0', prs: [815], description: 'Added search_alias with type percentage' },
       { version: '0.19.0', prs: [493], description: 'Added app.vitals.frames.slow.rate attribute' },
     ],
     searchAlias: {
@@ -25429,7 +26113,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 0.8,
     aliases: ['stall_percentage'],
     changelog: [
-      { version: 'next', description: 'Added search_alias with type percentage' },
+      { version: '0.35.0', prs: [815], description: 'Added search_alias with type percentage' },
       { version: '0.19.0', prs: [493], description: 'Added app.vitals.stall.percentage attribute' },
     ],
     searchAlias: {
@@ -25449,7 +26133,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 1234.56,
     aliases: ['app_start_cold'],
     changelog: [
-      { version: 'next', description: 'Added search_alias with type millisecond' },
+      { version: '0.35.0', prs: [815], description: 'Added search_alias with type millisecond' },
       { version: '0.5.0', prs: [313], description: 'Added app.vitals.start.cold.value attribute' },
     ],
     searchAlias: {
@@ -25519,7 +26203,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 1234.56,
     aliases: ['app_start_warm'],
     changelog: [
-      { version: 'next', description: 'Added search_alias with type millisecond' },
+      { version: '0.35.0', prs: [815], description: 'Added search_alias with type millisecond' },
       { version: '0.5.0', prs: [313], description: 'Added app.vitals.start.warm.value attribute' },
     ],
     searchAlias: {
@@ -25539,7 +26223,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 1234.56,
     aliases: ['time_to_full_display'],
     changelog: [
-      { version: 'next', description: 'Added search_alias with type millisecond' },
+      { version: '0.35.0', prs: [815], description: 'Added search_alias with type millisecond' },
       { version: '0.5.0', prs: [313], description: 'Added app.vitals.ttfd.value attribute' },
     ],
     searchAlias: {
@@ -25559,7 +26243,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 1234.56,
     aliases: ['time_to_initial_display'],
     changelog: [
-      { version: 'next', description: 'Added search_alias with type millisecond' },
+      { version: '0.35.0', prs: [815], description: 'Added search_alias with type millisecond' },
       { version: '0.5.0', prs: [313], description: 'Added app.vitals.ttid.value attribute' },
     ],
     searchAlias: {
@@ -26395,7 +27079,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'aws.request.url': {
     brief: 'The URL of the AWS API request.',
     type: 'string',
-    keys: ['url.full', 'aws.request.url', 'http.url', 'messaging.url', 'url'],
+    keys: ['url.full', 'aws.request.url', 'http.url', 'messaging.url', 'sentry.request.url', 'url'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -26407,8 +27091,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason: 'This attribute is being deprecated in favor of url.full, which is the OTel-aligned replacement.',
       status: 'backfill',
     },
-    aliases: ['url.full', 'http.url', 'url', 'messaging.url'],
+    aliases: ['url.full', 'http.url', 'url', 'messaging.url', 'sentry.request.url'],
     changelog: [
+      { version: '0.35.0', prs: [807], description: 'Added sentry.request.url as an alias' },
       { version: '0.21.0', prs: [581], description: 'Added messaging.url as an alias' },
       {
         version: '0.19.0',
@@ -26939,7 +27624,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 547.6951,
     aliases: ['fcp'],
     changelog: [
-      { version: 'next', description: 'Added search_alias with type millisecond' },
+      { version: '0.35.0', prs: [815], description: 'Added search_alias with type millisecond' },
       { version: '0.5.0', prs: [235] },
     ],
     searchAlias: {
@@ -26959,7 +27644,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 477.1926,
     aliases: ['fp'],
     changelog: [
-      { version: 'next', description: 'Added search_alias with type millisecond' },
+      { version: '0.35.0', prs: [815], description: 'Added search_alias with type millisecond' },
       { version: '0.5.0', prs: [235] },
     ],
     searchAlias: {
@@ -27077,7 +27762,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 200,
     aliases: ['inp'],
     changelog: [
-      { version: 'next', description: 'Added search_alias with type millisecond' },
+      { version: '0.35.0', prs: [815], description: 'Added search_alias with type millisecond' },
       { version: '0.5.0', prs: [229], description: 'Added browser.web_vital.inp.value attribute' },
     ],
     searchAlias: {
@@ -27259,7 +27944,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 2500,
     aliases: ['lcp'],
     changelog: [
-      { version: 'next', description: 'Added search_alias with type millisecond' },
+      { version: '0.35.0', prs: [815], description: 'Added search_alias with type millisecond' },
       { version: '0.5.0', prs: [229], description: 'Added browser.web_vital.lcp.value attribute' },
     ],
     searchAlias: {
@@ -27293,7 +27978,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 194.3322,
     aliases: ['ttfb'],
     changelog: [
-      { version: 'next', description: 'Added search_alias with type millisecond' },
+      { version: '0.35.0', prs: [815], description: 'Added search_alias with type millisecond' },
       { version: '0.5.0', prs: [235] },
     ],
     searchAlias: {
@@ -27450,6 +28135,33 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'example.com',
     aliases: ['http.client_ip'],
     changelog: [{ version: '0.1.0', prs: [106, 127] }, { version: '0.0.0' }],
+  },
+  'client.as.number': {
+    brief: 'Autonomous system number (ASN) associated with the client IP address.',
+    type: 'integer',
+    keys: ['client.as.number'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 64496,
+    examples: [64496],
+    changelog: [{ version: 'next', description: 'Added client.as.number attribute' }],
+  },
+  'client.as.organization': {
+    brief: 'The name of the organization associated with the autonomous system of the client IP address.',
+    type: 'string',
+    keys: ['client.as.organization'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 'Example Networks Inc.',
+    examples: ['Example Networks Inc.'],
+    changelog: [{ version: 'next', description: 'Added client.as.organization attribute' }],
+    additionalContext: ["The value is the lookup source's organization name for the ASN in client.as.number."],
   },
   'client.port': {
     brief: 'Client port number.',
@@ -28490,14 +29202,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'device.battery_level': {
     brief: 'The battery level of the device as a percentage (0-100).',
     type: 'double',
-    keys: ['device.battery_level'],
+    keys: ['device.battery_level', 'sentry.device.battery_level'],
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
     example: 100,
-    changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.battery_level attribute' }],
+    aliases: ['sentry.device.battery_level'],
+    changelog: [
+      { version: '0.35.0', prs: [804], description: 'Added sentry.device.battery_level as an alias' },
+      { version: '0.5.0', prs: [303], description: 'Added device.battery_level attribute' },
+    ],
   },
   'device.battery_temperature': {
     brief: 'The battery temperature of the device in Celsius.',
@@ -28526,26 +29242,34 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'device.brand': {
     brief: 'The brand of the device.',
     type: 'string',
-    keys: ['device.brand'],
+    keys: ['device.brand', 'sentry.device.brand'],
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
     example: 'Apple',
-    changelog: [{ version: '0.1.0', prs: [116, 127] }],
+    aliases: ['sentry.device.brand'],
+    changelog: [
+      { version: '0.35.0', prs: [804], description: 'Added sentry.device.brand as an alias' },
+      { version: '0.1.0', prs: [116, 127] },
+    ],
   },
   'device.charging': {
     brief: 'Whether the device was charging or not.',
     type: 'boolean',
-    keys: ['device.charging'],
+    keys: ['device.charging', 'sentry.device.charging'],
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
     example: false,
-    changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.charging attribute' }],
+    aliases: ['sentry.device.charging'],
+    changelog: [
+      { version: '0.35.0', prs: [804], description: 'Added sentry.device.charging as an alias' },
+      { version: '0.5.0', prs: [303], description: 'Added device.charging attribute' },
+    ],
   },
   'device.chipset': {
     brief: 'The chipset of the device.',
@@ -28563,14 +29287,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The classification of the device. For example, `low`, `medium`, or `high`. Typically inferred by Relay - SDKs generally do not need to set this directly.',
     type: 'string',
-    keys: ['device.class'],
+    keys: ['device.class', 'sentry.device.class'],
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
     example: 'medium',
-    changelog: [{ version: '0.5.0', prs: [300], description: 'Added device.class attribute' }],
+    aliases: ['sentry.device.class'],
+    changelog: [
+      { version: '0.35.0', prs: [804], description: 'Added sentry.device.class as an alias' },
+      { version: '0.5.0', prs: [300], description: 'Added device.class attribute' },
+    ],
   },
   'device.connection_type': {
     brief: 'The internet connection type currently being used by the device.',
@@ -28635,14 +29363,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'device.family': {
     brief: 'The family of the device.',
     type: 'string',
-    keys: ['device.family'],
+    keys: ['device.family', 'sentry.device.family'],
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
     example: 'iPhone',
-    changelog: [{ version: '0.1.0', prs: [116, 127] }],
+    aliases: ['sentry.device.family'],
+    changelog: [
+      { version: '0.35.0', prs: [804], description: 'Added sentry.device.family as an alias' },
+      { version: '0.1.0', prs: [116, 127] },
+    ],
   },
   'device.free_memory': {
     brief: 'Free system memory in bytes.',
@@ -28683,14 +29415,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'device.locale': {
     brief: 'The locale of the device.',
     type: 'string',
-    keys: ['device.locale'],
+    keys: ['device.locale', 'sentry.device.locale'],
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
     example: 'en-US',
-    changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.locale attribute' }],
+    aliases: ['sentry.device.locale'],
+    changelog: [
+      { version: '0.35.0', prs: [804], description: 'Added sentry.device.locale as an alias' },
+      { version: '0.5.0', prs: [303], description: 'Added device.locale attribute' },
+    ],
   },
   'device.low_memory': {
     brief: 'Whether the device was low on memory.',
@@ -28763,38 +29499,48 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'device.model': {
     brief: 'The model of the device.',
     type: 'string',
-    keys: ['device.model'],
+    keys: ['device.model', 'sentry.device.model'],
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
     example: 'iPhone 15 Pro Max',
-    changelog: [{ version: '0.1.0', prs: [116, 127] }],
+    aliases: ['sentry.device.model'],
+    changelog: [
+      { version: '0.35.0', prs: [804], description: 'Added sentry.device.model as an alias' },
+      { version: '0.1.0', prs: [116, 127] },
+    ],
   },
   'device.model_id': {
     brief: 'An internal hardware revision to identify the device exactly.',
     type: 'string',
-    keys: ['device.model_id'],
+    keys: ['device.model_id', 'sentry.device.model_id'],
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
     example: 'N861AP',
-    changelog: [{ version: '0.5.0', prs: [300], description: 'Added device.model_id attribute' }],
+    aliases: ['sentry.device.model_id'],
+    changelog: [
+      { version: '0.35.0', prs: [804], description: 'Added sentry.device.model_id as an alias' },
+      { version: '0.5.0', prs: [300], description: 'Added device.model_id attribute' },
+    ],
   },
   'device.name': {
     brief: 'The user-assigned name of the mobile device.',
     type: 'string',
-    keys: ['device.name'],
+    keys: ['device.name', 'sentry.device.name'],
     applyScrubbing: {
       key: 'auto',
     },
     isInOtel: false,
     visibility: 'public',
     example: 'localhost',
+    aliases: ['sentry.device.name'],
     changelog: [
+      { version: '0.35.0', prs: [804], description: 'Added sentry.device.name as an alias' },
       { version: '0.24.0', prs: [647], description: 'Limit brief to mobile attributes and remove server_name alias' },
       { version: '0.21.0', prs: [602], description: 'Added server_name as an alias' },
       { version: '0.5.0', prs: [303], description: 'Added device.name attribute' },
@@ -28803,26 +29549,34 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'device.online': {
     brief: 'Whether the device was online or not.',
     type: 'boolean',
-    keys: ['device.online'],
+    keys: ['device.online', 'sentry.device.online'],
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
     example: true,
-    changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.online attribute' }],
+    aliases: ['sentry.device.online'],
+    changelog: [
+      { version: '0.35.0', prs: [804], description: 'Added sentry.device.online as an alias' },
+      { version: '0.5.0', prs: [303], description: 'Added device.online attribute' },
+    ],
   },
   'device.orientation': {
     brief: 'The orientation of the device, either "portrait" or "landscape".',
     type: 'string',
-    keys: ['device.orientation'],
+    keys: ['device.orientation', 'sentry.device.orientation'],
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
     example: 'portrait',
-    changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.orientation attribute' }],
+    aliases: ['sentry.device.orientation'],
+    changelog: [
+      { version: '0.35.0', prs: [804], description: 'Added sentry.device.orientation as an alias' },
+      { version: '0.5.0', prs: [303], description: 'Added device.orientation attribute' },
+    ],
   },
   'device.processor_count': {
     brief: 'Number of "logical processors".',
@@ -28858,62 +29612,82 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'device.screen_density': {
     brief: 'The screen density of the device.',
     type: 'double',
-    keys: ['device.screen_density'],
+    keys: ['device.screen_density', 'sentry.device.screen_density'],
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
     example: 2.625,
-    changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.screen_density attribute' }],
+    aliases: ['sentry.device.screen_density'],
+    changelog: [
+      { version: '0.35.0', prs: [804], description: 'Added sentry.device.screen_density as an alias' },
+      { version: '0.5.0', prs: [303], description: 'Added device.screen_density attribute' },
+    ],
   },
   'device.screen_dpi': {
     brief: 'The screen density in dots-per-inch (DPI) of the device.',
     type: 'integer',
-    keys: ['device.screen_dpi'],
+    keys: ['device.screen_dpi', 'sentry.device.screen_dpi'],
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
     example: 420,
-    changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.screen_dpi attribute' }],
+    aliases: ['sentry.device.screen_dpi'],
+    changelog: [
+      { version: '0.35.0', prs: [804], description: 'Added sentry.device.screen_dpi as an alias' },
+      { version: '0.5.0', prs: [303], description: 'Added device.screen_dpi attribute' },
+    ],
   },
   'device.screen_height_pixels': {
     brief: 'The height of the device screen in pixels.',
     type: 'integer',
-    keys: ['device.screen_height_pixels'],
+    keys: ['device.screen_height_pixels', 'sentry.device.screen_height_pixels'],
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
     example: 2400,
-    changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.screen_height_pixels attribute' }],
+    aliases: ['sentry.device.screen_height_pixels'],
+    changelog: [
+      { version: '0.35.0', prs: [804], description: 'Added sentry.device.screen_height_pixels as an alias' },
+      { version: '0.5.0', prs: [303], description: 'Added device.screen_height_pixels attribute' },
+    ],
   },
   'device.screen_width_pixels': {
     brief: 'The width of the device screen in pixels.',
     type: 'integer',
-    keys: ['device.screen_width_pixels'],
+    keys: ['device.screen_width_pixels', 'sentry.device.screen_width_pixels'],
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
     example: 1080,
-    changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.screen_width_pixels attribute' }],
+    aliases: ['sentry.device.screen_width_pixels'],
+    changelog: [
+      { version: '0.35.0', prs: [804], description: 'Added sentry.device.screen_width_pixels as an alias' },
+      { version: '0.5.0', prs: [303], description: 'Added device.screen_width_pixels attribute' },
+    ],
   },
   'device.simulator': {
     brief: 'Whether the device is a simulator or an actual device.',
     type: 'boolean',
-    keys: ['device.simulator'],
+    keys: ['device.simulator', 'sentry.device.simulator'],
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
     example: false,
-    changelog: [{ version: '0.5.0', prs: [300], description: 'Added device.simulator attribute' }],
+    aliases: ['sentry.device.simulator'],
+    changelog: [
+      { version: '0.35.0', prs: [804], description: 'Added sentry.device.simulator as an alias' },
+      { version: '0.5.0', prs: [300], description: 'Added device.simulator attribute' },
+    ],
   },
   'device.storage_size': {
     brief: 'Total device storage in bytes.',
@@ -29417,7 +30191,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 134217728,
     examples: [134217728, 1073741824],
     changelog: [
-      { version: 'next', description: 'Added search_alias with type byte' },
+      { version: '0.35.0', prs: [815], description: 'Added search_alias with type byte' },
       { version: '0.30.0', prs: [715], description: 'Added faas.max_memory attribute' },
     ],
     additionalContext: [
@@ -29930,7 +30704,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 12.34,
     changelog: [
-      { version: 'next', description: 'Added search_alias with type currency' },
+      { version: '0.35.0', prs: [815], description: 'Added search_alias with type currency' },
       { version: '0.16.0', description: 'Added gen_ai.cost.cache_creation.input_tokens attribute' },
     ],
     additionalContext: [
@@ -29954,7 +30728,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 12.34,
     changelog: [
-      { version: 'next', description: 'Added search_alias with type currency' },
+      { version: '0.35.0', prs: [815], description: 'Added search_alias with type currency' },
       { version: '0.16.0', description: 'Added gen_ai.cost.cache_read.input_tokens attribute' },
     ],
     additionalContext: [
@@ -29978,7 +30752,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 123.45,
     changelog: [
-      { version: 'next', description: 'Added search_alias with type currency' },
+      { version: '0.35.0', prs: [815], description: 'Added search_alias with type currency' },
       { version: '0.9.0', prs: [397], description: 'Add additional_context' },
       { version: '0.4.0', prs: [228] },
       { version: '0.1.0', prs: [112] },
@@ -30004,7 +30778,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 123.45,
     changelog: [
-      { version: 'next', description: 'Added search_alias with type currency' },
+      { version: '0.35.0', prs: [815], description: 'Added search_alias with type currency' },
       { version: '0.9.0', prs: [397], description: 'Add additional_context' },
       { version: '0.4.0', prs: [228] },
       { version: '0.1.0', prs: [112] },
@@ -30030,7 +30804,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 12.34,
     changelog: [
-      { version: 'next', description: 'Added search_alias with type currency' },
+      { version: '0.35.0', prs: [815], description: 'Added search_alias with type currency' },
       { version: '0.16.0', description: 'Added gen_ai.cost.reasoning.output_tokens attribute' },
     ],
     additionalContext: [
@@ -30055,7 +30829,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 12.34,
     aliases: ['ai.total_cost'],
     changelog: [
-      { version: 'next', description: 'Added search_alias with type currency' },
+      { version: '0.35.0', prs: [815], description: 'Added search_alias with type currency' },
       { version: '0.9.0', prs: [397], description: 'Add additional_context' },
       { version: '0.5.0', prs: [264] },
       { version: '0.4.0', prs: [228] },
@@ -31866,6 +32640,23 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     changelog: [{ version: '0.31.0', prs: [772], description: 'Added heroku.router.service attribute' }],
     additionalContext: ['This measures the proxying phase, not necessarily the complete HTTP request duration.'],
   },
+  'heroku.source': {
+    brief: 'Logplex source of a Heroku log line.',
+    type: 'string',
+    keys: ['heroku.source'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'app',
+    examples: ['app', 'heroku'],
+    changelog: [{ version: '0.35.0', prs: [816], description: 'Added heroku.source attribute' }],
+    additionalContext: [
+      'Taken from the syslog APP-NAME header that Logplex sets on every drained line, such as app[web.1] or heroku[router].',
+      'Only set on Cedar, since Fir does not use Logplex.',
+    ],
+  },
   'http.client_ip': {
     brief:
       'Client address - domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.',
@@ -31981,7 +32772,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'http.method': {
     brief: 'The HTTP method used.',
     type: 'string',
-    keys: ['http.request.method', 'http.method', 'http.request_method', 'method'],
+    keys: ['http.request.method', 'http.method', 'http.request_method', 'method', 'sentry.request.method'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -31992,8 +32783,12 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'http.request.method',
       status: 'backfill',
     },
-    aliases: ['http.request.method', 'http.request_method', 'method'],
-    changelog: [{ version: '0.1.0', prs: [61, 127] }, { version: '0.0.0' }],
+    aliases: ['http.request.method', 'http.request_method', 'method', 'sentry.request.method'],
+    changelog: [
+      { version: '0.35.0', prs: [807], description: 'Added sentry.request.method as an alias' },
+      { version: '0.1.0', prs: [61, 127] },
+      { version: '0.0.0' },
+    ],
   },
   'http.query': {
     brief:
@@ -32201,20 +32996,24 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'http.request.method': {
     brief: 'The HTTP method used.',
     type: 'string',
-    keys: ['http.request.method', 'http.method', 'http.request_method', 'method'],
+    keys: ['http.request.method', 'http.method', 'http.request_method', 'method', 'sentry.request.method'],
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
     example: 'GET',
-    aliases: ['method', 'http.method', 'http.request_method'],
-    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
+    aliases: ['method', 'http.method', 'http.request_method', 'sentry.request.method'],
+    changelog: [
+      { version: '0.35.0', prs: [807], description: 'Added sentry.request.method as an alias' },
+      { version: '0.1.0', prs: [127] },
+      { version: '0.0.0' },
+    ],
   },
   'http.request_method': {
     brief: 'The HTTP method used.',
     type: 'string',
-    keys: ['http.request.method', 'http.method', 'http.request_method', 'method'],
+    keys: ['http.request.method', 'http.method', 'http.request_method', 'method', 'sentry.request.method'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -32225,8 +33024,11 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'http.request.method',
       status: 'backfill',
     },
-    aliases: ['method', 'http.method', 'http.request.method'],
-    changelog: [{ version: '0.6.0', prs: [343], description: 'Added http.request_method attribute' }],
+    aliases: ['method', 'http.method', 'http.request.method', 'sentry.request.method'],
+    changelog: [
+      { version: '0.35.0', prs: [807], description: 'Added sentry.request.method as an alias' },
+      { version: '0.6.0', prs: [343], description: 'Added http.request_method attribute' },
+    ],
   },
   'http.request.redirect_end': {
     brief:
@@ -32381,7 +33183,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 456,
     aliases: ['http.decoded_response_content_length', 'http.response_content_length_uncompressed'],
     changelog: [
-      { version: 'next', description: 'Added search_alias with type byte' },
+      { version: '0.35.0', prs: [815], description: 'Added search_alias with type byte' },
       { version: '0.21.0', prs: [574], description: 'Added http.response.body.decoded_size attribute' },
     ],
     additionalContext: [
@@ -32405,7 +33207,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 123,
     aliases: ['http.response_content_length', 'http.response.header.content-length'],
     changelog: [
-      { version: 'next', description: 'Added search_alias with type byte' },
+      { version: '0.35.0', prs: [815], description: 'Added search_alias with type byte' },
       { version: '0.4.0', prs: [228] },
       { version: '0.1.0', prs: [106] },
       { version: '0.0.0' },
@@ -32507,7 +33309,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 456,
     aliases: ['http.response_transfer_size'],
     changelog: [
-      { version: 'next', description: 'Added search_alias with type byte' },
+      { version: '0.35.0', prs: [815], description: 'Added search_alias with type byte' },
       { version: '0.4.0', prs: [228] },
       { version: '0.0.0' },
     ],
@@ -32716,7 +33518,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'http.url': {
     brief: 'The URL of the resource that was fetched.',
     type: 'string',
-    keys: ['url.full', 'aws.request.url', 'http.url', 'messaging.url', 'url'],
+    keys: ['url.full', 'aws.request.url', 'http.url', 'messaging.url', 'sentry.request.url', 'url'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -32727,8 +33529,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'url.full',
       status: 'backfill',
     },
-    aliases: ['url.full', 'url', 'aws.request.url', 'messaging.url'],
+    aliases: ['url.full', 'url', 'aws.request.url', 'messaging.url', 'sentry.request.url'],
     changelog: [
+      { version: '0.35.0', prs: [807], description: 'Added sentry.request.url as an alias' },
       { version: '0.21.0', prs: [581], description: 'Added messaging.url as an alias' },
       { version: '0.1.0', prs: [61, 108] },
       { version: '0.0.0' },
@@ -34834,7 +35637,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['messaging.destination.name', 'sentry.messaging.destination.name'],
     changelog: [
-      { version: 'next', description: 'Added sentry.messaging.destination.name as an alias' },
+      { version: '0.35.0', prs: [796], description: 'Added sentry.messaging.destination.name as an alias' },
       {
         version: '0.16.0',
         prs: [482],
@@ -34889,7 +35692,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'BestTopic',
     aliases: ['messaging.destination', 'sentry.messaging.destination.name'],
     changelog: [
-      { version: 'next', prs: [796], description: 'Added sentry.messaging.destination.name as an alias' },
+      { version: '0.35.0', prs: [796], description: 'Added sentry.messaging.destination.name as an alias' },
       { version: '0.16.0', prs: [482], description: 'Added messaging.destination as an alias' },
       { version: '0.1.0', prs: [127] },
       { version: '0.0.0' },
@@ -35002,7 +35805,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'f47ac10b58cc4372a5670e02b2c3d479',
     aliases: ['messaging.message_id', 'sentry.messaging.message.id'],
     changelog: [
-      { version: 'next', prs: [809], description: 'Added sentry.messaging.message.id as an alias' },
+      { version: '0.35.0', prs: [809], description: 'Added sentry.messaging.message.id as an alias' },
       { version: '0.21.0', prs: [581], description: 'Added messaging.message_id as an alias' },
       { version: '0.1.0', prs: [127] },
       { version: '0.0.0' },
@@ -35026,7 +35829,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['messaging.message.id', 'sentry.messaging.message.id'],
     changelog: [
-      { version: 'next', prs: [809], description: 'Added sentry.messaging.message.id as an alias' },
+      { version: '0.35.0', prs: [809], description: 'Added sentry.messaging.message.id as an alias' },
       { version: '0.21.0', prs: [581], description: 'Added messaging.message_id attribute' },
     ],
   },
@@ -35196,7 +35999,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'messaging.url': {
     brief: 'The connection string of the messaging broker.',
     type: 'string',
-    keys: ['url.full', 'aws.request.url', 'http.url', 'messaging.url', 'url'],
+    keys: ['url.full', 'aws.request.url', 'http.url', 'messaging.url', 'sentry.request.url', 'url'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -35209,13 +36012,16 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason: 'This attribute is being deprecated in favor of url.full.',
       status: 'backfill',
     },
-    aliases: ['url.full', 'http.url', 'url', 'aws.request.url'],
-    changelog: [{ version: '0.21.0', prs: [581], description: 'Added messaging.url attribute' }],
+    aliases: ['url.full', 'http.url', 'url', 'aws.request.url', 'sentry.request.url'],
+    changelog: [
+      { version: '0.35.0', prs: [807], description: 'Added sentry.request.url as an alias' },
+      { version: '0.21.0', prs: [581], description: 'Added messaging.url attribute' },
+    ],
   },
   method: {
     brief: 'The HTTP method used.',
     type: 'string',
-    keys: ['http.request.method', 'http.method', 'http.request_method', 'method'],
+    keys: ['http.request.method', 'http.method', 'http.request_method', 'method', 'sentry.request.method'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -35226,8 +36032,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'http.request.method',
       status: 'normalize',
     },
-    aliases: ['http.request.method', 'http.request_method', 'http.method'],
+    aliases: ['http.request.method', 'http.request_method', 'http.method', 'sentry.request.method'],
     changelog: [
+      { version: '0.35.0', prs: [807], description: 'Added sentry.request.method as an alias' },
       { version: '0.19.0', prs: [497], description: 'Configured normalization' },
       { version: '0.1.0', prs: [61, 127] },
       { version: '0.0.0' },
@@ -35959,14 +36766,19 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'os.name': {
     brief: 'Human readable operating system name.',
     type: 'string',
-    keys: ['os.name'],
+    keys: ['os.name', 'sentry.os.name'],
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
     example: 'Ubuntu',
-    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
+    aliases: ['sentry.os.name'],
+    changelog: [
+      { version: '0.35.0', prs: [805], description: 'Added sentry.os.name as an alias' },
+      { version: '0.1.0', prs: [127] },
+      { version: '0.0.0' },
+    ],
   },
   'os.raw_description': {
     brief:
@@ -35984,14 +36796,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'os.rooted': {
     brief: 'Whether the operating system has been jailbroken or rooted.',
     type: 'boolean',
-    keys: ['os.rooted'],
+    keys: ['os.rooted', 'sentry.os.rooted'],
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
     example: true,
-    changelog: [{ version: '0.5.0', prs: [301], description: 'Added os.rooted attribute' }],
+    aliases: ['sentry.os.rooted'],
+    changelog: [
+      { version: '0.35.0', prs: [805], description: 'Added sentry.os.rooted as an alias' },
+      { version: '0.5.0', prs: [301], description: 'Added os.rooted attribute' },
+    ],
   },
   'os.theme': {
     brief: 'Whether the OS runs in dark mode or light mode.',
@@ -36342,15 +37158,19 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'process.runtime.name': {
     brief: 'The name of the runtime. Equivalent to `name` in the Sentry runtime context.',
     type: 'string',
-    keys: ['process.runtime.name', 'runtime.name'],
+    keys: ['process.runtime.name', 'runtime.name', 'sentry.runtime.name'],
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
     example: 'node',
-    aliases: ['runtime.name'],
-    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
+    aliases: ['runtime.name', 'sentry.runtime.name'],
+    changelog: [
+      { version: '0.35.0', prs: [806], description: 'Added sentry.runtime.name as an alias' },
+      { version: '0.1.0', prs: [127] },
+      { version: '0.0.0' },
+    ],
   },
   'process.runtime.version': {
     brief:
@@ -36480,7 +37300,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 512.5,
     examples: [512.5],
     changelog: [
-      { version: 'next', description: 'Added search_alias with type millisecond' },
+      { version: '0.35.0', prs: [815], description: 'Added search_alias with type millisecond' },
       { version: '0.24.0', prs: [564], description: 'Added react_native.module.duration.max attribute' },
     ],
     searchAlias: {
@@ -36502,7 +37322,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     examples: [128.45],
     aliases: ['turbo_module.total_duration_ms', 'turbo_modules.total_duration_ms'],
     changelog: [
-      { version: 'next', description: 'Added search_alias with type millisecond' },
+      { version: '0.35.0', prs: [815], description: 'Added search_alias with type millisecond' },
       { version: '0.24.0', prs: [564], description: 'Added react_native.module.duration.total attribute' },
     ],
     searchAlias: {
@@ -36585,7 +37405,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     examples: [87.25],
     aliases: ['turbo_module.top_module_duration_ms'],
     changelog: [
-      { version: 'next', description: 'Added search_alias with type millisecond' },
+      { version: '0.35.0', prs: [815], description: 'Added search_alias with type millisecond' },
       { version: '0.24.0', prs: [564], description: 'Added react_native.module.top.duration attribute' },
     ],
     searchAlias: {
@@ -37000,7 +37820,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'runtime.name': {
     brief: 'The name of the runtime. For example node, CPython, or rustc.',
     type: 'string',
-    keys: ['process.runtime.name', 'runtime.name'],
+    keys: ['process.runtime.name', 'runtime.name', 'sentry.runtime.name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -37012,8 +37832,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason: 'Prefer OTel-aligned process.runtime.name',
       status: 'backfill',
     },
-    aliases: ['process.runtime.name'],
+    aliases: ['process.runtime.name', 'sentry.runtime.name'],
     changelog: [
+      { version: '0.35.0', prs: [806], description: 'Added sentry.runtime.name as an alias' },
       {
         version: '0.11.0',
         prs: [383],
@@ -37207,7 +38028,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
   },
   'sentry.client_sample_rate': {
-    brief: 'Rate at which a span was sampled in the SDK.',
+    brief: 'Rate at which a telemetry item (e.g. a span, or metric) was sampled in the SDK.',
     type: 'double',
     keys: ['sentry.client_sample_rate', 'client_sample_rate'],
     applyScrubbing: {
@@ -37216,7 +38037,14 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 0.5,
-    changelog: [{ version: '0.1.0', prs: [102] }],
+    changelog: [
+      {
+        version: '0.35.0',
+        prs: [814],
+        description: 'Generalized the brief to apply to any telemetry type, not just spans',
+      },
+      { version: '0.1.0', prs: [102] },
+    ],
     searchAlias: {
       name: 'client_sample_rate',
     },
@@ -37232,6 +38060,377 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'index view query',
     changelog: [{ version: '0.1.0', prs: [135] }],
+  },
+  'sentry.device.battery_level': {
+    brief: 'The battery level of the device as a percentage (0-100).',
+    type: 'double',
+    keys: ['device.battery_level', 'sentry.device.battery_level'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 100,
+    deprecation: {
+      replacement: 'device.battery_level',
+      status: 'backfill',
+    },
+    aliases: ['device.battery_level'],
+    changelog: [
+      {
+        version: '0.35.0',
+        prs: [804],
+        description: 'Added sentry.device.battery_level attribute, deprecated in favor of device.battery_level',
+      },
+    ],
+  },
+  'sentry.device.brand': {
+    brief: 'The brand of the device.',
+    type: 'string',
+    keys: ['device.brand', 'sentry.device.brand'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'Apple',
+    deprecation: {
+      replacement: 'device.brand',
+      status: 'backfill',
+    },
+    aliases: ['device.brand'],
+    changelog: [
+      {
+        version: '0.35.0',
+        prs: [804],
+        description: 'Added sentry.device.brand attribute, deprecated in favor of device.brand',
+      },
+    ],
+  },
+  'sentry.device.charging': {
+    brief: 'Whether the device was charging or not.',
+    type: 'boolean',
+    keys: ['device.charging', 'sentry.device.charging'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: false,
+    deprecation: {
+      replacement: 'device.charging',
+      status: 'backfill',
+    },
+    aliases: ['device.charging'],
+    changelog: [
+      {
+        version: '0.35.0',
+        prs: [804],
+        description: 'Added sentry.device.charging attribute, deprecated in favor of device.charging',
+      },
+    ],
+  },
+  'sentry.device.class': {
+    brief:
+      'The classification of the device. For example, `low`, `medium`, or `high`. Typically inferred by Relay - SDKs generally do not need to set this directly.',
+    type: 'string',
+    keys: ['device.class', 'sentry.device.class'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'medium',
+    deprecation: {
+      replacement: 'device.class',
+      status: 'backfill',
+    },
+    aliases: ['device.class'],
+    changelog: [
+      {
+        version: '0.35.0',
+        prs: [804],
+        description: 'Added sentry.device.class attribute, deprecated in favor of device.class',
+      },
+    ],
+  },
+  'sentry.device.family': {
+    brief: 'The family of the device.',
+    type: 'string',
+    keys: ['device.family', 'sentry.device.family'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'iPhone',
+    deprecation: {
+      replacement: 'device.family',
+      status: 'backfill',
+    },
+    aliases: ['device.family'],
+    changelog: [
+      {
+        version: '0.35.0',
+        prs: [804],
+        description: 'Added sentry.device.family attribute, deprecated in favor of device.family',
+      },
+    ],
+  },
+  'sentry.device.locale': {
+    brief: 'The locale of the device.',
+    type: 'string',
+    keys: ['device.locale', 'sentry.device.locale'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'en-US',
+    deprecation: {
+      replacement: 'device.locale',
+      status: 'backfill',
+    },
+    aliases: ['device.locale'],
+    changelog: [
+      {
+        version: '0.35.0',
+        prs: [804],
+        description: 'Added sentry.device.locale attribute, deprecated in favor of device.locale',
+      },
+    ],
+  },
+  'sentry.device.model': {
+    brief: 'The model of the device.',
+    type: 'string',
+    keys: ['device.model', 'sentry.device.model'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'iPhone 15 Pro Max',
+    deprecation: {
+      replacement: 'device.model',
+      status: 'backfill',
+    },
+    aliases: ['device.model'],
+    changelog: [
+      {
+        version: '0.35.0',
+        prs: [804],
+        description: 'Added sentry.device.model attribute, deprecated in favor of device.model',
+      },
+    ],
+  },
+  'sentry.device.model_id': {
+    brief: 'An internal hardware revision to identify the device exactly.',
+    type: 'string',
+    keys: ['device.model_id', 'sentry.device.model_id'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'N861AP',
+    deprecation: {
+      replacement: 'device.model_id',
+      status: 'backfill',
+    },
+    aliases: ['device.model_id'],
+    changelog: [
+      {
+        version: '0.35.0',
+        prs: [804],
+        description: 'Added sentry.device.model_id attribute, deprecated in favor of device.model_id',
+      },
+    ],
+  },
+  'sentry.device.name': {
+    brief: 'The user-assigned name of the mobile device.',
+    type: 'string',
+    keys: ['device.name', 'sentry.device.name'],
+    applyScrubbing: {
+      key: 'auto',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'localhost',
+    deprecation: {
+      replacement: 'device.name',
+      status: 'backfill',
+    },
+    aliases: ['device.name'],
+    changelog: [
+      {
+        version: '0.35.0',
+        prs: [804],
+        description: 'Added sentry.device.name attribute, deprecated in favor of device.name',
+      },
+    ],
+  },
+  'sentry.device.online': {
+    brief: 'Whether the device was online or not.',
+    type: 'boolean',
+    keys: ['device.online', 'sentry.device.online'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: true,
+    deprecation: {
+      replacement: 'device.online',
+      status: 'backfill',
+    },
+    aliases: ['device.online'],
+    changelog: [
+      {
+        version: '0.35.0',
+        prs: [804],
+        description: 'Added sentry.device.online attribute, deprecated in favor of device.online',
+      },
+    ],
+  },
+  'sentry.device.orientation': {
+    brief: 'The orientation of the device, either "portrait" or "landscape".',
+    type: 'string',
+    keys: ['device.orientation', 'sentry.device.orientation'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'portrait',
+    deprecation: {
+      replacement: 'device.orientation',
+      status: 'backfill',
+    },
+    aliases: ['device.orientation'],
+    changelog: [
+      {
+        version: '0.35.0',
+        prs: [804],
+        description: 'Added sentry.device.orientation attribute, deprecated in favor of device.orientation',
+      },
+    ],
+  },
+  'sentry.device.screen_density': {
+    brief: 'The screen density of the device.',
+    type: 'double',
+    keys: ['device.screen_density', 'sentry.device.screen_density'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 2.625,
+    deprecation: {
+      replacement: 'device.screen_density',
+      status: 'backfill',
+    },
+    aliases: ['device.screen_density'],
+    changelog: [
+      {
+        version: '0.35.0',
+        prs: [804],
+        description: 'Added sentry.device.screen_density attribute, deprecated in favor of device.screen_density',
+      },
+    ],
+  },
+  'sentry.device.screen_dpi': {
+    brief: 'The screen density in dots-per-inch (DPI) of the device.',
+    type: 'integer',
+    keys: ['device.screen_dpi', 'sentry.device.screen_dpi'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 420,
+    deprecation: {
+      replacement: 'device.screen_dpi',
+      status: 'backfill',
+    },
+    aliases: ['device.screen_dpi'],
+    changelog: [
+      {
+        version: '0.35.0',
+        prs: [804],
+        description: 'Added sentry.device.screen_dpi attribute, deprecated in favor of device.screen_dpi',
+      },
+    ],
+  },
+  'sentry.device.screen_height_pixels': {
+    brief: 'The height of the device screen in pixels.',
+    type: 'integer',
+    keys: ['device.screen_height_pixels', 'sentry.device.screen_height_pixels'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 2400,
+    deprecation: {
+      replacement: 'device.screen_height_pixels',
+      status: 'backfill',
+    },
+    aliases: ['device.screen_height_pixels'],
+    changelog: [
+      {
+        version: '0.35.0',
+        prs: [804],
+        description:
+          'Added sentry.device.screen_height_pixels attribute, deprecated in favor of device.screen_height_pixels',
+      },
+    ],
+  },
+  'sentry.device.screen_width_pixels': {
+    brief: 'The width of the device screen in pixels.',
+    type: 'integer',
+    keys: ['device.screen_width_pixels', 'sentry.device.screen_width_pixels'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 1080,
+    deprecation: {
+      replacement: 'device.screen_width_pixels',
+      status: 'backfill',
+    },
+    aliases: ['device.screen_width_pixels'],
+    changelog: [
+      {
+        version: '0.35.0',
+        prs: [804],
+        description:
+          'Added sentry.device.screen_width_pixels attribute, deprecated in favor of device.screen_width_pixels',
+      },
+    ],
+  },
+  'sentry.device.simulator': {
+    brief: 'Whether the device is a simulator or an actual device.',
+    type: 'boolean',
+    keys: ['device.simulator', 'sentry.device.simulator'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: false,
+    deprecation: {
+      replacement: 'device.simulator',
+      status: 'backfill',
+    },
+    aliases: ['device.simulator'],
+    changelog: [
+      {
+        version: '0.35.0',
+        prs: [804],
+        description: 'Added sentry.device.simulator attribute, deprecated in favor of device.simulator',
+      },
+    ],
   },
   'sentry.dist': {
     brief: 'The sentry dist.',
@@ -37684,7 +38883,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: ['messaging.destination.name', 'messaging.destination'],
     changelog: [
       {
-        version: 'next',
+        version: '0.35.0',
         prs: [796],
         description:
           'Added sentry.messaging.destination.name attribute, deprecated in favor of messaging.destination.name',
@@ -37708,7 +38907,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: ['messaging.message.id', 'messaging.message_id'],
     changelog: [
       {
-        version: 'next',
+        version: '0.35.0',
         prs: [809],
         description: 'Added sentry.messaging.message.id attribute, deprecated in favor of messaging.message.id',
       },
@@ -37858,6 +39057,48 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     searchAlias: {
       name: 'origin',
     },
+  },
+  'sentry.os.name': {
+    brief: 'Human readable operating system name.',
+    type: 'string',
+    keys: ['os.name', 'sentry.os.name'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'Ubuntu',
+    deprecation: {
+      replacement: 'os.name',
+      status: 'backfill',
+    },
+    aliases: ['os.name'],
+    changelog: [
+      { version: '0.35.0', prs: [805], description: 'Added sentry.os.name attribute, deprecated in favor of os.name' },
+    ],
+  },
+  'sentry.os.rooted': {
+    brief: 'Whether the operating system has been jailbroken or rooted.',
+    type: 'boolean',
+    keys: ['os.rooted', 'sentry.os.rooted'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: true,
+    deprecation: {
+      replacement: 'os.rooted',
+      status: 'backfill',
+    },
+    aliases: ['os.rooted'],
+    changelog: [
+      {
+        version: '0.35.0',
+        prs: [805],
+        description: 'Added sentry.os.rooted attribute, deprecated in favor of os.rooted',
+      },
+    ],
   },
   'sentry.pageload.span_id': {
     brief: 'The id of the pageload span, set by web vital spans and metrics',
@@ -38013,6 +39254,75 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
           'Updated the deprecation reason now that the browser.web_vital.*.report_event attributes are deprecated',
       },
       { version: '0.5.0', prs: [320], description: 'Added sentry.report_event attribute' },
+    ],
+  },
+  'sentry.request.method': {
+    brief: 'The HTTP method used.',
+    type: 'string',
+    keys: ['http.request.method', 'http.method', 'http.request_method', 'method', 'sentry.request.method'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'GET',
+    deprecation: {
+      replacement: 'http.request.method',
+      status: 'backfill',
+    },
+    aliases: ['http.request.method', 'method', 'http.method', 'http.request_method'],
+    changelog: [
+      {
+        version: '0.35.0',
+        prs: [807],
+        description: 'Added sentry.request.method attribute, deprecated in favor of http.request.method',
+      },
+    ],
+  },
+  'sentry.request.url': {
+    brief: 'The URL of the resource that was fetched.',
+    type: 'string',
+    keys: ['url.full', 'aws.request.url', 'http.url', 'messaging.url', 'sentry.request.url', 'url'],
+    applyScrubbing: {
+      key: 'auto',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'https://example.com/test?foo=bar#buzz',
+    deprecation: {
+      replacement: 'url.full',
+      status: 'backfill',
+    },
+    aliases: ['url.full', 'http.url', 'url', 'aws.request.url', 'messaging.url'],
+    changelog: [
+      {
+        version: '0.35.0',
+        prs: [807],
+        description: 'Added sentry.request.url attribute, deprecated in favor of url.full',
+      },
+    ],
+  },
+  'sentry.runtime.name': {
+    brief: 'The name of the runtime. Equivalent to `name` in the Sentry runtime context.',
+    type: 'string',
+    keys: ['process.runtime.name', 'runtime.name', 'sentry.runtime.name'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'node',
+    deprecation: {
+      replacement: 'process.runtime.name',
+      status: 'backfill',
+    },
+    aliases: ['process.runtime.name', 'runtime.name'],
+    changelog: [
+      {
+        version: '0.35.0',
+        prs: [806],
+        description: 'Added sentry.runtime.name attribute, deprecated in favor of process.runtime.name',
+      },
     ],
   },
   'sentry.sdk.integrations': {
@@ -38316,6 +39626,29 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     searchAlias: {
       name: 'thread.id',
     },
+  },
+  'sentry.thread.name': {
+    brief: 'Current thread name.',
+    type: 'string',
+    keys: ['thread.name', 'sentry.thread.name'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'main',
+    deprecation: {
+      replacement: 'thread.name',
+      status: 'backfill',
+    },
+    aliases: ['thread.name'],
+    changelog: [
+      {
+        version: '0.35.0',
+        prs: [808],
+        description: 'Added sentry.thread.name attribute, deprecated in favor of thread.name',
+      },
+    ],
   },
   'sentry.timestamp.sequence': {
     brief:
@@ -38942,14 +40275,19 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'thread.name': {
     brief: 'Current thread name.',
     type: 'string',
-    keys: ['thread.name'],
+    keys: ['thread.name', 'sentry.thread.name'],
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
     example: 'main',
-    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
+    aliases: ['sentry.thread.name'],
+    changelog: [
+      { version: '0.35.0', prs: [808], description: 'Added sentry.thread.name as an alias' },
+      { version: '0.1.0', prs: [127] },
+      { version: '0.0.0' },
+    ],
   },
   'timber.tag': {
     brief: 'The log tag provided by the timber logging framework.',
@@ -39644,7 +40982,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   url: {
     brief: 'The URL of the resource that was fetched.',
     type: 'string',
-    keys: ['url.full', 'aws.request.url', 'http.url', 'messaging.url', 'url'],
+    keys: ['url.full', 'aws.request.url', 'http.url', 'messaging.url', 'sentry.request.url', 'url'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -39655,8 +40993,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'url.full',
       status: 'backfill',
     },
-    aliases: ['url.full', 'http.url', 'aws.request.url', 'messaging.url'],
+    aliases: ['url.full', 'http.url', 'aws.request.url', 'messaging.url', 'sentry.request.url'],
     changelog: [
+      { version: '0.35.0', prs: [807], description: 'Added sentry.request.url as an alias' },
       { version: '0.21.0', prs: [581], description: 'Added messaging.url as an alias' },
       { version: '0.1.0', prs: [61] },
       { version: '0.0.0' },
@@ -39691,15 +41030,16 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'url.full': {
     brief: 'The URL of the resource that was fetched.',
     type: 'string',
-    keys: ['url.full', 'aws.request.url', 'http.url', 'messaging.url', 'url'],
+    keys: ['url.full', 'aws.request.url', 'http.url', 'messaging.url', 'sentry.request.url', 'url'],
     applyScrubbing: {
       key: 'auto',
     },
     isInOtel: true,
     visibility: 'public',
     example: 'https://example.com/test?foo=bar#buzz',
-    aliases: ['http.url', 'url', 'aws.request.url', 'messaging.url'],
+    aliases: ['http.url', 'url', 'aws.request.url', 'messaging.url', 'sentry.request.url'],
     changelog: [
+      { version: '0.35.0', prs: [807], description: 'Added sentry.request.url as an alias' },
       { version: '0.21.0', prs: [581], description: 'Added messaging.url as an alias' },
       { version: '0.19.0', prs: [488], description: 'Added aws.request.url as an alias' },
       { version: '0.1.0', prs: [108] },
@@ -40736,6 +42076,8 @@ export type Attributes = {
   [CACHE_WRITE]?: CACHE_WRITE_TYPE;
   [CHANNEL]?: CHANNEL_TYPE;
   [CLIENT_ADDRESS]?: CLIENT_ADDRESS_TYPE;
+  [CLIENT_AS_NUMBER]?: CLIENT_AS_NUMBER_TYPE;
+  [CLIENT_AS_ORGANIZATION]?: CLIENT_AS_ORGANIZATION_TYPE;
   [CLIENT_PORT]?: CLIENT_PORT_TYPE;
   [CLOUDFLARE_D1_DURATION]?: CLOUDFLARE_D1_DURATION_TYPE;
   [CLOUDFLARE_D1_QUERY_TYPE]?: CLOUDFLARE_D1_QUERY_TYPE_TYPE;
@@ -41001,6 +42343,7 @@ export type Attributes = {
   [HEROKU_ROUTER_CONNECT]?: HEROKU_ROUTER_CONNECT_TYPE;
   [HEROKU_ROUTER_REQUEST_ID]?: HEROKU_ROUTER_REQUEST_ID_TYPE;
   [HEROKU_ROUTER_SERVICE]?: HEROKU_ROUTER_SERVICE_TYPE;
+  [HEROKU_SOURCE]?: HEROKU_SOURCE_TYPE;
   [HTTP_CLIENT_IP]?: HTTP_CLIENT_IP_TYPE;
   [HTTP_DECODED_RESPONSE_CONTENT_LENGTH]?: HTTP_DECODED_RESPONSE_CONTENT_LENGTH_TYPE;
   [HTTP_FLAVOR]?: HTTP_FLAVOR_TYPE;
@@ -41303,6 +42646,22 @@ export type Attributes = {
   [SENTRY_CATEGORY]?: SENTRY_CATEGORY_TYPE;
   [SENTRY_CLIENT_SAMPLE_RATE]?: SENTRY_CLIENT_SAMPLE_RATE_TYPE;
   [SENTRY_DESCRIPTION]?: SENTRY_DESCRIPTION_TYPE;
+  [SENTRY_DEVICE_BATTERY_LEVEL]?: SENTRY_DEVICE_BATTERY_LEVEL_TYPE;
+  [SENTRY_DEVICE_BRAND]?: SENTRY_DEVICE_BRAND_TYPE;
+  [SENTRY_DEVICE_CHARGING]?: SENTRY_DEVICE_CHARGING_TYPE;
+  [SENTRY_DEVICE_CLASS]?: SENTRY_DEVICE_CLASS_TYPE;
+  [SENTRY_DEVICE_FAMILY]?: SENTRY_DEVICE_FAMILY_TYPE;
+  [SENTRY_DEVICE_LOCALE]?: SENTRY_DEVICE_LOCALE_TYPE;
+  [SENTRY_DEVICE_MODEL]?: SENTRY_DEVICE_MODEL_TYPE;
+  [SENTRY_DEVICE_MODEL_ID]?: SENTRY_DEVICE_MODEL_ID_TYPE;
+  [SENTRY_DEVICE_NAME]?: SENTRY_DEVICE_NAME_TYPE;
+  [SENTRY_DEVICE_ONLINE]?: SENTRY_DEVICE_ONLINE_TYPE;
+  [SENTRY_DEVICE_ORIENTATION]?: SENTRY_DEVICE_ORIENTATION_TYPE;
+  [SENTRY_DEVICE_SCREEN_DENSITY]?: SENTRY_DEVICE_SCREEN_DENSITY_TYPE;
+  [SENTRY_DEVICE_SCREEN_DPI]?: SENTRY_DEVICE_SCREEN_DPI_TYPE;
+  [SENTRY_DEVICE_SCREEN_HEIGHT_PIXELS]?: SENTRY_DEVICE_SCREEN_HEIGHT_PIXELS_TYPE;
+  [SENTRY_DEVICE_SCREEN_WIDTH_PIXELS]?: SENTRY_DEVICE_SCREEN_WIDTH_PIXELS_TYPE;
+  [SENTRY_DEVICE_SIMULATOR]?: SENTRY_DEVICE_SIMULATOR_TYPE;
   [SENTRY_DIST]?: SENTRY_DIST_TYPE;
   [SENTRY_DOMAIN]?: SENTRY_DOMAIN_TYPE;
   [SENTRY_DSC_ENVIRONMENT]?: SENTRY_DSC_ENVIRONMENT_TYPE;
@@ -41346,6 +42705,8 @@ export type Attributes = {
   [SENTRY_OBSERVED_TIMESTAMP_NANOS]?: SENTRY_OBSERVED_TIMESTAMP_NANOS_TYPE;
   [SENTRY_OP]?: SENTRY_OP_TYPE;
   [SENTRY_ORIGIN]?: SENTRY_ORIGIN_TYPE;
+  [SENTRY_OS_NAME]?: SENTRY_OS_NAME_TYPE;
+  [SENTRY_OS_ROOTED]?: SENTRY_OS_ROOTED_TYPE;
   [SENTRY_PAGELOAD_SPAN_ID]?: SENTRY_PAGELOAD_SPAN_ID_TYPE;
   [SENTRY_PLATFORM]?: SENTRY_PLATFORM_TYPE;
   [SENTRY_PROFILER_ID]?: SENTRY_PROFILER_ID_TYPE;
@@ -41356,6 +42717,9 @@ export type Attributes = {
   [SENTRY_REPLAY_ID]?: SENTRY_REPLAY_ID_TYPE;
   [SENTRY_REPLAY_IS_BUFFERING]?: SENTRY_REPLAY_IS_BUFFERING_TYPE;
   [SENTRY_REPORT_EVENT]?: SENTRY_REPORT_EVENT_TYPE;
+  [SENTRY_REQUEST_METHOD]?: SENTRY_REQUEST_METHOD_TYPE;
+  [SENTRY_REQUEST_URL]?: SENTRY_REQUEST_URL_TYPE;
+  [SENTRY_RUNTIME_NAME]?: SENTRY_RUNTIME_NAME_TYPE;
   [SENTRY_SDK_INTEGRATIONS]?: SENTRY_SDK_INTEGRATIONS_TYPE;
   [SENTRY_SDK_NAME]?: SENTRY_SDK_NAME_TYPE;
   [SENTRY_SDK_VERSION]?: SENTRY_SDK_VERSION_TYPE;
@@ -41373,6 +42737,7 @@ export type Attributes = {
   [SENTRY_SVELTEKIT_NAVIGATION_TO]?: SENTRY_SVELTEKIT_NAVIGATION_TO_TYPE;
   [SENTRY_SVELTEKIT_NAVIGATION_TYPE]?: SENTRY_SVELTEKIT_NAVIGATION_TYPE_TYPE;
   [SENTRY_THREAD_ID]?: SENTRY_THREAD_ID_TYPE;
+  [SENTRY_THREAD_NAME]?: SENTRY_THREAD_NAME_TYPE;
   [SENTRY_TIMESTAMP_SEQUENCE]?: SENTRY_TIMESTAMP_SEQUENCE_TYPE;
   [SENTRY_TRACE_LIFECYCLE]?: SENTRY_TRACE_LIFECYCLE_TYPE;
   [SENTRY_TRACE_PARENT_SPAN_ID]?: SENTRY_TRACE_PARENT_SPAN_ID_TYPE;

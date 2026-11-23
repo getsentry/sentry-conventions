@@ -3,7 +3,7 @@
 # This is an auto-generated file. Do not edit!
 
 import warnings
-from typing import Dict, List, Literal, TypedDict
+from typing import Dict
 
 from ._metadata_types import (
     ApplyScrubbing,
@@ -252,12 +252,33 @@ class _AttributeNamesMeta(type):
         "RUNTIME_VERSION",
         "SENTRY_BROWSER_NAME",
         "SENTRY_BROWSER_VERSION",
+        "SENTRY_DEVICE_BATTERY_LEVEL",
+        "SENTRY_DEVICE_BRAND",
+        "SENTRY_DEVICE_CHARGING",
+        "SENTRY_DEVICE_CLASS",
+        "SENTRY_DEVICE_FAMILY",
+        "SENTRY_DEVICE_LOCALE",
+        "SENTRY_DEVICE_MODEL",
+        "SENTRY_DEVICE_MODEL_ID",
+        "SENTRY_DEVICE_NAME",
+        "SENTRY_DEVICE_ONLINE",
+        "SENTRY_DEVICE_ORIENTATION",
+        "SENTRY_DEVICE_SCREEN_DENSITY",
+        "SENTRY_DEVICE_SCREEN_DPI",
+        "SENTRY_DEVICE_SCREEN_HEIGHT_PIXELS",
+        "SENTRY_DEVICE_SCREEN_WIDTH_PIXELS",
+        "SENTRY_DEVICE_SIMULATOR",
         "SENTRY_FRAMES_FROZEN",
         "SENTRY_FRAMES_SLOW",
         "SENTRY_FRAMES_TOTAL",
         "SENTRY_MESSAGING_DESTINATION_NAME",
         "SENTRY_MESSAGING_MESSAGE_ID",
+        "SENTRY_OS_NAME",
+        "SENTRY_OS_ROOTED",
         "SENTRY_REPORT_EVENT",
+        "SENTRY_REQUEST_METHOD",
+        "SENTRY_REQUEST_URL",
+        "SENTRY_RUNTIME_NAME",
         "_SENTRY_SEGMENT_ID",
         "SENTRY_SOURCE",
         "SENTRY_SPAN_SOURCE",
@@ -265,6 +286,7 @@ class _AttributeNamesMeta(type):
         "SENTRY_SVELTEKIT_NAVIGATION_TO",
         "SENTRY_SVELTEKIT_NAVIGATION_TYPE",
         "SENTRY_THREAD_ID",
+        "SENTRY_THREAD_NAME",
         "SENTRY_TRACE_PARENT_SPAN_ID",
         "SENTRY_TRANSACTION",
         "SENTRY_USER_EMAIL",
@@ -322,7 +344,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Contains all attribute names as class attributes with their documentation."""
 
     # Path: model/attributes/address.json
-    ADDRESS: Literal["address"] = "address"
+    ADDRESS = "address"
     """The destination hostname or IP address for a TCP connection.
 
     Type: str
@@ -335,7 +357,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/ai/ai__citations.json
-    AI_CITATIONS: Literal["ai.citations"] = "ai.citations"
+    AI_CITATIONS = "ai.citations"
     """References or sources cited by the AI model in its response.
 
     Type: List[str]
@@ -347,9 +369,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/ai/ai__completion_tokens__used.json
-    AI_COMPLETION_TOKENS_USED: Literal["ai.completion_tokens.used"] = (
-        "ai.completion_tokens.used"
-    )
+    AI_COMPLETION_TOKENS_USED = "ai.completion_tokens.used"
     """The number of tokens used to respond to the message.
 
     Type: int
@@ -362,7 +382,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/ai/ai__documents.json
-    AI_DOCUMENTS: Literal["ai.documents"] = "ai.documents"
+    AI_DOCUMENTS = "ai.documents"
     """Documents or content chunks used as context for the AI model.
 
     Type: List[str]
@@ -374,7 +394,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/ai/ai__finish_reason.json
-    AI_FINISH_REASON: Literal["ai.finish_reason"] = "ai.finish_reason"
+    AI_FINISH_REASON = "ai.finish_reason"
     """The reason why the model stopped generating.
 
     Type: str
@@ -387,7 +407,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/ai/ai__frequency_penalty.json
-    AI_FREQUENCY_PENALTY: Literal["ai.frequency_penalty"] = "ai.frequency_penalty"
+    AI_FREQUENCY_PENALTY = "ai.frequency_penalty"
     """Used to reduce repetitiveness of generated tokens. The higher the value, the stronger a penalty is applied to previously present tokens, proportional to how many times they have already appeared in the prompt or prior generation.
 
     Type: float
@@ -400,7 +420,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/ai/ai__function_call.json
-    AI_FUNCTION_CALL: Literal["ai.function_call"] = "ai.function_call"
+    AI_FUNCTION_CALL = "ai.function_call"
     """For an AI model call, the function that was called. This is deprecated for OpenAI, and replaced by tool_calls
 
     Type: str
@@ -413,7 +433,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/ai/ai__generation_id.json
-    AI_GENERATION_ID: Literal["ai.generation_id"] = "ai.generation_id"
+    AI_GENERATION_ID = "ai.generation_id"
     """Unique identifier for the completion.
 
     Type: str
@@ -426,7 +446,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/ai/ai__input_messages.json
-    AI_INPUT_MESSAGES: Literal["ai.input_messages"] = "ai.input_messages"
+    AI_INPUT_MESSAGES = "ai.input_messages"
     """The input messages sent to the model
 
     Type: str
@@ -439,7 +459,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/ai/ai__is_search_required.json
-    AI_IS_SEARCH_REQUIRED: Literal["ai.is_search_required"] = "ai.is_search_required"
+    AI_IS_SEARCH_REQUIRED = "ai.is_search_required"
     """Boolean indicating if the model needs to perform a search.
 
     Type: bool
@@ -451,7 +471,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/ai/ai__metadata.json
-    AI_METADATA: Literal["ai.metadata"] = "ai.metadata"
+    AI_METADATA = "ai.metadata"
     """Extra metadata passed to an AI pipeline step.
 
     Type: str
@@ -463,7 +483,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/ai/ai__model__id.json
-    AI_MODEL_ID: Literal["ai.model.id"] = "ai.model.id"
+    AI_MODEL_ID = "ai.model.id"
     """The id of the model used by the Vercel AI SDK.
 
     Type: str
@@ -476,7 +496,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/ai/ai__model__provider.json
-    AI_MODEL_PROVIDER: Literal["ai.model.provider"] = "ai.model.provider"
+    AI_MODEL_PROVIDER = "ai.model.provider"
     """The provider of the model.
 
     Type: str
@@ -489,7 +509,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/ai/ai__model_id.json
-    _AI_MODEL_ID: Literal["ai.model_id"] = "ai.model_id"
+    _AI_MODEL_ID = "ai.model_id"
     """The vendor-specific ID of the model used.
 
     Type: str
@@ -502,7 +522,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/ai/ai__pipeline__name.json
-    AI_PIPELINE_NAME: Literal["ai.pipeline.name"] = "ai.pipeline.name"
+    AI_PIPELINE_NAME = "ai.pipeline.name"
     """The name of the AI pipeline.
 
     Type: str
@@ -515,7 +535,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/ai/ai__preamble.json
-    AI_PREAMBLE: Literal["ai.preamble"] = "ai.preamble"
+    AI_PREAMBLE = "ai.preamble"
     """For an AI model call, the preamble parameter. Preambles are a part of the prompt used to adjust the model's overall behavior and conversation style.
 
     Type: str
@@ -528,7 +548,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/ai/ai__presence_penalty.json
-    AI_PRESENCE_PENALTY: Literal["ai.presence_penalty"] = "ai.presence_penalty"
+    AI_PRESENCE_PENALTY = "ai.presence_penalty"
     """Used to reduce repetitiveness of generated tokens. Similar to frequency_penalty, except that this penalty is applied equally to all tokens that have already appeared, regardless of their exact frequencies.
 
     Type: float
@@ -541,7 +561,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/ai/ai__prompt.json
-    AI_PROMPT: Literal["ai.prompt"] = "ai.prompt"
+    AI_PROMPT = "ai.prompt"
     """The prompt passed to the Vercel AI SDK, as a stringified object.
 
     Type: str
@@ -554,7 +574,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/ai/ai__prompt__messages.json
-    AI_PROMPT_MESSAGES: Literal["ai.prompt.messages"] = "ai.prompt.messages"
+    AI_PROMPT_MESSAGES = "ai.prompt.messages"
     """The input messages sent to the AI model.
 
     Type: str
@@ -567,7 +587,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/ai/ai__prompt__tools.json
-    AI_PROMPT_TOOLS: Literal["ai.prompt.tools"] = "ai.prompt.tools"
+    AI_PROMPT_TOOLS = "ai.prompt.tools"
     """The tools made available to the model, as an array of stringified tool definitions.
 
     Type: List[str]
@@ -579,7 +599,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/ai/ai__prompt_tokens__used.json
-    AI_PROMPT_TOKENS_USED: Literal["ai.prompt_tokens.used"] = "ai.prompt_tokens.used"
+    AI_PROMPT_TOKENS_USED = "ai.prompt_tokens.used"
     """The number of tokens used to process just the prompt.
 
     Type: int
@@ -592,7 +612,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/ai/ai__raw_prompting.json
-    AI_RAW_PROMPTING: Literal["ai.raw_prompting"] = "ai.raw_prompting"
+    AI_RAW_PROMPTING = "ai.raw_prompting"
     """When enabled, the user’s prompt will be sent to the model without any pre-processing.
 
     Type: bool
@@ -604,7 +624,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/ai/ai__response__id.json
-    AI_RESPONSE_ID: Literal["ai.response.id"] = "ai.response.id"
+    AI_RESPONSE_ID = "ai.response.id"
     """The id of the response returned by the model.
 
     Type: str
@@ -617,7 +637,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/ai/ai__response__model.json
-    AI_RESPONSE_MODEL: Literal["ai.response.model"] = "ai.response.model"
+    AI_RESPONSE_MODEL = "ai.response.model"
     """The id of the model that produced the response.
 
     Type: str
@@ -630,7 +650,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/ai/ai__response__object.json
-    AI_RESPONSE_OBJECT: Literal["ai.response.object"] = "ai.response.object"
+    AI_RESPONSE_OBJECT = "ai.response.object"
     """The type of the object returned by the model.
 
     Type: str
@@ -642,7 +662,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/ai/ai__response__text.json
-    AI_RESPONSE_TEXT: Literal["ai.response.text"] = "ai.response.text"
+    AI_RESPONSE_TEXT = "ai.response.text"
     """The text response from the AI model.
 
     Type: str
@@ -655,7 +675,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/ai/ai__response__timestamp.json
-    AI_RESPONSE_TIMESTAMP: Literal["ai.response.timestamp"] = "ai.response.timestamp"
+    AI_RESPONSE_TIMESTAMP = "ai.response.timestamp"
     """The ISO 8601 timestamp at which the response was produced.
 
     Type: str
@@ -667,7 +687,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/ai/ai__response__toolCalls.json
-    AI_RESPONSE_TOOLCALLS: Literal["ai.response.toolCalls"] = "ai.response.toolCalls"
+    AI_RESPONSE_TOOLCALLS = "ai.response.toolCalls"
     """The tool calls in the AI model response.
 
     Type: str
@@ -680,7 +700,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/ai/ai__response_format.json
-    AI_RESPONSE_FORMAT: Literal["ai.response_format"] = "ai.response_format"
+    AI_RESPONSE_FORMAT = "ai.response_format"
     """For an AI model call, the format of the response
 
     Type: str
@@ -692,7 +712,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/ai/ai__responses.json
-    AI_RESPONSES: Literal["ai.responses"] = "ai.responses"
+    AI_RESPONSES = "ai.responses"
     """The response messages sent back by the AI model.
 
     Type: List[str]
@@ -704,7 +724,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/ai/ai__schema.json
-    AI_SCHEMA: Literal["ai.schema"] = "ai.schema"
+    AI_SCHEMA = "ai.schema"
     """The stringified JSON schema the model output must conform to.
 
     Type: str
@@ -716,7 +736,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/ai/ai__search_queries.json
-    AI_SEARCH_QUERIES: Literal["ai.search_queries"] = "ai.search_queries"
+    AI_SEARCH_QUERIES = "ai.search_queries"
     """Queries used to search for relevant context or documents.
 
     Type: List[str]
@@ -728,7 +748,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/ai/ai__search_results.json
-    AI_SEARCH_RESULTS: Literal["ai.search_results"] = "ai.search_results"
+    AI_SEARCH_RESULTS = "ai.search_results"
     """Results returned from search queries for context.
 
     Type: List[str]
@@ -740,7 +760,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/ai/ai__seed.json
-    AI_SEED: Literal["ai.seed"] = "ai.seed"
+    AI_SEED = "ai.seed"
     """The seed, ideally models given the same seed and same other parameters will produce the exact same output.
 
     Type: str
@@ -753,7 +773,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/ai/ai__streaming.json
-    AI_STREAMING: Literal["ai.streaming"] = "ai.streaming"
+    AI_STREAMING = "ai.streaming"
     """Whether the request was streamed back.
 
     Type: bool
@@ -766,7 +786,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/ai/ai__tags.json
-    AI_TAGS: Literal["ai.tags"] = "ai.tags"
+    AI_TAGS = "ai.tags"
     """Tags that describe an AI pipeline step.
 
     Type: str
@@ -778,7 +798,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/ai/ai__temperature.json
-    AI_TEMPERATURE: Literal["ai.temperature"] = "ai.temperature"
+    AI_TEMPERATURE = "ai.temperature"
     """For an AI model call, the temperature parameter. Temperature essentially means how random the output will be.
 
     Type: float
@@ -791,7 +811,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/ai/ai__texts.json
-    AI_TEXTS: Literal["ai.texts"] = "ai.texts"
+    AI_TEXTS = "ai.texts"
     """Raw text inputs provided to the model.
 
     Type: List[str]
@@ -804,7 +824,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/ai/ai__toolCall__args.json
-    AI_TOOLCALL_ARGS: Literal["ai.toolCall.args"] = "ai.toolCall.args"
+    AI_TOOLCALL_ARGS = "ai.toolCall.args"
     """The arguments of the tool call.
 
     Type: str
@@ -817,7 +837,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/ai/ai__toolCall__result.json
-    AI_TOOLCALL_RESULT: Literal["ai.toolCall.result"] = "ai.toolCall.result"
+    AI_TOOLCALL_RESULT = "ai.toolCall.result"
     """The result of the tool call.
 
     Type: str
@@ -830,7 +850,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/ai/ai__tool_calls.json
-    AI_TOOL_CALLS: Literal["ai.tool_calls"] = "ai.tool_calls"
+    AI_TOOL_CALLS = "ai.tool_calls"
     """For an AI model call, the tool calls that were made.
 
     Type: List[str]
@@ -842,7 +862,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/ai/ai__tools.json
-    AI_TOOLS: Literal["ai.tools"] = "ai.tools"
+    AI_TOOLS = "ai.tools"
     """For an AI model call, the functions that are available
 
     Type: List[str]
@@ -854,7 +874,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/ai/ai__top_k.json
-    AI_TOP_K: Literal["ai.top_k"] = "ai.top_k"
+    AI_TOP_K = "ai.top_k"
     """Limits the model to only consider the K most likely next tokens, where K is an integer (e.g., top_k=20 means only the 20 highest probability tokens are considered).
 
     Type: int
@@ -867,7 +887,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/ai/ai__top_p.json
-    AI_TOP_P: Literal["ai.top_p"] = "ai.top_p"
+    AI_TOP_P = "ai.top_p"
     """Limits the model to only consider tokens whose cumulative probability mass adds up to p, where p is a float between 0 and 1 (e.g., top_p=0.7 means only tokens that sum up to 70% of the probability mass are considered).
 
     Type: float
@@ -880,7 +900,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/ai/ai__total_cost.json
-    AI_TOTAL_COST: Literal["ai.total_cost"] = "ai.total_cost"
+    AI_TOTAL_COST = "ai.total_cost"
     """The total cost for the tokens used.
 
     Type: float
@@ -893,7 +913,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/ai/ai__total_tokens__used.json
-    AI_TOTAL_TOKENS_USED: Literal["ai.total_tokens.used"] = "ai.total_tokens.used"
+    AI_TOTAL_TOKENS_USED = "ai.total_tokens.used"
     """The total number of tokens used to process the prompt.
 
     Type: int
@@ -906,7 +926,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/ai/ai__usage__tokens.json
-    AI_USAGE_TOKENS: Literal["ai.usage.tokens"] = "ai.usage.tokens"
+    AI_USAGE_TOKENS = "ai.usage.tokens"
     """The total number of tokens used for the request and the response.
 
     Type: int
@@ -919,7 +939,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/ai/ai__values.json
-    AI_VALUES: Literal["ai.values"] = "ai.values"
+    AI_VALUES = "ai.values"
     """The stringified values produced by a Vercel AI SDK object or array generation.
 
     Type: str
@@ -931,7 +951,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/ai/ai__warnings.json
-    AI_WARNINGS: Literal["ai.warnings"] = "ai.warnings"
+    AI_WARNINGS = "ai.warnings"
     """Warning messages generated during model execution.
 
     Type: List[str]
@@ -943,7 +963,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/angular/angular__version.json
-    ANGULAR_VERSION: Literal["angular.version"] = "angular.version"
+    ANGULAR_VERSION = "angular.version"
     """The version of the Angular framework
 
     Type: str
@@ -954,9 +974,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/anthropic/anthropic__tool_result__content.json
-    ANTHROPIC_TOOL_RESULT_CONTENT: Literal["anthropic.tool_result.content"] = (
-        "anthropic.tool_result.content"
-    )
+    ANTHROPIC_TOOL_RESULT_CONTENT = "anthropic.tool_result.content"
     """The content of the tool result.
 
     Type: str
@@ -969,7 +987,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/app/app__app_build.json
-    APP_APP_BUILD: Literal["app.app_build"] = "app.app_build"
+    APP_APP_BUILD = "app.app_build"
     """Internal build identifier, as it appears on the platform.
 
     Type: str
@@ -982,7 +1000,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/app/app__app_identifier.json
-    APP_APP_IDENTIFIER: Literal["app.app_identifier"] = "app.app_identifier"
+    APP_APP_IDENTIFIER = "app.app_identifier"
     """Version-independent application identifier, often a dotted bundle ID.
 
     Type: str
@@ -995,7 +1013,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/app/app__app_name.json
-    APP_APP_NAME: Literal["app.app_name"] = "app.app_name"
+    APP_APP_NAME = "app.app_name"
     """Human readable application name, as it appears on the platform.
 
     Type: str
@@ -1008,7 +1026,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/app/app__app_start_time.json
-    APP_APP_START_TIME: Literal["app.app_start_time"] = "app.app_start_time"
+    APP_APP_START_TIME = "app.app_start_time"
     """Formatted UTC timestamp when the user started the application.
 
     Type: str
@@ -1021,7 +1039,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/app/app__app_version.json
-    APP_APP_VERSION: Literal["app.app_version"] = "app.app_version"
+    APP_APP_VERSION = "app.app_version"
     """Human readable application version, as it appears on the platform.
 
     Type: str
@@ -1034,7 +1052,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/app/app__build.json
-    APP_BUILD: Literal["app.build"] = "app.build"
+    APP_BUILD = "app.build"
     """Internal build identifier, as it appears on the platform.
 
     Type: str
@@ -1046,7 +1064,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/app/app__identifier.json
-    APP_IDENTIFIER: Literal["app.identifier"] = "app.identifier"
+    APP_IDENTIFIER = "app.identifier"
     """Version-independent application identifier, often a dotted bundle ID.
 
     Type: str
@@ -1058,7 +1076,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/app/app__in_foreground.json
-    APP_IN_FOREGROUND: Literal["app.in_foreground"] = "app.in_foreground"
+    APP_IN_FOREGROUND = "app.in_foreground"
     """Whether the application is currently in the foreground.
 
     Type: bool
@@ -1069,7 +1087,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/app/app__name.json
-    APP_NAME: Literal["app.name"] = "app.name"
+    APP_NAME = "app.name"
     """Human readable application name, as it appears on the platform.
 
     Type: str
@@ -1081,7 +1099,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/app/app__start_time.json
-    APP_START_TIME: Literal["app.start_time"] = "app.start_time"
+    APP_START_TIME = "app.start_time"
     """Formatted UTC timestamp when the user started the application.
 
     Type: str
@@ -1093,7 +1111,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/app/app__version.json
-    APP_VERSION: Literal["app.version"] = "app.version"
+    APP_VERSION = "app.version"
     """Human readable application version, as it appears on the platform.
 
     Type: str
@@ -1105,9 +1123,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/app/app__vitals__frames__delay__value.json
-    APP_VITALS_FRAMES_DELAY_VALUE: Literal["app.vitals.frames.delay.value"] = (
-        "app.vitals.frames.delay.value"
-    )
+    APP_VITALS_FRAMES_DELAY_VALUE = "app.vitals.frames.delay.value"
     """The sum of all delayed frame durations in seconds during the lifetime of the span. For more information see [frames delay](https://develop.sentry.dev/sdk/performance/frames-delay/).
 
     Type: int
@@ -1119,9 +1135,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/app/app__vitals__frames__frozen__count.json
-    APP_VITALS_FRAMES_FROZEN_COUNT: Literal["app.vitals.frames.frozen.count"] = (
-        "app.vitals.frames.frozen.count"
-    )
+    APP_VITALS_FRAMES_FROZEN_COUNT = "app.vitals.frames.frozen.count"
     """The number of frozen frames rendered during the lifetime of the span.
 
     Type: int
@@ -1133,9 +1147,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/app/app__vitals__frames__frozen__rate.json
-    APP_VITALS_FRAMES_FROZEN_RATE: Literal["app.vitals.frames.frozen.rate"] = (
-        "app.vitals.frames.frozen.rate"
-    )
+    APP_VITALS_FRAMES_FROZEN_RATE = "app.vitals.frames.frozen.rate"
     """The fraction of rendered frames that were frozen, calculated as `app.vitals.frames.frozen.count` divided by `app.vitals.frames.total.count`. This is computed by Relay.
 
     Type: float
@@ -1147,9 +1159,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/app/app__vitals__frames__slow__count.json
-    APP_VITALS_FRAMES_SLOW_COUNT: Literal["app.vitals.frames.slow.count"] = (
-        "app.vitals.frames.slow.count"
-    )
+    APP_VITALS_FRAMES_SLOW_COUNT = "app.vitals.frames.slow.count"
     """The number of slow frames rendered during the lifetime of the span.
 
     Type: int
@@ -1161,9 +1171,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/app/app__vitals__frames__slow__rate.json
-    APP_VITALS_FRAMES_SLOW_RATE: Literal["app.vitals.frames.slow.rate"] = (
-        "app.vitals.frames.slow.rate"
-    )
+    APP_VITALS_FRAMES_SLOW_RATE = "app.vitals.frames.slow.rate"
     """The fraction of rendered frames that were slow, calculated as `app.vitals.frames.slow.count` divided by `app.vitals.frames.total.count`. This is computed by Relay.
 
     Type: float
@@ -1175,9 +1183,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/app/app__vitals__frames__total__count.json
-    APP_VITALS_FRAMES_TOTAL_COUNT: Literal["app.vitals.frames.total.count"] = (
-        "app.vitals.frames.total.count"
-    )
+    APP_VITALS_FRAMES_TOTAL_COUNT = "app.vitals.frames.total.count"
     """The number of total frames rendered during the lifetime of the span.
 
     Type: int
@@ -1189,9 +1195,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/app/app__vitals__stall__duration.json
-    APP_VITALS_STALL_DURATION: Literal["app.vitals.stall.duration"] = (
-        "app.vitals.stall.duration"
-    )
+    APP_VITALS_STALL_DURATION = "app.vitals.stall.duration"
     """The combined duration of all stalls in milliseconds. Only applies to React Native. This is computed by Relay.
 
     Type: float
@@ -1203,9 +1207,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/app/app__vitals__stall__percentage.json
-    APP_VITALS_STALL_PERCENTAGE: Literal["app.vitals.stall.percentage"] = (
-        "app.vitals.stall.percentage"
-    )
+    APP_VITALS_STALL_PERCENTAGE = "app.vitals.stall.percentage"
     """The fraction of transaction duration during which the app was stalled, between 0.0 and 1.0. For example, 0.8 represents 80%. Only applies to React Native. This is computed by Relay.
 
     Type: float
@@ -1217,9 +1219,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/app/app__vitals__start__cold__value.json
-    APP_VITALS_START_COLD_VALUE: Literal["app.vitals.start.cold.value"] = (
-        "app.vitals.start.cold.value"
-    )
+    APP_VITALS_START_COLD_VALUE = "app.vitals.start.cold.value"
     """The duration of a cold app start in milliseconds
 
     Type: float
@@ -1231,9 +1231,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/app/app__vitals__start__prewarmed.json
-    APP_VITALS_START_PREWARMED: Literal["app.vitals.start.prewarmed"] = (
-        "app.vitals.start.prewarmed"
-    )
+    APP_VITALS_START_PREWARMED = "app.vitals.start.prewarmed"
     """Whether the app start was prewarmed.
 
     Type: bool
@@ -1244,9 +1242,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/app/app__vitals__start__reason.json
-    APP_VITALS_START_REASON: Literal["app.vitals.start.reason"] = (
-        "app.vitals.start.reason"
-    )
+    APP_VITALS_START_REASON = "app.vitals.start.reason"
     """The reason that triggered the app start.
 
     Type: str
@@ -1257,9 +1253,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/app/app__vitals__start__screen.json
-    APP_VITALS_START_SCREEN: Literal["app.vitals.start.screen"] = (
-        "app.vitals.start.screen"
-    )
+    APP_VITALS_START_SCREEN = "app.vitals.start.screen"
     """The screen that is rendered when the app start is complete. This is the screen the user first sees and can interact with after launch. The absence of this attribute on the app start span indicates a background app start where no UI was rendered.
 
     Type: str
@@ -1270,7 +1264,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/app/app__vitals__start__type.json
-    APP_VITALS_START_TYPE: Literal["app.vitals.start.type"] = "app.vitals.start.type"
+    APP_VITALS_START_TYPE = "app.vitals.start.type"
     """The type of app start, for example `cold` or `warm`
 
     Type: str
@@ -1282,9 +1276,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/app/app__vitals__start__warm__value.json
-    APP_VITALS_START_WARM_VALUE: Literal["app.vitals.start.warm.value"] = (
-        "app.vitals.start.warm.value"
-    )
+    APP_VITALS_START_WARM_VALUE = "app.vitals.start.warm.value"
     """The duration of a warm app start in milliseconds
 
     Type: float
@@ -1296,7 +1288,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/app/app__vitals__ttfd__value.json
-    APP_VITALS_TTFD_VALUE: Literal["app.vitals.ttfd.value"] = "app.vitals.ttfd.value"
+    APP_VITALS_TTFD_VALUE = "app.vitals.ttfd.value"
     """The duration of time to full display in milliseconds
 
     Type: float
@@ -1308,7 +1300,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/app/app__vitals__ttid__value.json
-    APP_VITALS_TTID_VALUE: Literal["app.vitals.ttid.value"] = "app.vitals.ttid.value"
+    APP_VITALS_TTID_VALUE = "app.vitals.ttid.value"
     """The duration of time to initial display in milliseconds
 
     Type: float
@@ -1320,7 +1312,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/app_start_cold.json
-    APP_START_COLD: Literal["app_start_cold"] = "app_start_cold"
+    APP_START_COLD = "app_start_cold"
     """The duration of a cold app start in milliseconds
 
     Type: float
@@ -1333,7 +1325,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/app_start_type.json
-    APP_START_TYPE: Literal["app_start_type"] = "app_start_type"
+    APP_START_TYPE = "app_start_type"
     """Mobile app start variant. Either cold or warm.
 
     Type: str
@@ -1346,7 +1338,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/app_start_warm.json
-    APP_START_WARM: Literal["app_start_warm"] = "app_start_warm"
+    APP_START_WARM = "app_start_warm"
     """The duration of a warm app start in milliseconds
 
     Type: float
@@ -1359,7 +1351,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/art/art__gc__blocking_count.json
-    ART_GC_BLOCKING_COUNT: Literal["art.gc.blocking_count"] = "art.gc.blocking_count"
+    ART_GC_BLOCKING_COUNT = "art.gc.blocking_count"
     """Total number of blocking (stop-the-world) garbage collections performed by the Android Runtime
 
     Type: int
@@ -1370,7 +1362,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/art/art__gc__blocking_time.json
-    ART_GC_BLOCKING_TIME: Literal["art.gc.blocking_time"] = "art.gc.blocking_time"
+    ART_GC_BLOCKING_TIME = "art.gc.blocking_time"
     """Total time spent in blocking (stop-the-world) garbage collections by the Android Runtime, in milliseconds
 
     Type: float
@@ -1381,7 +1373,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/art/art__gc__pre_oome_count.json
-    ART_GC_PRE_OOME_COUNT: Literal["art.gc.pre_oome_count"] = "art.gc.pre_oome_count"
+    ART_GC_PRE_OOME_COUNT = "art.gc.pre_oome_count"
     """Total number of garbage collections triggered as a last resort before an OutOfMemoryError by the Android Runtime
 
     Type: int
@@ -1392,7 +1384,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/art/art__gc__total_count.json
-    ART_GC_TOTAL_COUNT: Literal["art.gc.total_count"] = "art.gc.total_count"
+    ART_GC_TOTAL_COUNT = "art.gc.total_count"
     """Total number of garbage collections performed by the Android Runtime
 
     Type: int
@@ -1403,7 +1395,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/art/art__gc__total_time.json
-    ART_GC_TOTAL_TIME: Literal["art.gc.total_time"] = "art.gc.total_time"
+    ART_GC_TOTAL_TIME = "art.gc.total_time"
     """Total time spent in garbage collection by the Android Runtime, in milliseconds
 
     Type: float
@@ -1414,7 +1406,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/art/art__gc__waiting_time.json
-    ART_GC_WAITING_TIME: Literal["art.gc.waiting_time"] = "art.gc.waiting_time"
+    ART_GC_WAITING_TIME = "art.gc.waiting_time"
     """Total time threads spent waiting for garbage collection to complete in the Android Runtime, in milliseconds
 
     Type: float
@@ -1425,7 +1417,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/art/art__memory__free.json
-    ART_MEMORY_FREE: Literal["art.memory.free"] = "art.memory.free"
+    ART_MEMORY_FREE = "art.memory.free"
     """Free memory available to the process as reported by the Android Runtime, in bytes
 
     Type: int
@@ -1436,9 +1428,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/art/art__memory__free_until_gc.json
-    ART_MEMORY_FREE_UNTIL_GC: Literal["art.memory.free_until_gc"] = (
-        "art.memory.free_until_gc"
-    )
+    ART_MEMORY_FREE_UNTIL_GC = "art.memory.free_until_gc"
     """Free memory available before a garbage collection would be triggered by the Android Runtime, in bytes
 
     Type: int
@@ -1449,9 +1439,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/art/art__memory__free_until_oome.json
-    ART_MEMORY_FREE_UNTIL_OOME: Literal["art.memory.free_until_oome"] = (
-        "art.memory.free_until_oome"
-    )
+    ART_MEMORY_FREE_UNTIL_OOME = "art.memory.free_until_oome"
     """Free memory available before an OutOfMemoryError would be thrown by the Android Runtime, in bytes
 
     Type: int
@@ -1462,7 +1450,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/art/art__memory__max.json
-    ART_MEMORY_MAX: Literal["art.memory.max"] = "art.memory.max"
+    ART_MEMORY_MAX = "art.memory.max"
     """Maximum memory the process is allowed to use as reported by the Android Runtime, in bytes
 
     Type: int
@@ -1473,7 +1461,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/art/art__memory__total.json
-    ART_MEMORY_TOTAL: Literal["art.memory.total"] = "art.memory.total"
+    ART_MEMORY_TOTAL = "art.memory.total"
     """Total memory currently allocated to the process by the Android Runtime, in bytes
 
     Type: int
@@ -1484,9 +1472,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/aws/aws__cloudwatch__logs__log_group.json
-    AWS_CLOUDWATCH_LOGS_LOG_GROUP: Literal["aws.cloudwatch.logs.log_group"] = (
-        "aws.cloudwatch.logs.log_group"
-    )
+    AWS_CLOUDWATCH_LOGS_LOG_GROUP = "aws.cloudwatch.logs.log_group"
     """The name of the CloudWatch Logs log group
 
     Type: str
@@ -1497,9 +1483,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/aws/aws__cloudwatch__logs__log_stream.json
-    AWS_CLOUDWATCH_LOGS_LOG_STREAM: Literal["aws.cloudwatch.logs.log_stream"] = (
-        "aws.cloudwatch.logs.log_stream"
-    )
+    AWS_CLOUDWATCH_LOGS_LOG_STREAM = "aws.cloudwatch.logs.log_stream"
     """The name of the CloudWatch Logs log stream
 
     Type: str
@@ -1510,9 +1494,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/aws/aws__cloudwatch__logs__url.json
-    AWS_CLOUDWATCH_LOGS_URL: Literal["aws.cloudwatch.logs.url"] = (
-        "aws.cloudwatch.logs.url"
-    )
+    AWS_CLOUDWATCH_LOGS_URL = "aws.cloudwatch.logs.url"
     """The URL to the CloudWatch Logs log group
 
     Type: str
@@ -1523,9 +1505,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/aws/aws__dynamodb__attribute_definitions.json
-    AWS_DYNAMODB_ATTRIBUTE_DEFINITIONS: Literal[
-        "aws.dynamodb.attribute_definitions"
-    ] = "aws.dynamodb.attribute_definitions"
+    AWS_DYNAMODB_ATTRIBUTE_DEFINITIONS = "aws.dynamodb.attribute_definitions"
     """The JSON-serialized value of each item in the `AttributeDefinitions` request field.
 
     Type: List[str]
@@ -1536,9 +1516,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/aws/aws__dynamodb__attributes_to_get.json
-    AWS_DYNAMODB_ATTRIBUTES_TO_GET: Literal["aws.dynamodb.attributes_to_get"] = (
-        "aws.dynamodb.attributes_to_get"
-    )
+    AWS_DYNAMODB_ATTRIBUTES_TO_GET = "aws.dynamodb.attributes_to_get"
     """The value of the `AttributesToGet` request parameter.
 
     Type: List[str]
@@ -1549,9 +1527,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/aws/aws__dynamodb__consistent_read.json
-    AWS_DYNAMODB_CONSISTENT_READ: Literal["aws.dynamodb.consistent_read"] = (
-        "aws.dynamodb.consistent_read"
-    )
+    AWS_DYNAMODB_CONSISTENT_READ = "aws.dynamodb.consistent_read"
     """The value of the `ConsistentRead` request parameter.
 
     Type: bool
@@ -1562,9 +1538,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/aws/aws__dynamodb__consumed_capacity.json
-    AWS_DYNAMODB_CONSUMED_CAPACITY: Literal["aws.dynamodb.consumed_capacity"] = (
-        "aws.dynamodb.consumed_capacity"
-    )
+    AWS_DYNAMODB_CONSUMED_CAPACITY = "aws.dynamodb.consumed_capacity"
     """The JSON-serialized value of each item in the `ConsumedCapacity` response field.
 
     Type: List[str]
@@ -1575,7 +1549,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/aws/aws__dynamodb__count.json
-    AWS_DYNAMODB_COUNT: Literal["aws.dynamodb.count"] = "aws.dynamodb.count"
+    AWS_DYNAMODB_COUNT = "aws.dynamodb.count"
     """The value of the `Count` response parameter.
 
     Type: int
@@ -1586,9 +1560,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/aws/aws__dynamodb__exclusive_start_table.json
-    AWS_DYNAMODB_EXCLUSIVE_START_TABLE: Literal[
-        "aws.dynamodb.exclusive_start_table"
-    ] = "aws.dynamodb.exclusive_start_table"
+    AWS_DYNAMODB_EXCLUSIVE_START_TABLE = "aws.dynamodb.exclusive_start_table"
     """The value of the `ExclusiveStartTableName` request parameter.
 
     Type: str
@@ -1599,9 +1571,9 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/aws/aws__dynamodb__global_secondary_index_updates.json
-    AWS_DYNAMODB_GLOBAL_SECONDARY_INDEX_UPDATES: Literal[
+    AWS_DYNAMODB_GLOBAL_SECONDARY_INDEX_UPDATES = (
         "aws.dynamodb.global_secondary_index_updates"
-    ] = "aws.dynamodb.global_secondary_index_updates"
+    )
     """The JSON-serialized value of each item in the `GlobalSecondaryIndexUpdates` request field.
 
     Type: List[str]
@@ -1612,9 +1584,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/aws/aws__dynamodb__global_secondary_indexes.json
-    AWS_DYNAMODB_GLOBAL_SECONDARY_INDEXES: Literal[
-        "aws.dynamodb.global_secondary_indexes"
-    ] = "aws.dynamodb.global_secondary_indexes"
+    AWS_DYNAMODB_GLOBAL_SECONDARY_INDEXES = "aws.dynamodb.global_secondary_indexes"
     """The JSON-serialized value of each item of the `GlobalSecondaryIndexes` request field.
 
     Type: List[str]
@@ -1625,9 +1595,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/aws/aws__dynamodb__index_name.json
-    AWS_DYNAMODB_INDEX_NAME: Literal["aws.dynamodb.index_name"] = (
-        "aws.dynamodb.index_name"
-    )
+    AWS_DYNAMODB_INDEX_NAME = "aws.dynamodb.index_name"
     """The value of the `IndexName` request parameter.
 
     Type: str
@@ -1638,9 +1606,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/aws/aws__dynamodb__item_collection_metrics.json
-    AWS_DYNAMODB_ITEM_COLLECTION_METRICS: Literal[
-        "aws.dynamodb.item_collection_metrics"
-    ] = "aws.dynamodb.item_collection_metrics"
+    AWS_DYNAMODB_ITEM_COLLECTION_METRICS = "aws.dynamodb.item_collection_metrics"
     """The JSON-serialized value of the `ItemCollectionMetrics` response field.
 
     Type: str
@@ -1651,7 +1617,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/aws/aws__dynamodb__limit.json
-    AWS_DYNAMODB_LIMIT: Literal["aws.dynamodb.limit"] = "aws.dynamodb.limit"
+    AWS_DYNAMODB_LIMIT = "aws.dynamodb.limit"
     """The value of the `Limit` request parameter.
 
     Type: int
@@ -1662,9 +1628,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/aws/aws__dynamodb__local_secondary_indexes.json
-    AWS_DYNAMODB_LOCAL_SECONDARY_INDEXES: Literal[
-        "aws.dynamodb.local_secondary_indexes"
-    ] = "aws.dynamodb.local_secondary_indexes"
+    AWS_DYNAMODB_LOCAL_SECONDARY_INDEXES = "aws.dynamodb.local_secondary_indexes"
     """The JSON-serialized value of each item of the `LocalSecondaryIndexes` request field.
 
     Type: List[str]
@@ -1675,9 +1639,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/aws/aws__dynamodb__projection.json
-    AWS_DYNAMODB_PROJECTION: Literal["aws.dynamodb.projection"] = (
-        "aws.dynamodb.projection"
-    )
+    AWS_DYNAMODB_PROJECTION = "aws.dynamodb.projection"
     """The value of the `ProjectionExpression` request parameter.
 
     Type: str
@@ -1688,9 +1650,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/aws/aws__dynamodb__provisioned_read_capacity.json
-    AWS_DYNAMODB_PROVISIONED_READ_CAPACITY: Literal[
-        "aws.dynamodb.provisioned_read_capacity"
-    ] = "aws.dynamodb.provisioned_read_capacity"
+    AWS_DYNAMODB_PROVISIONED_READ_CAPACITY = "aws.dynamodb.provisioned_read_capacity"
     """The value of the `ProvisionedThroughput.ReadCapacityUnits` request parameter.
 
     Type: float
@@ -1701,9 +1661,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/aws/aws__dynamodb__provisioned_write_capacity.json
-    AWS_DYNAMODB_PROVISIONED_WRITE_CAPACITY: Literal[
-        "aws.dynamodb.provisioned_write_capacity"
-    ] = "aws.dynamodb.provisioned_write_capacity"
+    AWS_DYNAMODB_PROVISIONED_WRITE_CAPACITY = "aws.dynamodb.provisioned_write_capacity"
     """The value of the `ProvisionedThroughput.WriteCapacityUnits` request parameter.
 
     Type: float
@@ -1714,9 +1672,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/aws/aws__dynamodb__scan_forward.json
-    AWS_DYNAMODB_SCAN_FORWARD: Literal["aws.dynamodb.scan_forward"] = (
-        "aws.dynamodb.scan_forward"
-    )
+    AWS_DYNAMODB_SCAN_FORWARD = "aws.dynamodb.scan_forward"
     """The value of the `ScanIndexForward` request parameter.
 
     Type: bool
@@ -1727,9 +1683,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/aws/aws__dynamodb__scanned_count.json
-    AWS_DYNAMODB_SCANNED_COUNT: Literal["aws.dynamodb.scanned_count"] = (
-        "aws.dynamodb.scanned_count"
-    )
+    AWS_DYNAMODB_SCANNED_COUNT = "aws.dynamodb.scanned_count"
     """The value of the `ScannedCount` response parameter.
 
     Type: int
@@ -1740,7 +1694,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/aws/aws__dynamodb__segment.json
-    AWS_DYNAMODB_SEGMENT: Literal["aws.dynamodb.segment"] = "aws.dynamodb.segment"
+    AWS_DYNAMODB_SEGMENT = "aws.dynamodb.segment"
     """The value of the `Segment` request parameter.
 
     Type: int
@@ -1751,7 +1705,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/aws/aws__dynamodb__select.json
-    AWS_DYNAMODB_SELECT: Literal["aws.dynamodb.select"] = "aws.dynamodb.select"
+    AWS_DYNAMODB_SELECT = "aws.dynamodb.select"
     """The value of the `Select` request parameter.
 
     Type: str
@@ -1762,9 +1716,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/aws/aws__dynamodb__table_count.json
-    AWS_DYNAMODB_TABLE_COUNT: Literal["aws.dynamodb.table_count"] = (
-        "aws.dynamodb.table_count"
-    )
+    AWS_DYNAMODB_TABLE_COUNT = "aws.dynamodb.table_count"
     """The number of items in the `TableNames` response parameter.
 
     Type: int
@@ -1775,9 +1727,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/aws/aws__dynamodb__table_names.json
-    AWS_DYNAMODB_TABLE_NAMES: Literal["aws.dynamodb.table_names"] = (
-        "aws.dynamodb.table_names"
-    )
+    AWS_DYNAMODB_TABLE_NAMES = "aws.dynamodb.table_names"
     """The keys in the `RequestItems` object field.
 
     Type: List[str]
@@ -1788,9 +1738,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/aws/aws__dynamodb__total_segments.json
-    AWS_DYNAMODB_TOTAL_SEGMENTS: Literal["aws.dynamodb.total_segments"] = (
-        "aws.dynamodb.total_segments"
-    )
+    AWS_DYNAMODB_TOTAL_SEGMENTS = "aws.dynamodb.total_segments"
     """The value of the `TotalSegments` request parameter.
 
     Type: int
@@ -1801,9 +1749,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/aws/aws__extended_request_id.json
-    AWS_EXTENDED_REQUEST_ID: Literal["aws.extended_request_id"] = (
-        "aws.extended_request_id"
-    )
+    AWS_EXTENDED_REQUEST_ID = "aws.extended_request_id"
     """The AWS extended request ID as returned in the response headers.
 
     Type: str
@@ -1815,9 +1761,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/aws/aws__kinesis__stream__name.json
-    _AWS_KINESIS_STREAM_NAME: Literal["aws.kinesis.stream.name"] = (
-        "aws.kinesis.stream.name"
-    )
+    _AWS_KINESIS_STREAM_NAME = "aws.kinesis.stream.name"
     """The name of the AWS Kinesis stream the request refers to.
 
     Type: str
@@ -1830,9 +1774,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/aws/aws__kinesis__stream_name.json
-    AWS_KINESIS_STREAM_NAME: Literal["aws.kinesis.stream_name"] = (
-        "aws.kinesis.stream_name"
-    )
+    AWS_KINESIS_STREAM_NAME = "aws.kinesis.stream_name"
     """The name of the AWS Kinesis stream the request refers to.
 
     Type: str
@@ -1844,9 +1786,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/aws/aws__lambda__aws_request_id.json
-    AWS_LAMBDA_AWS_REQUEST_ID: Literal["aws.lambda.aws_request_id"] = (
-        "aws.lambda.aws_request_id"
-    )
+    AWS_LAMBDA_AWS_REQUEST_ID = "aws.lambda.aws_request_id"
     """The AWS request ID as received by the Lambda function runtime
 
     Type: str
@@ -1859,9 +1799,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/aws/aws__lambda__execution_duration_in_millis.json
-    AWS_LAMBDA_EXECUTION_DURATION_IN_MILLIS: Literal[
-        "aws.lambda.execution_duration_in_millis"
-    ] = "aws.lambda.execution_duration_in_millis"
+    AWS_LAMBDA_EXECUTION_DURATION_IN_MILLIS = "aws.lambda.execution_duration_in_millis"
     """The execution duration of the Lambda function invocation in milliseconds
 
     Type: float
@@ -1872,9 +1810,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/aws/aws__lambda__function_name.json
-    AWS_LAMBDA_FUNCTION_NAME: Literal["aws.lambda.function_name"] = (
-        "aws.lambda.function_name"
-    )
+    AWS_LAMBDA_FUNCTION_NAME = "aws.lambda.function_name"
     """The name of the Lambda function
 
     Type: str
@@ -1887,9 +1823,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/aws/aws__lambda__function_version.json
-    AWS_LAMBDA_FUNCTION_VERSION: Literal["aws.lambda.function_version"] = (
-        "aws.lambda.function_version"
-    )
+    AWS_LAMBDA_FUNCTION_VERSION = "aws.lambda.function_version"
     """The version of the Lambda function
 
     Type: str
@@ -1902,9 +1836,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/aws/aws__lambda__initialization_type.json
-    AWS_LAMBDA_INITIALIZATION_TYPE: Literal["aws.lambda.initialization_type"] = (
-        "aws.lambda.initialization_type"
-    )
+    AWS_LAMBDA_INITIALIZATION_TYPE = "aws.lambda.initialization_type"
     """How AWS Lambda initialized the execution environment, as reported by AWS_LAMBDA_INITIALIZATION_TYPE.
 
     Type: str
@@ -1918,7 +1850,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/aws/aws__lambda__invoked_arn.json
-    AWS_LAMBDA_INVOKED_ARN: Literal["aws.lambda.invoked_arn"] = "aws.lambda.invoked_arn"
+    AWS_LAMBDA_INVOKED_ARN = "aws.lambda.invoked_arn"
     """The full ARN of the Lambda function that was invoked
 
     Type: str
@@ -1930,9 +1862,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/aws/aws__lambda__invoked_function_arn.json
-    AWS_LAMBDA_INVOKED_FUNCTION_ARN: Literal["aws.lambda.invoked_function_arn"] = (
-        "aws.lambda.invoked_function_arn"
-    )
+    AWS_LAMBDA_INVOKED_FUNCTION_ARN = "aws.lambda.invoked_function_arn"
     """The full ARN of the Lambda function that was invoked
 
     Type: str
@@ -1945,9 +1875,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/aws/aws__lambda__remaining_time_in_millis.json
-    AWS_LAMBDA_REMAINING_TIME_IN_MILLIS: Literal[
-        "aws.lambda.remaining_time_in_millis"
-    ] = "aws.lambda.remaining_time_in_millis"
+    AWS_LAMBDA_REMAINING_TIME_IN_MILLIS = "aws.lambda.remaining_time_in_millis"
     """The remaining time in milliseconds before the Lambda function times out
 
     Type: float
@@ -1958,9 +1886,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/aws/aws__lambda__resource_mapping__id.json
-    AWS_LAMBDA_RESOURCE_MAPPING_ID: Literal["aws.lambda.resource_mapping.id"] = (
-        "aws.lambda.resource_mapping.id"
-    )
+    AWS_LAMBDA_RESOURCE_MAPPING_ID = "aws.lambda.resource_mapping.id"
     """The UUID of the [AWS Lambda EventSource Mapping](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-eventsourcemapping.html). An event source is mapped to a lambda function. Its contents are read by Lambda and used to trigger a function. This isn't available in the lambda execution context or the lambda runtime environment. This is going to be populated by the AWS SDK for each language when that UUID is present. Some of these operations are Create/Delete/Get/List/Update EventSourceMapping.
 
     Type: str
@@ -1971,9 +1897,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/aws/aws__lambda__target_function__name.json
-    AWS_LAMBDA_TARGET_FUNCTION_NAME: Literal["aws.lambda.target_function.name"] = (
-        "aws.lambda.target_function.name"
-    )
+    AWS_LAMBDA_TARGET_FUNCTION_NAME = "aws.lambda.target_function.name"
     """The name of the AWS Lambda function that an AWS SDK call acts on.
 
     Type: str
@@ -1984,9 +1908,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/aws/aws__lambda__web__endpoint_name.json
-    AWS_LAMBDA_WEB_ENDPOINT_NAME: Literal["aws.lambda.web.endpoint_name"] = (
-        "aws.lambda.web.endpoint_name"
-    )
+    AWS_LAMBDA_WEB_ENDPOINT_NAME = "aws.lambda.web.endpoint_name"
     """The name of the AWS Lambda Web Function endpoint that received the request, as reported by the lambda-web-endpoint-name request header.
 
     Type: str
@@ -1998,7 +1920,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/aws/aws__log__group__names.json
-    AWS_LOG_GROUP_NAMES: Literal["aws.log.group.names"] = "aws.log.group.names"
+    AWS_LOG_GROUP_NAMES = "aws.log.group.names"
     """The name(s) of the AWS log group(s) an application is writing to.
 
     Type: List[str]
@@ -2009,7 +1931,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/aws/aws__log__stream__names.json
-    AWS_LOG_STREAM_NAMES: Literal["aws.log.stream.names"] = "aws.log.stream.names"
+    AWS_LOG_STREAM_NAMES = "aws.log.stream.names"
     """The name(s) of the AWS log stream(s) an application is writing to.
 
     Type: List[str]
@@ -2020,7 +1942,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/aws/aws__operation_name.json
-    AWS_OPERATION_NAME: Literal["aws.operation_name"] = "aws.operation_name"
+    AWS_OPERATION_NAME = "aws.operation_name"
     """The name of the API operation invoked on an AWS service.
 
     Type: str
@@ -2033,9 +1955,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/aws/aws__request__extended_id.json
-    AWS_REQUEST_EXTENDED_ID: Literal["aws.request.extended_id"] = (
-        "aws.request.extended_id"
-    )
+    AWS_REQUEST_EXTENDED_ID = "aws.request.extended_id"
     """The AWS extended request ID as returned in the response headers.
 
     Type: str
@@ -2048,7 +1968,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/aws/aws__request__id.json
-    _AWS_REQUEST_ID: Literal["aws.request.id"] = "aws.request.id"
+    _AWS_REQUEST_ID = "aws.request.id"
     """The AWS request ID as returned in the response headers.
 
     Type: str
@@ -2061,20 +1981,20 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/aws/aws__request__url.json
-    AWS_REQUEST_URL: Literal["aws.request.url"] = "aws.request.url"
+    AWS_REQUEST_URL = "aws.request.url"
     """The URL of the AWS API request.
 
     Type: str
     Apply Scrubbing: auto
     Defined in OTEL: No
     Visibility: public
-    Aliases: url.full, http.url, url, messaging.url
+    Aliases: url.full, http.url, url, messaging.url, sentry.request.url
     DEPRECATED: Use url.full instead - This attribute is being deprecated in favor of url.full, which is the OTel-aligned replacement.
     Example: "https://sqs.us-east-1.amazonaws.com/123456789/my-queue"
     """
 
     # Path: model/attributes/aws/aws__request_id.json
-    AWS_REQUEST_ID: Literal["aws.request_id"] = "aws.request_id"
+    AWS_REQUEST_ID = "aws.request_id"
     """The AWS request ID as returned in the response headers.
 
     Type: str
@@ -2086,7 +2006,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/aws/aws__s3__bucket.json
-    AWS_S3_BUCKET: Literal["aws.s3.bucket"] = "aws.s3.bucket"
+    AWS_S3_BUCKET = "aws.s3.bucket"
     """The S3 bucket name the request refers to.
 
     Type: str
@@ -2097,7 +2017,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/aws/aws__s3__copy_source.json
-    AWS_S3_COPY_SOURCE: Literal["aws.s3.copy_source"] = "aws.s3.copy_source"
+    AWS_S3_COPY_SOURCE = "aws.s3.copy_source"
     """The source object (in the form bucket/key) for the copy operation.
 
     Type: str
@@ -2108,7 +2028,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/aws/aws__s3__delete.json
-    AWS_S3_DELETE: Literal["aws.s3.delete"] = "aws.s3.delete"
+    AWS_S3_DELETE = "aws.s3.delete"
     """The JSON-serialized value of Delete request field, which specifies the objects to be deleted.
 
     Type: str
@@ -2119,7 +2039,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/aws/aws__s3__key.json
-    AWS_S3_KEY: Literal["aws.s3.key"] = "aws.s3.key"
+    AWS_S3_KEY = "aws.s3.key"
     """The S3 object key the request refers to. Corresponds to the --key parameter of the S3 API operations.
 
     Type: str
@@ -2130,7 +2050,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/aws/aws__s3__part_number.json
-    AWS_S3_PART_NUMBER: Literal["aws.s3.part_number"] = "aws.s3.part_number"
+    AWS_S3_PART_NUMBER = "aws.s3.part_number"
     """The part number of the part being uploaded in a multipart-upload operation. This is a positive integer between 1 and 10,000.
 
     Type: int
@@ -2141,7 +2061,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/aws/aws__s3__upload_id.json
-    AWS_S3_UPLOAD_ID: Literal["aws.s3.upload_id"] = "aws.s3.upload_id"
+    AWS_S3_UPLOAD_ID = "aws.s3.upload_id"
     """Upload ID that identifies the multipart upload.
 
     Type: str
@@ -2152,9 +2072,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/aws/aws__secretsmanager__secret__arn.json
-    AWS_SECRETSMANAGER_SECRET_ARN: Literal["aws.secretsmanager.secret.arn"] = (
-        "aws.secretsmanager.secret.arn"
-    )
+    AWS_SECRETSMANAGER_SECRET_ARN = "aws.secretsmanager.secret.arn"
     """The ARN of the Secret stored in Secrets Manager.
 
     Type: str
@@ -2165,9 +2083,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/aws/aws__secretsmanager__secret__name.json
-    AWS_SECRETSMANAGER_SECRET_NAME: Literal["aws.secretsmanager.secret.name"] = (
-        "aws.secretsmanager.secret.name"
-    )
+    AWS_SECRETSMANAGER_SECRET_NAME = "aws.secretsmanager.secret.name"
     """The name of the secret stored in AWS Secrets Manager.
 
     Type: str
@@ -2179,7 +2095,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/aws/aws__sns__topic__arn.json
-    AWS_SNS_TOPIC_ARN: Literal["aws.sns.topic.arn"] = "aws.sns.topic.arn"
+    AWS_SNS_TOPIC_ARN = "aws.sns.topic.arn"
     """The ARN of the AWS SNS Topic. An Amazon SNS topic is a logical access point that acts as a communication channel.
 
     Type: str
@@ -2190,7 +2106,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/aws/aws__sqs__queue__url.json
-    AWS_SQS_QUEUE_URL: Literal["aws.sqs.queue.url"] = "aws.sqs.queue.url"
+    AWS_SQS_QUEUE_URL = "aws.sqs.queue.url"
     """The URL of the AWS SQS Queue. It’s a unique identifier for a queue in Amazon Simple Queue Service (SQS) and is used to access the queue and perform actions on it.
 
     Type: str
@@ -2201,9 +2117,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/aws/aws__step_functions__activity__arn.json
-    AWS_STEP_FUNCTIONS_ACTIVITY_ARN: Literal["aws.step_functions.activity.arn"] = (
-        "aws.step_functions.activity.arn"
-    )
+    AWS_STEP_FUNCTIONS_ACTIVITY_ARN = "aws.step_functions.activity.arn"
     """The ARN of the AWS Step Functions Activity.
 
     Type: str
@@ -2214,9 +2128,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/aws/aws__step_functions__activity__name.json
-    AWS_STEP_FUNCTIONS_ACTIVITY_NAME: Literal["aws.step_functions.activity.name"] = (
-        "aws.step_functions.activity.name"
-    )
+    AWS_STEP_FUNCTIONS_ACTIVITY_NAME = "aws.step_functions.activity.name"
     """The name of the AWS Step Functions activity.
 
     Type: str
@@ -2227,9 +2139,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/aws/aws__step_functions__execution__arn.json
-    AWS_STEP_FUNCTIONS_EXECUTION_ARN: Literal["aws.step_functions.execution.arn"] = (
-        "aws.step_functions.execution.arn"
-    )
+    AWS_STEP_FUNCTIONS_EXECUTION_ARN = "aws.step_functions.execution.arn"
     """The ARN of the AWS Step Functions Execution.
 
     Type: str
@@ -2240,9 +2150,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/aws/aws__step_functions__state_machine__arn.json
-    AWS_STEP_FUNCTIONS_STATE_MACHINE_ARN: Literal[
-        "aws.step_functions.state_machine.arn"
-    ] = "aws.step_functions.state_machine.arn"
+    AWS_STEP_FUNCTIONS_STATE_MACHINE_ARN = "aws.step_functions.state_machine.arn"
     """The ARN of the AWS Step Functions State Machine.
 
     Type: str
@@ -2253,9 +2161,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/aws/aws__step_functions__state_machine__name.json
-    AWS_STEP_FUNCTIONS_STATE_MACHINE_NAME: Literal[
-        "aws.step_functions.state_machine.name"
-    ] = "aws.step_functions.state_machine.name"
+    AWS_STEP_FUNCTIONS_STATE_MACHINE_NAME = "aws.step_functions.state_machine.name"
     """The name of the AWS Step Functions state machine.
 
     Type: str
@@ -2266,7 +2172,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/aws_region.json
-    AWS_REGION: Literal["aws_region"] = "aws_region"
+    AWS_REGION = "aws_region"
     """The geographical region the AWS resource is running
 
     Type: str
@@ -2279,7 +2185,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/blocked_main_thread.json
-    BLOCKED_MAIN_THREAD: Literal["blocked_main_thread"] = "blocked_main_thread"
+    BLOCKED_MAIN_THREAD = "blocked_main_thread"
     """Whether the main thread was blocked by the span.
 
     Type: bool
@@ -2290,7 +2196,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/browser/browser__bfcache__frame.json
-    BROWSER_BFCACHE_FRAME: Literal["browser.bfcache.frame"] = "browser.bfcache.frame"
+    BROWSER_BFCACHE_FRAME = "browser.bfcache.frame"
     """Which frame in the page's frame tree a back/forward cache not-restored reason originated from: the top document or a child frame.
 
     Type: str
@@ -2302,9 +2208,9 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/browser/browser__bfcache__not_restored_reason_count.json
-    BROWSER_BFCACHE_NOT_RESTORED_REASON_COUNT: Literal[
+    BROWSER_BFCACHE_NOT_RESTORED_REASON_COUNT = (
         "browser.bfcache.not_restored_reason_count"
-    ] = "browser.bfcache.not_restored_reason_count"
+    )
     """The number of reported reasons a page was not restored from the back/forward cache on a back/forward navigation. 0 when the browser reported no reasons (e.g. non-Chromium browsers).
 
     Type: int
@@ -2315,9 +2221,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/browser/browser__bfcache__outcome.json
-    BROWSER_BFCACHE_OUTCOME: Literal["browser.bfcache.outcome"] = (
-        "browser.bfcache.outcome"
-    )
+    BROWSER_BFCACHE_OUTCOME = "browser.bfcache.outcome"
     """Whether a back/forward navigation was restored from the browser's back/forward cache (bfcache). 'hit' means the page was restored; 'miss' means it was reloaded.
 
     Type: str
@@ -2329,7 +2233,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/browser/browser__bfcache__reason.json
-    BROWSER_BFCACHE_REASON: Literal["browser.bfcache.reason"] = "browser.bfcache.reason"
+    BROWSER_BFCACHE_REASON = "browser.bfcache.reason"
     """A browser-reported reason a page was not restored from the back/forward cache on a back/forward navigation, taken from the notRestoredReasons API. Reported per reason (a single miss can have several). Currently Chromium-only.
 
     Type: str
@@ -2343,7 +2247,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/browser/browser__name.json
-    BROWSER_NAME: Literal["browser.name"] = "browser.name"
+    BROWSER_NAME = "browser.name"
     """The name of the browser.
 
     Type: str
@@ -2355,7 +2259,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/browser/browser__navigation__id.json
-    BROWSER_NAVIGATION_ID: Literal["browser.navigation.id"] = "browser.navigation.id"
+    BROWSER_NAVIGATION_ID = "browser.navigation.id"
     """The identifier of the navigation the measurement belongs to, incremented by the browser for each navigation within a page's lifetime.
 
     Type: int
@@ -2368,9 +2272,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/browser/browser__navigation__type.json
-    BROWSER_NAVIGATION_TYPE: Literal["browser.navigation.type"] = (
-        "browser.navigation.type"
-    )
+    BROWSER_NAVIGATION_TYPE = "browser.navigation.type"
     """The type of navigation the browser performed to arrive at the page the metrics were measured on.
 
     Type: str
@@ -2387,7 +2289,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/browser/browser__paint__type.json
-    BROWSER_PAINT_TYPE: Literal["browser.paint.type"] = "browser.paint.type"
+    BROWSER_PAINT_TYPE = "browser.paint.type"
     """The type of paint timing entry reported by the browser.
 
     Type: str
@@ -2399,9 +2301,9 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/browser/browser__performance__navigation__activation_start.json
-    BROWSER_PERFORMANCE_NAVIGATION_ACTIVATION_START: Literal[
+    BROWSER_PERFORMANCE_NAVIGATION_ACTIVATION_START = (
         "browser.performance.navigation.activation_start"
-    ] = "browser.performance.navigation.activation_start"
+    )
     """The time between initiating a navigation to a page and the browser activating the page
 
     Type: float
@@ -2413,9 +2315,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/browser/browser__performance__time_origin.json
-    BROWSER_PERFORMANCE_TIME_ORIGIN: Literal["browser.performance.time_origin"] = (
-        "browser.performance.time_origin"
-    )
+    BROWSER_PERFORMANCE_TIME_ORIGIN = "browser.performance.time_origin"
     """The browser's performance.timeOrigin timestamp representing the time when the pageload was initiated
 
     Type: float
@@ -2427,7 +2327,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/browser/browser__report__type.json
-    BROWSER_REPORT_TYPE: Literal["browser.report.type"] = "browser.report.type"
+    BROWSER_REPORT_TYPE = "browser.report.type"
     """A browser report sent via reporting API..
 
     Type: str
@@ -2438,7 +2338,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/browser/browser__script__invoker.json
-    BROWSER_SCRIPT_INVOKER: Literal["browser.script.invoker"] = "browser.script.invoker"
+    BROWSER_SCRIPT_INVOKER = "browser.script.invoker"
     """How a script was called in the browser.
 
     Type: str
@@ -2449,9 +2349,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/browser/browser__script__invoker_type.json
-    BROWSER_SCRIPT_INVOKER_TYPE: Literal["browser.script.invoker_type"] = (
-        "browser.script.invoker_type"
-    )
+    BROWSER_SCRIPT_INVOKER_TYPE = "browser.script.invoker_type"
     """Browser script entry point type.
 
     Type: str
@@ -2462,9 +2360,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/browser/browser__script__source_char_position.json
-    BROWSER_SCRIPT_SOURCE_CHAR_POSITION: Literal[
-        "browser.script.source_char_position"
-    ] = "browser.script.source_char_position"
+    BROWSER_SCRIPT_SOURCE_CHAR_POSITION = "browser.script.source_char_position"
     """A number representing the script character position of the script.
 
     Type: int
@@ -2475,7 +2371,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/browser/browser__version.json
-    BROWSER_VERSION: Literal["browser.version"] = "browser.version"
+    BROWSER_VERSION = "browser.version"
     """The version of the browser.
 
     Type: str
@@ -2487,9 +2383,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/browser/browser__web_vital__cls__report_event.json
-    BROWSER_WEB_VITAL_CLS_REPORT_EVENT: Literal[
-        "browser.web_vital.cls.report_event"
-    ] = "browser.web_vital.cls.report_event"
+    BROWSER_WEB_VITAL_CLS_REPORT_EVENT = "browser.web_vital.cls.report_event"
     """The event that caused the SDK to report CLS (pagehide or navigation)
 
     Type: str
@@ -2501,9 +2395,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/browser/browser__web_vital__cls__source__[key].json
-    BROWSER_WEB_VITAL_CLS_SOURCE_KEY: Literal["browser.web_vital.cls.source.<key>"] = (
-        "browser.web_vital.cls.source.<key>"
-    )
+    BROWSER_WEB_VITAL_CLS_SOURCE_KEY = "browser.web_vital.cls.source.<key>"
     """The HTML elements or components responsible for the layout shift. <key> is a numeric index from 1 to N
 
     Type: str
@@ -2516,9 +2408,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/browser/browser__web_vital__cls__value.json
-    BROWSER_WEB_VITAL_CLS_VALUE: Literal["browser.web_vital.cls.value"] = (
-        "browser.web_vital.cls.value"
-    )
+    BROWSER_WEB_VITAL_CLS_VALUE = "browser.web_vital.cls.value"
     """The value of the recorded Cumulative Layout Shift (CLS) web vital
 
     Type: float
@@ -2530,9 +2420,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/browser/browser__web_vital__fcp__value.json
-    BROWSER_WEB_VITAL_FCP_VALUE: Literal["browser.web_vital.fcp.value"] = (
-        "browser.web_vital.fcp.value"
-    )
+    BROWSER_WEB_VITAL_FCP_VALUE = "browser.web_vital.fcp.value"
     """The time it takes for the browser to render the first piece of meaningful content on the screen
 
     Type: float
@@ -2544,9 +2432,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/browser/browser__web_vital__fp__value.json
-    BROWSER_WEB_VITAL_FP_VALUE: Literal["browser.web_vital.fp.value"] = (
-        "browser.web_vital.fp.value"
-    )
+    BROWSER_WEB_VITAL_FP_VALUE = "browser.web_vital.fp.value"
     """The time in milliseconds it takes for the browser to render the first pixel on the screen
 
     Type: float
@@ -2558,9 +2444,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/browser/browser__web_vital__inp__input_delay.json
-    BROWSER_WEB_VITAL_INP_INPUT_DELAY: Literal["browser.web_vital.inp.input_delay"] = (
-        "browser.web_vital.inp.input_delay"
-    )
+    BROWSER_WEB_VITAL_INP_INPUT_DELAY = "browser.web_vital.inp.input_delay"
     """The time between the user interacting with the page and the browser starting to run the event handlers, for the interaction INP was reported on, in milliseconds
 
     Type: float
@@ -2571,9 +2455,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/browser/browser__web_vital__inp__interaction_type.json
-    BROWSER_WEB_VITAL_INP_INTERACTION_TYPE: Literal[
-        "browser.web_vital.inp.interaction_type"
-    ] = "browser.web_vital.inp.interaction_type"
+    BROWSER_WEB_VITAL_INP_INTERACTION_TYPE = "browser.web_vital.inp.interaction_type"
     """The kind of user interaction INP was reported on
 
     Type: str
@@ -2587,9 +2469,9 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/browser/browser__web_vital__inp__presentation_delay.json
-    BROWSER_WEB_VITAL_INP_PRESENTATION_DELAY: Literal[
+    BROWSER_WEB_VITAL_INP_PRESENTATION_DELAY = (
         "browser.web_vital.inp.presentation_delay"
-    ] = "browser.web_vital.inp.presentation_delay"
+    )
     """The time between the event handlers finishing and the browser presenting the next frame, for the interaction INP was reported on, in milliseconds
 
     Type: float
@@ -2600,9 +2482,9 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/browser/browser__web_vital__inp__processing_duration.json
-    BROWSER_WEB_VITAL_INP_PROCESSING_DURATION: Literal[
+    BROWSER_WEB_VITAL_INP_PROCESSING_DURATION = (
         "browser.web_vital.inp.processing_duration"
-    ] = "browser.web_vital.inp.processing_duration"
+    )
     """The time it took the event handlers to run, for the interaction INP was reported on, in milliseconds
 
     Type: float
@@ -2613,9 +2495,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/browser/browser__web_vital__inp__target.json
-    BROWSER_WEB_VITAL_INP_TARGET: Literal["browser.web_vital.inp.target"] = (
-        "browser.web_vital.inp.target"
-    )
+    BROWSER_WEB_VITAL_INP_TARGET = "browser.web_vital.inp.target"
     """The HTML element selector or component name of the element the user interacted with, for the interaction INP was reported on
 
     Type: str
@@ -2627,9 +2507,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/browser/browser__web_vital__inp__value.json
-    BROWSER_WEB_VITAL_INP_VALUE: Literal["browser.web_vital.inp.value"] = (
-        "browser.web_vital.inp.value"
-    )
+    BROWSER_WEB_VITAL_INP_VALUE = "browser.web_vital.inp.value"
     """The value of the recorded Interaction to Next Paint (INP) web vital
 
     Type: float
@@ -2641,9 +2519,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/browser/browser__web_vital__lcp__element.json
-    BROWSER_WEB_VITAL_LCP_ELEMENT: Literal["browser.web_vital.lcp.element"] = (
-        "browser.web_vital.lcp.element"
-    )
+    BROWSER_WEB_VITAL_LCP_ELEMENT = "browser.web_vital.lcp.element"
     """The HTML element selector or component name for which LCP was reported
 
     Type: str
@@ -2655,9 +2531,9 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/browser/browser__web_vital__lcp__element_render_delay.json
-    BROWSER_WEB_VITAL_LCP_ELEMENT_RENDER_DELAY: Literal[
+    BROWSER_WEB_VITAL_LCP_ELEMENT_RENDER_DELAY = (
         "browser.web_vital.lcp.element_render_delay"
-    ] = "browser.web_vital.lcp.element_render_delay"
+    )
     """The time between the LCP resource finishing loading and the LCP element being rendered, in milliseconds
 
     Type: float
@@ -2668,9 +2544,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/browser/browser__web_vital__lcp__id.json
-    BROWSER_WEB_VITAL_LCP_ID: Literal["browser.web_vital.lcp.id"] = (
-        "browser.web_vital.lcp.id"
-    )
+    BROWSER_WEB_VITAL_LCP_ID = "browser.web_vital.lcp.id"
     """The id of the dom element responsible for the largest contentful paint
 
     Type: str
@@ -2682,9 +2556,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/browser/browser__web_vital__lcp__load_time.json
-    BROWSER_WEB_VITAL_LCP_LOAD_TIME: Literal["browser.web_vital.lcp.load_time"] = (
-        "browser.web_vital.lcp.load_time"
-    )
+    BROWSER_WEB_VITAL_LCP_LOAD_TIME = "browser.web_vital.lcp.load_time"
     """The time it took for the LCP element to be loaded
 
     Type: int
@@ -2696,9 +2568,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/browser/browser__web_vital__lcp__render_time.json
-    BROWSER_WEB_VITAL_LCP_RENDER_TIME: Literal["browser.web_vital.lcp.render_time"] = (
-        "browser.web_vital.lcp.render_time"
-    )
+    BROWSER_WEB_VITAL_LCP_RENDER_TIME = "browser.web_vital.lcp.render_time"
     """The time it took for the LCP element to be rendered
 
     Type: int
@@ -2710,9 +2580,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/browser/browser__web_vital__lcp__report_event.json
-    BROWSER_WEB_VITAL_LCP_REPORT_EVENT: Literal[
-        "browser.web_vital.lcp.report_event"
-    ] = "browser.web_vital.lcp.report_event"
+    BROWSER_WEB_VITAL_LCP_REPORT_EVENT = "browser.web_vital.lcp.report_event"
     """The event that caused the SDK to report LCP (pagehide or navigation)
 
     Type: str
@@ -2724,9 +2592,9 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/browser/browser__web_vital__lcp__resource_load_delay.json
-    BROWSER_WEB_VITAL_LCP_RESOURCE_LOAD_DELAY: Literal[
+    BROWSER_WEB_VITAL_LCP_RESOURCE_LOAD_DELAY = (
         "browser.web_vital.lcp.resource_load_delay"
-    ] = "browser.web_vital.lcp.resource_load_delay"
+    )
     """The time between the first byte of the document arriving and the browser starting to load the LCP resource, in milliseconds
 
     Type: float
@@ -2737,9 +2605,9 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/browser/browser__web_vital__lcp__resource_load_duration.json
-    BROWSER_WEB_VITAL_LCP_RESOURCE_LOAD_DURATION: Literal[
+    BROWSER_WEB_VITAL_LCP_RESOURCE_LOAD_DURATION = (
         "browser.web_vital.lcp.resource_load_duration"
-    ] = "browser.web_vital.lcp.resource_load_duration"
+    )
     """The time it took to load the LCP resource, in milliseconds
 
     Type: float
@@ -2750,9 +2618,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/browser/browser__web_vital__lcp__size.json
-    BROWSER_WEB_VITAL_LCP_SIZE: Literal["browser.web_vital.lcp.size"] = (
-        "browser.web_vital.lcp.size"
-    )
+    BROWSER_WEB_VITAL_LCP_SIZE = "browser.web_vital.lcp.size"
     """The size of the largest contentful paint element
 
     Type: int
@@ -2764,9 +2630,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/browser/browser__web_vital__lcp__url.json
-    BROWSER_WEB_VITAL_LCP_URL: Literal["browser.web_vital.lcp.url"] = (
-        "browser.web_vital.lcp.url"
-    )
+    BROWSER_WEB_VITAL_LCP_URL = "browser.web_vital.lcp.url"
     """The url of the dom element responsible for the largest contentful paint
 
     Type: str
@@ -2778,9 +2642,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/browser/browser__web_vital__lcp__value.json
-    BROWSER_WEB_VITAL_LCP_VALUE: Literal["browser.web_vital.lcp.value"] = (
-        "browser.web_vital.lcp.value"
-    )
+    BROWSER_WEB_VITAL_LCP_VALUE = "browser.web_vital.lcp.value"
     """The value of the recorded Largest Contentful Paint (LCP) web vital
 
     Type: float
@@ -2792,9 +2654,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/browser/browser__web_vital__ttfb__request_time.json
-    BROWSER_WEB_VITAL_TTFB_REQUEST_TIME: Literal[
-        "browser.web_vital.ttfb.request_time"
-    ] = "browser.web_vital.ttfb.request_time"
+    BROWSER_WEB_VITAL_TTFB_REQUEST_TIME = "browser.web_vital.ttfb.request_time"
     """The time it takes for the server to process the initial request and send the first byte of a response to the user's browser
 
     Type: float
@@ -2806,9 +2666,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/browser/browser__web_vital__ttfb__value.json
-    BROWSER_WEB_VITAL_TTFB_VALUE: Literal["browser.web_vital.ttfb.value"] = (
-        "browser.web_vital.ttfb.value"
-    )
+    BROWSER_WEB_VITAL_TTFB_VALUE = "browser.web_vital.ttfb.value"
     """The value of the recorded Time To First Byte (TTFB) web vital in Milliseconds
 
     Type: float
@@ -2820,7 +2678,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/cache/cache__hit.json
-    CACHE_HIT: Literal["cache.hit"] = "cache.hit"
+    CACHE_HIT = "cache.hit"
     """If the cache was hit during this span.
 
     Type: bool
@@ -2831,7 +2689,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/cache/cache__item_age.json
-    CACHE_ITEM_AGE: Literal["cache.item_age"] = "cache.item_age"
+    CACHE_ITEM_AGE = "cache.item_age"
     """The age of the cache entry in seconds, measured at read time.
 
     Type: int
@@ -2843,7 +2701,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/cache/cache__item_size.json
-    CACHE_ITEM_SIZE: Literal["cache.item_size"] = "cache.item_size"
+    CACHE_ITEM_SIZE = "cache.item_size"
     """The size of the requested item in the cache. In bytes.
 
     Type: int
@@ -2854,7 +2712,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/cache/cache__key.json
-    CACHE_KEY: Literal["cache.key"] = "cache.key"
+    CACHE_KEY = "cache.key"
     """The key of the cache accessed.
 
     Type: List[str]
@@ -2865,7 +2723,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/cache/cache__operation.json
-    CACHE_OPERATION: Literal["cache.operation"] = "cache.operation"
+    CACHE_OPERATION = "cache.operation"
     """The operation being performed on the cache.
 
     Type: str
@@ -2878,7 +2736,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/cache/cache__tags.json
-    CACHE_TAGS: Literal["cache.tags"] = "cache.tags"
+    CACHE_TAGS = "cache.tags"
     """The tags attached to the cache entry. Tags group entries so a cache can invalidate them together.
 
     Type: List[str]
@@ -2890,7 +2748,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/cache/cache__ttl.json
-    CACHE_TTL: Literal["cache.ttl"] = "cache.ttl"
+    CACHE_TTL = "cache.ttl"
     """The TTL (maximum lifetime) of the cache entry in seconds
 
     Type: int
@@ -2901,7 +2759,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/cache/cache__write.json
-    CACHE_WRITE: Literal["cache.write"] = "cache.write"
+    CACHE_WRITE = "cache.write"
     """If the cache operation resulted in a write to the cache.
 
     Type: bool
@@ -2912,7 +2770,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/channel.json
-    CHANNEL: Literal["channel"] = "channel"
+    CHANNEL = "channel"
     """The channel name that is being used.
 
     Type: str
@@ -2923,7 +2781,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/client/client__address.json
-    CLIENT_ADDRESS: Literal["client.address"] = "client.address"
+    CLIENT_ADDRESS = "client.address"
     """Client address - domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.
 
     Type: str
@@ -2934,8 +2792,30 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "example.com"
     """
 
+    # Path: model/attributes/client/client__as__number.json
+    CLIENT_AS_NUMBER = "client.as.number"
+    """Autonomous system number (ASN) associated with the client IP address.
+
+    Type: int
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: 64496
+    """
+
+    # Path: model/attributes/client/client__as__organization.json
+    CLIENT_AS_ORGANIZATION = "client.as.organization"
+    """The name of the organization associated with the autonomous system of the client IP address.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: "Example Networks Inc."
+    """
+
     # Path: model/attributes/client/client__port.json
-    CLIENT_PORT: Literal["client.port"] = "client.port"
+    CLIENT_PORT = "client.port"
     """Client port number.
 
     Type: int
@@ -2946,7 +2826,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/cloud/cloud__account__id.json
-    CLOUD_ACCOUNT_ID: Literal["cloud.account.id"] = "cloud.account.id"
+    CLOUD_ACCOUNT_ID = "cloud.account.id"
     """The cloud account ID the resource is assigned to
 
     Type: str
@@ -2957,9 +2837,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/cloud/cloud__availability_zone.json
-    CLOUD_AVAILABILITY_ZONE: Literal["cloud.availability_zone"] = (
-        "cloud.availability_zone"
-    )
+    CLOUD_AVAILABILITY_ZONE = "cloud.availability_zone"
     """Cloud regions often have multiple, isolated locations known as zones to increase availability
 
     Type: str
@@ -2970,7 +2848,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/cloud/cloud__platform.json
-    CLOUD_PLATFORM: Literal["cloud.platform"] = "cloud.platform"
+    CLOUD_PLATFORM = "cloud.platform"
     """The cloud platform in use
 
     Type: str
@@ -2981,7 +2859,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/cloud/cloud__provider.json
-    CLOUD_PROVIDER: Literal["cloud.provider"] = "cloud.provider"
+    CLOUD_PROVIDER = "cloud.provider"
     """Name of the cloud provider
 
     Type: str
@@ -2992,7 +2870,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/cloud/cloud__region.json
-    CLOUD_REGION: Literal["cloud.region"] = "cloud.region"
+    CLOUD_REGION = "cloud.region"
     """The geographical region the resource is running
 
     Type: str
@@ -3004,7 +2882,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/cloud/cloud__resource_id.json
-    CLOUD_RESOURCE_ID: Literal["cloud.resource_id"] = "cloud.resource_id"
+    CLOUD_RESOURCE_ID = "cloud.resource_id"
     """Cloud provider-specific native identifier of the monitored cloud resource
 
     Type: str
@@ -3016,7 +2894,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/cloudflare/cloudflare__d1__duration.json
-    CLOUDFLARE_D1_DURATION: Literal["cloudflare.d1.duration"] = "cloudflare.d1.duration"
+    CLOUDFLARE_D1_DURATION = "cloudflare.d1.duration"
     """The duration of a Cloudflare D1 operation.
 
     Type: int
@@ -3027,9 +2905,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/cloudflare/cloudflare__d1__query_type.json
-    CLOUDFLARE_D1_QUERY_TYPE: Literal["cloudflare.d1.query_type"] = (
-        "cloudflare.d1.query_type"
-    )
+    CLOUDFLARE_D1_QUERY_TYPE = "cloudflare.d1.query_type"
     """The type of query executed in a Cloudflare D1 operation
 
     Type: str
@@ -3042,9 +2918,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/cloudflare/cloudflare__d1__rows_read.json
-    CLOUDFLARE_D1_ROWS_READ: Literal["cloudflare.d1.rows_read"] = (
-        "cloudflare.d1.rows_read"
-    )
+    CLOUDFLARE_D1_ROWS_READ = "cloudflare.d1.rows_read"
     """The number of rows read in a Cloudflare D1 operation.
 
     Type: int
@@ -3055,9 +2929,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/cloudflare/cloudflare__d1__rows_written.json
-    CLOUDFLARE_D1_ROWS_WRITTEN: Literal["cloudflare.d1.rows_written"] = (
-        "cloudflare.d1.rows_written"
-    )
+    CLOUDFLARE_D1_ROWS_WRITTEN = "cloudflare.d1.rows_written"
     """The number of rows written in a Cloudflare D1 operation.
 
     Type: int
@@ -3068,9 +2940,9 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/cloudflare/cloudflare__durable_object__query__bindings.json
-    CLOUDFLARE_DURABLE_OBJECT_QUERY_BINDINGS: Literal[
+    CLOUDFLARE_DURABLE_OBJECT_QUERY_BINDINGS = (
         "cloudflare.durable_object.query.bindings"
-    ] = "cloudflare.durable_object.query.bindings"
+    )
     """The number of bound parameters passed to the SQL exec call.
 
     Type: int
@@ -3081,9 +2953,9 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/cloudflare/cloudflare__durable_object__response__rows_read.json
-    CLOUDFLARE_DURABLE_OBJECT_RESPONSE_ROWS_READ: Literal[
+    CLOUDFLARE_DURABLE_OBJECT_RESPONSE_ROWS_READ = (
         "cloudflare.durable_object.response.rows_read"
-    ] = "cloudflare.durable_object.response.rows_read"
+    )
     """The number of rows read by a Cloudflare Durable Object SQL operation.
 
     Type: int
@@ -3094,9 +2966,9 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/cloudflare/cloudflare__durable_object__response__rows_written.json
-    CLOUDFLARE_DURABLE_OBJECT_RESPONSE_ROWS_WRITTEN: Literal[
+    CLOUDFLARE_DURABLE_OBJECT_RESPONSE_ROWS_WRITTEN = (
         "cloudflare.durable_object.response.rows_written"
-    ] = "cloudflare.durable_object.response.rows_written"
+    )
     """The number of rows written by a Cloudflare Durable Object SQL operation.
 
     Type: int
@@ -3107,7 +2979,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/cloudflare/cloudflare__r2__bucket.json
-    CLOUDFLARE_R2_BUCKET: Literal["cloudflare.r2.bucket"] = "cloudflare.r2.bucket"
+    CLOUDFLARE_R2_BUCKET = "cloudflare.r2.bucket"
     """The name of the Cloudflare R2 bucket binding
 
     Type: str
@@ -3118,9 +2990,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/cloudflare/cloudflare__r2__operation.json
-    CLOUDFLARE_R2_OPERATION: Literal["cloudflare.r2.operation"] = (
-        "cloudflare.r2.operation"
-    )
+    CLOUDFLARE_R2_OPERATION = "cloudflare.r2.operation"
     """The R2 API operation being performed
 
     Type: str
@@ -3131,9 +3001,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/cloudflare/cloudflare__r2__request__delimiter.json
-    CLOUDFLARE_R2_REQUEST_DELIMITER: Literal["cloudflare.r2.request.delimiter"] = (
-        "cloudflare.r2.request.delimiter"
-    )
+    CLOUDFLARE_R2_REQUEST_DELIMITER = "cloudflare.r2.request.delimiter"
     """The delimiter used to group objects in an R2 list operation
 
     Type: str
@@ -3144,9 +3012,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/cloudflare/cloudflare__r2__request__key.json
-    CLOUDFLARE_R2_REQUEST_KEY: Literal["cloudflare.r2.request.key"] = (
-        "cloudflare.r2.request.key"
-    )
+    CLOUDFLARE_R2_REQUEST_KEY = "cloudflare.r2.request.key"
     """The object key used in the R2 operation
 
     Type: str
@@ -3157,9 +3023,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/cloudflare/cloudflare__r2__request__part_number.json
-    CLOUDFLARE_R2_REQUEST_PART_NUMBER: Literal["cloudflare.r2.request.part_number"] = (
-        "cloudflare.r2.request.part_number"
-    )
+    CLOUDFLARE_R2_REQUEST_PART_NUMBER = "cloudflare.r2.request.part_number"
     """The part number in a multipart upload operation
 
     Type: int
@@ -3170,9 +3034,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/cloudflare/cloudflare__r2__request__prefix.json
-    CLOUDFLARE_R2_REQUEST_PREFIX: Literal["cloudflare.r2.request.prefix"] = (
-        "cloudflare.r2.request.prefix"
-    )
+    CLOUDFLARE_R2_REQUEST_PREFIX = "cloudflare.r2.request.prefix"
     """The prefix used to filter objects in an R2 list operation
 
     Type: str
@@ -3183,9 +3045,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/cloudflare/cloudflare__workflow__attempt.json
-    CLOUDFLARE_WORKFLOW_ATTEMPT: Literal["cloudflare.workflow.attempt"] = (
-        "cloudflare.workflow.attempt"
-    )
+    CLOUDFLARE_WORKFLOW_ATTEMPT = "cloudflare.workflow.attempt"
     """The current attempt number for a Cloudflare Workflow step
 
     Type: int
@@ -3196,9 +3056,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/cloudflare/cloudflare__workflow__retries__backoff.json
-    CLOUDFLARE_WORKFLOW_RETRIES_BACKOFF: Literal[
-        "cloudflare.workflow.retries.backoff"
-    ] = "cloudflare.workflow.retries.backoff"
+    CLOUDFLARE_WORKFLOW_RETRIES_BACKOFF = "cloudflare.workflow.retries.backoff"
     """The backoff strategy for Cloudflare Workflow step retries
 
     Type: str
@@ -3209,9 +3067,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/cloudflare/cloudflare__workflow__retries__delay.json
-    CLOUDFLARE_WORKFLOW_RETRIES_DELAY: Literal["cloudflare.workflow.retries.delay"] = (
-        "cloudflare.workflow.retries.delay"
-    )
+    CLOUDFLARE_WORKFLOW_RETRIES_DELAY = "cloudflare.workflow.retries.delay"
     """The delay between Cloudflare Workflow step retries
 
     Type: str
@@ -3222,9 +3078,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/cloudflare/cloudflare__workflow__retries__limit.json
-    CLOUDFLARE_WORKFLOW_RETRIES_LIMIT: Literal["cloudflare.workflow.retries.limit"] = (
-        "cloudflare.workflow.retries.limit"
-    )
+    CLOUDFLARE_WORKFLOW_RETRIES_LIMIT = "cloudflare.workflow.retries.limit"
     """The maximum number of retries for a Cloudflare Workflow step
 
     Type: int
@@ -3235,9 +3089,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/cloudflare/cloudflare__workflow__timeout.json
-    CLOUDFLARE_WORKFLOW_TIMEOUT: Literal["cloudflare.workflow.timeout"] = (
-        "cloudflare.workflow.timeout"
-    )
+    CLOUDFLARE_WORKFLOW_TIMEOUT = "cloudflare.workflow.timeout"
     """The timeout duration for a Cloudflare Workflow step
 
     Type: str
@@ -3248,7 +3100,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/cls/cls__source__[key].json
-    CLS_SOURCE_KEY: Literal["cls.source.<key>"] = "cls.source.<key>"
+    CLS_SOURCE_KEY = "cls.source.<key>"
     """The HTML elements or components responsible for the layout shift. <key> is a numeric index from 1 to N
 
     Type: str
@@ -3262,7 +3114,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/cls.json
-    CLS: Literal["cls"] = "cls"
+    CLS = "cls"
     """The value of the recorded Cumulative Layout Shift (CLS) web vital
 
     Type: float
@@ -3275,7 +3127,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/code/code__file__path.json
-    CODE_FILE_PATH: Literal["code.file.path"] = "code.file.path"
+    CODE_FILE_PATH = "code.file.path"
     """The source code file name that identifies the code unit as uniquely as possible (preferably an absolute file path).
 
     Type: str
@@ -3287,7 +3139,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/code/code__filepath.json
-    CODE_FILEPATH: Literal["code.filepath"] = "code.filepath"
+    CODE_FILEPATH = "code.filepath"
     """The source code file name that identifies the code unit as uniquely as possible (preferably an absolute file path).
 
     Type: str
@@ -3300,7 +3152,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/code/code__function.json
-    CODE_FUNCTION: Literal["code.function"] = "code.function"
+    CODE_FUNCTION = "code.function"
     """The method or function name, or equivalent (usually rightmost part of the code unit's name).
 
     Type: str
@@ -3312,7 +3164,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/code/code__function__name.json
-    CODE_FUNCTION_NAME: Literal["code.function.name"] = "code.function.name"
+    CODE_FUNCTION_NAME = "code.function.name"
     """The method or function fully-qualified name without arguments.
 
     Type: str
@@ -3324,7 +3176,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/code/code__line__number.json
-    CODE_LINE_NUMBER: Literal["code.line.number"] = "code.line.number"
+    CODE_LINE_NUMBER = "code.line.number"
     """The line number in code.filepath best representing the operation. It SHOULD point within the code unit named in code.function
 
     Type: int
@@ -3336,7 +3188,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/code/code__lineno.json
-    CODE_LINENO: Literal["code.lineno"] = "code.lineno"
+    CODE_LINENO = "code.lineno"
     """The line number in code.filepath best representing the operation. It SHOULD point within the code unit named in code.function
 
     Type: int
@@ -3349,7 +3201,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/code/code__namespace.json
-    CODE_NAMESPACE: Literal["code.namespace"] = "code.namespace"
+    CODE_NAMESPACE = "code.namespace"
     """The 'namespace' within which code.function is defined. Usually the qualified class or module name, such that code.namespace + some separator + code.function form a unique identifier for the code unit.
 
     Type: str
@@ -3360,7 +3212,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/code.json
-    CODE: Literal["code"] = "code"
+    CODE = "code"
     """Status code of the RPC returned by the RPC server or generated by the client.
 
     Type: str
@@ -3373,7 +3225,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/connection/connection__rtt.json
-    CONNECTION_RTT: Literal["connection.rtt"] = "connection.rtt"
+    CONNECTION_RTT = "connection.rtt"
     """Specifies the estimated effective round-trip time of the current connection, in milliseconds.
 
     Type: int
@@ -3386,7 +3238,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/connectionType.json
-    CONNECTIONTYPE: Literal["connectionType"] = "connectionType"
+    CONNECTIONTYPE = "connectionType"
     """Specifies the type of the current connection (e.g. wifi, ethernet, cellular , etc).
 
     Type: str
@@ -3399,7 +3251,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/culture/culture__calendar.json
-    CULTURE_CALENDAR: Literal["culture.calendar"] = "culture.calendar"
+    CULTURE_CALENDAR = "culture.calendar"
     """The calendar system used by the culture.
 
     Type: str
@@ -3410,7 +3262,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/culture/culture__display_name.json
-    CULTURE_DISPLAY_NAME: Literal["culture.display_name"] = "culture.display_name"
+    CULTURE_DISPLAY_NAME = "culture.display_name"
     """Human readable name of the culture.
 
     Type: str
@@ -3421,9 +3273,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/culture/culture__is_24_hour_format.json
-    CULTURE_IS_24_HOUR_FORMAT: Literal["culture.is_24_hour_format"] = (
-        "culture.is_24_hour_format"
-    )
+    CULTURE_IS_24_HOUR_FORMAT = "culture.is_24_hour_format"
     """Whether the culture uses 24-hour time format.
 
     Type: bool
@@ -3434,7 +3284,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/culture/culture__locale.json
-    CULTURE_LOCALE: Literal["culture.locale"] = "culture.locale"
+    CULTURE_LOCALE = "culture.locale"
     """The locale identifier following RFC 4646.
 
     Type: str
@@ -3445,7 +3295,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/culture/culture__timezone.json
-    CULTURE_TIMEZONE: Literal["culture.timezone"] = "culture.timezone"
+    CULTURE_TIMEZONE = "culture.timezone"
     """The timezone of the culture, as a geographic timezone identifier.
 
     Type: str
@@ -3456,7 +3306,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/db/db__collection__name.json
-    DB_COLLECTION_NAME: Literal["db.collection.name"] = "db.collection.name"
+    DB_COLLECTION_NAME = "db.collection.name"
     """The name of a collection (table, container) within the database.
 
     Type: str
@@ -3469,7 +3319,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/db/db__connection_string.json
-    DB_CONNECTION_STRING: Literal["db.connection_string"] = "db.connection_string"
+    DB_CONNECTION_STRING = "db.connection_string"
     """The connection string used to connect to the database.
 
     Type: str
@@ -3481,7 +3331,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/db/db__driver__name.json
-    DB_DRIVER_NAME: Literal["db.driver.name"] = "db.driver.name"
+    DB_DRIVER_NAME = "db.driver.name"
     """The name of the driver used for the database connection.
 
     Type: str
@@ -3492,7 +3342,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/db/db__mongodb__collection.json
-    DB_MONGODB_COLLECTION: Literal["db.mongodb.collection"] = "db.mongodb.collection"
+    DB_MONGODB_COLLECTION = "db.mongodb.collection"
     """The MongoDB collection being accessed.
 
     Type: str
@@ -3505,7 +3355,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/db/db__name.json
-    DB_NAME: Literal["db.name"] = "db.name"
+    DB_NAME = "db.name"
     """The name of the database being accessed.
 
     Type: str
@@ -3518,7 +3368,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/db/db__namespace.json
-    DB_NAMESPACE: Literal["db.namespace"] = "db.namespace"
+    DB_NAMESPACE = "db.namespace"
     """The name of the database being accessed.
 
     Type: str
@@ -3530,7 +3380,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/db/db__operation.json
-    DB_OPERATION: Literal["db.operation"] = "db.operation"
+    DB_OPERATION = "db.operation"
     """The name of the operation being executed.
 
     Type: str
@@ -3543,9 +3393,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/db/db__operation__batch__size.json
-    DB_OPERATION_BATCH_SIZE: Literal["db.operation.batch.size"] = (
-        "db.operation.batch.size"
-    )
+    DB_OPERATION_BATCH_SIZE = "db.operation.batch.size"
     """The number of queries included in a batch operation. Operations are only considered batches when they contain two or more operations, and so db.operation.batch.size SHOULD never be 1.
 
     Type: int
@@ -3556,7 +3404,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/db/db__operation__name.json
-    DB_OPERATION_NAME: Literal["db.operation.name"] = "db.operation.name"
+    DB_OPERATION_NAME = "db.operation.name"
     """The name of the operation being executed.
 
     Type: str
@@ -3568,7 +3416,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/db/db__params.json
-    DB_PARAMS: Literal["db.params"] = "db.params"
+    DB_PARAMS = "db.params"
     """The query bindings for a database request.
 
     Type: str
@@ -3580,9 +3428,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/db/db__query__parameter__[key].json
-    DB_QUERY_PARAMETER_KEY: Literal["db.query.parameter.<key>"] = (
-        "db.query.parameter.<key>"
-    )
+    DB_QUERY_PARAMETER_KEY = "db.query.parameter.<key>"
     """A query parameter used in db.query.text, with <key> being the parameter name, and the attribute value being a string representation of the parameter value.
 
     Type: str
@@ -3594,7 +3440,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/db/db__query__summary.json
-    DB_QUERY_SUMMARY: Literal["db.query.summary"] = "db.query.summary"
+    DB_QUERY_SUMMARY = "db.query.summary"
     """A shortened representation of operation(s) in the full query. This attribute must be low-cardinality and should only contain the operation table names.
 
     Type: str
@@ -3606,7 +3452,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/db/db__query__text.json
-    DB_QUERY_TEXT: Literal["db.query.text"] = "db.query.text"
+    DB_QUERY_TEXT = "db.query.text"
     """The database parameterized query being executed. Any parameter values (filters, insertion values, etc) should be replaced with parameter placeholders. If applicable, use `db.query.parameter.<key>` to add the parameter value.
 
     Type: str
@@ -3618,7 +3464,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/db/db__redis__connection.json
-    DB_REDIS_CONNECTION: Literal["db.redis.connection"] = "db.redis.connection"
+    DB_REDIS_CONNECTION = "db.redis.connection"
     """The redis connection name.
 
     Type: str
@@ -3629,7 +3475,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/db/db__redis__key.json
-    DB_REDIS_KEY: Literal["db.redis.key"] = "db.redis.key"
+    DB_REDIS_KEY = "db.redis.key"
     """The key the Redis command is operating on.
 
     Type: str
@@ -3641,7 +3487,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/db/db__redis__parameters.json
-    DB_REDIS_PARAMETERS: Literal["db.redis.parameters"] = "db.redis.parameters"
+    DB_REDIS_PARAMETERS = "db.redis.parameters"
     """The array of command parameters given to a redis command.
 
     Type: List[str]
@@ -3652,9 +3498,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/db/db__response__status_code.json
-    DB_RESPONSE_STATUS_CODE: Literal["db.response.status_code"] = (
-        "db.response.status_code"
-    )
+    DB_RESPONSE_STATUS_CODE = "db.response.status_code"
     """Database response status code. The status code returned by the database. Usually it represents an error code, but may also represent partial success, warning, or differentiate between various types of successful outcomes.
 
     Type: str
@@ -3665,7 +3509,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/db/db__sql__bindings.json
-    DB_SQL_BINDINGS: Literal["db.sql.bindings"] = "db.sql.bindings"
+    DB_SQL_BINDINGS = "db.sql.bindings"
     """The array of query bindings.
 
     Type: List[str]
@@ -3677,7 +3521,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/db/db__statement.json
-    DB_STATEMENT: Literal["db.statement"] = "db.statement"
+    DB_STATEMENT = "db.statement"
     """The database statement being executed.
 
     Type: str
@@ -3690,9 +3534,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/db/db__stored_procedure__name.json
-    DB_STORED_PROCEDURE_NAME: Literal["db.stored_procedure.name"] = (
-        "db.stored_procedure.name"
-    )
+    DB_STORED_PROCEDURE_NAME = "db.stored_procedure.name"
     """The name of a stored procedure being called.
 
     Type: str
@@ -3703,7 +3545,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/db/db__system.json
-    DB_SYSTEM: Literal["db.system"] = "db.system"
+    DB_SYSTEM = "db.system"
     """An identifier for the database management system (DBMS) product being used. See [OpenTelemetry docs](https://github.com/open-telemetry/semantic-conventions/blob/main/docs/database/database-spans.md#notes-and-well-known-identifiers-for-dbsystem) for a list of well-known identifiers.
 
     Type: str
@@ -3716,7 +3558,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/db/db__system__name.json
-    DB_SYSTEM_NAME: Literal["db.system.name"] = "db.system.name"
+    DB_SYSTEM_NAME = "db.system.name"
     """An identifier for the database management system (DBMS) product being used. See [OpenTelemetry docs](https://github.com/open-telemetry/semantic-conventions/blob/main/docs/database/database-spans.md#notes-and-well-known-identifiers-for-dbsystem) for a list of well-known identifiers.
 
     Type: str
@@ -3728,7 +3570,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/db/db__user.json
-    DB_USER: Literal["db.user"] = "db.user"
+    DB_USER = "db.user"
     """The database user.
 
     Type: str
@@ -3739,7 +3581,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/device/device__archs.json
-    DEVICE_ARCHS: Literal["device.archs"] = "device.archs"
+    DEVICE_ARCHS = "device.archs"
     """The CPU architectures of the device.
 
     Type: List[str]
@@ -3750,20 +3592,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/device/device__battery_level.json
-    DEVICE_BATTERY_LEVEL: Literal["device.battery_level"] = "device.battery_level"
+    DEVICE_BATTERY_LEVEL = "device.battery_level"
     """The battery level of the device as a percentage (0-100).
 
     Type: float
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
+    Aliases: sentry.device.battery_level
     Example: 100
     """
 
     # Path: model/attributes/device/device__battery_temperature.json
-    DEVICE_BATTERY_TEMPERATURE: Literal["device.battery_temperature"] = (
-        "device.battery_temperature"
-    )
+    DEVICE_BATTERY_TEMPERATURE = "device.battery_temperature"
     """The battery temperature of the device in Celsius.
 
     Type: float
@@ -3774,7 +3615,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/device/device__boot_time.json
-    DEVICE_BOOT_TIME: Literal["device.boot_time"] = "device.boot_time"
+    DEVICE_BOOT_TIME = "device.boot_time"
     """A formatted UTC timestamp when the system was booted.
 
     Type: str
@@ -3785,29 +3626,31 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/device/device__brand.json
-    DEVICE_BRAND: Literal["device.brand"] = "device.brand"
+    DEVICE_BRAND = "device.brand"
     """The brand of the device.
 
     Type: str
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
+    Aliases: sentry.device.brand
     Example: "Apple"
     """
 
     # Path: model/attributes/device/device__charging.json
-    DEVICE_CHARGING: Literal["device.charging"] = "device.charging"
+    DEVICE_CHARGING = "device.charging"
     """Whether the device was charging or not.
 
     Type: bool
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
+    Aliases: sentry.device.charging
     Example: false
     """
 
     # Path: model/attributes/device/device__chipset.json
-    DEVICE_CHIPSET: Literal["device.chipset"] = "device.chipset"
+    DEVICE_CHIPSET = "device.chipset"
     """The chipset of the device.
 
     Type: str
@@ -3818,18 +3661,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/device/device__class.json
-    DEVICE_CLASS: Literal["device.class"] = "device.class"
+    DEVICE_CLASS = "device.class"
     """The classification of the device. For example, `low`, `medium`, or `high`. Typically inferred by Relay - SDKs generally do not need to set this directly.
 
     Type: str
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
+    Aliases: sentry.device.class
     Example: "medium"
     """
 
     # Path: model/attributes/device/device__connection_type.json
-    DEVICE_CONNECTION_TYPE: Literal["device.connection_type"] = "device.connection_type"
+    DEVICE_CONNECTION_TYPE = "device.connection_type"
     """The internet connection type currently being used by the device.
 
     Type: str
@@ -3842,7 +3686,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/device/device__cpu_description.json
-    DEVICE_CPU_DESCRIPTION: Literal["device.cpu_description"] = "device.cpu_description"
+    DEVICE_CPU_DESCRIPTION = "device.cpu_description"
     """A description of the CPU of the device.
 
     Type: str
@@ -3853,9 +3697,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/device/device__external_free_storage.json
-    DEVICE_EXTERNAL_FREE_STORAGE: Literal["device.external_free_storage"] = (
-        "device.external_free_storage"
-    )
+    DEVICE_EXTERNAL_FREE_STORAGE = "device.external_free_storage"
     """External storage free size in bytes.
 
     Type: int
@@ -3866,9 +3708,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/device/device__external_storage_size.json
-    DEVICE_EXTERNAL_STORAGE_SIZE: Literal["device.external_storage_size"] = (
-        "device.external_storage_size"
-    )
+    DEVICE_EXTERNAL_STORAGE_SIZE = "device.external_storage_size"
     """External storage total size in bytes.
 
     Type: int
@@ -3879,18 +3719,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/device/device__family.json
-    DEVICE_FAMILY: Literal["device.family"] = "device.family"
+    DEVICE_FAMILY = "device.family"
     """The family of the device.
 
     Type: str
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
+    Aliases: sentry.device.family
     Example: "iPhone"
     """
 
     # Path: model/attributes/device/device__free_memory.json
-    DEVICE_FREE_MEMORY: Literal["device.free_memory"] = "device.free_memory"
+    DEVICE_FREE_MEMORY = "device.free_memory"
     """Free system memory in bytes.
 
     Type: int
@@ -3901,7 +3742,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/device/device__free_storage.json
-    DEVICE_FREE_STORAGE: Literal["device.free_storage"] = "device.free_storage"
+    DEVICE_FREE_STORAGE = "device.free_storage"
     """Free device storage in bytes.
 
     Type: int
@@ -3912,7 +3753,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/device/device__id.json
-    DEVICE_ID: Literal["device.id"] = "device.id"
+    DEVICE_ID = "device.id"
     """Unique device identifier.
 
     Type: str
@@ -3923,18 +3764,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/device/device__locale.json
-    DEVICE_LOCALE: Literal["device.locale"] = "device.locale"
+    DEVICE_LOCALE = "device.locale"
     """The locale of the device.
 
     Type: str
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
+    Aliases: sentry.device.locale
     Example: "en-US"
     """
 
     # Path: model/attributes/device/device__low_memory.json
-    DEVICE_LOW_MEMORY: Literal["device.low_memory"] = "device.low_memory"
+    DEVICE_LOW_MEMORY = "device.low_memory"
     """Whether the device was low on memory.
 
     Type: bool
@@ -3945,7 +3787,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/device/device__low_power_mode.json
-    DEVICE_LOW_POWER_MODE: Literal["device.low_power_mode"] = "device.low_power_mode"
+    DEVICE_LOW_POWER_MODE = "device.low_power_mode"
     """Whether the device is in Low Power Mode.
 
     Type: bool
@@ -3956,7 +3798,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/device/device__manufacturer.json
-    DEVICE_MANUFACTURER: Literal["device.manufacturer"] = "device.manufacturer"
+    DEVICE_MANUFACTURER = "device.manufacturer"
     """The manufacturer of the device.
 
     Type: str
@@ -3967,9 +3809,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/device/device__memory__estimated_capacity.json
-    DEVICE_MEMORY_ESTIMATED_CAPACITY: Literal["device.memory.estimated_capacity"] = (
-        "device.memory.estimated_capacity"
-    )
+    DEVICE_MEMORY_ESTIMATED_CAPACITY = "device.memory.estimated_capacity"
     """The estimated total memory capacity of the device, only a rough estimation in gigabytes. Browsers report estimations in buckets of powers of 2, mostly capped at 8 GB
 
     Type: int
@@ -3981,7 +3821,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/device/device__memory_size.json
-    DEVICE_MEMORY_SIZE: Literal["device.memory_size"] = "device.memory_size"
+    DEVICE_MEMORY_SIZE = "device.memory_size"
     """Total system memory available in bytes.
 
     Type: int
@@ -3992,62 +3832,67 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/device/device__model.json
-    DEVICE_MODEL: Literal["device.model"] = "device.model"
+    DEVICE_MODEL = "device.model"
     """The model of the device.
 
     Type: str
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
+    Aliases: sentry.device.model
     Example: "iPhone 15 Pro Max"
     """
 
     # Path: model/attributes/device/device__model_id.json
-    DEVICE_MODEL_ID: Literal["device.model_id"] = "device.model_id"
+    DEVICE_MODEL_ID = "device.model_id"
     """An internal hardware revision to identify the device exactly.
 
     Type: str
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
+    Aliases: sentry.device.model_id
     Example: "N861AP"
     """
 
     # Path: model/attributes/device/device__name.json
-    DEVICE_NAME: Literal["device.name"] = "device.name"
+    DEVICE_NAME = "device.name"
     """The user-assigned name of the mobile device.
 
     Type: str
     Apply Scrubbing: auto
     Defined in OTEL: No
     Visibility: public
+    Aliases: sentry.device.name
     Example: "localhost"
     """
 
     # Path: model/attributes/device/device__online.json
-    DEVICE_ONLINE: Literal["device.online"] = "device.online"
+    DEVICE_ONLINE = "device.online"
     """Whether the device was online or not.
 
     Type: bool
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
+    Aliases: sentry.device.online
     Example: true
     """
 
     # Path: model/attributes/device/device__orientation.json
-    DEVICE_ORIENTATION: Literal["device.orientation"] = "device.orientation"
+    DEVICE_ORIENTATION = "device.orientation"
     """The orientation of the device, either "portrait" or "landscape".
 
     Type: str
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
+    Aliases: sentry.device.orientation
     Example: "portrait"
     """
 
     # Path: model/attributes/device/device__processor_count.json
-    DEVICE_PROCESSOR_COUNT: Literal["device.processor_count"] = "device.processor_count"
+    DEVICE_PROCESSOR_COUNT = "device.processor_count"
     """Number of "logical processors".
 
     Type: int
@@ -4059,9 +3904,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/device/device__processor_frequency.json
-    DEVICE_PROCESSOR_FREQUENCY: Literal["device.processor_frequency"] = (
-        "device.processor_frequency"
-    )
+    DEVICE_PROCESSOR_FREQUENCY = "device.processor_frequency"
     """Processor frequency in MHz.
 
     Type: float
@@ -4072,66 +3915,67 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/device/device__screen_density.json
-    DEVICE_SCREEN_DENSITY: Literal["device.screen_density"] = "device.screen_density"
+    DEVICE_SCREEN_DENSITY = "device.screen_density"
     """The screen density of the device.
 
     Type: float
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
+    Aliases: sentry.device.screen_density
     Example: 2.625
     """
 
     # Path: model/attributes/device/device__screen_dpi.json
-    DEVICE_SCREEN_DPI: Literal["device.screen_dpi"] = "device.screen_dpi"
+    DEVICE_SCREEN_DPI = "device.screen_dpi"
     """The screen density in dots-per-inch (DPI) of the device.
 
     Type: int
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
+    Aliases: sentry.device.screen_dpi
     Example: 420
     """
 
     # Path: model/attributes/device/device__screen_height_pixels.json
-    DEVICE_SCREEN_HEIGHT_PIXELS: Literal["device.screen_height_pixels"] = (
-        "device.screen_height_pixels"
-    )
+    DEVICE_SCREEN_HEIGHT_PIXELS = "device.screen_height_pixels"
     """The height of the device screen in pixels.
 
     Type: int
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
+    Aliases: sentry.device.screen_height_pixels
     Example: 2400
     """
 
     # Path: model/attributes/device/device__screen_width_pixels.json
-    DEVICE_SCREEN_WIDTH_PIXELS: Literal["device.screen_width_pixels"] = (
-        "device.screen_width_pixels"
-    )
+    DEVICE_SCREEN_WIDTH_PIXELS = "device.screen_width_pixels"
     """The width of the device screen in pixels.
 
     Type: int
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
+    Aliases: sentry.device.screen_width_pixels
     Example: 1080
     """
 
     # Path: model/attributes/device/device__simulator.json
-    DEVICE_SIMULATOR: Literal["device.simulator"] = "device.simulator"
+    DEVICE_SIMULATOR = "device.simulator"
     """Whether the device is a simulator or an actual device.
 
     Type: bool
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
+    Aliases: sentry.device.simulator
     Example: false
     """
 
     # Path: model/attributes/device/device__storage_size.json
-    DEVICE_STORAGE_SIZE: Literal["device.storage_size"] = "device.storage_size"
+    DEVICE_STORAGE_SIZE = "device.storage_size"
     """Total device storage in bytes.
 
     Type: int
@@ -4142,7 +3986,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/device/device__thermal_state.json
-    DEVICE_THERMAL_STATE: Literal["device.thermal_state"] = "device.thermal_state"
+    DEVICE_THERMAL_STATE = "device.thermal_state"
     """The thermal state of the device. Based on Apple's `ProcessInfo.ThermalState` enum.
 
     Type: str
@@ -4158,7 +4002,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/device/device__timezone.json
-    DEVICE_TIMEZONE: Literal["device.timezone"] = "device.timezone"
+    DEVICE_TIMEZONE = "device.timezone"
     """The timezone of the device.
 
     Type: str
@@ -4169,7 +4013,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/device/device__usable_memory.json
-    DEVICE_USABLE_MEMORY: Literal["device.usable_memory"] = "device.usable_memory"
+    DEVICE_USABLE_MEMORY = "device.usable_memory"
     """Memory usable for the app in bytes.
 
     Type: int
@@ -4180,7 +4024,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/deviceMemory.json
-    DEVICEMEMORY: Literal["deviceMemory"] = "deviceMemory"
+    DEVICEMEMORY = "deviceMemory"
     """The estimated total memory capacity of the device, only a rough estimation in gigabytes.
 
     Type: str
@@ -4193,7 +4037,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/dist.json
-    DIST: Literal["dist"] = "dist"
+    DIST = "dist"
     """The sentry dist.
 
     Type: str
@@ -4206,7 +4050,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/django/django__function_name.json
-    DJANGO_FUNCTION_NAME: Literal["django.function_name"] = "django.function_name"
+    DJANGO_FUNCTION_NAME = "django.function_name"
     """The fully qualified name of a function used in a Django context.
 
     Type: str
@@ -4219,7 +4063,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/django/django__middleware_name.json
-    DJANGO_MIDDLEWARE_NAME: Literal["django.middleware_name"] = "django.middleware_name"
+    DJANGO_MIDDLEWARE_NAME = "django.middleware_name"
     """The name of the Django middleware.
 
     Type: str
@@ -4232,9 +4076,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/effectiveConnectionType.json
-    EFFECTIVECONNECTIONTYPE: Literal["effectiveConnectionType"] = (
-        "effectiveConnectionType"
-    )
+    EFFECTIVECONNECTIONTYPE = "effectiveConnectionType"
     """Specifies the estimated effective type of the current connection (e.g. slow-2g, 2g, 3g, 4g).
 
     Type: str
@@ -4247,7 +4089,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/environment.json
-    ENVIRONMENT: Literal["environment"] = "environment"
+    ENVIRONMENT = "environment"
     """The sentry environment.
 
     Type: str
@@ -4260,7 +4102,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/error/error__type.json
-    ERROR_TYPE: Literal["error.type"] = "error.type"
+    ERROR_TYPE = "error.type"
     """Describes a class of error the operation ended with.
 
     Type: str
@@ -4271,7 +4113,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/event/event__id.json
-    EVENT_ID: Literal["event.id"] = "event.id"
+    EVENT_ID = "event.id"
     """The unique identifier for this event (log record)
 
     Type: int
@@ -4282,7 +4124,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/event/event__name.json
-    EVENT_NAME: Literal["event.name"] = "event.name"
+    EVENT_NAME = "event.name"
     """The name that uniquely identifies this event (log record)
 
     Type: str
@@ -4293,7 +4135,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/exception/exception__escaped.json
-    EXCEPTION_ESCAPED: Literal["exception.escaped"] = "exception.escaped"
+    EXCEPTION_ESCAPED = "exception.escaped"
     """SHOULD be set to true if the exception event is recorded at a point where it is known that the exception is escaping the scope of the span.
 
     Type: bool
@@ -4304,7 +4146,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/exception/exception__message.json
-    EXCEPTION_MESSAGE: Literal["exception.message"] = "exception.message"
+    EXCEPTION_MESSAGE = "exception.message"
     """The error message.
 
     Type: str
@@ -4315,7 +4157,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/exception/exception__stacktrace.json
-    EXCEPTION_STACKTRACE: Literal["exception.stacktrace"] = "exception.stacktrace"
+    EXCEPTION_STACKTRACE = "exception.stacktrace"
     """A stacktrace as a string in the natural representation for the language runtime. The representation is to be determined and documented by each language SIG.
 
     Type: str
@@ -4326,7 +4168,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/exception/exception__type.json
-    EXCEPTION_TYPE: Literal["exception.type"] = "exception.type"
+    EXCEPTION_TYPE = "exception.type"
     """The type of the exception (its fully-qualified class name, if applicable). The dynamic type of the exception should be preferred over the static type in languages that support it.
 
     Type: str
@@ -4337,7 +4179,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/faas/faas__coldstart.json
-    FAAS_COLDSTART: Literal["faas.coldstart"] = "faas.coldstart"
+    FAAS_COLDSTART = "faas.coldstart"
     """A boolean that is true if the serverless function is executed for the first time (aka cold-start).
 
     Type: bool
@@ -4348,7 +4190,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/faas/faas__cron.json
-    FAAS_CRON: Literal["faas.cron"] = "faas.cron"
+    FAAS_CRON = "faas.cron"
     """A string containing the schedule period as Cron Expression.
 
     Type: str
@@ -4359,9 +4201,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/faas/faas__document__collection.json
-    FAAS_DOCUMENT_COLLECTION: Literal["faas.document.collection"] = (
-        "faas.document.collection"
-    )
+    FAAS_DOCUMENT_COLLECTION = "faas.document.collection"
     """The name of the source on which the triggering operation was performed. For example, in Cloud Storage or S3 corresponds to the bucket name, and in Cosmos DB to the database name.
 
     Type: str
@@ -4373,7 +4213,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/faas/faas__document__name.json
-    FAAS_DOCUMENT_NAME: Literal["faas.document.name"] = "faas.document.name"
+    FAAS_DOCUMENT_NAME = "faas.document.name"
     """The document name/table subjected to the operation. For example, in Cloud Storage or S3 is the name of the file, and in Cosmos DB the table name.
 
     Type: str
@@ -4385,9 +4225,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/faas/faas__document__operation.json
-    FAAS_DOCUMENT_OPERATION: Literal["faas.document.operation"] = (
-        "faas.document.operation"
-    )
+    FAAS_DOCUMENT_OPERATION = "faas.document.operation"
     """Describes the type of the operation that was performed on the data.
 
     Type: str
@@ -4400,7 +4238,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/faas/faas__document__time.json
-    FAAS_DOCUMENT_TIME: Literal["faas.document.time"] = "faas.document.time"
+    FAAS_DOCUMENT_TIME = "faas.document.time"
     """A string containing the time when the data was accessed in the ISO 8601 format expressed in UTC.
 
     Type: str
@@ -4411,7 +4249,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/faas/faas__duration_in_ms.json
-    FAAS_DURATION_IN_MS: Literal["faas.duration_in_ms"] = "faas.duration_in_ms"
+    FAAS_DURATION_IN_MS = "faas.duration_in_ms"
     """The duration a function took to run, in milliseconds.
 
     Type: int
@@ -4422,7 +4260,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/faas/faas__entry_point.json
-    FAAS_ENTRY_POINT: Literal["faas.entry_point"] = "faas.entry_point"
+    FAAS_ENTRY_POINT = "faas.entry_point"
     """The code that's run when the cloud provider invokes your function.
 
     Type: str
@@ -4433,7 +4271,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/faas/faas__execution.json
-    FAAS_EXECUTION: Literal["faas.execution"] = "faas.execution"
+    FAAS_EXECUTION = "faas.execution"
     """The execution ID of the current function execution.
 
     Type: str
@@ -4446,7 +4284,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/faas/faas__id.json
-    FAAS_ID: Literal["faas.id"] = "faas.id"
+    FAAS_ID = "faas.id"
     """The unique ID of the single function that this runtime instance executes.
 
     Type: str
@@ -4459,7 +4297,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/faas/faas__identity.json
-    FAAS_IDENTITY: Literal["faas.identity"] = "faas.identity"
+    FAAS_IDENTITY = "faas.identity"
     """The Service Account (GCP), IAM Execution Role (AWS), or Managed Identity (Azure) used by the serverless function when interacting with other cloud services
 
     Type: str
@@ -4470,7 +4308,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/faas/faas__instance.json
-    FAAS_INSTANCE: Literal["faas.instance"] = "faas.instance"
+    FAAS_INSTANCE = "faas.instance"
     """The execution environment ID as a string, that will be potentially reused for other invocations to the same function/function version.
 
     Type: str
@@ -4481,7 +4319,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/faas/faas__invocation_id.json
-    FAAS_INVOCATION_ID: Literal["faas.invocation_id"] = "faas.invocation_id"
+    FAAS_INVOCATION_ID = "faas.invocation_id"
     """The invocation ID of the current function invocation.
 
     Type: str
@@ -4493,7 +4331,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/faas/faas__invoked_name.json
-    FAAS_INVOKED_NAME: Literal["faas.invoked_name"] = "faas.invoked_name"
+    FAAS_INVOKED_NAME = "faas.invoked_name"
     """The name of the invoked function.
 
     Type: str
@@ -4504,7 +4342,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/faas/faas__invoked_provider.json
-    FAAS_INVOKED_PROVIDER: Literal["faas.invoked_provider"] = "faas.invoked_provider"
+    FAAS_INVOKED_PROVIDER = "faas.invoked_provider"
     """The cloud provider of the invoked function.
 
     Type: str
@@ -4515,7 +4353,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/faas/faas__invoked_region.json
-    FAAS_INVOKED_REGION: Literal["faas.invoked_region"] = "faas.invoked_region"
+    FAAS_INVOKED_REGION = "faas.invoked_region"
     """The cloud region of the invoked function.
 
     Type: str
@@ -4526,7 +4364,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/faas/faas__max_memory.json
-    FAAS_MAX_MEMORY: Literal["faas.max_memory"] = "faas.max_memory"
+    FAAS_MAX_MEMORY = "faas.max_memory"
     """The amount of memory available to the serverless function, in bytes.
 
     Type: int
@@ -4538,7 +4376,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/faas/faas__name.json
-    FAAS_NAME: Literal["faas.name"] = "faas.name"
+    FAAS_NAME = "faas.name"
     """The name of the serverless function
 
     Type: str
@@ -4550,7 +4388,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/faas/faas__time.json
-    FAAS_TIME: Literal["faas.time"] = "faas.time"
+    FAAS_TIME = "faas.time"
     """A string containing the function invocation time in the ISO 8601 format expressed in UTC.
 
     Type: str
@@ -4561,7 +4399,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/faas/faas__trigger.json
-    FAAS_TRIGGER: Literal["faas.trigger"] = "faas.trigger"
+    FAAS_TRIGGER = "faas.trigger"
     """Type of the trigger which caused this function invocation.
 
     Type: str
@@ -4572,7 +4410,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/faas/faas__version.json
-    FAAS_VERSION: Literal["faas.version"] = "faas.version"
+    FAAS_VERSION = "faas.version"
     """The version of the function that was invoked
 
     Type: str
@@ -4584,7 +4422,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/fcp.json
-    FCP: Literal["fcp"] = "fcp"
+    FCP = "fcp"
     """The time it takes for the browser to render the first piece of meaningful content on the screen
 
     Type: float
@@ -4597,7 +4435,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/file/file__path.json
-    FILE_PATH: Literal["file.path"] = "file.path"
+    FILE_PATH = "file.path"
     """Path to the file.
 
     Type: str
@@ -4608,7 +4446,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/file/file__size.json
-    FILE_SIZE: Literal["file.size"] = "file.size"
+    FILE_SIZE = "file.size"
     """File size in bytes.
 
     Type: int
@@ -4619,7 +4457,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/flag/flag__evaluation__[key].json
-    FLAG_EVALUATION_KEY: Literal["flag.evaluation.<key>"] = "flag.evaluation.<key>"
+    FLAG_EVALUATION_KEY = "flag.evaluation.<key>"
     """An instance of a feature flag evaluation. The value of this attribute is the boolean representing the evaluation result. The <key> suffix is the name of the feature flag.
 
     Type: bool
@@ -4631,7 +4469,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/fp.json
-    FP: Literal["fp"] = "fp"
+    FP = "fp"
     """The time it takes for the browser to render the first pixel on the screen
 
     Type: float
@@ -4644,7 +4482,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/frames/frames__delay.json
-    FRAMES_DELAY: Literal["frames.delay"] = "frames.delay"
+    FRAMES_DELAY = "frames.delay"
     """The sum of all delayed frame durations in seconds during the lifetime of the span. For more information see [frames delay](https://develop.sentry.dev/sdk/performance/frames-delay/).
 
     Type: int
@@ -4657,7 +4495,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/frames/frames__frozen.json
-    FRAMES_FROZEN: Literal["frames.frozen"] = "frames.frozen"
+    FRAMES_FROZEN = "frames.frozen"
     """The number of frozen frames rendered during the lifetime of the span.
 
     Type: int
@@ -4670,7 +4508,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/frames/frames__slow.json
-    FRAMES_SLOW: Literal["frames.slow"] = "frames.slow"
+    FRAMES_SLOW = "frames.slow"
     """The number of slow frames rendered during the lifetime of the span.
 
     Type: int
@@ -4683,7 +4521,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/frames/frames__total.json
-    FRAMES_TOTAL: Literal["frames.total"] = "frames.total"
+    FRAMES_TOTAL = "frames.total"
     """The number of total frames rendered during the lifetime of the span.
 
     Type: int
@@ -4696,7 +4534,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/frames_frozen_rate.json
-    FRAMES_FROZEN_RATE: Literal["frames_frozen_rate"] = "frames_frozen_rate"
+    FRAMES_FROZEN_RATE = "frames_frozen_rate"
     """The rate of frozen frames, or `app.vitals.frames.frozen.count` divided by `app.vitals.frames.total.count`. This is computed by Relay.
 
     Type: float
@@ -4708,7 +4546,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/frames_slow_rate.json
-    FRAMES_SLOW_RATE: Literal["frames_slow_rate"] = "frames_slow_rate"
+    FRAMES_SLOW_RATE = "frames_slow_rate"
     """The rate of slow frames, or `app.vitals.frames.slow.count` divided by `app.vitals.frames.total.count`. This is computed by Relay.
 
     Type: float
@@ -4720,7 +4558,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/fs_error.json
-    FS_ERROR: Literal["fs_error"] = "fs_error"
+    FS_ERROR = "fs_error"
     """The error message of a file system error.
 
     Type: str
@@ -4732,9 +4570,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/gcp/gcp__function__context__event_id.json
-    GCP_FUNCTION_CONTEXT_EVENT_ID: Literal["gcp.function.context.event_id"] = (
-        "gcp.function.context.event_id"
-    )
+    GCP_FUNCTION_CONTEXT_EVENT_ID = "gcp.function.context.event_id"
     """The event ID from the legacy GCP Cloud Function context (1st gen)
 
     Type: str
@@ -4745,9 +4581,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/gcp/gcp__function__context__event_type.json
-    GCP_FUNCTION_CONTEXT_EVENT_TYPE: Literal["gcp.function.context.event_type"] = (
-        "gcp.function.context.event_type"
-    )
+    GCP_FUNCTION_CONTEXT_EVENT_TYPE = "gcp.function.context.event_type"
     """The type of the GCP Cloud Function event
 
     Type: str
@@ -4758,9 +4592,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/gcp/gcp__function__context__id.json
-    GCP_FUNCTION_CONTEXT_ID: Literal["gcp.function.context.id"] = (
-        "gcp.function.context.id"
-    )
+    GCP_FUNCTION_CONTEXT_ID = "gcp.function.context.id"
     """The unique event ID from the GCP CloudEvents context (2nd gen Cloud Functions)
 
     Type: str
@@ -4771,9 +4603,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/gcp/gcp__function__context__resource.json
-    GCP_FUNCTION_CONTEXT_RESOURCE: Literal["gcp.function.context.resource"] = (
-        "gcp.function.context.resource"
-    )
+    GCP_FUNCTION_CONTEXT_RESOURCE = "gcp.function.context.resource"
     """The resource that triggered the GCP Cloud Function event
 
     Type: str
@@ -4784,9 +4614,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/gcp/gcp__function__context__source.json
-    GCP_FUNCTION_CONTEXT_SOURCE: Literal["gcp.function.context.source"] = (
-        "gcp.function.context.source"
-    )
+    GCP_FUNCTION_CONTEXT_SOURCE = "gcp.function.context.source"
     """The source of the GCP Cloud Function event
 
     Type: str
@@ -4797,9 +4625,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/gcp/gcp__function__context__specversion.json
-    GCP_FUNCTION_CONTEXT_SPECVERSION: Literal["gcp.function.context.specversion"] = (
-        "gcp.function.context.specversion"
-    )
+    GCP_FUNCTION_CONTEXT_SPECVERSION = "gcp.function.context.specversion"
     """The CloudEvents specification version of the GCP Cloud Function event
 
     Type: str
@@ -4810,9 +4636,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/gcp/gcp__function__context__time.json
-    GCP_FUNCTION_CONTEXT_TIME: Literal["gcp.function.context.time"] = (
-        "gcp.function.context.time"
-    )
+    GCP_FUNCTION_CONTEXT_TIME = "gcp.function.context.time"
     """The timestamp of the GCP Cloud Function event
 
     Type: str
@@ -4823,9 +4647,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/gcp/gcp__function__context__timestamp.json
-    GCP_FUNCTION_CONTEXT_TIMESTAMP: Literal["gcp.function.context.timestamp"] = (
-        "gcp.function.context.timestamp"
-    )
+    GCP_FUNCTION_CONTEXT_TIMESTAMP = "gcp.function.context.timestamp"
     """The legacy timestamp of the GCP Cloud Function event
 
     Type: str
@@ -4836,9 +4658,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/gcp/gcp__function__context__type.json
-    GCP_FUNCTION_CONTEXT_TYPE: Literal["gcp.function.context.type"] = (
-        "gcp.function.context.type"
-    )
+    GCP_FUNCTION_CONTEXT_TYPE = "gcp.function.context.type"
     """The type of the GCP Cloud Function event context
 
     Type: str
@@ -4849,7 +4669,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/gcp/gcp__project__id.json
-    GCP_PROJECT_ID: Literal["gcp.project.id"] = "gcp.project.id"
+    GCP_PROJECT_ID = "gcp.project.id"
     """The ID of the project in GCP that this resource is associated with
 
     Type: str
@@ -4860,7 +4680,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/gcp_region.json
-    GCP_REGION: Literal["gcp_region"] = "gcp_region"
+    GCP_REGION = "gcp_region"
     """The geographical region the GCP resource is running
 
     Type: str
@@ -4873,7 +4693,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/gen_ai/gen_ai__agent__name.json
-    GEN_AI_AGENT_NAME: Literal["gen_ai.agent.name"] = "gen_ai.agent.name"
+    GEN_AI_AGENT_NAME = "gen_ai.agent.name"
     """The name of the agent being used.
 
     Type: str
@@ -4884,9 +4704,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/gen_ai/gen_ai__context__utilization.json
-    GEN_AI_CONTEXT_UTILIZATION: Literal["gen_ai.context.utilization"] = (
-        "gen_ai.context.utilization"
-    )
+    GEN_AI_CONTEXT_UTILIZATION = "gen_ai.context.utilization"
     """The fraction of the model context window utilized by this generation.
 
     Type: float
@@ -4897,9 +4715,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/gen_ai/gen_ai__context__window_size.json
-    GEN_AI_CONTEXT_WINDOW_SIZE: Literal["gen_ai.context.window_size"] = (
-        "gen_ai.context.window_size"
-    )
+    GEN_AI_CONTEXT_WINDOW_SIZE = "gen_ai.context.window_size"
     """The maximum context window size supported by the model for this generation.
 
     Type: int
@@ -4910,7 +4726,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/gen_ai/gen_ai__conversation__id.json
-    GEN_AI_CONVERSATION_ID: Literal["gen_ai.conversation.id"] = "gen_ai.conversation.id"
+    GEN_AI_CONVERSATION_ID = "gen_ai.conversation.id"
     """The unique identifier for a conversation (session, thread), used to store and correlate messages within this conversation.
 
     Type: str
@@ -4921,9 +4737,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/gen_ai/gen_ai__cost__cache_creation__input_tokens.json
-    GEN_AI_COST_CACHE_CREATION_INPUT_TOKENS: Literal[
-        "gen_ai.cost.cache_creation.input_tokens"
-    ] = "gen_ai.cost.cache_creation.input_tokens"
+    GEN_AI_COST_CACHE_CREATION_INPUT_TOKENS = "gen_ai.cost.cache_creation.input_tokens"
     """The cost of input tokens written to cache in USD.
 
     Type: float
@@ -4934,9 +4748,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/gen_ai/gen_ai__cost__cache_read__input_tokens.json
-    GEN_AI_COST_CACHE_READ_INPUT_TOKENS: Literal[
-        "gen_ai.cost.cache_read.input_tokens"
-    ] = "gen_ai.cost.cache_read.input_tokens"
+    GEN_AI_COST_CACHE_READ_INPUT_TOKENS = "gen_ai.cost.cache_read.input_tokens"
     """The cost of cached input tokens in USD.
 
     Type: float
@@ -4947,9 +4759,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/gen_ai/gen_ai__cost__input_tokens.json
-    GEN_AI_COST_INPUT_TOKENS: Literal["gen_ai.cost.input_tokens"] = (
-        "gen_ai.cost.input_tokens"
-    )
+    GEN_AI_COST_INPUT_TOKENS = "gen_ai.cost.input_tokens"
     """The total cost of all input tokens in USD (includes cached and cache creation tokens).
 
     Type: float
@@ -4960,9 +4770,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/gen_ai/gen_ai__cost__output_tokens.json
-    GEN_AI_COST_OUTPUT_TOKENS: Literal["gen_ai.cost.output_tokens"] = (
-        "gen_ai.cost.output_tokens"
-    )
+    GEN_AI_COST_OUTPUT_TOKENS = "gen_ai.cost.output_tokens"
     """The total cost of all output tokens in USD (includes reasoning tokens).
 
     Type: float
@@ -4973,9 +4781,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/gen_ai/gen_ai__cost__reasoning__output_tokens.json
-    GEN_AI_COST_REASONING_OUTPUT_TOKENS: Literal[
-        "gen_ai.cost.reasoning.output_tokens"
-    ] = "gen_ai.cost.reasoning.output_tokens"
+    GEN_AI_COST_REASONING_OUTPUT_TOKENS = "gen_ai.cost.reasoning.output_tokens"
     """The cost of reasoning output tokens in USD.
 
     Type: float
@@ -4986,9 +4792,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/gen_ai/gen_ai__cost__total_tokens.json
-    GEN_AI_COST_TOTAL_TOKENS: Literal["gen_ai.cost.total_tokens"] = (
-        "gen_ai.cost.total_tokens"
-    )
+    GEN_AI_COST_TOTAL_TOKENS = "gen_ai.cost.total_tokens"
     """The total cost for the tokens used.
 
     Type: float
@@ -5000,9 +4804,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/gen_ai/gen_ai__embeddings__input.json
-    GEN_AI_EMBEDDINGS_INPUT: Literal["gen_ai.embeddings.input"] = (
-        "gen_ai.embeddings.input"
-    )
+    GEN_AI_EMBEDDINGS_INPUT = "gen_ai.embeddings.input"
     """The input to the embeddings model.
 
     Type: str
@@ -5013,7 +4815,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/gen_ai/gen_ai__function_id.json
-    GEN_AI_FUNCTION_ID: Literal["gen_ai.function_id"] = "gen_ai.function_id"
+    GEN_AI_FUNCTION_ID = "gen_ai.function_id"
     """Framework-specific tracing label for the execution of a function or other unit of execution in a generative AI system.
 
     Type: str
@@ -5024,7 +4826,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/gen_ai/gen_ai__input__messages.json
-    GEN_AI_INPUT_MESSAGES: Literal["gen_ai.input.messages"] = "gen_ai.input.messages"
+    GEN_AI_INPUT_MESSAGES = "gen_ai.input.messages"
     """The messages passed to the model. It has to be a stringified version of an array of objects in the format `{role: "...", parts: [...]}`. The `role` must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. Each part is an object with a `type`, such as `{type: "text", content: "..."}`. Other part types include `"reasoning"`, `"tool_call"`, and `"tool_call_response"`. Put the model's thinking in a `{type: "reasoning", content: "..."}` part, not a `"text"` part. Sentry shows reasoning separately from user-visible messages. The legacy format `{role, content}` is also accepted. The first example shows this shape. Some operations use a different shape. See the additional context.
 
     Type: str
@@ -5038,9 +4840,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/gen_ai/gen_ai__memory__query__text.json
-    GEN_AI_MEMORY_QUERY_TEXT: Literal["gen_ai.memory.query.text"] = (
-        "gen_ai.memory.query.text"
-    )
+    GEN_AI_MEMORY_QUERY_TEXT = "gen_ai.memory.query.text"
     """The search query used to retrieve memories. Only applicable to 'search_memory'. Opt-in: instrumentations SHOULD NOT capture this by default and SHOULD gate it behind explicit user opt-in, as it may contain sensitive information.
 
     Type: str
@@ -5052,9 +4852,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/gen_ai/gen_ai__memory__record__count.json
-    GEN_AI_MEMORY_RECORD_COUNT: Literal["gen_ai.memory.record.count"] = (
-        "gen_ai.memory.record.count"
-    )
+    GEN_AI_MEMORY_RECORD_COUNT = "gen_ai.memory.record.count"
     """The number of memory records relevant to the operation. For 'search_memory' this is the number returned; for 'create_memory', 'update_memory', 'upsert_memory' and 'delete_memory' it is the number the operation attempted to create, modify, create-or-update, or delete respectively.
 
     Type: int
@@ -5065,9 +4863,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/gen_ai/gen_ai__memory__record__id.json
-    GEN_AI_MEMORY_RECORD_ID: Literal["gen_ai.memory.record.id"] = (
-        "gen_ai.memory.record.id"
-    )
+    GEN_AI_MEMORY_RECORD_ID = "gen_ai.memory.record.id"
     """The unique identifier of the memory record. Set when the operation applies to a specific memory record. For 'delete_memory', its absence may indicate the operation intends to delete all memory records in the store.
 
     Type: str
@@ -5078,7 +4874,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/gen_ai/gen_ai__memory__records.json
-    GEN_AI_MEMORY_RECORDS: Literal["gen_ai.memory.records"] = "gen_ai.memory.records"
+    GEN_AI_MEMORY_RECORDS = "gen_ai.memory.records"
     """The memory records stored or retrieved in a memory operation. Stringified JSON array; each element follows the OTel MemoryRecord schema: {content (required), id, metadata, score}. Opt-in: instrumentations SHOULD NOT capture this by default and SHOULD gate it behind explicit user opt-in, as it may contain sensitive information including user/PII data.
 
     Type: str
@@ -5089,7 +4885,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/gen_ai/gen_ai__memory__store__id.json
-    GEN_AI_MEMORY_STORE_ID: Literal["gen_ai.memory.store.id"] = "gen_ai.memory.store.id"
+    GEN_AI_MEMORY_STORE_ID = "gen_ai.memory.store.id"
     """The unique identifier of the memory store the operation targets. What this maps to is implementation-specific (e.g. a collection, namespace, or vector index) and SHOULD be documented per integration.
 
     Type: str
@@ -5102,7 +4898,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/gen_ai/gen_ai__operation__name.json
-    GEN_AI_OPERATION_NAME: Literal["gen_ai.operation.name"] = "gen_ai.operation.name"
+    GEN_AI_OPERATION_NAME = "gen_ai.operation.name"
     """The name of the operation being performed.
 
     Type: str
@@ -5131,7 +4927,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/gen_ai/gen_ai__operation__type.json
-    GEN_AI_OPERATION_TYPE: Literal["gen_ai.operation.type"] = "gen_ai.operation.type"
+    GEN_AI_OPERATION_TYPE = "gen_ai.operation.type"
     """The type of AI operation. Added during ingestion based on span.op and gen_ai.operation.type. Used to filter and aggregate data in the UI
 
     Type: str
@@ -5149,7 +4945,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/gen_ai/gen_ai__output__messages.json
-    GEN_AI_OUTPUT_MESSAGES: Literal["gen_ai.output.messages"] = "gen_ai.output.messages"
+    GEN_AI_OUTPUT_MESSAGES = "gen_ai.output.messages"
     """Messages returned by the model where each message represents a specific model response (choice, candidate). It has to be a stringified version of an array of message objects in the format `{role: "assistant", parts: [...]}`, which can include text responses and tool calls. Each part is an object with a `type`, such as `{type: "text", content: "..."}`. Other part types include `"reasoning"` and `"tool_call"`. Put the model's thinking in a `{type: "reasoning", content: "..."}` part, not a `"text"` part. Sentry shows reasoning separately from user-visible messages. The first example shows this shape. Some operations use a different shape. See the additional context.
 
     Type: str
@@ -5163,7 +4959,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/gen_ai/gen_ai__pipeline__name.json
-    GEN_AI_PIPELINE_NAME: Literal["gen_ai.pipeline.name"] = "gen_ai.pipeline.name"
+    GEN_AI_PIPELINE_NAME = "gen_ai.pipeline.name"
     """Name of the AI pipeline or chain being executed.
 
     Type: str
@@ -5175,7 +4971,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/gen_ai/gen_ai__prompt.json
-    GEN_AI_PROMPT: Literal["gen_ai.prompt"] = "gen_ai.prompt"
+    GEN_AI_PROMPT = "gen_ai.prompt"
     """The input messages sent to the model
 
     Type: str
@@ -5188,7 +4984,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/gen_ai/gen_ai__prompt__name.json
-    GEN_AI_PROMPT_NAME: Literal["gen_ai.prompt.name"] = "gen_ai.prompt.name"
+    GEN_AI_PROMPT_NAME = "gen_ai.prompt.name"
     """The name of the prompt that uniquely identifies it.
 
     Type: str
@@ -5200,9 +4996,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/gen_ai/gen_ai__prompt__variable__[key].json
-    GEN_AI_PROMPT_VARIABLE_KEY: Literal["gen_ai.prompt.variable.<key>"] = (
-        "gen_ai.prompt.variable.<key>"
-    )
+    GEN_AI_PROMPT_VARIABLE_KEY = "gen_ai.prompt.variable.<key>"
     """Variables supplied to the prompt template. The <key> is the variable name, and the value is the variable value serialized as a string.
 
     Type: str
@@ -5215,7 +5009,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/gen_ai/gen_ai__provider__name.json
-    GEN_AI_PROVIDER_NAME: Literal["gen_ai.provider.name"] = "gen_ai.provider.name"
+    GEN_AI_PROVIDER_NAME = "gen_ai.provider.name"
     """The Generative AI provider as identified by the client or server instrumentation.
 
     Type: str
@@ -5227,9 +5021,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/gen_ai/gen_ai__request__available_tools.json
-    GEN_AI_REQUEST_AVAILABLE_TOOLS: Literal["gen_ai.request.available_tools"] = (
-        "gen_ai.request.available_tools"
-    )
+    GEN_AI_REQUEST_AVAILABLE_TOOLS = "gen_ai.request.available_tools"
     """The available tools for the model. It has to be a stringified version of an array of objects.
 
     Type: str
@@ -5242,9 +5034,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/gen_ai/gen_ai__request__frequency_penalty.json
-    GEN_AI_REQUEST_FREQUENCY_PENALTY: Literal["gen_ai.request.frequency_penalty"] = (
-        "gen_ai.request.frequency_penalty"
-    )
+    GEN_AI_REQUEST_FREQUENCY_PENALTY = "gen_ai.request.frequency_penalty"
     """Used to reduce repetitiveness of generated tokens. The higher the value, the stronger a penalty is applied to previously present tokens, proportional to how many times they have already appeared in the prompt or prior generation.
 
     Type: float
@@ -5256,9 +5046,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/gen_ai/gen_ai__request__max_tokens.json
-    GEN_AI_REQUEST_MAX_TOKENS: Literal["gen_ai.request.max_tokens"] = (
-        "gen_ai.request.max_tokens"
-    )
+    GEN_AI_REQUEST_MAX_TOKENS = "gen_ai.request.max_tokens"
     """The maximum number of tokens to generate in the response.
 
     Type: int
@@ -5269,9 +5057,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/gen_ai/gen_ai__request__messages.json
-    GEN_AI_REQUEST_MESSAGES: Literal["gen_ai.request.messages"] = (
-        "gen_ai.request.messages"
-    )
+    GEN_AI_REQUEST_MESSAGES = "gen_ai.request.messages"
     """The messages passed to the model. It has to be a stringified version of an array of objects. The `role` attribute of each object must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. For messages of the role `"tool"`, the `content` can be a string or an arbitrary object with information about the tool call. For other messages the `content` can be either a string or a list of objects in the format `{type: "text", text:"..."}`.
 
     Type: str
@@ -5284,7 +5070,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/gen_ai/gen_ai__request__model.json
-    GEN_AI_REQUEST_MODEL: Literal["gen_ai.request.model"] = "gen_ai.request.model"
+    GEN_AI_REQUEST_MODEL = "gen_ai.request.model"
     """The model identifier being used for the request.
 
     Type: str
@@ -5296,9 +5082,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/gen_ai/gen_ai__request__presence_penalty.json
-    GEN_AI_REQUEST_PRESENCE_PENALTY: Literal["gen_ai.request.presence_penalty"] = (
-        "gen_ai.request.presence_penalty"
-    )
+    GEN_AI_REQUEST_PRESENCE_PENALTY = "gen_ai.request.presence_penalty"
     """Used to reduce repetitiveness of generated tokens. Similar to frequency_penalty, except that this penalty is applied equally to all tokens that have already appeared, regardless of their exact frequencies.
 
     Type: float
@@ -5310,9 +5094,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/gen_ai/gen_ai__request__reasoning__level.json
-    GEN_AI_REQUEST_REASONING_LEVEL: Literal["gen_ai.request.reasoning.level"] = (
-        "gen_ai.request.reasoning.level"
-    )
+    GEN_AI_REQUEST_REASONING_LEVEL = "gen_ai.request.reasoning.level"
     """The reasoning or thinking effort level requested for a GenAI model. Supported values vary by provider.
 
     Type: str
@@ -5323,7 +5105,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/gen_ai/gen_ai__request__schema.json
-    GEN_AI_REQUEST_SCHEMA: Literal["gen_ai.request.schema"] = "gen_ai.request.schema"
+    GEN_AI_REQUEST_SCHEMA = "gen_ai.request.schema"
     """The stringified JSON schema the model output must conform to.
 
     Type: str
@@ -5335,7 +5117,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/gen_ai/gen_ai__request__seed.json
-    GEN_AI_REQUEST_SEED: Literal["gen_ai.request.seed"] = "gen_ai.request.seed"
+    GEN_AI_REQUEST_SEED = "gen_ai.request.seed"
     """The seed, ideally models given the same seed and same other parameters will produce the exact same output.
 
     Type: str
@@ -5347,9 +5129,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/gen_ai/gen_ai__request__stop_sequences.json
-    GEN_AI_REQUEST_STOP_SEQUENCES: Literal["gen_ai.request.stop_sequences"] = (
-        "gen_ai.request.stop_sequences"
-    )
+    GEN_AI_REQUEST_STOP_SEQUENCES = "gen_ai.request.stop_sequences"
     """List of sequences that the model will use to stop generating further tokens.
 
     Type: List[str]
@@ -5360,9 +5140,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/gen_ai/gen_ai__request__temperature.json
-    GEN_AI_REQUEST_TEMPERATURE: Literal["gen_ai.request.temperature"] = (
-        "gen_ai.request.temperature"
-    )
+    GEN_AI_REQUEST_TEMPERATURE = "gen_ai.request.temperature"
     """For an AI model call, the temperature parameter. Temperature essentially means how random the output will be.
 
     Type: float
@@ -5374,7 +5152,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/gen_ai/gen_ai__request__top_k.json
-    GEN_AI_REQUEST_TOP_K: Literal["gen_ai.request.top_k"] = "gen_ai.request.top_k"
+    GEN_AI_REQUEST_TOP_K = "gen_ai.request.top_k"
     """Limits the model to only consider the K most likely next tokens, where K is an integer (e.g., top_k=20 means only the 20 highest probability tokens are considered).
 
     Type: int
@@ -5386,7 +5164,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/gen_ai/gen_ai__request__top_p.json
-    GEN_AI_REQUEST_TOP_P: Literal["gen_ai.request.top_p"] = "gen_ai.request.top_p"
+    GEN_AI_REQUEST_TOP_P = "gen_ai.request.top_p"
     """Limits the model to only consider tokens whose cumulative probability mass adds up to p, where p is a float between 0 and 1 (e.g., top_p=0.7 means only tokens that sum up to 70% of the probability mass are considered).
 
     Type: float
@@ -5398,9 +5176,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/gen_ai/gen_ai__response__finish_reason.json
-    GEN_AI_RESPONSE_FINISH_REASON: Literal["gen_ai.response.finish_reason"] = (
-        "gen_ai.response.finish_reason"
-    )
+    GEN_AI_RESPONSE_FINISH_REASON = "gen_ai.response.finish_reason"
     """The reason why the model stopped generating (singular form).
 
     Type: str
@@ -5413,9 +5189,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/gen_ai/gen_ai__response__finish_reasons.json
-    GEN_AI_RESPONSE_FINISH_REASONS: Literal["gen_ai.response.finish_reasons"] = (
-        "gen_ai.response.finish_reasons"
-    )
+    GEN_AI_RESPONSE_FINISH_REASONS = "gen_ai.response.finish_reasons"
     """The reason why the model stopped generating.
 
     Type: str
@@ -5427,7 +5201,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/gen_ai/gen_ai__response__id.json
-    GEN_AI_RESPONSE_ID: Literal["gen_ai.response.id"] = "gen_ai.response.id"
+    GEN_AI_RESPONSE_ID = "gen_ai.response.id"
     """Unique identifier for the completion.
 
     Type: str
@@ -5439,7 +5213,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/gen_ai/gen_ai__response__model.json
-    GEN_AI_RESPONSE_MODEL: Literal["gen_ai.response.model"] = "gen_ai.response.model"
+    GEN_AI_RESPONSE_MODEL = "gen_ai.response.model"
     """The vendor-specific ID of the model used.
 
     Type: str
@@ -5451,7 +5225,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/gen_ai/gen_ai__response__object.json
-    GEN_AI_RESPONSE_OBJECT: Literal["gen_ai.response.object"] = "gen_ai.response.object"
+    GEN_AI_RESPONSE_OBJECT = "gen_ai.response.object"
     """The type of the object returned by the model.
 
     Type: str
@@ -5463,9 +5237,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/gen_ai/gen_ai__response__streaming.json
-    GEN_AI_RESPONSE_STREAMING: Literal["gen_ai.response.streaming"] = (
-        "gen_ai.response.streaming"
-    )
+    GEN_AI_RESPONSE_STREAMING = "gen_ai.response.streaming"
     """Whether or not the AI model call's response was streamed back asynchronously
 
     Type: bool
@@ -5477,7 +5249,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/gen_ai/gen_ai__response__text.json
-    GEN_AI_RESPONSE_TEXT: Literal["gen_ai.response.text"] = "gen_ai.response.text"
+    GEN_AI_RESPONSE_TEXT = "gen_ai.response.text"
     """The model's response text messages. It has to be a stringified version of an array of response text messages.
 
     Type: str
@@ -5489,9 +5261,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/gen_ai/gen_ai__response__time_to_first_chunk.json
-    GEN_AI_RESPONSE_TIME_TO_FIRST_CHUNK: Literal[
-        "gen_ai.response.time_to_first_chunk"
-    ] = "gen_ai.response.time_to_first_chunk"
+    GEN_AI_RESPONSE_TIME_TO_FIRST_CHUNK = "gen_ai.response.time_to_first_chunk"
     """Time from the start of a logical inference operation to the first chunk in its streaming response, in seconds.
 
     Type: float
@@ -5503,9 +5273,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/gen_ai/gen_ai__response__time_to_first_token.json
-    GEN_AI_RESPONSE_TIME_TO_FIRST_TOKEN: Literal[
-        "gen_ai.response.time_to_first_token"
-    ] = "gen_ai.response.time_to_first_token"
+    GEN_AI_RESPONSE_TIME_TO_FIRST_TOKEN = "gen_ai.response.time_to_first_token"
     """Time from the start of a logical inference operation to the first chunk in its streaming response, in seconds.
 
     Type: float
@@ -5518,9 +5286,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/gen_ai/gen_ai__response__tokens_per_second.json
-    GEN_AI_RESPONSE_TOKENS_PER_SECOND: Literal["gen_ai.response.tokens_per_second"] = (
-        "gen_ai.response.tokens_per_second"
-    )
+    GEN_AI_RESPONSE_TOKENS_PER_SECOND = "gen_ai.response.tokens_per_second"
     """The total output tokens per seconds throughput
 
     Type: float
@@ -5531,9 +5297,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/gen_ai/gen_ai__response__tool_calls.json
-    GEN_AI_RESPONSE_TOOL_CALLS: Literal["gen_ai.response.tool_calls"] = (
-        "gen_ai.response.tool_calls"
-    )
+    GEN_AI_RESPONSE_TOOL_CALLS = "gen_ai.response.tool_calls"
     """The tool calls in the model's response. It has to be a stringified version of an array of objects.
 
     Type: str
@@ -5545,7 +5309,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/gen_ai/gen_ai__system.json
-    GEN_AI_SYSTEM: Literal["gen_ai.system"] = "gen_ai.system"
+    GEN_AI_SYSTEM = "gen_ai.system"
     """The provider of the model.
 
     Type: str
@@ -5558,7 +5322,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/gen_ai/gen_ai__system__message.json
-    GEN_AI_SYSTEM_MESSAGE: Literal["gen_ai.system.message"] = "gen_ai.system.message"
+    GEN_AI_SYSTEM_MESSAGE = "gen_ai.system.message"
     """The system instructions passed to the model.
 
     Type: str
@@ -5570,9 +5334,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/gen_ai/gen_ai__system_instructions.json
-    GEN_AI_SYSTEM_INSTRUCTIONS: Literal["gen_ai.system_instructions"] = (
-        "gen_ai.system_instructions"
-    )
+    GEN_AI_SYSTEM_INSTRUCTIONS = "gen_ai.system_instructions"
     """The system message or instructions provided to the GenAI model separately from the chat history.
 
     Type: str
@@ -5584,9 +5346,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/gen_ai/gen_ai__tool__call__arguments.json
-    GEN_AI_TOOL_CALL_ARGUMENTS: Literal["gen_ai.tool.call.arguments"] = (
-        "gen_ai.tool.call.arguments"
-    )
+    GEN_AI_TOOL_CALL_ARGUMENTS = "gen_ai.tool.call.arguments"
     """The arguments of the tool call.
 
     Type: str
@@ -5598,9 +5358,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/gen_ai/gen_ai__tool__call__result.json
-    GEN_AI_TOOL_CALL_RESULT: Literal["gen_ai.tool.call.result"] = (
-        "gen_ai.tool.call.result"
-    )
+    GEN_AI_TOOL_CALL_RESULT = "gen_ai.tool.call.result"
     """The result of the tool call.
 
     Type: str
@@ -5612,9 +5370,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/gen_ai/gen_ai__tool__call__result__size.json
-    GEN_AI_TOOL_CALL_RESULT_SIZE: Literal["gen_ai.tool.call.result.size"] = (
-        "gen_ai.tool.call.result.size"
-    )
+    GEN_AI_TOOL_CALL_RESULT_SIZE = "gen_ai.tool.call.result.size"
     """The UTF-8 byte length of the serialized tool call result, measured before truncation.
 
     Type: int
@@ -5626,9 +5382,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/gen_ai/gen_ai__tool__definitions.json
-    GEN_AI_TOOL_DEFINITIONS: Literal["gen_ai.tool.definitions"] = (
-        "gen_ai.tool.definitions"
-    )
+    GEN_AI_TOOL_DEFINITIONS = "gen_ai.tool.definitions"
     """The list of source system tool definitions available to the GenAI agent or model. It has to be a stringified version of an array of objects.
 
     Type: str
@@ -5640,9 +5394,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/gen_ai/gen_ai__tool__description.json
-    GEN_AI_TOOL_DESCRIPTION: Literal["gen_ai.tool.description"] = (
-        "gen_ai.tool.description"
-    )
+    GEN_AI_TOOL_DESCRIPTION = "gen_ai.tool.description"
     """The description of the tool being used.
 
     Type: str
@@ -5653,7 +5405,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/gen_ai/gen_ai__tool__input.json
-    GEN_AI_TOOL_INPUT: Literal["gen_ai.tool.input"] = "gen_ai.tool.input"
+    GEN_AI_TOOL_INPUT = "gen_ai.tool.input"
     """The input of the tool being used. It has to be a stringified version of the input to the tool.
 
     Type: str
@@ -5666,7 +5418,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/gen_ai/gen_ai__tool__message.json
-    GEN_AI_TOOL_MESSAGE: Literal["gen_ai.tool.message"] = "gen_ai.tool.message"
+    GEN_AI_TOOL_MESSAGE = "gen_ai.tool.message"
     """The response from a tool or function call passed to the model.
 
     Type: str
@@ -5679,7 +5431,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/gen_ai/gen_ai__tool__name.json
-    GEN_AI_TOOL_NAME: Literal["gen_ai.tool.name"] = "gen_ai.tool.name"
+    GEN_AI_TOOL_NAME = "gen_ai.tool.name"
     """Name of the tool utilized by the agent.
 
     Type: str
@@ -5691,7 +5443,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/gen_ai/gen_ai__tool__output.json
-    GEN_AI_TOOL_OUTPUT: Literal["gen_ai.tool.output"] = "gen_ai.tool.output"
+    GEN_AI_TOOL_OUTPUT = "gen_ai.tool.output"
     """The output of the tool being used. It has to be a stringified version of the output of the tool.
 
     Type: str
@@ -5704,7 +5456,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/gen_ai/gen_ai__tool__type.json
-    GEN_AI_TOOL_TYPE: Literal["gen_ai.tool.type"] = "gen_ai.tool.type"
+    GEN_AI_TOOL_TYPE = "gen_ai.tool.type"
     """The type of tool being used.
 
     Type: str
@@ -5716,9 +5468,9 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/gen_ai/gen_ai__usage__cache_creation__input_tokens.json
-    GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS: Literal[
+    GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS = (
         "gen_ai.usage.cache_creation.input_tokens"
-    ] = "gen_ai.usage.cache_creation.input_tokens"
+    )
     """The number of tokens written to the cache when processing the AI input (prompt).
 
     Type: int
@@ -5730,9 +5482,9 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/gen_ai/gen_ai__usage__cache_creation_input_tokens.json
-    _GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS: Literal[
+    _GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS = (
         "gen_ai.usage.cache_creation_input_tokens"
-    ] = "gen_ai.usage.cache_creation_input_tokens"
+    )
     """The number of tokens written to the cache when processing the AI input (prompt).
 
     Type: int
@@ -5745,9 +5497,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/gen_ai/gen_ai__usage__cache_read__input_tokens.json
-    GEN_AI_USAGE_CACHE_READ_INPUT_TOKENS: Literal[
-        "gen_ai.usage.cache_read.input_tokens"
-    ] = "gen_ai.usage.cache_read.input_tokens"
+    GEN_AI_USAGE_CACHE_READ_INPUT_TOKENS = "gen_ai.usage.cache_read.input_tokens"
     """The number of cached tokens used to process the AI input (prompt).
 
     Type: int
@@ -5759,9 +5509,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/gen_ai/gen_ai__usage__cache_read_input_tokens.json
-    _GEN_AI_USAGE_CACHE_READ_INPUT_TOKENS: Literal[
-        "gen_ai.usage.cache_read_input_tokens"
-    ] = "gen_ai.usage.cache_read_input_tokens"
+    _GEN_AI_USAGE_CACHE_READ_INPUT_TOKENS = "gen_ai.usage.cache_read_input_tokens"
     """The number of cached tokens used to process the AI input (prompt).
 
     Type: int
@@ -5774,9 +5522,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/gen_ai/gen_ai__usage__completion_tokens.json
-    GEN_AI_USAGE_COMPLETION_TOKENS: Literal["gen_ai.usage.completion_tokens"] = (
-        "gen_ai.usage.completion_tokens"
-    )
+    GEN_AI_USAGE_COMPLETION_TOKENS = "gen_ai.usage.completion_tokens"
     """The number of tokens used in the GenAI response (completion).
 
     Type: int
@@ -5789,9 +5535,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/gen_ai/gen_ai__usage__input_tokens.json
-    GEN_AI_USAGE_INPUT_TOKENS: Literal["gen_ai.usage.input_tokens"] = (
-        "gen_ai.usage.input_tokens"
-    )
+    GEN_AI_USAGE_INPUT_TOKENS = "gen_ai.usage.input_tokens"
     """The number of tokens used to process the AI input (prompt) including cached input tokens.
 
     Type: int
@@ -5803,9 +5547,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/gen_ai/gen_ai__usage__input_tokens__cache_write.json
-    GEN_AI_USAGE_INPUT_TOKENS_CACHE_WRITE: Literal[
-        "gen_ai.usage.input_tokens.cache_write"
-    ] = "gen_ai.usage.input_tokens.cache_write"
+    GEN_AI_USAGE_INPUT_TOKENS_CACHE_WRITE = "gen_ai.usage.input_tokens.cache_write"
     """The number of tokens written to the cache when processing the AI input (prompt).
 
     Type: int
@@ -5818,9 +5560,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/gen_ai/gen_ai__usage__input_tokens__cached.json
-    GEN_AI_USAGE_INPUT_TOKENS_CACHED: Literal["gen_ai.usage.input_tokens.cached"] = (
-        "gen_ai.usage.input_tokens.cached"
-    )
+    GEN_AI_USAGE_INPUT_TOKENS_CACHED = "gen_ai.usage.input_tokens.cached"
     """The number of cached tokens used to process the AI input (prompt).
 
     Type: int
@@ -5833,9 +5573,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/gen_ai/gen_ai__usage__output_tokens.json
-    GEN_AI_USAGE_OUTPUT_TOKENS: Literal["gen_ai.usage.output_tokens"] = (
-        "gen_ai.usage.output_tokens"
-    )
+    GEN_AI_USAGE_OUTPUT_TOKENS = "gen_ai.usage.output_tokens"
     """The number of tokens used for creating the AI output (including reasoning tokens).
 
     Type: int
@@ -5847,9 +5585,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/gen_ai/gen_ai__usage__output_tokens__reasoning.json
-    GEN_AI_USAGE_OUTPUT_TOKENS_REASONING: Literal[
-        "gen_ai.usage.output_tokens.reasoning"
-    ] = "gen_ai.usage.output_tokens.reasoning"
+    GEN_AI_USAGE_OUTPUT_TOKENS_REASONING = "gen_ai.usage.output_tokens.reasoning"
     """The number of tokens used for reasoning to create the AI output.
 
     Type: int
@@ -5862,9 +5598,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/gen_ai/gen_ai__usage__prompt_tokens.json
-    GEN_AI_USAGE_PROMPT_TOKENS: Literal["gen_ai.usage.prompt_tokens"] = (
-        "gen_ai.usage.prompt_tokens"
-    )
+    GEN_AI_USAGE_PROMPT_TOKENS = "gen_ai.usage.prompt_tokens"
     """The number of tokens used in the GenAI input (prompt).
 
     Type: int
@@ -5877,9 +5611,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/gen_ai/gen_ai__usage__reasoning__output_tokens.json
-    GEN_AI_USAGE_REASONING_OUTPUT_TOKENS: Literal[
-        "gen_ai.usage.reasoning.output_tokens"
-    ] = "gen_ai.usage.reasoning.output_tokens"
+    GEN_AI_USAGE_REASONING_OUTPUT_TOKENS = "gen_ai.usage.reasoning.output_tokens"
     """The number of tokens used for reasoning to create the AI output.
 
     Type: int
@@ -5891,9 +5623,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/gen_ai/gen_ai__usage__total_tokens.json
-    GEN_AI_USAGE_TOTAL_TOKENS: Literal["gen_ai.usage.total_tokens"] = (
-        "gen_ai.usage.total_tokens"
-    )
+    GEN_AI_USAGE_TOTAL_TOKENS = "gen_ai.usage.total_tokens"
     """The total number of tokens used to process the prompt. (input tokens plus output tokens)
 
     Type: int
@@ -5905,7 +5635,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/graphql/graphql__document.json
-    GRAPHQL_DOCUMENT: Literal["graphql.document"] = "graphql.document"
+    GRAPHQL_DOCUMENT = "graphql.document"
     """The GraphQL document being executed.
 
     Type: str
@@ -5917,7 +5647,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/graphql/graphql__operation__name.json
-    GRAPHQL_OPERATION_NAME: Literal["graphql.operation.name"] = "graphql.operation.name"
+    GRAPHQL_OPERATION_NAME = "graphql.operation.name"
     """The name of the operation being executed.
 
     Type: str
@@ -5928,7 +5658,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/graphql/graphql__operation__type.json
-    GRAPHQL_OPERATION_TYPE: Literal["graphql.operation.type"] = "graphql.operation.type"
+    GRAPHQL_OPERATION_TYPE = "graphql.operation.type"
     """The type of the operation being executed.
 
     Type: str
@@ -5939,9 +5669,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/graphql/graphql__processing__type.json
-    GRAPHQL_PROCESSING_TYPE: Literal["graphql.processing.type"] = (
-        "graphql.processing.type"
-    )
+    GRAPHQL_PROCESSING_TYPE = "graphql.processing.type"
     """The type of processing represented by this span.
 
     Type: str
@@ -5955,7 +5683,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/graphql/graphql__source.json
-    GRAPHQL_SOURCE: Literal["graphql.source"] = "graphql.source"
+    GRAPHQL_SOURCE = "graphql.source"
     """The GraphQL document being executed.
 
     Type: str
@@ -5968,9 +5696,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/grpc/grpc__error__bad_request__field_violations.json
-    GRPC_ERROR_BAD_REQUEST_FIELD_VIOLATIONS: Literal[
-        "grpc.error.bad_request.field_violations"
-    ] = "grpc.error.bad_request.field_violations"
+    GRPC_ERROR_BAD_REQUEST_FIELD_VIOLATIONS = "grpc.error.bad_request.field_violations"
     """The individual field violations from a google.rpc.BadRequest error detail. Each entry is a JSON-encoded object with field, description, reason, and (optional) localized_message keys, mirroring google.rpc.BadRequest.FieldViolation.
 
     Type: List[str]
@@ -5981,9 +5707,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/grpc/grpc__error__debug_info__detail.json
-    GRPC_ERROR_DEBUG_INFO_DETAIL: Literal["grpc.error.debug_info.detail"] = (
-        "grpc.error.debug_info.detail"
-    )
+    GRPC_ERROR_DEBUG_INFO_DETAIL = "grpc.error.debug_info.detail"
     """Additional debugging information, such as a server-side stack trace, from a google.rpc.DebugInfo error detail. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly.
 
     Type: str
@@ -5994,9 +5718,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/grpc/grpc__error__debug_info__stack_entries.json
-    GRPC_ERROR_DEBUG_INFO_STACK_ENTRIES: Literal[
-        "grpc.error.debug_info.stack_entries"
-    ] = "grpc.error.debug_info.stack_entries"
+    GRPC_ERROR_DEBUG_INFO_STACK_ENTRIES = "grpc.error.debug_info.stack_entries"
     """The server-side stack trace entries from a google.rpc.DebugInfo error detail. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly.
 
     Type: List[str]
@@ -6007,9 +5729,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/grpc/grpc__error__error_info__domain.json
-    GRPC_ERROR_ERROR_INFO_DOMAIN: Literal["grpc.error.error_info.domain"] = (
-        "grpc.error.error_info.domain"
-    )
+    GRPC_ERROR_ERROR_INFO_DOMAIN = "grpc.error.error_info.domain"
     """The logical grouping to which the gRPC error reason belongs, from the google.rpc.ErrorInfo error detail.
 
     Type: str
@@ -6020,9 +5740,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/grpc/grpc__error__error_info__metadata__[key].json
-    GRPC_ERROR_ERROR_INFO_METADATA_KEY: Literal[
-        "grpc.error.error_info.metadata.<key>"
-    ] = "grpc.error.error_info.metadata.<key>"
+    GRPC_ERROR_ERROR_INFO_METADATA_KEY = "grpc.error.error_info.metadata.<key>"
     """Additional structured metadata attached to a google.rpc.ErrorInfo error detail, with <key> being the metadata key name. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly.
 
     Type: str
@@ -6034,9 +5752,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/grpc/grpc__error__error_info__reason.json
-    GRPC_ERROR_ERROR_INFO_REASON: Literal["grpc.error.error_info.reason"] = (
-        "grpc.error.error_info.reason"
-    )
+    GRPC_ERROR_ERROR_INFO_REASON = "grpc.error.error_info.reason"
     """The reason for the gRPC error, as defined by the service that generated it, from the google.rpc.ErrorInfo error detail.
 
     Type: str
@@ -6047,9 +5763,9 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/grpc/grpc__error__precondition_failure__violations.json
-    GRPC_ERROR_PRECONDITION_FAILURE_VIOLATIONS: Literal[
+    GRPC_ERROR_PRECONDITION_FAILURE_VIOLATIONS = (
         "grpc.error.precondition_failure.violations"
-    ] = "grpc.error.precondition_failure.violations"
+    )
     """The individual precondition violations from a google.rpc.PreconditionFailure error detail. Each entry is a JSON-encoded object with type, subject, and description keys. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly, since violation subjects may identify specific resources or users.
 
     Type: List[str]
@@ -6060,9 +5776,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/grpc/grpc__error__quota_failure__violations.json
-    GRPC_ERROR_QUOTA_FAILURE_VIOLATIONS: Literal[
-        "grpc.error.quota_failure.violations"
-    ] = "grpc.error.quota_failure.violations"
+    GRPC_ERROR_QUOTA_FAILURE_VIOLATIONS = "grpc.error.quota_failure.violations"
     """The individual quota violations from a google.rpc.QuotaFailure error detail. Each entry is a JSON-encoded object with subject, description, api_service, quota_metric, quota_id, quota_dimensions, quota_value, and (optional) future_quota_value keys, mirroring google.rpc.QuotaFailure.Violation. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly, since violation subjects may identify specific resources or users.
 
     Type: List[str]
@@ -6073,9 +5787,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/grpc/grpc__error__resource_info__description.json
-    GRPC_ERROR_RESOURCE_INFO_DESCRIPTION: Literal[
-        "grpc.error.resource_info.description"
-    ] = "grpc.error.resource_info.description"
+    GRPC_ERROR_RESOURCE_INFO_DESCRIPTION = "grpc.error.resource_info.description"
     """A description of the error that occurred while accessing the resource, from a google.rpc.ResourceInfo error detail.
 
     Type: str
@@ -6086,9 +5798,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/grpc/grpc__error__resource_info__owner.json
-    GRPC_ERROR_RESOURCE_INFO_OWNER: Literal["grpc.error.resource_info.owner"] = (
-        "grpc.error.resource_info.owner"
-    )
+    GRPC_ERROR_RESOURCE_INFO_OWNER = "grpc.error.resource_info.owner"
     """The owner of the resource being accessed (e.g. project or account owning it), from a google.rpc.ResourceInfo error detail. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly.
 
     Type: str
@@ -6099,9 +5809,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/grpc/grpc__error__resource_info__resource_name.json
-    GRPC_ERROR_RESOURCE_INFO_RESOURCE_NAME: Literal[
-        "grpc.error.resource_info.resource_name"
-    ] = "grpc.error.resource_info.resource_name"
+    GRPC_ERROR_RESOURCE_INFO_RESOURCE_NAME = "grpc.error.resource_info.resource_name"
     """The name of the resource being accessed, from a google.rpc.ResourceInfo error detail. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly.
 
     Type: str
@@ -6112,9 +5820,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/grpc/grpc__error__resource_info__resource_type.json
-    GRPC_ERROR_RESOURCE_INFO_RESOURCE_TYPE: Literal[
-        "grpc.error.resource_info.resource_type"
-    ] = "grpc.error.resource_info.resource_type"
+    GRPC_ERROR_RESOURCE_INFO_RESOURCE_TYPE = "grpc.error.resource_info.resource_type"
     """The type of resource being accessed, from a google.rpc.ResourceInfo error detail.
 
     Type: str
@@ -6125,9 +5831,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/grpc/grpc__error__retry_info__retry_delay_ms.json
-    GRPC_ERROR_RETRY_INFO_RETRY_DELAY_MS: Literal[
-        "grpc.error.retry_info.retry_delay_ms"
-    ] = "grpc.error.retry_info.retry_delay_ms"
+    GRPC_ERROR_RETRY_INFO_RETRY_DELAY_MS = "grpc.error.retry_info.retry_delay_ms"
     """How long the client should wait before retrying the gRPC call, in milliseconds, from the google.rpc.RetryInfo error detail.
 
     Type: int
@@ -6138,7 +5842,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/hapi/hapi__ext__type.json
-    HAPI_EXT_TYPE: Literal["hapi.ext.type"] = "hapi.ext.type"
+    HAPI_EXT_TYPE = "hapi.ext.type"
     """The request lifecycle extension point where the Hapi extension function runs.
 
     Type: str
@@ -6151,7 +5855,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/hapi/hapi__plugin__name.json
-    HAPI_PLUGIN_NAME: Literal["hapi.plugin.name"] = "hapi.plugin.name"
+    HAPI_PLUGIN_NAME = "hapi.plugin.name"
     """The name of the Hapi plugin that registered the route.
 
     Type: str
@@ -6162,7 +5866,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/hapi/hapi__type.json
-    HAPI_TYPE: Literal["hapi.type"] = "hapi.type"
+    HAPI_TYPE = "hapi.type"
     """The type of the Hapi layer that the span describes: `router`, `plugin`, or `server.ext`.
 
     Type: str
@@ -6175,7 +5879,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/hardwareConcurrency.json
-    HARDWARECONCURRENCY: Literal["hardwareConcurrency"] = "hardwareConcurrency"
+    HARDWARECONCURRENCY = "hardwareConcurrency"
     """The number of logical CPU cores available.
 
     Type: str
@@ -6188,7 +5892,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/heroku/heroku__dyno__name.json
-    HEROKU_DYNO_NAME: Literal["heroku.dyno.name"] = "heroku.dyno.name"
+    HEROKU_DYNO_NAME = "heroku.dyno.name"
     """Name of the Heroku dyno serving the request or emitting telemetry
 
     Type: str
@@ -6200,7 +5904,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/heroku/heroku__error__code.json
-    HEROKU_ERROR_CODE: Literal["heroku.error.code"] = "heroku.error.code"
+    HEROKU_ERROR_CODE = "heroku.error.code"
     """Heroku error code reported by a router or platform log
 
     Type: str
@@ -6213,9 +5917,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/heroku/heroku__error__description.json
-    HEROKU_ERROR_DESCRIPTION: Literal["heroku.error.description"] = (
-        "heroku.error.description"
-    )
+    HEROKU_ERROR_DESCRIPTION = "heroku.error.description"
     """Description of the Heroku error reported by a router or platform log
 
     Type: str
@@ -6227,9 +5929,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/heroku/heroku__logplex__drain_token.json
-    HEROKU_LOGPLEX_DRAIN_TOKEN: Literal["heroku.logplex.drain_token"] = (
-        "heroku.logplex.drain_token"
-    )
+    HEROKU_LOGPLEX_DRAIN_TOKEN = "heroku.logplex.drain_token"
     """Identifier of the Heroku log drain that delivered the log, from the Logplex-Drain-Token header
 
     Type: str
@@ -6240,7 +5940,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/heroku/heroku__router__connect.json
-    HEROKU_ROUTER_CONNECT: Literal["heroku.router.connect"] = "heroku.router.connect"
+    HEROKU_ROUTER_CONNECT = "heroku.router.connect"
     """Time in milliseconds the Heroku router spent establishing a connection to the dyno
 
     Type: float
@@ -6253,9 +5953,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/heroku/heroku__router__request_id.json
-    HEROKU_ROUTER_REQUEST_ID: Literal["heroku.router.request_id"] = (
-        "heroku.router.request_id"
-    )
+    HEROKU_ROUTER_REQUEST_ID = "heroku.router.request_id"
     """Request identifier reported by the Heroku router
 
     Type: str
@@ -6266,7 +5964,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/heroku/heroku__router__service.json
-    HEROKU_ROUTER_SERVICE: Literal["heroku.router.service"] = "heroku.router.service"
+    HEROKU_ROUTER_SERVICE = "heroku.router.service"
     """Time in milliseconds spent proxying data between the backend dyno and the client, as reported by the Heroku router
 
     Type: float
@@ -6278,8 +5976,23 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: 30001
     """
 
+    # Path: model/attributes/heroku/heroku__source.json
+    HEROKU_SOURCE = "heroku.source"
+    """Logplex source of a Heroku log line.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Well-defined Values:
+    - `app` - Output written by the application's own processes, such as app[web.1].
+    - `heroku` - Messages from the Heroku platform and router, such as heroku[router].
+    Example: "app"
+    Example: "heroku"
+    """
+
     # Path: model/attributes/http/http__client_ip.json
-    HTTP_CLIENT_IP: Literal["http.client_ip"] = "http.client_ip"
+    HTTP_CLIENT_IP = "http.client_ip"
     """Client address - domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.
 
     Type: str
@@ -6292,9 +6005,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/http/http__decoded_response_content_length.json
-    HTTP_DECODED_RESPONSE_CONTENT_LENGTH: Literal[
-        "http.decoded_response_content_length"
-    ] = "http.decoded_response_content_length"
+    HTTP_DECODED_RESPONSE_CONTENT_LENGTH = "http.decoded_response_content_length"
     """The decoded body size of the response (in bytes).
 
     Type: int
@@ -6307,7 +6018,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/http/http__flavor.json
-    HTTP_FLAVOR: Literal["http.flavor"] = "http.flavor"
+    HTTP_FLAVOR = "http.flavor"
     """The actual version of the protocol used for network communication.
 
     Type: str
@@ -6320,7 +6031,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/http/http__fragment.json
-    HTTP_FRAGMENT: Literal["http.fragment"] = "http.fragment"
+    HTTP_FRAGMENT = "http.fragment"
     """The fragments present in the URI. Note that this contains the leading # character, while the `url.fragment` attribute does not.
 
     Type: str
@@ -6331,7 +6042,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/http/http__host.json
-    HTTP_HOST: Literal["http.host"] = "http.host"
+    HTTP_HOST = "http.host"
     """The domain name.
 
     Type: str
@@ -6344,20 +6055,20 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/http/http__method.json
-    HTTP_METHOD: Literal["http.method"] = "http.method"
+    HTTP_METHOD = "http.method"
     """The HTTP method used.
 
     Type: str
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: http.request.method, http.request_method, method
+    Aliases: http.request.method, http.request_method, method, sentry.request.method
     DEPRECATED: Use http.request.method instead
     Example: "GET"
     """
 
     # Path: model/attributes/http/http__query.json
-    HTTP_QUERY: Literal["http.query"] = "http.query"
+    HTTP_QUERY = "http.query"
     """The query string present in the URL. Note that this contains the leading ? character, while the `url.query` attribute does not.
 
     Type: str
@@ -6368,7 +6079,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/http/http__request__body__data.json
-    HTTP_REQUEST_BODY_DATA: Literal["http.request.body.data"] = "http.request.body.data"
+    HTTP_REQUEST_BODY_DATA = "http.request.body.data"
     """HTTP request body data. Can be given as string or structural data of any format.
 
     Type: str
@@ -6379,9 +6090,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/http/http__request__body__decoded_size.json
-    HTTP_REQUEST_BODY_DECODED_SIZE: Literal["http.request.body.decoded_size"] = (
-        "http.request.body.decoded_size"
-    )
+    HTTP_REQUEST_BODY_DECODED_SIZE = "http.request.body.decoded_size"
     """The decoded body size of the request (in bytes).
 
     Type: int
@@ -6393,7 +6102,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/http/http__request__body__size.json
-    HTTP_REQUEST_BODY_SIZE: Literal["http.request.body.size"] = "http.request.body.size"
+    HTTP_REQUEST_BODY_SIZE = "http.request.body.size"
     """The encoded body size of the request (in bytes).
 
     Type: int
@@ -6405,9 +6114,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/http/http__request__connect_start.json
-    HTTP_REQUEST_CONNECT_START: Literal["http.request.connect_start"] = (
-        "http.request.connect_start"
-    )
+    HTTP_REQUEST_CONNECT_START = "http.request.connect_start"
     """The UNIX timestamp representing the time immediately before the user agent starts establishing the connection to the server to retrieve the resource.
 
     Type: float
@@ -6418,9 +6125,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/http/http__request__connection_end.json
-    HTTP_REQUEST_CONNECTION_END: Literal["http.request.connection_end"] = (
-        "http.request.connection_end"
-    )
+    HTTP_REQUEST_CONNECTION_END = "http.request.connection_end"
     """The UNIX timestamp representing the time immediately after the browser finishes establishing the connection to the server to retrieve the resource. The timestamp value includes the time interval to establish the transport connection, as well as other time intervals such as TLS handshake and SOCKS authentication.
 
     Type: float
@@ -6431,9 +6136,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/http/http__request__domain_lookup_end.json
-    HTTP_REQUEST_DOMAIN_LOOKUP_END: Literal["http.request.domain_lookup_end"] = (
-        "http.request.domain_lookup_end"
-    )
+    HTTP_REQUEST_DOMAIN_LOOKUP_END = "http.request.domain_lookup_end"
     """The UNIX timestamp representing the time immediately after the browser finishes the domain-name lookup for the resource.
 
     Type: float
@@ -6444,9 +6147,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/http/http__request__domain_lookup_start.json
-    HTTP_REQUEST_DOMAIN_LOOKUP_START: Literal["http.request.domain_lookup_start"] = (
-        "http.request.domain_lookup_start"
-    )
+    HTTP_REQUEST_DOMAIN_LOOKUP_START = "http.request.domain_lookup_start"
     """The UNIX timestamp representing the time immediately before the browser starts the domain name lookup for the resource.
 
     Type: float
@@ -6457,7 +6158,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/http/http__request__duration.json
-    HTTP_REQUEST_DURATION: Literal["http.request.duration"] = "http.request.duration"
+    HTTP_REQUEST_DURATION = "http.request.duration"
     """The duration of a HTTP request, in milliseconds.
 
     Type: int
@@ -6468,9 +6169,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/http/http__request__fetch_start.json
-    HTTP_REQUEST_FETCH_START: Literal["http.request.fetch_start"] = (
-        "http.request.fetch_start"
-    )
+    HTTP_REQUEST_FETCH_START = "http.request.fetch_start"
     """The UNIX timestamp representing the time immediately before the browser starts to fetch the resource.
 
     Type: float
@@ -6481,9 +6180,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/http/http__request__header__[key].json
-    HTTP_REQUEST_HEADER_KEY: Literal["http.request.header.<key>"] = (
-        "http.request.header.<key>"
-    )
+    HTTP_REQUEST_HEADER_KEY = "http.request.header.<key>"
     """HTTP request headers, <key> being the lower-cased, but otherwise unchanged HTTP Header name, the value being the header values.
 
     Type: List[str]
@@ -6496,21 +6193,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/http/http__request__method.json
-    HTTP_REQUEST_METHOD: Literal["http.request.method"] = "http.request.method"
+    HTTP_REQUEST_METHOD = "http.request.method"
     """The HTTP method used.
 
     Type: str
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: method, http.method, http.request_method
+    Aliases: method, http.method, http.request_method, sentry.request.method
     Example: "GET"
     """
 
     # Path: model/attributes/http/http__request__redirect_end.json
-    HTTP_REQUEST_REDIRECT_END: Literal["http.request.redirect_end"] = (
-        "http.request.redirect_end"
-    )
+    HTTP_REQUEST_REDIRECT_END = "http.request.redirect_end"
     """The UNIX timestamp representing the timestamp immediately after receiving the last byte of the response of the last redirect
 
     Type: float
@@ -6521,9 +6216,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/http/http__request__redirect_start.json
-    HTTP_REQUEST_REDIRECT_START: Literal["http.request.redirect_start"] = (
-        "http.request.redirect_start"
-    )
+    HTTP_REQUEST_REDIRECT_START = "http.request.redirect_start"
     """The UNIX timestamp representing the start time of the fetch which that initiates the redirect.
 
     Type: float
@@ -6534,9 +6227,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/http/http__request__request_start.json
-    HTTP_REQUEST_REQUEST_START: Literal["http.request.request_start"] = (
-        "http.request.request_start"
-    )
+    HTTP_REQUEST_REQUEST_START = "http.request.request_start"
     """The UNIX timestamp representing the time immediately before the browser starts requesting the resource from the server, cache, or local resource. If the transport connection fails and the browser retires the request, the value returned will be the start of the retry request.
 
     Type: float
@@ -6547,9 +6238,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/http/http__request__resend_count.json
-    HTTP_REQUEST_RESEND_COUNT: Literal["http.request.resend_count"] = (
-        "http.request.resend_count"
-    )
+    HTTP_REQUEST_RESEND_COUNT = "http.request.resend_count"
     """The ordinal number of request resending attempt (for any reason, including redirects).
 
     Type: int
@@ -6560,9 +6249,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/http/http__request__response_end.json
-    HTTP_REQUEST_RESPONSE_END: Literal["http.request.response_end"] = (
-        "http.request.response_end"
-    )
+    HTTP_REQUEST_RESPONSE_END = "http.request.response_end"
     """The UNIX timestamp representing the time immediately after the browser receives the last byte of the resource or immediately before the transport connection is closed, whichever comes first.
 
     Type: float
@@ -6573,9 +6260,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/http/http__request__response_start.json
-    HTTP_REQUEST_RESPONSE_START: Literal["http.request.response_start"] = (
-        "http.request.response_start"
-    )
+    HTTP_REQUEST_RESPONSE_START = "http.request.response_start"
     """The UNIX timestamp representing the time immediately before the browser starts requesting the resource from the server, cache, or local resource. If the transport connection fails and the browser retires the request, the value returned will be the start of the retry request.
 
     Type: float
@@ -6586,9 +6271,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/http/http__request__same_origin.json
-    HTTP_REQUEST_SAME_ORIGIN: Literal["http.request.same_origin"] = (
-        "http.request.same_origin"
-    )
+    HTTP_REQUEST_SAME_ORIGIN = "http.request.same_origin"
     """Indicates that a URL has the same origin as the current page's origin in the browser.
 
     Type: bool
@@ -6600,9 +6283,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/http/http__request__secure_connection_start.json
-    HTTP_REQUEST_SECURE_CONNECTION_START: Literal[
-        "http.request.secure_connection_start"
-    ] = "http.request.secure_connection_start"
+    HTTP_REQUEST_SECURE_CONNECTION_START = "http.request.secure_connection_start"
     """The UNIX timestamp representing the time immediately before the browser starts the handshake process to secure the current connection. If a secure connection is not used, the property returns zero.
 
     Type: float
@@ -6613,9 +6294,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/http/http__request__time_to_first_byte.json
-    HTTP_REQUEST_TIME_TO_FIRST_BYTE: Literal["http.request.time_to_first_byte"] = (
-        "http.request.time_to_first_byte"
-    )
+    HTTP_REQUEST_TIME_TO_FIRST_BYTE = "http.request.time_to_first_byte"
     """The time in seconds from the browser's timeorigin to when the first byte of the request's response was received. See https://web.dev/articles/ttfb#measure-resource-requests
 
     Type: float
@@ -6626,9 +6305,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/http/http__request__worker_start.json
-    HTTP_REQUEST_WORKER_START: Literal["http.request.worker_start"] = (
-        "http.request.worker_start"
-    )
+    HTTP_REQUEST_WORKER_START = "http.request.worker_start"
     """The UNIX timestamp representing the timestamp immediately before dispatching the FetchEvent if a Service Worker thread is already running, or immediately before starting the Service Worker thread if it is not already running.
 
     Type: float
@@ -6639,9 +6316,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/http/http__request_content_length.json
-    HTTP_REQUEST_CONTENT_LENGTH: Literal["http.request_content_length"] = (
-        "http.request_content_length"
-    )
+    HTTP_REQUEST_CONTENT_LENGTH = "http.request_content_length"
     """The encoded body size of the request (in bytes).
 
     Type: int
@@ -6654,9 +6329,9 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/http/http__request_content_length_uncompressed.json
-    HTTP_REQUEST_CONTENT_LENGTH_UNCOMPRESSED: Literal[
+    HTTP_REQUEST_CONTENT_LENGTH_UNCOMPRESSED = (
         "http.request_content_length_uncompressed"
-    ] = "http.request_content_length_uncompressed"
+    )
     """The decoded body size of the request (in bytes).
 
     Type: int
@@ -6669,22 +6344,20 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/http/http__request_method.json
-    _HTTP_REQUEST_METHOD: Literal["http.request_method"] = "http.request_method"
+    _HTTP_REQUEST_METHOD = "http.request_method"
     """The HTTP method used.
 
     Type: str
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
-    Aliases: method, http.method, http.request.method
+    Aliases: method, http.method, http.request.method, sentry.request.method
     DEPRECATED: Use http.request.method instead
     Example: "GET"
     """
 
     # Path: model/attributes/http/http__response__body__decoded_size.json
-    HTTP_RESPONSE_BODY_DECODED_SIZE: Literal["http.response.body.decoded_size"] = (
-        "http.response.body.decoded_size"
-    )
+    HTTP_RESPONSE_BODY_DECODED_SIZE = "http.response.body.decoded_size"
     """The decoded body size of the response (in bytes).
 
     Type: int
@@ -6696,9 +6369,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/http/http__response__body__size.json
-    HTTP_RESPONSE_BODY_SIZE: Literal["http.response.body.size"] = (
-        "http.response.body.size"
-    )
+    HTTP_RESPONSE_BODY_SIZE = "http.response.body.size"
     """The encoded body size of the response (in bytes).
 
     Type: int
@@ -6710,9 +6381,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/http/http__response__header__[key].json
-    HTTP_RESPONSE_HEADER_KEY: Literal["http.response.header.<key>"] = (
-        "http.response.header.<key>"
-    )
+    HTTP_RESPONSE_HEADER_KEY = "http.response.header.<key>"
     """HTTP response headers, <key> being the lower-cased, but otherwise unchanged HTTP Header name, the value being the header values.
 
     Type: List[str]
@@ -6725,9 +6394,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/http/http__response__header__content-length.json
-    HTTP_RESPONSE_HEADER_CONTENT_LENGTH: Literal[
-        "http.response.header.content-length"
-    ] = "http.response.header.content-length"
+    HTTP_RESPONSE_HEADER_CONTENT_LENGTH = "http.response.header.content-length"
     """The size of the message body sent to the recipient (in bytes)
 
     Type: str
@@ -6739,7 +6406,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/http/http__response__size.json
-    HTTP_RESPONSE_SIZE: Literal["http.response.size"] = "http.response.size"
+    HTTP_RESPONSE_SIZE = "http.response.size"
     """The transfer size of the response (in bytes).
 
     Type: int
@@ -6751,9 +6418,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/http/http__response__status_code.json
-    HTTP_RESPONSE_STATUS_CODE: Literal["http.response.status_code"] = (
-        "http.response.status_code"
-    )
+    HTTP_RESPONSE_STATUS_CODE = "http.response.status_code"
     """The status code of the HTTP response.
 
     Type: int
@@ -6765,9 +6430,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/http/http__response__status_text.json
-    HTTP_RESPONSE_STATUS_TEXT: Literal["http.response.status_text"] = (
-        "http.response.status_text"
-    )
+    HTTP_RESPONSE_STATUS_TEXT = "http.response.status_text"
     """The reason phrase of the HTTP response.
 
     Type: str
@@ -6779,9 +6442,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/http/http__response_content_length.json
-    HTTP_RESPONSE_CONTENT_LENGTH: Literal["http.response_content_length"] = (
-        "http.response_content_length"
-    )
+    HTTP_RESPONSE_CONTENT_LENGTH = "http.response_content_length"
     """The encoded body size of the response (in bytes).
 
     Type: int
@@ -6794,9 +6455,9 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/http/http__response_content_length_uncompressed.json
-    HTTP_RESPONSE_CONTENT_LENGTH_UNCOMPRESSED: Literal[
+    HTTP_RESPONSE_CONTENT_LENGTH_UNCOMPRESSED = (
         "http.response_content_length_uncompressed"
-    ] = "http.response_content_length_uncompressed"
+    )
     """The decoded body size of the response (in bytes).
 
     Type: int
@@ -6809,9 +6470,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/http/http__response_transfer_size.json
-    HTTP_RESPONSE_TRANSFER_SIZE: Literal["http.response_transfer_size"] = (
-        "http.response_transfer_size"
-    )
+    HTTP_RESPONSE_TRANSFER_SIZE = "http.response_transfer_size"
     """The transfer size of the response (in bytes).
 
     Type: int
@@ -6824,7 +6483,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/http/http__route.json
-    HTTP_ROUTE: Literal["http.route"] = "http.route"
+    HTTP_ROUTE = "http.route"
     """The matched route, that is, the path template in the format used by the respective server framework.
 
     Type: str
@@ -6838,7 +6497,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/http/http__scheme.json
-    HTTP_SCHEME: Literal["http.scheme"] = "http.scheme"
+    HTTP_SCHEME = "http.scheme"
     """The URI scheme component identifying the used protocol.
 
     Type: str
@@ -6851,9 +6510,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/http/http__server__request__time_in_queue.json
-    HTTP_SERVER_REQUEST_TIME_IN_QUEUE: Literal["http.server.request.time_in_queue"] = (
-        "http.server.request.time_in_queue"
-    )
+    HTTP_SERVER_REQUEST_TIME_IN_QUEUE = "http.server.request.time_in_queue"
     """The time in milliseconds the request spent in the server queue before processing began. Measured from the X-Request-Start header set by reverse proxies (e.g., Nginx, HAProxy, Heroku) to when the application started handling the request.
 
     Type: float
@@ -6864,7 +6521,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/http/http__server_name.json
-    HTTP_SERVER_NAME: Literal["http.server_name"] = "http.server_name"
+    HTTP_SERVER_NAME = "http.server_name"
     """The server domain name
 
     Type: str
@@ -6877,7 +6534,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/http/http__status_code.json
-    HTTP_STATUS_CODE: Literal["http.status_code"] = "http.status_code"
+    HTTP_STATUS_CODE = "http.status_code"
     """The status code of the HTTP response.
 
     Type: int
@@ -6890,7 +6547,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/http/http__status_text.json
-    HTTP_STATUS_TEXT: Literal["http.status_text"] = "http.status_text"
+    HTTP_STATUS_TEXT = "http.status_text"
     """The reason phrase of the HTTP response
 
     Type: str
@@ -6903,7 +6560,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/http/http__target.json
-    HTTP_TARGET: Literal["http.target"] = "http.target"
+    HTTP_TARGET = "http.target"
     """The pathname and query string of the URL.
 
     Type: str
@@ -6915,20 +6572,20 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/http/http__url.json
-    HTTP_URL: Literal["http.url"] = "http.url"
+    HTTP_URL = "http.url"
     """The URL of the resource that was fetched.
 
     Type: str
     Apply Scrubbing: auto
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: url.full, url, aws.request.url, messaging.url
+    Aliases: url.full, url, aws.request.url, messaging.url, sentry.request.url
     DEPRECATED: Use url.full instead
     Example: "https://example.com/test?foo=bar#buzz"
     """
 
     # Path: model/attributes/http/http__user_agent.json
-    HTTP_USER_AGENT: Literal["http.user_agent"] = "http.user_agent"
+    HTTP_USER_AGENT = "http.user_agent"
     """Value of the HTTP User-Agent header sent by the client.
 
     Type: str
@@ -6941,7 +6598,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/id.json
-    ID: Literal["id"] = "id"
+    ID = "id"
     """A unique identifier for the span.
 
     Type: str
@@ -6952,7 +6609,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/inp.json
-    INP: Literal["inp"] = "inp"
+    INP = "inp"
     """The value of the recorded Interaction to Next Paint (INP) web vital
 
     Type: float
@@ -6965,7 +6622,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/integrity/integrity__blocked_url.json
-    INTEGRITY_BLOCKED_URL: Literal["integrity.blocked_url"] = "integrity.blocked_url"
+    INTEGRITY_BLOCKED_URL = "integrity.blocked_url"
     """The URL of the resource blocked by the integrity policy.
 
     Type: str
@@ -6976,7 +6633,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/integrity/integrity__destination.json
-    INTEGRITY_DESTINATION: Literal["integrity.destination"] = "integrity.destination"
+    INTEGRITY_DESTINATION = "integrity.destination"
     """The destination type of the resource affected by the integrity policy.
 
     Type: str
@@ -6987,7 +6644,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/integrity/integrity__document_url.json
-    INTEGRITY_DOCUMENT_URL: Literal["integrity.document_url"] = "integrity.document_url"
+    INTEGRITY_DOCUMENT_URL = "integrity.document_url"
     """The URL of the document where the integrity violation occurred.
 
     Type: str
@@ -6998,7 +6655,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/integrity/integrity__report_only.json
-    INTEGRITY_REPORT_ONLY: Literal["integrity.report_only"] = "integrity.report_only"
+    INTEGRITY_REPORT_ONLY = "integrity.report_only"
     """Whether the integrity violation was generated by a report-only policy.
 
     Type: bool
@@ -7009,9 +6666,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/jsonrpc/jsonrpc__protocol__version.json
-    JSONRPC_PROTOCOL_VERSION: Literal["jsonrpc.protocol.version"] = (
-        "jsonrpc.protocol.version"
-    )
+    JSONRPC_PROTOCOL_VERSION = "jsonrpc.protocol.version"
     """The version of the JSON-RPC protocol used.
 
     Type: str
@@ -7022,7 +6677,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/jsonrpc/jsonrpc__request__id.json
-    JSONRPC_REQUEST_ID: Literal["jsonrpc.request.id"] = "jsonrpc.request.id"
+    JSONRPC_REQUEST_ID = "jsonrpc.request.id"
     """The JSON-RPC request identifier, used to correlate a request with its response.
 
     Type: str
@@ -7034,7 +6689,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/jvm/jvm__gc__action.json
-    JVM_GC_ACTION: Literal["jvm.gc.action"] = "jvm.gc.action"
+    JVM_GC_ACTION = "jvm.gc.action"
     """Name of the garbage collector action.
 
     Type: str
@@ -7045,7 +6700,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/jvm/jvm__gc__name.json
-    JVM_GC_NAME: Literal["jvm.gc.name"] = "jvm.gc.name"
+    JVM_GC_NAME = "jvm.gc.name"
     """Name of the garbage collector.
 
     Type: str
@@ -7056,7 +6711,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/jvm/jvm__memory__pool__name.json
-    JVM_MEMORY_POOL_NAME: Literal["jvm.memory.pool.name"] = "jvm.memory.pool.name"
+    JVM_MEMORY_POOL_NAME = "jvm.memory.pool.name"
     """Name of the memory pool.
 
     Type: str
@@ -7067,7 +6722,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/jvm/jvm__memory__type.json
-    JVM_MEMORY_TYPE: Literal["jvm.memory.type"] = "jvm.memory.type"
+    JVM_MEMORY_TYPE = "jvm.memory.type"
     """Name of the memory pool.
 
     Type: str
@@ -7078,7 +6733,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/jvm/jvm__thread__daemon.json
-    JVM_THREAD_DAEMON: Literal["jvm.thread.daemon"] = "jvm.thread.daemon"
+    JVM_THREAD_DAEMON = "jvm.thread.daemon"
     """Whether the thread is daemon or not.
 
     Type: bool
@@ -7089,7 +6744,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/jvm/jvm__thread__state.json
-    JVM_THREAD_STATE: Literal["jvm.thread.state"] = "jvm.thread.state"
+    JVM_THREAD_STATE = "jvm.thread.state"
     """State of the thread.
 
     Type: str
@@ -7100,7 +6755,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/koa/koa__name.json
-    KOA_NAME: Literal["koa.name"] = "koa.name"
+    KOA_NAME = "koa.name"
     """The name of the Koa middleware or matched route that handled the request.
 
     Type: str
@@ -7112,7 +6767,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/koa/koa__type.json
-    KOA_TYPE: Literal["koa.type"] = "koa.type"
+    KOA_TYPE = "koa.type"
     """The type of the Koa layer that handled the request.
 
     Type: str
@@ -7123,7 +6778,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/langchain/langchain__chain__name.json
-    LANGCHAIN_CHAIN_NAME: Literal["langchain.chain.name"] = "langchain.chain.name"
+    LANGCHAIN_CHAIN_NAME = "langchain.chain.name"
     """The name of the LangChain chain being executed.
 
     Type: str
@@ -7137,7 +6792,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/lcp/lcp__element.json
-    LCP_ELEMENT: Literal["lcp.element"] = "lcp.element"
+    LCP_ELEMENT = "lcp.element"
     """The dom element responsible for the largest contentful paint.
 
     Type: str
@@ -7150,7 +6805,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/lcp/lcp__id.json
-    LCP_ID: Literal["lcp.id"] = "lcp.id"
+    LCP_ID = "lcp.id"
     """The id of the dom element responsible for the largest contentful paint.
 
     Type: str
@@ -7163,7 +6818,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/lcp/lcp__loadTime.json
-    LCP_LOADTIME: Literal["lcp.loadTime"] = "lcp.loadTime"
+    LCP_LOADTIME = "lcp.loadTime"
     """The time it took for the LCP element to be loaded
 
     Type: int
@@ -7176,7 +6831,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/lcp/lcp__renderTime.json
-    LCP_RENDERTIME: Literal["lcp.renderTime"] = "lcp.renderTime"
+    LCP_RENDERTIME = "lcp.renderTime"
     """The time it took for the LCP element to be rendered
 
     Type: int
@@ -7189,7 +6844,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/lcp/lcp__size.json
-    LCP_SIZE: Literal["lcp.size"] = "lcp.size"
+    LCP_SIZE = "lcp.size"
     """The size of the largest contentful paint element.
 
     Type: int
@@ -7202,7 +6857,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/lcp/lcp__url.json
-    LCP_URL: Literal["lcp.url"] = "lcp.url"
+    LCP_URL = "lcp.url"
     """The url of the dom element responsible for the largest contentful paint.
 
     Type: str
@@ -7215,7 +6870,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/lcp.json
-    LCP: Literal["lcp"] = "lcp"
+    LCP = "lcp"
     """The value of the recorded Largest Contentful Paint (LCP) web vital
 
     Type: float
@@ -7228,9 +6883,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/litestar/litestar__middleware_name.json
-    LITESTAR_MIDDLEWARE_NAME: Literal["litestar.middleware_name"] = (
-        "litestar.middleware_name"
-    )
+    LITESTAR_MIDDLEWARE_NAME = "litestar.middleware_name"
     """The name of the Litestar middleware.
 
     Type: str
@@ -7243,7 +6896,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/logger/logger__name.json
-    LOGGER_NAME: Literal["logger.name"] = "logger.name"
+    LOGGER_NAME = "logger.name"
     """The name of the logger that generated this event.
 
     Type: str
@@ -7254,7 +6907,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/mcp/mcp__auth__client__name.json
-    MCP_AUTH_CLIENT_NAME: Literal["mcp.auth.client.name"] = "mcp.auth.client.name"
+    MCP_AUTH_CLIENT_NAME = "mcp.auth.client.name"
     """Registered OAuth client application name associated with the authenticated MCP request. Taken from OAuth client registration metadata (client_name) made available by the authentication layer. This is distinct from the MCP implementation name in mcp.client.name; omit it when the OAuth client name is unavailable.
 
     Type: str
@@ -7266,7 +6919,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/mcp/mcp__cancelled__reason.json
-    MCP_CANCELLED_REASON: Literal["mcp.cancelled.reason"] = "mcp.cancelled.reason"
+    MCP_CANCELLED_REASON = "mcp.cancelled.reason"
     """Reason for the cancellation of an MCP operation.
 
     Type: str
@@ -7277,9 +6930,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/mcp/mcp__cancelled__request_id.json
-    MCP_CANCELLED_REQUEST_ID: Literal["mcp.cancelled.request_id"] = (
-        "mcp.cancelled.request_id"
-    )
+    MCP_CANCELLED_REQUEST_ID = "mcp.cancelled.request_id"
     """Request ID of the cancelled MCP operation.
 
     Type: str
@@ -7290,7 +6941,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/mcp/mcp__client__name.json
-    MCP_CLIENT_NAME: Literal["mcp.client.name"] = "mcp.client.name"
+    MCP_CLIENT_NAME = "mcp.client.name"
     """Name of the MCP client implementation, as declared in clientInfo. This is distinct from the registered OAuth application name in mcp.auth.client.name.
 
     Type: str
@@ -7301,7 +6952,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/mcp/mcp__client__title.json
-    MCP_CLIENT_TITLE: Literal["mcp.client.title"] = "mcp.client.title"
+    MCP_CLIENT_TITLE = "mcp.client.title"
     """Display title of the MCP client implementation, as declared in clientInfo.
 
     Type: str
@@ -7312,7 +6963,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/mcp/mcp__client__version.json
-    MCP_CLIENT_VERSION: Literal["mcp.client.version"] = "mcp.client.version"
+    MCP_CLIENT_VERSION = "mcp.client.version"
     """Version of the MCP client implementation, as declared in clientInfo.
 
     Type: str
@@ -7323,7 +6974,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/mcp/mcp__lifecycle__phase.json
-    MCP_LIFECYCLE_PHASE: Literal["mcp.lifecycle.phase"] = "mcp.lifecycle.phase"
+    MCP_LIFECYCLE_PHASE = "mcp.lifecycle.phase"
     """Lifecycle phase indicator for MCP operations.
 
     Type: str
@@ -7334,7 +6985,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/mcp/mcp__logging__data_type.json
-    MCP_LOGGING_DATA_TYPE: Literal["mcp.logging.data_type"] = "mcp.logging.data_type"
+    MCP_LOGGING_DATA_TYPE = "mcp.logging.data_type"
     """Data type of the logged message content.
 
     Type: str
@@ -7345,7 +6996,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/mcp/mcp__logging__level.json
-    MCP_LOGGING_LEVEL: Literal["mcp.logging.level"] = "mcp.logging.level"
+    MCP_LOGGING_LEVEL = "mcp.logging.level"
     """Log level for MCP logging operations.
 
     Type: str
@@ -7356,7 +7007,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/mcp/mcp__logging__logger.json
-    MCP_LOGGING_LOGGER: Literal["mcp.logging.logger"] = "mcp.logging.logger"
+    MCP_LOGGING_LOGGER = "mcp.logging.logger"
     """Logger name for MCP logging operations.
 
     Type: str
@@ -7367,7 +7018,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/mcp/mcp__logging__message.json
-    MCP_LOGGING_MESSAGE: Literal["mcp.logging.message"] = "mcp.logging.message"
+    MCP_LOGGING_MESSAGE = "mcp.logging.message"
     """Log message content from MCP logging operations.
 
     Type: str
@@ -7378,7 +7029,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/mcp/mcp__method__name.json
-    MCP_METHOD_NAME: Literal["mcp.method.name"] = "mcp.method.name"
+    MCP_METHOD_NAME = "mcp.method.name"
     """The name of the MCP request or notification method being called.
 
     Type: str
@@ -7389,7 +7040,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/mcp/mcp__progress__current.json
-    MCP_PROGRESS_CURRENT: Literal["mcp.progress.current"] = "mcp.progress.current"
+    MCP_PROGRESS_CURRENT = "mcp.progress.current"
     """Current progress value of an MCP operation.
 
     Type: float
@@ -7401,7 +7052,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/mcp/mcp__progress__message.json
-    MCP_PROGRESS_MESSAGE: Literal["mcp.progress.message"] = "mcp.progress.message"
+    MCP_PROGRESS_MESSAGE = "mcp.progress.message"
     """Progress message describing the current state of an MCP operation.
 
     Type: str
@@ -7412,9 +7063,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/mcp/mcp__progress__percentage.json
-    MCP_PROGRESS_PERCENTAGE: Literal["mcp.progress.percentage"] = (
-        "mcp.progress.percentage"
-    )
+    MCP_PROGRESS_PERCENTAGE = "mcp.progress.percentage"
     """Calculated progress percentage of an MCP operation. Computed from current/total * 100.
 
     Type: float
@@ -7425,7 +7074,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/mcp/mcp__progress__token.json
-    MCP_PROGRESS_TOKEN: Literal["mcp.progress.token"] = "mcp.progress.token"
+    MCP_PROGRESS_TOKEN = "mcp.progress.token"
     """Token for tracking progress of an MCP operation.
 
     Type: str
@@ -7436,7 +7085,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/mcp/mcp__progress__total.json
-    MCP_PROGRESS_TOTAL: Literal["mcp.progress.total"] = "mcp.progress.total"
+    MCP_PROGRESS_TOTAL = "mcp.progress.total"
     """Total progress target value of an MCP operation.
 
     Type: float
@@ -7448,7 +7097,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/mcp/mcp__prompt__name.json
-    MCP_PROMPT_NAME: Literal["mcp.prompt.name"] = "mcp.prompt.name"
+    MCP_PROMPT_NAME = "mcp.prompt.name"
     """Name of the MCP prompt template being used.
 
     Type: str
@@ -7461,9 +7110,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/mcp/mcp__prompt__result__[key]__content.json
-    MCP_PROMPT_RESULT_KEY_CONTENT: Literal["mcp.prompt.result.<key>.content"] = (
-        "mcp.prompt.result.<key>.content"
-    )
+    MCP_PROMPT_RESULT_KEY_CONTENT = "mcp.prompt.result.<key>.content"
     """Legacy text content of an indexed message in a multi-message MCP prompt result.
 
     Type: str
@@ -7474,9 +7121,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/mcp/mcp__prompt__result__[key]__role.json
-    MCP_PROMPT_RESULT_KEY_ROLE: Literal["mcp.prompt.result.<key>.role"] = (
-        "mcp.prompt.result.<key>.role"
-    )
+    MCP_PROMPT_RESULT_KEY_ROLE = "mcp.prompt.result.<key>.role"
     """Legacy role of an indexed message in a multi-message MCP prompt result.
 
     Type: str
@@ -7488,9 +7133,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/mcp/mcp__prompt__result__description.json
-    MCP_PROMPT_RESULT_DESCRIPTION: Literal["mcp.prompt.result.description"] = (
-        "mcp.prompt.result.description"
-    )
+    MCP_PROMPT_RESULT_DESCRIPTION = "mcp.prompt.result.description"
     """Description of the prompt result.
 
     Type: str
@@ -7501,9 +7144,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/mcp/mcp__prompt__result__message_content.json
-    MCP_PROMPT_RESULT_MESSAGE_CONTENT: Literal["mcp.prompt.result.message_content"] = (
-        "mcp.prompt.result.message_content"
-    )
+    MCP_PROMPT_RESULT_MESSAGE_CONTENT = "mcp.prompt.result.message_content"
     """Content of the message in the prompt result. Used for single message results only.
 
     Type: str
@@ -7514,9 +7155,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/mcp/mcp__prompt__result__message_count.json
-    MCP_PROMPT_RESULT_MESSAGE_COUNT: Literal["mcp.prompt.result.message_count"] = (
-        "mcp.prompt.result.message_count"
-    )
+    MCP_PROMPT_RESULT_MESSAGE_COUNT = "mcp.prompt.result.message_count"
     """Number of messages in the prompt result.
 
     Type: int
@@ -7527,9 +7166,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/mcp/mcp__prompt__result__message_role.json
-    MCP_PROMPT_RESULT_MESSAGE_ROLE: Literal["mcp.prompt.result.message_role"] = (
-        "mcp.prompt.result.message_role"
-    )
+    MCP_PROMPT_RESULT_MESSAGE_ROLE = "mcp.prompt.result.message_role"
     """Role of the message in the prompt result. Used for single message results only.
 
     Type: str
@@ -7540,7 +7177,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/mcp/mcp__protocol__ready.json
-    MCP_PROTOCOL_READY: Literal["mcp.protocol.ready"] = "mcp.protocol.ready"
+    MCP_PROTOCOL_READY = "mcp.protocol.ready"
     """Readiness indicator for the legacy MCP initialization handshake. A non-zero value indicates that notifications/initialized has completed initialization. Omit for protocol versions without this handshake.
 
     Type: int
@@ -7551,7 +7188,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/mcp/mcp__protocol__version.json
-    MCP_PROTOCOL_VERSION: Literal["mcp.protocol.version"] = "mcp.protocol.version"
+    MCP_PROTOCOL_VERSION = "mcp.protocol.version"
     """Version of the Model Context Protocol used for the operation.
 
     Type: str
@@ -7562,9 +7199,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/mcp/mcp__request__argument__[key].json
-    MCP_REQUEST_ARGUMENT_KEY: Literal["mcp.request.argument.<key>"] = (
-        "mcp.request.argument.<key>"
-    )
+    MCP_REQUEST_ARGUMENT_KEY = "mcp.request.argument.<key>"
     """MCP request argument with dynamic key suffix. The <key> is replaced with the actual argument name. The value is a JSON-stringified representation of the argument value.
 
     Type: str
@@ -7576,9 +7211,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/mcp/mcp__request__argument__name.json
-    MCP_REQUEST_ARGUMENT_NAME: Literal["mcp.request.argument.name"] = (
-        "mcp.request.argument.name"
-    )
+    MCP_REQUEST_ARGUMENT_NAME = "mcp.request.argument.name"
     """Name argument from prompts/get MCP request.
 
     Type: str
@@ -7589,9 +7222,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/mcp/mcp__request__argument__uri.json
-    MCP_REQUEST_ARGUMENT_URI: Literal["mcp.request.argument.uri"] = (
-        "mcp.request.argument.uri"
-    )
+    MCP_REQUEST_ARGUMENT_URI = "mcp.request.argument.uri"
     """URI argument from resources/read MCP request.
 
     Type: str
@@ -7602,7 +7233,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/mcp/mcp__request__id.json
-    MCP_REQUEST_ID: Literal["mcp.request.id"] = "mcp.request.id"
+    MCP_REQUEST_ID = "mcp.request.id"
     """JSON-RPC request identifier for the MCP request, used to correlate the request with its response.
 
     Type: str
@@ -7615,7 +7246,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/mcp/mcp__resource__protocol.json
-    MCP_RESOURCE_PROTOCOL: Literal["mcp.resource.protocol"] = "mcp.resource.protocol"
+    MCP_RESOURCE_PROTOCOL = "mcp.resource.protocol"
     """URI scheme of the MCP resource being accessed, extracted from its URI. This is distinct from the network protocol used to communicate with the MCP server.
 
     Type: str
@@ -7627,7 +7258,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/mcp/mcp__resource__uri.json
-    MCP_RESOURCE_URI: Literal["mcp.resource.uri"] = "mcp.resource.uri"
+    MCP_RESOURCE_URI = "mcp.resource.uri"
     """The resource URI being accessed in an MCP operation.
 
     Type: str
@@ -7638,7 +7269,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/mcp/mcp__server__name.json
-    MCP_SERVER_NAME: Literal["mcp.server.name"] = "mcp.server.name"
+    MCP_SERVER_NAME = "mcp.server.name"
     """Name of the MCP server implementation, as declared in serverInfo.
 
     Type: str
@@ -7649,7 +7280,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/mcp/mcp__server__title.json
-    MCP_SERVER_TITLE: Literal["mcp.server.title"] = "mcp.server.title"
+    MCP_SERVER_TITLE = "mcp.server.title"
     """Display title of the MCP server implementation, as declared in serverInfo.
 
     Type: str
@@ -7660,7 +7291,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/mcp/mcp__server__version.json
-    MCP_SERVER_VERSION: Literal["mcp.server.version"] = "mcp.server.version"
+    MCP_SERVER_VERSION = "mcp.server.version"
     """Version of the MCP server implementation, as declared in serverInfo.
 
     Type: str
@@ -7671,7 +7302,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/mcp/mcp__session__id.json
-    MCP_SESSION_ID: Literal["mcp.session.id"] = "mcp.session.id"
+    MCP_SESSION_ID = "mcp.session.id"
     """Identifier for an MCP protocol session, when the operation belongs to a session.
 
     Type: str
@@ -7682,7 +7313,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/mcp/mcp__tool__name.json
-    MCP_TOOL_NAME: Literal["mcp.tool.name"] = "mcp.tool.name"
+    MCP_TOOL_NAME = "mcp.tool.name"
     """Name of the MCP tool being called.
 
     Type: str
@@ -7695,9 +7326,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/mcp/mcp__tool__result__[key]__content.json
-    MCP_TOOL_RESULT_KEY_CONTENT: Literal["mcp.tool.result.<key>.content"] = (
-        "mcp.tool.result.<key>.content"
-    )
+    MCP_TOOL_RESULT_KEY_CONTENT = "mcp.tool.result.<key>.content"
     """Legacy text content of an indexed content item in a multi-item MCP tool result.
 
     Type: str
@@ -7709,9 +7338,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/mcp/mcp__tool__result__[key]__content_type.json
-    MCP_TOOL_RESULT_KEY_CONTENT_TYPE: Literal["mcp.tool.result.<key>.content_type"] = (
-        "mcp.tool.result.<key>.content_type"
-    )
+    MCP_TOOL_RESULT_KEY_CONTENT_TYPE = "mcp.tool.result.<key>.content_type"
     """Legacy content type of an indexed content item in a multi-item MCP tool result.
 
     Type: str
@@ -7724,9 +7351,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/mcp/mcp__tool__result__[key]__data_size.json
-    MCP_TOOL_RESULT_KEY_DATA_SIZE: Literal["mcp.tool.result.<key>.data_size"] = (
-        "mcp.tool.result.<key>.data_size"
-    )
+    MCP_TOOL_RESULT_KEY_DATA_SIZE = "mcp.tool.result.<key>.data_size"
     """Legacy length of the data string in UTF-16 code units of an indexed content item in a multi-item MCP tool result.
 
     Type: int
@@ -7739,9 +7364,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/mcp/mcp__tool__result__[key]__mime_type.json
-    MCP_TOOL_RESULT_KEY_MIME_TYPE: Literal["mcp.tool.result.<key>.mime_type"] = (
-        "mcp.tool.result.<key>.mime_type"
-    )
+    MCP_TOOL_RESULT_KEY_MIME_TYPE = "mcp.tool.result.<key>.mime_type"
     """Legacy MIME type of an indexed content item in a multi-item MCP tool result.
 
     Type: str
@@ -7754,9 +7377,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/mcp/mcp__tool__result__[key]__name.json
-    MCP_TOOL_RESULT_KEY_NAME: Literal["mcp.tool.result.<key>.name"] = (
-        "mcp.tool.result.<key>.name"
-    )
+    MCP_TOOL_RESULT_KEY_NAME = "mcp.tool.result.<key>.name"
     """Legacy resource link name of an indexed content item in a multi-item MCP tool result.
 
     Type: str
@@ -7768,9 +7389,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/mcp/mcp__tool__result__[key]__resource_mime_type.json
-    MCP_TOOL_RESULT_KEY_RESOURCE_MIME_TYPE: Literal[
-        "mcp.tool.result.<key>.resource_mime_type"
-    ] = "mcp.tool.result.<key>.resource_mime_type"
+    MCP_TOOL_RESULT_KEY_RESOURCE_MIME_TYPE = "mcp.tool.result.<key>.resource_mime_type"
     """Legacy embedded resource MIME type of an indexed content item in a multi-item MCP tool result.
 
     Type: str
@@ -7782,9 +7401,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/mcp/mcp__tool__result__[key]__resource_uri.json
-    MCP_TOOL_RESULT_KEY_RESOURCE_URI: Literal["mcp.tool.result.<key>.resource_uri"] = (
-        "mcp.tool.result.<key>.resource_uri"
-    )
+    MCP_TOOL_RESULT_KEY_RESOURCE_URI = "mcp.tool.result.<key>.resource_uri"
     """Legacy embedded resource URI of an indexed content item in a multi-item MCP tool result.
 
     Type: str
@@ -7796,9 +7413,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/mcp/mcp__tool__result__[key]__uri.json
-    MCP_TOOL_RESULT_KEY_URI: Literal["mcp.tool.result.<key>.uri"] = (
-        "mcp.tool.result.<key>.uri"
-    )
+    MCP_TOOL_RESULT_KEY_URI = "mcp.tool.result.<key>.uri"
     """Legacy resource link URI of an indexed content item in a multi-item MCP tool result.
 
     Type: str
@@ -7810,9 +7425,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/mcp/mcp__tool__result__content.json
-    MCP_TOOL_RESULT_CONTENT: Literal["mcp.tool.result.content"] = (
-        "mcp.tool.result.content"
-    )
+    MCP_TOOL_RESULT_CONTENT = "mcp.tool.result.content"
     """The content of the tool result.
 
     Type: str
@@ -7825,9 +7438,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/mcp/mcp__tool__result__content_count.json
-    MCP_TOOL_RESULT_CONTENT_COUNT: Literal["mcp.tool.result.content_count"] = (
-        "mcp.tool.result.content_count"
-    )
+    MCP_TOOL_RESULT_CONTENT_COUNT = "mcp.tool.result.content_count"
     """Number of content items in the tool result.
 
     Type: int
@@ -7839,9 +7450,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/mcp/mcp__tool__result__content_type.json
-    MCP_TOOL_RESULT_CONTENT_TYPE: Literal["mcp.tool.result.content_type"] = (
-        "mcp.tool.result.content_type"
-    )
+    MCP_TOOL_RESULT_CONTENT_TYPE = "mcp.tool.result.content_type"
     """Legacy content type of the content item in a single-item MCP tool result.
 
     Type: str
@@ -7854,9 +7463,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/mcp/mcp__tool__result__data_size.json
-    MCP_TOOL_RESULT_DATA_SIZE: Literal["mcp.tool.result.data_size"] = (
-        "mcp.tool.result.data_size"
-    )
+    MCP_TOOL_RESULT_DATA_SIZE = "mcp.tool.result.data_size"
     """Legacy length of the data string in UTF-16 code units of the content item in a single-item MCP tool result.
 
     Type: int
@@ -7869,9 +7476,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/mcp/mcp__tool__result__is_error.json
-    MCP_TOOL_RESULT_IS_ERROR: Literal["mcp.tool.result.is_error"] = (
-        "mcp.tool.result.is_error"
-    )
+    MCP_TOOL_RESULT_IS_ERROR = "mcp.tool.result.is_error"
     """Whether a tool execution resulted in an error.
 
     Type: bool
@@ -7883,9 +7488,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/mcp/mcp__tool__result__mime_type.json
-    MCP_TOOL_RESULT_MIME_TYPE: Literal["mcp.tool.result.mime_type"] = (
-        "mcp.tool.result.mime_type"
-    )
+    MCP_TOOL_RESULT_MIME_TYPE = "mcp.tool.result.mime_type"
     """Legacy MIME type of the content item in a single-item MCP tool result.
 
     Type: str
@@ -7898,7 +7501,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/mcp/mcp__tool__result__name.json
-    MCP_TOOL_RESULT_NAME: Literal["mcp.tool.result.name"] = "mcp.tool.result.name"
+    MCP_TOOL_RESULT_NAME = "mcp.tool.result.name"
     """Legacy resource link name of the content item in a single-item MCP tool result.
 
     Type: str
@@ -7910,9 +7513,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/mcp/mcp__tool__result__resource_mime_type.json
-    MCP_TOOL_RESULT_RESOURCE_MIME_TYPE: Literal[
-        "mcp.tool.result.resource_mime_type"
-    ] = "mcp.tool.result.resource_mime_type"
+    MCP_TOOL_RESULT_RESOURCE_MIME_TYPE = "mcp.tool.result.resource_mime_type"
     """Legacy embedded resource MIME type of the content item in a single-item MCP tool result.
 
     Type: str
@@ -7924,9 +7525,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/mcp/mcp__tool__result__resource_uri.json
-    MCP_TOOL_RESULT_RESOURCE_URI: Literal["mcp.tool.result.resource_uri"] = (
-        "mcp.tool.result.resource_uri"
-    )
+    MCP_TOOL_RESULT_RESOURCE_URI = "mcp.tool.result.resource_uri"
     """Legacy embedded resource URI of the content item in a single-item MCP tool result.
 
     Type: str
@@ -7938,7 +7537,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/mcp/mcp__tool__result__uri.json
-    MCP_TOOL_RESULT_URI: Literal["mcp.tool.result.uri"] = "mcp.tool.result.uri"
+    MCP_TOOL_RESULT_URI = "mcp.tool.result.uri"
     """Legacy resource link URI of the content item in a single-item MCP tool result.
 
     Type: str
@@ -7950,7 +7549,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/mcp/mcp__transport.json
-    MCP_TRANSPORT: Literal["mcp.transport"] = "mcp.transport"
+    MCP_TRANSPORT = "mcp.transport"
     """MCP transport implementation name, such as the transport class name. This identifies the implementation, not the network transport or application protocol.
 
     Type: str
@@ -7962,7 +7561,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/mdc/mdc__[key].json
-    MDC_KEY: Literal["mdc.<key>"] = "mdc.<key>"
+    MDC_KEY = "mdc.<key>"
     """Attributes from the Mapped Diagnostic Context (MDC) present at the moment the log record was created. The MDC is supported by all the most popular logging solutions in the Java ecosystem, and it's usually implemented as a thread-local map that stores context for e.g. a specific request.
 
     Type: str
@@ -7974,9 +7573,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/messaging/messaging__batch__message_count.json
-    MESSAGING_BATCH_MESSAGE_COUNT: Literal["messaging.batch.message_count"] = (
-        "messaging.batch.message_count"
-    )
+    MESSAGING_BATCH_MESSAGE_COUNT = "messaging.batch.message_count"
     """The number of messages sent, received, or processed in the scope of the batching operation.
 
     Type: int
@@ -7987,9 +7584,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/messaging/messaging__bullmq__flow__name.json
-    MESSAGING_BULLMQ_FLOW_NAME: Literal["messaging.bullmq.flow.name"] = (
-        "messaging.bullmq.flow.name"
-    )
+    MESSAGING_BULLMQ_FLOW_NAME = "messaging.bullmq.flow.name"
     """The name of the root job of the BullMQ flow that FlowProducer.add() adds.
 
     Type: str
@@ -8000,9 +7595,9 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/messaging/messaging__bullmq__job__attempt_finished_timestamp.json
-    MESSAGING_BULLMQ_JOB_ATTEMPT_FINISHED_TIMESTAMP: Literal[
+    MESSAGING_BULLMQ_JOB_ATTEMPT_FINISHED_TIMESTAMP = (
         "messaging.bullmq.job.attempt_finished_timestamp"
-    ] = "messaging.bullmq.job.attempt_finished_timestamp"
+    )
     """The time in milliseconds since the Unix epoch when the current attempt of the BullMQ job finished.
 
     Type: int
@@ -8013,9 +7608,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/messaging/messaging__bullmq__job__bulk__names.json
-    MESSAGING_BULLMQ_JOB_BULK_NAMES: Literal["messaging.bullmq.job.bulk.names"] = (
-        "messaging.bullmq.job.bulk.names"
-    )
+    MESSAGING_BULLMQ_JOB_BULK_NAMES = "messaging.bullmq.job.bulk.names"
     """The names of the BullMQ jobs or flows that one bulk operation adds, for example Queue.addBulk().
 
     Type: List[str]
@@ -8026,9 +7619,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/messaging/messaging__bullmq__job__deduplication__key.json
-    MESSAGING_BULLMQ_JOB_DEDUPLICATION_KEY: Literal[
-        "messaging.bullmq.job.deduplication.key"
-    ] = "messaging.bullmq.job.deduplication.key"
+    MESSAGING_BULLMQ_JOB_DEDUPLICATION_KEY = "messaging.bullmq.job.deduplication.key"
     """The deduplication ID that Queue.removeDeduplicationKey() removes.
 
     Type: str
@@ -8039,9 +7630,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/messaging/messaging__bullmq__job__ids.json
-    MESSAGING_BULLMQ_JOB_IDS: Literal["messaging.bullmq.job.ids"] = (
-        "messaging.bullmq.job.ids"
-    )
+    MESSAGING_BULLMQ_JOB_IDS = "messaging.bullmq.job.ids"
     """The IDs of the BullMQ jobs that Queue.clean() removed.
 
     Type: List[str]
@@ -8052,9 +7641,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/messaging/messaging__bullmq__job__key.json
-    MESSAGING_BULLMQ_JOB_KEY: Literal["messaging.bullmq.job.key"] = (
-        "messaging.bullmq.job.key"
-    )
+    MESSAGING_BULLMQ_JOB_KEY = "messaging.bullmq.job.key"
     """The key that a BullMQ remove operation for a debounce or repeatable key gets, for example Queue.removeDebounceKey().
 
     Type: str
@@ -8065,9 +7652,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/messaging/messaging__bullmq__job__name.json
-    MESSAGING_BULLMQ_JOB_NAME: Literal["messaging.bullmq.job.name"] = (
-        "messaging.bullmq.job.name"
-    )
+    MESSAGING_BULLMQ_JOB_NAME = "messaging.bullmq.job.name"
     """The name of the BullMQ job, which the user passes to Queue.add() to identify the kind of work.
 
     Type: str
@@ -8079,9 +7664,9 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/messaging/messaging__bullmq__job__processed_timestamp.json
-    MESSAGING_BULLMQ_JOB_PROCESSED_TIMESTAMP: Literal[
+    MESSAGING_BULLMQ_JOB_PROCESSED_TIMESTAMP = (
         "messaging.bullmq.job.processed_timestamp"
-    ] = "messaging.bullmq.job.processed_timestamp"
+    )
     """The time in milliseconds since the Unix epoch when the Worker started to process the BullMQ job.
 
     Type: int
@@ -8092,9 +7677,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/messaging/messaging__bullmq__job__scheduler__id.json
-    MESSAGING_BULLMQ_JOB_SCHEDULER_ID: Literal["messaging.bullmq.job.scheduler.id"] = (
-        "messaging.bullmq.job.scheduler.id"
-    )
+    MESSAGING_BULLMQ_JOB_SCHEDULER_ID = "messaging.bullmq.job.scheduler.id"
     """The ID of the BullMQ job scheduler that adds the job.
 
     Type: str
@@ -8105,9 +7688,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/messaging/messaging__bullmq__job__state.json
-    MESSAGING_BULLMQ_JOB_STATE: Literal["messaging.bullmq.job.state"] = (
-        "messaging.bullmq.job.state"
-    )
+    MESSAGING_BULLMQ_JOB_STATE = "messaging.bullmq.job.state"
     """The state of the BullMQ job that a job metric counts.
 
     Type: str
@@ -8120,9 +7701,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/messaging/messaging__bullmq__job__type.json
-    MESSAGING_BULLMQ_JOB_TYPE: Literal["messaging.bullmq.job.type"] = (
-        "messaging.bullmq.job.type"
-    )
+    MESSAGING_BULLMQ_JOB_TYPE = "messaging.bullmq.job.type"
     """The job state from which Queue.clean() removes BullMQ jobs.
 
     Type: str
@@ -8134,9 +7713,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/messaging/messaging__bullmq__queue__clean__count.json
-    MESSAGING_BULLMQ_QUEUE_CLEAN_COUNT: Literal[
-        "messaging.bullmq.queue.clean.count"
-    ] = "messaging.bullmq.queue.clean.count"
+    MESSAGING_BULLMQ_QUEUE_CLEAN_COUNT = "messaging.bullmq.queue.clean.count"
     """The number of BullMQ jobs that Queue.clean() removed.
 
     Type: int
@@ -8147,9 +7724,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/messaging/messaging__bullmq__queue__clean__limit.json
-    MESSAGING_BULLMQ_QUEUE_CLEAN_LIMIT: Literal[
-        "messaging.bullmq.queue.clean.limit"
-    ] = "messaging.bullmq.queue.clean.limit"
+    MESSAGING_BULLMQ_QUEUE_CLEAN_LIMIT = "messaging.bullmq.queue.clean.limit"
     """The maximum number of BullMQ jobs that Queue.clean() removes.
 
     Type: int
@@ -8160,9 +7735,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/messaging/messaging__bullmq__queue__drain__delay.json
-    MESSAGING_BULLMQ_QUEUE_DRAIN_DELAY: Literal[
-        "messaging.bullmq.queue.drain.delay"
-    ] = "messaging.bullmq.queue.drain.delay"
+    MESSAGING_BULLMQ_QUEUE_DRAIN_DELAY = "messaging.bullmq.queue.drain.delay"
     """Whether Queue.drain() also removes the delayed BullMQ jobs.
 
     Type: bool
@@ -8173,9 +7746,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/messaging/messaging__bullmq__queue__event__max_length.json
-    MESSAGING_BULLMQ_QUEUE_EVENT_MAX_LENGTH: Literal[
-        "messaging.bullmq.queue.event.max_length"
-    ] = "messaging.bullmq.queue.event.max_length"
+    MESSAGING_BULLMQ_QUEUE_EVENT_MAX_LENGTH = "messaging.bullmq.queue.event.max_length"
     """The maximum number of events that Queue.trimEvents() keeps in the BullMQ event stream.
 
     Type: int
@@ -8186,9 +7757,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/messaging/messaging__bullmq__queue__grace.json
-    MESSAGING_BULLMQ_QUEUE_GRACE: Literal["messaging.bullmq.queue.grace"] = (
-        "messaging.bullmq.queue.grace"
-    )
+    MESSAGING_BULLMQ_QUEUE_GRACE = "messaging.bullmq.queue.grace"
     """The grace period in milliseconds that Queue.clean() uses. Only BullMQ jobs that are older are removed.
 
     Type: int
@@ -8199,9 +7768,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/messaging/messaging__bullmq__queue__jobs__state.json
-    MESSAGING_BULLMQ_QUEUE_JOBS_STATE: Literal["messaging.bullmq.queue.jobs.state"] = (
-        "messaging.bullmq.queue.jobs.state"
-    )
+    MESSAGING_BULLMQ_QUEUE_JOBS_STATE = "messaging.bullmq.queue.jobs.state"
     """The BullMQ job state that the queue job count metric counts.
 
     Type: str
@@ -8214,9 +7781,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/messaging/messaging__bullmq__queue__rate_limit.json
-    MESSAGING_BULLMQ_QUEUE_RATE_LIMIT: Literal["messaging.bullmq.queue.rate_limit"] = (
-        "messaging.bullmq.queue.rate_limit"
-    )
+    MESSAGING_BULLMQ_QUEUE_RATE_LIMIT = "messaging.bullmq.queue.rate_limit"
     """The time in milliseconds for which Queue.rateLimit() rate-limits the BullMQ queue.
 
     Type: int
@@ -8227,9 +7792,9 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/messaging/messaging__bullmq__worker__do_not_wait_active.json
-    MESSAGING_BULLMQ_WORKER_DO_NOT_WAIT_ACTIVE: Literal[
+    MESSAGING_BULLMQ_WORKER_DO_NOT_WAIT_ACTIVE = (
         "messaging.bullmq.worker.do_not_wait_active"
-    ] = "messaging.bullmq.worker.do_not_wait_active"
+    )
     """Whether Worker.pause() returns without waiting for the active BullMQ jobs to finish.
 
     Type: bool
@@ -8240,9 +7805,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/messaging/messaging__bullmq__worker__force_close.json
-    MESSAGING_BULLMQ_WORKER_FORCE_CLOSE: Literal[
-        "messaging.bullmq.worker.force_close"
-    ] = "messaging.bullmq.worker.force_close"
+    MESSAGING_BULLMQ_WORKER_FORCE_CLOSE = "messaging.bullmq.worker.force_close"
     """Whether Worker.close() closes the Worker without waiting for the active BullMQ jobs to finish.
 
     Type: bool
@@ -8253,9 +7816,9 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/messaging/messaging__bullmq__worker__jobs_to_extend_locks.json
-    MESSAGING_BULLMQ_WORKER_JOBS_TO_EXTEND_LOCKS: Literal[
+    MESSAGING_BULLMQ_WORKER_JOBS_TO_EXTEND_LOCKS = (
         "messaging.bullmq.worker.jobs_to_extend_locks"
-    ] = "messaging.bullmq.worker.jobs_to_extend_locks"
+    )
     """The IDs of the BullMQ jobs whose locks the Worker extends.
 
     Type: List[str]
@@ -8266,9 +7829,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/messaging/messaging__bullmq__worker__name.json
-    MESSAGING_BULLMQ_WORKER_NAME: Literal["messaging.bullmq.worker.name"] = (
-        "messaging.bullmq.worker.name"
-    )
+    MESSAGING_BULLMQ_WORKER_NAME = "messaging.bullmq.worker.name"
     """The name that the user gives to the BullMQ Worker in its options.
 
     Type: str
@@ -8279,9 +7840,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/messaging/messaging__bullmq__worker__rate_limit.json
-    MESSAGING_BULLMQ_WORKER_RATE_LIMIT: Literal[
-        "messaging.bullmq.worker.rate_limit"
-    ] = "messaging.bullmq.worker.rate_limit"
+    MESSAGING_BULLMQ_WORKER_RATE_LIMIT = "messaging.bullmq.worker.rate_limit"
     """The time in milliseconds for which Worker.rateLimit() rate-limits the BullMQ Worker.
 
     Type: int
@@ -8292,9 +7851,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/messaging/messaging__bullmq__worker__stalled_jobs.json
-    MESSAGING_BULLMQ_WORKER_STALLED_JOBS: Literal[
-        "messaging.bullmq.worker.stalled_jobs"
-    ] = "messaging.bullmq.worker.stalled_jobs"
+    MESSAGING_BULLMQ_WORKER_STALLED_JOBS = "messaging.bullmq.worker.stalled_jobs"
     """The IDs of the stalled BullMQ jobs that the Worker moved back to the wait state.
 
     Type: List[str]
@@ -8305,7 +7862,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/messaging/messaging__client__id.json
-    MESSAGING_CLIENT_ID: Literal["messaging.client.id"] = "messaging.client.id"
+    MESSAGING_CLIENT_ID = "messaging.client.id"
     """A unique identifier for the client that consumes or produces a message.
 
     Type: str
@@ -8317,9 +7874,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/messaging/messaging__conversation_id.json
-    MESSAGING_CONVERSATION_ID: Literal["messaging.conversation_id"] = (
-        "messaging.conversation_id"
-    )
+    MESSAGING_CONVERSATION_ID = "messaging.conversation_id"
     """The conversation ID identifying the conversation to which the message belongs, represented as a string. Sometimes called "Correlation ID".
 
     Type: str
@@ -8332,7 +7887,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/messaging/messaging__destination.json
-    MESSAGING_DESTINATION: Literal["messaging.destination"] = "messaging.destination"
+    MESSAGING_DESTINATION = "messaging.destination"
     """The message destination name.
 
     Type: str
@@ -8345,9 +7900,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/messaging/messaging__destination__connection.json
-    MESSAGING_DESTINATION_CONNECTION: Literal["messaging.destination.connection"] = (
-        "messaging.destination.connection"
-    )
+    MESSAGING_DESTINATION_CONNECTION = "messaging.destination.connection"
     """The message destination connection.
 
     Type: str
@@ -8358,9 +7911,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/messaging/messaging__destination__name.json
-    MESSAGING_DESTINATION_NAME: Literal["messaging.destination.name"] = (
-        "messaging.destination.name"
-    )
+    MESSAGING_DESTINATION_NAME = "messaging.destination.name"
     """The message destination name.
 
     Type: str
@@ -8372,9 +7923,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/messaging/messaging__destination__partition__id.json
-    MESSAGING_DESTINATION_PARTITION_ID: Literal[
-        "messaging.destination.partition.id"
-    ] = "messaging.destination.partition.id"
+    MESSAGING_DESTINATION_PARTITION_ID = "messaging.destination.partition.id"
     """The identifier of the partition messages are sent to or received from, unique within the messaging.destination.name.
 
     Type: str
@@ -8385,9 +7934,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/messaging/messaging__destination_kind.json
-    MESSAGING_DESTINATION_KIND: Literal["messaging.destination_kind"] = (
-        "messaging.destination_kind"
-    )
+    MESSAGING_DESTINATION_KIND = "messaging.destination_kind"
     """The kind of message destination.
 
     Type: str
@@ -8399,9 +7946,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/messaging/messaging__kafka__message__key.json
-    MESSAGING_KAFKA_MESSAGE_KEY: Literal["messaging.kafka.message.key"] = (
-        "messaging.kafka.message.key"
-    )
+    MESSAGING_KAFKA_MESSAGE_KEY = "messaging.kafka.message.key"
     """Message keys in Kafka are used for grouping alike messages to ensure they're processed on the same partition. They differ from messaging.message.id in that they're not unique. If the key is null, the attribute MUST NOT be set.
 
     Type: str
@@ -8412,9 +7957,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/messaging/messaging__kafka__message__tombstone.json
-    MESSAGING_KAFKA_MESSAGE_TOMBSTONE: Literal["messaging.kafka.message.tombstone"] = (
-        "messaging.kafka.message.tombstone"
-    )
+    MESSAGING_KAFKA_MESSAGE_TOMBSTONE = "messaging.kafka.message.tombstone"
     """A boolean that is true if the message is a tombstone.
 
     Type: bool
@@ -8425,7 +7968,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/messaging/messaging__kafka__offset.json
-    MESSAGING_KAFKA_OFFSET: Literal["messaging.kafka.offset"] = "messaging.kafka.offset"
+    MESSAGING_KAFKA_OFFSET = "messaging.kafka.offset"
     """The offset of a record in the corresponding Kafka partition.
 
     Type: int
@@ -8436,9 +7979,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/messaging/messaging__message__body__size.json
-    MESSAGING_MESSAGE_BODY_SIZE: Literal["messaging.message.body.size"] = (
-        "messaging.message.body.size"
-    )
+    MESSAGING_MESSAGE_BODY_SIZE = "messaging.message.body.size"
     """The size of the message body in bytes.
 
     Type: int
@@ -8449,9 +7990,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/messaging/messaging__message__conversation_id.json
-    MESSAGING_MESSAGE_CONVERSATION_ID: Literal["messaging.message.conversation_id"] = (
-        "messaging.message.conversation_id"
-    )
+    MESSAGING_MESSAGE_CONVERSATION_ID = "messaging.message.conversation_id"
     """The conversation ID identifying the conversation to which the message belongs, represented as a string. Sometimes called "Correlation ID".
 
     Type: str
@@ -8463,9 +8002,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/messaging/messaging__message__envelope__size.json
-    MESSAGING_MESSAGE_ENVELOPE_SIZE: Literal["messaging.message.envelope.size"] = (
-        "messaging.message.envelope.size"
-    )
+    MESSAGING_MESSAGE_ENVELOPE_SIZE = "messaging.message.envelope.size"
     """The size of the message body and metadata in bytes.
 
     Type: int
@@ -8476,7 +8013,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/messaging/messaging__message__id.json
-    MESSAGING_MESSAGE_ID: Literal["messaging.message.id"] = "messaging.message.id"
+    MESSAGING_MESSAGE_ID = "messaging.message.id"
     """A value used by the messaging system as an identifier for the message, represented as a string.
 
     Type: str
@@ -8488,9 +8025,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/messaging/messaging__message__receive__latency.json
-    MESSAGING_MESSAGE_RECEIVE_LATENCY: Literal["messaging.message.receive.latency"] = (
-        "messaging.message.receive.latency"
-    )
+    MESSAGING_MESSAGE_RECEIVE_LATENCY = "messaging.message.receive.latency"
     """The latency between when the message was published and received.
 
     Type: int
@@ -8501,9 +8036,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/messaging/messaging__message__retry__count.json
-    MESSAGING_MESSAGE_RETRY_COUNT: Literal["messaging.message.retry.count"] = (
-        "messaging.message.retry.count"
-    )
+    MESSAGING_MESSAGE_RETRY_COUNT = "messaging.message.retry.count"
     """The amount of attempts to send the message.
 
     Type: int
@@ -8514,7 +8047,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/messaging/messaging__message_id.json
-    _MESSAGING_MESSAGE_ID: Literal["messaging.message_id"] = "messaging.message_id"
+    _MESSAGING_MESSAGE_ID = "messaging.message_id"
     """A value used by the messaging system as an identifier for the message, represented as a string.
 
     Type: str
@@ -8527,7 +8060,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/messaging/messaging__operation.json
-    MESSAGING_OPERATION: Literal["messaging.operation"] = "messaging.operation"
+    MESSAGING_OPERATION = "messaging.operation"
     """The name of the messaging operation being performed.
 
     Type: str
@@ -8540,9 +8073,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/messaging/messaging__operation__name.json
-    MESSAGING_OPERATION_NAME: Literal["messaging.operation.name"] = (
-        "messaging.operation.name"
-    )
+    MESSAGING_OPERATION_NAME = "messaging.operation.name"
     """The name of the messaging operation being performed
 
     Type: str
@@ -8554,9 +8085,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/messaging/messaging__operation__type.json
-    MESSAGING_OPERATION_TYPE: Literal["messaging.operation.type"] = (
-        "messaging.operation.type"
-    )
+    MESSAGING_OPERATION_TYPE = "messaging.operation.type"
     """A string identifying the type of the messaging operation
 
     Type: str
@@ -8567,7 +8096,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/messaging/messaging__protocol.json
-    MESSAGING_PROTOCOL: Literal["messaging.protocol"] = "messaging.protocol"
+    MESSAGING_PROTOCOL = "messaging.protocol"
     """OSI application layer or non-OSI equivalent.
 
     Type: str
@@ -8580,9 +8109,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/messaging/messaging__protocol_version.json
-    MESSAGING_PROTOCOL_VERSION: Literal["messaging.protocol_version"] = (
-        "messaging.protocol_version"
-    )
+    MESSAGING_PROTOCOL_VERSION = "messaging.protocol_version"
     """The actual version of the protocol used for network communication.
 
     Type: str
@@ -8595,9 +8122,9 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/messaging/messaging__rabbitmq__destination__routing_key.json
-    MESSAGING_RABBITMQ_DESTINATION_ROUTING_KEY: Literal[
+    MESSAGING_RABBITMQ_DESTINATION_ROUTING_KEY = (
         "messaging.rabbitmq.destination.routing_key"
-    ] = "messaging.rabbitmq.destination.routing_key"
+    )
     """RabbitMQ message routing key.
 
     Type: str
@@ -8609,9 +8136,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/messaging/messaging__rabbitmq__routing_key.json
-    MESSAGING_RABBITMQ_ROUTING_KEY: Literal["messaging.rabbitmq.routing_key"] = (
-        "messaging.rabbitmq.routing_key"
-    )
+    MESSAGING_RABBITMQ_ROUTING_KEY = "messaging.rabbitmq.routing_key"
     """RabbitMQ message routing key.
 
     Type: str
@@ -8624,7 +8149,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/messaging/messaging__system.json
-    MESSAGING_SYSTEM: Literal["messaging.system"] = "messaging.system"
+    MESSAGING_SYSTEM = "messaging.system"
     """The messaging system as identified by the client instrumentation.
 
     Type: str
@@ -8635,33 +8160,33 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/messaging/messaging__url.json
-    MESSAGING_URL: Literal["messaging.url"] = "messaging.url"
+    MESSAGING_URL = "messaging.url"
     """The connection string of the messaging broker.
 
     Type: str
     Apply Scrubbing: auto
     Defined in OTEL: No
     Visibility: public
-    Aliases: url.full, http.url, url, aws.request.url
+    Aliases: url.full, http.url, url, aws.request.url, sentry.request.url
     DEPRECATED: Use url.full instead - This attribute is being deprecated in favor of url.full.
     Example: "amqp://guest:guest@localhost:5672"
     """
 
     # Path: model/attributes/method.json
-    METHOD: Literal["method"] = "method"
+    METHOD = "method"
     """The HTTP method used.
 
     Type: str
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
-    Aliases: http.request.method, http.request_method, http.method
+    Aliases: http.request.method, http.request_method, http.method, sentry.request.method
     DEPRECATED: Use http.request.method instead
     Example: "GET"
     """
 
     # Path: model/attributes/middleware/middleware__name.json
-    MIDDLEWARE_NAME: Literal["middleware.name"] = "middleware.name"
+    MIDDLEWARE_NAME = "middleware.name"
     """The name of the middleware.
 
     Type: str
@@ -8673,7 +8198,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/navigation/navigation__origin.json
-    NAVIGATION_ORIGIN: Literal["navigation.origin"] = "navigation.origin"
+    NAVIGATION_ORIGIN = "navigation.origin"
     """The origin of the navigation (usually client side router navigations). Should preferably be a parameterized template (like url.template) or a URL path otherwise.
 
     Type: str
@@ -8686,7 +8211,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/navigation/navigation__route__id.json
-    NAVIGATION_ROUTE_ID: Literal["navigation.route.id"] = "navigation.route.id"
+    NAVIGATION_ROUTE_ID = "navigation.route.id"
     """The identifier of the matched client-side route, as assigned by the routing framework (e.g., vue-router name, react-router id).
 
     Type: str
@@ -8699,7 +8224,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/navigation/navigation__type.json
-    NAVIGATION_TYPE: Literal["navigation.type"] = "navigation.type"
+    NAVIGATION_TYPE = "navigation.type"
     """The type of navigation done by a client-side router.
 
     Type: str
@@ -8712,7 +8237,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/nel/nel__elapsed_time.json
-    NEL_ELAPSED_TIME: Literal["nel.elapsed_time"] = "nel.elapsed_time"
+    NEL_ELAPSED_TIME = "nel.elapsed_time"
     """The elapsed number of milliseconds between the start of the resource fetch and when it was completed or aborted by the user agent.
 
     Type: int
@@ -8723,7 +8248,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/nel/nel__phase.json
-    NEL_PHASE: Literal["nel.phase"] = "nel.phase"
+    NEL_PHASE = "nel.phase"
     """If request failed, the phase of its network error. If request succeeded, "application".
 
     Type: str
@@ -8734,7 +8259,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/nel/nel__referrer.json
-    NEL_REFERRER: Literal["nel.referrer"] = "nel.referrer"
+    NEL_REFERRER = "nel.referrer"
     """request's referrer, as determined by the referrer policy associated with its client.
 
     Type: str
@@ -8745,7 +8270,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/nel/nel__sampling_fraction.json
-    NEL_SAMPLING_FRACTION: Literal["nel.sampling_fraction"] = "nel.sampling_fraction"
+    NEL_SAMPLING_FRACTION = "nel.sampling_fraction"
     """The sampling fraction used to determine if the request should be sampled.
 
     Type: float
@@ -8757,7 +8282,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/nel/nel__sampling_function.json
-    NEL_SAMPLING_FUNCTION: Literal["nel.sampling_function"] = "nel.sampling_function"
+    NEL_SAMPLING_FUNCTION = "nel.sampling_function"
     """The sampling function used to determine if the request should be sampled.
 
     Type: float
@@ -8770,7 +8295,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/nel/nel__type.json
-    NEL_TYPE: Literal["nel.type"] = "nel.type"
+    NEL_TYPE = "nel.type"
     """If request failed, the type of its network error. If request succeeded, "ok".
 
     Type: str
@@ -8781,7 +8306,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/net/net__host__ip.json
-    NET_HOST_IP: Literal["net.host.ip"] = "net.host.ip"
+    NET_HOST_IP = "net.host.ip"
     """Local address of the network connection - IP address or Unix domain socket name.
 
     Type: str
@@ -8794,7 +8319,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/net/net__host__name.json
-    NET_HOST_NAME: Literal["net.host.name"] = "net.host.name"
+    NET_HOST_NAME = "net.host.name"
     """Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.
 
     Type: str
@@ -8807,7 +8332,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/net/net__host__port.json
-    NET_HOST_PORT: Literal["net.host.port"] = "net.host.port"
+    NET_HOST_PORT = "net.host.port"
     """Server port number.
 
     Type: int
@@ -8820,7 +8345,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/net/net__peer__ip.json
-    NET_PEER_IP: Literal["net.peer.ip"] = "net.peer.ip"
+    NET_PEER_IP = "net.peer.ip"
     """Peer address of the network connection - IP address or Unix domain socket name.
 
     Type: str
@@ -8833,7 +8358,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/net/net__peer__name.json
-    NET_PEER_NAME: Literal["net.peer.name"] = "net.peer.name"
+    NET_PEER_NAME = "net.peer.name"
     """Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.
 
     Type: str
@@ -8846,7 +8371,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/net/net__peer__port.json
-    NET_PEER_PORT: Literal["net.peer.port"] = "net.peer.port"
+    NET_PEER_PORT = "net.peer.port"
     """Peer port number.
 
     Type: int
@@ -8858,7 +8383,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/net/net__protocol__name.json
-    NET_PROTOCOL_NAME: Literal["net.protocol.name"] = "net.protocol.name"
+    NET_PROTOCOL_NAME = "net.protocol.name"
     """OSI application layer or non-OSI equivalent.
 
     Type: str
@@ -8871,7 +8396,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/net/net__protocol__version.json
-    NET_PROTOCOL_VERSION: Literal["net.protocol.version"] = "net.protocol.version"
+    NET_PROTOCOL_VERSION = "net.protocol.version"
     """The actual version of the protocol used for network communication.
 
     Type: str
@@ -8884,7 +8409,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/net/net__sock__family.json
-    NET_SOCK_FAMILY: Literal["net.sock.family"] = "net.sock.family"
+    NET_SOCK_FAMILY = "net.sock.family"
     """OSI transport and network layer
 
     Type: str
@@ -8896,7 +8421,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/net/net__sock__host__addr.json
-    NET_SOCK_HOST_ADDR: Literal["net.sock.host.addr"] = "net.sock.host.addr"
+    NET_SOCK_HOST_ADDR = "net.sock.host.addr"
     """Local address of the network connection mapping to Unix domain socket name.
 
     Type: str
@@ -8909,7 +8434,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/net/net__sock__host__port.json
-    NET_SOCK_HOST_PORT: Literal["net.sock.host.port"] = "net.sock.host.port"
+    NET_SOCK_HOST_PORT = "net.sock.host.port"
     """Local port number of the network connection.
 
     Type: int
@@ -8922,7 +8447,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/net/net__sock__peer__addr.json
-    NET_SOCK_PEER_ADDR: Literal["net.sock.peer.addr"] = "net.sock.peer.addr"
+    NET_SOCK_PEER_ADDR = "net.sock.peer.addr"
     """Peer address of the network connection - IP address
 
     Type: str
@@ -8935,7 +8460,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/net/net__sock__peer__name.json
-    NET_SOCK_PEER_NAME: Literal["net.sock.peer.name"] = "net.sock.peer.name"
+    NET_SOCK_PEER_NAME = "net.sock.peer.name"
     """Peer address of the network connection - Unix domain socket name
 
     Type: str
@@ -8947,7 +8472,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/net/net__sock__peer__port.json
-    NET_SOCK_PEER_PORT: Literal["net.sock.peer.port"] = "net.sock.peer.port"
+    NET_SOCK_PEER_PORT = "net.sock.peer.port"
     """Peer port number of the network connection.
 
     Type: int
@@ -8960,7 +8485,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/net/net__transport.json
-    NET_TRANSPORT: Literal["net.transport"] = "net.transport"
+    NET_TRANSPORT = "net.transport"
     """OSI transport layer or inter-process communication method.
 
     Type: str
@@ -8973,9 +8498,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/network/network__connection__effective_type.json
-    NETWORK_CONNECTION_EFFECTIVE_TYPE: Literal["network.connection.effective_type"] = (
-        "network.connection.effective_type"
-    )
+    NETWORK_CONNECTION_EFFECTIVE_TYPE = "network.connection.effective_type"
     """Specifies the effective type of the current connection (e.g. slow-2g, 2g, 3g, 4g).
 
     Type: str
@@ -8987,7 +8510,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/network/network__connection__rtt.json
-    NETWORK_CONNECTION_RTT: Literal["network.connection.rtt"] = "network.connection.rtt"
+    NETWORK_CONNECTION_RTT = "network.connection.rtt"
     """Specifies the estimated effective round-trip time of the current connection, in milliseconds.
 
     Type: int
@@ -8999,9 +8522,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/network/network__connection__type.json
-    NETWORK_CONNECTION_TYPE: Literal["network.connection.type"] = (
-        "network.connection.type"
-    )
+    NETWORK_CONNECTION_TYPE = "network.connection.type"
     """Specifies the type of the current connection (e.g. wifi, ethernet, cellular , etc).
 
     Type: str
@@ -9013,7 +8534,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/network/network__local__address.json
-    NETWORK_LOCAL_ADDRESS: Literal["network.local.address"] = "network.local.address"
+    NETWORK_LOCAL_ADDRESS = "network.local.address"
     """Local address of the network connection - IP address or Unix domain socket name.
 
     Type: str
@@ -9026,7 +8547,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/network/network__local__port.json
-    NETWORK_LOCAL_PORT: Literal["network.local.port"] = "network.local.port"
+    NETWORK_LOCAL_PORT = "network.local.port"
     """Local port number of the network connection.
 
     Type: int
@@ -9038,7 +8559,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/network/network__peer__address.json
-    NETWORK_PEER_ADDRESS: Literal["network.peer.address"] = "network.peer.address"
+    NETWORK_PEER_ADDRESS = "network.peer.address"
     """Peer address of the network connection - IP address or Unix domain socket name.
 
     Type: str
@@ -9050,7 +8571,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/network/network__peer__port.json
-    NETWORK_PEER_PORT: Literal["network.peer.port"] = "network.peer.port"
+    NETWORK_PEER_PORT = "network.peer.port"
     """Peer port number of the network connection.
 
     Type: int
@@ -9062,7 +8583,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/network/network__protocol__name.json
-    NETWORK_PROTOCOL_NAME: Literal["network.protocol.name"] = "network.protocol.name"
+    NETWORK_PROTOCOL_NAME = "network.protocol.name"
     """OSI application layer or non-OSI equivalent.
 
     Type: str
@@ -9074,9 +8595,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/network/network__protocol__version.json
-    NETWORK_PROTOCOL_VERSION: Literal["network.protocol.version"] = (
-        "network.protocol.version"
-    )
+    NETWORK_PROTOCOL_VERSION = "network.protocol.version"
     """The actual version of the protocol used for network communication.
 
     Type: str
@@ -9088,7 +8607,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/network/network__transport.json
-    NETWORK_TRANSPORT: Literal["network.transport"] = "network.transport"
+    NETWORK_TRANSPORT = "network.transport"
     """OSI transport layer or inter-process communication method.
 
     Type: str
@@ -9100,7 +8619,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/network/network__type.json
-    NETWORK_TYPE: Literal["network.type"] = "network.type"
+    NETWORK_TYPE = "network.type"
     """OSI network layer or non-OSI equivalent.
 
     Type: str
@@ -9111,7 +8630,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/os/os__build.json
-    OS_BUILD: Literal["os.build"] = "os.build"
+    OS_BUILD = "os.build"
     """The build ID of the operating system.
 
     Type: str
@@ -9124,7 +8643,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/os/os__build_id.json
-    OS_BUILD_ID: Literal["os.build_id"] = "os.build_id"
+    OS_BUILD_ID = "os.build_id"
     """The build ID of the operating system.
 
     Type: str
@@ -9136,7 +8655,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/os/os__description.json
-    OS_DESCRIPTION: Literal["os.description"] = "os.description"
+    OS_DESCRIPTION = "os.description"
     """Human readable (not intended to be parsed) OS version information, like e.g. reported by ver or lsb_release -a commands.
 
     Type: str
@@ -9147,7 +8666,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/os/os__kernel_version.json
-    OS_KERNEL_VERSION: Literal["os.kernel_version"] = "os.kernel_version"
+    OS_KERNEL_VERSION = "os.kernel_version"
     """An independent kernel version string. Typically the entire output of the `uname` syscall.
 
     Type: str
@@ -9158,18 +8677,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/os/os__name.json
-    OS_NAME: Literal["os.name"] = "os.name"
+    OS_NAME = "os.name"
     """Human readable operating system name.
 
     Type: str
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
+    Aliases: sentry.os.name
     Example: "Ubuntu"
     """
 
     # Path: model/attributes/os/os__raw_description.json
-    OS_RAW_DESCRIPTION: Literal["os.raw_description"] = "os.raw_description"
+    OS_RAW_DESCRIPTION = "os.raw_description"
     """An unprocessed description string obtained by the operating system. For some well-known runtimes, Sentry will attempt to parse `name` and `version` from this string, if they are not explicitly given.
 
     Type: str
@@ -9180,18 +8700,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/os/os__rooted.json
-    OS_ROOTED: Literal["os.rooted"] = "os.rooted"
+    OS_ROOTED = "os.rooted"
     """Whether the operating system has been jailbroken or rooted.
 
     Type: bool
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
+    Aliases: sentry.os.rooted
     Example: true
     """
 
     # Path: model/attributes/os/os__theme.json
-    OS_THEME: Literal["os.theme"] = "os.theme"
+    OS_THEME = "os.theme"
     """Whether the OS runs in dark mode or light mode.
 
     Type: str
@@ -9202,7 +8723,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/os/os__type.json
-    OS_TYPE: Literal["os.type"] = "os.type"
+    OS_TYPE = "os.type"
     """The operating system type.
 
     Type: str
@@ -9213,7 +8734,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/os/os__version.json
-    OS_VERSION: Literal["os.version"] = "os.version"
+    OS_VERSION = "os.version"
     """The version of the operating system.
 
     Type: str
@@ -9224,7 +8745,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/otel/otel__kind.json
-    OTEL_KIND: Literal["otel.kind"] = "otel.kind"
+    OTEL_KIND = "otel.kind"
     """The span kind (https://opentelemetry.io/docs/concepts/signals/traces/#span-kind). Deprecated, use `sentry.kind` instead.
 
     Type: str
@@ -9237,7 +8758,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/otel/otel__scope__name.json
-    OTEL_SCOPE_NAME: Literal["otel.scope.name"] = "otel.scope.name"
+    OTEL_SCOPE_NAME = "otel.scope.name"
     """The name of the instrumentation scope - (InstrumentationScope.Name in OTLP).
 
     Type: str
@@ -9248,7 +8769,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/otel/otel__scope__version.json
-    OTEL_SCOPE_VERSION: Literal["otel.scope.version"] = "otel.scope.version"
+    OTEL_SCOPE_VERSION = "otel.scope.version"
     """The version of the instrumentation scope - (InstrumentationScope.Version in OTLP).
 
     Type: str
@@ -9259,7 +8780,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/otel/otel__status_code.json
-    OTEL_STATUS_CODE: Literal["otel.status_code"] = "otel.status_code"
+    OTEL_STATUS_CODE = "otel.status_code"
     """Name of the code, either “OK” or “ERROR”. MUST NOT be set if the status code is UNSET.
 
     Type: str
@@ -9270,9 +8791,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/otel/otel__status_description.json
-    OTEL_STATUS_DESCRIPTION: Literal["otel.status_description"] = (
-        "otel.status_description"
-    )
+    OTEL_STATUS_DESCRIPTION = "otel.status_description"
     """Description of the Status if it has a value, otherwise not set.
 
     Type: str
@@ -9283,9 +8802,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/page/page__server_rendering__age.json
-    PAGE_SERVER_RENDERING_AGE: Literal["page.server_rendering.age"] = (
-        "page.server_rendering.age"
-    )
+    PAGE_SERVER_RENDERING_AGE = "page.server_rendering.age"
     """Set on a pageload span. The time in seconds from the start of the server render of the reused part of the page to the start of the span.
 
     Type: int
@@ -9298,9 +8815,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/page/page__server_rendering__type.json
-    PAGE_SERVER_RENDERING_TYPE: Literal["page.server_rendering.type"] = (
-        "page.server_rendering.type"
-    )
+    PAGE_SERVER_RENDERING_TYPE = "page.server_rendering.type"
     """Set on a pageload span. Describes how the server rendered the content of the page: to reuse it for other requests, only for this request, or a mix of both.
 
     Type: str
@@ -9317,7 +8832,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/params/params__[key].json
-    PARAMS_KEY: Literal["params.<key>"] = "params.<key>"
+    PARAMS_KEY = "params.<key>"
     """Decoded parameters extracted from a URL path. Usually added by client-side routing frameworks like vue-router.
 
     Type: str
@@ -9330,9 +8845,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/performance/performance__activationStart.json
-    PERFORMANCE_ACTIVATIONSTART: Literal["performance.activationStart"] = (
-        "performance.activationStart"
-    )
+    PERFORMANCE_ACTIVATIONSTART = "performance.activationStart"
     """The time between initiating a navigation to a page and the browser activating the page
 
     Type: float
@@ -9345,7 +8858,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/performance/performance__timeOrigin.json
-    PERFORMANCE_TIMEORIGIN: Literal["performance.timeOrigin"] = "performance.timeOrigin"
+    PERFORMANCE_TIMEORIGIN = "performance.timeOrigin"
     """The browser's performance.timeOrigin timestamp representing the time when the pageload was initiated
 
     Type: float
@@ -9358,7 +8871,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/port.json
-    PORT: Literal["port"] = "port"
+    PORT = "port"
     """The destination port for a TCP connection.
 
     Type: int
@@ -9371,7 +8884,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/previous_route.json
-    PREVIOUS_ROUTE: Literal["previous_route"] = "previous_route"
+    PREVIOUS_ROUTE = "previous_route"
     """Also used by mobile SDKs to indicate the previous route in the application.
 
     Type: str
@@ -9382,7 +8895,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/process/process__command_args.json
-    PROCESS_COMMAND_ARGS: Literal["process.command_args"] = "process.command_args"
+    PROCESS_COMMAND_ARGS = "process.command_args"
     """All the command arguments (including the command/executable itself) as received by the process.
 
     Type: List[str]
@@ -9393,9 +8906,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/process/process__executable__name.json
-    PROCESS_EXECUTABLE_NAME: Literal["process.executable.name"] = (
-        "process.executable.name"
-    )
+    PROCESS_EXECUTABLE_NAME = "process.executable.name"
     """The name of the executable that started the process.
 
     Type: str
@@ -9406,7 +8917,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/process/process__pid.json
-    PROCESS_PID: Literal["process.pid"] = "process.pid"
+    PROCESS_PID = "process.pid"
     """The process ID of the running process.
 
     Type: int
@@ -9418,9 +8929,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/process/process__runtime__description.json
-    PROCESS_RUNTIME_DESCRIPTION: Literal["process.runtime.description"] = (
-        "process.runtime.description"
-    )
+    PROCESS_RUNTIME_DESCRIPTION = "process.runtime.description"
     """An additional description about the runtime of the process, for example a specific vendor customization of the runtime environment. Equivalent to `raw_description` in the Sentry runtime context.
 
     Type: str
@@ -9432,9 +8941,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/process/process__runtime__elixir__memory__type.json
-    PROCESS_RUNTIME_ELIXIR_MEMORY_TYPE: Literal[
-        "process.runtime.elixir.memory.type"
-    ] = "process.runtime.elixir.memory.type"
+    PROCESS_RUNTIME_ELIXIR_MEMORY_TYPE = "process.runtime.elixir.memory.type"
     """The kind of BEAM memory a measurement covers: processes, atom, binary, code, ets, or other for the rest of the VM total.
 
     Type: str
@@ -9447,9 +8954,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/process/process__runtime__elixir__run_queue__type.json
-    PROCESS_RUNTIME_ELIXIR_RUN_QUEUE_TYPE: Literal[
-        "process.runtime.elixir.run_queue.type"
-    ] = "process.runtime.elixir.run_queue.type"
+    PROCESS_RUNTIME_ELIXIR_RUN_QUEUE_TYPE = "process.runtime.elixir.run_queue.type"
     """The kind of BEAM run queue a measurement covers: cpu for the normal and dirty CPU scheduler run queues, io for the dirty IO run queue.
 
     Type: str
@@ -9461,9 +8966,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/process/process__runtime__engine__name.json
-    PROCESS_RUNTIME_ENGINE_NAME: Literal["process.runtime.engine.name"] = (
-        "process.runtime.engine.name"
-    )
+    PROCESS_RUNTIME_ENGINE_NAME = "process.runtime.engine.name"
     """The name of the runtime engine.
 
     Type: str
@@ -9474,9 +8977,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/process/process__runtime__engine__version.json
-    PROCESS_RUNTIME_ENGINE_VERSION: Literal["process.runtime.engine.version"] = (
-        "process.runtime.engine.version"
-    )
+    PROCESS_RUNTIME_ENGINE_VERSION = "process.runtime.engine.version"
     """The version of the runtime engine.
 
     Type: str
@@ -9487,21 +8988,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/process/process__runtime__name.json
-    PROCESS_RUNTIME_NAME: Literal["process.runtime.name"] = "process.runtime.name"
+    PROCESS_RUNTIME_NAME = "process.runtime.name"
     """The name of the runtime. Equivalent to `name` in the Sentry runtime context.
 
     Type: str
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: runtime.name
+    Aliases: runtime.name, sentry.runtime.name
     Example: "node"
     """
 
     # Path: model/attributes/process/process__runtime__version.json
-    PROCESS_RUNTIME_VERSION: Literal["process.runtime.version"] = (
-        "process.runtime.version"
-    )
+    PROCESS_RUNTIME_VERSION = "process.runtime.version"
     """The version of the runtime of this process, as returned by the runtime without modification. Equivalent to `version` in the Sentry runtime context.
 
     Type: str
@@ -9513,7 +9012,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/profile_id.json
-    PROFILE_ID: Literal["profile_id"] = "profile_id"
+    PROFILE_ID = "profile_id"
     """The ID of the Sentry profile the span is associated with. This is only meaningful for transaction-based profiling.
 
     Type: str
@@ -9526,7 +9025,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/query/query__[key].json
-    QUERY_KEY: Literal["query.<key>"] = "query.<key>"
+    QUERY_KEY = "query.<key>"
     """An item in a query string. Usually added by client-side routing frameworks like vue-router.
 
     Type: str
@@ -9539,7 +9038,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/query.json
-    QUERY: Literal["query"] = "query"
+    QUERY = "query"
     """The database query being executed.
 
     Type: str
@@ -9552,7 +9051,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/react/react__version.json
-    REACT_VERSION: Literal["react.version"] = "react.version"
+    REACT_VERSION = "react.version"
     """The version of the React framework
 
     Type: str
@@ -9563,9 +9062,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/react_native/react_native__architecture.json
-    REACT_NATIVE_ARCHITECTURE: Literal["react_native.architecture"] = (
-        "react_native.architecture"
-    )
+    REACT_NATIVE_ARCHITECTURE = "react_native.architecture"
     """The React Native architecture the app is running on. `new` for the New Architecture, where native modules are resolved as TurboModules through `TurboModuleRegistry`, `legacy` for the Old Architecture bridge.
 
     Type: str
@@ -9578,9 +9075,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/react_native/react_native__module__call__count.json
-    REACT_NATIVE_MODULE_CALL_COUNT: Literal["react_native.module.call.count"] = (
-        "react_native.module.call.count"
-    )
+    REACT_NATIVE_MODULE_CALL_COUNT = "react_native.module.call.count"
     """The number of native module calls observed during the lifetime of the span.
 
     Type: int
@@ -9592,9 +9087,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/react_native/react_native__module__call__distinct_count.json
-    REACT_NATIVE_MODULE_CALL_DISTINCT_COUNT: Literal[
-        "react_native.module.call.distinct_count"
-    ] = "react_native.module.call.distinct_count"
+    REACT_NATIVE_MODULE_CALL_DISTINCT_COUNT = "react_native.module.call.distinct_count"
     """The number of distinct native module and method pairs called during the lifetime of the span. Useful as a cardinality signal when the per-method breakdown has been truncated.
 
     Type: int
@@ -9606,9 +9099,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/react_native/react_native__module__duration__max.json
-    REACT_NATIVE_MODULE_DURATION_MAX: Literal["react_native.module.duration.max"] = (
-        "react_native.module.duration.max"
-    )
+    REACT_NATIVE_MODULE_DURATION_MAX = "react_native.module.duration.max"
     """The duration of the slowest single native module call observed during the lifetime of the span, in milliseconds.
 
     Type: float
@@ -9619,9 +9110,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/react_native/react_native__module__duration__total.json
-    REACT_NATIVE_MODULE_DURATION_TOTAL: Literal[
-        "react_native.module.duration.total"
-    ] = "react_native.module.duration.total"
+    REACT_NATIVE_MODULE_DURATION_TOTAL = "react_native.module.duration.total"
     """The combined wall-clock duration of all native module calls observed during the lifetime of the span, in milliseconds. Calls overlap, so this can exceed the span duration.
 
     Type: float
@@ -9633,9 +9122,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/react_native/react_native__module__error__count.json
-    REACT_NATIVE_MODULE_ERROR_COUNT: Literal["react_native.module.error.count"] = (
-        "react_native.module.error.count"
-    )
+    REACT_NATIVE_MODULE_ERROR_COUNT = "react_native.module.error.count"
     """The number of native module calls that failed during the lifetime of the span. A call counts as failed when it threw, rejected, or — on the Old Architecture bridge only — invoked its failure callback.
 
     Type: int
@@ -9647,9 +9134,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/react_native/react_native__module__kind.json
-    REACT_NATIVE_MODULE_KIND: Literal["react_native.module.kind"] = (
-        "react_native.module.kind"
-    )
+    REACT_NATIVE_MODULE_KIND = "react_native.module.kind"
     """Whether the native module call completed synchronously or reported completion later through a Promise or a callback. One of `sync` or `async`.
 
     Type: str
@@ -9661,9 +9146,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/react_native/react_native__module__method.json
-    REACT_NATIVE_MODULE_METHOD: Literal["react_native.module.method"] = (
-        "react_native.module.method"
-    )
+    REACT_NATIVE_MODULE_METHOD = "react_native.module.method"
     """The name of the native module method that was called.
 
     Type: str
@@ -9675,9 +9158,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/react_native/react_native__module__name.json
-    REACT_NATIVE_MODULE_NAME: Literal["react_native.module.name"] = (
-        "react_native.module.name"
-    )
+    REACT_NATIVE_MODULE_NAME = "react_native.module.name"
     """The name of the native module the call was dispatched to. On the New Architecture this is the TurboModule name, on the Old Architecture the `NativeModules` key.
 
     Type: str
@@ -9689,9 +9170,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/react_native/react_native__module__top__duration.json
-    REACT_NATIVE_MODULE_TOP_DURATION: Literal["react_native.module.top.duration"] = (
-        "react_native.module.top.duration"
-    )
+    REACT_NATIVE_MODULE_TOP_DURATION = "react_native.module.top.duration"
     """The total duration attributed to `react_native.module.top.name`, in milliseconds.
 
     Type: float
@@ -9703,9 +9182,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/react_native/react_native__module__top__name.json
-    REACT_NATIVE_MODULE_TOP_NAME: Literal["react_native.module.top.name"] = (
-        "react_native.module.top.name"
-    )
+    REACT_NATIVE_MODULE_TOP_NAME = "react_native.module.top.name"
     """The native module and method that accounted for the most total duration during the lifetime of the span, formatted as `<module>.<method>`.
 
     Type: str
@@ -9717,7 +9194,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/redis/redis__command.json
-    REDIS_COMMAND: Literal["redis.command"] = "redis.command"
+    REDIS_COMMAND = "redis.command"
     """The name of the Redis operation being executed.
 
     Type: str
@@ -9730,7 +9207,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/redis/redis__key.json
-    REDIS_KEY: Literal["redis.key"] = "redis.key"
+    REDIS_KEY = "redis.key"
     """The key the Redis command is operating on.
 
     Type: str
@@ -9743,7 +9220,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/release.json
-    RELEASE: Literal["release"] = "release"
+    RELEASE = "release"
     """The sentry release.
 
     Type: str
@@ -9756,9 +9233,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/remix/remix__action_form_data__[key].json
-    REMIX_ACTION_FORM_DATA_KEY: Literal["remix.action_form_data.<key>"] = (
-        "remix.action_form_data.<key>"
-    )
+    REMIX_ACTION_FORM_DATA_KEY = "remix.action_form_data.<key>"
     """Remix form data, <key> being the form data key, the value being the form data value.
 
     Type: str
@@ -9770,7 +9245,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/replayId.json
-    REPLAYID: Literal["replayId"] = "replayId"
+    REPLAYID = "replayId"
     """The id of the sentry replay.
 
     Type: str
@@ -9783,7 +9258,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/replay_id.json
-    REPLAY_ID: Literal["replay_id"] = "replay_id"
+    REPLAY_ID = "replay_id"
     """The id of the sentry replay.
 
     Type: str
@@ -9796,9 +9271,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/resource/resource__deployment__environment.json
-    RESOURCE_DEPLOYMENT_ENVIRONMENT: Literal["resource.deployment.environment"] = (
-        "resource.deployment.environment"
-    )
+    RESOURCE_DEPLOYMENT_ENVIRONMENT = "resource.deployment.environment"
     """The software deployment environment name.
 
     Type: str
@@ -9810,9 +9283,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/resource/resource__deployment__environment__name.json
-    RESOURCE_DEPLOYMENT_ENVIRONMENT_NAME: Literal[
-        "resource.deployment.environment.name"
-    ] = "resource.deployment.environment.name"
+    RESOURCE_DEPLOYMENT_ENVIRONMENT_NAME = "resource.deployment.environment.name"
     """The software deployment environment name.
 
     Type: str
@@ -9824,9 +9295,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/resource/resource__render_blocking_status.json
-    RESOURCE_RENDER_BLOCKING_STATUS: Literal["resource.render_blocking_status"] = (
-        "resource.render_blocking_status"
-    )
+    RESOURCE_RENDER_BLOCKING_STATUS = "resource.render_blocking_status"
     """The render blocking status of the resource.
 
     Type: str
@@ -9837,7 +9306,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/route.json
-    ROUTE: Literal["route"] = "route"
+    ROUTE = "route"
     """The matched route, that is, the path template in the format used by the respective server framework. Also used by mobile SDKs to indicate the current route in the application.
 
     Type: str
@@ -9850,9 +9319,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/router/router__navigation__origin.json
-    ROUTER_NAVIGATION_ORIGIN: Literal["router.navigation.origin"] = (
-        "router.navigation.origin"
-    )
+    ROUTER_NAVIGATION_ORIGIN = "router.navigation.origin"
     """The origin of the navigation (usually client side router navigations). Should preferably be a parameterized template (like url.template) or a URL path otherwise.
 
     Type: str
@@ -9864,9 +9331,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/router/router__navigation__route__id.json
-    ROUTER_NAVIGATION_ROUTE_ID: Literal["router.navigation.route.id"] = (
-        "router.navigation.route.id"
-    )
+    ROUTER_NAVIGATION_ROUTE_ID = "router.navigation.route.id"
     """The identifier of the matched client-side route, as assigned by the routing framework (e.g., vue-router name, react-router id).
 
     Type: str
@@ -9878,7 +9343,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/router/router__navigation__type.json
-    ROUTER_NAVIGATION_TYPE: Literal["router.navigation.type"] = "router.navigation.type"
+    ROUTER_NAVIGATION_TYPE = "router.navigation.type"
     """The type of navigation done by a client-side router.
 
     Type: str
@@ -9890,7 +9355,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/rpc/rpc__grpc__status_code.json
-    RPC_GRPC_STATUS_CODE: Literal["rpc.grpc.status_code"] = "rpc.grpc.status_code"
+    RPC_GRPC_STATUS_CODE = "rpc.grpc.status_code"
     """The numeric status code of the gRPC request.
 
     Type: int
@@ -9903,7 +9368,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/rpc/rpc__method.json
-    RPC_METHOD: Literal["rpc.method"] = "rpc.method"
+    RPC_METHOD = "rpc.method"
     """The fully-qualified logical name of the method from the RPC interface perspective.
 
     Type: str
@@ -9916,9 +9381,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/rpc/rpc__response__status_code.json
-    RPC_RESPONSE_STATUS_CODE: Literal["rpc.response.status_code"] = (
-        "rpc.response.status_code"
-    )
+    RPC_RESPONSE_STATUS_CODE = "rpc.response.status_code"
     """Status code of the RPC returned by the RPC server or generated by the client.
 
     Type: str
@@ -9930,7 +9393,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/rpc/rpc__service.json
-    RPC_SERVICE: Literal["rpc.service"] = "rpc.service"
+    RPC_SERVICE = "rpc.service"
     """The full (logical) name of the service being called, including its package name, if applicable.
 
     Type: str
@@ -9943,7 +9406,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/rpc/rpc__system.json
-    RPC_SYSTEM: Literal["rpc.system"] = "rpc.system"
+    RPC_SYSTEM = "rpc.system"
     """A string identifying the remoting system.
 
     Type: str
@@ -9956,7 +9419,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/rpc/rpc__system__name.json
-    RPC_SYSTEM_NAME: Literal["rpc.system.name"] = "rpc.system.name"
+    RPC_SYSTEM_NAME = "rpc.system.name"
     """A string identifying the remoting system.
 
     Type: str
@@ -9968,7 +9431,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/runtime/runtime__build.json
-    RUNTIME_BUILD: Literal["runtime.build"] = "runtime.build"
+    RUNTIME_BUILD = "runtime.build"
     """The application build string, when it is separate from the version.
 
     Type: str
@@ -9980,22 +9443,20 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/runtime/runtime__name.json
-    RUNTIME_NAME: Literal["runtime.name"] = "runtime.name"
+    RUNTIME_NAME = "runtime.name"
     """The name of the runtime. For example node, CPython, or rustc.
 
     Type: str
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
-    Aliases: process.runtime.name
+    Aliases: process.runtime.name, sentry.runtime.name
     DEPRECATED: Use process.runtime.name instead - Prefer OTel-aligned process.runtime.name
     Example: "node"
     """
 
     # Path: model/attributes/runtime/runtime__raw_description.json
-    RUNTIME_RAW_DESCRIPTION: Literal["runtime.raw_description"] = (
-        "runtime.raw_description"
-    )
+    RUNTIME_RAW_DESCRIPTION = "runtime.raw_description"
     """Unprocessed description string as obtained from the runtime. Used to extract name and version for well-known runtimes.
 
     Type: str
@@ -10008,7 +9469,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/runtime/runtime__version.json
-    RUNTIME_VERSION: Literal["runtime.version"] = "runtime.version"
+    RUNTIME_VERSION = "runtime.version"
     """The version of the runtime.
 
     Type: str
@@ -10021,7 +9482,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/score/score__[key].json
-    SCORE_KEY: Literal["score.<key>"] = "score.<key>"
+    SCORE_KEY = "score.<key>"
     """The weighted performance score for a web vital. This is defined as `score.weight.<key>` * `score.ratio.<key>`.
 
     Type: float
@@ -10033,7 +9494,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/score/score__ratio__[key].json
-    SCORE_RATIO_KEY: Literal["score.ratio.<key>"] = "score.ratio.<key>"
+    SCORE_RATIO_KEY = "score.ratio.<key>"
     """The score for a web vital, normalized to a number between 0 and 1.
 
     Type: float
@@ -10045,7 +9506,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/score/score__total.json
-    SCORE_TOTAL: Literal["score.total"] = "score.total"
+    SCORE_TOTAL = "score.total"
     """The total performance score of a span. This is the sum of individual weighted web vital scores (see `score.<key>`).
 
     Type: float
@@ -10055,7 +9516,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/score/score__weight__[key].json
-    SCORE_WEIGHT_KEY: Literal["score.weight.<key>"] = "score.weight.<key>"
+    SCORE_WEIGHT_KEY = "score.weight.<key>"
     """The relative weight of a web vital in a span's performance score.
 
     Type: float
@@ -10067,7 +9528,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/sentry/sentry__action.json
-    SENTRY_ACTION: Literal["sentry.action"] = "sentry.action"
+    SENTRY_ACTION = "sentry.action"
     """Used as a generic attribute representing the action depending on the type of span. For instance, this is the database query operation for DB spans, and the request method for HTTP spans.
 
     Type: str
@@ -10078,7 +9539,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/sentry/sentry__browser__name.json
-    SENTRY_BROWSER_NAME: Literal["sentry.browser.name"] = "sentry.browser.name"
+    SENTRY_BROWSER_NAME = "sentry.browser.name"
     """The name of the browser.
 
     Type: str
@@ -10091,7 +9552,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/sentry/sentry__browser__version.json
-    SENTRY_BROWSER_VERSION: Literal["sentry.browser.version"] = "sentry.browser.version"
+    SENTRY_BROWSER_VERSION = "sentry.browser.version"
     """The version of the browser.
 
     Type: str
@@ -10104,9 +9565,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/sentry/sentry__cancellation_reason.json
-    SENTRY_CANCELLATION_REASON: Literal["sentry.cancellation_reason"] = (
-        "sentry.cancellation_reason"
-    )
+    SENTRY_CANCELLATION_REASON = "sentry.cancellation_reason"
     """The reason why a span ended early.
 
     Type: str
@@ -10117,7 +9576,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/sentry/sentry__category.json
-    SENTRY_CATEGORY: Literal["sentry.category"] = "sentry.category"
+    SENTRY_CATEGORY = "sentry.category"
     """The high-level category of a span, derived from the span operation or span attributes. This categorizes spans by their general purpose (e.g., database, HTTP, UI).
 
     Type: str
@@ -10166,10 +9625,8 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/sentry/sentry__client_sample_rate.json
-    SENTRY_CLIENT_SAMPLE_RATE: Literal["sentry.client_sample_rate"] = (
-        "sentry.client_sample_rate"
-    )
-    """Rate at which a span was sampled in the SDK.
+    SENTRY_CLIENT_SAMPLE_RATE = "sentry.client_sample_rate"
+    """Rate at which a telemetry item (e.g. a span, or metric) was sampled in the SDK.
 
     Type: float
     Apply Scrubbing: never
@@ -10179,7 +9636,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/sentry/sentry__description.json
-    SENTRY_DESCRIPTION: Literal["sentry.description"] = "sentry.description"
+    SENTRY_DESCRIPTION = "sentry.description"
     """The human-readable description of a span.
 
     Type: str
@@ -10189,8 +9646,216 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "index view query"
     """
 
+    # Path: model/attributes/sentry/sentry__device__battery_level.json
+    SENTRY_DEVICE_BATTERY_LEVEL = "sentry.device.battery_level"
+    """The battery level of the device as a percentage (0-100).
+
+    Type: float
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: device.battery_level
+    DEPRECATED: Use device.battery_level instead
+    Example: 100
+    """
+
+    # Path: model/attributes/sentry/sentry__device__brand.json
+    SENTRY_DEVICE_BRAND = "sentry.device.brand"
+    """The brand of the device.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: device.brand
+    DEPRECATED: Use device.brand instead
+    Example: "Apple"
+    """
+
+    # Path: model/attributes/sentry/sentry__device__charging.json
+    SENTRY_DEVICE_CHARGING = "sentry.device.charging"
+    """Whether the device was charging or not.
+
+    Type: bool
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: device.charging
+    DEPRECATED: Use device.charging instead
+    Example: false
+    """
+
+    # Path: model/attributes/sentry/sentry__device__class.json
+    SENTRY_DEVICE_CLASS = "sentry.device.class"
+    """The classification of the device. For example, `low`, `medium`, or `high`. Typically inferred by Relay - SDKs generally do not need to set this directly.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: device.class
+    DEPRECATED: Use device.class instead
+    Example: "medium"
+    """
+
+    # Path: model/attributes/sentry/sentry__device__family.json
+    SENTRY_DEVICE_FAMILY = "sentry.device.family"
+    """The family of the device.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: device.family
+    DEPRECATED: Use device.family instead
+    Example: "iPhone"
+    """
+
+    # Path: model/attributes/sentry/sentry__device__locale.json
+    SENTRY_DEVICE_LOCALE = "sentry.device.locale"
+    """The locale of the device.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: device.locale
+    DEPRECATED: Use device.locale instead
+    Example: "en-US"
+    """
+
+    # Path: model/attributes/sentry/sentry__device__model.json
+    SENTRY_DEVICE_MODEL = "sentry.device.model"
+    """The model of the device.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: device.model
+    DEPRECATED: Use device.model instead
+    Example: "iPhone 15 Pro Max"
+    """
+
+    # Path: model/attributes/sentry/sentry__device__model_id.json
+    SENTRY_DEVICE_MODEL_ID = "sentry.device.model_id"
+    """An internal hardware revision to identify the device exactly.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: device.model_id
+    DEPRECATED: Use device.model_id instead
+    Example: "N861AP"
+    """
+
+    # Path: model/attributes/sentry/sentry__device__name.json
+    SENTRY_DEVICE_NAME = "sentry.device.name"
+    """The user-assigned name of the mobile device.
+
+    Type: str
+    Apply Scrubbing: auto
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: device.name
+    DEPRECATED: Use device.name instead
+    Example: "localhost"
+    """
+
+    # Path: model/attributes/sentry/sentry__device__online.json
+    SENTRY_DEVICE_ONLINE = "sentry.device.online"
+    """Whether the device was online or not.
+
+    Type: bool
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: device.online
+    DEPRECATED: Use device.online instead
+    Example: true
+    """
+
+    # Path: model/attributes/sentry/sentry__device__orientation.json
+    SENTRY_DEVICE_ORIENTATION = "sentry.device.orientation"
+    """The orientation of the device, either "portrait" or "landscape".
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: device.orientation
+    DEPRECATED: Use device.orientation instead
+    Example: "portrait"
+    """
+
+    # Path: model/attributes/sentry/sentry__device__screen_density.json
+    SENTRY_DEVICE_SCREEN_DENSITY = "sentry.device.screen_density"
+    """The screen density of the device.
+
+    Type: float
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: device.screen_density
+    DEPRECATED: Use device.screen_density instead
+    Example: 2.625
+    """
+
+    # Path: model/attributes/sentry/sentry__device__screen_dpi.json
+    SENTRY_DEVICE_SCREEN_DPI = "sentry.device.screen_dpi"
+    """The screen density in dots-per-inch (DPI) of the device.
+
+    Type: int
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: device.screen_dpi
+    DEPRECATED: Use device.screen_dpi instead
+    Example: 420
+    """
+
+    # Path: model/attributes/sentry/sentry__device__screen_height_pixels.json
+    SENTRY_DEVICE_SCREEN_HEIGHT_PIXELS = "sentry.device.screen_height_pixels"
+    """The height of the device screen in pixels.
+
+    Type: int
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: device.screen_height_pixels
+    DEPRECATED: Use device.screen_height_pixels instead
+    Example: 2400
+    """
+
+    # Path: model/attributes/sentry/sentry__device__screen_width_pixels.json
+    SENTRY_DEVICE_SCREEN_WIDTH_PIXELS = "sentry.device.screen_width_pixels"
+    """The width of the device screen in pixels.
+
+    Type: int
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: device.screen_width_pixels
+    DEPRECATED: Use device.screen_width_pixels instead
+    Example: 1080
+    """
+
+    # Path: model/attributes/sentry/sentry__device__simulator.json
+    SENTRY_DEVICE_SIMULATOR = "sentry.device.simulator"
+    """Whether the device is a simulator or an actual device.
+
+    Type: bool
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: device.simulator
+    DEPRECATED: Use device.simulator instead
+    Example: false
+    """
+
     # Path: model/attributes/sentry/sentry__dist.json
-    SENTRY_DIST: Literal["sentry.dist"] = "sentry.dist"
+    SENTRY_DIST = "sentry.dist"
     """The sentry dist.
 
     Type: str
@@ -10202,7 +9867,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/sentry/sentry__domain.json
-    SENTRY_DOMAIN: Literal["sentry.domain"] = "sentry.domain"
+    SENTRY_DOMAIN = "sentry.domain"
     """Used as a generic attribute representing the domain depending on the type of span. For instance, this is the collection/table name for database spans, and the server address for HTTP spans.
 
     Type: str
@@ -10213,7 +9878,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/sentry/sentry__dsc__environment.json
-    SENTRY_DSC_ENVIRONMENT: Literal["sentry.dsc.environment"] = "sentry.dsc.environment"
+    SENTRY_DSC_ENVIRONMENT = "sentry.dsc.environment"
     """The environment from the dynamic sampling context.
 
     Type: str
@@ -10224,7 +9889,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/sentry/sentry__dsc__project_id.json
-    SENTRY_DSC_PROJECT_ID: Literal["sentry.dsc.project_id"] = "sentry.dsc.project_id"
+    SENTRY_DSC_PROJECT_ID = "sentry.dsc.project_id"
     """The ID of the project where the trace originated (i.e. the project of the SDK that started the trace). Propagated through the dynamic sampling context and set by Relay during ingestion.
 
     Type: str
@@ -10235,7 +9900,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/sentry/sentry__dsc__public_key.json
-    SENTRY_DSC_PUBLIC_KEY: Literal["sentry.dsc.public_key"] = "sentry.dsc.public_key"
+    SENTRY_DSC_PUBLIC_KEY = "sentry.dsc.public_key"
     """The public key from the dynamic sampling context.
 
     Type: str
@@ -10246,7 +9911,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/sentry/sentry__dsc__release.json
-    SENTRY_DSC_RELEASE: Literal["sentry.dsc.release"] = "sentry.dsc.release"
+    SENTRY_DSC_RELEASE = "sentry.dsc.release"
     """The release identifier from the dynamic sampling context.
 
     Type: str
@@ -10257,7 +9922,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/sentry/sentry__dsc__sample_rate.json
-    SENTRY_DSC_SAMPLE_RATE: Literal["sentry.dsc.sample_rate"] = "sentry.dsc.sample_rate"
+    SENTRY_DSC_SAMPLE_RATE = "sentry.dsc.sample_rate"
     """The sample rate from the dynamic sampling context.
 
     Type: str
@@ -10268,7 +9933,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/sentry/sentry__dsc__sampled.json
-    SENTRY_DSC_SAMPLED: Literal["sentry.dsc.sampled"] = "sentry.dsc.sampled"
+    SENTRY_DSC_SAMPLED = "sentry.dsc.sampled"
     """Whether the event was sampled according to the dynamic sampling context.
 
     Type: bool
@@ -10279,7 +9944,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/sentry/sentry__dsc__trace_id.json
-    SENTRY_DSC_TRACE_ID: Literal["sentry.dsc.trace_id"] = "sentry.dsc.trace_id"
+    SENTRY_DSC_TRACE_ID = "sentry.dsc.trace_id"
     """The trace ID from the dynamic sampling context.
 
     Type: str
@@ -10290,7 +9955,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/sentry/sentry__dsc__transaction.json
-    SENTRY_DSC_TRANSACTION: Literal["sentry.dsc.transaction"] = "sentry.dsc.transaction"
+    SENTRY_DSC_TRANSACTION = "sentry.dsc.transaction"
     """The transaction name from the dynamic sampling context.
 
     Type: str
@@ -10301,7 +9966,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/sentry/sentry__environment.json
-    SENTRY_ENVIRONMENT: Literal["sentry.environment"] = "sentry.environment"
+    SENTRY_ENVIRONMENT = "sentry.environment"
     """The sentry environment.
 
     Type: str
@@ -10313,9 +9978,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/sentry/sentry__event__serialized_breadcrumbs.json
-    SENTRY_EVENT_SERIALIZED_BREADCRUMBS: Literal[
-        "sentry.event.serialized_breadcrumbs"
-    ] = "sentry.event.serialized_breadcrumbs"
+    SENTRY_EVENT_SERIALIZED_BREADCRUMBS = "sentry.event.serialized_breadcrumbs"
     """JSON-serialized `breadcrumbs` property from a Sentry event.
 
     Type: str
@@ -10325,9 +9988,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/sentry/sentry__event__serialized_contexts.json
-    SENTRY_EVENT_SERIALIZED_CONTEXTS: Literal["sentry.event.serialized_contexts"] = (
-        "sentry.event.serialized_contexts"
-    )
+    SENTRY_EVENT_SERIALIZED_CONTEXTS = "sentry.event.serialized_contexts"
     """JSON-serialized `contexts` property from a Sentry event.
 
     Type: str
@@ -10337,9 +9998,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/sentry/sentry__event__serialized_extra.json
-    SENTRY_EVENT_SERIALIZED_EXTRA: Literal["sentry.event.serialized_extra"] = (
-        "sentry.event.serialized_extra"
-    )
+    SENTRY_EVENT_SERIALIZED_EXTRA = "sentry.event.serialized_extra"
     """JSON-serialized `extra` property from a Sentry event.
 
     Type: str
@@ -10349,9 +10008,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/sentry/sentry__event__serialized_meta.json
-    SENTRY_EVENT_SERIALIZED_META: Literal["sentry.event.serialized_meta"] = (
-        "sentry.event.serialized_meta"
-    )
+    SENTRY_EVENT_SERIALIZED_META = "sentry.event.serialized_meta"
     """JSON-serialized `_meta` for the `sentry.event.serialized_*` properties from a Sentry event.
 
     Type: str
@@ -10361,7 +10018,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/sentry/sentry__exclusive_time.json
-    SENTRY_EXCLUSIVE_TIME: Literal["sentry.exclusive_time"] = "sentry.exclusive_time"
+    SENTRY_EXCLUSIVE_TIME = "sentry.exclusive_time"
     """The exclusive time duration of the span in milliseconds.
 
     Type: float
@@ -10372,7 +10029,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/sentry/sentry__frames__frozen.json
-    SENTRY_FRAMES_FROZEN: Literal["sentry.frames.frozen"] = "sentry.frames.frozen"
+    SENTRY_FRAMES_FROZEN = "sentry.frames.frozen"
     """The number of frozen frames rendered during the lifetime of the span.
 
     Type: int
@@ -10385,7 +10042,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/sentry/sentry__frames__slow.json
-    SENTRY_FRAMES_SLOW: Literal["sentry.frames.slow"] = "sentry.frames.slow"
+    SENTRY_FRAMES_SLOW = "sentry.frames.slow"
     """The number of slow frames rendered during the lifetime of the span.
 
     Type: int
@@ -10398,7 +10055,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/sentry/sentry__frames__total.json
-    SENTRY_FRAMES_TOTAL: Literal["sentry.frames.total"] = "sentry.frames.total"
+    SENTRY_FRAMES_TOTAL = "sentry.frames.total"
     """The number of total frames rendered during the lifetime of the span.
 
     Type: int
@@ -10411,9 +10068,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/sentry/sentry__graphql__operation.json
-    SENTRY_GRAPHQL_OPERATION: Literal["sentry.graphql.operation"] = (
-        "sentry.graphql.operation"
-    )
+    SENTRY_GRAPHQL_OPERATION = "sentry.graphql.operation"
     """Indicates the type of graphql operation, emitted by the Javascript SDK.
 
     Type: str
@@ -10424,7 +10079,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/sentry/sentry__group.json
-    SENTRY_GROUP: Literal["sentry.group"] = "sentry.group"
+    SENTRY_GROUP = "sentry.group"
     """Stores the hash of `sentry.normalized_description`. This is primarily used for grouping spans in the product end.
 
     Type: str
@@ -10434,7 +10089,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/sentry/sentry__http__prefetch.json
-    SENTRY_HTTP_PREFETCH: Literal["sentry.http.prefetch"] = "sentry.http.prefetch"
+    SENTRY_HTTP_PREFETCH = "sentry.http.prefetch"
     """If an http request was a prefetch request.
 
     Type: bool
@@ -10445,9 +10100,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/sentry/sentry__idle_span_finish_reason.json
-    SENTRY_IDLE_SPAN_FINISH_REASON: Literal["sentry.idle_span_finish_reason"] = (
-        "sentry.idle_span_finish_reason"
-    )
+    SENTRY_IDLE_SPAN_FINISH_REASON = "sentry.idle_span_finish_reason"
     """The reason why an idle span ended early.
 
     Type: str
@@ -10458,7 +10111,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/sentry/sentry__is_localhost.json
-    SENTRY_IS_LOCALHOST: Literal["sentry.is_localhost"] = "sentry.is_localhost"
+    SENTRY_IS_LOCALHOST = "sentry.is_localhost"
     """Indicates whether a telemetry item was sent on a host, device or browser on a localhost URL or IP address.
 
     Type: bool
@@ -10470,7 +10123,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/sentry/sentry__is_remote.json
-    SENTRY_IS_REMOTE: Literal["sentry.is_remote"] = "sentry.is_remote"
+    SENTRY_IS_REMOTE = "sentry.is_remote"
     """Indicates whether a span's parent is remote, i.e. created in another process, typically another service. See OpenTelemetry's [`SpanContext.IsRemote`](https://opentelemetry.io/docs/specs/otel/trace/api/#isremote).
 
     Type: bool
@@ -10481,7 +10134,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/sentry/sentry__kind.json
-    SENTRY_KIND: Literal["sentry.kind"] = "sentry.kind"
+    SENTRY_KIND = "sentry.kind"
     """Used to clarify the relationship between parents and children, or to distinguish between spans, e.g. a `server` and `client` span with the same name.
 
     Type: str
@@ -10497,7 +10150,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/sentry/sentry__link__type.json
-    SENTRY_LINK_TYPE: Literal["sentry.link.type"] = "sentry.link.type"
+    SENTRY_LINK_TYPE = "sentry.link.type"
     """Set on a span link. Describes the relationship between the span and the linked span.
 
     Type: str
@@ -10516,7 +10169,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/sentry/sentry__main_thread.json
-    SENTRY_MAIN_THREAD: Literal["sentry.main_thread"] = "sentry.main_thread"
+    SENTRY_MAIN_THREAD = "sentry.main_thread"
     """Whether the span or event occurred on the main thread. Computed by Relay and should not be set by SDKs.
 
     Type: bool
@@ -10527,9 +10180,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/sentry/sentry__message__parameter__[key].json
-    SENTRY_MESSAGE_PARAMETER_KEY: Literal["sentry.message.parameter.<key>"] = (
-        "sentry.message.parameter.<key>"
-    )
+    SENTRY_MESSAGE_PARAMETER_KEY = "sentry.message.parameter.<key>"
     """A parameter used in the message template. <key> can either be the number that represent the parameter's position in the template string (sentry.message.parameter.0, sentry.message.parameter.1, etc) or the parameter's name (sentry.message.parameter.item_id, sentry.message.parameter.user_id, etc)
 
     Type: str
@@ -10540,9 +10191,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/sentry/sentry__message__template.json
-    SENTRY_MESSAGE_TEMPLATE: Literal["sentry.message.template"] = (
-        "sentry.message.template"
-    )
+    SENTRY_MESSAGE_TEMPLATE = "sentry.message.template"
     """The parameterized template string.
 
     Type: str
@@ -10553,9 +10202,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/sentry/sentry__messaging__destination__name.json
-    SENTRY_MESSAGING_DESTINATION_NAME: Literal["sentry.messaging.destination.name"] = (
-        "sentry.messaging.destination.name"
-    )
+    SENTRY_MESSAGING_DESTINATION_NAME = "sentry.messaging.destination.name"
     """The message destination name.
 
     Type: str
@@ -10568,9 +10215,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/sentry/sentry__messaging__message__id.json
-    SENTRY_MESSAGING_MESSAGE_ID: Literal["sentry.messaging.message.id"] = (
-        "sentry.messaging.message.id"
-    )
+    SENTRY_MESSAGING_MESSAGE_ID = "sentry.messaging.message.id"
     """A value used by the messaging system as an identifier for the message, represented as a string.
 
     Type: str
@@ -10583,7 +10228,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/sentry/sentry__metric__source.json
-    SENTRY_METRIC_SOURCE: Literal["sentry.metric.source"] = "sentry.metric.source"
+    SENTRY_METRIC_SOURCE = "sentry.metric.source"
     """The provenance of a metric.  For example, this can be set to indicate if a metric was generated by Relay from a span.
 
     Type: str
@@ -10594,7 +10239,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/sentry/sentry__mobile.json
-    SENTRY_MOBILE: Literal["sentry.mobile"] = "sentry.mobile"
+    SENTRY_MOBILE = "sentry.mobile"
     """Whether the application is using a mobile SDK. Computed by Relay and should not be set by SDKs.
 
     Type: bool
@@ -10605,7 +10250,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/sentry/sentry__module__[key].json
-    SENTRY_MODULE_KEY: Literal["sentry.module.<key>"] = "sentry.module.<key>"
+    SENTRY_MODULE_KEY = "sentry.module.<key>"
     """A module that was loaded in the process. The key is the name of the module.
 
     Type: str
@@ -10617,9 +10262,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/sentry/sentry__nextjs__ssr__function__route.json
-    SENTRY_NEXTJS_SSR_FUNCTION_ROUTE: Literal["sentry.nextjs.ssr.function.route"] = (
-        "sentry.nextjs.ssr.function.route"
-    )
+    SENTRY_NEXTJS_SSR_FUNCTION_ROUTE = "sentry.nextjs.ssr.function.route"
     """A parameterized route for a function in Next.js that contributes to Server-Side Rendering. Should be present on spans that track such functions when the file location of the function is known.
 
     Type: str
@@ -10630,9 +10273,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/sentry/sentry__nextjs__ssr__function__type.json
-    SENTRY_NEXTJS_SSR_FUNCTION_TYPE: Literal["sentry.nextjs.ssr.function.type"] = (
-        "sentry.nextjs.ssr.function.type"
-    )
+    SENTRY_NEXTJS_SSR_FUNCTION_TYPE = "sentry.nextjs.ssr.function.type"
     """A descriptor for a for a function in Next.js that contributes to Server-Side Rendering. Should be present on spans that track such functions.
 
     Type: str
@@ -10643,9 +10284,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/sentry/sentry__normalized_db_query.json
-    SENTRY_NORMALIZED_DB_QUERY: Literal["sentry.normalized_db_query"] = (
-        "sentry.normalized_db_query"
-    )
+    SENTRY_NORMALIZED_DB_QUERY = "sentry.normalized_db_query"
     """The normalized version of `db.query.text`.
 
     Type: str
@@ -10656,9 +10295,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/sentry/sentry__normalized_db_query__hash.json
-    SENTRY_NORMALIZED_DB_QUERY_HASH: Literal["sentry.normalized_db_query.hash"] = (
-        "sentry.normalized_db_query.hash"
-    )
+    SENTRY_NORMALIZED_DB_QUERY_HASH = "sentry.normalized_db_query.hash"
     """The hash of `sentry.normalized_db_query`.
 
     Type: str
@@ -10668,9 +10305,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/sentry/sentry__normalized_description.json
-    SENTRY_NORMALIZED_DESCRIPTION: Literal["sentry.normalized_description"] = (
-        "sentry.normalized_description"
-    )
+    SENTRY_NORMALIZED_DESCRIPTION = "sentry.normalized_description"
     """Used as a generic attribute representing the normalized `sentry.description`. This refers to the legacy use case of `sentry.description` where it holds relevant data depending on the type of span (e.g. database query, resource url, http request description, etc).
 
     Type: str
@@ -10681,9 +10316,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/sentry/sentry__observed_timestamp_nanos.json
-    SENTRY_OBSERVED_TIMESTAMP_NANOS: Literal["sentry.observed_timestamp_nanos"] = (
-        "sentry.observed_timestamp_nanos"
-    )
+    SENTRY_OBSERVED_TIMESTAMP_NANOS = "sentry.observed_timestamp_nanos"
     """The timestamp at which an envelope was received by Relay, in nanoseconds.
 
     Type: str
@@ -10694,7 +10327,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/sentry/sentry__op.json
-    SENTRY_OP: Literal["sentry.op"] = "sentry.op"
+    SENTRY_OP = "sentry.op"
     """The operation of a span.
 
     Type: str
@@ -10705,7 +10338,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/sentry/sentry__origin.json
-    SENTRY_ORIGIN: Literal["sentry.origin"] = "sentry.origin"
+    SENTRY_ORIGIN = "sentry.origin"
     """The origin of the instrumentation (e.g. span, log, etc.)
 
     Type: str
@@ -10715,10 +10348,34 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "auto.http.otel.fastify"
     """
 
+    # Path: model/attributes/sentry/sentry__os__name.json
+    SENTRY_OS_NAME = "sentry.os.name"
+    """Human readable operating system name.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: os.name
+    DEPRECATED: Use os.name instead
+    Example: "Ubuntu"
+    """
+
+    # Path: model/attributes/sentry/sentry__os__rooted.json
+    SENTRY_OS_ROOTED = "sentry.os.rooted"
+    """Whether the operating system has been jailbroken or rooted.
+
+    Type: bool
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: os.rooted
+    DEPRECATED: Use os.rooted instead
+    Example: true
+    """
+
     # Path: model/attributes/sentry/sentry__pageload__span_id.json
-    SENTRY_PAGELOAD_SPAN_ID: Literal["sentry.pageload.span_id"] = (
-        "sentry.pageload.span_id"
-    )
+    SENTRY_PAGELOAD_SPAN_ID = "sentry.pageload.span_id"
     """The id of the pageload span, set by web vital spans and metrics
 
     Type: str
@@ -10729,7 +10386,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/sentry/sentry__platform.json
-    SENTRY_PLATFORM: Literal["sentry.platform"] = "sentry.platform"
+    SENTRY_PLATFORM = "sentry.platform"
     """The sdk platform that generated the event.
 
     Type: str
@@ -10740,7 +10397,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/sentry/sentry__profile_id.json
-    SENTRY_PROFILE_ID: Literal["sentry.profile_id"] = "sentry.profile_id"
+    SENTRY_PROFILE_ID = "sentry.profile_id"
     """The ID of the Sentry profile the span is associated with. This is only meaningful for transaction-based profiling.
 
     Type: str
@@ -10752,7 +10409,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/sentry/sentry__profiler_id.json
-    SENTRY_PROFILER_ID: Literal["sentry.profiler_id"] = "sentry.profiler_id"
+    SENTRY_PROFILER_ID = "sentry.profiler_id"
     """The id of the currently running profiler (continuous profiling)
 
     Type: str
@@ -10763,7 +10420,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/sentry/sentry__relay__ingress.json
-    SENTRY_RELAY_INGRESS: Literal["sentry.relay.ingress"] = "sentry.relay.ingress"
+    SENTRY_RELAY_INGRESS = "sentry.relay.ingress"
     """How an item (span, log, &c.) entered Relay.
 
     Type: str
@@ -10774,7 +10431,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/sentry/sentry__relay__pipeline.json
-    SENTRY_RELAY_PIPELINE: Literal["sentry.relay.pipeline"] = "sentry.relay.pipeline"
+    SENTRY_RELAY_PIPELINE = "sentry.relay.pipeline"
     """An internal descriptor of which processing pipeline an item went through in Relay.
 
     Type: str
@@ -10785,7 +10442,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/sentry/sentry__release.json
-    SENTRY_RELEASE: Literal["sentry.release"] = "sentry.release"
+    SENTRY_RELEASE = "sentry.release"
     """The sentry release.
 
     Type: str
@@ -10797,7 +10454,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/sentry/sentry__replay_id.json
-    SENTRY_REPLAY_ID: Literal["sentry.replay_id"] = "sentry.replay_id"
+    SENTRY_REPLAY_ID = "sentry.replay_id"
     """The id of the sentry replay.
 
     Type: str
@@ -10809,9 +10466,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/sentry/sentry__replay_is_buffering.json
-    SENTRY_REPLAY_IS_BUFFERING: Literal["sentry.replay_is_buffering"] = (
-        "sentry.replay_is_buffering"
-    )
+    SENTRY_REPLAY_IS_BUFFERING = "sentry.replay_is_buffering"
     """A sentinel attribute on log events indicating whether the current Session Replay is being buffered (onErrorSampleRate).
 
     Type: bool
@@ -10822,7 +10477,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/sentry/sentry__report_event.json
-    SENTRY_REPORT_EVENT: Literal["sentry.report_event"] = "sentry.report_event"
+    SENTRY_REPORT_EVENT = "sentry.report_event"
     """(Deprecated) The event that caused the SDK to report CLS or LCP (pagehide or navigation)
 
     Type: str
@@ -10833,10 +10488,47 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "pagehide"
     """
 
+    # Path: model/attributes/sentry/sentry__request__method.json
+    SENTRY_REQUEST_METHOD = "sentry.request.method"
+    """The HTTP method used.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: http.request.method, method, http.method, http.request_method
+    DEPRECATED: Use http.request.method instead
+    Example: "GET"
+    """
+
+    # Path: model/attributes/sentry/sentry__request__url.json
+    SENTRY_REQUEST_URL = "sentry.request.url"
+    """The URL of the resource that was fetched.
+
+    Type: str
+    Apply Scrubbing: auto
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: url.full, http.url, url, aws.request.url, messaging.url
+    DEPRECATED: Use url.full instead
+    Example: "https://example.com/test?foo=bar#buzz"
+    """
+
+    # Path: model/attributes/sentry/sentry__runtime__name.json
+    SENTRY_RUNTIME_NAME = "sentry.runtime.name"
+    """The name of the runtime. Equivalent to `name` in the Sentry runtime context.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: process.runtime.name, runtime.name
+    DEPRECATED: Use process.runtime.name instead
+    Example: "node"
+    """
+
     # Path: model/attributes/sentry/sentry__sdk__integrations.json
-    SENTRY_SDK_INTEGRATIONS: Literal["sentry.sdk.integrations"] = (
-        "sentry.sdk.integrations"
-    )
+    SENTRY_SDK_INTEGRATIONS = "sentry.sdk.integrations"
     """A list of names identifying enabled integrations. The list shouldhave all enabled integrations, including default integrations. Defaultintegrations are included because different SDK releases may contain differentdefault integrations.
 
     Type: List[str]
@@ -10847,7 +10539,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/sentry/sentry__sdk__name.json
-    SENTRY_SDK_NAME: Literal["sentry.sdk.name"] = "sentry.sdk.name"
+    SENTRY_SDK_NAME = "sentry.sdk.name"
     """The sentry sdk name.
 
     Type: str
@@ -10858,7 +10550,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/sentry/sentry__sdk__version.json
-    SENTRY_SDK_VERSION: Literal["sentry.sdk.version"] = "sentry.sdk.version"
+    SENTRY_SDK_VERSION = "sentry.sdk.version"
     """The sentry sdk version.
 
     Type: str
@@ -10869,7 +10561,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/sentry/sentry__segment__id.json
-    SENTRY_SEGMENT_ID: Literal["sentry.segment.id"] = "sentry.segment.id"
+    SENTRY_SEGMENT_ID = "sentry.segment.id"
     """The segment ID of a span
 
     Type: str
@@ -10881,7 +10573,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/sentry/sentry__segment__name.json
-    SENTRY_SEGMENT_NAME: Literal["sentry.segment.name"] = "sentry.segment.name"
+    SENTRY_SEGMENT_NAME = "sentry.segment.name"
     """The segment name of a span
 
     Type: str
@@ -10893,9 +10585,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/sentry/sentry__segment__name__source.json
-    SENTRY_SEGMENT_NAME_SOURCE: Literal["sentry.segment.name.source"] = (
-        "sentry.segment.name.source"
-    )
+    SENTRY_SEGMENT_NAME_SOURCE = "sentry.segment.name.source"
     """The source of the segment span name. Should only be set on segment spans.
 
     Type: str
@@ -10918,7 +10608,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/sentry/sentry__segment_id.json
-    _SENTRY_SEGMENT_ID: Literal["sentry.segment_id"] = "sentry.segment_id"
+    _SENTRY_SEGMENT_ID = "sentry.segment_id"
     """The segment ID of a span
 
     Type: str
@@ -10931,9 +10621,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/sentry/sentry__server_sample_rate.json
-    SENTRY_SERVER_SAMPLE_RATE: Literal["sentry.server_sample_rate"] = (
-        "sentry.server_sample_rate"
-    )
+    SENTRY_SERVER_SAMPLE_RATE = "sentry.server_sample_rate"
     """Rate at which a span was sampled in Relay.
 
     Type: float
@@ -10944,7 +10632,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/sentry/sentry__source.json
-    SENTRY_SOURCE: Literal["sentry.source"] = "sentry.source"
+    SENTRY_SOURCE = "sentry.source"
     """The source of a span, also referred to as transaction source.
 
     Type: str
@@ -10963,7 +10651,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/sentry/sentry__span__source.json
-    SENTRY_SPAN_SOURCE: Literal["sentry.span.source"] = "sentry.span.source"
+    SENTRY_SPAN_SOURCE = "sentry.span.source"
     """The source of a span, also referred to as transaction source.
 
     Type: str
@@ -10982,7 +10670,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/sentry/sentry__status.json
-    SENTRY_STATUS: Literal["sentry.status"] = "sentry.status"
+    SENTRY_STATUS = "sentry.status"
     """The span's status (either "ok" or "error"). Older SDKs may set this to a more specific error, but this behaviour is deprecated.
 
     Type: str
@@ -10993,7 +10681,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/sentry/sentry__status__message.json
-    SENTRY_STATUS_MESSAGE: Literal["sentry.status.message"] = "sentry.status.message"
+    SENTRY_STATUS_MESSAGE = "sentry.status.message"
     """The from OTLP extracted status message.
 
     Type: str
@@ -11004,7 +10692,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/sentry/sentry__status_code.json
-    SENTRY_STATUS_CODE: Literal["sentry.status_code"] = "sentry.status_code"
+    SENTRY_STATUS_CODE = "sentry.status_code"
     """The HTTP status code used in Sentry Insights. Typically set by Sentry during ingestion, rather than by clients.
 
     Type: int
@@ -11015,9 +10703,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/sentry/sentry__sveltekit__navigation__from.json
-    SENTRY_SVELTEKIT_NAVIGATION_FROM: Literal["sentry.sveltekit.navigation.from"] = (
-        "sentry.sveltekit.navigation.from"
-    )
+    SENTRY_SVELTEKIT_NAVIGATION_FROM = "sentry.sveltekit.navigation.from"
     """the navigation origin (sveltekit router)
 
     Type: str
@@ -11030,9 +10716,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/sentry/sentry__sveltekit__navigation__to.json
-    SENTRY_SVELTEKIT_NAVIGATION_TO: Literal["sentry.sveltekit.navigation.to"] = (
-        "sentry.sveltekit.navigation.to"
-    )
+    SENTRY_SVELTEKIT_NAVIGATION_TO = "sentry.sveltekit.navigation.to"
     """the navigation destination
 
     Type: str
@@ -11044,9 +10728,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/sentry/sentry__sveltekit__navigation__type.json
-    SENTRY_SVELTEKIT_NAVIGATION_TYPE: Literal["sentry.sveltekit.navigation.type"] = (
-        "sentry.sveltekit.navigation.type"
-    )
+    SENTRY_SVELTEKIT_NAVIGATION_TYPE = "sentry.sveltekit.navigation.type"
     """The type of navigation event emitted from the sveltekit client router
 
     Type: str
@@ -11059,7 +10741,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/sentry/sentry__thread__id.json
-    SENTRY_THREAD_ID: Literal["sentry.thread.id"] = "sentry.thread.id"
+    SENTRY_THREAD_ID = "sentry.thread.id"
     """Current "managed" thread ID.
 
     Type: int
@@ -11070,10 +10752,21 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: 56
     """
 
+    # Path: model/attributes/sentry/sentry__thread__name.json
+    SENTRY_THREAD_NAME = "sentry.thread.name"
+    """Current thread name.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: thread.name
+    DEPRECATED: Use thread.name instead
+    Example: "main"
+    """
+
     # Path: model/attributes/sentry/sentry__timestamp__sequence.json
-    SENTRY_TIMESTAMP_SEQUENCE: Literal["sentry.timestamp.sequence"] = (
-        "sentry.timestamp.sequence"
-    )
+    SENTRY_TIMESTAMP_SEQUENCE = "sentry.timestamp.sequence"
     """A sequencing counter for deterministic ordering of logs or metrics when timestamps share the same integer millisecond. Starts at 0 on SDK initialization, increments by 1 for each captured item, and resets to 0 when the integer millisecond of the current item differs from the previous one.
 
     Type: int
@@ -11084,9 +10777,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/sentry/sentry__trace__parent_span_id.json
-    SENTRY_TRACE_PARENT_SPAN_ID: Literal["sentry.trace.parent_span_id"] = (
-        "sentry.trace.parent_span_id"
-    )
+    SENTRY_TRACE_PARENT_SPAN_ID = "sentry.trace.parent_span_id"
     """The span id of the span that was active when the log was collected. This should not be set if there was no active span.
 
     Type: str
@@ -11098,7 +10789,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/sentry/sentry__trace__status.json
-    SENTRY_TRACE_STATUS: Literal["sentry.trace.status"] = "sentry.trace.status"
+    SENTRY_TRACE_STATUS = "sentry.trace.status"
     """The segment's status (either "ok" or "error"). Older SDKs may set this to a more specific error, but this behaviour is deprecated.
 
     Type: str
@@ -11109,7 +10800,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/sentry/sentry__trace_lifecycle.json
-    SENTRY_TRACE_LIFECYCLE: Literal["sentry.trace_lifecycle"] = "sentry.trace_lifecycle"
+    SENTRY_TRACE_LIFECYCLE = "sentry.trace_lifecycle"
     """Indicates the chosen trace lifecycle mode of the SDK (stream or static)
 
     Type: str
@@ -11120,7 +10811,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/sentry/sentry__transaction.json
-    SENTRY_TRANSACTION: Literal["sentry.transaction"] = "sentry.transaction"
+    SENTRY_TRANSACTION = "sentry.transaction"
     """The sentry transaction (segment name).
 
     Type: str
@@ -11133,7 +10824,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/sentry/sentry__user.json
-    SENTRY_USER: Literal["sentry.user"] = "sentry.user"
+    SENTRY_USER = "sentry.user"
     """Combined identifier of the user, used for the `user` tag and for counting unique users. Set to the first available of the user's ID, username, email address, or IP address, prefixed with which one it is: `id:`, `username:`, `email:`, or `ip:`.
 
     Type: str
@@ -11147,7 +10838,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/sentry/sentry__user__email.json
-    SENTRY_USER_EMAIL: Literal["sentry.user.email"] = "sentry.user.email"
+    SENTRY_USER_EMAIL = "sentry.user.email"
     """User email address.
 
     Type: str
@@ -11159,7 +10850,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/sentry/sentry__user__geo__city.json
-    SENTRY_USER_GEO_CITY: Literal["sentry.user.geo.city"] = "sentry.user.geo.city"
+    SENTRY_USER_GEO_CITY = "sentry.user.geo.city"
     """Human readable city name.
 
     Type: str
@@ -11171,9 +10862,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/sentry/sentry__user__geo__country_code.json
-    SENTRY_USER_GEO_COUNTRY_CODE: Literal["sentry.user.geo.country_code"] = (
-        "sentry.user.geo.country_code"
-    )
+    SENTRY_USER_GEO_COUNTRY_CODE = "sentry.user.geo.country_code"
     """Two-letter country code (ISO 3166-1 alpha-2).
 
     Type: str
@@ -11185,7 +10874,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/sentry/sentry__user__geo__region.json
-    SENTRY_USER_GEO_REGION: Literal["sentry.user.geo.region"] = "sentry.user.geo.region"
+    SENTRY_USER_GEO_REGION = "sentry.user.geo.region"
     """Human readable region name or code.
 
     Type: str
@@ -11197,9 +10886,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/sentry/sentry__user__geo__subdivision.json
-    SENTRY_USER_GEO_SUBDIVISION: Literal["sentry.user.geo.subdivision"] = (
-        "sentry.user.geo.subdivision"
-    )
+    SENTRY_USER_GEO_SUBDIVISION = "sentry.user.geo.subdivision"
     """Human readable subdivision name.
 
     Type: str
@@ -11211,9 +10898,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/sentry/sentry__user__geo__subregion.json
-    SENTRY_USER_GEO_SUBREGION: Literal["sentry.user.geo.subregion"] = (
-        "sentry.user.geo.subregion"
-    )
+    SENTRY_USER_GEO_SUBREGION = "sentry.user.geo.subregion"
     """UN M49 subregion code of the user's location, derived from user.geo.country_code. Sub-Saharan Africa and Latin America and the Caribbean are split into their M49 intermediate regions.
 
     Type: str
@@ -11250,7 +10935,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/sentry/sentry__user__id.json
-    SENTRY_USER_ID: Literal["sentry.user.id"] = "sentry.user.id"
+    SENTRY_USER_ID = "sentry.user.id"
     """Unique identifier of the user.
 
     Type: str
@@ -11262,7 +10947,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/sentry/sentry__user__ip.json
-    SENTRY_USER_IP: Literal["sentry.user.ip"] = "sentry.user.ip"
+    SENTRY_USER_IP = "sentry.user.ip"
     """The IP address of the user.
 
     Type: str
@@ -11274,7 +10959,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/sentry/sentry__user__username.json
-    SENTRY_USER_USERNAME: Literal["sentry.user.username"] = "sentry.user.username"
+    SENTRY_USER_USERNAME = "sentry.user.username"
     """Short name or login/username of the user.
 
     Type: str
@@ -11286,7 +10971,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/server/server__address.json
-    SERVER_ADDRESS: Literal["server.address"] = "server.address"
+    SERVER_ADDRESS = "server.address"
     """Preferably the server domain name if available without reverse DNS lookup, or an IP address or Unix domain socket name. For compatibility, it may contain what the hostname command returns on UNIX systems, the fully qualified hostname, or another name specified by the user.
 
     Type: str
@@ -11298,7 +10983,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/server/server__ext__type.json
-    SERVER_EXT_TYPE: Literal["server.ext.type"] = "server.ext.type"
+    SERVER_EXT_TYPE = "server.ext.type"
     """The request lifecycle extension point where the Hapi extension function runs.
 
     Type: str
@@ -11312,7 +10997,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/server/server__port.json
-    SERVER_PORT: Literal["server.port"] = "server.port"
+    SERVER_PORT = "server.port"
     """Server port number.
 
     Type: int
@@ -11324,7 +11009,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/server_name.json
-    SERVER_NAME: Literal["server_name"] = "server_name"
+    SERVER_NAME = "server_name"
     """The name of the device. On servers and desktops, this is typically the hostname.
 
     Type: str
@@ -11337,7 +11022,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/service/service__name.json
-    SERVICE_NAME: Literal["service.name"] = "service.name"
+    SERVICE_NAME = "service.name"
     """Logical name of the service.
 
     Type: str
@@ -11348,7 +11033,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/service/service__version.json
-    SERVICE_VERSION: Literal["service.version"] = "service.version"
+    SERVICE_VERSION = "service.version"
     """The version string of the service API or implementation. The format is not defined by these conventions.
 
     Type: str
@@ -11360,7 +11045,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/session/session__id.json
-    SESSION_ID: Literal["session.id"] = "session.id"
+    SESSION_ID = "session.id"
     """A unique id identifying the active session at the time of setting this attribute
 
     Type: str
@@ -11371,7 +11056,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/stall_percentage.json
-    STALL_PERCENTAGE: Literal["stall_percentage"] = "stall_percentage"
+    STALL_PERCENTAGE = "stall_percentage"
     """The fraction of time the app was stalled. Only applies to React Native. This is computed by Relay.
 
     Type: float
@@ -11383,7 +11068,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/stall_total_time.json
-    STALL_TOTAL_TIME: Literal["stall_total_time"] = "stall_total_time"
+    STALL_TOTAL_TIME = "stall_total_time"
     """The combined duration of all stalls in milliseconds. Only applies to React Native. This is computed by Relay.
 
     Type: float
@@ -11395,9 +11080,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/starlette/starlette__middleware_name.json
-    STARLETTE_MIDDLEWARE_NAME: Literal["starlette.middleware_name"] = (
-        "starlette.middleware_name"
-    )
+    STARLETTE_MIDDLEWARE_NAME = "starlette.middleware_name"
     """The name of the Starlette middleware.
 
     Type: str
@@ -11410,9 +11093,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/starlite/starlite__middleware_name.json
-    STARLITE_MIDDLEWARE_NAME: Literal["starlite.middleware_name"] = (
-        "starlite.middleware_name"
-    )
+    STARLITE_MIDDLEWARE_NAME = "starlite.middleware_name"
     """The name of the Starlite middleware.
 
     Type: str
@@ -11425,7 +11106,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/state/state__type.json
-    STATE_TYPE: Literal["state.type"] = "state.type"
+    STATE_TYPE = "state.type"
     """The type of state management library
 
     Type: str
@@ -11436,7 +11117,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/subprocess/subprocess__pid.json
-    SUBPROCESS_PID: Literal["subprocess.pid"] = "subprocess.pid"
+    SUBPROCESS_PID = "subprocess.pid"
     """The process ID of a subprocess.
 
     Type: int
@@ -11449,9 +11130,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/sveltekit/sveltekit__load__environment.json
-    SVELTEKIT_LOAD_ENVIRONMENT: Literal["sveltekit.load.environment"] = (
-        "sveltekit.load.environment"
-    )
+    SVELTEKIT_LOAD_ENVIRONMENT = "sveltekit.load.environment"
     """The runtime environment in which the SvelteKit load function was executed. Known values are `'server'` and `'client'`.
 
     Type: str
@@ -11463,7 +11142,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/sveltekit/sveltekit__load__node_id.json
-    SVELTEKIT_LOAD_NODE_ID: Literal["sveltekit.load.node_id"] = "sveltekit.load.node_id"
+    SVELTEKIT_LOAD_NODE_ID = "sveltekit.load.node_id"
     """The path to the SvelteKit load function.
 
     Type: str
@@ -11475,9 +11154,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/sveltekit/sveltekit__load__node_type.json
-    SVELTEKIT_LOAD_NODE_TYPE: Literal["sveltekit.load.node_type"] = (
-        "sveltekit.load.node_type"
-    )
+    SVELTEKIT_LOAD_NODE_TYPE = "sveltekit.load.node_type"
     """The kind of SvelteKit load function that was executed, distinguishing page from layout and universal from server load functions.
 
     Type: str
@@ -11490,9 +11167,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/sveltekit/sveltekit__tracing__original_name.json
-    SVELTEKIT_TRACING_ORIGINAL_NAME: Literal["sveltekit.tracing.original_name"] = (
-        "sveltekit.tracing.original_name"
-    )
+    SVELTEKIT_TRACING_ORIGINAL_NAME = "sveltekit.tracing.original_name"
     """The original span name as emitted by SvelteKit.
 
     Type: str
@@ -11503,7 +11178,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/thread/thread__id.json
-    THREAD_ID: Literal["thread.id"] = "thread.id"
+    THREAD_ID = "thread.id"
     """Current “managed” thread ID.
 
     Type: int
@@ -11514,18 +11189,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/thread/thread__name.json
-    THREAD_NAME: Literal["thread.name"] = "thread.name"
+    THREAD_NAME = "thread.name"
     """Current thread name.
 
     Type: str
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
+    Aliases: sentry.thread.name
     Example: "main"
     """
 
     # Path: model/attributes/timber/timber__tag.json
-    TIMBER_TAG: Literal["timber.tag"] = "timber.tag"
+    TIMBER_TAG = "timber.tag"
     """The log tag provided by the timber logging framework.
 
     Type: str
@@ -11536,7 +11212,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/time_to_full_display.json
-    TIME_TO_FULL_DISPLAY: Literal["time_to_full_display"] = "time_to_full_display"
+    TIME_TO_FULL_DISPLAY = "time_to_full_display"
     """The duration of time to full display in milliseconds
 
     Type: float
@@ -11549,9 +11225,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/time_to_initial_display.json
-    TIME_TO_INITIAL_DISPLAY: Literal["time_to_initial_display"] = (
-        "time_to_initial_display"
-    )
+    TIME_TO_INITIAL_DISPLAY = "time_to_initial_display"
     """The duration of time to initial display in milliseconds
 
     Type: float
@@ -11564,7 +11238,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/tls/tls__protocol__name.json
-    TLS_PROTOCOL_NAME: Literal["tls.protocol.name"] = "tls.protocol.name"
+    TLS_PROTOCOL_NAME = "tls.protocol.name"
     """Normalized lowercase protocol name parsed from the negotiated SSL/TLS protocol version
 
     Type: str
@@ -11576,7 +11250,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/tls/tls__protocol__version.json
-    TLS_PROTOCOL_VERSION: Literal["tls.protocol.version"] = "tls.protocol.version"
+    TLS_PROTOCOL_VERSION = "tls.protocol.version"
     """Numeric part of the version parsed from the negotiated SSL/TLS protocol version
 
     Type: str
@@ -11589,7 +11263,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/transaction.json
-    TRANSACTION: Literal["transaction"] = "transaction"
+    TRANSACTION = "transaction"
     """The sentry transaction (segment name).
 
     Type: str
@@ -11602,7 +11276,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/trpc/trpc__procedure_path.json
-    TRPC_PROCEDURE_PATH: Literal["trpc.procedure_path"] = "trpc.procedure_path"
+    TRPC_PROCEDURE_PATH = "trpc.procedure_path"
     """The path of the tRPC procedure being called
 
     Type: str
@@ -11613,7 +11287,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/trpc/trpc__procedure_type.json
-    TRPC_PROCEDURE_TYPE: Literal["trpc.procedure_type"] = "trpc.procedure_type"
+    TRPC_PROCEDURE_TYPE = "trpc.procedure_type"
     """The type of the tRPC procedure
 
     Type: str
@@ -11624,7 +11298,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/ttfb/ttfb__requestTime.json
-    TTFB_REQUESTTIME: Literal["ttfb.requestTime"] = "ttfb.requestTime"
+    TTFB_REQUESTTIME = "ttfb.requestTime"
     """The time it takes for the server to process the initial request and send the first byte of a response to the user's browser
 
     Type: float
@@ -11637,7 +11311,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/ttfb.json
-    TTFB: Literal["ttfb"] = "ttfb"
+    TTFB = "ttfb"
     """The value of the recorded Time To First Byte (TTFB) web vital in milliseconds
 
     Type: float
@@ -11650,7 +11324,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/turbo_module/turbo_module__arch.json
-    TURBO_MODULE_ARCH: Literal["turbo_module.arch"] = "turbo_module.arch"
+    TURBO_MODULE_ARCH = "turbo_module.arch"
     """The React Native architecture the call was observed on. `new` for a TurboModule resolved through `TurboModuleRegistry`, `legacy` for a module reached over the Old Architecture bridge. Only applies to React Native.
 
     Type: str
@@ -11664,7 +11338,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/turbo_module/turbo_module__method.json
-    TURBO_MODULE_METHOD: Literal["turbo_module.method"] = "turbo_module.method"
+    TURBO_MODULE_METHOD = "turbo_module.method"
     """The name of the native module method that was called. Only applies to React Native.
 
     Type: str
@@ -11677,7 +11351,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/turbo_module/turbo_module__name.json
-    TURBO_MODULE_NAME: Literal["turbo_module.name"] = "turbo_module.name"
+    TURBO_MODULE_NAME = "turbo_module.name"
     """The name of the native module the call was dispatched to. On the New Architecture this is the TurboModule name, on the Old Architecture the `NativeModules` key. Only applies to React Native.
 
     Type: str
@@ -11690,9 +11364,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/turbo_module/turbo_module__top_module.json
-    TURBO_MODULE_TOP_MODULE: Literal["turbo_module.top_module"] = (
-        "turbo_module.top_module"
-    )
+    TURBO_MODULE_TOP_MODULE = "turbo_module.top_module"
     """The native module and method that accounted for the most total duration during the lifetime of the span. Only applies to React Native.
 
     Type: str
@@ -11705,9 +11377,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/turbo_module/turbo_module__top_module_duration_ms.json
-    TURBO_MODULE_TOP_MODULE_DURATION_MS: Literal[
-        "turbo_module.top_module_duration_ms"
-    ] = "turbo_module.top_module_duration_ms"
+    TURBO_MODULE_TOP_MODULE_DURATION_MS = "turbo_module.top_module_duration_ms"
     """The total duration attributed to the top native module method, in milliseconds. Only applies to React Native.
 
     Type: float
@@ -11720,9 +11390,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/turbo_module/turbo_module__total_call_count.json
-    TURBO_MODULE_TOTAL_CALL_COUNT: Literal["turbo_module.total_call_count"] = (
-        "turbo_module.total_call_count"
-    )
+    TURBO_MODULE_TOTAL_CALL_COUNT = "turbo_module.total_call_count"
     """The number of native module calls observed during the lifetime of the span. Only applies to React Native.
 
     Type: int
@@ -11735,9 +11403,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/turbo_module/turbo_module__total_duration_ms.json
-    TURBO_MODULE_TOTAL_DURATION_MS: Literal["turbo_module.total_duration_ms"] = (
-        "turbo_module.total_duration_ms"
-    )
+    TURBO_MODULE_TOTAL_DURATION_MS = "turbo_module.total_duration_ms"
     """The combined duration of all native module calls observed during the lifetime of the span, in milliseconds. Only applies to React Native.
 
     Type: float
@@ -11750,9 +11416,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/turbo_module/turbo_module__total_error_count.json
-    TURBO_MODULE_TOTAL_ERROR_COUNT: Literal["turbo_module.total_error_count"] = (
-        "turbo_module.total_error_count"
-    )
+    TURBO_MODULE_TOTAL_ERROR_COUNT = "turbo_module.total_error_count"
     """The number of native module calls that failed during the lifetime of the span. Only applies to React Native.
 
     Type: int
@@ -11765,9 +11429,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/turbo_module/turbo_module__unique_methods.json
-    TURBO_MODULE_UNIQUE_METHODS: Literal["turbo_module.unique_methods"] = (
-        "turbo_module.unique_methods"
-    )
+    TURBO_MODULE_UNIQUE_METHODS = "turbo_module.unique_methods"
     """The number of distinct native module and method pairs called during the lifetime of the span. Only applies to React Native.
 
     Type: int
@@ -11780,9 +11442,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/turbo_modules/turbo_modules__total_call_count.json
-    TURBO_MODULES_TOTAL_CALL_COUNT: Literal["turbo_modules.total_call_count"] = (
-        "turbo_modules.total_call_count"
-    )
+    TURBO_MODULES_TOTAL_CALL_COUNT = "turbo_modules.total_call_count"
     """The number of native module calls in the flushed call aggregate. Only applies to React Native.
 
     Type: int
@@ -11795,9 +11455,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/turbo_modules/turbo_modules__total_duration_ms.json
-    TURBO_MODULES_TOTAL_DURATION_MS: Literal["turbo_modules.total_duration_ms"] = (
-        "turbo_modules.total_duration_ms"
-    )
+    TURBO_MODULES_TOTAL_DURATION_MS = "turbo_modules.total_duration_ms"
     """The combined duration of all native module calls in the flushed call aggregate, in milliseconds. Only applies to React Native.
 
     Type: float
@@ -11810,9 +11468,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/turbo_modules/turbo_modules__total_error_count.json
-    TURBO_MODULES_TOTAL_ERROR_COUNT: Literal["turbo_modules.total_error_count"] = (
-        "turbo_modules.total_error_count"
-    )
+    TURBO_MODULES_TOTAL_ERROR_COUNT = "turbo_modules.total_error_count"
     """The number of failed native module calls in the flushed call aggregate. Only applies to React Native.
 
     Type: int
@@ -11825,9 +11481,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/turbo_modules/turbo_modules__unique_methods.json
-    TURBO_MODULES_UNIQUE_METHODS: Literal["turbo_modules.unique_methods"] = (
-        "turbo_modules.unique_methods"
-    )
+    TURBO_MODULES_UNIQUE_METHODS = "turbo_modules.unique_methods"
     """The number of distinct native module and method pairs in the flushed call aggregate. Only applies to React Native.
 
     Type: int
@@ -11840,7 +11494,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/type.json
-    TYPE: Literal["type"] = "type"
+    TYPE = "type"
     """More granular type of the operation happening.
 
     Type: str
@@ -11851,7 +11505,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/ui/ui__component_name.json
-    UI_COMPONENT_NAME: Literal["ui.component_name"] = "ui.component_name"
+    UI_COMPONENT_NAME = "ui.component_name"
     """The name of the associated component.
 
     Type: str
@@ -11862,7 +11516,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/ui/ui__contributes_to_ttfd.json
-    UI_CONTRIBUTES_TO_TTFD: Literal["ui.contributes_to_ttfd"] = "ui.contributes_to_ttfd"
+    UI_CONTRIBUTES_TO_TTFD = "ui.contributes_to_ttfd"
     """Whether the span execution contributed to the TTFD (time to fully drawn) metric.
 
     Type: bool
@@ -11873,7 +11527,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/ui/ui__contributes_to_ttid.json
-    UI_CONTRIBUTES_TO_TTID: Literal["ui.contributes_to_ttid"] = "ui.contributes_to_ttid"
+    UI_CONTRIBUTES_TO_TTID = "ui.contributes_to_ttid"
     """Whether the span execution contributed to the TTID (time to initial display) metric.
 
     Type: bool
@@ -11884,7 +11538,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/ui/ui__element__height.json
-    UI_ELEMENT_HEIGHT: Literal["ui.element.height"] = "ui.element.height"
+    UI_ELEMENT_HEIGHT = "ui.element.height"
     """The height of the UI element (for Html in pixels)
 
     Type: int
@@ -11895,7 +11549,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/ui/ui__element__id.json
-    UI_ELEMENT_ID: Literal["ui.element.id"] = "ui.element.id"
+    UI_ELEMENT_ID = "ui.element.id"
     """The id of the UI element
 
     Type: str
@@ -11906,7 +11560,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/ui/ui__element__identifier.json
-    UI_ELEMENT_IDENTIFIER: Literal["ui.element.identifier"] = "ui.element.identifier"
+    UI_ELEMENT_IDENTIFIER = "ui.element.identifier"
     """The identifier used to measure the UI element timing
 
     Type: str
@@ -11917,7 +11571,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/ui/ui__element__load_time.json
-    UI_ELEMENT_LOAD_TIME: Literal["ui.element.load_time"] = "ui.element.load_time"
+    UI_ELEMENT_LOAD_TIME = "ui.element.load_time"
     """The loading time of a UI element (from time origin to finished loading)
 
     Type: float
@@ -11928,7 +11582,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/ui/ui__element__paint_type.json
-    UI_ELEMENT_PAINT_TYPE: Literal["ui.element.paint_type"] = "ui.element.paint_type"
+    UI_ELEMENT_PAINT_TYPE = "ui.element.paint_type"
     """The type of element paint. Can either be 'image-paint' or 'text-paint'
 
     Type: str
@@ -11939,7 +11593,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/ui/ui__element__render_time.json
-    UI_ELEMENT_RENDER_TIME: Literal["ui.element.render_time"] = "ui.element.render_time"
+    UI_ELEMENT_RENDER_TIME = "ui.element.render_time"
     """The rendering time of the UI element (from time origin to finished rendering)
 
     Type: float
@@ -11950,7 +11604,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/ui/ui__element__type.json
-    UI_ELEMENT_TYPE: Literal["ui.element.type"] = "ui.element.type"
+    UI_ELEMENT_TYPE = "ui.element.type"
     """type of the UI element
 
     Type: str
@@ -11961,7 +11615,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/ui/ui__element__url.json
-    UI_ELEMENT_URL: Literal["ui.element.url"] = "ui.element.url"
+    UI_ELEMENT_URL = "ui.element.url"
     """The URL of the UI element (e.g. an img src)
 
     Type: str
@@ -11972,7 +11626,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/ui/ui__element__width.json
-    UI_ELEMENT_WIDTH: Literal["ui.element.width"] = "ui.element.width"
+    UI_ELEMENT_WIDTH = "ui.element.width"
     """The width of the UI element (for HTML in pixels)
 
     Type: int
@@ -11983,7 +11637,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/url/url__domain.json
-    URL_DOMAIN: Literal["url.domain"] = "url.domain"
+    URL_DOMAIN = "url.domain"
     """Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.
 
     Type: str
@@ -11994,7 +11648,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/url/url__fragment.json
-    URL_FRAGMENT: Literal["url.fragment"] = "url.fragment"
+    URL_FRAGMENT = "url.fragment"
     """The fragments present in the URI. Note that this does not contain the leading # character, while the `http.fragment` attribute does.
 
     Type: str
@@ -12005,19 +11659,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/url/url__full.json
-    URL_FULL: Literal["url.full"] = "url.full"
+    URL_FULL = "url.full"
     """The URL of the resource that was fetched.
 
     Type: str
     Apply Scrubbing: auto
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: http.url, url, aws.request.url, messaging.url
+    Aliases: http.url, url, aws.request.url, messaging.url, sentry.request.url
     Example: "https://example.com/test?foo=bar#buzz"
     """
 
     # Path: model/attributes/url/url__path.json
-    URL_PATH: Literal["url.path"] = "url.path"
+    URL_PATH = "url.path"
     """The URI path component.
 
     Type: str
@@ -12028,9 +11682,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/url/url__path__parameter__[key].json
-    URL_PATH_PARAMETER_KEY: Literal["url.path.parameter.<key>"] = (
-        "url.path.parameter.<key>"
-    )
+    URL_PATH_PARAMETER_KEY = "url.path.parameter.<key>"
     """Decoded parameters extracted from a URL path. Usually added by client-side routing frameworks like vue-router.
 
     Type: str
@@ -12043,7 +11695,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/url/url__path__params__[key].json
-    URL_PATH_PARAMS_KEY: Literal["url.path.params.<key>"] = "url.path.params.<key>"
+    URL_PATH_PARAMS_KEY = "url.path.params.<key>"
     """Decoded parameters extracted from a URL path. Usually added by client-side routing frameworks like vue-router.
 
     Type: str
@@ -12057,7 +11709,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/url/url__port.json
-    URL_PORT: Literal["url.port"] = "url.port"
+    URL_PORT = "url.port"
     """Server port number.
 
     Type: int
@@ -12068,7 +11720,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/url/url__query.json
-    URL_QUERY: Literal["url.query"] = "url.query"
+    URL_QUERY = "url.query"
     """The query string present in the URL. Note that this does not contain the leading ? character, while the `http.query` attribute does.
 
     Type: str
@@ -12079,7 +11731,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/url/url__same_origin.json
-    URL_SAME_ORIGIN: Literal["url.same_origin"] = "url.same_origin"
+    URL_SAME_ORIGIN = "url.same_origin"
     """Indicates that a URL has the same origin as the current page's origin in the browser.
 
     Type: bool
@@ -12092,7 +11744,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/url/url__scheme.json
-    URL_SCHEME: Literal["url.scheme"] = "url.scheme"
+    URL_SCHEME = "url.scheme"
     """The URI scheme component identifying the used protocol.
 
     Type: str
@@ -12104,7 +11756,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/url/url__template.json
-    URL_TEMPLATE: Literal["url.template"] = "url.template"
+    URL_TEMPLATE = "url.template"
     """The low-cardinality template of an absolute URL path reference.
 
     Type: str
@@ -12117,20 +11769,20 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/url.json
-    URL: Literal["url"] = "url"
+    URL = "url"
     """The URL of the resource that was fetched.
 
     Type: str
     Apply Scrubbing: auto
     Defined in OTEL: No
     Visibility: public
-    Aliases: url.full, http.url, aws.request.url, messaging.url
+    Aliases: url.full, http.url, aws.request.url, messaging.url, sentry.request.url
     DEPRECATED: Use url.full instead
     Example: "https://example.com/test?foo=bar#buzz"
     """
 
     # Path: model/attributes/user/user__email.json
-    USER_EMAIL: Literal["user.email"] = "user.email"
+    USER_EMAIL = "user.email"
     """User email address.
 
     Type: str
@@ -12142,7 +11794,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/user/user__full_name.json
-    USER_FULL_NAME: Literal["user.full_name"] = "user.full_name"
+    USER_FULL_NAME = "user.full_name"
     """User's full name.
 
     Type: str
@@ -12153,7 +11805,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/user/user__geo__city.json
-    USER_GEO_CITY: Literal["user.geo.city"] = "user.geo.city"
+    USER_GEO_CITY = "user.geo.city"
     """Human readable city name.
 
     Type: str
@@ -12165,7 +11817,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/user/user__geo__country_code.json
-    USER_GEO_COUNTRY_CODE: Literal["user.geo.country_code"] = "user.geo.country_code"
+    USER_GEO_COUNTRY_CODE = "user.geo.country_code"
     """Two-letter country code (ISO 3166-1 alpha-2).
 
     Type: str
@@ -12177,7 +11829,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/user/user__geo__region.json
-    USER_GEO_REGION: Literal["user.geo.region"] = "user.geo.region"
+    USER_GEO_REGION = "user.geo.region"
     """Human readable region name or code.
 
     Type: str
@@ -12189,7 +11841,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/user/user__geo__subdivision.json
-    USER_GEO_SUBDIVISION: Literal["user.geo.subdivision"] = "user.geo.subdivision"
+    USER_GEO_SUBDIVISION = "user.geo.subdivision"
     """Human readable subdivision name.
 
     Type: str
@@ -12201,7 +11853,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/user/user__geo__subregion.json
-    USER_GEO_SUBREGION: Literal["user.geo.subregion"] = "user.geo.subregion"
+    USER_GEO_SUBREGION = "user.geo.subregion"
     """UN M49 subregion code of the user's location, derived from user.geo.country_code. Sub-Saharan Africa and Latin America and the Caribbean are split into their M49 intermediate regions.
 
     Type: str
@@ -12237,7 +11889,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/user/user__hash.json
-    USER_HASH: Literal["user.hash"] = "user.hash"
+    USER_HASH = "user.hash"
     """Unique user hash to correlate information for a user in anonymized form.
 
     Type: str
@@ -12248,7 +11900,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/user/user__id.json
-    USER_ID: Literal["user.id"] = "user.id"
+    USER_ID = "user.id"
     """Unique identifier of the user.
 
     Type: str
@@ -12260,7 +11912,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/user/user__ip_address.json
-    USER_IP_ADDRESS: Literal["user.ip_address"] = "user.ip_address"
+    USER_IP_ADDRESS = "user.ip_address"
     """The IP address of the user.
 
     Type: str
@@ -12272,7 +11924,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/user/user__name.json
-    USER_NAME: Literal["user.name"] = "user.name"
+    USER_NAME = "user.name"
     """Short name or login/username of the user.
 
     Type: str
@@ -12284,7 +11936,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/user/user__roles.json
-    USER_ROLES: Literal["user.roles"] = "user.roles"
+    USER_ROLES = "user.roles"
     """Array of user roles at the time of the event.
 
     Type: List[str]
@@ -12295,7 +11947,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/user_agent/user_agent__original.json
-    USER_AGENT_ORIGINAL: Literal["user_agent.original"] = "user_agent.original"
+    USER_AGENT_ORIGINAL = "user_agent.original"
     """Value of the HTTP User-Agent header sent by the client.
 
     Type: str
@@ -12307,9 +11959,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/vercel/vercel__ai__settings__context__[key].json
-    VERCEL_AI_SETTINGS_CONTEXT_KEY: Literal["vercel.ai.settings.context.<key>"] = (
-        "vercel.ai.settings.context.<key>"
-    )
+    VERCEL_AI_SETTINGS_CONTEXT_KEY = "vercel.ai.settings.context.<key>"
     """A runtime context property of a Vercel AI SDK call that the app included in telemetry through `telemetry.includeRuntimeContext`, with <key> being the top-level context property name.
 
     Type: str
@@ -12321,9 +11971,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/vercel/vercel__ai__telemetry__metadata__[key].json
-    VERCEL_AI_TELEMETRY_METADATA_KEY: Literal["vercel.ai.telemetry.metadata.<key>"] = (
-        "vercel.ai.telemetry.metadata.<key>"
-    )
+    VERCEL_AI_TELEMETRY_METADATA_KEY = "vercel.ai.telemetry.metadata.<key>"
     """Metadata passed to a Vercel AI SDK call through `experimental_telemetry.metadata`, with <key> being the metadata key name.
 
     Type: str
@@ -12335,9 +11983,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/vercel/vercel__ai__tool_call__context__[key].json
-    VERCEL_AI_TOOL_CALL_CONTEXT_KEY: Literal["vercel.ai.tool_call.context.<key>"] = (
-        "vercel.ai.tool_call.context.<key>"
-    )
+    VERCEL_AI_TOOL_CALL_CONTEXT_KEY = "vercel.ai.tool_call.context.<key>"
     """A tool context property of a Vercel AI SDK tool call that the app included in telemetry through `telemetry.includeToolsContext`, with <key> being the top-level context property name.
 
     Type: str
@@ -12349,7 +11995,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/vercel/vercel__branch.json
-    VERCEL_BRANCH: Literal["vercel.branch"] = "vercel.branch"
+    VERCEL_BRANCH = "vercel.branch"
     """Git branch name for Vercel project
 
     Type: str
@@ -12360,7 +12006,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/vercel/vercel__build_id.json
-    VERCEL_BUILD_ID: Literal["vercel.build_id"] = "vercel.build_id"
+    VERCEL_BUILD_ID = "vercel.build_id"
     """Identifier for the Vercel build (only present on build logs)
 
     Type: str
@@ -12371,7 +12017,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/vercel/vercel__deployment_id.json
-    VERCEL_DEPLOYMENT_ID: Literal["vercel.deployment_id"] = "vercel.deployment_id"
+    VERCEL_DEPLOYMENT_ID = "vercel.deployment_id"
     """Identifier for the Vercel deployment
 
     Type: str
@@ -12382,7 +12028,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/vercel/vercel__destination.json
-    VERCEL_DESTINATION: Literal["vercel.destination"] = "vercel.destination"
+    VERCEL_DESTINATION = "vercel.destination"
     """Origin of the external content in Vercel (only on external logs)
 
     Type: str
@@ -12393,7 +12039,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/vercel/vercel__edge_type.json
-    VERCEL_EDGE_TYPE: Literal["vercel.edge_type"] = "vercel.edge_type"
+    VERCEL_EDGE_TYPE = "vercel.edge_type"
     """Type of edge runtime in Vercel
 
     Type: str
@@ -12404,7 +12050,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/vercel/vercel__entrypoint.json
-    VERCEL_ENTRYPOINT: Literal["vercel.entrypoint"] = "vercel.entrypoint"
+    VERCEL_ENTRYPOINT = "vercel.entrypoint"
     """Entrypoint for the request in Vercel
 
     Type: str
@@ -12415,9 +12061,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/vercel/vercel__execution_region.json
-    VERCEL_EXECUTION_REGION: Literal["vercel.execution_region"] = (
-        "vercel.execution_region"
-    )
+    VERCEL_EXECUTION_REGION = "vercel.execution_region"
     """Region where the request is executed
 
     Type: str
@@ -12428,7 +12072,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/vercel/vercel__id.json
-    VERCEL_ID: Literal["vercel.id"] = "vercel.id"
+    VERCEL_ID = "vercel.id"
     """Unique identifier for the log entry in Vercel
 
     Type: str
@@ -12439,7 +12083,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/vercel/vercel__ja3_digest.json
-    VERCEL_JA3_DIGEST: Literal["vercel.ja3_digest"] = "vercel.ja3_digest"
+    VERCEL_JA3_DIGEST = "vercel.ja3_digest"
     """JA3 fingerprint digest of Vercel request
 
     Type: str
@@ -12450,7 +12094,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/vercel/vercel__ja4_digest.json
-    VERCEL_JA4_DIGEST: Literal["vercel.ja4_digest"] = "vercel.ja4_digest"
+    VERCEL_JA4_DIGEST = "vercel.ja4_digest"
     """JA4 fingerprint digest
 
     Type: str
@@ -12461,7 +12105,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/vercel/vercel__log_type.json
-    VERCEL_LOG_TYPE: Literal["vercel.log_type"] = "vercel.log_type"
+    VERCEL_LOG_TYPE = "vercel.log_type"
     """Vercel log output type
 
     Type: str
@@ -12472,7 +12116,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/vercel/vercel__path.json
-    VERCEL_PATH: Literal["vercel.path"] = "vercel.path"
+    VERCEL_PATH = "vercel.path"
     """Function or dynamic path of the request in Vercel.
 
     Type: str
@@ -12483,7 +12127,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/vercel/vercel__project_id.json
-    VERCEL_PROJECT_ID: Literal["vercel.project_id"] = "vercel.project_id"
+    VERCEL_PROJECT_ID = "vercel.project_id"
     """Identifier for the Vercel project
 
     Type: str
@@ -12494,7 +12138,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/vercel/vercel__project_name.json
-    VERCEL_PROJECT_NAME: Literal["vercel.project_name"] = "vercel.project_name"
+    VERCEL_PROJECT_NAME = "vercel.project_name"
     """Name of the Vercel project
 
     Type: str
@@ -12505,7 +12149,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/vercel/vercel__proxy__cache_id.json
-    VERCEL_PROXY_CACHE_ID: Literal["vercel.proxy.cache_id"] = "vercel.proxy.cache_id"
+    VERCEL_PROXY_CACHE_ID = "vercel.proxy.cache_id"
     """Original request ID when request is served from cache
 
     Type: str
@@ -12516,7 +12160,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/vercel/vercel__proxy__client_ip.json
-    VERCEL_PROXY_CLIENT_IP: Literal["vercel.proxy.client_ip"] = "vercel.proxy.client_ip"
+    VERCEL_PROXY_CLIENT_IP = "vercel.proxy.client_ip"
     """Client IP address
 
     Type: str
@@ -12527,7 +12171,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/vercel/vercel__proxy__host.json
-    VERCEL_PROXY_HOST: Literal["vercel.proxy.host"] = "vercel.proxy.host"
+    VERCEL_PROXY_HOST = "vercel.proxy.host"
     """Hostname of the request
 
     Type: str
@@ -12538,9 +12182,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/vercel/vercel__proxy__lambda_region.json
-    VERCEL_PROXY_LAMBDA_REGION: Literal["vercel.proxy.lambda_region"] = (
-        "vercel.proxy.lambda_region"
-    )
+    VERCEL_PROXY_LAMBDA_REGION = "vercel.proxy.lambda_region"
     """Region where lambda function executed
 
     Type: str
@@ -12551,7 +12193,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/vercel/vercel__proxy__method.json
-    VERCEL_PROXY_METHOD: Literal["vercel.proxy.method"] = "vercel.proxy.method"
+    VERCEL_PROXY_METHOD = "vercel.proxy.method"
     """HTTP method of the request
 
     Type: str
@@ -12562,7 +12204,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/vercel/vercel__proxy__path.json
-    VERCEL_PROXY_PATH: Literal["vercel.proxy.path"] = "vercel.proxy.path"
+    VERCEL_PROXY_PATH = "vercel.proxy.path"
     """Request path with query parameters
 
     Type: str
@@ -12573,7 +12215,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/vercel/vercel__proxy__path_type.json
-    VERCEL_PROXY_PATH_TYPE: Literal["vercel.proxy.path_type"] = "vercel.proxy.path_type"
+    VERCEL_PROXY_PATH_TYPE = "vercel.proxy.path_type"
     """How the request was served based on its path and project configuration
 
     Type: str
@@ -12584,9 +12226,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/vercel/vercel__proxy__path_type_variant.json
-    VERCEL_PROXY_PATH_TYPE_VARIANT: Literal["vercel.proxy.path_type_variant"] = (
-        "vercel.proxy.path_type_variant"
-    )
+    VERCEL_PROXY_PATH_TYPE_VARIANT = "vercel.proxy.path_type_variant"
     """Variant of the path type
 
     Type: str
@@ -12597,7 +12237,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/vercel/vercel__proxy__referer.json
-    VERCEL_PROXY_REFERER: Literal["vercel.proxy.referer"] = "vercel.proxy.referer"
+    VERCEL_PROXY_REFERER = "vercel.proxy.referer"
     """Referer of the request
 
     Type: str
@@ -12608,7 +12248,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/vercel/vercel__proxy__region.json
-    VERCEL_PROXY_REGION: Literal["vercel.proxy.region"] = "vercel.proxy.region"
+    VERCEL_PROXY_REGION = "vercel.proxy.region"
     """Region where the request is processed
 
     Type: str
@@ -12619,9 +12259,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/vercel/vercel__proxy__response_byte_size.json
-    VERCEL_PROXY_RESPONSE_BYTE_SIZE: Literal["vercel.proxy.response_byte_size"] = (
-        "vercel.proxy.response_byte_size"
-    )
+    VERCEL_PROXY_RESPONSE_BYTE_SIZE = "vercel.proxy.response_byte_size"
     """Size of the response in bytes
 
     Type: int
@@ -12632,7 +12270,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/vercel/vercel__proxy__scheme.json
-    VERCEL_PROXY_SCHEME: Literal["vercel.proxy.scheme"] = "vercel.proxy.scheme"
+    VERCEL_PROXY_SCHEME = "vercel.proxy.scheme"
     """Protocol of the request
 
     Type: str
@@ -12643,9 +12281,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/vercel/vercel__proxy__status_code.json
-    VERCEL_PROXY_STATUS_CODE: Literal["vercel.proxy.status_code"] = (
-        "vercel.proxy.status_code"
-    )
+    VERCEL_PROXY_STATUS_CODE = "vercel.proxy.status_code"
     """HTTP status code of the proxy request
 
     Type: int
@@ -12656,7 +12292,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/vercel/vercel__proxy__timestamp.json
-    VERCEL_PROXY_TIMESTAMP: Literal["vercel.proxy.timestamp"] = "vercel.proxy.timestamp"
+    VERCEL_PROXY_TIMESTAMP = "vercel.proxy.timestamp"
     """Unix timestamp when the proxy request was made
 
     Type: int
@@ -12667,9 +12303,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/vercel/vercel__proxy__user_agent.json
-    VERCEL_PROXY_USER_AGENT: Literal["vercel.proxy.user_agent"] = (
-        "vercel.proxy.user_agent"
-    )
+    VERCEL_PROXY_USER_AGENT = "vercel.proxy.user_agent"
     """User agent strings of the request
 
     Type: List[str]
@@ -12680,9 +12314,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/vercel/vercel__proxy__vercel_cache.json
-    VERCEL_PROXY_VERCEL_CACHE: Literal["vercel.proxy.vercel_cache"] = (
-        "vercel.proxy.vercel_cache"
-    )
+    VERCEL_PROXY_VERCEL_CACHE = "vercel.proxy.vercel_cache"
     """Cache status sent to the browser
 
     Type: str
@@ -12693,7 +12325,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/vercel/vercel__proxy__vercel_id.json
-    VERCEL_PROXY_VERCEL_ID: Literal["vercel.proxy.vercel_id"] = "vercel.proxy.vercel_id"
+    VERCEL_PROXY_VERCEL_ID = "vercel.proxy.vercel_id"
     """Vercel-specific identifier
 
     Type: str
@@ -12704,9 +12336,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/vercel/vercel__proxy__waf_action.json
-    VERCEL_PROXY_WAF_ACTION: Literal["vercel.proxy.waf_action"] = (
-        "vercel.proxy.waf_action"
-    )
+    VERCEL_PROXY_WAF_ACTION = "vercel.proxy.waf_action"
     """Action taken by firewall rules
 
     Type: str
@@ -12717,9 +12347,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/vercel/vercel__proxy__waf_rule_id.json
-    VERCEL_PROXY_WAF_RULE_ID: Literal["vercel.proxy.waf_rule_id"] = (
-        "vercel.proxy.waf_rule_id"
-    )
+    VERCEL_PROXY_WAF_RULE_ID = "vercel.proxy.waf_rule_id"
     """ID of the firewall rule that matched
 
     Type: str
@@ -12730,7 +12358,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/vercel/vercel__request_id.json
-    VERCEL_REQUEST_ID: Literal["vercel.request_id"] = "vercel.request_id"
+    VERCEL_REQUEST_ID = "vercel.request_id"
     """Identifier of the Vercel request
 
     Type: str
@@ -12741,7 +12369,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/vercel/vercel__source.json
-    VERCEL_SOURCE: Literal["vercel.source"] = "vercel.source"
+    VERCEL_SOURCE = "vercel.source"
     """Origin of the Vercel log (build, edge, lambda, static, external, or firewall)
 
     Type: str
@@ -12752,7 +12380,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/vercel/vercel__status_code.json
-    VERCEL_STATUS_CODE: Literal["vercel.status_code"] = "vercel.status_code"
+    VERCEL_STATUS_CODE = "vercel.status_code"
     """HTTP status code of the request (-1 means no response returned and the lambda crashed)
 
     Type: int
@@ -14146,7 +13774,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["frames.delay"],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added search_alias with type second"
+                version="0.35.0",
+                prs=[815],
+                description="Added search_alias with type second",
             ),
             ChangelogEntry(
                 version="0.5.0",
@@ -14197,7 +13827,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["frames_frozen_rate"],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added search_alias with type percentage"
+                version="0.35.0",
+                prs=[815],
+                description="Added search_alias with type percentage",
             ),
             ChangelogEntry(
                 version="0.19.0",
@@ -14250,7 +13882,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["frames_slow_rate"],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added search_alias with type percentage"
+                version="0.35.0",
+                prs=[815],
+                description="Added search_alias with type percentage",
             ),
             ChangelogEntry(
                 version="0.19.0",
@@ -14321,7 +13955,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["stall_percentage"],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added search_alias with type percentage"
+                version="0.35.0",
+                prs=[815],
+                description="Added search_alias with type percentage",
             ),
             ChangelogEntry(
                 version="0.19.0",
@@ -14345,7 +13981,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["app_start_cold"],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added search_alias with type millisecond"
+                version="0.35.0",
+                prs=[815],
+                description="Added search_alias with type millisecond",
             ),
             ChangelogEntry(
                 version="0.5.0",
@@ -14439,7 +14077,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["app_start_warm"],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added search_alias with type millisecond"
+                version="0.35.0",
+                prs=[815],
+                description="Added search_alias with type millisecond",
             ),
             ChangelogEntry(
                 version="0.5.0",
@@ -14465,7 +14105,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["time_to_full_display"],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added search_alias with type millisecond"
+                version="0.35.0",
+                prs=[815],
+                description="Added search_alias with type millisecond",
             ),
             ChangelogEntry(
                 version="0.5.0",
@@ -14489,7 +14131,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["time_to_initial_display"],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added search_alias with type millisecond"
+                version="0.35.0",
+                prs=[815],
+                description="Added search_alias with type millisecond",
             ),
             ChangelogEntry(
                 version="0.5.0",
@@ -15587,6 +15231,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "aws.request.url",
             "http.url",
             "messaging.url",
+            "sentry.request.url",
             "url",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
@@ -15598,8 +15243,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             reason="This attribute is being deprecated in favor of url.full, which is the OTel-aligned replacement.",
             status=DeprecationStatus.BACKFILL,
         ),
-        aliases=["url.full", "http.url", "url", "messaging.url"],
+        aliases=["url.full", "http.url", "url", "messaging.url", "sentry.request.url"],
         changelog=[
+            ChangelogEntry(
+                version="0.35.0",
+                prs=[807],
+                description="Added sentry.request.url as an alias",
+            ),
             ChangelogEntry(
                 version="0.21.0",
                 prs=[581],
@@ -16308,7 +15958,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["fcp"],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added search_alias with type millisecond"
+                version="0.35.0",
+                prs=[815],
+                description="Added search_alias with type millisecond",
             ),
             ChangelogEntry(version="0.5.0", prs=[235]),
         ],
@@ -16330,7 +15982,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["fp"],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added search_alias with type millisecond"
+                version="0.35.0",
+                prs=[815],
+                description="Added search_alias with type millisecond",
             ),
             ChangelogEntry(version="0.5.0", prs=[235]),
         ],
@@ -16459,7 +16113,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["inp"],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added search_alias with type millisecond"
+                version="0.35.0",
+                prs=[815],
+                description="Added search_alias with type millisecond",
             ),
             ChangelogEntry(
                 version="0.5.0",
@@ -16671,7 +16327,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["lcp"],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added search_alias with type millisecond"
+                version="0.35.0",
+                prs=[815],
+                description="Added search_alias with type millisecond",
             ),
             ChangelogEntry(
                 version="0.5.0",
@@ -16713,7 +16371,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["ttfb"],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added search_alias with type millisecond"
+                version="0.35.0",
+                prs=[815],
+                description="Added search_alias with type millisecond",
             ),
             ChangelogEntry(version="0.5.0", prs=[235]),
         ],
@@ -16878,6 +16538,39 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[106, 127]),
             ChangelogEntry(version="0.0.0"),
+        ],
+    ),
+    "client.as.number": AttributeMetadata(
+        brief="Autonomous system number (ASN) associated with the client IP address.",
+        type=AttributeType.INTEGER,
+        keys=("client.as.number",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example=64496,
+        examples=[64496],
+        changelog=[
+            ChangelogEntry(
+                version="next", description="Added client.as.number attribute"
+            ),
+        ],
+    ),
+    "client.as.organization": AttributeMetadata(
+        brief="The name of the organization associated with the autonomous system of the client IP address.",
+        type=AttributeType.STRING,
+        keys=("client.as.organization",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example="Example Networks Inc.",
+        examples=["Example Networks Inc."],
+        changelog=[
+            ChangelogEntry(
+                version="next", description="Added client.as.organization attribute"
+            ),
+        ],
+        additional_context=[
+            "The value is the lookup source's organization name for the ASN in client.as.number."
         ],
     ),
     "client.port": AttributeMetadata(
@@ -18074,12 +17767,21 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.battery_level": AttributeMetadata(
         brief="The battery level of the device as a percentage (0-100).",
         type=AttributeType.DOUBLE,
-        keys=("device.battery_level",),
+        keys=(
+            "device.battery_level",
+            "sentry.device.battery_level",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=100,
+        aliases=["sentry.device.battery_level"],
         changelog=[
+            ChangelogEntry(
+                version="0.35.0",
+                prs=[804],
+                description="Added sentry.device.battery_level as an alias",
+            ),
             ChangelogEntry(
                 version="0.5.0",
                 prs=[303],
@@ -18122,24 +17824,42 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.brand": AttributeMetadata(
         brief="The brand of the device.",
         type=AttributeType.STRING,
-        keys=("device.brand",),
+        keys=(
+            "device.brand",
+            "sentry.device.brand",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="Apple",
+        aliases=["sentry.device.brand"],
         changelog=[
+            ChangelogEntry(
+                version="0.35.0",
+                prs=[804],
+                description="Added sentry.device.brand as an alias",
+            ),
             ChangelogEntry(version="0.1.0", prs=[116, 127]),
         ],
     ),
     "device.charging": AttributeMetadata(
         brief="Whether the device was charging or not.",
         type=AttributeType.BOOLEAN,
-        keys=("device.charging",),
+        keys=(
+            "device.charging",
+            "sentry.device.charging",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=False,
+        aliases=["sentry.device.charging"],
         changelog=[
+            ChangelogEntry(
+                version="0.35.0",
+                prs=[804],
+                description="Added sentry.device.charging as an alias",
+            ),
             ChangelogEntry(
                 version="0.5.0",
                 prs=[303],
@@ -18164,12 +17884,21 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.class": AttributeMetadata(
         brief="The classification of the device. For example, `low`, `medium`, or `high`. Typically inferred by Relay - SDKs generally do not need to set this directly.",
         type=AttributeType.STRING,
-        keys=("device.class",),
+        keys=(
+            "device.class",
+            "sentry.device.class",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="medium",
+        aliases=["sentry.device.class"],
         changelog=[
+            ChangelogEntry(
+                version="0.35.0",
+                prs=[804],
+                description="Added sentry.device.class as an alias",
+            ),
             ChangelogEntry(
                 version="0.5.0", prs=[300], description="Added device.class attribute"
             ),
@@ -18252,12 +17981,21 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.family": AttributeMetadata(
         brief="The family of the device.",
         type=AttributeType.STRING,
-        keys=("device.family",),
+        keys=(
+            "device.family",
+            "sentry.device.family",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="iPhone",
+        aliases=["sentry.device.family"],
         changelog=[
+            ChangelogEntry(
+                version="0.35.0",
+                prs=[804],
+                description="Added sentry.device.family as an alias",
+            ),
             ChangelogEntry(version="0.1.0", prs=[116, 127]),
         ],
     ),
@@ -18310,12 +18048,21 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.locale": AttributeMetadata(
         brief="The locale of the device.",
         type=AttributeType.STRING,
-        keys=("device.locale",),
+        keys=(
+            "device.locale",
+            "sentry.device.locale",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="en-US",
+        aliases=["sentry.device.locale"],
         changelog=[
+            ChangelogEntry(
+                version="0.35.0",
+                prs=[804],
+                description="Added sentry.device.locale as an alias",
+            ),
             ChangelogEntry(
                 version="0.5.0", prs=[303], description="Added device.locale attribute"
             ),
@@ -18408,24 +18155,42 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.model": AttributeMetadata(
         brief="The model of the device.",
         type=AttributeType.STRING,
-        keys=("device.model",),
+        keys=(
+            "device.model",
+            "sentry.device.model",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="iPhone 15 Pro Max",
+        aliases=["sentry.device.model"],
         changelog=[
+            ChangelogEntry(
+                version="0.35.0",
+                prs=[804],
+                description="Added sentry.device.model as an alias",
+            ),
             ChangelogEntry(version="0.1.0", prs=[116, 127]),
         ],
     ),
     "device.model_id": AttributeMetadata(
         brief="An internal hardware revision to identify the device exactly.",
         type=AttributeType.STRING,
-        keys=("device.model_id",),
+        keys=(
+            "device.model_id",
+            "sentry.device.model_id",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="N861AP",
+        aliases=["sentry.device.model_id"],
         changelog=[
+            ChangelogEntry(
+                version="0.35.0",
+                prs=[804],
+                description="Added sentry.device.model_id as an alias",
+            ),
             ChangelogEntry(
                 version="0.5.0",
                 prs=[300],
@@ -18436,12 +18201,21 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.name": AttributeMetadata(
         brief="The user-assigned name of the mobile device.",
         type=AttributeType.STRING,
-        keys=("device.name",),
+        keys=(
+            "device.name",
+            "sentry.device.name",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="localhost",
+        aliases=["sentry.device.name"],
         changelog=[
+            ChangelogEntry(
+                version="0.35.0",
+                prs=[804],
+                description="Added sentry.device.name as an alias",
+            ),
             ChangelogEntry(
                 version="0.24.0",
                 prs=[647],
@@ -18458,12 +18232,21 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.online": AttributeMetadata(
         brief="Whether the device was online or not.",
         type=AttributeType.BOOLEAN,
-        keys=("device.online",),
+        keys=(
+            "device.online",
+            "sentry.device.online",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=True,
+        aliases=["sentry.device.online"],
         changelog=[
+            ChangelogEntry(
+                version="0.35.0",
+                prs=[804],
+                description="Added sentry.device.online as an alias",
+            ),
             ChangelogEntry(
                 version="0.5.0", prs=[303], description="Added device.online attribute"
             ),
@@ -18472,12 +18255,21 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.orientation": AttributeMetadata(
         brief='The orientation of the device, either "portrait" or "landscape".',
         type=AttributeType.STRING,
-        keys=("device.orientation",),
+        keys=(
+            "device.orientation",
+            "sentry.device.orientation",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="portrait",
+        aliases=["sentry.device.orientation"],
         changelog=[
+            ChangelogEntry(
+                version="0.35.0",
+                prs=[804],
+                description="Added sentry.device.orientation as an alias",
+            ),
             ChangelogEntry(
                 version="0.5.0",
                 prs=[303],
@@ -18524,12 +18316,21 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.screen_density": AttributeMetadata(
         brief="The screen density of the device.",
         type=AttributeType.DOUBLE,
-        keys=("device.screen_density",),
+        keys=(
+            "device.screen_density",
+            "sentry.device.screen_density",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=2.625,
+        aliases=["sentry.device.screen_density"],
         changelog=[
+            ChangelogEntry(
+                version="0.35.0",
+                prs=[804],
+                description="Added sentry.device.screen_density as an alias",
+            ),
             ChangelogEntry(
                 version="0.5.0",
                 prs=[303],
@@ -18540,12 +18341,21 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.screen_dpi": AttributeMetadata(
         brief="The screen density in dots-per-inch (DPI) of the device.",
         type=AttributeType.INTEGER,
-        keys=("device.screen_dpi",),
+        keys=(
+            "device.screen_dpi",
+            "sentry.device.screen_dpi",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=420,
+        aliases=["sentry.device.screen_dpi"],
         changelog=[
+            ChangelogEntry(
+                version="0.35.0",
+                prs=[804],
+                description="Added sentry.device.screen_dpi as an alias",
+            ),
             ChangelogEntry(
                 version="0.5.0",
                 prs=[303],
@@ -18556,12 +18366,21 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.screen_height_pixels": AttributeMetadata(
         brief="The height of the device screen in pixels.",
         type=AttributeType.INTEGER,
-        keys=("device.screen_height_pixels",),
+        keys=(
+            "device.screen_height_pixels",
+            "sentry.device.screen_height_pixels",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=2400,
+        aliases=["sentry.device.screen_height_pixels"],
         changelog=[
+            ChangelogEntry(
+                version="0.35.0",
+                prs=[804],
+                description="Added sentry.device.screen_height_pixels as an alias",
+            ),
             ChangelogEntry(
                 version="0.5.0",
                 prs=[303],
@@ -18572,12 +18391,21 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.screen_width_pixels": AttributeMetadata(
         brief="The width of the device screen in pixels.",
         type=AttributeType.INTEGER,
-        keys=("device.screen_width_pixels",),
+        keys=(
+            "device.screen_width_pixels",
+            "sentry.device.screen_width_pixels",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=1080,
+        aliases=["sentry.device.screen_width_pixels"],
         changelog=[
+            ChangelogEntry(
+                version="0.35.0",
+                prs=[804],
+                description="Added sentry.device.screen_width_pixels as an alias",
+            ),
             ChangelogEntry(
                 version="0.5.0",
                 prs=[303],
@@ -18588,12 +18416,21 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.simulator": AttributeMetadata(
         brief="Whether the device is a simulator or an actual device.",
         type=AttributeType.BOOLEAN,
-        keys=("device.simulator",),
+        keys=(
+            "device.simulator",
+            "sentry.device.simulator",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=False,
+        aliases=["sentry.device.simulator"],
         changelog=[
+            ChangelogEntry(
+                version="0.35.0",
+                prs=[804],
+                description="Added sentry.device.simulator as an alias",
+            ),
             ChangelogEntry(
                 version="0.5.0",
                 prs=[300],
@@ -19190,7 +19027,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=[134217728, 1073741824],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added search_alias with type byte"
+                version="0.35.0",
+                prs=[815],
+                description="Added search_alias with type byte",
             ),
             ChangelogEntry(
                 version="0.30.0",
@@ -19811,7 +19650,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=12.34,
         changelog=[
             ChangelogEntry(
-                version="next", description="Added search_alias with type currency"
+                version="0.35.0",
+                prs=[815],
+                description="Added search_alias with type currency",
             ),
             ChangelogEntry(
                 version="0.16.0",
@@ -19837,7 +19678,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=12.34,
         changelog=[
             ChangelogEntry(
-                version="next", description="Added search_alias with type currency"
+                version="0.35.0",
+                prs=[815],
+                description="Added search_alias with type currency",
             ),
             ChangelogEntry(
                 version="0.16.0",
@@ -19863,7 +19706,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=123.45,
         changelog=[
             ChangelogEntry(
-                version="next", description="Added search_alias with type currency"
+                version="0.35.0",
+                prs=[815],
+                description="Added search_alias with type currency",
             ),
             ChangelogEntry(
                 version="0.9.0", prs=[397], description="Add additional_context"
@@ -19888,7 +19733,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=123.45,
         changelog=[
             ChangelogEntry(
-                version="next", description="Added search_alias with type currency"
+                version="0.35.0",
+                prs=[815],
+                description="Added search_alias with type currency",
             ),
             ChangelogEntry(
                 version="0.9.0", prs=[397], description="Add additional_context"
@@ -19913,7 +19760,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=12.34,
         changelog=[
             ChangelogEntry(
-                version="next", description="Added search_alias with type currency"
+                version="0.35.0",
+                prs=[815],
+                description="Added search_alias with type currency",
             ),
             ChangelogEntry(
                 version="0.16.0",
@@ -19943,7 +19792,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["ai.total_cost"],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added search_alias with type currency"
+                version="0.35.0",
+                prs=[815],
+                description="Added search_alias with type currency",
             ),
             ChangelogEntry(
                 version="0.9.0", prs=[397], description="Add additional_context"
@@ -22062,6 +21913,25 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "This measures the proxying phase, not necessarily the complete HTTP request duration."
         ],
     ),
+    "heroku.source": AttributeMetadata(
+        brief="Logplex source of a Heroku log line.",
+        type=AttributeType.STRING,
+        keys=("heroku.source",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="app",
+        examples=["app", "heroku"],
+        changelog=[
+            ChangelogEntry(
+                version="0.35.0", prs=[816], description="Added heroku.source attribute"
+            ),
+        ],
+        additional_context=[
+            "Taken from the syslog APP-NAME header that Logplex sets on every drained line, such as app[web.1] or heroku[router].",
+            "Only set on Cedar, since Fir does not use Logplex.",
+        ],
+    ),
     "http.client_ip": AttributeMetadata(
         brief="Client address - domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.",
         type=AttributeType.STRING,
@@ -22203,6 +22073,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "http.method",
             "http.request_method",
             "method",
+            "sentry.request.method",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
@@ -22211,8 +22082,18 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(
             replacement="http.request.method", status=DeprecationStatus.BACKFILL
         ),
-        aliases=["http.request.method", "http.request_method", "method"],
+        aliases=[
+            "http.request.method",
+            "http.request_method",
+            "method",
+            "sentry.request.method",
+        ],
         changelog=[
+            ChangelogEntry(
+                version="0.35.0",
+                prs=[807],
+                description="Added sentry.request.method as an alias",
+            ),
             ChangelogEntry(version="0.1.0", prs=[61, 127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -22409,13 +22290,24 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "http.method",
             "http.request_method",
             "method",
+            "sentry.request.method",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="GET",
-        aliases=["method", "http.method", "http.request_method"],
+        aliases=[
+            "method",
+            "http.method",
+            "http.request_method",
+            "sentry.request.method",
+        ],
         changelog=[
+            ChangelogEntry(
+                version="0.35.0",
+                prs=[807],
+                description="Added sentry.request.method as an alias",
+            ),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -22617,6 +22509,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "http.method",
             "http.request_method",
             "method",
+            "sentry.request.method",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
@@ -22625,8 +22518,18 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(
             replacement="http.request.method", status=DeprecationStatus.BACKFILL
         ),
-        aliases=["method", "http.method", "http.request.method"],
+        aliases=[
+            "method",
+            "http.method",
+            "http.request.method",
+            "sentry.request.method",
+        ],
         changelog=[
+            ChangelogEntry(
+                version="0.35.0",
+                prs=[807],
+                description="Added sentry.request.method as an alias",
+            ),
             ChangelogEntry(
                 version="0.6.0",
                 prs=[343],
@@ -22652,7 +22555,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added search_alias with type byte"
+                version="0.35.0",
+                prs=[815],
+                description="Added search_alias with type byte",
             ),
             ChangelogEntry(
                 version="0.21.0",
@@ -22681,7 +22586,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["http.response_content_length", "http.response.header.content-length"],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added search_alias with type byte"
+                version="0.35.0",
+                prs=[815],
+                description="Added search_alias with type byte",
             ),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.1.0", prs=[106]),
@@ -22739,7 +22646,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["http.response_transfer_size"],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added search_alias with type byte"
+                version="0.35.0",
+                prs=[815],
+                description="Added search_alias with type byte",
             ),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.0.0"),
@@ -23033,6 +22942,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "aws.request.url",
             "http.url",
             "messaging.url",
+            "sentry.request.url",
             "url",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
@@ -23042,8 +22952,19 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(
             replacement="url.full", status=DeprecationStatus.BACKFILL
         ),
-        aliases=["url.full", "url", "aws.request.url", "messaging.url"],
+        aliases=[
+            "url.full",
+            "url",
+            "aws.request.url",
+            "messaging.url",
+            "sentry.request.url",
+        ],
         changelog=[
+            ChangelogEntry(
+                version="0.35.0",
+                prs=[807],
+                description="Added sentry.request.url as an alias",
+            ),
             ChangelogEntry(
                 version="0.21.0",
                 prs=[581],
@@ -25304,7 +25225,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["messaging.destination.name", "sentry.messaging.destination.name"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.35.0",
+                prs=[796],
                 description="Added sentry.messaging.destination.name as an alias",
             ),
             ChangelogEntry(
@@ -25342,7 +25264,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["messaging.destination", "sentry.messaging.destination.name"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.35.0",
                 prs=[796],
                 description="Added sentry.messaging.destination.name as an alias",
             ),
@@ -25505,7 +25427,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["messaging.message_id", "sentry.messaging.message.id"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.35.0",
                 prs=[809],
                 description="Added sentry.messaging.message.id as an alias",
             ),
@@ -25568,7 +25490,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["messaging.message.id", "sentry.messaging.message.id"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.35.0",
                 prs=[809],
                 description="Added sentry.messaging.message.id as an alias",
             ),
@@ -25774,6 +25696,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "aws.request.url",
             "http.url",
             "messaging.url",
+            "sentry.request.url",
             "url",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
@@ -25786,8 +25709,19 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             reason="This attribute is being deprecated in favor of url.full.",
             status=DeprecationStatus.BACKFILL,
         ),
-        aliases=["url.full", "http.url", "url", "aws.request.url"],
+        aliases=[
+            "url.full",
+            "http.url",
+            "url",
+            "aws.request.url",
+            "sentry.request.url",
+        ],
         changelog=[
+            ChangelogEntry(
+                version="0.35.0",
+                prs=[807],
+                description="Added sentry.request.url as an alias",
+            ),
             ChangelogEntry(
                 version="0.21.0", prs=[581], description="Added messaging.url attribute"
             ),
@@ -25801,6 +25735,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "http.method",
             "http.request_method",
             "method",
+            "sentry.request.method",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
@@ -25809,8 +25744,18 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(
             replacement="http.request.method", status=DeprecationStatus.NORMALIZE
         ),
-        aliases=["http.request.method", "http.request_method", "http.method"],
+        aliases=[
+            "http.request.method",
+            "http.request_method",
+            "http.method",
+            "sentry.request.method",
+        ],
         changelog=[
+            ChangelogEntry(
+                version="0.35.0",
+                prs=[807],
+                description="Added sentry.request.method as an alias",
+            ),
             ChangelogEntry(
                 version="0.19.0", prs=[497], description="Configured normalization"
             ),
@@ -26711,12 +26656,21 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "os.name": AttributeMetadata(
         brief="Human readable operating system name.",
         type=AttributeType.STRING,
-        keys=("os.name",),
+        keys=(
+            "os.name",
+            "sentry.os.name",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="Ubuntu",
+        aliases=["sentry.os.name"],
         changelog=[
+            ChangelogEntry(
+                version="0.35.0",
+                prs=[805],
+                description="Added sentry.os.name as an alias",
+            ),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -26740,12 +26694,21 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "os.rooted": AttributeMetadata(
         brief="Whether the operating system has been jailbroken or rooted.",
         type=AttributeType.BOOLEAN,
-        keys=("os.rooted",),
+        keys=(
+            "os.rooted",
+            "sentry.os.rooted",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=True,
+        aliases=["sentry.os.rooted"],
         changelog=[
+            ChangelogEntry(
+                version="0.35.0",
+                prs=[805],
+                description="Added sentry.os.rooted as an alias",
+            ),
             ChangelogEntry(
                 version="0.5.0", prs=[301], description="Added os.rooted attribute"
             ),
@@ -27164,13 +27127,19 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         keys=(
             "process.runtime.name",
             "runtime.name",
+            "sentry.runtime.name",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="node",
-        aliases=["runtime.name"],
+        aliases=["runtime.name", "sentry.runtime.name"],
         changelog=[
+            ChangelogEntry(
+                version="0.35.0",
+                prs=[806],
+                description="Added sentry.runtime.name as an alias",
+            ),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -27346,7 +27315,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=[512.5],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added search_alias with type millisecond"
+                version="0.35.0",
+                prs=[815],
+                description="Added search_alias with type millisecond",
             ),
             ChangelogEntry(
                 version="0.24.0",
@@ -27374,7 +27345,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["turbo_module.total_duration_ms", "turbo_modules.total_duration_ms"],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added search_alias with type millisecond"
+                version="0.35.0",
+                prs=[815],
+                description="Added search_alias with type millisecond",
             ),
             ChangelogEntry(
                 version="0.24.0",
@@ -27488,7 +27461,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["turbo_module.top_module_duration_ms"],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added search_alias with type millisecond"
+                version="0.35.0",
+                prs=[815],
+                description="Added search_alias with type millisecond",
             ),
             ChangelogEntry(
                 version="0.24.0",
@@ -27954,6 +27929,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         keys=(
             "process.runtime.name",
             "runtime.name",
+            "sentry.runtime.name",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
@@ -27964,8 +27940,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             reason="Prefer OTel-aligned process.runtime.name",
             status=DeprecationStatus.BACKFILL,
         ),
-        aliases=["process.runtime.name"],
+        aliases=["process.runtime.name", "sentry.runtime.name"],
         changelog=[
+            ChangelogEntry(
+                version="0.35.0",
+                prs=[806],
+                description="Added sentry.runtime.name as an alias",
+            ),
             ChangelogEntry(
                 version="0.11.0",
                 prs=[383],
@@ -28174,7 +28155,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         search_alias=SearchAlias(name="span.category"),
     ),
     "sentry.client_sample_rate": AttributeMetadata(
-        brief="Rate at which a span was sampled in the SDK.",
+        brief="Rate at which a telemetry item (e.g. a span, or metric) was sampled in the SDK.",
         type=AttributeType.DOUBLE,
         keys=(
             "sentry.client_sample_rate",
@@ -28185,6 +28166,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example=0.5,
         changelog=[
+            ChangelogEntry(
+                version="0.35.0",
+                prs=[814],
+                description="Generalized the brief to apply to any telemetry type, not just spans",
+            ),
             ChangelogEntry(version="0.1.0", prs=[102]),
         ],
         search_alias=SearchAlias(name="client_sample_rate"),
@@ -28199,6 +28185,374 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="index view query",
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[135]),
+        ],
+    ),
+    "sentry.device.battery_level": AttributeMetadata(
+        brief="The battery level of the device as a percentage (0-100).",
+        type=AttributeType.DOUBLE,
+        keys=(
+            "device.battery_level",
+            "sentry.device.battery_level",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=100,
+        deprecation=DeprecationInfo(
+            replacement="device.battery_level", status=DeprecationStatus.BACKFILL
+        ),
+        aliases=["device.battery_level"],
+        changelog=[
+            ChangelogEntry(
+                version="0.35.0",
+                prs=[804],
+                description="Added sentry.device.battery_level attribute, deprecated in favor of device.battery_level",
+            ),
+        ],
+    ),
+    "sentry.device.brand": AttributeMetadata(
+        brief="The brand of the device.",
+        type=AttributeType.STRING,
+        keys=(
+            "device.brand",
+            "sentry.device.brand",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="Apple",
+        deprecation=DeprecationInfo(
+            replacement="device.brand", status=DeprecationStatus.BACKFILL
+        ),
+        aliases=["device.brand"],
+        changelog=[
+            ChangelogEntry(
+                version="0.35.0",
+                prs=[804],
+                description="Added sentry.device.brand attribute, deprecated in favor of device.brand",
+            ),
+        ],
+    ),
+    "sentry.device.charging": AttributeMetadata(
+        brief="Whether the device was charging or not.",
+        type=AttributeType.BOOLEAN,
+        keys=(
+            "device.charging",
+            "sentry.device.charging",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=False,
+        deprecation=DeprecationInfo(
+            replacement="device.charging", status=DeprecationStatus.BACKFILL
+        ),
+        aliases=["device.charging"],
+        changelog=[
+            ChangelogEntry(
+                version="0.35.0",
+                prs=[804],
+                description="Added sentry.device.charging attribute, deprecated in favor of device.charging",
+            ),
+        ],
+    ),
+    "sentry.device.class": AttributeMetadata(
+        brief="The classification of the device. For example, `low`, `medium`, or `high`. Typically inferred by Relay - SDKs generally do not need to set this directly.",
+        type=AttributeType.STRING,
+        keys=(
+            "device.class",
+            "sentry.device.class",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="medium",
+        deprecation=DeprecationInfo(
+            replacement="device.class", status=DeprecationStatus.BACKFILL
+        ),
+        aliases=["device.class"],
+        changelog=[
+            ChangelogEntry(
+                version="0.35.0",
+                prs=[804],
+                description="Added sentry.device.class attribute, deprecated in favor of device.class",
+            ),
+        ],
+    ),
+    "sentry.device.family": AttributeMetadata(
+        brief="The family of the device.",
+        type=AttributeType.STRING,
+        keys=(
+            "device.family",
+            "sentry.device.family",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="iPhone",
+        deprecation=DeprecationInfo(
+            replacement="device.family", status=DeprecationStatus.BACKFILL
+        ),
+        aliases=["device.family"],
+        changelog=[
+            ChangelogEntry(
+                version="0.35.0",
+                prs=[804],
+                description="Added sentry.device.family attribute, deprecated in favor of device.family",
+            ),
+        ],
+    ),
+    "sentry.device.locale": AttributeMetadata(
+        brief="The locale of the device.",
+        type=AttributeType.STRING,
+        keys=(
+            "device.locale",
+            "sentry.device.locale",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="en-US",
+        deprecation=DeprecationInfo(
+            replacement="device.locale", status=DeprecationStatus.BACKFILL
+        ),
+        aliases=["device.locale"],
+        changelog=[
+            ChangelogEntry(
+                version="0.35.0",
+                prs=[804],
+                description="Added sentry.device.locale attribute, deprecated in favor of device.locale",
+            ),
+        ],
+    ),
+    "sentry.device.model": AttributeMetadata(
+        brief="The model of the device.",
+        type=AttributeType.STRING,
+        keys=(
+            "device.model",
+            "sentry.device.model",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="iPhone 15 Pro Max",
+        deprecation=DeprecationInfo(
+            replacement="device.model", status=DeprecationStatus.BACKFILL
+        ),
+        aliases=["device.model"],
+        changelog=[
+            ChangelogEntry(
+                version="0.35.0",
+                prs=[804],
+                description="Added sentry.device.model attribute, deprecated in favor of device.model",
+            ),
+        ],
+    ),
+    "sentry.device.model_id": AttributeMetadata(
+        brief="An internal hardware revision to identify the device exactly.",
+        type=AttributeType.STRING,
+        keys=(
+            "device.model_id",
+            "sentry.device.model_id",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="N861AP",
+        deprecation=DeprecationInfo(
+            replacement="device.model_id", status=DeprecationStatus.BACKFILL
+        ),
+        aliases=["device.model_id"],
+        changelog=[
+            ChangelogEntry(
+                version="0.35.0",
+                prs=[804],
+                description="Added sentry.device.model_id attribute, deprecated in favor of device.model_id",
+            ),
+        ],
+    ),
+    "sentry.device.name": AttributeMetadata(
+        brief="The user-assigned name of the mobile device.",
+        type=AttributeType.STRING,
+        keys=(
+            "device.name",
+            "sentry.device.name",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="localhost",
+        deprecation=DeprecationInfo(
+            replacement="device.name", status=DeprecationStatus.BACKFILL
+        ),
+        aliases=["device.name"],
+        changelog=[
+            ChangelogEntry(
+                version="0.35.0",
+                prs=[804],
+                description="Added sentry.device.name attribute, deprecated in favor of device.name",
+            ),
+        ],
+    ),
+    "sentry.device.online": AttributeMetadata(
+        brief="Whether the device was online or not.",
+        type=AttributeType.BOOLEAN,
+        keys=(
+            "device.online",
+            "sentry.device.online",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=True,
+        deprecation=DeprecationInfo(
+            replacement="device.online", status=DeprecationStatus.BACKFILL
+        ),
+        aliases=["device.online"],
+        changelog=[
+            ChangelogEntry(
+                version="0.35.0",
+                prs=[804],
+                description="Added sentry.device.online attribute, deprecated in favor of device.online",
+            ),
+        ],
+    ),
+    "sentry.device.orientation": AttributeMetadata(
+        brief='The orientation of the device, either "portrait" or "landscape".',
+        type=AttributeType.STRING,
+        keys=(
+            "device.orientation",
+            "sentry.device.orientation",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="portrait",
+        deprecation=DeprecationInfo(
+            replacement="device.orientation", status=DeprecationStatus.BACKFILL
+        ),
+        aliases=["device.orientation"],
+        changelog=[
+            ChangelogEntry(
+                version="0.35.0",
+                prs=[804],
+                description="Added sentry.device.orientation attribute, deprecated in favor of device.orientation",
+            ),
+        ],
+    ),
+    "sentry.device.screen_density": AttributeMetadata(
+        brief="The screen density of the device.",
+        type=AttributeType.DOUBLE,
+        keys=(
+            "device.screen_density",
+            "sentry.device.screen_density",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=2.625,
+        deprecation=DeprecationInfo(
+            replacement="device.screen_density", status=DeprecationStatus.BACKFILL
+        ),
+        aliases=["device.screen_density"],
+        changelog=[
+            ChangelogEntry(
+                version="0.35.0",
+                prs=[804],
+                description="Added sentry.device.screen_density attribute, deprecated in favor of device.screen_density",
+            ),
+        ],
+    ),
+    "sentry.device.screen_dpi": AttributeMetadata(
+        brief="The screen density in dots-per-inch (DPI) of the device.",
+        type=AttributeType.INTEGER,
+        keys=(
+            "device.screen_dpi",
+            "sentry.device.screen_dpi",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=420,
+        deprecation=DeprecationInfo(
+            replacement="device.screen_dpi", status=DeprecationStatus.BACKFILL
+        ),
+        aliases=["device.screen_dpi"],
+        changelog=[
+            ChangelogEntry(
+                version="0.35.0",
+                prs=[804],
+                description="Added sentry.device.screen_dpi attribute, deprecated in favor of device.screen_dpi",
+            ),
+        ],
+    ),
+    "sentry.device.screen_height_pixels": AttributeMetadata(
+        brief="The height of the device screen in pixels.",
+        type=AttributeType.INTEGER,
+        keys=(
+            "device.screen_height_pixels",
+            "sentry.device.screen_height_pixels",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=2400,
+        deprecation=DeprecationInfo(
+            replacement="device.screen_height_pixels", status=DeprecationStatus.BACKFILL
+        ),
+        aliases=["device.screen_height_pixels"],
+        changelog=[
+            ChangelogEntry(
+                version="0.35.0",
+                prs=[804],
+                description="Added sentry.device.screen_height_pixels attribute, deprecated in favor of device.screen_height_pixels",
+            ),
+        ],
+    ),
+    "sentry.device.screen_width_pixels": AttributeMetadata(
+        brief="The width of the device screen in pixels.",
+        type=AttributeType.INTEGER,
+        keys=(
+            "device.screen_width_pixels",
+            "sentry.device.screen_width_pixels",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=1080,
+        deprecation=DeprecationInfo(
+            replacement="device.screen_width_pixels", status=DeprecationStatus.BACKFILL
+        ),
+        aliases=["device.screen_width_pixels"],
+        changelog=[
+            ChangelogEntry(
+                version="0.35.0",
+                prs=[804],
+                description="Added sentry.device.screen_width_pixels attribute, deprecated in favor of device.screen_width_pixels",
+            ),
+        ],
+    ),
+    "sentry.device.simulator": AttributeMetadata(
+        brief="Whether the device is a simulator or an actual device.",
+        type=AttributeType.BOOLEAN,
+        keys=(
+            "device.simulator",
+            "sentry.device.simulator",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=False,
+        deprecation=DeprecationInfo(
+            replacement="device.simulator", status=DeprecationStatus.BACKFILL
+        ),
+        aliases=["device.simulator"],
+        changelog=[
+            ChangelogEntry(
+                version="0.35.0",
+                prs=[804],
+                description="Added sentry.device.simulator attribute, deprecated in favor of device.simulator",
+            ),
         ],
     ),
     "sentry.dist": AttributeMetadata(
@@ -28702,7 +29056,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["messaging.destination.name", "messaging.destination"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.35.0",
                 prs=[796],
                 description="Added sentry.messaging.destination.name attribute, deprecated in favor of messaging.destination.name",
             ),
@@ -28726,7 +29080,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["messaging.message.id", "messaging.message_id"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.35.0",
                 prs=[809],
                 description="Added sentry.messaging.message.id attribute, deprecated in favor of messaging.message.id",
             ),
@@ -28877,6 +29231,52 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
         search_alias=SearchAlias(name="origin"),
+    ),
+    "sentry.os.name": AttributeMetadata(
+        brief="Human readable operating system name.",
+        type=AttributeType.STRING,
+        keys=(
+            "os.name",
+            "sentry.os.name",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="Ubuntu",
+        deprecation=DeprecationInfo(
+            replacement="os.name", status=DeprecationStatus.BACKFILL
+        ),
+        aliases=["os.name"],
+        changelog=[
+            ChangelogEntry(
+                version="0.35.0",
+                prs=[805],
+                description="Added sentry.os.name attribute, deprecated in favor of os.name",
+            ),
+        ],
+    ),
+    "sentry.os.rooted": AttributeMetadata(
+        brief="Whether the operating system has been jailbroken or rooted.",
+        type=AttributeType.BOOLEAN,
+        keys=(
+            "os.rooted",
+            "sentry.os.rooted",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=True,
+        deprecation=DeprecationInfo(
+            replacement="os.rooted", status=DeprecationStatus.BACKFILL
+        ),
+        aliases=["os.rooted"],
+        changelog=[
+            ChangelogEntry(
+                version="0.35.0",
+                prs=[805],
+                description="Added sentry.os.rooted attribute, deprecated in favor of os.rooted",
+            ),
+        ],
     ),
     "sentry.pageload.span_id": AttributeMetadata(
         brief="The id of the pageload span, set by web vital spans and metrics",
@@ -29052,6 +29452,83 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
                 version="0.5.0",
                 prs=[320],
                 description="Added sentry.report_event attribute",
+            ),
+        ],
+    ),
+    "sentry.request.method": AttributeMetadata(
+        brief="The HTTP method used.",
+        type=AttributeType.STRING,
+        keys=(
+            "http.request.method",
+            "http.method",
+            "http.request_method",
+            "method",
+            "sentry.request.method",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="GET",
+        deprecation=DeprecationInfo(
+            replacement="http.request.method", status=DeprecationStatus.BACKFILL
+        ),
+        aliases=["http.request.method", "method", "http.method", "http.request_method"],
+        changelog=[
+            ChangelogEntry(
+                version="0.35.0",
+                prs=[807],
+                description="Added sentry.request.method attribute, deprecated in favor of http.request.method",
+            ),
+        ],
+    ),
+    "sentry.request.url": AttributeMetadata(
+        brief="The URL of the resource that was fetched.",
+        type=AttributeType.STRING,
+        keys=(
+            "url.full",
+            "aws.request.url",
+            "http.url",
+            "messaging.url",
+            "sentry.request.url",
+            "url",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="https://example.com/test?foo=bar#buzz",
+        deprecation=DeprecationInfo(
+            replacement="url.full", status=DeprecationStatus.BACKFILL
+        ),
+        aliases=["url.full", "http.url", "url", "aws.request.url", "messaging.url"],
+        changelog=[
+            ChangelogEntry(
+                version="0.35.0",
+                prs=[807],
+                description="Added sentry.request.url attribute, deprecated in favor of url.full",
+            ),
+        ],
+    ),
+    "sentry.runtime.name": AttributeMetadata(
+        brief="The name of the runtime. Equivalent to `name` in the Sentry runtime context.",
+        type=AttributeType.STRING,
+        keys=(
+            "process.runtime.name",
+            "runtime.name",
+            "sentry.runtime.name",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="node",
+        deprecation=DeprecationInfo(
+            replacement="process.runtime.name", status=DeprecationStatus.BACKFILL
+        ),
+        aliases=["process.runtime.name", "runtime.name"],
+        changelog=[
+            ChangelogEntry(
+                version="0.35.0",
+                prs=[806],
+                description="Added sentry.runtime.name attribute, deprecated in favor of process.runtime.name",
             ),
         ],
     ),
@@ -29392,6 +29869,29 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.13.0", prs=[451]),
         ],
         search_alias=SearchAlias(name="thread.id"),
+    ),
+    "sentry.thread.name": AttributeMetadata(
+        brief="Current thread name.",
+        type=AttributeType.STRING,
+        keys=(
+            "thread.name",
+            "sentry.thread.name",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="main",
+        deprecation=DeprecationInfo(
+            replacement="thread.name", status=DeprecationStatus.BACKFILL
+        ),
+        aliases=["thread.name"],
+        changelog=[
+            ChangelogEntry(
+                version="0.35.0",
+                prs=[808],
+                description="Added sentry.thread.name attribute, deprecated in favor of thread.name",
+            ),
+        ],
     ),
     "sentry.timestamp.sequence": AttributeMetadata(
         brief="A sequencing counter for deterministic ordering of logs or metrics when timestamps share the same integer millisecond. Starts at 0 on SDK initialization, increments by 1 for each captured item, and resets to 0 when the integer millisecond of the current item differs from the previous one.",
@@ -30129,12 +30629,21 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "thread.name": AttributeMetadata(
         brief="Current thread name.",
         type=AttributeType.STRING,
-        keys=("thread.name",),
+        keys=(
+            "thread.name",
+            "sentry.thread.name",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="main",
+        aliases=["sentry.thread.name"],
         changelog=[
+            ChangelogEntry(
+                version="0.35.0",
+                prs=[808],
+                description="Added sentry.thread.name as an alias",
+            ),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -30935,14 +31444,26 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "aws.request.url",
             "http.url",
             "messaging.url",
+            "sentry.request.url",
             "url",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="https://example.com/test?foo=bar#buzz",
-        aliases=["http.url", "url", "aws.request.url", "messaging.url"],
+        aliases=[
+            "http.url",
+            "url",
+            "aws.request.url",
+            "messaging.url",
+            "sentry.request.url",
+        ],
         changelog=[
+            ChangelogEntry(
+                version="0.35.0",
+                prs=[807],
+                description="Added sentry.request.url as an alias",
+            ),
             ChangelogEntry(
                 version="0.21.0",
                 prs=[581],
@@ -31121,6 +31642,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "aws.request.url",
             "http.url",
             "messaging.url",
+            "sentry.request.url",
             "url",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
@@ -31130,8 +31652,19 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(
             replacement="url.full", status=DeprecationStatus.BACKFILL
         ),
-        aliases=["url.full", "http.url", "aws.request.url", "messaging.url"],
+        aliases=[
+            "url.full",
+            "http.url",
+            "aws.request.url",
+            "messaging.url",
+            "sentry.request.url",
+        ],
         changelog=[
+            ChangelogEntry(
+                version="0.35.0",
+                prs=[807],
+                description="Added sentry.request.url as an alias",
+            ),
             ChangelogEntry(
                 version="0.21.0",
                 prs=[581],
@@ -31872,986 +32405,3 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
 A dictionary that maps each attribute's name to its metadata.
 If a key is not present in this dictionary, it means that attribute is not defined in the Sentry Semantic Conventions.
 """
-
-Attributes = TypedDict(
-    "Attributes",
-    {
-        "address": str,
-        "ai.citations": List[str],
-        "ai.completion_tokens.used": int,
-        "ai.documents": List[str],
-        "ai.finish_reason": str,
-        "ai.frequency_penalty": float,
-        "ai.function_call": str,
-        "ai.generation_id": str,
-        "ai.input_messages": str,
-        "ai.is_search_required": bool,
-        "ai.metadata": str,
-        "ai.model.id": str,
-        "ai.model.provider": str,
-        "ai.model_id": str,
-        "ai.pipeline.name": str,
-        "ai.preamble": str,
-        "ai.presence_penalty": float,
-        "ai.prompt": str,
-        "ai.prompt.messages": str,
-        "ai.prompt.tools": List[str],
-        "ai.prompt_tokens.used": int,
-        "ai.raw_prompting": bool,
-        "ai.response.id": str,
-        "ai.response.model": str,
-        "ai.response.object": str,
-        "ai.response.text": str,
-        "ai.response.timestamp": str,
-        "ai.response.toolCalls": str,
-        "ai.response_format": str,
-        "ai.responses": List[str],
-        "ai.schema": str,
-        "ai.search_queries": List[str],
-        "ai.search_results": List[str],
-        "ai.seed": str,
-        "ai.streaming": bool,
-        "ai.tags": str,
-        "ai.temperature": float,
-        "ai.texts": List[str],
-        "ai.toolCall.args": str,
-        "ai.toolCall.result": str,
-        "ai.tool_calls": List[str],
-        "ai.tools": List[str],
-        "ai.top_k": int,
-        "ai.top_p": float,
-        "ai.total_cost": float,
-        "ai.total_tokens.used": int,
-        "ai.usage.tokens": int,
-        "ai.values": str,
-        "ai.warnings": List[str],
-        "angular.version": str,
-        "anthropic.tool_result.content": str,
-        "app.app_build": str,
-        "app.app_identifier": str,
-        "app.app_name": str,
-        "app.app_start_time": str,
-        "app.app_version": str,
-        "app.build": str,
-        "app.identifier": str,
-        "app.in_foreground": bool,
-        "app.name": str,
-        "app.start_time": str,
-        "app.version": str,
-        "app.vitals.frames.delay.value": int,
-        "app.vitals.frames.frozen.count": int,
-        "app.vitals.frames.frozen.rate": float,
-        "app.vitals.frames.slow.count": int,
-        "app.vitals.frames.slow.rate": float,
-        "app.vitals.frames.total.count": int,
-        "app.vitals.stall.duration": float,
-        "app.vitals.stall.percentage": float,
-        "app.vitals.start.cold.value": float,
-        "app.vitals.start.prewarmed": bool,
-        "app.vitals.start.reason": str,
-        "app.vitals.start.screen": str,
-        "app.vitals.start.type": str,
-        "app.vitals.start.warm.value": float,
-        "app.vitals.ttfd.value": float,
-        "app.vitals.ttid.value": float,
-        "app_start_cold": float,
-        "app_start_type": str,
-        "app_start_warm": float,
-        "art.gc.blocking_count": int,
-        "art.gc.blocking_time": float,
-        "art.gc.pre_oome_count": int,
-        "art.gc.total_count": int,
-        "art.gc.total_time": float,
-        "art.gc.waiting_time": float,
-        "art.memory.free": int,
-        "art.memory.free_until_gc": int,
-        "art.memory.free_until_oome": int,
-        "art.memory.max": int,
-        "art.memory.total": int,
-        "aws.cloudwatch.logs.log_group": str,
-        "aws.cloudwatch.logs.log_stream": str,
-        "aws.cloudwatch.logs.url": str,
-        "aws.dynamodb.attribute_definitions": List[str],
-        "aws.dynamodb.attributes_to_get": List[str],
-        "aws.dynamodb.consistent_read": bool,
-        "aws.dynamodb.consumed_capacity": List[str],
-        "aws.dynamodb.count": int,
-        "aws.dynamodb.exclusive_start_table": str,
-        "aws.dynamodb.global_secondary_index_updates": List[str],
-        "aws.dynamodb.global_secondary_indexes": List[str],
-        "aws.dynamodb.index_name": str,
-        "aws.dynamodb.item_collection_metrics": str,
-        "aws.dynamodb.limit": int,
-        "aws.dynamodb.local_secondary_indexes": List[str],
-        "aws.dynamodb.projection": str,
-        "aws.dynamodb.provisioned_read_capacity": float,
-        "aws.dynamodb.provisioned_write_capacity": float,
-        "aws.dynamodb.scan_forward": bool,
-        "aws.dynamodb.scanned_count": int,
-        "aws.dynamodb.segment": int,
-        "aws.dynamodb.select": str,
-        "aws.dynamodb.table_count": int,
-        "aws.dynamodb.table_names": List[str],
-        "aws.dynamodb.total_segments": int,
-        "aws.extended_request_id": str,
-        "aws.kinesis.stream.name": str,
-        "aws.kinesis.stream_name": str,
-        "aws.lambda.aws_request_id": str,
-        "aws.lambda.execution_duration_in_millis": float,
-        "aws.lambda.function_name": str,
-        "aws.lambda.function_version": str,
-        "aws.lambda.initialization_type": str,
-        "aws.lambda.invoked_arn": str,
-        "aws.lambda.invoked_function_arn": str,
-        "aws.lambda.remaining_time_in_millis": float,
-        "aws.lambda.resource_mapping.id": str,
-        "aws.lambda.target_function.name": str,
-        "aws.lambda.web.endpoint_name": str,
-        "aws.log.group.names": List[str],
-        "aws.log.stream.names": List[str],
-        "aws.operation_name": str,
-        "aws.request.extended_id": str,
-        "aws.request.id": str,
-        "aws.request.url": str,
-        "aws.request_id": str,
-        "aws.s3.bucket": str,
-        "aws.s3.copy_source": str,
-        "aws.s3.delete": str,
-        "aws.s3.key": str,
-        "aws.s3.part_number": int,
-        "aws.s3.upload_id": str,
-        "aws.secretsmanager.secret.arn": str,
-        "aws.secretsmanager.secret.name": str,
-        "aws.sns.topic.arn": str,
-        "aws.sqs.queue.url": str,
-        "aws.step_functions.activity.arn": str,
-        "aws.step_functions.activity.name": str,
-        "aws.step_functions.execution.arn": str,
-        "aws.step_functions.state_machine.arn": str,
-        "aws.step_functions.state_machine.name": str,
-        "aws_region": str,
-        "blocked_main_thread": bool,
-        "browser.bfcache.frame": str,
-        "browser.bfcache.not_restored_reason_count": int,
-        "browser.bfcache.outcome": str,
-        "browser.bfcache.reason": str,
-        "browser.name": str,
-        "browser.navigation.id": int,
-        "browser.navigation.type": str,
-        "browser.paint.type": str,
-        "browser.performance.navigation.activation_start": float,
-        "browser.performance.time_origin": float,
-        "browser.report.type": str,
-        "browser.script.invoker": str,
-        "browser.script.invoker_type": str,
-        "browser.script.source_char_position": int,
-        "browser.version": str,
-        "browser.web_vital.cls.report_event": str,
-        "browser.web_vital.cls.source.<key>": str,
-        "browser.web_vital.cls.value": float,
-        "browser.web_vital.fcp.value": float,
-        "browser.web_vital.fp.value": float,
-        "browser.web_vital.inp.input_delay": float,
-        "browser.web_vital.inp.interaction_type": str,
-        "browser.web_vital.inp.presentation_delay": float,
-        "browser.web_vital.inp.processing_duration": float,
-        "browser.web_vital.inp.target": str,
-        "browser.web_vital.inp.value": float,
-        "browser.web_vital.lcp.element": str,
-        "browser.web_vital.lcp.element_render_delay": float,
-        "browser.web_vital.lcp.id": str,
-        "browser.web_vital.lcp.load_time": int,
-        "browser.web_vital.lcp.render_time": int,
-        "browser.web_vital.lcp.report_event": str,
-        "browser.web_vital.lcp.resource_load_delay": float,
-        "browser.web_vital.lcp.resource_load_duration": float,
-        "browser.web_vital.lcp.size": int,
-        "browser.web_vital.lcp.url": str,
-        "browser.web_vital.lcp.value": float,
-        "browser.web_vital.ttfb.request_time": float,
-        "browser.web_vital.ttfb.value": float,
-        "cache.hit": bool,
-        "cache.item_age": int,
-        "cache.item_size": int,
-        "cache.key": List[str],
-        "cache.operation": str,
-        "cache.tags": List[str],
-        "cache.ttl": int,
-        "cache.write": bool,
-        "channel": str,
-        "client.address": str,
-        "client.port": int,
-        "cloud.account.id": str,
-        "cloud.availability_zone": str,
-        "cloud.platform": str,
-        "cloud.provider": str,
-        "cloud.region": str,
-        "cloud.resource_id": str,
-        "cloudflare.d1.duration": int,
-        "cloudflare.d1.query_type": str,
-        "cloudflare.d1.rows_read": int,
-        "cloudflare.d1.rows_written": int,
-        "cloudflare.durable_object.query.bindings": int,
-        "cloudflare.durable_object.response.rows_read": int,
-        "cloudflare.durable_object.response.rows_written": int,
-        "cloudflare.r2.bucket": str,
-        "cloudflare.r2.operation": str,
-        "cloudflare.r2.request.delimiter": str,
-        "cloudflare.r2.request.key": str,
-        "cloudflare.r2.request.part_number": int,
-        "cloudflare.r2.request.prefix": str,
-        "cloudflare.workflow.attempt": int,
-        "cloudflare.workflow.retries.backoff": str,
-        "cloudflare.workflow.retries.delay": str,
-        "cloudflare.workflow.retries.limit": int,
-        "cloudflare.workflow.timeout": str,
-        "cls.source.<key>": str,
-        "cls": float,
-        "code.file.path": str,
-        "code.filepath": str,
-        "code.function": str,
-        "code.function.name": str,
-        "code.line.number": int,
-        "code.lineno": int,
-        "code.namespace": str,
-        "code": str,
-        "connection.rtt": int,
-        "connectionType": str,
-        "culture.calendar": str,
-        "culture.display_name": str,
-        "culture.is_24_hour_format": bool,
-        "culture.locale": str,
-        "culture.timezone": str,
-        "db.collection.name": str,
-        "db.connection_string": str,
-        "db.driver.name": str,
-        "db.mongodb.collection": str,
-        "db.name": str,
-        "db.namespace": str,
-        "db.operation": str,
-        "db.operation.batch.size": int,
-        "db.operation.name": str,
-        "db.params": str,
-        "db.query.parameter.<key>": str,
-        "db.query.summary": str,
-        "db.query.text": str,
-        "db.redis.connection": str,
-        "db.redis.key": str,
-        "db.redis.parameters": List[str],
-        "db.response.status_code": str,
-        "db.sql.bindings": List[str],
-        "db.statement": str,
-        "db.stored_procedure.name": str,
-        "db.system": str,
-        "db.system.name": str,
-        "db.user": str,
-        "device.archs": List[str],
-        "device.battery_level": float,
-        "device.battery_temperature": float,
-        "device.boot_time": str,
-        "device.brand": str,
-        "device.charging": bool,
-        "device.chipset": str,
-        "device.class": str,
-        "device.connection_type": str,
-        "device.cpu_description": str,
-        "device.external_free_storage": int,
-        "device.external_storage_size": int,
-        "device.family": str,
-        "device.free_memory": int,
-        "device.free_storage": int,
-        "device.id": str,
-        "device.locale": str,
-        "device.low_memory": bool,
-        "device.low_power_mode": bool,
-        "device.manufacturer": str,
-        "device.memory.estimated_capacity": int,
-        "device.memory_size": int,
-        "device.model": str,
-        "device.model_id": str,
-        "device.name": str,
-        "device.online": bool,
-        "device.orientation": str,
-        "device.processor_count": int,
-        "device.processor_frequency": float,
-        "device.screen_density": float,
-        "device.screen_dpi": int,
-        "device.screen_height_pixels": int,
-        "device.screen_width_pixels": int,
-        "device.simulator": bool,
-        "device.storage_size": int,
-        "device.thermal_state": str,
-        "device.timezone": str,
-        "device.usable_memory": int,
-        "deviceMemory": str,
-        "dist": str,
-        "django.function_name": str,
-        "django.middleware_name": str,
-        "effectiveConnectionType": str,
-        "environment": str,
-        "error.type": str,
-        "event.id": int,
-        "event.name": str,
-        "exception.escaped": bool,
-        "exception.message": str,
-        "exception.stacktrace": str,
-        "exception.type": str,
-        "faas.coldstart": bool,
-        "faas.cron": str,
-        "faas.document.collection": str,
-        "faas.document.name": str,
-        "faas.document.operation": str,
-        "faas.document.time": str,
-        "faas.duration_in_ms": int,
-        "faas.entry_point": str,
-        "faas.execution": str,
-        "faas.id": str,
-        "faas.identity": str,
-        "faas.instance": str,
-        "faas.invocation_id": str,
-        "faas.invoked_name": str,
-        "faas.invoked_provider": str,
-        "faas.invoked_region": str,
-        "faas.max_memory": int,
-        "faas.name": str,
-        "faas.time": str,
-        "faas.trigger": str,
-        "faas.version": str,
-        "fcp": float,
-        "file.path": str,
-        "file.size": int,
-        "flag.evaluation.<key>": bool,
-        "fp": float,
-        "frames.delay": int,
-        "frames.frozen": int,
-        "frames.slow": int,
-        "frames.total": int,
-        "frames_frozen_rate": float,
-        "frames_slow_rate": float,
-        "fs_error": str,
-        "gcp.function.context.event_id": str,
-        "gcp.function.context.event_type": str,
-        "gcp.function.context.id": str,
-        "gcp.function.context.resource": str,
-        "gcp.function.context.source": str,
-        "gcp.function.context.specversion": str,
-        "gcp.function.context.time": str,
-        "gcp.function.context.timestamp": str,
-        "gcp.function.context.type": str,
-        "gcp.project.id": str,
-        "gcp_region": str,
-        "gen_ai.agent.name": str,
-        "gen_ai.context.utilization": float,
-        "gen_ai.context.window_size": int,
-        "gen_ai.conversation.id": str,
-        "gen_ai.cost.cache_creation.input_tokens": float,
-        "gen_ai.cost.cache_read.input_tokens": float,
-        "gen_ai.cost.input_tokens": float,
-        "gen_ai.cost.output_tokens": float,
-        "gen_ai.cost.reasoning.output_tokens": float,
-        "gen_ai.cost.total_tokens": float,
-        "gen_ai.embeddings.input": str,
-        "gen_ai.function_id": str,
-        "gen_ai.input.messages": str,
-        "gen_ai.memory.query.text": str,
-        "gen_ai.memory.record.count": int,
-        "gen_ai.memory.record.id": str,
-        "gen_ai.memory.records": str,
-        "gen_ai.memory.store.id": str,
-        "gen_ai.operation.name": str,
-        "gen_ai.operation.type": str,
-        "gen_ai.output.messages": str,
-        "gen_ai.pipeline.name": str,
-        "gen_ai.prompt": str,
-        "gen_ai.prompt.name": str,
-        "gen_ai.prompt.variable.<key>": str,
-        "gen_ai.provider.name": str,
-        "gen_ai.request.available_tools": str,
-        "gen_ai.request.frequency_penalty": float,
-        "gen_ai.request.max_tokens": int,
-        "gen_ai.request.messages": str,
-        "gen_ai.request.model": str,
-        "gen_ai.request.presence_penalty": float,
-        "gen_ai.request.reasoning.level": str,
-        "gen_ai.request.schema": str,
-        "gen_ai.request.seed": str,
-        "gen_ai.request.stop_sequences": List[str],
-        "gen_ai.request.temperature": float,
-        "gen_ai.request.top_k": int,
-        "gen_ai.request.top_p": float,
-        "gen_ai.response.finish_reason": str,
-        "gen_ai.response.finish_reasons": str,
-        "gen_ai.response.id": str,
-        "gen_ai.response.model": str,
-        "gen_ai.response.object": str,
-        "gen_ai.response.streaming": bool,
-        "gen_ai.response.text": str,
-        "gen_ai.response.time_to_first_chunk": float,
-        "gen_ai.response.time_to_first_token": float,
-        "gen_ai.response.tokens_per_second": float,
-        "gen_ai.response.tool_calls": str,
-        "gen_ai.system": str,
-        "gen_ai.system.message": str,
-        "gen_ai.system_instructions": str,
-        "gen_ai.tool.call.arguments": str,
-        "gen_ai.tool.call.result": str,
-        "gen_ai.tool.call.result.size": int,
-        "gen_ai.tool.definitions": str,
-        "gen_ai.tool.description": str,
-        "gen_ai.tool.input": str,
-        "gen_ai.tool.message": str,
-        "gen_ai.tool.name": str,
-        "gen_ai.tool.output": str,
-        "gen_ai.tool.type": str,
-        "gen_ai.usage.cache_creation.input_tokens": int,
-        "gen_ai.usage.cache_creation_input_tokens": int,
-        "gen_ai.usage.cache_read.input_tokens": int,
-        "gen_ai.usage.cache_read_input_tokens": int,
-        "gen_ai.usage.completion_tokens": int,
-        "gen_ai.usage.input_tokens": int,
-        "gen_ai.usage.input_tokens.cache_write": int,
-        "gen_ai.usage.input_tokens.cached": int,
-        "gen_ai.usage.output_tokens": int,
-        "gen_ai.usage.output_tokens.reasoning": int,
-        "gen_ai.usage.prompt_tokens": int,
-        "gen_ai.usage.reasoning.output_tokens": int,
-        "gen_ai.usage.total_tokens": int,
-        "graphql.document": str,
-        "graphql.operation.name": str,
-        "graphql.operation.type": str,
-        "graphql.processing.type": str,
-        "graphql.source": str,
-        "grpc.error.bad_request.field_violations": List[str],
-        "grpc.error.debug_info.detail": str,
-        "grpc.error.debug_info.stack_entries": List[str],
-        "grpc.error.error_info.domain": str,
-        "grpc.error.error_info.metadata.<key>": str,
-        "grpc.error.error_info.reason": str,
-        "grpc.error.precondition_failure.violations": List[str],
-        "grpc.error.quota_failure.violations": List[str],
-        "grpc.error.resource_info.description": str,
-        "grpc.error.resource_info.owner": str,
-        "grpc.error.resource_info.resource_name": str,
-        "grpc.error.resource_info.resource_type": str,
-        "grpc.error.retry_info.retry_delay_ms": int,
-        "hapi.ext.type": str,
-        "hapi.plugin.name": str,
-        "hapi.type": str,
-        "hardwareConcurrency": str,
-        "heroku.dyno.name": str,
-        "heroku.error.code": str,
-        "heroku.error.description": str,
-        "heroku.logplex.drain_token": str,
-        "heroku.router.connect": float,
-        "heroku.router.request_id": str,
-        "heroku.router.service": float,
-        "http.client_ip": str,
-        "http.decoded_response_content_length": int,
-        "http.flavor": str,
-        "http.fragment": str,
-        "http.host": str,
-        "http.method": str,
-        "http.query": str,
-        "http.request.body.data": str,
-        "http.request.body.decoded_size": int,
-        "http.request.body.size": int,
-        "http.request.connect_start": float,
-        "http.request.connection_end": float,
-        "http.request.domain_lookup_end": float,
-        "http.request.domain_lookup_start": float,
-        "http.request.duration": int,
-        "http.request.fetch_start": float,
-        "http.request.header.<key>": List[str],
-        "http.request.method": str,
-        "http.request.redirect_end": float,
-        "http.request.redirect_start": float,
-        "http.request.request_start": float,
-        "http.request.resend_count": int,
-        "http.request.response_end": float,
-        "http.request.response_start": float,
-        "http.request.same_origin": bool,
-        "http.request.secure_connection_start": float,
-        "http.request.time_to_first_byte": float,
-        "http.request.worker_start": float,
-        "http.request_content_length": int,
-        "http.request_content_length_uncompressed": int,
-        "http.request_method": str,
-        "http.response.body.decoded_size": int,
-        "http.response.body.size": int,
-        "http.response.header.<key>": List[str],
-        "http.response.header.content-length": str,
-        "http.response.size": int,
-        "http.response.status_code": int,
-        "http.response.status_text": str,
-        "http.response_content_length": int,
-        "http.response_content_length_uncompressed": int,
-        "http.response_transfer_size": int,
-        "http.route": str,
-        "http.scheme": str,
-        "http.server.request.time_in_queue": float,
-        "http.server_name": str,
-        "http.status_code": int,
-        "http.status_text": str,
-        "http.target": str,
-        "http.url": str,
-        "http.user_agent": str,
-        "id": str,
-        "inp": float,
-        "integrity.blocked_url": str,
-        "integrity.destination": str,
-        "integrity.document_url": str,
-        "integrity.report_only": bool,
-        "jsonrpc.protocol.version": str,
-        "jsonrpc.request.id": str,
-        "jvm.gc.action": str,
-        "jvm.gc.name": str,
-        "jvm.memory.pool.name": str,
-        "jvm.memory.type": str,
-        "jvm.thread.daemon": bool,
-        "jvm.thread.state": str,
-        "koa.name": str,
-        "koa.type": str,
-        "langchain.chain.name": str,
-        "lcp.element": str,
-        "lcp.id": str,
-        "lcp.loadTime": int,
-        "lcp.renderTime": int,
-        "lcp.size": int,
-        "lcp.url": str,
-        "lcp": float,
-        "litestar.middleware_name": str,
-        "logger.name": str,
-        "mcp.auth.client.name": str,
-        "mcp.cancelled.reason": str,
-        "mcp.cancelled.request_id": str,
-        "mcp.client.name": str,
-        "mcp.client.title": str,
-        "mcp.client.version": str,
-        "mcp.lifecycle.phase": str,
-        "mcp.logging.data_type": str,
-        "mcp.logging.level": str,
-        "mcp.logging.logger": str,
-        "mcp.logging.message": str,
-        "mcp.method.name": str,
-        "mcp.progress.current": float,
-        "mcp.progress.message": str,
-        "mcp.progress.percentage": float,
-        "mcp.progress.token": str,
-        "mcp.progress.total": float,
-        "mcp.prompt.name": str,
-        "mcp.prompt.result.<key>.content": str,
-        "mcp.prompt.result.<key>.role": str,
-        "mcp.prompt.result.description": str,
-        "mcp.prompt.result.message_content": str,
-        "mcp.prompt.result.message_count": int,
-        "mcp.prompt.result.message_role": str,
-        "mcp.protocol.ready": int,
-        "mcp.protocol.version": str,
-        "mcp.request.argument.<key>": str,
-        "mcp.request.argument.name": str,
-        "mcp.request.argument.uri": str,
-        "mcp.request.id": str,
-        "mcp.resource.protocol": str,
-        "mcp.resource.uri": str,
-        "mcp.server.name": str,
-        "mcp.server.title": str,
-        "mcp.server.version": str,
-        "mcp.session.id": str,
-        "mcp.tool.name": str,
-        "mcp.tool.result.<key>.content": str,
-        "mcp.tool.result.<key>.content_type": str,
-        "mcp.tool.result.<key>.data_size": int,
-        "mcp.tool.result.<key>.mime_type": str,
-        "mcp.tool.result.<key>.name": str,
-        "mcp.tool.result.<key>.resource_mime_type": str,
-        "mcp.tool.result.<key>.resource_uri": str,
-        "mcp.tool.result.<key>.uri": str,
-        "mcp.tool.result.content": str,
-        "mcp.tool.result.content_count": int,
-        "mcp.tool.result.content_type": str,
-        "mcp.tool.result.data_size": int,
-        "mcp.tool.result.is_error": bool,
-        "mcp.tool.result.mime_type": str,
-        "mcp.tool.result.name": str,
-        "mcp.tool.result.resource_mime_type": str,
-        "mcp.tool.result.resource_uri": str,
-        "mcp.tool.result.uri": str,
-        "mcp.transport": str,
-        "mdc.<key>": str,
-        "messaging.batch.message_count": int,
-        "messaging.bullmq.flow.name": str,
-        "messaging.bullmq.job.attempt_finished_timestamp": int,
-        "messaging.bullmq.job.bulk.names": List[str],
-        "messaging.bullmq.job.deduplication.key": str,
-        "messaging.bullmq.job.ids": List[str],
-        "messaging.bullmq.job.key": str,
-        "messaging.bullmq.job.name": str,
-        "messaging.bullmq.job.processed_timestamp": int,
-        "messaging.bullmq.job.scheduler.id": str,
-        "messaging.bullmq.job.state": str,
-        "messaging.bullmq.job.type": str,
-        "messaging.bullmq.queue.clean.count": int,
-        "messaging.bullmq.queue.clean.limit": int,
-        "messaging.bullmq.queue.drain.delay": bool,
-        "messaging.bullmq.queue.event.max_length": int,
-        "messaging.bullmq.queue.grace": int,
-        "messaging.bullmq.queue.jobs.state": str,
-        "messaging.bullmq.queue.rate_limit": int,
-        "messaging.bullmq.worker.do_not_wait_active": bool,
-        "messaging.bullmq.worker.force_close": bool,
-        "messaging.bullmq.worker.jobs_to_extend_locks": List[str],
-        "messaging.bullmq.worker.name": str,
-        "messaging.bullmq.worker.rate_limit": int,
-        "messaging.bullmq.worker.stalled_jobs": List[str],
-        "messaging.client.id": str,
-        "messaging.conversation_id": str,
-        "messaging.destination": str,
-        "messaging.destination.connection": str,
-        "messaging.destination.name": str,
-        "messaging.destination.partition.id": str,
-        "messaging.destination_kind": str,
-        "messaging.kafka.message.key": str,
-        "messaging.kafka.message.tombstone": bool,
-        "messaging.kafka.offset": int,
-        "messaging.message.body.size": int,
-        "messaging.message.conversation_id": str,
-        "messaging.message.envelope.size": int,
-        "messaging.message.id": str,
-        "messaging.message.receive.latency": int,
-        "messaging.message.retry.count": int,
-        "messaging.message_id": str,
-        "messaging.operation": str,
-        "messaging.operation.name": str,
-        "messaging.operation.type": str,
-        "messaging.protocol": str,
-        "messaging.protocol_version": str,
-        "messaging.rabbitmq.destination.routing_key": str,
-        "messaging.rabbitmq.routing_key": str,
-        "messaging.system": str,
-        "messaging.url": str,
-        "method": str,
-        "middleware.name": str,
-        "navigation.origin": str,
-        "navigation.route.id": str,
-        "navigation.type": str,
-        "nel.elapsed_time": int,
-        "nel.phase": str,
-        "nel.referrer": str,
-        "nel.sampling_fraction": float,
-        "nel.sampling_function": float,
-        "nel.type": str,
-        "net.host.ip": str,
-        "net.host.name": str,
-        "net.host.port": int,
-        "net.peer.ip": str,
-        "net.peer.name": str,
-        "net.peer.port": int,
-        "net.protocol.name": str,
-        "net.protocol.version": str,
-        "net.sock.family": str,
-        "net.sock.host.addr": str,
-        "net.sock.host.port": int,
-        "net.sock.peer.addr": str,
-        "net.sock.peer.name": str,
-        "net.sock.peer.port": int,
-        "net.transport": str,
-        "network.connection.effective_type": str,
-        "network.connection.rtt": int,
-        "network.connection.type": str,
-        "network.local.address": str,
-        "network.local.port": int,
-        "network.peer.address": str,
-        "network.peer.port": int,
-        "network.protocol.name": str,
-        "network.protocol.version": str,
-        "network.transport": str,
-        "network.type": str,
-        "os.build": str,
-        "os.build_id": str,
-        "os.description": str,
-        "os.kernel_version": str,
-        "os.name": str,
-        "os.raw_description": str,
-        "os.rooted": bool,
-        "os.theme": str,
-        "os.type": str,
-        "os.version": str,
-        "otel.kind": str,
-        "otel.scope.name": str,
-        "otel.scope.version": str,
-        "otel.status_code": str,
-        "otel.status_description": str,
-        "page.server_rendering.age": int,
-        "page.server_rendering.type": str,
-        "params.<key>": str,
-        "performance.activationStart": float,
-        "performance.timeOrigin": float,
-        "port": int,
-        "previous_route": str,
-        "process.command_args": List[str],
-        "process.executable.name": str,
-        "process.pid": int,
-        "process.runtime.description": str,
-        "process.runtime.elixir.memory.type": str,
-        "process.runtime.elixir.run_queue.type": str,
-        "process.runtime.engine.name": str,
-        "process.runtime.engine.version": str,
-        "process.runtime.name": str,
-        "process.runtime.version": str,
-        "profile_id": str,
-        "query.<key>": str,
-        "query": str,
-        "react.version": str,
-        "react_native.architecture": str,
-        "react_native.module.call.count": int,
-        "react_native.module.call.distinct_count": int,
-        "react_native.module.duration.max": float,
-        "react_native.module.duration.total": float,
-        "react_native.module.error.count": int,
-        "react_native.module.kind": str,
-        "react_native.module.method": str,
-        "react_native.module.name": str,
-        "react_native.module.top.duration": float,
-        "react_native.module.top.name": str,
-        "redis.command": str,
-        "redis.key": str,
-        "release": str,
-        "remix.action_form_data.<key>": str,
-        "replayId": str,
-        "replay_id": str,
-        "resource.deployment.environment": str,
-        "resource.deployment.environment.name": str,
-        "resource.render_blocking_status": str,
-        "route": str,
-        "router.navigation.origin": str,
-        "router.navigation.route.id": str,
-        "router.navigation.type": str,
-        "rpc.grpc.status_code": int,
-        "rpc.method": str,
-        "rpc.response.status_code": str,
-        "rpc.service": str,
-        "rpc.system": str,
-        "rpc.system.name": str,
-        "runtime.build": str,
-        "runtime.name": str,
-        "runtime.raw_description": str,
-        "runtime.version": str,
-        "score.<key>": float,
-        "score.ratio.<key>": float,
-        "score.total": float,
-        "score.weight.<key>": float,
-        "sentry.action": str,
-        "sentry.browser.name": str,
-        "sentry.browser.version": str,
-        "sentry.cancellation_reason": str,
-        "sentry.category": str,
-        "sentry.client_sample_rate": float,
-        "sentry.description": str,
-        "sentry.dist": str,
-        "sentry.domain": str,
-        "sentry.dsc.environment": str,
-        "sentry.dsc.project_id": str,
-        "sentry.dsc.public_key": str,
-        "sentry.dsc.release": str,
-        "sentry.dsc.sample_rate": str,
-        "sentry.dsc.sampled": bool,
-        "sentry.dsc.trace_id": str,
-        "sentry.dsc.transaction": str,
-        "sentry.environment": str,
-        "sentry.event.serialized_breadcrumbs": str,
-        "sentry.event.serialized_contexts": str,
-        "sentry.event.serialized_extra": str,
-        "sentry.event.serialized_meta": str,
-        "sentry.exclusive_time": float,
-        "sentry.frames.frozen": int,
-        "sentry.frames.slow": int,
-        "sentry.frames.total": int,
-        "sentry.graphql.operation": str,
-        "sentry.group": str,
-        "sentry.http.prefetch": bool,
-        "sentry.idle_span_finish_reason": str,
-        "sentry.is_localhost": bool,
-        "sentry.is_remote": bool,
-        "sentry.kind": str,
-        "sentry.link.type": str,
-        "sentry.main_thread": bool,
-        "sentry.message.parameter.<key>": str,
-        "sentry.message.template": str,
-        "sentry.messaging.destination.name": str,
-        "sentry.messaging.message.id": str,
-        "sentry.metric.source": str,
-        "sentry.mobile": bool,
-        "sentry.module.<key>": str,
-        "sentry.nextjs.ssr.function.route": str,
-        "sentry.nextjs.ssr.function.type": str,
-        "sentry.normalized_db_query": str,
-        "sentry.normalized_db_query.hash": str,
-        "sentry.normalized_description": str,
-        "sentry.observed_timestamp_nanos": str,
-        "sentry.op": str,
-        "sentry.origin": str,
-        "sentry.pageload.span_id": str,
-        "sentry.platform": str,
-        "sentry.profile_id": str,
-        "sentry.profiler_id": str,
-        "sentry.relay.ingress": str,
-        "sentry.relay.pipeline": str,
-        "sentry.release": str,
-        "sentry.replay_id": str,
-        "sentry.replay_is_buffering": bool,
-        "sentry.report_event": str,
-        "sentry.sdk.integrations": List[str],
-        "sentry.sdk.name": str,
-        "sentry.sdk.version": str,
-        "sentry.segment.id": str,
-        "sentry.segment.name": str,
-        "sentry.segment.name.source": str,
-        "sentry.segment_id": str,
-        "sentry.server_sample_rate": float,
-        "sentry.source": str,
-        "sentry.span.source": str,
-        "sentry.status": str,
-        "sentry.status.message": str,
-        "sentry.status_code": int,
-        "sentry.sveltekit.navigation.from": str,
-        "sentry.sveltekit.navigation.to": str,
-        "sentry.sveltekit.navigation.type": str,
-        "sentry.thread.id": int,
-        "sentry.timestamp.sequence": int,
-        "sentry.trace.parent_span_id": str,
-        "sentry.trace.status": str,
-        "sentry.trace_lifecycle": str,
-        "sentry.transaction": str,
-        "sentry.user": str,
-        "sentry.user.email": str,
-        "sentry.user.geo.city": str,
-        "sentry.user.geo.country_code": str,
-        "sentry.user.geo.region": str,
-        "sentry.user.geo.subdivision": str,
-        "sentry.user.geo.subregion": str,
-        "sentry.user.id": str,
-        "sentry.user.ip": str,
-        "sentry.user.username": str,
-        "server.address": str,
-        "server.ext.type": str,
-        "server.port": int,
-        "server_name": str,
-        "service.name": str,
-        "service.version": str,
-        "session.id": str,
-        "stall_percentage": float,
-        "stall_total_time": float,
-        "starlette.middleware_name": str,
-        "starlite.middleware_name": str,
-        "state.type": str,
-        "subprocess.pid": int,
-        "sveltekit.load.environment": str,
-        "sveltekit.load.node_id": str,
-        "sveltekit.load.node_type": str,
-        "sveltekit.tracing.original_name": str,
-        "thread.id": int,
-        "thread.name": str,
-        "timber.tag": str,
-        "time_to_full_display": float,
-        "time_to_initial_display": float,
-        "tls.protocol.name": str,
-        "tls.protocol.version": str,
-        "transaction": str,
-        "trpc.procedure_path": str,
-        "trpc.procedure_type": str,
-        "ttfb.requestTime": float,
-        "ttfb": float,
-        "turbo_module.arch": str,
-        "turbo_module.method": str,
-        "turbo_module.name": str,
-        "turbo_module.top_module": str,
-        "turbo_module.top_module_duration_ms": float,
-        "turbo_module.total_call_count": int,
-        "turbo_module.total_duration_ms": float,
-        "turbo_module.total_error_count": int,
-        "turbo_module.unique_methods": int,
-        "turbo_modules.total_call_count": int,
-        "turbo_modules.total_duration_ms": float,
-        "turbo_modules.total_error_count": int,
-        "turbo_modules.unique_methods": int,
-        "type": str,
-        "ui.component_name": str,
-        "ui.contributes_to_ttfd": bool,
-        "ui.contributes_to_ttid": bool,
-        "ui.element.height": int,
-        "ui.element.id": str,
-        "ui.element.identifier": str,
-        "ui.element.load_time": float,
-        "ui.element.paint_type": str,
-        "ui.element.render_time": float,
-        "ui.element.type": str,
-        "ui.element.url": str,
-        "ui.element.width": int,
-        "url.domain": str,
-        "url.fragment": str,
-        "url.full": str,
-        "url.path": str,
-        "url.path.parameter.<key>": str,
-        "url.path.params.<key>": str,
-        "url.port": int,
-        "url.query": str,
-        "url.same_origin": bool,
-        "url.scheme": str,
-        "url.template": str,
-        "url": str,
-        "user.email": str,
-        "user.full_name": str,
-        "user.geo.city": str,
-        "user.geo.country_code": str,
-        "user.geo.region": str,
-        "user.geo.subdivision": str,
-        "user.geo.subregion": str,
-        "user.hash": str,
-        "user.id": str,
-        "user.ip_address": str,
-        "user.name": str,
-        "user.roles": List[str],
-        "user_agent.original": str,
-        "vercel.ai.settings.context.<key>": str,
-        "vercel.ai.telemetry.metadata.<key>": str,
-        "vercel.ai.tool_call.context.<key>": str,
-        "vercel.branch": str,
-        "vercel.build_id": str,
-        "vercel.deployment_id": str,
-        "vercel.destination": str,
-        "vercel.edge_type": str,
-        "vercel.entrypoint": str,
-        "vercel.execution_region": str,
-        "vercel.id": str,
-        "vercel.ja3_digest": str,
-        "vercel.ja4_digest": str,
-        "vercel.log_type": str,
-        "vercel.path": str,
-        "vercel.project_id": str,
-        "vercel.project_name": str,
-        "vercel.proxy.cache_id": str,
-        "vercel.proxy.client_ip": str,
-        "vercel.proxy.host": str,
-        "vercel.proxy.lambda_region": str,
-        "vercel.proxy.method": str,
-        "vercel.proxy.path": str,
-        "vercel.proxy.path_type": str,
-        "vercel.proxy.path_type_variant": str,
-        "vercel.proxy.referer": str,
-        "vercel.proxy.region": str,
-        "vercel.proxy.response_byte_size": int,
-        "vercel.proxy.scheme": str,
-        "vercel.proxy.status_code": int,
-        "vercel.proxy.timestamp": int,
-        "vercel.proxy.user_agent": List[str],
-        "vercel.proxy.vercel_cache": str,
-        "vercel.proxy.vercel_id": str,
-        "vercel.proxy.waf_action": str,
-        "vercel.proxy.waf_rule_id": str,
-        "vercel.request_id": str,
-        "vercel.source": str,
-        "vercel.status_code": int,
-    },
-    total=False,
-)
-"""TypedDict representing a collection of attributes, including deprecated and non-deprecated ones."""

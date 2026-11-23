@@ -7,8 +7,14 @@
   },
   "is_in_otel": false,
   "example": 2.625,
+  "alias": ["sentry.device.screen_density"],
   "visibility": "public",
   "changelog": [
+    {
+      "version": "0.35.0",
+      "prs": [804],
+      "description": "Added sentry.device.screen_density as an alias"
+    },
     {
       "version": "0.5.0",
       "prs": [303],

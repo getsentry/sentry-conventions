@@ -7,7 +7,7 @@
   },
   "is_in_otel": false,
   "examples": ["amqp://guest:guest@localhost:5672"],
-  "alias": ["url.full", "http.url", "url", "aws.request.url"],
+  "alias": ["url.full", "http.url", "url", "aws.request.url", "sentry.request.url"],
   "deprecation": {
     "_status": "backfill",
     "replacement": "url.full",
@@ -15,6 +15,11 @@
   },
   "visibility": "public",
   "changelog": [
+    {
+      "version": "0.35.0",
+      "prs": [807],
+      "description": "Added sentry.request.url as an alias"
+    },
     {
       "version": "0.21.0",
       "prs": [581],

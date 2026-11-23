@@ -1,0 +1,23 @@
+{
+  "key": "sentry.device.locale",
+  "brief": "The locale of the device.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "example": "en-US",
+  "alias": ["device.locale"],
+  "deprecation": {
+    "_status": "backfill",
+    "replacement": "device.locale"
+  },
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "0.35.0",
+      "prs": [804],
+      "description": "Added sentry.device.locale attribute, deprecated in favor of device.locale"
+    }
+  ]
+}

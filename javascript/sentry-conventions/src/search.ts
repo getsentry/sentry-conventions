@@ -1189,6 +1189,16 @@ export const SEARCH_CHANNEL = 'channel';
 export const SEARCH_CLIENT__ADDRESS = 'client.address';
 
 /**
+ * Search name for {@link attributes.CLIENT_AS_NUMBER}. `client.as.number`
+ */
+export const SEARCH_CLIENT__AS__NUMBER = 'client.as.number';
+
+/**
+ * Search name for {@link attributes.CLIENT_AS_ORGANIZATION}. `client.as.organization`
+ */
+export const SEARCH_CLIENT__AS__ORGANIZATION = 'client.as.organization';
+
+/**
  * Search name for {@link attributes.CLIENT_PORT}. `client.port`
  */
 export const SEARCH_CLIENT__PORT = 'client.port';
@@ -2632,6 +2642,11 @@ export const SEARCH_HEROKU__ROUTER__REQUEST_ID = 'heroku.router.request_id';
  * Search name for {@link attributes.HEROKU_ROUTER_SERVICE}. `heroku.router.service`
  */
 export const SEARCH_HEROKU__ROUTER__SERVICE = 'heroku.router.service';
+
+/**
+ * Search name for {@link attributes.HEROKU_SOURCE}. `heroku.source`
+ */
+export const SEARCH_HEROKU__SOURCE = 'heroku.source';
 
 /**
  * Search name for {@link attributes.HTTP_CLIENT_IP}. `http.client_ip`
@@ -4411,6 +4426,118 @@ export const SEARCH_SENTRY__CLIENT_SAMPLE_RATE = 'sentry.client_sample_rate';
 export const SEARCH_SENTRY__DESCRIPTION = 'sentry.description';
 
 /**
+ * Search name for {@link attributes.SENTRY_DEVICE_BATTERY_LEVEL}. `sentry.device.battery_level`
+ *
+ * @deprecated Use {@link SEARCH_DEVICE__BATTERY_LEVEL} (`device.battery_level`) instead
+ */
+export const SEARCH_SENTRY__DEVICE__BATTERY_LEVEL = 'sentry.device.battery_level';
+
+/**
+ * Search name for {@link attributes.SENTRY_DEVICE_BRAND}. `sentry.device.brand`
+ *
+ * @deprecated Use {@link SEARCH_DEVICE__BRAND} (`device.brand`) instead
+ */
+export const SEARCH_SENTRY__DEVICE__BRAND = 'sentry.device.brand';
+
+/**
+ * Search name for {@link attributes.SENTRY_DEVICE_CHARGING}. `sentry.device.charging`
+ *
+ * @deprecated Use {@link SEARCH_DEVICE__CHARGING} (`device.charging`) instead
+ */
+export const SEARCH_SENTRY__DEVICE__CHARGING = 'sentry.device.charging';
+
+/**
+ * Search name for {@link attributes.SENTRY_DEVICE_CLASS}. `sentry.device.class`
+ *
+ * @deprecated Use {@link SEARCH_DEVICE__CLASS} (`device.class`) instead
+ */
+export const SEARCH_SENTRY__DEVICE__CLASS = 'sentry.device.class';
+
+/**
+ * Search name for {@link attributes.SENTRY_DEVICE_FAMILY}. `sentry.device.family`
+ *
+ * @deprecated Use {@link SEARCH_DEVICE__FAMILY} (`device.family`) instead
+ */
+export const SEARCH_SENTRY__DEVICE__FAMILY = 'sentry.device.family';
+
+/**
+ * Search name for {@link attributes.SENTRY_DEVICE_LOCALE}. `sentry.device.locale`
+ *
+ * @deprecated Use {@link SEARCH_DEVICE__LOCALE} (`device.locale`) instead
+ */
+export const SEARCH_SENTRY__DEVICE__LOCALE = 'sentry.device.locale';
+
+/**
+ * Search name for {@link attributes.SENTRY_DEVICE_MODEL}. `sentry.device.model`
+ *
+ * @deprecated Use {@link SEARCH_DEVICE__MODEL} (`device.model`) instead
+ */
+export const SEARCH_SENTRY__DEVICE__MODEL = 'sentry.device.model';
+
+/**
+ * Search name for {@link attributes.SENTRY_DEVICE_MODEL_ID}. `sentry.device.model_id`
+ *
+ * @deprecated Use {@link SEARCH_DEVICE__MODEL_ID} (`device.model_id`) instead
+ */
+export const SEARCH_SENTRY__DEVICE__MODEL_ID = 'sentry.device.model_id';
+
+/**
+ * Search name for {@link attributes.SENTRY_DEVICE_NAME}. `sentry.device.name`
+ *
+ * @deprecated Use {@link SEARCH_DEVICE__NAME} (`device.name`) instead
+ */
+export const SEARCH_SENTRY__DEVICE__NAME = 'sentry.device.name';
+
+/**
+ * Search name for {@link attributes.SENTRY_DEVICE_ONLINE}. `sentry.device.online`
+ *
+ * @deprecated Use {@link SEARCH_DEVICE__ONLINE} (`device.online`) instead
+ */
+export const SEARCH_SENTRY__DEVICE__ONLINE = 'sentry.device.online';
+
+/**
+ * Search name for {@link attributes.SENTRY_DEVICE_ORIENTATION}. `sentry.device.orientation`
+ *
+ * @deprecated Use {@link SEARCH_DEVICE__ORIENTATION} (`device.orientation`) instead
+ */
+export const SEARCH_SENTRY__DEVICE__ORIENTATION = 'sentry.device.orientation';
+
+/**
+ * Search name for {@link attributes.SENTRY_DEVICE_SCREEN_DENSITY}. `sentry.device.screen_density`
+ *
+ * @deprecated Use {@link SEARCH_DEVICE__SCREEN_DENSITY} (`device.screen_density`) instead
+ */
+export const SEARCH_SENTRY__DEVICE__SCREEN_DENSITY = 'sentry.device.screen_density';
+
+/**
+ * Search name for {@link attributes.SENTRY_DEVICE_SCREEN_DPI}. `sentry.device.screen_dpi`
+ *
+ * @deprecated Use {@link SEARCH_DEVICE__SCREEN_DPI} (`device.screen_dpi`) instead
+ */
+export const SEARCH_SENTRY__DEVICE__SCREEN_DPI = 'sentry.device.screen_dpi';
+
+/**
+ * Search name for {@link attributes.SENTRY_DEVICE_SCREEN_HEIGHT_PIXELS}. `sentry.device.screen_height_pixels`
+ *
+ * @deprecated Use {@link SEARCH_DEVICE__SCREEN_HEIGHT_PIXELS} (`device.screen_height_pixels`) instead
+ */
+export const SEARCH_SENTRY__DEVICE__SCREEN_HEIGHT_PIXELS = 'sentry.device.screen_height_pixels';
+
+/**
+ * Search name for {@link attributes.SENTRY_DEVICE_SCREEN_WIDTH_PIXELS}. `sentry.device.screen_width_pixels`
+ *
+ * @deprecated Use {@link SEARCH_DEVICE__SCREEN_WIDTH_PIXELS} (`device.screen_width_pixels`) instead
+ */
+export const SEARCH_SENTRY__DEVICE__SCREEN_WIDTH_PIXELS = 'sentry.device.screen_width_pixels';
+
+/**
+ * Search name for {@link attributes.SENTRY_DEVICE_SIMULATOR}. `sentry.device.simulator`
+ *
+ * @deprecated Use {@link SEARCH_DEVICE__SIMULATOR} (`device.simulator`) instead
+ */
+export const SEARCH_SENTRY__DEVICE__SIMULATOR = 'sentry.device.simulator';
+
+/**
  * Search name for {@link attributes.SENTRY_DIST}. `sentry.dist`
  */
 export const SEARCH_SENTRY__DIST = 'sentry.dist';
@@ -4650,6 +4777,20 @@ export const SEARCH_SENTRY__OP = 'sentry.op';
 export const SEARCH_SENTRY__ORIGIN = 'sentry.origin';
 
 /**
+ * Search name for {@link attributes.SENTRY_OS_NAME}. `sentry.os.name`
+ *
+ * @deprecated Use {@link SEARCH_OS__NAME} (`os.name`) instead
+ */
+export const SEARCH_SENTRY__OS__NAME = 'sentry.os.name';
+
+/**
+ * Search name for {@link attributes.SENTRY_OS_ROOTED}. `sentry.os.rooted`
+ *
+ * @deprecated Use {@link SEARCH_OS__ROOTED} (`os.rooted`) instead
+ */
+export const SEARCH_SENTRY__OS__ROOTED = 'sentry.os.rooted';
+
+/**
  * Search name for {@link attributes.SENTRY_PAGELOAD_SPAN_ID}. `sentry.pageload.span_id`
  */
 export const SEARCH_SENTRY__PAGELOAD__SPAN_ID = 'sentry.pageload.span_id';
@@ -4710,6 +4851,27 @@ export const SEARCH_SENTRY__REPLAY_IS_BUFFERING = 'sentry.replay_is_buffering';
  * @deprecated
  */
 export const SEARCH_SENTRY__REPORT_EVENT = 'sentry.report_event';
+
+/**
+ * Search name for {@link attributes.SENTRY_REQUEST_METHOD}. `sentry.request.method`
+ *
+ * @deprecated Use {@link SEARCH_HTTP__REQUEST__METHOD} (`http.request.method`) instead
+ */
+export const SEARCH_SENTRY__REQUEST__METHOD = 'sentry.request.method';
+
+/**
+ * Search name for {@link attributes.SENTRY_REQUEST_URL}. `sentry.request.url`
+ *
+ * @deprecated Use {@link SEARCH_URL__FULL} (`url.full`) instead
+ */
+export const SEARCH_SENTRY__REQUEST__URL = 'sentry.request.url';
+
+/**
+ * Search name for {@link attributes.SENTRY_RUNTIME_NAME}. `sentry.runtime.name`
+ *
+ * @deprecated Use {@link SEARCH_PROCESS__RUNTIME__NAME} (`process.runtime.name`) instead
+ */
+export const SEARCH_SENTRY__RUNTIME__NAME = 'sentry.runtime.name';
 
 /**
  * Search name for {@link attributes.SENTRY_SDK_INTEGRATIONS}. `sentry.sdk.integrations`
@@ -4816,6 +4978,13 @@ export const SEARCH_SENTRY__SVELTEKIT__NAVIGATION__TO = 'sentry.sveltekit.naviga
  * @deprecated Use {@link SEARCH_ROUTER__NAVIGATION__TYPE} (`router.navigation.type`) instead
  */
 export const SEARCH_SENTRY__SVELTEKIT__NAVIGATION__TYPE = 'sentry.sveltekit.navigation.type';
+
+/**
+ * Search name for {@link attributes.SENTRY_THREAD_NAME}. `sentry.thread.name`
+ *
+ * @deprecated Use {@link SEARCH_THREAD__NAME} (`thread.name`) instead
+ */
+export const SEARCH_SENTRY__THREAD__NAME = 'sentry.thread.name';
 
 /**
  * Search name for {@link attributes.SENTRY_TIMESTAMP_SEQUENCE}. `sentry.timestamp.sequence`
@@ -5814,6 +5983,8 @@ export type AttributeSearchName =
   | typeof SEARCH_CACHE__WRITE
   | typeof SEARCH_CHANNEL
   | typeof SEARCH_CLIENT__ADDRESS
+  | typeof SEARCH_CLIENT__AS__NUMBER
+  | typeof SEARCH_CLIENT__AS__ORGANIZATION
   | typeof SEARCH_CLIENT__PORT
   | typeof SEARCH_CLIENT_SAMPLE_RATE
   | typeof SEARCH_CLOUD__ACCOUNT__ID
@@ -6080,6 +6251,7 @@ export type AttributeSearchName =
   | typeof SEARCH_HEROKU__ROUTER__CONNECT
   | typeof SEARCH_HEROKU__ROUTER__REQUEST_ID
   | typeof SEARCH_HEROKU__ROUTER__SERVICE
+  | typeof SEARCH_HEROKU__SOURCE
   | typeof SEARCH_HTTP__CLIENT_IP
   | typeof SEARCH_HTTP__DECODED_RESPONSE_CONTENT_LENGTH
   | typeof SEARCH_HTTP__FLAVOR
@@ -6394,6 +6566,22 @@ export type AttributeSearchName =
   | typeof SEARCH_SENTRY__CATEGORY
   | typeof SEARCH_SENTRY__CLIENT_SAMPLE_RATE
   | typeof SEARCH_SENTRY__DESCRIPTION
+  | typeof SEARCH_SENTRY__DEVICE__BATTERY_LEVEL
+  | typeof SEARCH_SENTRY__DEVICE__BRAND
+  | typeof SEARCH_SENTRY__DEVICE__CHARGING
+  | typeof SEARCH_SENTRY__DEVICE__CLASS
+  | typeof SEARCH_SENTRY__DEVICE__FAMILY
+  | typeof SEARCH_SENTRY__DEVICE__LOCALE
+  | typeof SEARCH_SENTRY__DEVICE__MODEL
+  | typeof SEARCH_SENTRY__DEVICE__MODEL_ID
+  | typeof SEARCH_SENTRY__DEVICE__NAME
+  | typeof SEARCH_SENTRY__DEVICE__ONLINE
+  | typeof SEARCH_SENTRY__DEVICE__ORIENTATION
+  | typeof SEARCH_SENTRY__DEVICE__SCREEN_DENSITY
+  | typeof SEARCH_SENTRY__DEVICE__SCREEN_DPI
+  | typeof SEARCH_SENTRY__DEVICE__SCREEN_HEIGHT_PIXELS
+  | typeof SEARCH_SENTRY__DEVICE__SCREEN_WIDTH_PIXELS
+  | typeof SEARCH_SENTRY__DEVICE__SIMULATOR
   | typeof SEARCH_SENTRY__DIST
   | typeof SEARCH_SENTRY__DOMAIN
   | typeof SEARCH_SENTRY__DSC__ENVIRONMENT
@@ -6437,6 +6625,8 @@ export type AttributeSearchName =
   | typeof SEARCH_SENTRY__OBSERVED_TIMESTAMP_NANOS
   | typeof SEARCH_SENTRY__OP
   | typeof SEARCH_SENTRY__ORIGIN
+  | typeof SEARCH_SENTRY__OS__NAME
+  | typeof SEARCH_SENTRY__OS__ROOTED
   | typeof SEARCH_SENTRY__PAGELOAD__SPAN_ID
   | typeof SEARCH_SENTRY__PLATFORM
   | typeof SEARCH_SENTRY__PROFILE_ID
@@ -6447,6 +6637,9 @@ export type AttributeSearchName =
   | typeof SEARCH_SENTRY__REPLAY_ID
   | typeof SEARCH_SENTRY__REPLAY_IS_BUFFERING
   | typeof SEARCH_SENTRY__REPORT_EVENT
+  | typeof SEARCH_SENTRY__REQUEST__METHOD
+  | typeof SEARCH_SENTRY__REQUEST__URL
+  | typeof SEARCH_SENTRY__RUNTIME__NAME
   | typeof SEARCH_SENTRY__SDK__INTEGRATIONS
   | typeof SEARCH_SENTRY__SDK__NAME
   | typeof SEARCH_SENTRY__SDK__VERSION
@@ -6463,6 +6656,7 @@ export type AttributeSearchName =
   | typeof SEARCH_SENTRY__SVELTEKIT__NAVIGATION__FROM
   | typeof SEARCH_SENTRY__SVELTEKIT__NAVIGATION__TO
   | typeof SEARCH_SENTRY__SVELTEKIT__NAVIGATION__TYPE
+  | typeof SEARCH_SENTRY__THREAD__NAME
   | typeof SEARCH_SENTRY__TIMESTAMP__SEQUENCE
   | typeof SEARCH_SENTRY__TRACE__PARENT_SPAN_ID
   | typeof SEARCH_SENTRY__TRACE__STATUS
@@ -7551,7 +7745,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'url.full',
     type: 'string',
     brief: 'The URL of the AWS API request.',
-    deprecationChain: ['url.full', 'aws.request.url', 'http.url', 'messaging.url', 'url'],
+    deprecationChain: ['url.full', 'aws.request.url', 'http.url', 'messaging.url', 'sentry.request.url', 'url'],
   },
   'aws.request_id': {
     canonicalName: 'aws.request_id',
@@ -7971,6 +8165,18 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
       'Client address - domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.',
     deprecationChain: ['client.address', 'http.client_ip'],
   },
+  'client.as.number': {
+    canonicalName: 'client.as.number',
+    type: 'integer',
+    brief: 'Autonomous system number (ASN) associated with the client IP address.',
+    deprecationChain: ['client.as.number'],
+  },
+  'client.as.organization': {
+    canonicalName: 'client.as.organization',
+    type: 'string',
+    brief: 'The name of the organization associated with the autonomous system of the client IP address.',
+    deprecationChain: ['client.as.organization'],
+  },
   'client.port': {
     canonicalName: 'client.port',
     type: 'integer',
@@ -7980,7 +8186,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
   client_sample_rate: {
     canonicalName: 'sentry.client_sample_rate',
     type: 'double',
-    brief: 'Rate at which a span was sampled in the SDK.',
+    brief: 'Rate at which a telemetry item (e.g. a span, or metric) was sampled in the SDK.',
     deprecationChain: ['client_sample_rate', 'sentry.client_sample_rate'],
   },
   'cloud.account.id': {
@@ -8390,7 +8596,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'device.battery_level',
     type: 'double',
     brief: 'The battery level of the device as a percentage (0-100).',
-    deprecationChain: ['device.battery_level'],
+    deprecationChain: ['device.battery_level', 'sentry.device.battery_level'],
   },
   'device.battery_temperature': {
     canonicalName: 'device.battery_temperature',
@@ -8408,13 +8614,13 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'device.brand',
     type: 'string',
     brief: 'The brand of the device.',
-    deprecationChain: ['device.brand'],
+    deprecationChain: ['device.brand', 'sentry.device.brand'],
   },
   'device.charging': {
     canonicalName: 'device.charging',
     type: 'boolean',
     brief: 'Whether the device was charging or not.',
-    deprecationChain: ['device.charging'],
+    deprecationChain: ['device.charging', 'sentry.device.charging'],
   },
   'device.chipset': {
     canonicalName: 'device.chipset',
@@ -8427,7 +8633,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'string',
     brief:
       'The classification of the device. For example, `low`, `medium`, or `high`. Typically inferred by Relay - SDKs generally do not need to set this directly.',
-    deprecationChain: ['device.class'],
+    deprecationChain: ['device.class', 'sentry.device.class'],
   },
   'device.connection_type': {
     canonicalName: 'network.connection.type',
@@ -8457,7 +8663,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'device.family',
     type: 'string',
     brief: 'The family of the device.',
-    deprecationChain: ['device.family'],
+    deprecationChain: ['device.family', 'sentry.device.family'],
   },
   'device.free_memory': {
     canonicalName: 'device.free_memory',
@@ -8481,7 +8687,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'device.locale',
     type: 'string',
     brief: 'The locale of the device.',
-    deprecationChain: ['device.locale'],
+    deprecationChain: ['device.locale', 'sentry.device.locale'],
   },
   'device.low_memory': {
     canonicalName: 'device.low_memory',
@@ -8518,31 +8724,31 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'device.model',
     type: 'string',
     brief: 'The model of the device.',
-    deprecationChain: ['device.model'],
+    deprecationChain: ['device.model', 'sentry.device.model'],
   },
   'device.model_id': {
     canonicalName: 'device.model_id',
     type: 'string',
     brief: 'An internal hardware revision to identify the device exactly.',
-    deprecationChain: ['device.model_id'],
+    deprecationChain: ['device.model_id', 'sentry.device.model_id'],
   },
   'device.name': {
     canonicalName: 'device.name',
     type: 'string',
     brief: 'The user-assigned name of the mobile device.',
-    deprecationChain: ['device.name'],
+    deprecationChain: ['device.name', 'sentry.device.name'],
   },
   'device.online': {
     canonicalName: 'device.online',
     type: 'boolean',
     brief: 'Whether the device was online or not.',
-    deprecationChain: ['device.online'],
+    deprecationChain: ['device.online', 'sentry.device.online'],
   },
   'device.orientation': {
     canonicalName: 'device.orientation',
     type: 'string',
     brief: 'The orientation of the device, either "portrait" or "landscape".',
-    deprecationChain: ['device.orientation'],
+    deprecationChain: ['device.orientation', 'sentry.device.orientation'],
   },
   'device.processor_count': {
     canonicalName: 'device.processor_count',
@@ -8560,31 +8766,31 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'device.screen_density',
     type: 'double',
     brief: 'The screen density of the device.',
-    deprecationChain: ['device.screen_density'],
+    deprecationChain: ['device.screen_density', 'sentry.device.screen_density'],
   },
   'device.screen_dpi': {
     canonicalName: 'device.screen_dpi',
     type: 'integer',
     brief: 'The screen density in dots-per-inch (DPI) of the device.',
-    deprecationChain: ['device.screen_dpi'],
+    deprecationChain: ['device.screen_dpi', 'sentry.device.screen_dpi'],
   },
   'device.screen_height_pixels': {
     canonicalName: 'device.screen_height_pixels',
     type: 'integer',
     brief: 'The height of the device screen in pixels.',
-    deprecationChain: ['device.screen_height_pixels'],
+    deprecationChain: ['device.screen_height_pixels', 'sentry.device.screen_height_pixels'],
   },
   'device.screen_width_pixels': {
     canonicalName: 'device.screen_width_pixels',
     type: 'integer',
     brief: 'The width of the device screen in pixels.',
-    deprecationChain: ['device.screen_width_pixels'],
+    deprecationChain: ['device.screen_width_pixels', 'sentry.device.screen_width_pixels'],
   },
   'device.simulator': {
     canonicalName: 'device.simulator',
     type: 'boolean',
     brief: 'Whether the device is a simulator or an actual device.',
-    deprecationChain: ['device.simulator'],
+    deprecationChain: ['device.simulator', 'sentry.device.simulator'],
   },
   'device.storage_size': {
     canonicalName: 'device.storage_size',
@@ -9708,6 +9914,12 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
       'Time in milliseconds spent proxying data between the backend dyno and the client, as reported by the Heroku router',
     deprecationChain: ['heroku.router.service'],
   },
+  'heroku.source': {
+    canonicalName: 'heroku.source',
+    type: 'string',
+    brief: 'Logplex source of a Heroku log line.',
+    deprecationChain: ['heroku.source'],
+  },
   'http.client_ip': {
     canonicalName: 'client.address',
     type: 'string',
@@ -9756,7 +9968,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'http.request.method',
     type: 'string',
     brief: 'The HTTP method used.',
-    deprecationChain: ['http.request.method', 'http.method', 'http.request_method', 'method'],
+    deprecationChain: ['http.request.method', 'http.method', 'http.request_method', 'method', 'sentry.request.method'],
   },
   'http.query': {
     canonicalName: 'http.query',
@@ -9834,7 +10046,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'http.request.method',
     type: 'string',
     brief: 'The HTTP method used.',
-    deprecationChain: ['http.request.method', 'http.method', 'http.request_method', 'method'],
+    deprecationChain: ['http.request.method', 'http.method', 'http.request_method', 'method', 'sentry.request.method'],
   },
   'http.request.redirect_end': {
     canonicalName: 'http.request.redirect_end',
@@ -9919,7 +10131,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'http.request.method',
     type: 'string',
     brief: 'The HTTP method used.',
-    deprecationChain: ['http.request.method', 'http.method', 'http.request_method', 'method'],
+    deprecationChain: ['http.request.method', 'http.method', 'http.request_method', 'method', 'sentry.request.method'],
   },
   'http.response.body.decoded_size': {
     canonicalName: 'http.response.body.decoded_size',
@@ -10058,7 +10270,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'url.full',
     type: 'string',
     brief: 'The URL of the resource that was fetched.',
-    deprecationChain: ['url.full', 'aws.request.url', 'http.url', 'messaging.url', 'url'],
+    deprecationChain: ['url.full', 'aws.request.url', 'http.url', 'messaging.url', 'sentry.request.url', 'url'],
   },
   'http.user_agent': {
     canonicalName: 'user_agent.original',
@@ -10919,13 +11131,13 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'url.full',
     type: 'string',
     brief: 'The connection string of the messaging broker.',
-    deprecationChain: ['url.full', 'aws.request.url', 'http.url', 'messaging.url', 'url'],
+    deprecationChain: ['url.full', 'aws.request.url', 'http.url', 'messaging.url', 'sentry.request.url', 'url'],
   },
   method: {
     canonicalName: 'http.request.method',
     type: 'string',
     brief: 'The HTTP method used.',
-    deprecationChain: ['http.request.method', 'http.method', 'http.request_method', 'method'],
+    deprecationChain: ['http.request.method', 'http.method', 'http.request_method', 'method', 'sentry.request.method'],
   },
   'middleware.name': {
     canonicalName: 'middleware.name',
@@ -11236,7 +11448,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'os.name',
     type: 'string',
     brief: 'Human readable operating system name.',
-    deprecationChain: ['os.name'],
+    deprecationChain: ['os.name', 'sentry.os.name'],
   },
   'os.raw_description': {
     canonicalName: 'os.raw_description',
@@ -11249,7 +11461,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'os.rooted',
     type: 'boolean',
     brief: 'Whether the operating system has been jailbroken or rooted.',
-    deprecationChain: ['os.rooted'],
+    deprecationChain: ['os.rooted', 'sentry.os.rooted'],
   },
   'os.theme': {
     canonicalName: 'os.theme',
@@ -11406,7 +11618,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'process.runtime.name',
     type: 'string',
     brief: 'The name of the runtime. Equivalent to `name` in the Sentry runtime context.',
-    deprecationChain: ['process.runtime.name', 'runtime.name'],
+    deprecationChain: ['process.runtime.name', 'runtime.name', 'sentry.runtime.name'],
   },
   'process.runtime.version': {
     canonicalName: 'process.runtime.version',
@@ -11687,7 +11899,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'process.runtime.name',
     type: 'string',
     brief: 'The name of the runtime. For example node, CPython, or rustc.',
-    deprecationChain: ['process.runtime.name', 'runtime.name'],
+    deprecationChain: ['process.runtime.name', 'runtime.name', 'sentry.runtime.name'],
   },
   'runtime.raw_description': {
     canonicalName: 'process.runtime.description',
@@ -11757,6 +11969,103 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'string',
     brief: 'The human-readable description of a span.',
     deprecationChain: ['sentry.description'],
+  },
+  'sentry.device.battery_level': {
+    canonicalName: 'device.battery_level',
+    type: 'double',
+    brief: 'The battery level of the device as a percentage (0-100).',
+    deprecationChain: ['device.battery_level', 'sentry.device.battery_level'],
+  },
+  'sentry.device.brand': {
+    canonicalName: 'device.brand',
+    type: 'string',
+    brief: 'The brand of the device.',
+    deprecationChain: ['device.brand', 'sentry.device.brand'],
+  },
+  'sentry.device.charging': {
+    canonicalName: 'device.charging',
+    type: 'boolean',
+    brief: 'Whether the device was charging or not.',
+    deprecationChain: ['device.charging', 'sentry.device.charging'],
+  },
+  'sentry.device.class': {
+    canonicalName: 'device.class',
+    type: 'string',
+    brief:
+      'The classification of the device. For example, `low`, `medium`, or `high`. Typically inferred by Relay - SDKs generally do not need to set this directly.',
+    deprecationChain: ['device.class', 'sentry.device.class'],
+  },
+  'sentry.device.family': {
+    canonicalName: 'device.family',
+    type: 'string',
+    brief: 'The family of the device.',
+    deprecationChain: ['device.family', 'sentry.device.family'],
+  },
+  'sentry.device.locale': {
+    canonicalName: 'device.locale',
+    type: 'string',
+    brief: 'The locale of the device.',
+    deprecationChain: ['device.locale', 'sentry.device.locale'],
+  },
+  'sentry.device.model': {
+    canonicalName: 'device.model',
+    type: 'string',
+    brief: 'The model of the device.',
+    deprecationChain: ['device.model', 'sentry.device.model'],
+  },
+  'sentry.device.model_id': {
+    canonicalName: 'device.model_id',
+    type: 'string',
+    brief: 'An internal hardware revision to identify the device exactly.',
+    deprecationChain: ['device.model_id', 'sentry.device.model_id'],
+  },
+  'sentry.device.name': {
+    canonicalName: 'device.name',
+    type: 'string',
+    brief: 'The user-assigned name of the mobile device.',
+    deprecationChain: ['device.name', 'sentry.device.name'],
+  },
+  'sentry.device.online': {
+    canonicalName: 'device.online',
+    type: 'boolean',
+    brief: 'Whether the device was online or not.',
+    deprecationChain: ['device.online', 'sentry.device.online'],
+  },
+  'sentry.device.orientation': {
+    canonicalName: 'device.orientation',
+    type: 'string',
+    brief: 'The orientation of the device, either "portrait" or "landscape".',
+    deprecationChain: ['device.orientation', 'sentry.device.orientation'],
+  },
+  'sentry.device.screen_density': {
+    canonicalName: 'device.screen_density',
+    type: 'double',
+    brief: 'The screen density of the device.',
+    deprecationChain: ['device.screen_density', 'sentry.device.screen_density'],
+  },
+  'sentry.device.screen_dpi': {
+    canonicalName: 'device.screen_dpi',
+    type: 'integer',
+    brief: 'The screen density in dots-per-inch (DPI) of the device.',
+    deprecationChain: ['device.screen_dpi', 'sentry.device.screen_dpi'],
+  },
+  'sentry.device.screen_height_pixels': {
+    canonicalName: 'device.screen_height_pixels',
+    type: 'integer',
+    brief: 'The height of the device screen in pixels.',
+    deprecationChain: ['device.screen_height_pixels', 'sentry.device.screen_height_pixels'],
+  },
+  'sentry.device.screen_width_pixels': {
+    canonicalName: 'device.screen_width_pixels',
+    type: 'integer',
+    brief: 'The width of the device screen in pixels.',
+    deprecationChain: ['device.screen_width_pixels', 'sentry.device.screen_width_pixels'],
+  },
+  'sentry.device.simulator': {
+    canonicalName: 'device.simulator',
+    type: 'boolean',
+    brief: 'Whether the device is a simulator or an actual device.',
+    deprecationChain: ['device.simulator', 'sentry.device.simulator'],
   },
   'sentry.dist': {
     canonicalName: 'sentry.dist',
@@ -11999,6 +12308,18 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     brief: 'The timestamp at which an envelope was received by Relay, in nanoseconds.',
     deprecationChain: ['sentry.observed_timestamp_nanos'],
   },
+  'sentry.os.name': {
+    canonicalName: 'os.name',
+    type: 'string',
+    brief: 'Human readable operating system name.',
+    deprecationChain: ['os.name', 'sentry.os.name'],
+  },
+  'sentry.os.rooted': {
+    canonicalName: 'os.rooted',
+    type: 'boolean',
+    brief: 'Whether the operating system has been jailbroken or rooted.',
+    deprecationChain: ['os.rooted', 'sentry.os.rooted'],
+  },
   'sentry.pageload.span_id': {
     canonicalName: 'sentry.pageload.span_id',
     type: 'string',
@@ -12032,6 +12353,24 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     brief: '(Deprecated) The event that caused the SDK to report CLS or LCP (pagehide or navigation)',
     deprecated: true,
     deprecationChain: ['sentry.report_event'],
+  },
+  'sentry.request.method': {
+    canonicalName: 'http.request.method',
+    type: 'string',
+    brief: 'The HTTP method used.',
+    deprecationChain: ['http.request.method', 'http.method', 'http.request_method', 'method', 'sentry.request.method'],
+  },
+  'sentry.request.url': {
+    canonicalName: 'url.full',
+    type: 'string',
+    brief: 'The URL of the resource that was fetched.',
+    deprecationChain: ['url.full', 'aws.request.url', 'http.url', 'messaging.url', 'sentry.request.url', 'url'],
+  },
+  'sentry.runtime.name': {
+    canonicalName: 'process.runtime.name',
+    type: 'string',
+    brief: 'The name of the runtime. Equivalent to `name` in the Sentry runtime context.',
+    deprecationChain: ['process.runtime.name', 'runtime.name', 'sentry.runtime.name'],
   },
   'sentry.sdk.integrations': {
     canonicalName: 'sentry.sdk.integrations',
@@ -12085,6 +12424,12 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'string',
     brief: 'The type of navigation event emitted from the sveltekit client router',
     deprecationChain: ['router.navigation.type', 'navigation.type', 'sentry.sveltekit.navigation.type'],
+  },
+  'sentry.thread.name': {
+    canonicalName: 'thread.name',
+    type: 'string',
+    brief: 'Current thread name.',
+    deprecationChain: ['thread.name', 'sentry.thread.name'],
   },
   'sentry.timestamp.sequence': {
     canonicalName: 'sentry.timestamp.sequence',
@@ -12318,7 +12663,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'thread.name',
     type: 'string',
     brief: 'Current thread name.',
-    deprecationChain: ['thread.name'],
+    deprecationChain: ['thread.name', 'sentry.thread.name'],
   },
   'timber.tag': {
     canonicalName: 'timber.tag',
@@ -12601,7 +12946,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'url.full',
     type: 'string',
     brief: 'The URL of the resource that was fetched.',
-    deprecationChain: ['url.full', 'aws.request.url', 'http.url', 'messaging.url', 'url'],
+    deprecationChain: ['url.full', 'aws.request.url', 'http.url', 'messaging.url', 'sentry.request.url', 'url'],
   },
   'url.domain': {
     canonicalName: 'url.domain',
@@ -12621,7 +12966,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'url.full',
     type: 'string',
     brief: 'The URL of the resource that was fetched.',
-    deprecationChain: ['url.full', 'aws.request.url', 'http.url', 'messaging.url', 'url'],
+    deprecationChain: ['url.full', 'aws.request.url', 'http.url', 'messaging.url', 'sentry.request.url', 'url'],
   },
   'url.path': {
     canonicalName: 'url.path',

@@ -7,8 +7,14 @@
   },
   "is_in_otel": false,
   "example": true,
+  "alias": ["sentry.device.online"],
   "visibility": "public",
   "changelog": [
+    {
+      "version": "0.35.0",
+      "prs": [804],
+      "description": "Added sentry.device.online as an alias"
+    },
     {
       "version": "0.5.0",
       "prs": [303],

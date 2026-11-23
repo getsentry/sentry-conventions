@@ -1,0 +1,23 @@
+{
+  "key": "sentry.request.method",
+  "brief": "The HTTP method used.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "example": "GET",
+  "alias": ["http.request.method", "method", "http.method", "http.request_method"],
+  "deprecation": {
+    "_status": "backfill",
+    "replacement": "http.request.method"
+  },
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "0.35.0",
+      "prs": [807],
+      "description": "Added sentry.request.method attribute, deprecated in favor of http.request.method"
+    }
+  ]
+}
