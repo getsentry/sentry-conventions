@@ -2956,6 +2956,28 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "example.com"
     """
 
+    # Path: model/attributes/client/client__as__number.json
+    CLIENT_AS_NUMBER: Literal["client.as.number"] = "client.as.number"
+    """Autonomous system number (ASN) associated with the client IP address.
+
+    Type: int
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: 64496
+    """
+
+    # Path: model/attributes/client/client__as__organization.json
+    CLIENT_AS_ORGANIZATION: Literal["client.as.organization"] = "client.as.organization"
+    """The name of the organization associated with the autonomous system of the client IP address.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: "Example Networks Inc."
+    """
+
     # Path: model/attributes/client/client__port.json
     CLIENT_PORT: Literal["client.port"] = "client.port"
     """Client port number.
@@ -17266,6 +17288,39 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[106, 127]),
             ChangelogEntry(version="0.0.0"),
+        ],
+    ),
+    "client.as.number": AttributeMetadata(
+        brief="Autonomous system number (ASN) associated with the client IP address.",
+        type=AttributeType.INTEGER,
+        keys=("client.as.number",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example=64496,
+        examples=[64496],
+        changelog=[
+            ChangelogEntry(
+                version="next", description="Added client.as.number attribute"
+            ),
+        ],
+    ),
+    "client.as.organization": AttributeMetadata(
+        brief="The name of the organization associated with the autonomous system of the client IP address.",
+        type=AttributeType.STRING,
+        keys=("client.as.organization",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example="Example Networks Inc.",
+        examples=["Example Networks Inc."],
+        changelog=[
+            ChangelogEntry(
+                version="next", description="Added client.as.organization attribute"
+            ),
+        ],
+        additional_context=[
+            "The value is the lookup source's organization name for the ASN in client.as.number."
         ],
     ),
     "client.port": AttributeMetadata(
@@ -33305,6 +33360,8 @@ Attributes = TypedDict(
         "cache.write": bool,
         "channel": str,
         "client.address": str,
+        "client.as.number": int,
+        "client.as.organization": str,
         "client.port": int,
         "cloud.account.id": str,
         "cloud.availability_zone": str,

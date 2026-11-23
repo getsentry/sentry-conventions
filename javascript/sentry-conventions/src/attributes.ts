@@ -4600,6 +4600,48 @@ export const CLIENT_ADDRESS = 'client.address';
  */
 export type CLIENT_ADDRESS_TYPE = string;
 
+// Path: model/attributes/client/client__as__number.json
+
+/**
+ * Autonomous system number (ASN) associated with the client IP address. `client.as.number`
+ *
+ * Attribute Value Type: `number` {@link CLIENT_AS_NUMBER_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example 64496
+ */
+export const CLIENT_AS_NUMBER = 'client.as.number';
+
+/**
+ * Type for {@link CLIENT_AS_NUMBER} client.as.number
+ */
+export type CLIENT_AS_NUMBER_TYPE = number;
+
+// Path: model/attributes/client/client__as__organization.json
+
+/**
+ * The name of the organization associated with the autonomous system of the client IP address. `client.as.organization`
+ *
+ * Attribute Value Type: `string` {@link CLIENT_AS_ORGANIZATION_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example "Example Networks Inc."
+ */
+export const CLIENT_AS_ORGANIZATION = 'client.as.organization';
+
+/**
+ * Type for {@link CLIENT_AS_ORGANIZATION} client.as.organization
+ */
+export type CLIENT_AS_ORGANIZATION_TYPE = string;
+
 // Path: model/attributes/client/client__port.json
 
 /**
@@ -22862,6 +22904,8 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'cache.write': 'boolean',
   channel: 'string',
   'client.address': 'string',
+  'client.as.number': 'integer',
+  'client.as.organization': 'string',
   'client.port': 'integer',
   'cloudflare.d1.duration': 'integer',
   'cloudflare.d1.query_type': 'string',
@@ -23863,6 +23907,8 @@ export type AttributeName =
   | typeof CACHE_WRITE
   | typeof CHANNEL
   | typeof CLIENT_ADDRESS
+  | typeof CLIENT_AS_NUMBER
+  | typeof CLIENT_AS_ORGANIZATION
   | typeof CLIENT_PORT
   | typeof CLOUDFLARE_D1_DURATION
   | typeof CLOUDFLARE_D1_QUERY_TYPE
@@ -28089,6 +28135,33 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'example.com',
     aliases: ['http.client_ip'],
     changelog: [{ version: '0.1.0', prs: [106, 127] }, { version: '0.0.0' }],
+  },
+  'client.as.number': {
+    brief: 'Autonomous system number (ASN) associated with the client IP address.',
+    type: 'integer',
+    keys: ['client.as.number'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 64496,
+    examples: [64496],
+    changelog: [{ version: 'next', description: 'Added client.as.number attribute' }],
+  },
+  'client.as.organization': {
+    brief: 'The name of the organization associated with the autonomous system of the client IP address.',
+    type: 'string',
+    keys: ['client.as.organization'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 'Example Networks Inc.',
+    examples: ['Example Networks Inc.'],
+    changelog: [{ version: 'next', description: 'Added client.as.organization attribute' }],
+    additionalContext: ["The value is the lookup source's organization name for the ASN in client.as.number."],
   },
   'client.port': {
     brief: 'Client port number.',
@@ -41999,6 +42072,8 @@ export type Attributes = {
   [CACHE_WRITE]?: CACHE_WRITE_TYPE;
   [CHANNEL]?: CHANNEL_TYPE;
   [CLIENT_ADDRESS]?: CLIENT_ADDRESS_TYPE;
+  [CLIENT_AS_NUMBER]?: CLIENT_AS_NUMBER_TYPE;
+  [CLIENT_AS_ORGANIZATION]?: CLIENT_AS_ORGANIZATION_TYPE;
   [CLIENT_PORT]?: CLIENT_PORT_TYPE;
   [CLOUDFLARE_D1_DURATION]?: CLOUDFLARE_D1_DURATION_TYPE;
   [CLOUDFLARE_D1_QUERY_TYPE]?: CLOUDFLARE_D1_QUERY_TYPE_TYPE;

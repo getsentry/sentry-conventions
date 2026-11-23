@@ -1189,6 +1189,16 @@ export const SEARCH_CHANNEL = 'channel';
 export const SEARCH_CLIENT__ADDRESS = 'client.address';
 
 /**
+ * Search name for {@link attributes.CLIENT_AS_NUMBER}. `client.as.number`
+ */
+export const SEARCH_CLIENT__AS__NUMBER = 'client.as.number';
+
+/**
+ * Search name for {@link attributes.CLIENT_AS_ORGANIZATION}. `client.as.organization`
+ */
+export const SEARCH_CLIENT__AS__ORGANIZATION = 'client.as.organization';
+
+/**
  * Search name for {@link attributes.CLIENT_PORT}. `client.port`
  */
 export const SEARCH_CLIENT__PORT = 'client.port';
@@ -5973,6 +5983,8 @@ export type AttributeSearchName =
   | typeof SEARCH_CACHE__WRITE
   | typeof SEARCH_CHANNEL
   | typeof SEARCH_CLIENT__ADDRESS
+  | typeof SEARCH_CLIENT__AS__NUMBER
+  | typeof SEARCH_CLIENT__AS__ORGANIZATION
   | typeof SEARCH_CLIENT__PORT
   | typeof SEARCH_CLIENT_SAMPLE_RATE
   | typeof SEARCH_CLOUD__ACCOUNT__ID
@@ -8152,6 +8164,18 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     brief:
       'Client address - domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.',
     deprecationChain: ['client.address', 'http.client_ip'],
+  },
+  'client.as.number': {
+    canonicalName: 'client.as.number',
+    type: 'integer',
+    brief: 'Autonomous system number (ASN) associated with the client IP address.',
+    deprecationChain: ['client.as.number'],
+  },
+  'client.as.organization': {
+    canonicalName: 'client.as.organization',
+    type: 'string',
+    brief: 'The name of the organization associated with the autonomous system of the client IP address.',
+    deprecationChain: ['client.as.organization'],
   },
   'client.port': {
     canonicalName: 'client.port',

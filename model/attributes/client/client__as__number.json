@@ -1,0 +1,17 @@
+{
+  "key": "client.as.number",
+  "brief": "Autonomous system number (ASN) associated with the client IP address.",
+  "type": "integer",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": true,
+  "visibility": "public",
+  "examples": [64496],
+  "changelog": [
+    {
+      "version": "next",
+      "description": "Added client.as.number attribute"
+    }
+  ]
+}
