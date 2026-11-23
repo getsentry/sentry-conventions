@@ -10124,7 +10124,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     # Path: model/attributes/sentry/sentry__is_remote.json
     SENTRY_IS_REMOTE = "sentry.is_remote"
-    """Indicates whether a span's parent is remote.
+    """Indicates whether a span's parent is remote, i.e. created in another process, typically another service. See OpenTelemetry's [`SpanContext.IsRemote`](https://opentelemetry.io/docs/specs/otel/trace/api/#isremote).
 
     Type: bool
     Apply Scrubbing: never
@@ -28921,7 +28921,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "sentry.is_remote": AttributeMetadata(
-        brief="Indicates whether a span's parent is remote.",
+        brief="Indicates whether a span's parent is remote, i.e. created in another process, typically another service. See OpenTelemetry's [`SpanContext.IsRemote`](https://opentelemetry.io/docs/specs/otel/trace/api/#isremote).",
         type=AttributeType.BOOLEAN,
         keys=("sentry.is_remote",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
@@ -28929,6 +28929,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example=True,
         changelog=[
+            ChangelogEntry(
+                version="next", description="Clarified what a remote parent means"
+            ),
             ChangelogEntry(version="0.3.1", prs=[190]),
         ],
     ),
