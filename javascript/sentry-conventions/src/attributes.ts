@@ -28147,7 +28147,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 64496,
     examples: [64496],
-    changelog: [{ version: 'next', description: 'Added client.as.number attribute' }],
+    changelog: [{ version: '0.36.0', prs: [830], description: 'Added client.as.number attribute' }],
   },
   'client.as.organization': {
     brief: 'The name of the organization associated with the autonomous system of the client IP address.',
@@ -28160,7 +28160,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'Example Networks Inc.',
     examples: ['Example Networks Inc.'],
-    changelog: [{ version: 'next', description: 'Added client.as.organization attribute' }],
+    changelog: [{ version: '0.36.0', prs: [830], description: 'Added client.as.organization attribute' }],
     additionalContext: ["The value is the lookup source's organization name for the ASN in client.as.number."],
   },
   'client.port': {
@@ -38772,7 +38772,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: true,
     changelog: [
-      { version: 'next', description: 'Clarified what a remote parent means' },
+      { version: '0.36.0', prs: [822], description: 'Clarified what a remote parent means' },
       { version: '0.3.1', prs: [190] },
     ],
   },

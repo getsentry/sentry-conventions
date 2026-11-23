@@ -16551,7 +16551,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=[64496],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added client.as.number attribute"
+                version="0.36.0",
+                prs=[830],
+                description="Added client.as.number attribute",
             ),
         ],
     ),
@@ -16566,7 +16568,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=["Example Networks Inc."],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added client.as.organization attribute"
+                version="0.36.0",
+                prs=[830],
+                description="Added client.as.organization attribute",
             ),
         ],
         additional_context=[
@@ -28930,7 +28934,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=True,
         changelog=[
             ChangelogEntry(
-                version="next", description="Clarified what a remote parent means"
+                version="0.36.0",
+                prs=[822],
+                description="Clarified what a remote parent means",
             ),
             ChangelogEntry(version="0.3.1", prs=[190]),
         ],
