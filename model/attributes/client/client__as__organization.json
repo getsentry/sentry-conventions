@@ -11,7 +11,8 @@
   "additional_context": ["The value is the lookup source's organization name for the ASN in client.as.number."],
   "changelog": [
     {
-      "version": "next",
+      "version": "0.36.0",
+      "prs": [830],
       "description": "Added client.as.organization attribute"
     }
   ]

@@ -1,3 +1,18 @@
+## 0.36.0
+
+### New Features ✨
+
+- (attributes) Define client autonomous system attributes by @vjeranc and @codex in [#830](https://github.com/getsentry/sentry-conventions/pull/830)
+- (python) Add support for Python 3.7 by @srothh in [#828](https://github.com/getsentry/sentry-conventions/pull/828)
+
+### Documentation 📚
+
+- (attributes) Clarify sentry.is_remote description by @ericapisani with @sentry-junior in [#822](https://github.com/getsentry/sentry-conventions/pull/822)
+
+### Internal Changes 🔧
+
+- (python) Remove TypedDict from python codegen by @srothh in [#827](https://github.com/getsentry/sentry-conventions/pull/827)
+
 ## 0.35.0
 
 ### New Features ✨
