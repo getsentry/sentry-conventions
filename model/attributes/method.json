@@ -7,13 +7,18 @@
   },
   "is_in_otel": false,
   "example": "GET",
-  "alias": ["http.request.method", "http.request_method", "http.method"],
+  "alias": ["http.request.method", "http.request_method", "http.method", "sentry.request.method"],
   "deprecation": {
     "_status": "normalize",
     "replacement": "http.request.method"
   },
   "visibility": "public",
   "changelog": [
+    {
+      "version": "0.35.0",
+      "prs": [807],
+      "description": "Added sentry.request.method as an alias"
+    },
     {
       "version": "0.19.0",
       "prs": [497],

@@ -1,3 +1,38 @@
+## 0.35.0
+
+### New Features ✨
+
+#### Attributes
+
+- Generalize `sentry.client_sample_rate` by @alexander-alderman-webb in [#814](https://github.com/getsentry/sentry-conventions/pull/814)
+- Add search alias types for unit-typed attributes by @mjq with @sentry-junior in [#815](https://github.com/getsentry/sentry-conventions/pull/815)
+- Add schema for chat-based `gen_ai.output.messages` values by @alexander-alderman-webb in [#810](https://github.com/getsentry/sentry-conventions/pull/810)
+
+#### Other
+
+- (heroku) Add heroku.source attribute by @k-fish with @sentry-junior in [#816](https://github.com/getsentry/sentry-conventions/pull/816)
+
+### Bug Fixes 🐛
+
+- (deps) Bump vitest and @sentry/astro to resolve Dependabot alerts by @Lms24 and @claude in [#818](https://github.com/getsentry/sentry-conventions/pull/818)
+
+### Internal Changes 🔧
+
+#### Attributes
+
+- Add deprecated `sentry.request.*` attributes by @alexander-alderman-webb in [#807](https://github.com/getsentry/sentry-conventions/pull/807)
+- Add deprecated `sentry.os.*` attributes by @alexander-alderman-webb in [#805](https://github.com/getsentry/sentry-conventions/pull/805)
+- Add deprecated `sentry.device.*` attributes by @alexander-alderman-webb in [#804](https://github.com/getsentry/sentry-conventions/pull/804)
+- Add deprecated `sentry.runtime.name` by @alexander-alderman-webb in [#806](https://github.com/getsentry/sentry-conventions/pull/806)
+- Add deprecated `sentry.thread.name` by @alexander-alderman-webb in [#808](https://github.com/getsentry/sentry-conventions/pull/808)
+- Add deprecated `sentry.messaging.message.id` by @alexander-alderman-webb in [#809](https://github.com/getsentry/sentry-conventions/pull/809)
+- Add deprecated `sentry.messaging.destination.name` by @alexander-alderman-webb in [#796](https://github.com/getsentry/sentry-conventions/pull/796)
+
+#### Other
+
+- Add minimal AGENTS.md by @k-fish with @sentry-junior in [#824](https://github.com/getsentry/sentry-conventions/pull/824)
+- Remove leftover .claude project memory folder by @k-fish and @cursoragent in [#823](https://github.com/getsentry/sentry-conventions/pull/823)
+
 ## 0.34.0
 
 ### New Features ✨

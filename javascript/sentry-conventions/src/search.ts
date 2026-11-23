@@ -1189,6 +1189,16 @@ export const SEARCH_CHANNEL = 'channel';
 export const SEARCH_CLIENT__ADDRESS = 'client.address';
 
 /**
+ * Search name for {@link attributes.CLIENT_AS_NUMBER}. `client.as.number`
+ */
+export const SEARCH_CLIENT__AS__NUMBER = 'client.as.number';
+
+/**
+ * Search name for {@link attributes.CLIENT_AS_ORGANIZATION}. `client.as.organization`
+ */
+export const SEARCH_CLIENT__AS__ORGANIZATION = 'client.as.organization';
+
+/**
  * Search name for {@link attributes.CLIENT_PORT}. `client.port`
  */
 export const SEARCH_CLIENT__PORT = 'client.port';
@@ -2637,6 +2647,11 @@ export const SEARCH_HEROKU__ROUTER__REQUEST_ID = 'heroku.router.request_id';
  * Search name for {@link attributes.HEROKU_ROUTER_SERVICE}. `heroku.router.service`
  */
 export const SEARCH_HEROKU__ROUTER__SERVICE = 'heroku.router.service';
+
+/**
+ * Search name for {@link attributes.HEROKU_SOURCE}. `heroku.source`
+ */
+export const SEARCH_HEROKU__SOURCE = 'heroku.source';
 
 /**
  * Search name for {@link attributes.HTTP_CLIENT_IP}. `http.client_ip`
@@ -4843,6 +4858,20 @@ export const SEARCH_SENTRY__REPLAY_IS_BUFFERING = 'sentry.replay_is_buffering';
 export const SEARCH_SENTRY__REPORT_EVENT = 'sentry.report_event';
 
 /**
+ * Search name for {@link attributes.SENTRY_REQUEST_METHOD}. `sentry.request.method`
+ *
+ * @deprecated Use {@link SEARCH_HTTP__REQUEST__METHOD} (`http.request.method`) instead
+ */
+export const SEARCH_SENTRY__REQUEST__METHOD = 'sentry.request.method';
+
+/**
+ * Search name for {@link attributes.SENTRY_REQUEST_URL}. `sentry.request.url`
+ *
+ * @deprecated Use {@link SEARCH_URL__FULL} (`url.full`) instead
+ */
+export const SEARCH_SENTRY__REQUEST__URL = 'sentry.request.url';
+
+/**
  * Search name for {@link attributes.SENTRY_RUNTIME_NAME}. `sentry.runtime.name`
  *
  * @deprecated Use {@link SEARCH_PROCESS__RUNTIME__NAME} (`process.runtime.name`) instead
@@ -5959,6 +5988,8 @@ export type AttributeSearchName =
   | typeof SEARCH_CACHE__WRITE
   | typeof SEARCH_CHANNEL
   | typeof SEARCH_CLIENT__ADDRESS
+  | typeof SEARCH_CLIENT__AS__NUMBER
+  | typeof SEARCH_CLIENT__AS__ORGANIZATION
   | typeof SEARCH_CLIENT__PORT
   | typeof SEARCH_CLIENT_SAMPLE_RATE
   | typeof SEARCH_CLOUD__ACCOUNT__ID
@@ -6226,6 +6257,7 @@ export type AttributeSearchName =
   | typeof SEARCH_HEROKU__ROUTER__CONNECT
   | typeof SEARCH_HEROKU__ROUTER__REQUEST_ID
   | typeof SEARCH_HEROKU__ROUTER__SERVICE
+  | typeof SEARCH_HEROKU__SOURCE
   | typeof SEARCH_HTTP__CLIENT_IP
   | typeof SEARCH_HTTP__DECODED_RESPONSE_CONTENT_LENGTH
   | typeof SEARCH_HTTP__FLAVOR
@@ -6611,6 +6643,8 @@ export type AttributeSearchName =
   | typeof SEARCH_SENTRY__REPLAY_ID
   | typeof SEARCH_SENTRY__REPLAY_IS_BUFFERING
   | typeof SEARCH_SENTRY__REPORT_EVENT
+  | typeof SEARCH_SENTRY__REQUEST__METHOD
+  | typeof SEARCH_SENTRY__REQUEST__URL
   | typeof SEARCH_SENTRY__RUNTIME__NAME
   | typeof SEARCH_SENTRY__SDK__INTEGRATIONS
   | typeof SEARCH_SENTRY__SDK__NAME
@@ -7717,7 +7751,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'url.full',
     type: 'string',
     brief: 'The URL of the AWS API request.',
-    deprecationChain: ['url.full', 'aws.request.url', 'http.url', 'messaging.url', 'url'],
+    deprecationChain: ['url.full', 'aws.request.url', 'http.url', 'messaging.url', 'sentry.request.url', 'url'],
   },
   'aws.request_id': {
     canonicalName: 'aws.request_id',
@@ -8136,6 +8170,18 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     brief:
       'Client address - domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.',
     deprecationChain: ['client.address', 'http.client_ip'],
+  },
+  'client.as.number': {
+    canonicalName: 'client.as.number',
+    type: 'integer',
+    brief: 'Autonomous system number (ASN) associated with the client IP address.',
+    deprecationChain: ['client.as.number'],
+  },
+  'client.as.organization': {
+    canonicalName: 'client.as.organization',
+    type: 'string',
+    brief: 'The name of the organization associated with the autonomous system of the client IP address.',
+    deprecationChain: ['client.as.organization'],
   },
   'client.port': {
     canonicalName: 'client.port',
@@ -9880,6 +9926,12 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
       'Time in milliseconds spent proxying data between the backend dyno and the client, as reported by the Heroku router',
     deprecationChain: ['heroku.router.service'],
   },
+  'heroku.source': {
+    canonicalName: 'heroku.source',
+    type: 'string',
+    brief: 'Logplex source of a Heroku log line.',
+    deprecationChain: ['heroku.source'],
+  },
   'http.client_ip': {
     canonicalName: 'client.address',
     type: 'string',
@@ -9928,7 +9980,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'http.request.method',
     type: 'string',
     brief: 'The HTTP method used.',
-    deprecationChain: ['http.request.method', 'http.method', 'http.request_method', 'method'],
+    deprecationChain: ['http.request.method', 'http.method', 'http.request_method', 'method', 'sentry.request.method'],
   },
   'http.query': {
     canonicalName: 'http.query',
@@ -10006,7 +10058,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'http.request.method',
     type: 'string',
     brief: 'The HTTP method used.',
-    deprecationChain: ['http.request.method', 'http.method', 'http.request_method', 'method'],
+    deprecationChain: ['http.request.method', 'http.method', 'http.request_method', 'method', 'sentry.request.method'],
   },
   'http.request.redirect_end': {
     canonicalName: 'http.request.redirect_end',
@@ -10091,7 +10143,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'http.request.method',
     type: 'string',
     brief: 'The HTTP method used.',
-    deprecationChain: ['http.request.method', 'http.method', 'http.request_method', 'method'],
+    deprecationChain: ['http.request.method', 'http.method', 'http.request_method', 'method', 'sentry.request.method'],
   },
   'http.response.body.decoded_size': {
     canonicalName: 'http.response.body.decoded_size',
@@ -10230,7 +10282,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'url.full',
     type: 'string',
     brief: 'The URL of the resource that was fetched.',
-    deprecationChain: ['url.full', 'aws.request.url', 'http.url', 'messaging.url', 'url'],
+    deprecationChain: ['url.full', 'aws.request.url', 'http.url', 'messaging.url', 'sentry.request.url', 'url'],
   },
   'http.user_agent': {
     canonicalName: 'user_agent.original',
@@ -11091,13 +11143,13 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'url.full',
     type: 'string',
     brief: 'The connection string of the messaging broker.',
-    deprecationChain: ['url.full', 'aws.request.url', 'http.url', 'messaging.url', 'url'],
+    deprecationChain: ['url.full', 'aws.request.url', 'http.url', 'messaging.url', 'sentry.request.url', 'url'],
   },
   method: {
     canonicalName: 'http.request.method',
     type: 'string',
     brief: 'The HTTP method used.',
-    deprecationChain: ['http.request.method', 'http.method', 'http.request_method', 'method'],
+    deprecationChain: ['http.request.method', 'http.method', 'http.request_method', 'method', 'sentry.request.method'],
   },
   'middleware.name': {
     canonicalName: 'middleware.name',
@@ -12313,6 +12365,18 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     deprecated: true,
     deprecationChain: ['sentry.report_event'],
   },
+  'sentry.request.method': {
+    canonicalName: 'http.request.method',
+    type: 'string',
+    brief: 'The HTTP method used.',
+    deprecationChain: ['http.request.method', 'http.method', 'http.request_method', 'method', 'sentry.request.method'],
+  },
+  'sentry.request.url': {
+    canonicalName: 'url.full',
+    type: 'string',
+    brief: 'The URL of the resource that was fetched.',
+    deprecationChain: ['url.full', 'aws.request.url', 'http.url', 'messaging.url', 'sentry.request.url', 'url'],
+  },
   'sentry.runtime.name': {
     canonicalName: 'process.runtime.name',
     type: 'string',
@@ -12893,7 +12957,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'url.full',
     type: 'string',
     brief: 'The URL of the resource that was fetched.',
-    deprecationChain: ['url.full', 'aws.request.url', 'http.url', 'messaging.url', 'url'],
+    deprecationChain: ['url.full', 'aws.request.url', 'http.url', 'messaging.url', 'sentry.request.url', 'url'],
   },
   'url.domain': {
     canonicalName: 'url.domain',
@@ -12913,7 +12977,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'url.full',
     type: 'string',
     brief: 'The URL of the resource that was fetched.',
-    deprecationChain: ['url.full', 'aws.request.url', 'http.url', 'messaging.url', 'url'],
+    deprecationChain: ['url.full', 'aws.request.url', 'http.url', 'messaging.url', 'sentry.request.url', 'url'],
   },
   'url.path': {
     canonicalName: 'url.path',

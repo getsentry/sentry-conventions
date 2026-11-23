@@ -1,10 +1,6 @@
 from typing import TYPE_CHECKING
 
-from ._attributes import (
-    ATTRIBUTE_METADATA,
-    ATTRIBUTE_NAMES,
-    Attributes,
-)
+from ._attributes import ATTRIBUTE_METADATA, ATTRIBUTE_NAMES
 from ._metadata_types import (
     ApplyScrubbing,
     ApplyScrubbingInfo,
@@ -48,7 +44,6 @@ if TYPE_CHECKING:
 __all__ = [
     "ATTRIBUTE_METADATA",
     "ATTRIBUTE_NAMES",
-    "Attributes",
     "ApplyScrubbing",
     "ApplyScrubbingInfo",
     "AttributeMetadata",

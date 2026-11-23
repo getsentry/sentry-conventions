@@ -42,7 +42,7 @@ describe('generateAttributes', () => {
       const javascript = fs.readFileSync(jsOutputFilePath, 'utf8');
       const python = fs.readFileSync(pythonOutputFilePath, 'utf8');
       const javascriptTemplate = javascript.match(/export const MCP_TOOL_RESULT_KEY_CONTENT = '([^']+)';/)?.[1];
-      const pythonTemplate = python.match(/MCP_TOOL_RESULT_KEY_CONTENT: Literal\["[^"]+"\] = "([^"]+)"/)?.[1];
+      const pythonTemplate = python.match(/MCP_TOOL_RESULT_KEY_CONTENT = "([^"]+)"/)?.[1];
 
       for (const template of [javascriptTemplate, pythonTemplate]) {
         expect(template).toBe(key);
