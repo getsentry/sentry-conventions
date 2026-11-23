@@ -1,0 +1,28 @@
+{
+  "key": "sentry.severity_number",
+  "brief": "The severity of a log, as an OpenTelemetry severity number from 1 to 24. Higher numbers are more severe.",
+  "type": "integer",
+  "apply_scrubbing": {
+    "key": "never"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "examples": [
+    9,
+    13,
+    17
+  ],
+  "search_alias": {
+    "name": "severity_number",
+    "deprecated_aliases": ["log.severity_number"]
+  },
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [
+        831
+      ],
+      "description": "Added sentry.severity_number attribute"
+    }
+  ]
+}

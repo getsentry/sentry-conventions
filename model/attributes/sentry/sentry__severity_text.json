@@ -1,0 +1,36 @@
+{
+  "key": "sentry.severity_text",
+  "brief": "The severity level of a log, as text.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "never"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "examples": [
+    "info",
+    "warn",
+    "error"
+  ],
+  "enum_values": [
+    { "value": "trace" },
+    { "value": "debug" },
+    { "value": "info" },
+    { "value": "warn" },
+    { "value": "error" },
+    { "value": "fatal" }
+  ],
+  "search_alias": {
+    "name": "severity",
+    "deprecated_aliases": ["severity_text", "log.severity_text"]
+  },
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [
+        831
+      ],
+      "description": "Added sentry.severity_text attribute"
+    }
+  ]
+}
