@@ -3,7 +3,18 @@ from enum import Enum
 from typing import TYPE_CHECKING, List, Optional, Tuple, Union
 
 AttributeValue = Union[
-    str, int, float, bool, List[str], List[int], List[float], List[bool]
+    str,
+    bool,
+    float,
+    int,
+    List[str],
+    List[bool],
+    List[float],
+    List[int],
+    Tuple[str, ...],
+    Tuple[bool, ...],
+    Tuple[float, ...],
+    Tuple[int, ...],
 ]
 
 
