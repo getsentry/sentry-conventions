@@ -22,13 +22,7 @@ export type {
   ExtractField,
 } from './_schemas/gen_ai_input_messages';
 
-export type {
-  OutputMessages,
-  ExtractOutputMessages,
-  ExtractOutputMessage,
-  ExtractAnswer,
-  ExtractSpan,
-} from './_schemas/gen_ai_output_messages';
+export type { OutputMessages } from './_schemas/gen_ai_output_messages';
 
 export type { SystemInstructions } from './_schemas/gen_ai_system_instructions';
 

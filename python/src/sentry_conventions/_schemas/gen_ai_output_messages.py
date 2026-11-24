@@ -3,30 +3,8 @@
 
 from __future__ import annotations
 
-from typing import Any, TypeAlias, TypedDict
-
-from typing_extensions import NotRequired
+from typing import TypeAlias
 
 from .shared.gen_ai_chat_message import ChatMessage
 
 OutputMessages: TypeAlias = list[ChatMessage]
-
-
-ExtractSpan: TypeAlias = list[int]
-
-
-class ExtractAnswer(TypedDict):
-    type: str
-    value: Any
-    confidence: NotRequired[float]
-    span: NotRequired[ExtractSpan | None]
-    spans: NotRequired[list[ExtractSpan | None]]
-
-
-class ExtractOutputMessage(TypedDict):
-    answers: dict[str, ExtractAnswer]
-    truncated: bool
-    state_text: NotRequired[str]
-
-
-ExtractOutputMessages: TypeAlias = list[ExtractOutputMessage]
