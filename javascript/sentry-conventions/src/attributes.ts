@@ -1,21 +1,23 @@
 // This is an auto-generated file. Do not edit!
 
-export type { TextPart } from './_schemas/shared/gen_ai_parts';
+export type { ChatMessage, Role } from './_schemas/shared/gen_ai_chat_message';
 
 export type {
-  OutputMessages,
-  BlobPart,
-  ChatMessage,
-  CompactionPart,
-  FilePart,
-  GenericPart,
-  Modality,
-  ReasoningPart,
-  Role,
+  TextPart,
   ToolCallRequestPart,
   ToolCallResponsePart,
+  BlobPart,
+  FilePart,
   UriPart,
-} from './_schemas/gen_ai_output_messages';
+  ReasoningPart,
+  CompactionPart,
+  GenericPart,
+  Modality,
+} from './_schemas/shared/gen_ai_parts';
+
+export type { InputMessages } from './_schemas/gen_ai_input_messages';
+
+export type { OutputMessages } from './_schemas/gen_ai_output_messages';
 
 export type { SystemInstructions } from './_schemas/gen_ai_system_instructions';
 
@@ -11422,6 +11424,62 @@ export const HTTP_RESPONSE_CONTENT_LENGTH_UNCOMPRESSED = 'http.response_content_
  */
 export type HTTP_RESPONSE_CONTENT_LENGTH_UNCOMPRESSED_TYPE = number;
 
+// Path: model/attributes/http/http__response__delivery_type.json
+
+/**
+ * The delivery type of the resource, as reported by the browser's PerformanceResourceTiming.deliveryType property. `http.response.delivery_type`
+ *
+ * Attribute Value Type: `string` {@link HTTP_RESPONSE_DELIVERY_TYPE_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Well-defined Values:
+ * - `cache` - The resource was retrieved from a cache.
+ * - `navigational-prefetch` - The resource was retrieved from a prefetched response, for example one that the Speculation Rules API stored.
+ * - `` - The resource was not retrieved from a cache or by navigational prefetch.
+ *
+ * Aliases: {@link _HTTP_RESPONSE_DELIVERY_TYPE} `http.response_delivery_type`
+ *
+ * @example "cache"
+ * @example "navigational-prefetch"
+ * @example ""
+ */
+export const HTTP_RESPONSE_DELIVERY_TYPE = 'http.response.delivery_type';
+
+/**
+ * Type for {@link HTTP_RESPONSE_DELIVERY_TYPE} http.response.delivery_type
+ */
+export type HTTP_RESPONSE_DELIVERY_TYPE_TYPE = string;
+
+// Path: model/attributes/http/http__response_delivery_type.json
+
+/**
+ * The delivery type of the resource, as reported by the browser's PerformanceResourceTiming.deliveryType property. `http.response_delivery_type`
+ *
+ * Attribute Value Type: `string` {@link _HTTP_RESPONSE_DELIVERY_TYPE_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link HTTP_RESPONSE_DELIVERY_TYPE} `http.response.delivery_type`
+ *
+ * @deprecated Use {@link HTTP_RESPONSE_DELIVERY_TYPE} (http.response.delivery_type) instead - Use http.response.delivery_type, which follows the http.response.* namespace.
+ * @example "cache"
+ * @example "navigational-prefetch"
+ * @example ""
+ */
+export const _HTTP_RESPONSE_DELIVERY_TYPE = 'http.response_delivery_type';
+
+/**
+ * Type for {@link _HTTP_RESPONSE_DELIVERY_TYPE} http.response_delivery_type
+ */
+export type _HTTP_RESPONSE_DELIVERY_TYPE_TYPE = string;
+
 // Path: model/attributes/http/http__response__header__content-length.json
 
 /**
@@ -18384,7 +18442,7 @@ export type SENTRY_IS_LOCALHOST_TYPE = boolean;
 // Path: model/attributes/sentry/sentry__is_remote.json
 
 /**
- * Indicates whether a span's parent is remote. `sentry.is_remote`
+ * Indicates whether a span's parent is remote, i.e. created in another process, typically another service. See OpenTelemetry's [`SpanContext.IsRemote`](https://opentelemetry.io/docs/specs/otel/trace/api/#isremote). `sentry.is_remote`
  *
  * Attribute Value Type: `boolean` {@link SENTRY_IS_REMOTE_TYPE}
  *
@@ -23229,6 +23287,8 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'http.response.body.size': 'integer',
   'http.response_content_length': 'integer',
   'http.response_content_length_uncompressed': 'integer',
+  'http.response.delivery_type': 'string',
+  'http.response_delivery_type': 'string',
   'http.response.header.content-length': 'string',
   'http.response.header.<key>': 'string[]',
   'http.response.size': 'integer',
@@ -24233,6 +24293,8 @@ export type AttributeName =
   | typeof HTTP_RESPONSE_BODY_SIZE
   | typeof HTTP_RESPONSE_CONTENT_LENGTH
   | typeof HTTP_RESPONSE_CONTENT_LENGTH_UNCOMPRESSED
+  | typeof HTTP_RESPONSE_DELIVERY_TYPE
+  | typeof _HTTP_RESPONSE_DELIVERY_TYPE
   | typeof HTTP_RESPONSE_HEADER_CONTENT_LENGTH
   | typeof HTTP_RESPONSE_HEADER_KEY
   | typeof HTTP_RESPONSE_SIZE
@@ -28170,7 +28232,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 64496,
     examples: [64496],
-    changelog: [{ version: 'next', description: 'Added client.as.number attribute' }],
+    changelog: [{ version: '0.36.0', prs: [830], description: 'Added client.as.number attribute' }],
   },
   'client.as.organization': {
     brief: 'The name of the organization associated with the autonomous system of the client IP address.',
@@ -28183,7 +28245,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'Example Networks Inc.',
     examples: ['Example Networks Inc.'],
-    changelog: [{ version: 'next', description: 'Added client.as.organization attribute' }],
+    changelog: [{ version: '0.36.0', prs: [830], description: 'Added client.as.organization attribute' }],
     additionalContext: ["The value is the lookup source's organization name for the ASN in client.as.number."],
   },
   'client.port': {
@@ -33299,6 +33361,48 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
         prs: [574],
         description:
           'Added http.response_content_length_uncompressed attribute, deprecated in favor of http.response.body.decoded_size',
+      },
+    ],
+  },
+  'http.response.delivery_type': {
+    brief:
+      "The delivery type of the resource, as reported by the browser's PerformanceResourceTiming.deliveryType property.",
+    type: 'string',
+    keys: ['http.response.delivery_type', 'http.response_delivery_type'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'cache',
+    examples: ['cache', 'navigational-prefetch', ''],
+    aliases: ['http.response_delivery_type'],
+    changelog: [{ version: 'next', prs: [825], description: 'Added http.response.delivery_type attribute' }],
+    additionalContext: ['Browsers may add more values later.'],
+  },
+  'http.response_delivery_type': {
+    brief:
+      "The delivery type of the resource, as reported by the browser's PerformanceResourceTiming.deliveryType property.",
+    type: 'string',
+    keys: ['http.response.delivery_type', 'http.response_delivery_type'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'cache',
+    examples: ['cache', 'navigational-prefetch', ''],
+    deprecation: {
+      replacement: 'http.response.delivery_type',
+      reason: 'Use http.response.delivery_type, which follows the http.response.* namespace.',
+      status: 'backfill',
+    },
+    aliases: ['http.response.delivery_type'],
+    changelog: [
+      {
+        version: 'next',
+        prs: [825],
+        description: 'Added http.response_delivery_type attribute, deprecated in favor of http.response.delivery_type',
       },
     ],
   },
@@ -38797,7 +38901,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     ],
   },
   'sentry.is_remote': {
-    brief: "Indicates whether a span's parent is remote.",
+    brief:
+      "Indicates whether a span's parent is remote, i.e. created in another process, typically another service. See OpenTelemetry's [`SpanContext.IsRemote`](https://opentelemetry.io/docs/specs/otel/trace/api/#isremote).",
     type: 'boolean',
     keys: ['sentry.is_remote'],
     applyScrubbing: {
@@ -38806,7 +38911,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: true,
-    changelog: [{ version: '0.3.1', prs: [190] }],
+    changelog: [
+      { version: '0.36.0', prs: [822], description: 'Clarified what a remote parent means' },
+      { version: '0.3.1', prs: [190] },
+    ],
   },
   'sentry.kind': {
     brief:
@@ -42412,6 +42520,8 @@ export type Attributes = {
   [HTTP_RESPONSE_BODY_SIZE]?: HTTP_RESPONSE_BODY_SIZE_TYPE;
   [HTTP_RESPONSE_CONTENT_LENGTH]?: HTTP_RESPONSE_CONTENT_LENGTH_TYPE;
   [HTTP_RESPONSE_CONTENT_LENGTH_UNCOMPRESSED]?: HTTP_RESPONSE_CONTENT_LENGTH_UNCOMPRESSED_TYPE;
+  [HTTP_RESPONSE_DELIVERY_TYPE]?: HTTP_RESPONSE_DELIVERY_TYPE_TYPE;
+  [_HTTP_RESPONSE_DELIVERY_TYPE]?: _HTTP_RESPONSE_DELIVERY_TYPE_TYPE;
   [HTTP_RESPONSE_HEADER_CONTENT_LENGTH]?: HTTP_RESPONSE_HEADER_CONTENT_LENGTH_TYPE;
   [HTTP_RESPONSE_HEADER_KEY]?: HTTP_RESPONSE_HEADER_KEY_TYPE;
   [HTTP_RESPONSE_SIZE]?: HTTP_RESPONSE_SIZE_TYPE;
