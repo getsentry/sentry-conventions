@@ -9,10 +9,50 @@ from typing_extensions import NotRequired
 
 from .shared.gen_ai_chat_message import ChatMessage
 
+ExtractFieldType: TypeAlias = Literal[
+    "text",
+    "number",
+    "compute",
+    "date",
+    "time",
+    "datetime",
+    "duration",
+    "boolean",
+    "enum",
+    "object",
+    "list",
+    "estimate",
+    "forecast",
+]
+
 
 class ExtractField(TypedDict):
-    type: str
+    type: ExtractFieldType | str
     instructions: NotRequired[str]
+    nullable: NotRequired[bool]
+    unit: NotRequired[str]
+    integer: NotRequired[bool]
+    decimals: NotRequired[int]
+    knowledge: NotRequired[bool]
+    source_only: NotRequired[bool]
+    minLength: NotRequired[int]
+    maxLength: NotRequired[int]
+    pattern: NotRequired[str]
+    minimum: NotRequired[float]
+    maximum: NotRequired[float]
+    exclusiveMinimum: NotRequired[float]
+    exclusiveMaximum: NotRequired[float]
+    enum: NotRequired[list[Any]]
+    properties: NotRequired[dict[str, ExtractField]]
+    items: NotRequired[str | ExtractField]
+    max_items: NotRequired[int]
+    min: NotRequired[float | str]
+    max: NotRequired[float | str]
+    step: NotRequired[float | str]
+    scale: NotRequired[str]
+    null_threshold: NotRequired[float]
+    horizon: NotRequired[int]
+    interval: NotRequired[str]
 
 
 class ExtractInputMessage(TypedDict):

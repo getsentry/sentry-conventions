@@ -61,20 +61,173 @@
         "type": "object"
       },
       "ExtractField": {
-        "description": "Represents the spec of one field to extract. The other keys depend on the field type and the provider, such as unit, decimals, items, min, max, and step.",
+        "description": "Represents the spec of one field to extract. The field type sets which keys apply. Other keys are permitted.",
         "properties": {
           "type": {
-            "description": "The type of the field, such as text, number, date, list, or estimate.",
-            "type": "string"
+            "description": "The type of the field.",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ExtractFieldType"
+              },
+              {
+                "type": "string"
+              }
+            ]
           },
           "instructions": {
             "description": "The instructions that tell the model what the field contains.",
+            "type": "string"
+          },
+          "nullable": {
+            "description": "Whether the answer can be null.",
+            "type": "boolean"
+          },
+          "unit": {
+            "description": "The unit of the value, such as `USD` or `days`.",
+            "type": "string"
+          },
+          "integer": {
+            "description": "Whether the value must be an integer.",
+            "type": "boolean"
+          },
+          "decimals": {
+            "description": "The number of decimal places of the value.",
+            "type": "integer"
+          },
+          "knowledge": {
+            "description": "Whether the model can answer from knowledge that is not in the input.",
+            "type": "boolean"
+          },
+          "source_only": {
+            "description": "Whether the answer must be printed in the input.",
+            "type": "boolean"
+          },
+          "minLength": {
+            "description": "The minimum length of a text answer.",
+            "type": "integer"
+          },
+          "maxLength": {
+            "description": "The maximum length of a text answer.",
+            "type": "integer"
+          },
+          "pattern": {
+            "description": "The regular expression that a text answer must match.",
+            "type": "string"
+          },
+          "minimum": {
+            "description": "The minimum value of a number answer.",
+            "type": "number"
+          },
+          "maximum": {
+            "description": "The maximum value of a number answer.",
+            "type": "number"
+          },
+          "exclusiveMinimum": {
+            "description": "The exclusive minimum value of a number answer.",
+            "type": "number"
+          },
+          "exclusiveMaximum": {
+            "description": "The exclusive maximum value of a number answer.",
+            "type": "number"
+          },
+          "enum": {
+            "description": "The permitted values of the answer.",
+            "type": "array"
+          },
+          "properties": {
+            "description": "The property specs of an object field, keyed by property name.",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/ExtractField"
+            },
+            "type": "object"
+          },
+          "items": {
+            "description": "The items of a list field: the name of the item type, or the spec of an object item.",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "$ref": "#/components/schemas/ExtractField"
+              }
+            ]
+          },
+          "max_items": {
+            "description": "The maximum number of items in a list answer.",
+            "type": "integer"
+          },
+          "min": {
+            "description": "The lower limit of an estimate or a forecast: a number, or an ISO date.",
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "string"
+              }
+            ]
+          },
+          "max": {
+            "description": "The upper limit of an estimate or a forecast: a number, or an ISO date.",
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "string"
+              }
+            ]
+          },
+          "step": {
+            "description": "The grid step of an estimate: a number, or `month` or `year`.",
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "string"
+              }
+            ]
+          },
+          "scale": {
+            "description": "The scale of the estimate grid: `linear` or `log`.",
+            "type": "string"
+          },
+          "null_threshold": {
+            "description": "The probability of null above which the value is null.",
+            "type": "number"
+          },
+          "horizon": {
+            "description": "The number of steps of a forecast.",
+            "type": "integer"
+          },
+          "interval": {
+            "description": "The interval between the steps of a forecast, such as `day` or `month`.",
             "type": "string"
           }
         },
         "additionalProperties": true,
         "required": ["type"],
         "type": "object"
+      },
+      "ExtractFieldType": {
+        "description": "The well-known field types.",
+        "enum": [
+          "text",
+          "number",
+          "compute",
+          "date",
+          "time",
+          "datetime",
+          "duration",
+          "boolean",
+          "enum",
+          "object",
+          "list",
+          "estimate",
+          "forecast"
+        ],
+        "type": "string"
       }
     }
   }

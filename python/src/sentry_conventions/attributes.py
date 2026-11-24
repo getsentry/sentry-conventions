@@ -18,6 +18,7 @@ from ._metadata_types import (
 if TYPE_CHECKING:
     from ._schemas.gen_ai_input_messages import (
         ExtractField,
+        ExtractFieldType,
         ExtractInputMessage,
         InputMessages,
     )
@@ -68,6 +69,7 @@ if TYPE_CHECKING:
         "InputMessages",
         "ExtractInputMessage",
         "ExtractField",
+        "ExtractFieldType",
         "OutputMessages",
         "BlobPart",
         "ChatMessage",

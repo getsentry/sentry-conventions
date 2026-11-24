@@ -7,6 +7,23 @@
 import type { ChatMessage } from './shared/gen_ai_chat_message';
 
 /**
+ * The well-known field types.
+ */
+export type ExtractFieldType =
+  | 'text'
+  | 'number'
+  | 'compute'
+  | 'date'
+  | 'time'
+  | 'datetime'
+  | 'duration'
+  | 'boolean'
+  | 'enum'
+  | 'object'
+  | 'list'
+  | 'estimate'
+  | 'forecast';
+/**
  * Represents the list of input messages sent to the model.
  */
 export type InputMessages = (ChatMessage | ExtractInputMessage)[];
@@ -42,16 +59,117 @@ export interface ExtractInputMessage {
   [k: string]: unknown;
 }
 /**
- * Represents the spec of one field to extract. The other keys depend on the field type and the provider, such as unit, decimals, items, min, max, and step.
+ * Represents the spec of one field to extract. The field type sets which keys apply. Other keys are permitted.
  */
 export interface ExtractField {
   /**
-   * The type of the field, such as text, number, date, list, or estimate.
+   * The type of the field.
    */
-  type: string;
+  type: ExtractFieldType | string;
   /**
    * The instructions that tell the model what the field contains.
    */
   instructions?: string;
+  /**
+   * Whether the answer can be null.
+   */
+  nullable?: boolean;
+  /**
+   * The unit of the value, such as `USD` or `days`.
+   */
+  unit?: string;
+  /**
+   * Whether the value must be an integer.
+   */
+  integer?: boolean;
+  /**
+   * The number of decimal places of the value.
+   */
+  decimals?: number;
+  /**
+   * Whether the model can answer from knowledge that is not in the input.
+   */
+  knowledge?: boolean;
+  /**
+   * Whether the answer must be printed in the input.
+   */
+  source_only?: boolean;
+  /**
+   * The minimum length of a text answer.
+   */
+  minLength?: number;
+  /**
+   * The maximum length of a text answer.
+   */
+  maxLength?: number;
+  /**
+   * The regular expression that a text answer must match.
+   */
+  pattern?: string;
+  /**
+   * The minimum value of a number answer.
+   */
+  minimum?: number;
+  /**
+   * The maximum value of a number answer.
+   */
+  maximum?: number;
+  /**
+   * The exclusive minimum value of a number answer.
+   */
+  exclusiveMinimum?: number;
+  /**
+   * The exclusive maximum value of a number answer.
+   */
+  exclusiveMaximum?: number;
+  /**
+   * The permitted values of the answer.
+   */
+  enum?: unknown[];
+  /**
+   * The property specs of an object field, keyed by property name.
+   */
+  properties?: {
+    [k: string]: ExtractField;
+  };
+  /**
+   * The items of a list field: the name of the item type, or the spec of an object item.
+   */
+  items?: string | ExtractField;
+  /**
+   * The maximum number of items in a list answer.
+   */
+  max_items?: number;
+  /**
+   * The lower limit of an estimate or a forecast: a number, or an ISO date.
+   */
+  min?: number | string;
+  /**
+   * The upper limit of an estimate or a forecast: a number, or an ISO date.
+   */
+  max?: number | string;
+  /**
+   * The grid step of an estimate: a number, or `month` or `year`.
+   */
+  step?: number | string;
+  /**
+   * The scale of the estimate grid: `linear` or `log`.
+   */
+  scale?: string;
+  /**
+   * The probability of null above which the value is null.
+   */
+  null_threshold?: number;
+  /**
+   * The number of steps of a forecast.
+   */
+  horizon?: number;
+  /**
+   * The interval between the steps of a forecast, such as `day` or `month`.
+   */
+  interval?: string;
+  required?: [];
+  additionalProperties?: unknown;
+  minItems?: 0;
   [k: string]: unknown;
 }

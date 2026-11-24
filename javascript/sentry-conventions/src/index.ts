@@ -18,6 +18,7 @@ export type {
   InputMessages,
   ExtractInputMessage,
   ExtractField,
+  ExtractFieldType,
   OutputMessages,
   ChatMessage,
   Role,
