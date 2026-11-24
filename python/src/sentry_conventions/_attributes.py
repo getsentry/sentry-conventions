@@ -19865,6 +19865,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["ai.texts", "ai.prompt.messages", "gen_ai.prompt", "ai.prompt"],
         changelog=[
             ChangelogEntry(
+                version="next",
+                prs=[832],
+                description="Add documents to the extraction message shape for gen_ai.extract",
+            ),
+            ChangelogEntry(
                 version="0.28.0",
                 prs=[728],
                 description="Describe the extraction message shape for gen_ai.extract and move operation-specific shapes to additional context",
@@ -19882,7 +19887,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         additional_context=[
             'For `gen_ai.decide` operations, the array holds one object `{state: ..., questions: {...}}`. `state` is the evaluated state. `questions` holds the questions keyed by name, as the caller passed them. Replace binary data in `state`, including `data:` URLs, with the string `"[Blob substitute]"`. The second example shows this shape.',
-            'For `gen_ai.extract` operations, the array holds one object `{state?: string, fields: {<name>: <field spec>}, images?: string[], reference_date?: string, options?: {...}}`. This object is the request body as the caller passed it, without `model`. Do not change the values, and leave out the keys that the caller did not set. Do not record the image data. Replace each image with the string `"[Blob substitute]"`. `state` is the text that the model reads. `fields` holds the field specs keyed by field name. Set the model in `gen_ai.request.model`. The third example shows this shape.',
+            'For `gen_ai.extract` operations, the array holds one object `{state?: string, fields: {<name>: <field spec>}, images?: string[], documents?: string[], reference_date?: string, options?: {...}}`. This object is the request body as the caller passed it, without `model`. Do not change the values, and leave out the keys that the caller did not set. Do not record the image data or the document data. Replace each image and each document with the string `"[Blob substitute]"`. `state` is the text that the model reads. `fields` holds the field specs keyed by field name. Set the model in `gen_ai.request.model`. The third example shows this shape.',
         ],
     ),
     "gen_ai.memory.query.text": AttributeMetadata(
