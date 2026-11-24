@@ -183,7 +183,7 @@
   }
 
   body {
-    @apply font-sans text-base leading-relaxed text-text-primary bg-bg-primary min-h-screen antialiased;
+    @apply font-sans text-base leading-relaxed text-text-primary bg-bg-primary min-h-screen antialiased wrap-break-word;
   }
 
   h1,
@@ -219,8 +219,10 @@
     @apply text-accent transition-colors duration-fast;
   }
 
+  /* Attribute keys and example values are long unbroken tokens. Let them wrap
+     anywhere so they can't push their container past the viewport on mobile. */
   code {
-    @apply font-mono text-[0.9em] px-2 py-1 bg-bg-elevated rounded-sm border border-border;
+    @apply font-mono text-[0.9em] px-2 py-1 bg-bg-elevated rounded-sm border border-border wrap-anywhere;
   }
 
   pre {
