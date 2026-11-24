@@ -11170,8 +11170,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
   'messaging.websocket.event.name': {
     canonicalName: 'messaging.websocket.event.name',
     type: 'string',
-    brief:
-      "The name of the event or message pattern a WebSocket message is dispatched on, such as the event name passed to Socket.IO's emit() or the pattern of a NestJS @SubscribeMessage() handler.",
+    brief: 'The name of the event a WebSocket message is dispatched on.',
     deprecationChain: ['messaging.websocket.event.name'],
   },
   method: {

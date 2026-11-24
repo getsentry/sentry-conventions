@@ -1,6 +1,6 @@
 {
   "key": "messaging.websocket.event.name",
-  "brief": "The name of the event or message pattern a WebSocket message is dispatched on, such as the event name passed to Socket.IO's emit() or the pattern of a NestJS @SubscribeMessage() handler.",
+  "brief": "The name of the event a WebSocket message is dispatched on.",
   "type": "string",
   "apply_scrubbing": {
     "key": "manual"

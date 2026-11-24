@@ -14764,7 +14764,7 @@ export type MESSAGING_URL_TYPE = string;
 // Path: model/attributes/messaging/messaging__websocket__event__name.json
 
 /**
- * The name of the event or message pattern a WebSocket message is dispatched on, such as the event name passed to Socket.IO's emit() or the pattern of a NestJS @SubscribeMessage() handler. `messaging.websocket.event.name`
+ * The name of the event a WebSocket message is dispatched on. `messaging.websocket.event.name`
  *
  * Attribute Value Type: `string` {@link MESSAGING_WEBSOCKET_EVENT_NAME_TYPE}
  *
@@ -36148,8 +36148,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     ],
   },
   'messaging.websocket.event.name': {
-    brief:
-      "The name of the event or message pattern a WebSocket message is dispatched on, such as the event name passed to Socket.IO's emit() or the pattern of a NestJS @SubscribeMessage() handler.",
+    brief: 'The name of the event a WebSocket message is dispatched on.',
     type: 'string',
     keys: ['messaging.websocket.event.name'],
     applyScrubbing: {

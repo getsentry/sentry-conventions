@@ -8208,7 +8208,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     # Path: model/attributes/messaging/messaging__websocket__event__name.json
     MESSAGING_WEBSOCKET_EVENT_NAME = "messaging.websocket.event.name"
-    """The name of the event or message pattern a WebSocket message is dispatched on, such as the event name passed to Socket.IO's emit() or the pattern of a NestJS @SubscribeMessage() handler.
+    """The name of the event a WebSocket message is dispatched on.
 
     Type: str
     Apply Scrubbing: manual
@@ -25827,7 +25827,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "messaging.websocket.event.name": AttributeMetadata(
-        brief="The name of the event or message pattern a WebSocket message is dispatched on, such as the event name passed to Socket.IO's emit() or the pattern of a NestJS @SubscribeMessage() handler.",
+        brief="The name of the event a WebSocket message is dispatched on.",
         type=AttributeType.STRING,
         keys=("messaging.websocket.event.name",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
