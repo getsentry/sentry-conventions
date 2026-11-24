@@ -27,7 +27,7 @@ ExtractFieldType: TypeAlias = Literal[
 
 
 class ExtractField(TypedDict):
-    type: ExtractFieldType | str
+    type: ExtractFieldType
     instructions: NotRequired[str]
     nullable: NotRequired[bool]
     unit: NotRequired[str]

@@ -7,7 +7,7 @@
 import type { ChatMessage } from './shared/gen_ai_chat_message';
 
 /**
- * The well-known field types.
+ * The type of a field.
  */
 export type ExtractFieldType =
   | 'text'
@@ -65,7 +65,7 @@ export interface ExtractField {
   /**
    * The type of the field.
    */
-  type: ExtractFieldType | string;
+  type: ExtractFieldType;
   /**
    * The instructions that tell the model what the field contains.
    */

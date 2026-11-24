@@ -67,9 +67,6 @@
             "anyOf": [
               {
                 "$ref": "#/components/schemas/ExtractFieldType"
-              },
-              {
-                "type": "string"
               }
             ]
           },
@@ -210,7 +207,7 @@
         "type": "object"
       },
       "ExtractFieldType": {
-        "description": "The well-known field types.",
+        "description": "The type of a field.",
         "enum": [
           "text",
           "number",
