@@ -3498,6 +3498,17 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: ["test","*"]
     """
 
+    # Path: model/attributes/db/db__response__returned_rows.json
+    DB_RESPONSE_RETURNED_ROWS = "db.response.returned_rows"
+    """The number of rows returned by the database operation.
+
+    Type: int
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: 10
+    """
+
     # Path: model/attributes/db/db__response__status_code.json
     DB_RESPONSE_STATUS_CODE = "db.response.status_code"
     """Database response status code. The status code returned by the database. Usually it represents an error code, but may also represent partial success, warning, or differentiate between various types of successful outcomes.
@@ -17659,6 +17670,23 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=["test", "*"],
         changelog=[
             ChangelogEntry(version="0.0.0"),
+        ],
+    ),
+    "db.response.returned_rows": AttributeMetadata(
+        brief="The number of rows returned by the database operation.",
+        type=AttributeType.INTEGER,
+        keys=("db.response.returned_rows",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example=10,
+        examples=[10],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[826],
+                description="Added db.response.returned_rows attribute",
+            ),
         ],
     ),
     "db.response.status_code": AttributeMetadata(

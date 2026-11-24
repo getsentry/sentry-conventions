@@ -918,6 +918,11 @@ public struct AttributeNames {
     @inlinable
     public static var dbRedisParameters: String { "db.redis.parameters" }
 
+    /// The number of rows returned by the database operation.
+    @_alwaysEmitIntoClient
+    @inlinable
+    public static var dbResponseReturnedRows: String { "db.response.returned_rows" }
+
     /// Database response status code. The status code returned by the database. Usually it represents an error code, but may also represent partial success, warning, or differentiate between various types of successful outcomes.
     @_alwaysEmitIntoClient
     @inlinable
