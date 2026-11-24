@@ -5942,6 +5942,27 @@ export const DB_REDIS_PARAMETERS = 'db.redis.parameters';
  */
 export type DB_REDIS_PARAMETERS_TYPE = Array<string>;
 
+// Path: model/attributes/db/db__response__returned_rows.json
+
+/**
+ * The number of rows returned by the database operation. `db.response.returned_rows`
+ *
+ * Attribute Value Type: `number` {@link DB_RESPONSE_RETURNED_ROWS_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example 10
+ */
+export const DB_RESPONSE_RETURNED_ROWS = 'db.response.returned_rows';
+
+/**
+ * Type for {@link DB_RESPONSE_RETURNED_ROWS} db.response.returned_rows
+ */
+export type DB_RESPONSE_RETURNED_ROWS_TYPE = number;
+
 // Path: model/attributes/db/db__response__status_code.json
 
 /**
@@ -11407,6 +11428,62 @@ export const HTTP_RESPONSE_CONTENT_LENGTH_UNCOMPRESSED = 'http.response_content_
  * Type for {@link HTTP_RESPONSE_CONTENT_LENGTH_UNCOMPRESSED} http.response_content_length_uncompressed
  */
 export type HTTP_RESPONSE_CONTENT_LENGTH_UNCOMPRESSED_TYPE = number;
+
+// Path: model/attributes/http/http__response__delivery_type.json
+
+/**
+ * The delivery type of the resource, as reported by the browser's PerformanceResourceTiming.deliveryType property. `http.response.delivery_type`
+ *
+ * Attribute Value Type: `string` {@link HTTP_RESPONSE_DELIVERY_TYPE_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Well-defined Values:
+ * - `cache` - The resource was retrieved from a cache.
+ * - `navigational-prefetch` - The resource was retrieved from a prefetched response, for example one that the Speculation Rules API stored.
+ * - `` - The resource was not retrieved from a cache or by navigational prefetch.
+ *
+ * Aliases: {@link _HTTP_RESPONSE_DELIVERY_TYPE} `http.response_delivery_type`
+ *
+ * @example "cache"
+ * @example "navigational-prefetch"
+ * @example ""
+ */
+export const HTTP_RESPONSE_DELIVERY_TYPE = 'http.response.delivery_type';
+
+/**
+ * Type for {@link HTTP_RESPONSE_DELIVERY_TYPE} http.response.delivery_type
+ */
+export type HTTP_RESPONSE_DELIVERY_TYPE_TYPE = string;
+
+// Path: model/attributes/http/http__response_delivery_type.json
+
+/**
+ * The delivery type of the resource, as reported by the browser's PerformanceResourceTiming.deliveryType property. `http.response_delivery_type`
+ *
+ * Attribute Value Type: `string` {@link _HTTP_RESPONSE_DELIVERY_TYPE_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link HTTP_RESPONSE_DELIVERY_TYPE} `http.response.delivery_type`
+ *
+ * @deprecated Use {@link HTTP_RESPONSE_DELIVERY_TYPE} (http.response.delivery_type) instead - Use http.response.delivery_type, which follows the http.response.* namespace.
+ * @example "cache"
+ * @example "navigational-prefetch"
+ * @example ""
+ */
+export const _HTTP_RESPONSE_DELIVERY_TYPE = 'http.response_delivery_type';
+
+/**
+ * Type for {@link _HTTP_RESPONSE_DELIVERY_TYPE} http.response_delivery_type
+ */
+export type _HTTP_RESPONSE_DELIVERY_TYPE_TYPE = string;
 
 // Path: model/attributes/http/http__response__header__content-length.json
 
@@ -22971,6 +23048,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'db.redis.connection': 'string',
   'db.redis.key': 'string',
   'db.redis.parameters': 'string[]',
+  'db.response.returned_rows': 'integer',
   'db.response.status_code': 'string',
   'db.sql.bindings': 'string[]',
   'db.statement': 'string',
@@ -23214,6 +23292,8 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'http.response.body.size': 'integer',
   'http.response_content_length': 'integer',
   'http.response_content_length_uncompressed': 'integer',
+  'http.response.delivery_type': 'string',
+  'http.response_delivery_type': 'string',
   'http.response.header.content-length': 'string',
   'http.response.header.<key>': 'string[]',
   'http.response.size': 'integer',
@@ -23974,6 +24054,7 @@ export type AttributeName =
   | typeof DB_REDIS_CONNECTION
   | typeof DB_REDIS_KEY
   | typeof DB_REDIS_PARAMETERS
+  | typeof DB_RESPONSE_RETURNED_ROWS
   | typeof DB_RESPONSE_STATUS_CODE
   | typeof DB_SQL_BINDINGS
   | typeof DB_STATEMENT
@@ -24217,6 +24298,8 @@ export type AttributeName =
   | typeof HTTP_RESPONSE_BODY_SIZE
   | typeof HTTP_RESPONSE_CONTENT_LENGTH
   | typeof HTTP_RESPONSE_CONTENT_LENGTH_UNCOMPRESSED
+  | typeof HTTP_RESPONSE_DELIVERY_TYPE
+  | typeof _HTTP_RESPONSE_DELIVERY_TYPE
   | typeof HTTP_RESPONSE_HEADER_CONTENT_LENGTH
   | typeof HTTP_RESPONSE_HEADER_KEY
   | typeof HTTP_RESPONSE_SIZE
@@ -29051,6 +29134,19 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: ['test', '*'],
     changelog: [{ version: '0.0.0' }],
   },
+  'db.response.returned_rows': {
+    brief: 'The number of rows returned by the database operation.',
+    type: 'integer',
+    keys: ['db.response.returned_rows'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 10,
+    examples: [10],
+    changelog: [{ version: 'next', prs: [826], description: 'Added db.response.returned_rows attribute' }],
+  },
   'db.response.status_code': {
     brief:
       'Database response status code. The status code returned by the database. Usually it represents an error code, but may also represent partial success, warning, or differentiate between various types of successful outcomes.',
@@ -33271,6 +33367,48 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
         prs: [574],
         description:
           'Added http.response_content_length_uncompressed attribute, deprecated in favor of http.response.body.decoded_size',
+      },
+    ],
+  },
+  'http.response.delivery_type': {
+    brief:
+      "The delivery type of the resource, as reported by the browser's PerformanceResourceTiming.deliveryType property.",
+    type: 'string',
+    keys: ['http.response.delivery_type', 'http.response_delivery_type'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'cache',
+    examples: ['cache', 'navigational-prefetch', ''],
+    aliases: ['http.response_delivery_type'],
+    changelog: [{ version: 'next', prs: [825], description: 'Added http.response.delivery_type attribute' }],
+    additionalContext: ['Browsers may add more values later.'],
+  },
+  'http.response_delivery_type': {
+    brief:
+      "The delivery type of the resource, as reported by the browser's PerformanceResourceTiming.deliveryType property.",
+    type: 'string',
+    keys: ['http.response.delivery_type', 'http.response_delivery_type'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'cache',
+    examples: ['cache', 'navigational-prefetch', ''],
+    deprecation: {
+      replacement: 'http.response.delivery_type',
+      reason: 'Use http.response.delivery_type, which follows the http.response.* namespace.',
+      status: 'backfill',
+    },
+    aliases: ['http.response.delivery_type'],
+    changelog: [
+      {
+        version: 'next',
+        prs: [825],
+        description: 'Added http.response_delivery_type attribute, deprecated in favor of http.response.delivery_type',
       },
     ],
   },
@@ -42144,6 +42282,7 @@ export type Attributes = {
   [DB_REDIS_CONNECTION]?: DB_REDIS_CONNECTION_TYPE;
   [DB_REDIS_KEY]?: DB_REDIS_KEY_TYPE;
   [DB_REDIS_PARAMETERS]?: DB_REDIS_PARAMETERS_TYPE;
+  [DB_RESPONSE_RETURNED_ROWS]?: DB_RESPONSE_RETURNED_ROWS_TYPE;
   [DB_RESPONSE_STATUS_CODE]?: DB_RESPONSE_STATUS_CODE_TYPE;
   [DB_SQL_BINDINGS]?: DB_SQL_BINDINGS_TYPE;
   [DB_STATEMENT]?: DB_STATEMENT_TYPE;
@@ -42387,6 +42526,8 @@ export type Attributes = {
   [HTTP_RESPONSE_BODY_SIZE]?: HTTP_RESPONSE_BODY_SIZE_TYPE;
   [HTTP_RESPONSE_CONTENT_LENGTH]?: HTTP_RESPONSE_CONTENT_LENGTH_TYPE;
   [HTTP_RESPONSE_CONTENT_LENGTH_UNCOMPRESSED]?: HTTP_RESPONSE_CONTENT_LENGTH_UNCOMPRESSED_TYPE;
+  [HTTP_RESPONSE_DELIVERY_TYPE]?: HTTP_RESPONSE_DELIVERY_TYPE_TYPE;
+  [_HTTP_RESPONSE_DELIVERY_TYPE]?: _HTTP_RESPONSE_DELIVERY_TYPE_TYPE;
   [HTTP_RESPONSE_HEADER_CONTENT_LENGTH]?: HTTP_RESPONSE_HEADER_CONTENT_LENGTH_TYPE;
   [HTTP_RESPONSE_HEADER_KEY]?: HTTP_RESPONSE_HEADER_KEY_TYPE;
   [HTTP_RESPONSE_SIZE]?: HTTP_RESPONSE_SIZE_TYPE;
