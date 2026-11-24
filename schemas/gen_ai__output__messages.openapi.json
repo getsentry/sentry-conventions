@@ -65,7 +65,7 @@
             "tsType": "unknown"
           },
           "valid": {
-            "description": "Whether the generated answer agrees with the field spec. The value is null when it does not.",
+            "description": "Whether the generated answer agrees with the field spec. When it does not, `value` is null.",
             "type": "boolean"
           },
           "complete": {

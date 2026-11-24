@@ -55,7 +55,7 @@ export interface ExtractAnswer {
    */
   guess?: unknown;
   /**
-   * Whether the generated answer agrees with the field spec. The value is null when it does not.
+   * Whether the generated answer agrees with the field spec. When it does not, `value` is null.
    */
   valid?: boolean;
   /**
