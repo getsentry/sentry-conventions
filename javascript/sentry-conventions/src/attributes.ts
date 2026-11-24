@@ -19317,7 +19317,7 @@ export type SENTRY_SERVER_SAMPLE_RATE_TYPE = number;
  *
  * Attribute Value Type: `number` {@link SENTRY_SEVERITY_NUMBER_TYPE}
  *
- * Apply Scrubbing: never
+ * Apply Scrubbing: manual
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -19340,7 +19340,7 @@ export type SENTRY_SEVERITY_NUMBER_TYPE = number;
  *
  * Attribute Value Type: `string` {@link SENTRY_SEVERITY_TEXT_TYPE}
  *
- * Apply Scrubbing: never
+ * Apply Scrubbing: manual
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -39515,7 +39515,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     type: 'integer',
     keys: ['sentry.severity_number', 'severity_number', 'log.severity_number'],
     applyScrubbing: {
-      key: 'never',
+      key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
@@ -39532,7 +39532,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     type: 'string',
     keys: ['sentry.severity_text', 'severity', 'severity_text', 'log.severity_text'],
     applyScrubbing: {
-      key: 'never',
+      key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',

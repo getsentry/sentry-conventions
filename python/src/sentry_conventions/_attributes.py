@@ -10636,7 +10636,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The severity of a log, as an OpenTelemetry severity number from 1 to 24. Higher numbers are more severe.
 
     Type: int
-    Apply Scrubbing: never
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: 9
@@ -10649,7 +10649,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The severity level of a log, as text.
 
     Type: str
-    Apply Scrubbing: never
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Well-defined Values:
@@ -29726,7 +29726,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "severity_number",
             "log.severity_number",
         ),
-        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=9,
@@ -29751,7 +29751,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "severity_text",
             "log.severity_text",
         ),
-        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="info",

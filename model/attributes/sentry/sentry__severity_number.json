@@ -3,7 +3,7 @@
   "brief": "The severity of a log, as an OpenTelemetry severity number from 1 to 24. Higher numbers are more severe.",
   "type": "integer",
   "apply_scrubbing": {
-    "key": "never"
+    "key": "manual"
   },
   "is_in_otel": false,
   "visibility": "public",
