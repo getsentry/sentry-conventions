@@ -8206,6 +8206,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "amqp://guest:guest@localhost:5672"
     """
 
+    # Path: model/attributes/messaging/messaging__websocket__event__name.json
+    MESSAGING_WEBSOCKET_EVENT_NAME = "messaging.websocket.event.name"
+    """The name of the event or message pattern a WebSocket message is dispatched on, such as the event name passed to Socket.IO's emit() or the pattern of a NestJS @SubscribeMessage() handler.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: "message"
+    Example: "joinRoom"
+    Example: "chat:typing"
+    """
+
     # Path: model/attributes/method.json
     METHOD = "method"
     """The HTTP method used.
@@ -25811,6 +25824,26 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(
                 version="0.21.0", prs=[581], description="Added messaging.url attribute"
             ),
+        ],
+    ),
+    "messaging.websocket.event.name": AttributeMetadata(
+        brief="The name of the event or message pattern a WebSocket message is dispatched on, such as the event name passed to Socket.IO's emit() or the pattern of a NestJS @SubscribeMessage() handler.",
+        type=AttributeType.STRING,
+        keys=("messaging.websocket.event.name",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="message",
+        examples=["message", "joinRoom", "chat:typing"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[836],
+                description="Added messaging.websocket.event.name attribute",
+            ),
+        ],
+        additional_context=[
+            "Set on spans with the `websocket` op. Use `messaging.destination.name` for the namespace (for example `/chat` in Socket.IO) and `messaging.system` for the WebSocket library (for example `socket.io` or `ws`)."
         ],
     ),
     "method": AttributeMetadata(

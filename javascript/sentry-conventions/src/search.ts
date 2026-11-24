@@ -3708,6 +3708,11 @@ export const SEARCH_MESSAGING__SYSTEM = 'messaging.system';
 export const SEARCH_MESSAGING__URL = 'messaging.url';
 
 /**
+ * Search name for {@link attributes.MESSAGING_WEBSOCKET_EVENT_NAME}. `messaging.websocket.event.name`
+ */
+export const SEARCH_MESSAGING__WEBSOCKET__EVENT__NAME = 'messaging.websocket.event.name';
+
+/**
  * Search name for {@link attributes.METHOD}. `method`
  *
  * @deprecated Use {@link SEARCH_HTTP__REQUEST__METHOD} (`http.request.method`) instead
@@ -6452,6 +6457,7 @@ export type AttributeSearchName =
   | typeof SEARCH_MESSAGING__RABBITMQ__ROUTING_KEY
   | typeof SEARCH_MESSAGING__SYSTEM
   | typeof SEARCH_MESSAGING__URL
+  | typeof SEARCH_MESSAGING__WEBSOCKET__EVENT__NAME
   | typeof SEARCH_METHOD
   | typeof SEARCH_MIDDLEWARE__NAME
   | typeof SEARCH_MOBILE__FRAMES_DELAY
@@ -11160,6 +11166,13 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'string',
     brief: 'The connection string of the messaging broker.',
     deprecationChain: ['url.full', 'aws.request.url', 'http.url', 'messaging.url', 'sentry.request.url', 'url'],
+  },
+  'messaging.websocket.event.name': {
+    canonicalName: 'messaging.websocket.event.name',
+    type: 'string',
+    brief:
+      "The name of the event or message pattern a WebSocket message is dispatched on, such as the event name passed to Socket.IO's emit() or the pattern of a NestJS @SubscribeMessage() handler.",
+    deprecationChain: ['messaging.websocket.event.name'],
   },
   method: {
     canonicalName: 'http.request.method',

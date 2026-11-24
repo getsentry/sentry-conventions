@@ -14761,6 +14761,29 @@ export const MESSAGING_URL = 'messaging.url';
  */
 export type MESSAGING_URL_TYPE = string;
 
+// Path: model/attributes/messaging/messaging__websocket__event__name.json
+
+/**
+ * The name of the event or message pattern a WebSocket message is dispatched on, such as the event name passed to Socket.IO's emit() or the pattern of a NestJS @SubscribeMessage() handler. `messaging.websocket.event.name`
+ *
+ * Attribute Value Type: `string` {@link MESSAGING_WEBSOCKET_EVENT_NAME_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "message"
+ * @example "joinRoom"
+ * @example "chat:typing"
+ */
+export const MESSAGING_WEBSOCKET_EVENT_NAME = 'messaging.websocket.event.name';
+
+/**
+ * Type for {@link MESSAGING_WEBSOCKET_EVENT_NAME} messaging.websocket.event.name
+ */
+export type MESSAGING_WEBSOCKET_EVENT_NAME_TYPE = string;
+
 // Path: model/attributes/method.json
 
 /**
@@ -23416,6 +23439,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'messaging.rabbitmq.routing_key': 'string',
   'messaging.system': 'string',
   'messaging.url': 'string',
+  'messaging.websocket.event.name': 'string',
   method: 'string',
   'middleware.name': 'string',
   'navigation.origin': 'string',
@@ -24421,6 +24445,7 @@ export type AttributeName =
   | typeof MESSAGING_RABBITMQ_ROUTING_KEY
   | typeof MESSAGING_SYSTEM
   | typeof MESSAGING_URL
+  | typeof MESSAGING_WEBSOCKET_EVENT_NAME
   | typeof METHOD
   | typeof MIDDLEWARE_NAME
   | typeof NAVIGATION_ORIGIN
@@ -36122,6 +36147,23 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       { version: '0.21.0', prs: [581], description: 'Added messaging.url attribute' },
     ],
   },
+  'messaging.websocket.event.name': {
+    brief:
+      "The name of the event or message pattern a WebSocket message is dispatched on, such as the event name passed to Socket.IO's emit() or the pattern of a NestJS @SubscribeMessage() handler.",
+    type: 'string',
+    keys: ['messaging.websocket.event.name'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'message',
+    examples: ['message', 'joinRoom', 'chat:typing'],
+    changelog: [{ version: 'next', prs: [836], description: 'Added messaging.websocket.event.name attribute' }],
+    additionalContext: [
+      'Set on spans with the `websocket` op. Use `messaging.destination.name` for the namespace (for example `/chat` in Socket.IO) and `messaging.system` for the WebSocket library (for example `socket.io` or `ws`).',
+    ],
+  },
   method: {
     brief: 'The HTTP method used.',
     type: 'string',
@@ -42634,6 +42676,7 @@ export type Attributes = {
   [MESSAGING_RABBITMQ_ROUTING_KEY]?: MESSAGING_RABBITMQ_ROUTING_KEY_TYPE;
   [MESSAGING_SYSTEM]?: MESSAGING_SYSTEM_TYPE;
   [MESSAGING_URL]?: MESSAGING_URL_TYPE;
+  [MESSAGING_WEBSOCKET_EVENT_NAME]?: MESSAGING_WEBSOCKET_EVENT_NAME_TYPE;
   [METHOD]?: METHOD_TYPE;
   [MIDDLEWARE_NAME]?: MIDDLEWARE_NAME_TYPE;
   [NAVIGATION_ORIGIN]?: NAVIGATION_ORIGIN_TYPE;

@@ -34,6 +34,18 @@
         "Messaging"
       ],
       "examples": ["send user.data", "publish"]
+    },
+    {
+      "name": "WebSocket message",
+      "brief": "A server handling an incoming WebSocket message, such as a Socket.IO event or a NestJS gateway message. The name contains the namespace, if known, and the event name.",
+      "is_in_otel": false,
+      "ops": ["websocket"],
+      "templates": [
+        "WS {{messaging.destination.name}} {{messaging.websocket.event.name}}",
+        "WS {{messaging.websocket.event.name}}",
+        "WebSocket message"
+      ],
+      "examples": ["WS /chat message", "WS joinRoom", "WebSocket message"]
     }
   ]
 }
