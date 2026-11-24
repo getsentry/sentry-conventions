@@ -12,6 +12,10 @@ To see the current list of attributes, see [the generated documentation for attr
 
 To learn about creating span `name` fields, see [the generated documentation for span `name`](https://conventions.sentry.dev/names/)
 
+# Swift Package
+
+See the [Swift package README](swift/README.md) for installation, usage, and dead-code stripping verification.
+
 # Contributing
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for more information on how to contribute to this repository.

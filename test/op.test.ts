@@ -75,11 +75,12 @@ describe('Op JSON', async () => {
 });
 
 describe('generateOps', () => {
-  it('marks deprecated ops in the generated JavaScript and Rust constants', async () => {
+  it('marks deprecated ops in the generated JavaScript, Rust, and Swift constants', async () => {
     const temporaryDirectory = fs.mkdtempSync(path.join(os.tmpdir(), 'sentry-conventions-'));
     const opDir = path.join(temporaryDirectory, 'op');
     const jsOutputFilePath = path.join(temporaryDirectory, 'op.ts');
     const rustOutputFilePath = path.join(temporaryDirectory, 'op.rs');
+    const swiftOutputFilePath = path.join(temporaryDirectory, 'SpanOperations.swift');
     fs.mkdirSync(opDir);
     fs.writeFileSync(
       path.join(opDir, 'test.json'),
@@ -93,6 +94,7 @@ describe('generateOps', () => {
             deprecation: { replacement: 'test.new', note: 'Renamed for consistency' },
           },
           { name: 'test.gone', deprecation: {} },
+          { name: 'test.quoted', deprecation: { note: 'Use "new"' } },
           {
             name: 'test.split',
             deprecation: { note: 'Use test.new or test.old instead, depending on the operation.' },
@@ -101,8 +103,15 @@ describe('generateOps', () => {
       }),
     );
 
+    fs.writeFileSync(path.join(opDir, 'other.json'), JSON.stringify({ name: 'other', fields: [{ name: 'test.new' }] }));
+
     try {
-      await generateOps({ opDir, jsOutputFilePath, rustOutputFilePath });
+      await generateOps({
+        opDir,
+        jsOutputFilePath,
+        rustOutputFilePath,
+        swiftOutputFilePath,
+      });
 
       const javascript = fs.readFileSync(jsOutputFilePath, 'utf8');
       expect(javascript).toContain(
@@ -121,6 +130,12 @@ describe('generateOps', () => {
         '#[deprecated(note = "Use test.new or test.old instead, depending on the operation.")]\npub const TEST_SPLIT: &str = "test.split";',
       );
       expect(rust).toContain('/// The replacement op.\npub const TEST_NEW: &str = "test.new";');
+
+      const swift = fs.readFileSync(swiftOutputFilePath, 'utf8');
+      expect(swift).toContain('public static var testNew: String { "test.new" }');
+      expect(swift.match(/public static var testNew:/g)).toHaveLength(1);
+      expect(swift).toContain('@available(*, deprecated, message: "Use test.new instead - Renamed for consistency")');
+      expect(swift).toContain('message: "Use \\"new\\""');
     } finally {
       fs.rmSync(temporaryDirectory, { recursive: true, force: true });
     }

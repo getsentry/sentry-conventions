@@ -184,6 +184,8 @@ The tests enforce logical correctness as well as policies that the model should 
 yarn test
 ```
 
+`yarn test` requires Python and Swift on Linux or macOS. Individual suites are available through `yarn test:js`, `yarn test:python`, and `yarn test:swift`. See the [Swift README](swift/README.md#verification) for details.
+
 ## Linting
 
 This repo uses [oxlint](https://oxc.rs/docs/guide/usage/linter.html) and [oxfmt](https://oxc.rs/docs/guide/usage/formatter.html) along with other platform-specific tools for linting and formatting. To run the linting, run `yarn lint`.

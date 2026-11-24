@@ -1,11 +1,13 @@
 import * as fs from 'node:fs';
 import * as path from 'node:path';
+import { writeSwiftConstants } from './swift';
 import type { MetricJson } from './types';
 
 interface GenerateMetricsOptions {
   metricsDir: string;
   jsOutputFilePath: string;
   rustOutputFilePath: string;
+  swiftOutputFilePath: string;
 }
 
 interface Metric extends MetricJson {
@@ -18,11 +20,15 @@ export async function generateMetrics(options?: Partial<GenerateMetricsOptions>)
   const jsOutputFilePath =
     options?.jsOutputFilePath ?? path.join(repositoryRoot, 'javascript', 'sentry-conventions', 'src', 'metrics.ts');
   const rustOutputFilePath = options?.rustOutputFilePath ?? path.join(repositoryRoot, 'rust', 'src', 'metrics.rs');
+  const swiftOutputFilePath =
+    options?.swiftOutputFilePath ??
+    path.join(repositoryRoot, 'swift', 'Sources', 'SentryConventions', 'MetricNames.swift');
 
   const metrics = await readMetrics(metricsDir);
 
   writeToJs(metrics, jsOutputFilePath);
   writeToRust(metrics, rustOutputFilePath);
+  writeToSwift(metrics, swiftOutputFilePath);
 }
 
 async function readMetrics(metricsDir: string): Promise<Metric[]> {
@@ -75,4 +81,15 @@ function writeToRust(metrics: Metric[], metricsFilePath: string) {
   }
 
   fs.writeFileSync(metricsFilePath, content.trimEnd());
+}
+
+function writeToSwift(metrics: Metric[], outputFilePath: string) {
+  writeSwiftConstants(
+    outputFilePath,
+    'MetricNames',
+    metrics.map((metric) => ({
+      key: metric.key,
+      brief: metric.brief,
+    })),
+  );
 }

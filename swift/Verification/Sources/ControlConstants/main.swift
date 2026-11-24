@@ -1,0 +1,5 @@
+import SentryConventions
+
+print(AttributeNames.mcpRequestArgumentKey)
+print(SpanOperations.mcpNotificationClientToServer)
+print(MetricNames.processRuntimeElixirProcessUtilization)
