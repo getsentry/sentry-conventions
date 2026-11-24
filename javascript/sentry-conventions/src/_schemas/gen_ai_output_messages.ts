@@ -127,9 +127,9 @@ export interface ExtractAnswer {
    */
   retry_input_tokens?: number;
   /**
-   * The source of the answer: `input`, `image`, or `readout`.
+   * The source of the answer.
    */
-  source?: string;
+  source?: 'input' | 'image' | 'readout';
   /**
    * The unit of a duration value.
    */

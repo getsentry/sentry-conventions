@@ -190,7 +190,8 @@
             "type": "integer"
           },
           "source": {
-            "description": "The source of the answer: `input`, `image`, or `readout`.",
+            "description": "The source of the answer.",
+            "enum": ["input", "image", "readout"],
             "type": "string"
           },
           "unit": {

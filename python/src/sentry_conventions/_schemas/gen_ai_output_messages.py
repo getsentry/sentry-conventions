@@ -3,7 +3,7 @@
 
 from __future__ import annotations
 
-from typing import Any, TypeAlias, TypedDict
+from typing import Any, Literal, TypeAlias, TypedDict
 
 from typing_extensions import NotRequired
 
@@ -38,7 +38,7 @@ class ExtractAnswer(TypedDict):
     failure_reason: NotRequired[str]
     null_recovered: NotRequired[bool]
     retry_input_tokens: NotRequired[int]
-    source: NotRequired[str]
+    source: NotRequired[Literal["input", "image", "readout"]]
     unit: NotRequired[str]
     mean: NotRequired[float | str]
     median: NotRequired[float | str]
