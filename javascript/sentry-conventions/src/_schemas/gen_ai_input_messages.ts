@@ -47,6 +47,10 @@ export interface ExtractInputMessage {
    */
   images?: string[];
   /**
+   * The PDF documents that the model reads, each as a string.
+   */
+  documents?: string[];
+  /**
    * The date that anchors dates written without a year.
    */
   reference_date?: string;

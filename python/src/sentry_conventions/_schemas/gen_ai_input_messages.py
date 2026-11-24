@@ -59,6 +59,7 @@ class ExtractInputMessage(TypedDict):
     state: NotRequired[str]
     fields: dict[str, ExtractField]
     images: NotRequired[list[str]]
+    documents: NotRequired[list[str]]
     reference_date: NotRequired[str]
     options: NotRequired[dict[str, Any]]
 

@@ -46,6 +46,13 @@
             },
             "type": "array"
           },
+          "documents": {
+            "description": "The PDF documents that the model reads, each as a string.",
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
           "reference_date": {
             "description": "The date that anchors dates written without a year.",
             "type": "string"
