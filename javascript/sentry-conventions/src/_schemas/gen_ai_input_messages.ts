@@ -10,3 +10,55 @@ import type { ChatMessage } from './shared/gen_ai_chat_message';
  * Represents the list of input messages sent to the model.
  */
 export type InputMessages = ChatMessage[];
+/**
+ * Represents the input messages of a gen_ai.extract operation. The list holds one message.
+ *
+ * @minItems 1
+ * @maxItems 1
+ */
+export type ExtractInputMessages = [ExtractInputMessage];
+
+/**
+ * Represents the extraction request body as the caller passed it, without the model. Keys that the caller did not set are left out. Other keys of the request body are permitted.
+ */
+export interface ExtractInputMessage {
+  /**
+   * The text that the model reads.
+   */
+  state?: string;
+  /**
+   * The field specs, keyed by field name.
+   */
+  fields: {
+    [k: string]: ExtractField;
+  };
+  /**
+   * The images that the caller passed. Each image is replaced with a substitute string, because image data must not be recorded.
+   */
+  images?: '[Blob substitute]'[];
+  /**
+   * The date that anchors dates written without a year.
+   */
+  reference_date?: string;
+  /**
+   * The options that the caller passed to the provider.
+   */
+  options?: {
+    [k: string]: unknown;
+  };
+  [k: string]: unknown;
+}
+/**
+ * Represents the spec of one field to extract. The other keys depend on the field type and the provider, such as unit, decimals, items, min, max, and step.
+ */
+export interface ExtractField {
+  /**
+   * The type of the field, such as text, number, date, list, or estimate.
+   */
+  type: string;
+  /**
+   * The instructions that tell the model what the field contains.
+   */
+  instructions?: string;
+  [k: string]: unknown;
+}

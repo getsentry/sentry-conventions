@@ -13,6 +13,67 @@
           "$ref": "./shared/gen_ai_chat_message.openapi.json#/components/schemas/ChatMessage"
         },
         "type": "array"
+      },
+      "ExtractInputMessages": {
+        "description": "Represents the input messages of a gen_ai.extract operation. The list holds one message.",
+        "x-otel-deviation": ["OTel does not define the extract operation. This definition is specific to Sentry."],
+        "items": {
+          "$ref": "#/components/schemas/ExtractInputMessage"
+        },
+        "minItems": 1,
+        "maxItems": 1,
+        "type": "array"
+      },
+      "ExtractInputMessage": {
+        "description": "Represents the extraction request body as the caller passed it, without the model. Keys that the caller did not set are left out. Other keys of the request body are permitted.",
+        "properties": {
+          "state": {
+            "description": "The text that the model reads.",
+            "type": "string"
+          },
+          "fields": {
+            "description": "The field specs, keyed by field name.",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/ExtractField"
+            },
+            "type": "object"
+          },
+          "images": {
+            "description": "The images that the caller passed. Each image is replaced with a substitute string, because image data must not be recorded.",
+            "items": {
+              "const": "[Blob substitute]",
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "reference_date": {
+            "description": "The date that anchors dates written without a year.",
+            "type": "string"
+          },
+          "options": {
+            "description": "The options that the caller passed to the provider.",
+            "type": "object"
+          }
+        },
+        "additionalProperties": true,
+        "required": ["fields"],
+        "type": "object"
+      },
+      "ExtractField": {
+        "description": "Represents the spec of one field to extract. The other keys depend on the field type and the provider, such as unit, decimals, items, min, max, and step.",
+        "properties": {
+          "type": {
+            "description": "The type of the field, such as text, number, date, list, or estimate.",
+            "type": "string"
+          },
+          "instructions": {
+            "description": "The instructions that tell the model what the field contains.",
+            "type": "string"
+          }
+        },
+        "additionalProperties": true,
+        "required": ["type"],
+        "type": "object"
       }
     }
   }

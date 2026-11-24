@@ -3,8 +3,26 @@
 
 from __future__ import annotations
 
-from typing import TypeAlias
+from typing import Any, Literal, TypeAlias, TypedDict
+
+from typing_extensions import NotRequired
 
 from .shared.gen_ai_chat_message import ChatMessage
 
 InputMessages: TypeAlias = list[ChatMessage]
+
+
+class ExtractField(TypedDict):
+    type: str
+    instructions: NotRequired[str]
+
+
+class ExtractInputMessage(TypedDict):
+    state: NotRequired[str]
+    fields: dict[str, ExtractField]
+    images: NotRequired[list[Literal["[Blob substitute]"]]]
+    reference_date: NotRequired[str]
+    options: NotRequired[dict[str, Any]]
+
+
+ExtractInputMessages: TypeAlias = list[ExtractInputMessage]
