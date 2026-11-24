@@ -19,7 +19,7 @@ export type ExtractSpan = [number, number];
 export type OutputMessages = (ChatMessage | ExtractOutputMessage)[];
 
 /**
- * Represents the response of a `gen_ai.extract` operation: the response body as the provider returned it, without the model and the usage. Other keys of the response body are permitted. The array holds exactly one such message.
+ * Represents the response of a `gen_ai.extract` operation: the response body as the provider returned it, without the model and the usage. The array holds exactly one such message.
  */
 export interface ExtractOutputMessage {
   /**
@@ -36,10 +36,9 @@ export interface ExtractOutputMessage {
    * The text that the spans index into, if the provider returns it.
    */
   state_text?: string;
-  [k: string]: unknown;
 }
 /**
- * Represents the answer for one field. The field type sets which keys the provider returns. Other keys are permitted.
+ * Represents the answer for one field. The field type sets which keys the provider returns.
  */
 export interface ExtractAnswer {
   /**
@@ -162,5 +161,4 @@ export interface ExtractAnswer {
   steps?: {
     [k: string]: unknown;
   }[];
-  [k: string]: unknown;
 }
