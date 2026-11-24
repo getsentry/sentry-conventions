@@ -20,7 +20,6 @@ if TYPE_CHECKING:
     from ._schemas.gen_ai_output_messages import (
         ExtractAnswer,
         ExtractOutputMessage,
-        ExtractOutputMessages,
         ExtractSpan,
         OutputMessages,
     )
@@ -69,7 +68,6 @@ if TYPE_CHECKING:
         "TextPart",
         "InputMessages",
         "OutputMessages",
-        "ExtractOutputMessages",
         "ExtractOutputMessage",
         "ExtractAnswer",
         "ExtractSpan",

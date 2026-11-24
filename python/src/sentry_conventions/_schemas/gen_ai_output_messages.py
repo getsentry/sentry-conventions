@@ -9,9 +9,6 @@ from typing_extensions import NotRequired
 
 from .shared.gen_ai_chat_message import ChatMessage
 
-OutputMessages: TypeAlias = list[ChatMessage]
-
-
 ExtractSpan: TypeAlias = list[int]
 
 
@@ -29,4 +26,4 @@ class ExtractOutputMessage(TypedDict):
     state_text: NotRequired[str]
 
 
-ExtractOutputMessages: TypeAlias = list[ExtractOutputMessage]
+OutputMessages: TypeAlias = list[ChatMessage | ExtractOutputMessage]

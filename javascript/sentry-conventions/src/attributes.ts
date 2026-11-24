@@ -19,7 +19,6 @@ export type { InputMessages } from './_schemas/gen_ai_input_messages';
 
 export type {
   OutputMessages,
-  ExtractOutputMessages,
   ExtractOutputMessage,
   ExtractAnswer,
   ExtractSpan,
