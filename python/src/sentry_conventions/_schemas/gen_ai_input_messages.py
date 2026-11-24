@@ -9,8 +9,6 @@ from typing_extensions import NotRequired
 
 from .shared.gen_ai_chat_message import ChatMessage
 
-InputMessages: TypeAlias = list[ChatMessage]
-
 
 class ExtractField(TypedDict):
     type: str
@@ -25,4 +23,4 @@ class ExtractInputMessage(TypedDict):
     options: NotRequired[dict[str, Any]]
 
 
-ExtractInputMessages: TypeAlias = list[ExtractInputMessage]
+InputMessages: TypeAlias = list[ChatMessage | ExtractInputMessage]

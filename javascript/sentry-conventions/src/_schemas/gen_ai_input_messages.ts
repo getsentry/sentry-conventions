@@ -9,17 +9,10 @@ import type { ChatMessage } from './shared/gen_ai_chat_message';
 /**
  * Represents the list of input messages sent to the model.
  */
-export type InputMessages = ChatMessage[];
-/**
- * Represents the input messages of a gen_ai.extract operation. The list holds one message.
- *
- * @minItems 1
- * @maxItems 1
- */
-export type ExtractInputMessages = [ExtractInputMessage];
+export type InputMessages = (ChatMessage | ExtractInputMessage)[];
 
 /**
- * Represents the extraction request body as the caller passed it, without the model. Keys that the caller did not set are left out. Other keys of the request body are permitted.
+ * Represents the request of a `gen_ai.extract` operation: the request body as the caller passed it, without the model. Keys that the caller did not set are left out. Other keys of the request body are permitted. The array holds exactly one such message.
  */
 export interface ExtractInputMessage {
   /**

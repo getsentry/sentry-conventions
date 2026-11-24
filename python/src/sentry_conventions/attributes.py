@@ -19,7 +19,6 @@ if TYPE_CHECKING:
     from ._schemas.gen_ai_input_messages import (
         ExtractField,
         ExtractInputMessage,
-        ExtractInputMessages,
         InputMessages,
     )
     from ._schemas.gen_ai_output_messages import OutputMessages
@@ -67,7 +66,6 @@ if TYPE_CHECKING:
         "SystemInstructions",
         "TextPart",
         "InputMessages",
-        "ExtractInputMessages",
         "ExtractInputMessage",
         "ExtractField",
         "OutputMessages",

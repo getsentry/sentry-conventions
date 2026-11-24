@@ -16,6 +16,8 @@ export type {
   SystemInstructions,
   TextPart,
   InputMessages,
+  ExtractInputMessage,
+  ExtractField,
   OutputMessages,
   ChatMessage,
   Role,

@@ -15,12 +15,7 @@ export type {
   Modality,
 } from './_schemas/shared/gen_ai_parts';
 
-export type {
-  InputMessages,
-  ExtractInputMessages,
-  ExtractInputMessage,
-  ExtractField,
-} from './_schemas/gen_ai_input_messages';
+export type { InputMessages, ExtractInputMessage, ExtractField } from './_schemas/gen_ai_input_messages';
 
 export type { OutputMessages } from './_schemas/gen_ai_output_messages';
 

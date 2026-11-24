@@ -9,23 +9,24 @@
     "schemas": {
       "InputMessages": {
         "description": "Represents the list of input messages sent to the model.",
+        "x-otel-deviation": [
+          "Allow ExtractInputMessage in addition to ChatMessage, since `gen_ai.extract` operations send a state and field specs instead of chat messages."
+        ],
         "items": {
-          "$ref": "./shared/gen_ai_chat_message.openapi.json#/components/schemas/ChatMessage"
+          "anyOf": [
+            {
+              "$ref": "./shared/gen_ai_chat_message.openapi.json#/components/schemas/ChatMessage"
+            },
+            {
+              "$ref": "#/components/schemas/ExtractInputMessage"
+            }
+          ]
         },
-        "type": "array"
-      },
-      "ExtractInputMessages": {
-        "description": "Represents the input messages of a gen_ai.extract operation. The list holds one message.",
-        "x-otel-deviation": ["OTel does not define the extract operation. This definition is specific to Sentry."],
-        "items": {
-          "$ref": "#/components/schemas/ExtractInputMessage"
-        },
-        "minItems": 1,
-        "maxItems": 1,
         "type": "array"
       },
       "ExtractInputMessage": {
-        "description": "Represents the extraction request body as the caller passed it, without the model. Keys that the caller did not set are left out. Other keys of the request body are permitted.",
+        "description": "Represents the request of a `gen_ai.extract` operation: the request body as the caller passed it, without the model. Keys that the caller did not set are left out. Other keys of the request body are permitted. The array holds exactly one such message.",
+        "x-otel-deviation": ["OTel does not define this message or any of the definitions it references."],
         "properties": {
           "state": {
             "description": "The text that the model reads.",
