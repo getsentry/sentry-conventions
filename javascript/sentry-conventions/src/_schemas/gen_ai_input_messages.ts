@@ -168,8 +168,5 @@ export interface ExtractField {
    * The interval between the steps of a forecast, such as `day` or `month`.
    */
   interval?: string;
-  required?: [];
-  additionalProperties?: unknown;
-  minItems?: 0;
   [k: string]: unknown;
 }
