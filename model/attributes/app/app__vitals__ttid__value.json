@@ -9,7 +9,16 @@
   "example": 1234.56,
   "alias": ["time_to_initial_display"],
   "visibility": "public",
+  "search_alias": {
+    "name": "app.vitals.ttid.value",
+    "type": "millisecond"
+  },
   "changelog": [
+    {
+      "version": "0.35.0",
+      "prs": [815],
+      "description": "Added search_alias with type millisecond"
+    },
     {
       "version": "0.5.0",
       "prs": [313],

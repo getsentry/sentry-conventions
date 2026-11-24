@@ -1,0 +1,23 @@
+{
+  "key": "sentry.messaging.message.id",
+  "brief": "A value used by the messaging system as an identifier for the message, represented as a string.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "example": "f47ac10b58cc4372a5670e02b2c3d479",
+  "alias": ["messaging.message.id", "messaging.message_id"],
+  "deprecation": {
+    "_status": "backfill",
+    "replacement": "messaging.message.id"
+  },
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "0.35.0",
+      "prs": [809],
+      "description": "Added sentry.messaging.message.id attribute, deprecated in favor of messaging.message.id"
+    }
+  ]
+}

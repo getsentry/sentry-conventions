@@ -1,0 +1,23 @@
+{
+  "key": "sentry.device.screen_width_pixels",
+  "brief": "The width of the device screen in pixels.",
+  "type": "integer",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "example": 1080,
+  "alias": ["device.screen_width_pixels"],
+  "deprecation": {
+    "_status": "backfill",
+    "replacement": "device.screen_width_pixels"
+  },
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "0.35.0",
+      "prs": [804],
+      "description": "Added sentry.device.screen_width_pixels attribute, deprecated in favor of device.screen_width_pixels"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "key": "sentry.os.rooted",
+  "brief": "Whether the operating system has been jailbroken or rooted.",
+  "type": "boolean",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "example": true,
+  "alias": ["os.rooted"],
+  "deprecation": {
+    "_status": "backfill",
+    "replacement": "os.rooted"
+  },
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "0.35.0",
+      "prs": [805],
+      "description": "Added sentry.os.rooted attribute, deprecated in favor of os.rooted"
+    }
+  ]
+}

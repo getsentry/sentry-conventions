@@ -528,7 +528,7 @@ export const SEARCH_APP__VITALS__TTFD__VALUE = 'app.vitals.ttfd.value';
 export const SEARCH_APP__VITALS__TTID__VALUE = 'app.vitals.ttid.value';
 
 /**
- * Search name for {@link attributes.APP_START_COLD}. `app_start_cold`
+ * Search name for {@link attributes.APP_VITALS_START_COLD_VALUE}. `app_start_cold`
  *
  * @deprecated Use {@link SEARCH_APP__VITALS__START__COLD__VALUE} (`app.vitals.start.cold.value`) instead
  */
@@ -542,7 +542,7 @@ export const SEARCH_APP_START_COLD = 'app_start_cold';
 export const SEARCH_APP_START_TYPE = 'app_start_type';
 
 /**
- * Search name for {@link attributes.APP_START_WARM}. `app_start_warm`
+ * Search name for {@link attributes.APP_VITALS_START_WARM_VALUE}. `app_start_warm`
  *
  * @deprecated Use {@link SEARCH_APP__VITALS__START__WARM__VALUE} (`app.vitals.start.warm.value`) instead
  */
@@ -1187,6 +1187,16 @@ export const SEARCH_CHANNEL = 'channel';
  * Search name for {@link attributes.CLIENT_ADDRESS}. `client.address`
  */
 export const SEARCH_CLIENT__ADDRESS = 'client.address';
+
+/**
+ * Search name for {@link attributes.CLIENT_AS_NUMBER}. `client.as.number`
+ */
+export const SEARCH_CLIENT__AS__NUMBER = 'client.as.number';
+
+/**
+ * Search name for {@link attributes.CLIENT_AS_ORGANIZATION}. `client.as.organization`
+ */
+export const SEARCH_CLIENT__AS__ORGANIZATION = 'client.as.organization';
 
 /**
  * Search name for {@link attributes.CLIENT_PORT}. `client.port`
@@ -1926,7 +1936,7 @@ export const SEARCH_FAAS__TRIGGER = 'faas.trigger';
 export const SEARCH_FAAS__VERSION = 'faas.version';
 
 /**
- * Search name for {@link attributes.FCP}. `fcp`
+ * Search name for {@link attributes.BROWSER_WEB_VITAL_FCP_VALUE}. `fcp`
  *
  * @deprecated Use {@link SEARCH_BROWSER__WEB_VITAL__FCP__VALUE} (`browser.web_vital.fcp.value`) instead
  */
@@ -1948,16 +1958,16 @@ export const SEARCH_FILE__SIZE = 'file.size';
 export const SEARCH_FLAG__EVALUATION__KEY = 'flag.evaluation.<key>';
 
 /**
- * Search name for {@link attributes.FP}. `fp`
+ * Search name for {@link attributes.BROWSER_WEB_VITAL_FP_VALUE}. `fp`
  *
  * @deprecated Use {@link SEARCH_BROWSER__WEB_VITAL__FP__VALUE} (`browser.web_vital.fp.value`) instead
  */
 export const SEARCH_FP = 'fp';
 
 /**
- * Search name for {@link attributes.FRAMES_DELAY}. `frames.delay`
+ * Search name for {@link attributes.APP_VITALS_FRAMES_DELAY_VALUE}. `frames.delay`
  *
- * @deprecated Use {@link SEARCH_MOBILE__FRAMES_DELAY} (`mobile.frames_delay`) instead
+ * @deprecated Use {@link SEARCH_APP__VITALS__FRAMES__DELAY__VALUE} (`app.vitals.frames.delay.value`) instead
  */
 export const SEARCH_FRAMES__DELAY = 'frames.delay';
 
@@ -1983,14 +1993,14 @@ export const SEARCH_FRAMES__SLOW = 'frames.slow';
 export const SEARCH_FRAMES__TOTAL = 'frames.total';
 
 /**
- * Search name for {@link attributes.FRAMES_FROZEN_RATE}. `frames_frozen_rate`
+ * Search name for {@link attributes.APP_VITALS_FRAMES_FROZEN_RATE}. `frames_frozen_rate`
  *
  * @deprecated Use {@link SEARCH_APP__VITALS__FRAMES__FROZEN__RATE} (`app.vitals.frames.frozen.rate`) instead
  */
 export const SEARCH_FRAMES_FROZEN_RATE = 'frames_frozen_rate';
 
 /**
- * Search name for {@link attributes.FRAMES_SLOW_RATE}. `frames_slow_rate`
+ * Search name for {@link attributes.APP_VITALS_FRAMES_SLOW_RATE}. `frames_slow_rate`
  *
  * @deprecated Use {@link SEARCH_APP__VITALS__FRAMES__SLOW__RATE} (`app.vitals.frames.slow.rate`) instead
  */
@@ -2634,6 +2644,11 @@ export const SEARCH_HEROKU__ROUTER__REQUEST_ID = 'heroku.router.request_id';
 export const SEARCH_HEROKU__ROUTER__SERVICE = 'heroku.router.service';
 
 /**
+ * Search name for {@link attributes.HEROKU_SOURCE}. `heroku.source`
+ */
+export const SEARCH_HEROKU__SOURCE = 'heroku.source';
+
+/**
  * Search name for {@link attributes.HTTP_CLIENT_IP}. `http.client_ip`
  *
  * @deprecated Use {@link SEARCH_CLIENT__ADDRESS} (`client.address`) instead
@@ -2818,9 +2833,9 @@ export const SEARCH_HTTP__RESPONSE__BODY__SIZE = 'http.response.body.size';
 export const SEARCH_HTTP__RESPONSE__HEADER__KEY = 'http.response.header.<key>';
 
 /**
- * Search name for {@link attributes.HTTP_RESPONSE_CONTENT_LENGTH}. `http.response.header.content-length`
+ * Search name for {@link attributes.HTTP_RESPONSE_BODY_SIZE}. `http.response.header.content-length`
  *
- * @deprecated Use {@link SEARCH_HTTP__RESPONSE_CONTENT_LENGTH} (`http.response_content_length`) instead
+ * @deprecated Use {@link SEARCH_HTTP__RESPONSE__BODY__SIZE} (`http.response.body.size`) instead
  */
 export const SEARCH_HTTP__RESPONSE__HEADER__CONTENT_LENGTH = 'http.response.header.content-length';
 
@@ -2928,7 +2943,7 @@ export const SEARCH_HTTP__USER_AGENT = 'http.user_agent';
 export const SEARCH_ID = 'id';
 
 /**
- * Search name for {@link attributes.INP}. `inp`
+ * Search name for {@link attributes.BROWSER_WEB_VITAL_INP_VALUE}. `inp`
  *
  * @deprecated Use {@link SEARCH_BROWSER__WEB_VITAL__INP__VALUE} (`browser.web_vital.inp.value`) instead
  */
@@ -3014,7 +3029,7 @@ export const SEARCH_KOA__TYPE = 'koa.type';
 export const SEARCH_LANGCHAIN__CHAIN__NAME = 'langchain.chain.name';
 
 /**
- * Search name for {@link attributes.LCP}. `lcp`
+ * Search name for {@link attributes.BROWSER_WEB_VITAL_LCP_VALUE}. `lcp`
  *
  * @deprecated Use {@link SEARCH_BROWSER__WEB_VITAL__LCP__VALUE} (`browser.web_vital.lcp.value`) instead
  */
@@ -4411,6 +4426,118 @@ export const SEARCH_SENTRY__CLIENT_SAMPLE_RATE = 'sentry.client_sample_rate';
 export const SEARCH_SENTRY__DESCRIPTION = 'sentry.description';
 
 /**
+ * Search name for {@link attributes.SENTRY_DEVICE_BATTERY_LEVEL}. `sentry.device.battery_level`
+ *
+ * @deprecated Use {@link SEARCH_DEVICE__BATTERY_LEVEL} (`device.battery_level`) instead
+ */
+export const SEARCH_SENTRY__DEVICE__BATTERY_LEVEL = 'sentry.device.battery_level';
+
+/**
+ * Search name for {@link attributes.SENTRY_DEVICE_BRAND}. `sentry.device.brand`
+ *
+ * @deprecated Use {@link SEARCH_DEVICE__BRAND} (`device.brand`) instead
+ */
+export const SEARCH_SENTRY__DEVICE__BRAND = 'sentry.device.brand';
+
+/**
+ * Search name for {@link attributes.SENTRY_DEVICE_CHARGING}. `sentry.device.charging`
+ *
+ * @deprecated Use {@link SEARCH_DEVICE__CHARGING} (`device.charging`) instead
+ */
+export const SEARCH_SENTRY__DEVICE__CHARGING = 'sentry.device.charging';
+
+/**
+ * Search name for {@link attributes.SENTRY_DEVICE_CLASS}. `sentry.device.class`
+ *
+ * @deprecated Use {@link SEARCH_DEVICE__CLASS} (`device.class`) instead
+ */
+export const SEARCH_SENTRY__DEVICE__CLASS = 'sentry.device.class';
+
+/**
+ * Search name for {@link attributes.SENTRY_DEVICE_FAMILY}. `sentry.device.family`
+ *
+ * @deprecated Use {@link SEARCH_DEVICE__FAMILY} (`device.family`) instead
+ */
+export const SEARCH_SENTRY__DEVICE__FAMILY = 'sentry.device.family';
+
+/**
+ * Search name for {@link attributes.SENTRY_DEVICE_LOCALE}. `sentry.device.locale`
+ *
+ * @deprecated Use {@link SEARCH_DEVICE__LOCALE} (`device.locale`) instead
+ */
+export const SEARCH_SENTRY__DEVICE__LOCALE = 'sentry.device.locale';
+
+/**
+ * Search name for {@link attributes.SENTRY_DEVICE_MODEL}. `sentry.device.model`
+ *
+ * @deprecated Use {@link SEARCH_DEVICE__MODEL} (`device.model`) instead
+ */
+export const SEARCH_SENTRY__DEVICE__MODEL = 'sentry.device.model';
+
+/**
+ * Search name for {@link attributes.SENTRY_DEVICE_MODEL_ID}. `sentry.device.model_id`
+ *
+ * @deprecated Use {@link SEARCH_DEVICE__MODEL_ID} (`device.model_id`) instead
+ */
+export const SEARCH_SENTRY__DEVICE__MODEL_ID = 'sentry.device.model_id';
+
+/**
+ * Search name for {@link attributes.SENTRY_DEVICE_NAME}. `sentry.device.name`
+ *
+ * @deprecated Use {@link SEARCH_DEVICE__NAME} (`device.name`) instead
+ */
+export const SEARCH_SENTRY__DEVICE__NAME = 'sentry.device.name';
+
+/**
+ * Search name for {@link attributes.SENTRY_DEVICE_ONLINE}. `sentry.device.online`
+ *
+ * @deprecated Use {@link SEARCH_DEVICE__ONLINE} (`device.online`) instead
+ */
+export const SEARCH_SENTRY__DEVICE__ONLINE = 'sentry.device.online';
+
+/**
+ * Search name for {@link attributes.SENTRY_DEVICE_ORIENTATION}. `sentry.device.orientation`
+ *
+ * @deprecated Use {@link SEARCH_DEVICE__ORIENTATION} (`device.orientation`) instead
+ */
+export const SEARCH_SENTRY__DEVICE__ORIENTATION = 'sentry.device.orientation';
+
+/**
+ * Search name for {@link attributes.SENTRY_DEVICE_SCREEN_DENSITY}. `sentry.device.screen_density`
+ *
+ * @deprecated Use {@link SEARCH_DEVICE__SCREEN_DENSITY} (`device.screen_density`) instead
+ */
+export const SEARCH_SENTRY__DEVICE__SCREEN_DENSITY = 'sentry.device.screen_density';
+
+/**
+ * Search name for {@link attributes.SENTRY_DEVICE_SCREEN_DPI}. `sentry.device.screen_dpi`
+ *
+ * @deprecated Use {@link SEARCH_DEVICE__SCREEN_DPI} (`device.screen_dpi`) instead
+ */
+export const SEARCH_SENTRY__DEVICE__SCREEN_DPI = 'sentry.device.screen_dpi';
+
+/**
+ * Search name for {@link attributes.SENTRY_DEVICE_SCREEN_HEIGHT_PIXELS}. `sentry.device.screen_height_pixels`
+ *
+ * @deprecated Use {@link SEARCH_DEVICE__SCREEN_HEIGHT_PIXELS} (`device.screen_height_pixels`) instead
+ */
+export const SEARCH_SENTRY__DEVICE__SCREEN_HEIGHT_PIXELS = 'sentry.device.screen_height_pixels';
+
+/**
+ * Search name for {@link attributes.SENTRY_DEVICE_SCREEN_WIDTH_PIXELS}. `sentry.device.screen_width_pixels`
+ *
+ * @deprecated Use {@link SEARCH_DEVICE__SCREEN_WIDTH_PIXELS} (`device.screen_width_pixels`) instead
+ */
+export const SEARCH_SENTRY__DEVICE__SCREEN_WIDTH_PIXELS = 'sentry.device.screen_width_pixels';
+
+/**
+ * Search name for {@link attributes.SENTRY_DEVICE_SIMULATOR}. `sentry.device.simulator`
+ *
+ * @deprecated Use {@link SEARCH_DEVICE__SIMULATOR} (`device.simulator`) instead
+ */
+export const SEARCH_SENTRY__DEVICE__SIMULATOR = 'sentry.device.simulator';
+
+/**
  * Search name for {@link attributes.SENTRY_DIST}. `sentry.dist`
  */
 export const SEARCH_SENTRY__DIST = 'sentry.dist';
@@ -4577,6 +4704,20 @@ export const SEARCH_SENTRY__MESSAGE__PARAMETER__KEY = 'sentry.message.parameter.
 export const SEARCH_SENTRY__MESSAGE__TEMPLATE = 'sentry.message.template';
 
 /**
+ * Search name for {@link attributes.SENTRY_MESSAGING_DESTINATION_NAME}. `sentry.messaging.destination.name`
+ *
+ * @deprecated Use {@link SEARCH_MESSAGING__DESTINATION__NAME} (`messaging.destination.name`) instead
+ */
+export const SEARCH_SENTRY__MESSAGING__DESTINATION__NAME = 'sentry.messaging.destination.name';
+
+/**
+ * Search name for {@link attributes.SENTRY_MESSAGING_MESSAGE_ID}. `sentry.messaging.message.id`
+ *
+ * @deprecated Use {@link SEARCH_MESSAGING__MESSAGE__ID} (`messaging.message.id`) instead
+ */
+export const SEARCH_SENTRY__MESSAGING__MESSAGE__ID = 'sentry.messaging.message.id';
+
+/**
  * Search name for {@link attributes.SENTRY_METRIC_SOURCE}. `sentry.metric.source`
  */
 export const SEARCH_SENTRY__METRIC__SOURCE = 'sentry.metric.source';
@@ -4634,6 +4775,20 @@ export const SEARCH_SENTRY__OP = 'sentry.op';
  * @deprecated Use {@link SEARCH_ORIGIN} (`origin`) instead
  */
 export const SEARCH_SENTRY__ORIGIN = 'sentry.origin';
+
+/**
+ * Search name for {@link attributes.SENTRY_OS_NAME}. `sentry.os.name`
+ *
+ * @deprecated Use {@link SEARCH_OS__NAME} (`os.name`) instead
+ */
+export const SEARCH_SENTRY__OS__NAME = 'sentry.os.name';
+
+/**
+ * Search name for {@link attributes.SENTRY_OS_ROOTED}. `sentry.os.rooted`
+ *
+ * @deprecated Use {@link SEARCH_OS__ROOTED} (`os.rooted`) instead
+ */
+export const SEARCH_SENTRY__OS__ROOTED = 'sentry.os.rooted';
 
 /**
  * Search name for {@link attributes.SENTRY_PAGELOAD_SPAN_ID}. `sentry.pageload.span_id`
@@ -4696,6 +4851,27 @@ export const SEARCH_SENTRY__REPLAY_IS_BUFFERING = 'sentry.replay_is_buffering';
  * @deprecated
  */
 export const SEARCH_SENTRY__REPORT_EVENT = 'sentry.report_event';
+
+/**
+ * Search name for {@link attributes.SENTRY_REQUEST_METHOD}. `sentry.request.method`
+ *
+ * @deprecated Use {@link SEARCH_HTTP__REQUEST__METHOD} (`http.request.method`) instead
+ */
+export const SEARCH_SENTRY__REQUEST__METHOD = 'sentry.request.method';
+
+/**
+ * Search name for {@link attributes.SENTRY_REQUEST_URL}. `sentry.request.url`
+ *
+ * @deprecated Use {@link SEARCH_URL__FULL} (`url.full`) instead
+ */
+export const SEARCH_SENTRY__REQUEST__URL = 'sentry.request.url';
+
+/**
+ * Search name for {@link attributes.SENTRY_RUNTIME_NAME}. `sentry.runtime.name`
+ *
+ * @deprecated Use {@link SEARCH_PROCESS__RUNTIME__NAME} (`process.runtime.name`) instead
+ */
+export const SEARCH_SENTRY__RUNTIME__NAME = 'sentry.runtime.name';
 
 /**
  * Search name for {@link attributes.SENTRY_SDK_INTEGRATIONS}. `sentry.sdk.integrations`
@@ -4802,6 +4978,13 @@ export const SEARCH_SENTRY__SVELTEKIT__NAVIGATION__TO = 'sentry.sveltekit.naviga
  * @deprecated Use {@link SEARCH_ROUTER__NAVIGATION__TYPE} (`router.navigation.type`) instead
  */
 export const SEARCH_SENTRY__SVELTEKIT__NAVIGATION__TYPE = 'sentry.sveltekit.navigation.type';
+
+/**
+ * Search name for {@link attributes.SENTRY_THREAD_NAME}. `sentry.thread.name`
+ *
+ * @deprecated Use {@link SEARCH_THREAD__NAME} (`thread.name`) instead
+ */
+export const SEARCH_SENTRY__THREAD__NAME = 'sentry.thread.name';
 
 /**
  * Search name for {@link attributes.SENTRY_TIMESTAMP_SEQUENCE}. `sentry.timestamp.sequence`
@@ -4956,7 +5139,7 @@ export const SEARCH_SPAN__STATUS_CODE = 'span.status_code';
 export const SEARCH_SPAN__SYSTEM = 'span.system';
 
 /**
- * Search name for {@link attributes.STALL_PERCENTAGE}. `stall_percentage`
+ * Search name for {@link attributes.APP_VITALS_STALL_PERCENTAGE}. `stall_percentage`
  *
  * @deprecated Use {@link SEARCH_APP__VITALS__STALL__PERCENTAGE} (`app.vitals.stall.percentage`) instead
  */
@@ -5031,14 +5214,14 @@ export const SEARCH_THREAD__NAME = 'thread.name';
 export const SEARCH_TIMBER__TAG = 'timber.tag';
 
 /**
- * Search name for {@link attributes.TIME_TO_FULL_DISPLAY}. `time_to_full_display`
+ * Search name for {@link attributes.APP_VITALS_TTFD_VALUE}. `time_to_full_display`
  *
  * @deprecated Use {@link SEARCH_APP__VITALS__TTFD__VALUE} (`app.vitals.ttfd.value`) instead
  */
 export const SEARCH_TIME_TO_FULL_DISPLAY = 'time_to_full_display';
 
 /**
- * Search name for {@link attributes.TIME_TO_INITIAL_DISPLAY}. `time_to_initial_display`
+ * Search name for {@link attributes.APP_VITALS_TTID_VALUE}. `time_to_initial_display`
  *
  * @deprecated Use {@link SEARCH_APP__VITALS__TTID__VALUE} (`app.vitals.ttid.value`) instead
  */
@@ -5085,7 +5268,7 @@ export const SEARCH_TRPC__PROCEDURE_PATH = 'trpc.procedure_path';
 export const SEARCH_TRPC__PROCEDURE_TYPE = 'trpc.procedure_type';
 
 /**
- * Search name for {@link attributes.TTFB}. `ttfb`
+ * Search name for {@link attributes.BROWSER_WEB_VITAL_TTFB_VALUE}. `ttfb`
  *
  * @deprecated Use {@link SEARCH_BROWSER__WEB_VITAL__TTFB__VALUE} (`browser.web_vital.ttfb.value`) instead
  */
@@ -5127,7 +5310,7 @@ export const SEARCH_TURBO_MODULE__NAME = 'turbo_module.name';
 export const SEARCH_TURBO_MODULE__TOP_MODULE = 'turbo_module.top_module';
 
 /**
- * Search name for {@link attributes.TURBO_MODULE_TOP_MODULE_DURATION_MS}. `turbo_module.top_module_duration_ms`
+ * Search name for {@link attributes.REACT_NATIVE_MODULE_TOP_DURATION}. `turbo_module.top_module_duration_ms`
  *
  * @deprecated Use {@link SEARCH_REACT_NATIVE__MODULE__TOP__DURATION} (`react_native.module.top.duration`) instead
  */
@@ -5141,7 +5324,7 @@ export const SEARCH_TURBO_MODULE__TOP_MODULE_DURATION_MS = 'turbo_module.top_mod
 export const SEARCH_TURBO_MODULE__TOTAL_CALL_COUNT = 'turbo_module.total_call_count';
 
 /**
- * Search name for {@link attributes.TURBO_MODULE_TOTAL_DURATION_MS}. `turbo_module.total_duration_ms`
+ * Search name for {@link attributes.REACT_NATIVE_MODULE_DURATION_TOTAL}. `turbo_module.total_duration_ms`
  *
  * @deprecated Use {@link SEARCH_REACT_NATIVE__MODULE__DURATION__TOTAL} (`react_native.module.duration.total`) instead
  */
@@ -5169,7 +5352,7 @@ export const SEARCH_TURBO_MODULE__UNIQUE_METHODS = 'turbo_module.unique_methods'
 export const SEARCH_TURBO_MODULES__TOTAL_CALL_COUNT = 'turbo_modules.total_call_count';
 
 /**
- * Search name for {@link attributes.TURBO_MODULES_TOTAL_DURATION_MS}. `turbo_modules.total_duration_ms`
+ * Search name for {@link attributes.REACT_NATIVE_MODULE_DURATION_TOTAL}. `turbo_modules.total_duration_ms`
  *
  * @deprecated Use {@link SEARCH_REACT_NATIVE__MODULE__DURATION__TOTAL} (`react_native.module.duration.total`) instead
  */
@@ -5800,6 +5983,8 @@ export type AttributeSearchName =
   | typeof SEARCH_CACHE__WRITE
   | typeof SEARCH_CHANNEL
   | typeof SEARCH_CLIENT__ADDRESS
+  | typeof SEARCH_CLIENT__AS__NUMBER
+  | typeof SEARCH_CLIENT__AS__ORGANIZATION
   | typeof SEARCH_CLIENT__PORT
   | typeof SEARCH_CLIENT_SAMPLE_RATE
   | typeof SEARCH_CLOUD__ACCOUNT__ID
@@ -6066,6 +6251,7 @@ export type AttributeSearchName =
   | typeof SEARCH_HEROKU__ROUTER__CONNECT
   | typeof SEARCH_HEROKU__ROUTER__REQUEST_ID
   | typeof SEARCH_HEROKU__ROUTER__SERVICE
+  | typeof SEARCH_HEROKU__SOURCE
   | typeof SEARCH_HTTP__CLIENT_IP
   | typeof SEARCH_HTTP__DECODED_RESPONSE_CONTENT_LENGTH
   | typeof SEARCH_HTTP__FLAVOR
@@ -6380,6 +6566,22 @@ export type AttributeSearchName =
   | typeof SEARCH_SENTRY__CATEGORY
   | typeof SEARCH_SENTRY__CLIENT_SAMPLE_RATE
   | typeof SEARCH_SENTRY__DESCRIPTION
+  | typeof SEARCH_SENTRY__DEVICE__BATTERY_LEVEL
+  | typeof SEARCH_SENTRY__DEVICE__BRAND
+  | typeof SEARCH_SENTRY__DEVICE__CHARGING
+  | typeof SEARCH_SENTRY__DEVICE__CLASS
+  | typeof SEARCH_SENTRY__DEVICE__FAMILY
+  | typeof SEARCH_SENTRY__DEVICE__LOCALE
+  | typeof SEARCH_SENTRY__DEVICE__MODEL
+  | typeof SEARCH_SENTRY__DEVICE__MODEL_ID
+  | typeof SEARCH_SENTRY__DEVICE__NAME
+  | typeof SEARCH_SENTRY__DEVICE__ONLINE
+  | typeof SEARCH_SENTRY__DEVICE__ORIENTATION
+  | typeof SEARCH_SENTRY__DEVICE__SCREEN_DENSITY
+  | typeof SEARCH_SENTRY__DEVICE__SCREEN_DPI
+  | typeof SEARCH_SENTRY__DEVICE__SCREEN_HEIGHT_PIXELS
+  | typeof SEARCH_SENTRY__DEVICE__SCREEN_WIDTH_PIXELS
+  | typeof SEARCH_SENTRY__DEVICE__SIMULATOR
   | typeof SEARCH_SENTRY__DIST
   | typeof SEARCH_SENTRY__DOMAIN
   | typeof SEARCH_SENTRY__DSC__ENVIRONMENT
@@ -6410,6 +6612,8 @@ export type AttributeSearchName =
   | typeof SEARCH_SENTRY__MAIN_THREAD
   | typeof SEARCH_SENTRY__MESSAGE__PARAMETER__KEY
   | typeof SEARCH_SENTRY__MESSAGE__TEMPLATE
+  | typeof SEARCH_SENTRY__MESSAGING__DESTINATION__NAME
+  | typeof SEARCH_SENTRY__MESSAGING__MESSAGE__ID
   | typeof SEARCH_SENTRY__METRIC__SOURCE
   | typeof SEARCH_SENTRY__MOBILE
   | typeof SEARCH_SENTRY__MODULE__KEY
@@ -6421,6 +6625,8 @@ export type AttributeSearchName =
   | typeof SEARCH_SENTRY__OBSERVED_TIMESTAMP_NANOS
   | typeof SEARCH_SENTRY__OP
   | typeof SEARCH_SENTRY__ORIGIN
+  | typeof SEARCH_SENTRY__OS__NAME
+  | typeof SEARCH_SENTRY__OS__ROOTED
   | typeof SEARCH_SENTRY__PAGELOAD__SPAN_ID
   | typeof SEARCH_SENTRY__PLATFORM
   | typeof SEARCH_SENTRY__PROFILE_ID
@@ -6431,6 +6637,9 @@ export type AttributeSearchName =
   | typeof SEARCH_SENTRY__REPLAY_ID
   | typeof SEARCH_SENTRY__REPLAY_IS_BUFFERING
   | typeof SEARCH_SENTRY__REPORT_EVENT
+  | typeof SEARCH_SENTRY__REQUEST__METHOD
+  | typeof SEARCH_SENTRY__REQUEST__URL
+  | typeof SEARCH_SENTRY__RUNTIME__NAME
   | typeof SEARCH_SENTRY__SDK__INTEGRATIONS
   | typeof SEARCH_SENTRY__SDK__NAME
   | typeof SEARCH_SENTRY__SDK__VERSION
@@ -6447,6 +6656,7 @@ export type AttributeSearchName =
   | typeof SEARCH_SENTRY__SVELTEKIT__NAVIGATION__FROM
   | typeof SEARCH_SENTRY__SVELTEKIT__NAVIGATION__TO
   | typeof SEARCH_SENTRY__SVELTEKIT__NAVIGATION__TYPE
+  | typeof SEARCH_SENTRY__THREAD__NAME
   | typeof SEARCH_SENTRY__TIMESTAMP__SEQUENCE
   | typeof SEARCH_SENTRY__TRACE__PARENT_SPAN_ID
   | typeof SEARCH_SENTRY__TRACE__STATUS
@@ -7074,7 +7284,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
   },
   'app.vitals.frames.delay.value': {
     canonicalName: 'app.vitals.frames.delay.value',
-    type: 'integer',
+    type: 'second',
     brief:
       'The sum of all delayed frame durations in seconds during the lifetime of the span. For more information see [frames delay](https://develop.sentry.dev/sdk/performance/frames-delay/).',
     deprecationChain: ['app.vitals.frames.delay.value', 'frames.delay', 'mobile.frames_delay'],
@@ -7092,7 +7302,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
   },
   'app.vitals.frames.frozen.rate': {
     canonicalName: 'app.vitals.frames.frozen.rate',
-    type: 'double',
+    type: 'percentage',
     brief:
       'The fraction of rendered frames that were frozen, calculated as `app.vitals.frames.frozen.count` divided by `app.vitals.frames.total.count`. This is computed by Relay.',
     deprecationChain: ['app.vitals.frames.frozen.rate', 'frames_frozen_rate'],
@@ -7105,7 +7315,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
   },
   'app.vitals.frames.slow.rate': {
     canonicalName: 'app.vitals.frames.slow.rate',
-    type: 'double',
+    type: 'percentage',
     brief:
       'The fraction of rendered frames that were slow, calculated as `app.vitals.frames.slow.count` divided by `app.vitals.frames.total.count`. This is computed by Relay.',
     deprecationChain: ['app.vitals.frames.slow.rate', 'frames_slow_rate'],
@@ -7125,14 +7335,14 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
   },
   'app.vitals.stall.percentage': {
     canonicalName: 'app.vitals.stall.percentage',
-    type: 'double',
+    type: 'percentage',
     brief:
       'The fraction of transaction duration during which the app was stalled, between 0.0 and 1.0. For example, 0.8 represents 80%. Only applies to React Native. This is computed by Relay.',
     deprecationChain: ['app.vitals.stall.percentage', 'stall_percentage'],
   },
   'app.vitals.start.cold.value': {
     canonicalName: 'app.vitals.start.cold.value',
-    type: 'double',
+    type: 'millisecond',
     brief: 'The duration of a cold app start in milliseconds',
     deprecationChain: ['app.vitals.start.cold.value', 'app_start_cold'],
   },
@@ -7163,19 +7373,19 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
   },
   'app.vitals.start.warm.value': {
     canonicalName: 'app.vitals.start.warm.value',
-    type: 'double',
+    type: 'millisecond',
     brief: 'The duration of a warm app start in milliseconds',
     deprecationChain: ['app.vitals.start.warm.value', 'app_start_warm'],
   },
   'app.vitals.ttfd.value': {
     canonicalName: 'app.vitals.ttfd.value',
-    type: 'double',
+    type: 'millisecond',
     brief: 'The duration of time to full display in milliseconds',
     deprecationChain: ['app.vitals.ttfd.value', 'time_to_full_display'],
   },
   'app.vitals.ttid.value': {
     canonicalName: 'app.vitals.ttid.value',
-    type: 'double',
+    type: 'millisecond',
     brief: 'The duration of time to initial display in milliseconds',
     deprecationChain: ['app.vitals.ttid.value', 'time_to_initial_display'],
   },
@@ -7535,7 +7745,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'url.full',
     type: 'string',
     brief: 'The URL of the AWS API request.',
-    deprecationChain: ['url.full', 'aws.request.url', 'http.url', 'messaging.url', 'url'],
+    deprecationChain: ['url.full', 'aws.request.url', 'http.url', 'messaging.url', 'sentry.request.url', 'url'],
   },
   'aws.request_id': {
     canonicalName: 'aws.request_id',
@@ -7764,13 +7974,13 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
   },
   'browser.web_vital.fcp.value': {
     canonicalName: 'browser.web_vital.fcp.value',
-    type: 'double',
+    type: 'millisecond',
     brief: 'The time it takes for the browser to render the first piece of meaningful content on the screen',
     deprecationChain: ['browser.web_vital.fcp.value', 'fcp'],
   },
   'browser.web_vital.fp.value': {
     canonicalName: 'browser.web_vital.fp.value',
-    type: 'double',
+    type: 'millisecond',
     brief: 'The time in milliseconds it takes for the browser to render the first pixel on the screen',
     deprecationChain: ['browser.web_vital.fp.value', 'fp'],
   },
@@ -7809,7 +8019,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
   },
   'browser.web_vital.inp.value': {
     canonicalName: 'browser.web_vital.inp.value',
-    type: 'double',
+    type: 'millisecond',
     brief: 'The value of the recorded Interaction to Next Paint (INP) web vital',
     deprecationChain: ['browser.web_vital.inp.value', 'inp'],
   },
@@ -7877,7 +8087,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
   },
   'browser.web_vital.lcp.value': {
     canonicalName: 'browser.web_vital.lcp.value',
-    type: 'double',
+    type: 'millisecond',
     brief: 'The value of the recorded Largest Contentful Paint (LCP) web vital',
     deprecationChain: ['browser.web_vital.lcp.value', 'lcp'],
   },
@@ -7890,7 +8100,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
   },
   'browser.web_vital.ttfb.value': {
     canonicalName: 'browser.web_vital.ttfb.value',
-    type: 'double',
+    type: 'millisecond',
     brief: 'The value of the recorded Time To First Byte (TTFB) web vital in Milliseconds',
     deprecationChain: ['browser.web_vital.ttfb.value', 'ttfb'],
   },
@@ -7955,6 +8165,18 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
       'Client address - domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.',
     deprecationChain: ['client.address', 'http.client_ip'],
   },
+  'client.as.number': {
+    canonicalName: 'client.as.number',
+    type: 'integer',
+    brief: 'Autonomous system number (ASN) associated with the client IP address.',
+    deprecationChain: ['client.as.number'],
+  },
+  'client.as.organization': {
+    canonicalName: 'client.as.organization',
+    type: 'string',
+    brief: 'The name of the organization associated with the autonomous system of the client IP address.',
+    deprecationChain: ['client.as.organization'],
+  },
   'client.port': {
     canonicalName: 'client.port',
     type: 'integer',
@@ -7964,7 +8186,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
   client_sample_rate: {
     canonicalName: 'sentry.client_sample_rate',
     type: 'double',
-    brief: 'Rate at which a span was sampled in the SDK.',
+    brief: 'Rate at which a telemetry item (e.g. a span, or metric) was sampled in the SDK.',
     deprecationChain: ['client_sample_rate', 'sentry.client_sample_rate'],
   },
   'cloud.account.id': {
@@ -8374,7 +8596,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'device.battery_level',
     type: 'double',
     brief: 'The battery level of the device as a percentage (0-100).',
-    deprecationChain: ['device.battery_level'],
+    deprecationChain: ['device.battery_level', 'sentry.device.battery_level'],
   },
   'device.battery_temperature': {
     canonicalName: 'device.battery_temperature',
@@ -8392,13 +8614,13 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'device.brand',
     type: 'string',
     brief: 'The brand of the device.',
-    deprecationChain: ['device.brand'],
+    deprecationChain: ['device.brand', 'sentry.device.brand'],
   },
   'device.charging': {
     canonicalName: 'device.charging',
     type: 'boolean',
     brief: 'Whether the device was charging or not.',
-    deprecationChain: ['device.charging'],
+    deprecationChain: ['device.charging', 'sentry.device.charging'],
   },
   'device.chipset': {
     canonicalName: 'device.chipset',
@@ -8411,7 +8633,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'string',
     brief:
       'The classification of the device. For example, `low`, `medium`, or `high`. Typically inferred by Relay - SDKs generally do not need to set this directly.',
-    deprecationChain: ['device.class'],
+    deprecationChain: ['device.class', 'sentry.device.class'],
   },
   'device.connection_type': {
     canonicalName: 'network.connection.type',
@@ -8441,7 +8663,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'device.family',
     type: 'string',
     brief: 'The family of the device.',
-    deprecationChain: ['device.family'],
+    deprecationChain: ['device.family', 'sentry.device.family'],
   },
   'device.free_memory': {
     canonicalName: 'device.free_memory',
@@ -8465,7 +8687,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'device.locale',
     type: 'string',
     brief: 'The locale of the device.',
-    deprecationChain: ['device.locale'],
+    deprecationChain: ['device.locale', 'sentry.device.locale'],
   },
   'device.low_memory': {
     canonicalName: 'device.low_memory',
@@ -8502,31 +8724,31 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'device.model',
     type: 'string',
     brief: 'The model of the device.',
-    deprecationChain: ['device.model'],
+    deprecationChain: ['device.model', 'sentry.device.model'],
   },
   'device.model_id': {
     canonicalName: 'device.model_id',
     type: 'string',
     brief: 'An internal hardware revision to identify the device exactly.',
-    deprecationChain: ['device.model_id'],
+    deprecationChain: ['device.model_id', 'sentry.device.model_id'],
   },
   'device.name': {
     canonicalName: 'device.name',
     type: 'string',
     brief: 'The user-assigned name of the mobile device.',
-    deprecationChain: ['device.name'],
+    deprecationChain: ['device.name', 'sentry.device.name'],
   },
   'device.online': {
     canonicalName: 'device.online',
     type: 'boolean',
     brief: 'Whether the device was online or not.',
-    deprecationChain: ['device.online'],
+    deprecationChain: ['device.online', 'sentry.device.online'],
   },
   'device.orientation': {
     canonicalName: 'device.orientation',
     type: 'string',
     brief: 'The orientation of the device, either "portrait" or "landscape".',
-    deprecationChain: ['device.orientation'],
+    deprecationChain: ['device.orientation', 'sentry.device.orientation'],
   },
   'device.processor_count': {
     canonicalName: 'device.processor_count',
@@ -8544,31 +8766,31 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'device.screen_density',
     type: 'double',
     brief: 'The screen density of the device.',
-    deprecationChain: ['device.screen_density'],
+    deprecationChain: ['device.screen_density', 'sentry.device.screen_density'],
   },
   'device.screen_dpi': {
     canonicalName: 'device.screen_dpi',
     type: 'integer',
     brief: 'The screen density in dots-per-inch (DPI) of the device.',
-    deprecationChain: ['device.screen_dpi'],
+    deprecationChain: ['device.screen_dpi', 'sentry.device.screen_dpi'],
   },
   'device.screen_height_pixels': {
     canonicalName: 'device.screen_height_pixels',
     type: 'integer',
     brief: 'The height of the device screen in pixels.',
-    deprecationChain: ['device.screen_height_pixels'],
+    deprecationChain: ['device.screen_height_pixels', 'sentry.device.screen_height_pixels'],
   },
   'device.screen_width_pixels': {
     canonicalName: 'device.screen_width_pixels',
     type: 'integer',
     brief: 'The width of the device screen in pixels.',
-    deprecationChain: ['device.screen_width_pixels'],
+    deprecationChain: ['device.screen_width_pixels', 'sentry.device.screen_width_pixels'],
   },
   'device.simulator': {
     canonicalName: 'device.simulator',
     type: 'boolean',
     brief: 'Whether the device is a simulator or an actual device.',
-    deprecationChain: ['device.simulator'],
+    deprecationChain: ['device.simulator', 'sentry.device.simulator'],
   },
   'device.storage_size': {
     canonicalName: 'device.storage_size',
@@ -8788,7 +9010,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
   },
   'faas.max_memory': {
     canonicalName: 'faas.max_memory',
-    type: 'integer',
+    type: 'byte',
     brief: 'The amount of memory available to the serverless function, in bytes.',
     deprecationChain: ['faas.max_memory'],
   },
@@ -8960,37 +9182,37 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
   },
   'gen_ai.cost.cache_creation.input_tokens': {
     canonicalName: 'gen_ai.cost.cache_creation.input_tokens',
-    type: 'double',
+    type: 'currency',
     brief: 'The cost of input tokens written to cache in USD.',
     deprecationChain: ['gen_ai.cost.cache_creation.input_tokens'],
   },
   'gen_ai.cost.cache_read.input_tokens': {
     canonicalName: 'gen_ai.cost.cache_read.input_tokens',
-    type: 'double',
+    type: 'currency',
     brief: 'The cost of cached input tokens in USD.',
     deprecationChain: ['gen_ai.cost.cache_read.input_tokens'],
   },
   'gen_ai.cost.input_tokens': {
     canonicalName: 'gen_ai.cost.input_tokens',
-    type: 'double',
+    type: 'currency',
     brief: 'The total cost of all input tokens in USD (includes cached and cache creation tokens).',
     deprecationChain: ['gen_ai.cost.input_tokens'],
   },
   'gen_ai.cost.output_tokens': {
     canonicalName: 'gen_ai.cost.output_tokens',
-    type: 'double',
+    type: 'currency',
     brief: 'The total cost of all output tokens in USD (includes reasoning tokens).',
     deprecationChain: ['gen_ai.cost.output_tokens'],
   },
   'gen_ai.cost.reasoning.output_tokens': {
     canonicalName: 'gen_ai.cost.reasoning.output_tokens',
-    type: 'double',
+    type: 'currency',
     brief: 'The cost of reasoning output tokens in USD.',
     deprecationChain: ['gen_ai.cost.reasoning.output_tokens'],
   },
   'gen_ai.cost.total_tokens': {
     canonicalName: 'gen_ai.cost.total_tokens',
-    type: 'double',
+    type: 'currency',
     brief: 'The total cost for the tokens used.',
     deprecationChain: ['gen_ai.cost.total_tokens', 'ai.total_cost'],
   },
@@ -9692,6 +9914,12 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
       'Time in milliseconds spent proxying data between the backend dyno and the client, as reported by the Heroku router',
     deprecationChain: ['heroku.router.service'],
   },
+  'heroku.source': {
+    canonicalName: 'heroku.source',
+    type: 'string',
+    brief: 'Logplex source of a Heroku log line.',
+    deprecationChain: ['heroku.source'],
+  },
   'http.client_ip': {
     canonicalName: 'client.address',
     type: 'string',
@@ -9740,7 +9968,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'http.request.method',
     type: 'string',
     brief: 'The HTTP method used.',
-    deprecationChain: ['http.request.method', 'http.method', 'http.request_method', 'method'],
+    deprecationChain: ['http.request.method', 'http.method', 'http.request_method', 'method', 'sentry.request.method'],
   },
   'http.query': {
     canonicalName: 'http.query',
@@ -9818,7 +10046,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'http.request.method',
     type: 'string',
     brief: 'The HTTP method used.',
-    deprecationChain: ['http.request.method', 'http.method', 'http.request_method', 'method'],
+    deprecationChain: ['http.request.method', 'http.method', 'http.request_method', 'method', 'sentry.request.method'],
   },
   'http.request.redirect_end': {
     canonicalName: 'http.request.redirect_end',
@@ -9903,11 +10131,11 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'http.request.method',
     type: 'string',
     brief: 'The HTTP method used.',
-    deprecationChain: ['http.request.method', 'http.method', 'http.request_method', 'method'],
+    deprecationChain: ['http.request.method', 'http.method', 'http.request_method', 'method', 'sentry.request.method'],
   },
   'http.response.body.decoded_size': {
     canonicalName: 'http.response.body.decoded_size',
-    type: 'integer',
+    type: 'byte',
     brief: 'The decoded body size of the response (in bytes).',
     deprecationChain: [
       'http.response.body.decoded_size',
@@ -9917,7 +10145,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
   },
   'http.response.body.size': {
     canonicalName: 'http.response.body.size',
-    type: 'integer',
+    type: 'byte',
     brief: 'The encoded body size of the response (in bytes).',
     deprecationChain: [
       'http.response.body.size',
@@ -9944,7 +10172,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
   },
   'http.response.size': {
     canonicalName: 'http.response.size',
-    type: 'integer',
+    type: 'byte',
     brief: 'The transfer size of the response (in bytes).',
     deprecationChain: ['http.response.size', 'http.response_transfer_size'],
   },
@@ -10042,7 +10270,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'url.full',
     type: 'string',
     brief: 'The URL of the resource that was fetched.',
-    deprecationChain: ['url.full', 'aws.request.url', 'http.url', 'messaging.url', 'url'],
+    deprecationChain: ['url.full', 'aws.request.url', 'http.url', 'messaging.url', 'sentry.request.url', 'url'],
   },
   'http.user_agent': {
     canonicalName: 'user_agent.original',
@@ -10761,7 +10989,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'messaging.destination.name',
     type: 'string',
     brief: 'The message destination name.',
-    deprecationChain: ['messaging.destination.name', 'messaging.destination'],
+    deprecationChain: ['messaging.destination.name', 'messaging.destination', 'sentry.messaging.destination.name'],
   },
   'messaging.destination.connection': {
     canonicalName: 'messaging.destination.connection',
@@ -10773,7 +11001,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'messaging.destination.name',
     type: 'string',
     brief: 'The message destination name.',
-    deprecationChain: ['messaging.destination.name', 'messaging.destination'],
+    deprecationChain: ['messaging.destination.name', 'messaging.destination', 'sentry.messaging.destination.name'],
   },
   'messaging.destination.partition.id': {
     canonicalName: 'messaging.destination.partition.id',
@@ -10831,7 +11059,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'messaging.message.id',
     type: 'string',
     brief: 'A value used by the messaging system as an identifier for the message, represented as a string.',
-    deprecationChain: ['messaging.message.id', 'messaging.message_id'],
+    deprecationChain: ['messaging.message.id', 'messaging.message_id', 'sentry.messaging.message.id'],
   },
   'messaging.message.receive.latency': {
     canonicalName: 'messaging.message.receive.latency',
@@ -10849,7 +11077,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'messaging.message.id',
     type: 'string',
     brief: 'A value used by the messaging system as an identifier for the message, represented as a string.',
-    deprecationChain: ['messaging.message.id', 'messaging.message_id'],
+    deprecationChain: ['messaging.message.id', 'messaging.message_id', 'sentry.messaging.message.id'],
   },
   'messaging.operation': {
     canonicalName: 'messaging.operation.name',
@@ -10903,13 +11131,13 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'url.full',
     type: 'string',
     brief: 'The connection string of the messaging broker.',
-    deprecationChain: ['url.full', 'aws.request.url', 'http.url', 'messaging.url', 'url'],
+    deprecationChain: ['url.full', 'aws.request.url', 'http.url', 'messaging.url', 'sentry.request.url', 'url'],
   },
   method: {
     canonicalName: 'http.request.method',
     type: 'string',
     brief: 'The HTTP method used.',
-    deprecationChain: ['http.request.method', 'http.method', 'http.request_method', 'method'],
+    deprecationChain: ['http.request.method', 'http.method', 'http.request_method', 'method', 'sentry.request.method'],
   },
   'middleware.name': {
     canonicalName: 'middleware.name',
@@ -11220,7 +11448,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'os.name',
     type: 'string',
     brief: 'Human readable operating system name.',
-    deprecationChain: ['os.name'],
+    deprecationChain: ['os.name', 'sentry.os.name'],
   },
   'os.raw_description': {
     canonicalName: 'os.raw_description',
@@ -11233,7 +11461,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'os.rooted',
     type: 'boolean',
     brief: 'Whether the operating system has been jailbroken or rooted.',
-    deprecationChain: ['os.rooted'],
+    deprecationChain: ['os.rooted', 'sentry.os.rooted'],
   },
   'os.theme': {
     canonicalName: 'os.theme',
@@ -11390,7 +11618,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'process.runtime.name',
     type: 'string',
     brief: 'The name of the runtime. Equivalent to `name` in the Sentry runtime context.',
-    deprecationChain: ['process.runtime.name', 'runtime.name'],
+    deprecationChain: ['process.runtime.name', 'runtime.name', 'sentry.runtime.name'],
   },
   'process.runtime.version': {
     canonicalName: 'process.runtime.version',
@@ -11467,14 +11695,14 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
   },
   'react_native.module.duration.max': {
     canonicalName: 'react_native.module.duration.max',
-    type: 'double',
+    type: 'millisecond',
     brief:
       'The duration of the slowest single native module call observed during the lifetime of the span, in milliseconds.',
     deprecationChain: ['react_native.module.duration.max'],
   },
   'react_native.module.duration.total': {
     canonicalName: 'react_native.module.duration.total',
-    type: 'double',
+    type: 'millisecond',
     brief:
       'The combined wall-clock duration of all native module calls observed during the lifetime of the span, in milliseconds. Calls overlap, so this can exceed the span duration.',
     deprecationChain: [
@@ -11516,7 +11744,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
   },
   'react_native.module.top.duration': {
     canonicalName: 'react_native.module.top.duration',
-    type: 'double',
+    type: 'millisecond',
     brief: 'The total duration attributed to `react_native.module.top.name`, in milliseconds.',
     deprecationChain: ['react_native.module.top.duration', 'turbo_module.top_module_duration_ms'],
   },
@@ -11671,7 +11899,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'process.runtime.name',
     type: 'string',
     brief: 'The name of the runtime. For example node, CPython, or rustc.',
-    deprecationChain: ['process.runtime.name', 'runtime.name'],
+    deprecationChain: ['process.runtime.name', 'runtime.name', 'sentry.runtime.name'],
   },
   'runtime.raw_description': {
     canonicalName: 'process.runtime.description',
@@ -11741,6 +11969,103 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'string',
     brief: 'The human-readable description of a span.',
     deprecationChain: ['sentry.description'],
+  },
+  'sentry.device.battery_level': {
+    canonicalName: 'device.battery_level',
+    type: 'double',
+    brief: 'The battery level of the device as a percentage (0-100).',
+    deprecationChain: ['device.battery_level', 'sentry.device.battery_level'],
+  },
+  'sentry.device.brand': {
+    canonicalName: 'device.brand',
+    type: 'string',
+    brief: 'The brand of the device.',
+    deprecationChain: ['device.brand', 'sentry.device.brand'],
+  },
+  'sentry.device.charging': {
+    canonicalName: 'device.charging',
+    type: 'boolean',
+    brief: 'Whether the device was charging or not.',
+    deprecationChain: ['device.charging', 'sentry.device.charging'],
+  },
+  'sentry.device.class': {
+    canonicalName: 'device.class',
+    type: 'string',
+    brief:
+      'The classification of the device. For example, `low`, `medium`, or `high`. Typically inferred by Relay - SDKs generally do not need to set this directly.',
+    deprecationChain: ['device.class', 'sentry.device.class'],
+  },
+  'sentry.device.family': {
+    canonicalName: 'device.family',
+    type: 'string',
+    brief: 'The family of the device.',
+    deprecationChain: ['device.family', 'sentry.device.family'],
+  },
+  'sentry.device.locale': {
+    canonicalName: 'device.locale',
+    type: 'string',
+    brief: 'The locale of the device.',
+    deprecationChain: ['device.locale', 'sentry.device.locale'],
+  },
+  'sentry.device.model': {
+    canonicalName: 'device.model',
+    type: 'string',
+    brief: 'The model of the device.',
+    deprecationChain: ['device.model', 'sentry.device.model'],
+  },
+  'sentry.device.model_id': {
+    canonicalName: 'device.model_id',
+    type: 'string',
+    brief: 'An internal hardware revision to identify the device exactly.',
+    deprecationChain: ['device.model_id', 'sentry.device.model_id'],
+  },
+  'sentry.device.name': {
+    canonicalName: 'device.name',
+    type: 'string',
+    brief: 'The user-assigned name of the mobile device.',
+    deprecationChain: ['device.name', 'sentry.device.name'],
+  },
+  'sentry.device.online': {
+    canonicalName: 'device.online',
+    type: 'boolean',
+    brief: 'Whether the device was online or not.',
+    deprecationChain: ['device.online', 'sentry.device.online'],
+  },
+  'sentry.device.orientation': {
+    canonicalName: 'device.orientation',
+    type: 'string',
+    brief: 'The orientation of the device, either "portrait" or "landscape".',
+    deprecationChain: ['device.orientation', 'sentry.device.orientation'],
+  },
+  'sentry.device.screen_density': {
+    canonicalName: 'device.screen_density',
+    type: 'double',
+    brief: 'The screen density of the device.',
+    deprecationChain: ['device.screen_density', 'sentry.device.screen_density'],
+  },
+  'sentry.device.screen_dpi': {
+    canonicalName: 'device.screen_dpi',
+    type: 'integer',
+    brief: 'The screen density in dots-per-inch (DPI) of the device.',
+    deprecationChain: ['device.screen_dpi', 'sentry.device.screen_dpi'],
+  },
+  'sentry.device.screen_height_pixels': {
+    canonicalName: 'device.screen_height_pixels',
+    type: 'integer',
+    brief: 'The height of the device screen in pixels.',
+    deprecationChain: ['device.screen_height_pixels', 'sentry.device.screen_height_pixels'],
+  },
+  'sentry.device.screen_width_pixels': {
+    canonicalName: 'device.screen_width_pixels',
+    type: 'integer',
+    brief: 'The width of the device screen in pixels.',
+    deprecationChain: ['device.screen_width_pixels', 'sentry.device.screen_width_pixels'],
+  },
+  'sentry.device.simulator': {
+    canonicalName: 'device.simulator',
+    type: 'boolean',
+    brief: 'Whether the device is a simulator or an actual device.',
+    deprecationChain: ['device.simulator', 'sentry.device.simulator'],
   },
   'sentry.dist': {
     canonicalName: 'sentry.dist',
@@ -11890,7 +12215,8 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
   'sentry.is_remote': {
     canonicalName: 'sentry.is_remote',
     type: 'boolean',
-    brief: "Indicates whether a span's parent is remote.",
+    brief:
+      "Indicates whether a span's parent is remote, i.e. created in another process, typically another service. See OpenTelemetry's [`SpanContext.IsRemote`](https://opentelemetry.io/docs/specs/otel/trace/api/#isremote).",
     deprecationChain: ['sentry.is_remote'],
   },
   'sentry.main_thread': {
@@ -11911,6 +12237,18 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'string',
     brief: 'The parameterized template string.',
     deprecationChain: ['sentry.message.template'],
+  },
+  'sentry.messaging.destination.name': {
+    canonicalName: 'messaging.destination.name',
+    type: 'string',
+    brief: 'The message destination name.',
+    deprecationChain: ['messaging.destination.name', 'messaging.destination', 'sentry.messaging.destination.name'],
+  },
+  'sentry.messaging.message.id': {
+    canonicalName: 'messaging.message.id',
+    type: 'string',
+    brief: 'A value used by the messaging system as an identifier for the message, represented as a string.',
+    deprecationChain: ['messaging.message.id', 'messaging.message_id', 'sentry.messaging.message.id'],
   },
   'sentry.metric.source': {
     canonicalName: 'sentry.metric.source',
@@ -11970,6 +12308,18 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     brief: 'The timestamp at which an envelope was received by Relay, in nanoseconds.',
     deprecationChain: ['sentry.observed_timestamp_nanos'],
   },
+  'sentry.os.name': {
+    canonicalName: 'os.name',
+    type: 'string',
+    brief: 'Human readable operating system name.',
+    deprecationChain: ['os.name', 'sentry.os.name'],
+  },
+  'sentry.os.rooted': {
+    canonicalName: 'os.rooted',
+    type: 'boolean',
+    brief: 'Whether the operating system has been jailbroken or rooted.',
+    deprecationChain: ['os.rooted', 'sentry.os.rooted'],
+  },
   'sentry.pageload.span_id': {
     canonicalName: 'sentry.pageload.span_id',
     type: 'string',
@@ -12003,6 +12353,24 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     brief: '(Deprecated) The event that caused the SDK to report CLS or LCP (pagehide or navigation)',
     deprecated: true,
     deprecationChain: ['sentry.report_event'],
+  },
+  'sentry.request.method': {
+    canonicalName: 'http.request.method',
+    type: 'string',
+    brief: 'The HTTP method used.',
+    deprecationChain: ['http.request.method', 'http.method', 'http.request_method', 'method', 'sentry.request.method'],
+  },
+  'sentry.request.url': {
+    canonicalName: 'url.full',
+    type: 'string',
+    brief: 'The URL of the resource that was fetched.',
+    deprecationChain: ['url.full', 'aws.request.url', 'http.url', 'messaging.url', 'sentry.request.url', 'url'],
+  },
+  'sentry.runtime.name': {
+    canonicalName: 'process.runtime.name',
+    type: 'string',
+    brief: 'The name of the runtime. Equivalent to `name` in the Sentry runtime context.',
+    deprecationChain: ['process.runtime.name', 'runtime.name', 'sentry.runtime.name'],
   },
   'sentry.sdk.integrations': {
     canonicalName: 'sentry.sdk.integrations',
@@ -12056,6 +12424,12 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'string',
     brief: 'The type of navigation event emitted from the sveltekit client router',
     deprecationChain: ['router.navigation.type', 'navigation.type', 'sentry.sveltekit.navigation.type'],
+  },
+  'sentry.thread.name': {
+    canonicalName: 'thread.name',
+    type: 'string',
+    brief: 'Current thread name.',
+    deprecationChain: ['thread.name', 'sentry.thread.name'],
   },
   'sentry.timestamp.sequence': {
     canonicalName: 'sentry.timestamp.sequence',
@@ -12289,7 +12663,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'thread.name',
     type: 'string',
     brief: 'Current thread name.',
-    deprecationChain: ['thread.name'],
+    deprecationChain: ['thread.name', 'sentry.thread.name'],
   },
   'timber.tag': {
     canonicalName: 'timber.tag',
@@ -12572,7 +12946,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'url.full',
     type: 'string',
     brief: 'The URL of the resource that was fetched.',
-    deprecationChain: ['url.full', 'aws.request.url', 'http.url', 'messaging.url', 'url'],
+    deprecationChain: ['url.full', 'aws.request.url', 'http.url', 'messaging.url', 'sentry.request.url', 'url'],
   },
   'url.domain': {
     canonicalName: 'url.domain',
@@ -12592,7 +12966,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'url.full',
     type: 'string',
     brief: 'The URL of the resource that was fetched.',
-    deprecationChain: ['url.full', 'aws.request.url', 'http.url', 'messaging.url', 'url'],
+    deprecationChain: ['url.full', 'aws.request.url', 'http.url', 'messaging.url', 'sentry.request.url', 'url'],
   },
   'url.path': {
     canonicalName: 'url.path',

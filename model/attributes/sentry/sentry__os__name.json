@@ -1,0 +1,23 @@
+{
+  "key": "sentry.os.name",
+  "brief": "Human readable operating system name.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "example": "Ubuntu",
+  "alias": ["os.name"],
+  "deprecation": {
+    "_status": "backfill",
+    "replacement": "os.name"
+  },
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "0.35.0",
+      "prs": [805],
+      "description": "Added sentry.os.name attribute, deprecated in favor of os.name"
+    }
+  ]
+}

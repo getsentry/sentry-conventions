@@ -9,7 +9,16 @@
   "visibility": "public",
   "examples": [87.25],
   "alias": ["turbo_module.top_module_duration_ms"],
+  "search_alias": {
+    "name": "react_native.module.top.duration",
+    "type": "millisecond"
+  },
   "changelog": [
+    {
+      "version": "0.35.0",
+      "prs": [815],
+      "description": "Added search_alias with type millisecond"
+    },
     {
       "version": "0.24.0",
       "prs": [564],

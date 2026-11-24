@@ -1,0 +1,19 @@
+{
+  "key": "client.as.organization",
+  "brief": "The name of the organization associated with the autonomous system of the client IP address.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": true,
+  "visibility": "public",
+  "examples": ["Example Networks Inc."],
+  "additional_context": ["The value is the lookup source's organization name for the ASN in client.as.number."],
+  "changelog": [
+    {
+      "version": "0.36.0",
+      "prs": [830],
+      "description": "Added client.as.organization attribute"
+    }
+  ]
+}

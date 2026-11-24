@@ -1,6 +1,6 @@
 {
   "key": "sentry.client_sample_rate",
-  "brief": "Rate at which a span was sampled in the SDK.",
+  "brief": "Rate at which a telemetry item (e.g. a span, or metric) was sampled in the SDK.",
   "type": "double",
   "apply_scrubbing": {
     "key": "never"
@@ -12,6 +12,11 @@
     "name": "client_sample_rate"
   },
   "changelog": [
+    {
+      "version": "0.35.0",
+      "prs": [814],
+      "description": "Generalized the brief to apply to any telemetry type, not just spans"
+    },
     {
       "version": "0.1.0",
       "prs": [102]

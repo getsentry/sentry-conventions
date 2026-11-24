@@ -7,7 +7,7 @@
   },
   "is_in_otel": false,
   "examples": ["452a7c7c7c7048c2f887f0e7"],
-  "alias": ["messaging.message.id"],
+  "alias": ["messaging.message.id", "sentry.messaging.message.id"],
   "deprecation": {
     "_status": "backfill",
     "replacement": "messaging.message.id",
@@ -15,6 +15,11 @@
   },
   "visibility": "public",
   "changelog": [
+    {
+      "version": "0.35.0",
+      "prs": [809],
+      "description": "Added sentry.messaging.message.id as an alias"
+    },
     {
       "version": "0.21.0",
       "prs": [581],
