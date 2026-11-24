@@ -49,10 +49,12 @@ class ExtractField(TypedDict):
     min: NotRequired[float | str]
     max: NotRequired[float | str]
     step: NotRequired[float | str]
-    scale: NotRequired[str]
+    scale: NotRequired[Literal["linear", "log"]]
     null_threshold: NotRequired[float]
     horizon: NotRequired[int]
-    interval: NotRequired[str]
+    interval: NotRequired[
+        Literal["step", "minute", "hour", "day", "week", "month", "quarter", "year"]
+    ]
 
 
 class ExtractInputMessage(TypedDict):

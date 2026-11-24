@@ -193,7 +193,8 @@
             ]
           },
           "scale": {
-            "description": "The scale of the estimate grid: `linear` or `log`.",
+            "description": "The scale of the estimate grid.",
+            "enum": ["linear", "log"],
             "type": "string"
           },
           "null_threshold": {
@@ -205,7 +206,8 @@
             "type": "integer"
           },
           "interval": {
-            "description": "The interval between the steps of a forecast, such as `day` or `month`.",
+            "description": "The interval between the steps of a forecast.",
+            "enum": ["step", "minute", "hour", "day", "week", "month", "quarter", "year"],
             "type": "string"
           }
         },

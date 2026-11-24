@@ -157,9 +157,9 @@ export interface ExtractField {
    */
   step?: number | string;
   /**
-   * The scale of the estimate grid: `linear` or `log`.
+   * The scale of the estimate grid.
    */
-  scale?: string;
+  scale?: 'linear' | 'log';
   /**
    * The probability of null above which the value is null.
    */
@@ -169,8 +169,8 @@ export interface ExtractField {
    */
   horizon?: number;
   /**
-   * The interval between the steps of a forecast, such as `day` or `month`.
+   * The interval between the steps of a forecast.
    */
-  interval?: string;
+  interval?: 'step' | 'minute' | 'hour' | 'day' | 'week' | 'month' | 'quarter' | 'year';
   [k: string]: unknown;
 }
