@@ -1,0 +1,23 @@
+{
+  "key": "sentry.thread.name",
+  "brief": "Current thread name.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "example": "main",
+  "alias": ["thread.name"],
+  "deprecation": {
+    "_status": "backfill",
+    "replacement": "thread.name"
+  },
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "0.35.0",
+      "prs": [808],
+      "description": "Added sentry.thread.name attribute, deprecated in favor of thread.name"
+    }
+  ]
+}

@@ -4,5 +4,4 @@ def test_imports() -> None:
     from sentry_conventions.attributes import (
         ATTRIBUTE_METADATA,
         ATTRIBUTE_NAMES,
-        Attributes,
     )

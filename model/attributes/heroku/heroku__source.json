@@ -1,0 +1,32 @@
+{
+  "key": "heroku.source",
+  "brief": "Logplex source of a Heroku log line.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "examples": ["app", "heroku"],
+  "enum_values": [
+    {
+      "value": "app",
+      "brief": "Output written by the application's own processes, such as app[web.1]."
+    },
+    {
+      "value": "heroku",
+      "brief": "Messages from the Heroku platform and router, such as heroku[router]."
+    }
+  ],
+  "additional_context": [
+    "Taken from the syslog APP-NAME header that Logplex sets on every drained line, such as app[web.1] or heroku[router].",
+    "Only set on Cedar, since Fir does not use Logplex."
+  ],
+  "changelog": [
+    {
+      "version": "0.35.0",
+      "prs": [816],
+      "description": "Added heroku.source attribute"
+    }
+  ]
+}

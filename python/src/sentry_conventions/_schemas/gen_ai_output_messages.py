@@ -3,78 +3,8 @@
 
 from __future__ import annotations
 
-from typing import Any, Literal, TypeAlias, TypedDict
+from typing import TypeAlias
 
-from typing_extensions import NotRequired
-
-from .shared.gen_ai_parts import TextPart
-
-
-class CompactionPart(TypedDict):
-    type: Literal["compaction"]
-    content: NotRequired[str | None]
-
-
-class GenericPart(TypedDict):
-    type: str
-
-
-Modality: TypeAlias = Literal["image", "video", "audio", "document"]
-
-
-class ReasoningPart(TypedDict):
-    type: Literal["reasoning"]
-    content: NotRequired[str]
-
-
-Role: TypeAlias = Literal["system", "user", "assistant", "tool"]
-
-
-class ToolCallRequestPart(TypedDict):
-    type: Literal["tool_call"]
-    name: NotRequired[str]
-    arguments: NotRequired[Any]
-
-
-class ToolCallResponsePart(TypedDict):
-    type: Literal["tool_call_response"]
-    response: NotRequired[Any]
-
-
-class UriPart(TypedDict):
-    type: Literal["uri"]
-    mime_type: NotRequired[str | None]
-    modality: NotRequired[Modality | str]
-    uri: NotRequired[str]
-
-
-class BlobPart(TypedDict):
-    type: Literal["blob"]
-    mime_type: NotRequired[str | None]
-    modality: NotRequired[Modality | str]
-
-
-class FilePart(TypedDict):
-    type: Literal["file"]
-    mime_type: NotRequired[str | None]
-    modality: NotRequired[Modality | str]
-    file_id: NotRequired[str]
-
-
-class ChatMessage(TypedDict):
-    role: Role | str
-    parts: list[
-        TextPart
-        | ToolCallRequestPart
-        | ToolCallResponsePart
-        | BlobPart
-        | FilePart
-        | UriPart
-        | ReasoningPart
-        | CompactionPart
-        | GenericPart
-    ]
-    name: NotRequired[str | None]
-
+from .shared.gen_ai_chat_message import ChatMessage
 
 OutputMessages: TypeAlias = list[ChatMessage]

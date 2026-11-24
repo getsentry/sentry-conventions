@@ -8,7 +8,16 @@
   "is_in_otel": false,
   "visibility": "public",
   "examples": [512.5],
+  "search_alias": {
+    "name": "react_native.module.duration.max",
+    "type": "millisecond"
+  },
   "changelog": [
+    {
+      "version": "0.35.0",
+      "prs": [815],
+      "description": "Added search_alias with type millisecond"
+    },
     {
       "version": "0.24.0",
       "prs": [564],

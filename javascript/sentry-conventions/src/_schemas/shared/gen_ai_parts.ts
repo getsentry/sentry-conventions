@@ -4,6 +4,8 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
+export type Modality = 'image' | 'video' | 'audio' | 'document';
+
 /**
  * Represents text content sent to or received from the model.
  */
@@ -16,4 +18,129 @@ export interface TextPart {
    * Text content sent to or received from the model.
    */
   content?: string;
+}
+/**
+ * Represents a tool call requested by the model.
+ */
+export interface ToolCallRequestPart {
+  /**
+   * The type of the content captured in this part.
+   */
+  type: 'tool_call';
+  /**
+   * Name of the tool.
+   */
+  name?: string;
+  /**
+   * Arguments for the tool call.
+   */
+  arguments?: unknown;
+}
+/**
+ * Represents a tool call result sent to the model or a built-in tool call outcome and details.
+ */
+export interface ToolCallResponsePart {
+  /**
+   * The type of the content captured in this part.
+   */
+  type: 'tool_call_response';
+  /**
+   * Tool call response.
+   */
+  response?: unknown;
+}
+/**
+ * Represents blob binary data sent inline to the model
+ */
+export interface BlobPart {
+  /**
+   * The type of the content captured in this part.
+   */
+  type: 'blob';
+  /**
+   * The IANA MIME type of the attached data.
+   */
+  mime_type?: string | null;
+  /**
+   * The general modality of the data if it is known.
+   */
+  modality?: Modality | string;
+}
+/**
+ * Represents an external referenced file sent to the model by file id
+ */
+export interface FilePart {
+  /**
+   * The type of the no content captured in this part.
+   */
+  type: 'file';
+  /**
+   * The IANA MIME type of the attached data.
+   */
+  mime_type?: string | null;
+  /**
+   * The general modality of the data if it is known. Instrumentations SHOULD also set the mimeType field if the specific type is known.
+   */
+  modality?: Modality | string;
+  /**
+   * An identifier referencing a file that was pre-uploaded to the provider.
+   */
+  file_id?: string;
+}
+/**
+ * Represents an external referenced file sent to the model by URI
+ */
+export interface UriPart {
+  /**
+   * The type of the content captured in this part.
+   */
+  type: 'uri';
+  /**
+   * The IANA MIME type of the attached data.
+   */
+  mime_type?: string | null;
+  /**
+   * The general modality of the data if it is known. Instrumentations SHOULD also set the mimeType field if the specific type is known.
+   */
+  modality?: Modality | string;
+  /**
+   * A URI referencing attached data. It should not be a base64 data URL, which should use the `blob` part instead. The URI may use a scheme known to the provider api (e.g. `gs://bucket/object.png`), or be a publicly accessible location.
+   */
+  uri?: string;
+}
+/**
+ * Represents reasoning/thinking content received from the model.
+ */
+export interface ReasoningPart {
+  /**
+   * The type of the content captured in this part.
+   */
+  type: 'reasoning';
+  /**
+   * Reasoning/thinking content received from the model.
+   */
+  content?: string;
+}
+/**
+ * Represents compacted conversation state sent to or received from the model.
+ */
+export interface CompactionPart {
+  /**
+   * The type of the content captured in this part.
+   */
+  type: 'compaction';
+  /**
+   * The unencrypted compacted conversation summary, when available.
+   */
+  content?: string | null;
+}
+/**
+ * Fallback for consumers when a message part has a `type` not defined by this conventions' version. When the instrumented API sends or returns content that none of the defined part types fit, record the part keeping the provider's fields.
+ */
+export interface GenericPart {
+  /**
+   * The type of the content captured in this part, prefixed with the value with `gen_ai.provider.name` (for example `anthropic.search_result`) to avoid name collisions with current or future part types defined by semantic conventions.
+   */
+  type: string;
+  [k: string]: unknown;
 }

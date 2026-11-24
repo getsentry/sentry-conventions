@@ -15,6 +15,7 @@ export type {
   ServerSideToolDefinition,
   SystemInstructions,
   TextPart,
+  InputMessages,
   OutputMessages,
   ChatMessage,
   Role,
