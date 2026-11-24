@@ -15,7 +15,15 @@ export type {
   Modality,
 } from './_schemas/shared/gen_ai_parts';
 
-export type { InputMessages } from './_schemas/gen_ai_input_messages';
+export type {
+  InputMessages,
+  DecideRequest,
+  Question,
+  NoulQuestion,
+  NoulCriteria,
+  ChoiceQuestion,
+  ScoreQuestion,
+} from './_schemas/gen_ai_input_messages';
 
 export type { OutputMessages } from './_schemas/gen_ai_output_messages';
 

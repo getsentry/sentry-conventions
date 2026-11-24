@@ -3,8 +3,42 @@
 
 from __future__ import annotations
 
-from typing import TypeAlias
+from typing import Any, Literal, TypeAlias, TypedDict
+
+from typing_extensions import NotRequired
 
 from .shared.gen_ai_chat_message import ChatMessage
 
-InputMessages: TypeAlias = list[ChatMessage]
+
+class NoulCriteria(TypedDict):
+    true: NotRequired[str | dict[str, Any] | list[Any] | None]
+    false: NotRequired[str | dict[str, Any] | list[Any] | None]
+
+
+class ChoiceQuestion(TypedDict):
+    type: Literal["choice"]
+    instructions: NotRequired[str | dict[str, Any] | list[Any] | None]
+    criteria: NotRequired[dict[str, str | dict[str, Any] | list[Any] | None]]
+
+
+class ScoreQuestion(TypedDict):
+    type: Literal["score"]
+    instructions: NotRequired[str | dict[str, Any] | list[Any] | None]
+    criteria: NotRequired[list[str | dict[str, Any] | list[Any]]]
+
+
+class NoulQuestion(TypedDict):
+    type: Literal["noul"]
+    instructions: NotRequired[str | dict[str, Any] | list[Any] | None]
+    criteria: NotRequired[NoulCriteria | None]
+
+
+Question: TypeAlias = NoulQuestion | ChoiceQuestion | ScoreQuestion
+
+
+class DecideRequest(TypedDict):
+    state: NotRequired[str | dict[str, Any] | list[Any]]
+    questions: NotRequired[dict[str, Question]]
+
+
+InputMessages: TypeAlias = list[ChatMessage] | list[DecideRequest]

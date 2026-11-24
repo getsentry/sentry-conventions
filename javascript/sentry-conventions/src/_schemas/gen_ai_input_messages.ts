@@ -9,4 +9,137 @@ import type { ChatMessage } from './shared/gen_ai_chat_message';
 /**
  * Represents the list of input messages sent to the model.
  */
-export type InputMessages = ChatMessage[];
+export type InputMessages = ChatMessage[] | [DecideRequest];
+/**
+ * A question about the supplied content.
+ */
+export type Question = NoulQuestion | ChoiceQuestion | ScoreQuestion;
+
+/**
+ * Represents one or more questions about the content supplied in state.
+ */
+export interface DecideRequest {
+  /**
+   * The content all questions in this request refer to.
+   */
+  state?:
+    | string
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[];
+  /**
+   * Questions to ask about the content, each with a name you choose. The response uses those names to identify the answers.
+   */
+  questions?: {
+    [k: string]: Question;
+  };
+}
+/**
+ * A yes/no question or statement, answered with the probability of yes or true.
+ */
+export interface NoulQuestion {
+  /**
+   * Identifies a yes/no question or statement.
+   */
+  type: 'noul';
+  /**
+   * The yes/no question or statement to evaluate.
+   */
+  instructions?:
+    | string
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | null;
+  /**
+   * Criteria clarifying what counts as a yes or no answer.
+   */
+  criteria?: NoulCriteria | null;
+}
+/**
+ * Criteria defining what counts as a yes or no answer.
+ */
+export interface NoulCriteria {
+  /**
+   * What counts as a yes answer.
+   */
+  true?:
+    | string
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | null;
+  /**
+   * What counts as a no answer.
+   */
+  false?:
+    | string
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | null;
+}
+/**
+ * A question that selects one option from the choices you define.
+ */
+export interface ChoiceQuestion {
+  /**
+   * Identifies a question that selects one of the choices in criteria.
+   */
+  type: 'choice';
+  /**
+   * What the model should decide when choosing an option.
+   */
+  instructions?:
+    | string
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | null;
+  /**
+   * Choice names and descriptions of when each applies. A choice without a description is interpreted by its name alone.
+   */
+  criteria?: {
+    [k: string]:
+      | string
+      | {
+          [k: string]: unknown;
+        }
+      | unknown[]
+      | null;
+  };
+}
+/**
+ * A question that assigns a score using an ordered rubric.
+ */
+export interface ScoreQuestion {
+  /**
+   * Identifies a question that rates the content using the levels in criteria.
+   */
+  type: 'score';
+  /**
+   * What the model should rate.
+   */
+  instructions?:
+    | string
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | null;
+  /**
+   * Ordered descriptions of the score levels. Each description's position determines its score, starting at zero.
+   */
+  criteria?: (
+    | string
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+  )[];
+}

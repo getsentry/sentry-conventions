@@ -9,10 +9,247 @@
     "schemas": {
       "InputMessages": {
         "description": "Represents the list of input messages sent to the model.",
-        "items": {
-          "$ref": "./shared/gen_ai_chat_message.openapi.json#/components/schemas/ChatMessage"
+        "x-otel-deviation": [
+          "Allow DecideRequest in addition to ChatMessage, since `gen_ai.decide` operations send a state and questions instead of chat messages."
+        ],
+        "anyOf": [
+          {
+            "items": {
+              "$ref": "./shared/gen_ai_chat_message.openapi.json#/components/schemas/ChatMessage"
+            },
+            "type": "array"
+          },
+          {
+            "items": {
+              "$ref": "#/components/schemas/DecideRequest"
+            },
+            "maxItems": 1,
+            "minItems": 1,
+            "type": "array"
+          }
+        ]
+      },
+      "DecideRequest": {
+        "description": "Represents one or more questions about the content supplied in state.",
+        "x-otel-deviation": ["OTel does not define this definition or any of the definitions it references."],
+        "properties": {
+          "state": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "object"
+              },
+              {
+                "type": "array"
+              }
+            ],
+            "description": "The content all questions in this request refer to."
+          },
+          "questions": {
+            "additionalProperties": {
+              "$ref": "#/components/schemas/Question"
+            },
+            "description": "Questions to ask about the content, each with a name you choose. The response uses those names to identify the answers.",
+            "type": "object"
+          }
         },
-        "type": "array"
+        "additionalProperties": false,
+        "type": "object"
+      },
+      "Question": {
+        "description": "A question about the supplied content.",
+        "anyOf": [
+          {
+            "$ref": "#/components/schemas/NoulQuestion"
+          },
+          {
+            "$ref": "#/components/schemas/ChoiceQuestion"
+          },
+          {
+            "$ref": "#/components/schemas/ScoreQuestion"
+          }
+        ]
+      },
+      "NoulQuestion": {
+        "description": "A yes/no question or statement, answered with the probability of yes or true.",
+        "properties": {
+          "type": {
+            "const": "noul",
+            "description": "Identifies a yes/no question or statement.",
+            "type": "string"
+          },
+          "instructions": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "object"
+              },
+              {
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "The yes/no question or statement to evaluate."
+          },
+          "criteria": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/NoulCriteria"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Criteria clarifying what counts as a yes or no answer."
+          }
+        },
+        "additionalProperties": false,
+        "required": ["type"],
+        "type": "object"
+      },
+      "NoulCriteria": {
+        "description": "Criteria defining what counts as a yes or no answer.",
+        "properties": {
+          "true": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "object"
+              },
+              {
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "What counts as a yes answer."
+          },
+          "false": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "object"
+              },
+              {
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "What counts as a no answer."
+          }
+        },
+        "additionalProperties": false,
+        "type": "object"
+      },
+      "ChoiceQuestion": {
+        "description": "A question that selects one option from the choices you define.",
+        "properties": {
+          "type": {
+            "const": "choice",
+            "description": "Identifies a question that selects one of the choices in criteria.",
+            "type": "string"
+          },
+          "instructions": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "object"
+              },
+              {
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "What the model should decide when choosing an option."
+          },
+          "criteria": {
+            "additionalProperties": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "object"
+                },
+                {
+                  "type": "array"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "description": "Choice names and descriptions of when each applies. A choice without a description is interpreted by its name alone.",
+            "type": "object"
+          }
+        },
+        "additionalProperties": false,
+        "required": ["type"],
+        "type": "object"
+      },
+      "ScoreQuestion": {
+        "description": "A question that assigns a score using an ordered rubric.",
+        "properties": {
+          "type": {
+            "const": "score",
+            "description": "Identifies a question that rates the content using the levels in criteria.",
+            "type": "string"
+          },
+          "instructions": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "object"
+              },
+              {
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "What the model should rate."
+          },
+          "criteria": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "object"
+                },
+                {
+                  "type": "array"
+                }
+              ]
+            },
+            "description": "Ordered descriptions of the score levels. Each description's position determines its score, starting at zero.",
+            "type": "array"
+          }
+        },
+        "additionalProperties": false,
+        "required": ["type"],
+        "type": "object"
       }
     }
   }
