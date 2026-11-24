@@ -17,7 +17,13 @@ from ._metadata_types import (
 
 if TYPE_CHECKING:
     from ._schemas.gen_ai_input_messages import InputMessages
-    from ._schemas.gen_ai_output_messages import OutputMessages
+    from ._schemas.gen_ai_output_messages import (
+        ExtractAnswer,
+        ExtractOutputMessage,
+        ExtractOutputMessages,
+        ExtractSpan,
+        OutputMessages,
+    )
     from ._schemas.gen_ai_system_instructions import SystemInstructions
     from ._schemas.gen_ai_tool_call_arguments import ToolCallArguments
     from ._schemas.gen_ai_tool_call_result import ToolCallResult
@@ -63,6 +69,10 @@ if TYPE_CHECKING:
         "TextPart",
         "InputMessages",
         "OutputMessages",
+        "ExtractOutputMessages",
+        "ExtractOutputMessage",
+        "ExtractAnswer",
+        "ExtractSpan",
         "BlobPart",
         "ChatMessage",
         "CompactionPart",

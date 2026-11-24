@@ -16,6 +16,93 @@
           "$ref": "./shared/gen_ai_chat_message.openapi.json#/components/schemas/ChatMessage"
         },
         "type": "array"
+      },
+      "ExtractOutputMessages": {
+        "description": "Represents the output messages of a gen_ai.extract operation. The list holds one message.",
+        "x-otel-deviation": ["OTel does not define the extract operation. This definition is specific to Sentry."],
+        "items": {
+          "$ref": "#/components/schemas/ExtractOutputMessage"
+        },
+        "minItems": 1,
+        "maxItems": 1,
+        "type": "array"
+      },
+      "ExtractOutputMessage": {
+        "description": "Represents the extraction response body as the provider returned it, without the model and the usage. Other keys of the response body are permitted.",
+        "properties": {
+          "answers": {
+            "description": "One answer for each field in the input, keyed by field name.",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/ExtractAnswer"
+            },
+            "type": "object"
+          },
+          "truncated": {
+            "description": "Whether an answer is incomplete or invalid.",
+            "type": "boolean"
+          },
+          "state_text": {
+            "description": "The text that the spans index into, if the provider returns it.",
+            "type": "string"
+          }
+        },
+        "additionalProperties": true,
+        "required": ["answers", "truncated"],
+        "type": "object"
+      },
+      "ExtractAnswer": {
+        "description": "Represents the answer for one field. The other keys depend on the field type and the provider, such as guess, p_null, mean, and median.",
+        "properties": {
+          "type": {
+            "description": "The type of the field.",
+            "type": "string"
+          },
+          "value": {
+            "description": "The extracted value. It is null when the model cannot determine the field.",
+            "tsType": "unknown"
+          },
+          "confidence": {
+            "description": "The probability, from 0 to 1, that the answer is correct.",
+            "type": "number"
+          },
+          "span": {
+            "description": "The location of the value in the text, or null when the value has no unique location.",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ExtractSpan"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "spans": {
+            "description": "For a list answer, the location of each item in the text, or null for an item that has no unique location.",
+            "items": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/ExtractSpan"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "type": "array"
+          }
+        },
+        "additionalProperties": true,
+        "required": ["type", "value"],
+        "type": "object"
+      },
+      "ExtractSpan": {
+        "description": "Represents a [start, end] pair of character offsets into state, or into state_text if the provider returns it. The end offset is exclusive.",
+        "items": {
+          "type": "integer"
+        },
+        "minItems": 2,
+        "maxItems": 2,
+        "type": "array"
       }
     }
   }
