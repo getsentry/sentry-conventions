@@ -40,9 +40,8 @@
             "type": "object"
           },
           "images": {
-            "description": "The images that the caller passed. Each image is replaced with a substitute string, because image data must not be recorded.",
+            "description": "The images that the model reads, each as a string.",
             "items": {
-              "const": "[Blob substitute]",
               "type": "string"
             },
             "type": "array"

@@ -43,9 +43,9 @@ export interface ExtractInputMessage {
     [k: string]: ExtractField;
   };
   /**
-   * The images that the caller passed. Each image is replaced with a substitute string, because image data must not be recorded.
+   * The images that the model reads, each as a string.
    */
-  images?: '[Blob substitute]'[];
+  images?: string[];
   /**
    * The date that anchors dates written without a year.
    */
