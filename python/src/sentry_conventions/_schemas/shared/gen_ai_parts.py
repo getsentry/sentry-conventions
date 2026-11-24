@@ -3,7 +3,7 @@
 
 from __future__ import annotations
 
-from typing import Literal, TypedDict
+from typing import Any, Literal, TypeAlias, TypedDict
 
 from typing_extensions import NotRequired
 
@@ -11,3 +11,51 @@ from typing_extensions import NotRequired
 class TextPart(TypedDict):
     type: Literal["text"]
     content: NotRequired[str]
+
+
+class ToolCallRequestPart(TypedDict):
+    type: Literal["tool_call"]
+    name: NotRequired[str]
+    arguments: NotRequired[Any]
+
+
+class ToolCallResponsePart(TypedDict):
+    type: Literal["tool_call_response"]
+    response: NotRequired[Any]
+
+
+class ReasoningPart(TypedDict):
+    type: Literal["reasoning"]
+    content: NotRequired[str]
+
+
+class CompactionPart(TypedDict):
+    type: Literal["compaction"]
+    content: NotRequired[str | None]
+
+
+class GenericPart(TypedDict):
+    type: str
+
+
+Modality: TypeAlias = Literal["image", "video", "audio", "document"]
+
+
+class BlobPart(TypedDict):
+    type: Literal["blob"]
+    mime_type: NotRequired[str | None]
+    modality: NotRequired[Modality | str]
+
+
+class FilePart(TypedDict):
+    type: Literal["file"]
+    mime_type: NotRequired[str | None]
+    modality: NotRequired[Modality | str]
+    file_id: NotRequired[str]
+
+
+class UriPart(TypedDict):
+    type: Literal["uri"]
+    mime_type: NotRequired[str | None]
+    modality: NotRequired[Modality | str]
+    uri: NotRequired[str]

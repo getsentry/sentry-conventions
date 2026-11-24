@@ -16,20 +16,8 @@ from ._metadata_types import (
 )
 
 if TYPE_CHECKING:
-    from ._schemas.gen_ai_output_messages import (
-        BlobPart,
-        ChatMessage,
-        CompactionPart,
-        FilePart,
-        GenericPart,
-        Modality,
-        OutputMessages,
-        ReasoningPart,
-        Role,
-        ToolCallRequestPart,
-        ToolCallResponsePart,
-        UriPart,
-    )
+    from ._schemas.gen_ai_input_messages import InputMessages
+    from ._schemas.gen_ai_output_messages import OutputMessages
     from ._schemas.gen_ai_system_instructions import SystemInstructions
     from ._schemas.gen_ai_tool_call_arguments import ToolCallArguments
     from ._schemas.gen_ai_tool_call_result import ToolCallResult
@@ -39,7 +27,19 @@ if TYPE_CHECKING:
         ToolDefinition,
         ToolDefinitions,
     )
-    from ._schemas.shared.gen_ai_parts import TextPart
+    from ._schemas.shared.gen_ai_chat_message import ChatMessage, Role
+    from ._schemas.shared.gen_ai_parts import (
+        BlobPart,
+        CompactionPart,
+        FilePart,
+        GenericPart,
+        Modality,
+        ReasoningPart,
+        TextPart,
+        ToolCallRequestPart,
+        ToolCallResponsePart,
+        UriPart,
+    )
 
 __all__ = [
     "ATTRIBUTE_METADATA",
@@ -61,6 +61,7 @@ if TYPE_CHECKING:
     __all__ += [
         "SystemInstructions",
         "TextPart",
+        "InputMessages",
         "OutputMessages",
         "BlobPart",
         "ChatMessage",

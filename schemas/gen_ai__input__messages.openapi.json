@@ -1,0 +1,19 @@
+{
+  "openapi": "3.2.1",
+  "info": {
+    "title": "GenAI Input Messages",
+    "description": "Schema for the gen_ai.input.messages attribute, describing the messages sent to a GenAI model.",
+    "version": "0.1.0"
+  },
+  "components": {
+    "schemas": {
+      "InputMessages": {
+        "description": "Represents the list of input messages sent to the model.",
+        "items": {
+          "$ref": "./shared/gen_ai_chat_message.openapi.json#/components/schemas/ChatMessage"
+        },
+        "type": "array"
+      }
+    }
+  }
+}
