@@ -3,8 +3,36 @@
 
 from __future__ import annotations
 
-from typing import TypeAlias
+from typing import Any, Literal, TypeAlias, TypedDict
 
 from .shared.gen_ai_chat_message import ChatMessage
 
-OutputMessages: TypeAlias = list[ChatMessage]
+
+class NoulAnswer(TypedDict):
+    type: Literal["noul"]
+    noul: float
+
+
+class ChoiceAnswer(TypedDict):
+    type: Literal["choice"]
+    choice: str
+    confidence: float
+    probabilities: dict[str, float]
+
+
+class ScoreAnswer(TypedDict):
+    type: Literal["score"]
+    score: float
+    confidence: float
+    legend: dict[str, str | dict[str, Any] | list[Any]]
+    probabilities: dict[str, float]
+
+
+Answer: TypeAlias = NoulAnswer | ChoiceAnswer | ScoreAnswer
+
+
+class DecideResponse(TypedDict):
+    answers: dict[str, Answer]
+
+
+OutputMessages: TypeAlias = list[ChatMessage] | list[DecideResponse]
