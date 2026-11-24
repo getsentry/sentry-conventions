@@ -29,9 +29,9 @@ export interface ExtractOutputMessage {
     [k: string]: ExtractAnswer;
   };
   /**
-   * Whether an answer is incomplete or invalid.
+   * Whether an answer is incomplete or invalid. Not all providers return it. Leave the key out when the provider does not return it.
    */
-  truncated: boolean;
+  truncated?: boolean;
   /**
    * The text that the spans index into, if the provider returns it.
    */

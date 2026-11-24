@@ -37,7 +37,7 @@
             "type": "object"
           },
           "truncated": {
-            "description": "Whether an answer is incomplete or invalid.",
+            "description": "Whether an answer is incomplete or invalid. Not all providers return it. Leave the key out when the provider does not return it.",
             "type": "boolean"
           },
           "state_text": {
@@ -46,7 +46,7 @@
           }
         },
         "additionalProperties": true,
-        "required": ["answers", "truncated"],
+        "required": ["answers"],
         "type": "object"
       },
       "ExtractAnswer": {

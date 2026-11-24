@@ -52,7 +52,7 @@ class ExtractAnswer(TypedDict):
 
 class ExtractOutputMessage(TypedDict):
     answers: dict[str, ExtractAnswer]
-    truncated: bool
+    truncated: NotRequired[bool]
     state_text: NotRequired[str]
 
 
