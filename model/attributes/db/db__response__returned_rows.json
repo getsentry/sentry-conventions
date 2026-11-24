@@ -1,0 +1,18 @@
+{
+  "key": "db.response.returned_rows",
+  "brief": "The number of rows returned by the database operation.",
+  "type": "integer",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": true,
+  "visibility": "public",
+  "examples": [10],
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [826],
+      "description": "Added db.response.returned_rows attribute"
+    }
+  ]
+}

@@ -5942,6 +5942,27 @@ export const DB_REDIS_PARAMETERS = 'db.redis.parameters';
  */
 export type DB_REDIS_PARAMETERS_TYPE = Array<string>;
 
+// Path: model/attributes/db/db__response__returned_rows.json
+
+/**
+ * The number of rows returned by the database operation. `db.response.returned_rows`
+ *
+ * Attribute Value Type: `number` {@link DB_RESPONSE_RETURNED_ROWS_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example 10
+ */
+export const DB_RESPONSE_RETURNED_ROWS = 'db.response.returned_rows';
+
+/**
+ * Type for {@link DB_RESPONSE_RETURNED_ROWS} db.response.returned_rows
+ */
+export type DB_RESPONSE_RETURNED_ROWS_TYPE = number;
+
 // Path: model/attributes/db/db__response__status_code.json
 
 /**
@@ -23027,6 +23048,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'db.redis.connection': 'string',
   'db.redis.key': 'string',
   'db.redis.parameters': 'string[]',
+  'db.response.returned_rows': 'integer',
   'db.response.status_code': 'string',
   'db.sql.bindings': 'string[]',
   'db.statement': 'string',
@@ -24032,6 +24054,7 @@ export type AttributeName =
   | typeof DB_REDIS_CONNECTION
   | typeof DB_REDIS_KEY
   | typeof DB_REDIS_PARAMETERS
+  | typeof DB_RESPONSE_RETURNED_ROWS
   | typeof DB_RESPONSE_STATUS_CODE
   | typeof DB_SQL_BINDINGS
   | typeof DB_STATEMENT
@@ -29110,6 +29133,19 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: ['test', '*'],
     changelog: [{ version: '0.0.0' }],
+  },
+  'db.response.returned_rows': {
+    brief: 'The number of rows returned by the database operation.',
+    type: 'integer',
+    keys: ['db.response.returned_rows'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 10,
+    examples: [10],
+    changelog: [{ version: 'next', prs: [826], description: 'Added db.response.returned_rows attribute' }],
   },
   'db.response.status_code': {
     brief:
@@ -42250,6 +42286,7 @@ export type Attributes = {
   [DB_REDIS_CONNECTION]?: DB_REDIS_CONNECTION_TYPE;
   [DB_REDIS_KEY]?: DB_REDIS_KEY_TYPE;
   [DB_REDIS_PARAMETERS]?: DB_REDIS_PARAMETERS_TYPE;
+  [DB_RESPONSE_RETURNED_ROWS]?: DB_RESPONSE_RETURNED_ROWS_TYPE;
   [DB_RESPONSE_STATUS_CODE]?: DB_RESPONSE_STATUS_CODE_TYPE;
   [DB_SQL_BINDINGS]?: DB_SQL_BINDINGS_TYPE;
   [DB_STATEMENT]?: DB_STATEMENT_TYPE;

@@ -2,6 +2,7 @@
 import OtelBadge from './OtelBadge.astro';
 import TypeBadge from './TypeBadge.astro';
 import AttributeLink from './AttributeLink.astro';
+import DottedName from './DottedName.astro';
 import type { Metric } from '../content.config';
 import { renderInlineMarkdown } from '../utils/markdown';
 
@@ -27,9 +28,9 @@ const requirementLabels = {
   data-pagefind-body
 >
   <div class="flex flex-wrap items-start justify-between gap-3 mb-3">
-    <h3 class="flex items-center gap-2 text-base m-0" data-pagefind-meta="title">
+    <h3 class="flex flex-wrap items-center gap-2 text-base m-0" data-pagefind-meta="title">
       <a href={`#${anchorId}`} class="anchor-link group/anchor flex items-center gap-1.5 no-underline">
-        <code class="text-base p-0 bg-transparent border-none text-accent">{metric.key}</code>
+        <code class="text-base p-0 bg-transparent border-none text-accent"><DottedName name={metric.key} /></code>
         <svg class="anchor-icon w-4 h-4 text-text-muted opacity-0 group-hover/anchor:opacity-100 transition-opacity" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
           <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
@@ -45,18 +46,18 @@ const requirementLabels = {
   <p class="text-sm text-text-secondary mb-4 leading-relaxed" set:html={renderInlineMarkdown(metric.brief)} />
 
   <div class="flex flex-col gap-2">
-    <div class="flex items-baseline gap-3 text-sm">
+    <div class="flex flex-col items-start gap-1 text-sm sm:flex-row sm:items-baseline sm:gap-3">
       <span class="text-text-muted min-w-[100px] flex-shrink-0">Unit</span>
       <code class="text-xs">{metric.unit}</code>
     </div>
 
-    <div class="flex items-baseline gap-3 text-sm">
+    <div class="flex flex-col items-start gap-1 text-sm sm:flex-row sm:items-baseline sm:gap-3">
       <span class="text-text-muted min-w-[100px] flex-shrink-0">Requirement</span>
       <span class="text-text-secondary">{requirementLabels[metric.requirement_level]}</span>
     </div>
 
     {metric.attributes && metric.attributes.length > 0 && (
-      <div class="flex items-baseline gap-3 text-sm">
+      <div class="flex flex-col items-start gap-1 text-sm sm:flex-row sm:items-baseline sm:gap-3">
         <span class="text-text-muted min-w-[100px] flex-shrink-0">Attributes</span>
         <span class="flex flex-wrap gap-1">
           {metric.attributes.map((attribute) => <AttributeLink name={attribute} />)}
