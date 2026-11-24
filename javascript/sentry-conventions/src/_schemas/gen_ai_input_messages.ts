@@ -29,7 +29,7 @@ export type ExtractFieldType =
 export type InputMessages = (ChatMessage | ExtractInputMessage)[];
 
 /**
- * Represents the request of a `gen_ai.extract` operation: the request body as the caller passed it, without the model. Keys that the caller did not set are left out. Other keys of the request body are permitted. The array holds exactly one such message.
+ * Represents the request of a `gen_ai.extract` operation: the request body as the caller passed it, without the model. Keys that the caller did not set are left out. The array holds exactly one such message.
  */
 export interface ExtractInputMessage {
   /**
@@ -60,10 +60,9 @@ export interface ExtractInputMessage {
   options?: {
     [k: string]: unknown;
   };
-  [k: string]: unknown;
 }
 /**
- * Represents the spec of one field to extract. The field type sets which keys apply. Other keys are permitted.
+ * Represents the spec of one field to extract. The field type sets which keys apply.
  */
 export interface ExtractField {
   /**
@@ -172,5 +171,4 @@ export interface ExtractField {
    * The interval between the steps of a forecast.
    */
   interval?: 'step' | 'minute' | 'hour' | 'day' | 'week' | 'month' | 'quarter' | 'year';
-  [k: string]: unknown;
 }

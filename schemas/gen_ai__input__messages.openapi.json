@@ -25,7 +25,7 @@
         "type": "array"
       },
       "ExtractInputMessage": {
-        "description": "Represents the request of a `gen_ai.extract` operation: the request body as the caller passed it, without the model. Keys that the caller did not set are left out. Other keys of the request body are permitted. The array holds exactly one such message.",
+        "description": "Represents the request of a `gen_ai.extract` operation: the request body as the caller passed it, without the model. Keys that the caller did not set are left out. The array holds exactly one such message.",
         "x-otel-deviation": ["OTel does not define this message or any of the definitions it references."],
         "properties": {
           "state": {
@@ -62,12 +62,12 @@
             "type": "object"
           }
         },
-        "additionalProperties": true,
+        "additionalProperties": false,
         "required": ["fields"],
         "type": "object"
       },
       "ExtractField": {
-        "description": "Represents the spec of one field to extract. The field type sets which keys apply. Other keys are permitted.",
+        "description": "Represents the spec of one field to extract. The field type sets which keys apply.",
         "properties": {
           "type": {
             "description": "The type of the field.",
@@ -211,7 +211,7 @@
             "type": "string"
           }
         },
-        "additionalProperties": true,
+        "additionalProperties": false,
         "required": ["type"],
         "type": "object"
       },
