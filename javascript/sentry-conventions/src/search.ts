@@ -1521,6 +1521,11 @@ export const SEARCH_DB__REDIS__KEY = 'db.redis.key';
 export const SEARCH_DB__REDIS__PARAMETERS = 'db.redis.parameters';
 
 /**
+ * Search name for {@link attributes.DB_RESPONSE_RETURNED_ROWS}. `db.response.returned_rows`
+ */
+export const SEARCH_DB__RESPONSE__RETURNED_ROWS = 'db.response.returned_rows';
+
+/**
  * Search name for {@link attributes.DB_RESPONSE_STATUS_CODE}. `db.response.status_code`
  */
 export const SEARCH_DB__RESPONSE__STATUS_CODE = 'db.response.status_code';
@@ -6056,6 +6061,7 @@ export type AttributeSearchName =
   | typeof SEARCH_DB__REDIS__CONNECTION
   | typeof SEARCH_DB__REDIS__KEY
   | typeof SEARCH_DB__REDIS__PARAMETERS
+  | typeof SEARCH_DB__RESPONSE__RETURNED_ROWS
   | typeof SEARCH_DB__RESPONSE__STATUS_CODE
   | typeof SEARCH_DB__SQL__BINDINGS
   | typeof SEARCH_DB__STATEMENT
@@ -8554,6 +8560,12 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'string[]',
     brief: 'The array of command parameters given to a redis command.',
     deprecationChain: ['db.redis.parameters'],
+  },
+  'db.response.returned_rows': {
+    canonicalName: 'db.response.returned_rows',
+    type: 'integer',
+    brief: 'The number of rows returned by the database operation.',
+    deprecationChain: ['db.response.returned_rows'],
   },
   'db.response.status_code': {
     canonicalName: 'db.response.status_code',
