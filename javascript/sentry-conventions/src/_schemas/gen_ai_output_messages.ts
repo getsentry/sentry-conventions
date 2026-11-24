@@ -39,7 +39,7 @@ export interface ExtractOutputMessage {
   [k: string]: unknown;
 }
 /**
- * Represents the answer for one field. The other keys depend on the field type and the provider, such as guess, p_null, mean, and median.
+ * Represents the answer for one field. The field type sets which keys the provider returns. Other keys are permitted.
  */
 export interface ExtractAnswer {
   /**
@@ -51,9 +51,51 @@ export interface ExtractAnswer {
    */
   value: unknown;
   /**
-   * The probability, from 0 to 1, that the answer is correct.
+   * The best candidate that is not null. The provider returns it also when the value is null.
+   */
+  guess?: unknown;
+  /**
+   * Whether the generated answer agrees with the field spec. The value is null when it does not.
+   */
+  valid?: boolean;
+  /**
+   * Whether the generation of the answer ended normally.
+   */
+  complete?: boolean;
+  /**
+   * The decoder that produced the value.
+   */
+  decoder?: string;
+  /**
+   * The number of output tokens for this answer, including retries.
+   */
+  tokens?: number;
+  /**
+   * The raw JSON that the model generated.
+   */
+  raw?: string;
+  /**
+   * The probability, from 0 to 1, that the value is null.
+   */
+  p_null?: number;
+  p_null_method?: string;
+  /**
+   * For a list answer, the probability of null for each item.
+   */
+  p_nulls?: number[];
+  /**
+   * The probability, from 0 to 1, of the returned value, or of `guess` when the answer has one.
    */
   confidence?: number;
+  /**
+   * For a list answer, the confidence for each item.
+   */
+  confidences?: number[];
+  confidence_method?: string;
+  /**
+   * The log probability of the generated answer.
+   */
+  log_probability?: number;
   /**
    * The location of the value in the text, or null when the value has no unique location.
    */
@@ -62,5 +104,63 @@ export interface ExtractAnswer {
    * For a list answer, the location of each item in the text, or null for an item that has no unique location.
    */
   spans?: (ExtractSpan | null)[];
+  /**
+   * For a list of objects, one map for each item. The map gives the location of each property value in the text, or null, keyed by property name.
+   */
+  property_spans?: {
+    [k: string]: ExtractSpan | null;
+  }[];
+  span_method?: string;
+  grounding_method?: string;
+  /**
+   * The text as printed in the input, for a field with `source_only`.
+   */
+  printed_value?: string | null;
+  normalization_method?: string;
+  /**
+   * The reason why the answer is invalid, such as `not_in_source`.
+   */
+  failure_reason?: string;
+  null_recovered?: boolean;
+  /**
+   * The number of input tokens that the retries for this field used.
+   */
+  retry_input_tokens?: number;
+  /**
+   * The source of the answer: `input`, `image`, or `readout`.
+   */
+  source?: string;
+  /**
+   * The unit of a duration value.
+   */
+  unit?: string;
+  /**
+   * The mean of an estimate.
+   */
+  mean?: number | string;
+  /**
+   * The median of an estimate.
+   */
+  median?: number | string;
+  /**
+   * The 10th percentile of an estimate.
+   */
+  p10?: number | string;
+  /**
+   * The 90th percentile of an estimate.
+   */
+  p90?: number | string;
+  p_below?: number;
+  p_above?: number;
+  /**
+   * The percentiles of an estimate, when the caller asks for them.
+   */
+  quantiles?: unknown[];
+  /**
+   * For a forecast, one estimate for each step.
+   */
+  steps?: {
+    [k: string]: unknown;
+  }[];
   [k: string]: unknown;
 }
