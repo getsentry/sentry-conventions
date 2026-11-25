@@ -407,6 +407,11 @@ describe('generateAttributes', () => {
     try {
       const attributes = [
         { key: 'aws.request_id' },
+        { key: 'sentry.replay_id' },
+        { key: 'replayId', deprecation: { replacement: 'sentry.replay_id', _status: 'backfill' } },
+        { key: 'replay_id', deprecation: { replacement: 'sentry.replay_id', _status: 'backfill' } },
+        { key: 'connectionType' },
+        { key: 'HTTPResponseCode' },
         { key: 'aws.request.id', deprecation: { replacement: 'aws.request_id', _status: 'backfill' } },
       ];
       for (const attribute of attributes) {
@@ -425,6 +430,10 @@ describe('generateAttributes', () => {
       await generateAttributes({ attributesDir, jsOutputFilePath, pythonOutputFilePath, swiftOutputFilePath });
 
       const swift = fs.readFileSync(swiftOutputFilePath, 'utf8');
+      expect(swift).toContain('public static var replayId: String { "replayId" }');
+      expect(swift).toContain('public static var _replayId: String { "replay_id" }');
+      expect(swift).toContain('public static var connectionType: String { "connectionType" }');
+      expect(swift).toContain('public static var httpResponseCode: String { "HTTPResponseCode" }');
       expect(swift).toContain('public static var awsRequestId: String { "aws.request_id" }');
       expect(swift).toContain('public static var _awsRequestId: String { "aws.request.id" }');
       expect(swift).toContain('@available(*, deprecated, message: "Use aws.request_id instead")');
@@ -434,5 +443,5 @@ describe('generateAttributes', () => {
     } finally {
       fs.rmSync(temporaryDirectory, { recursive: true });
     }
-  });
+  }, 15_000);
 });

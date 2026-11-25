@@ -3744,7 +3744,7 @@ public struct AttributeNames {
     @available(*, deprecated, message: "Use gen_ai.output.messages instead")
     @_alwaysEmitIntoClient
     @inlinable
-    public static var aiResponseToolcalls: String { "ai.response.toolCalls" }
+    public static var aiResponseToolCalls: String { "ai.response.toolCalls" }
 
     /// For an AI model call, the format of the response
     @available(*, deprecated, message: "Deprecated")
@@ -3810,13 +3810,13 @@ public struct AttributeNames {
     @available(*, deprecated, message: "Use gen_ai.tool.call.arguments instead")
     @_alwaysEmitIntoClient
     @inlinable
-    public static var aiToolcallArgs: String { "ai.toolCall.args" }
+    public static var aiToolCallArgs: String { "ai.toolCall.args" }
 
     /// The result of the tool call.
     @available(*, deprecated, message: "Use gen_ai.tool.call.result instead")
     @_alwaysEmitIntoClient
     @inlinable
-    public static var aiToolcallResult: String { "ai.toolCall.result" }
+    public static var aiToolCallResult: String { "ai.toolCall.result" }
 
     /// For an AI model call, the tool calls that were made.
     @available(*, deprecated, message: "Use gen_ai.output.messages instead")
@@ -4050,7 +4050,7 @@ public struct AttributeNames {
     @available(*, deprecated, message: "Use network.connection.type instead - Old namespace-less attribute, to be replaced with network.connection.type for span-first future")
     @_alwaysEmitIntoClient
     @inlinable
-    public static var connectiontype: String { "connectionType" }
+    public static var connectionType: String { "connectionType" }
 
     /// The connection string used to connect to the database.
     @available(*, deprecated, message: "This attribute is deprecated. The connection is described by server.address and server.port instead, so the value cannot be copied to a single replacement attribute.")
@@ -4110,7 +4110,7 @@ public struct AttributeNames {
     @available(*, deprecated, message: "Use device.memory.estimated_capacity instead - Old namespace-less attribute, to be replaced with device.memory.estimated_capacity for span-first future")
     @_alwaysEmitIntoClient
     @inlinable
-    public static var devicememory: String { "deviceMemory" }
+    public static var deviceMemory: String { "deviceMemory" }
 
     /// The sentry dist.
     @available(*, deprecated, message: "Use sentry.dist instead - This attribute is being deprecated in favor of sentry.dist.")
@@ -4134,7 +4134,7 @@ public struct AttributeNames {
     @available(*, deprecated, message: "Use network.connection.effective_type instead - Old namespace-less attribute, to be replaced with network.connection.effective_type for span-first future")
     @_alwaysEmitIntoClient
     @inlinable
-    public static var effectiveconnectiontype: String { "effectiveConnectionType" }
+    public static var effectiveConnectionType: String { "effectiveConnectionType" }
 
     /// The sentry environment.
     @available(*, deprecated, message: "Use sentry.environment instead")
@@ -4356,7 +4356,7 @@ public struct AttributeNames {
     @available(*, deprecated, message: "Use device.processor_count instead - Old namespace-less attribute, to be replaced with device.processor_count for span-first future")
     @_alwaysEmitIntoClient
     @inlinable
-    public static var hardwareconcurrency: String { "hardwareConcurrency" }
+    public static var hardwareConcurrency: String { "hardwareConcurrency" }
 
     /// Client address - domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.
     @available(*, deprecated, message: "Use client.address instead")
@@ -4512,13 +4512,13 @@ public struct AttributeNames {
     @available(*, deprecated, message: "Use browser.web_vital.lcp.load_time instead - The LCP load time is now recorded as a browser.web_vital.lcp.load_time attribute.")
     @_alwaysEmitIntoClient
     @inlinable
-    public static var lcpLoadtime: String { "lcp.loadTime" }
+    public static var lcpLoadTime: String { "lcp.loadTime" }
 
     /// The time it took for the LCP element to be rendered
     @available(*, deprecated, message: "Use browser.web_vital.lcp.render_time instead - The LCP render time is now recorded as a browser.web_vital.lcp.render_time attribute.")
     @_alwaysEmitIntoClient
     @inlinable
-    public static var lcpRendertime: String { "lcp.renderTime" }
+    public static var lcpRenderTime: String { "lcp.renderTime" }
 
     /// The size of the largest contentful paint element.
     @available(*, deprecated, message: "Use browser.web_vital.lcp.size instead - The LCP size is now recorded as a browser.web_vital.lcp.size attribute.")
@@ -4854,13 +4854,13 @@ public struct AttributeNames {
     @available(*, deprecated, message: "Use browser.performance.navigation.activation_start instead - The activationStart is now recorded as the browser.performance.navigation.activation_start attribute.")
     @_alwaysEmitIntoClient
     @inlinable
-    public static var performanceActivationstart: String { "performance.activationStart" }
+    public static var performanceActivationStart: String { "performance.activationStart" }
 
     /// The browser's performance.timeOrigin timestamp representing the time when the pageload was initiated
     @available(*, deprecated, message: "Use browser.performance.time_origin instead - The timeOrigin is now recorded as the browser.performance.time_origin attribute.")
     @_alwaysEmitIntoClient
     @inlinable
-    public static var performanceTimeorigin: String { "performance.timeOrigin" }
+    public static var performanceTimeOrigin: String { "performance.timeOrigin" }
 
     /// The destination port for a TCP connection.
     @available(*, deprecated, message: "Use server.port instead - Old namespace-less attribute, to be replaced with server.port for span-first future")
@@ -4914,13 +4914,13 @@ public struct AttributeNames {
     @available(*, deprecated, message: "Use sentry.replay_id instead")
     @_alwaysEmitIntoClient
     @inlinable
-    public static var replayid: String { "replayId" }
+    public static var replayId: String { "replayId" }
 
     /// The id of the sentry replay.
     @available(*, deprecated, message: "Use sentry.replay_id instead")
     @_alwaysEmitIntoClient
     @inlinable
-    public static var replayId: String { "replay_id" }
+    public static var _replayId: String { "replay_id" }
 
     /// The software deployment environment name.
     @available(*, deprecated, message: "Use sentry.environment instead")
@@ -5334,7 +5334,7 @@ public struct AttributeNames {
     @available(*, deprecated, message: "Use browser.web_vital.ttfb.request_time instead - This attribute is being deprecated in favor of browser.web_vital.ttfb.request_time")
     @_alwaysEmitIntoClient
     @inlinable
-    public static var ttfbRequesttime: String { "ttfb.requestTime" }
+    public static var ttfbRequestTime: String { "ttfb.requestTime" }
 
     /// The React Native architecture the call was observed on. `new` for a TurboModule resolved through `TurboModuleRegistry`, `legacy` for a module reached over the Old Architecture bridge. Only applies to React Native.
     @available(*, deprecated, message: "Use react_native.architecture instead - Replaced by the `react_native.*` namespace, which also covers native module calls made over the Old Architecture bridge, which are not TurboModules")

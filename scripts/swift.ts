@@ -14,6 +14,8 @@ function swiftString(value: string): string {
 
 function identifier(key: string): string {
   const name = key
+    .replace(/([A-Z]+)([A-Z][a-z])/g, '$1 $2')
+    .replace(/([a-z0-9])([A-Z])/g, '$1 $2')
     .toLowerCase()
     .split(/[^a-z0-9]+/)
     .filter(Boolean)
