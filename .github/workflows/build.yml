@@ -109,6 +109,17 @@ jobs:
             model/**/*.tgz
           if-no-files-found: error
 
+  build-required-check:
+    name: Build
+    needs: [build]
+    if: always()
+    runs-on: ubuntu-latest
+    container: node:26
+    steps:
+      - name: Check for failures
+        if: needs.build.result != 'success'
+        run: echo "The build job did not succeed." && exit 1
+
   build-docs:
     name: Build Docs (${{ matrix.host }})
     strategy:
