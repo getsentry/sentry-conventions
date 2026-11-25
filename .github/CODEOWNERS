@@ -12,6 +12,7 @@
 # individual namespace owners aren't required reviewers on unrelated diffs
 javascript/sentry-conventions/
 python/src/sentry_conventions/
+swift/Sources/SentryConventions/
 
 # Gen AI / AI attributes
 /model/attributes/gen_ai/ @getsentry/agent-tracing @Lms24 @alexander-alderman-webb @andreiborza @cleptric @getsentry/ingest @mjq @nsdeschenes @giortzisg
