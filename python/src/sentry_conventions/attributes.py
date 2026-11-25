@@ -22,7 +22,12 @@ if TYPE_CHECKING:
         ExtractRequest,
         InputMessages,
     )
-    from ._schemas.gen_ai_output_messages import OutputMessages
+    from ._schemas.gen_ai_output_messages import (
+        ExtractAnswer,
+        ExtractResponse,
+        ExtractSpan,
+        OutputMessages,
+    )
     from ._schemas.gen_ai_system_instructions import SystemInstructions
     from ._schemas.gen_ai_tool_call_arguments import ToolCallArguments
     from ._schemas.gen_ai_tool_call_result import ToolCallResult
@@ -71,6 +76,9 @@ if TYPE_CHECKING:
         "ExtractField",
         "ExtractFieldType",
         "OutputMessages",
+        "ExtractResponse",
+        "ExtractAnswer",
+        "ExtractSpan",
         "BlobPart",
         "ChatMessage",
         "CompactionPart",
