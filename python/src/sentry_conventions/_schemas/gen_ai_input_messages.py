@@ -3,8 +3,67 @@
 
 from __future__ import annotations
 
-from typing import TypeAlias
+from typing import Any, Literal, TypeAlias, TypedDict
+
+from typing_extensions import NotRequired
 
 from .shared.gen_ai_chat_message import ChatMessage
 
-InputMessages: TypeAlias = list[ChatMessage]
+ExtractFieldType: TypeAlias = Literal[
+    "text",
+    "number",
+    "compute",
+    "date",
+    "time",
+    "datetime",
+    "duration",
+    "boolean",
+    "enum",
+    "object",
+    "list",
+    "estimate",
+    "forecast",
+]
+
+
+class ExtractField(TypedDict):
+    type: ExtractFieldType
+    instructions: NotRequired[str]
+    nullable: NotRequired[bool]
+    unit: NotRequired[str]
+    integer: NotRequired[bool]
+    decimals: NotRequired[int]
+    knowledge: NotRequired[bool]
+    source_only: NotRequired[bool]
+    minLength: NotRequired[int]
+    maxLength: NotRequired[int]
+    pattern: NotRequired[str]
+    minimum: NotRequired[float]
+    maximum: NotRequired[float]
+    exclusiveMinimum: NotRequired[float]
+    exclusiveMaximum: NotRequired[float]
+    enum: NotRequired[list[Any]]
+    properties: NotRequired[dict[str, ExtractField]]
+    items: NotRequired[str | ExtractField]
+    max_items: NotRequired[int]
+    min: NotRequired[float | str]
+    max: NotRequired[float | str]
+    step: NotRequired[float | str]
+    scale: NotRequired[Literal["linear", "log"]]
+    null_threshold: NotRequired[float]
+    horizon: NotRequired[int]
+    interval: NotRequired[
+        Literal["step", "minute", "hour", "day", "week", "month", "quarter", "year"]
+    ]
+
+
+class ExtractRequest(TypedDict):
+    state: NotRequired[str]
+    fields: dict[str, ExtractField]
+    images: NotRequired[list[str]]
+    documents: NotRequired[list[str]]
+    reference_date: NotRequired[str]
+    options: NotRequired[dict[str, Any]]
+
+
+InputMessages: TypeAlias = list[ChatMessage] | list[ExtractRequest]

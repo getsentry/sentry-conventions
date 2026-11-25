@@ -1548,7 +1548,11 @@ async function generateSchemaTypes(
     if (!schemas) continue;
     const sharedRefs = collectSharedRefs(openapiSource);
 
-    const jsonSchema = { definitions: schemas, components: { schemas } } as Parameters<typeof compile>[0];
+    // Local refs point to `definitions`. json-schema-to-typescript reads each map below `components` as a schema,
+    // and adds fields to a property map that has a key such as `properties` or `items`.
+    const jsonSchema = {
+      definitions: JSON.parse(JSON.stringify(schemas).replaceAll('"#/components/schemas/', '"#/definitions/')),
+    } as Parameters<typeof compile>[0];
     const tsImports = [...sharedRefs].map(
       ([sharedModule, names]) => `import type { ${[...names].sort().join(', ')} } from './shared/${sharedModule}';\n`,
     );
