@@ -10,7 +10,7 @@
       "InputMessages": {
         "description": "Represents the list of input messages sent to the model.",
         "x-otel-deviation": [
-          "Allow ExtractInputMessage in addition to ChatMessage, since `gen_ai.extract` operations send a state and field specs instead of chat messages."
+          "Allow ExtractRequest in addition to ChatMessage, since `gen_ai.extract` operations send a state and field specs instead of chat messages."
         ],
         "items": {
           "anyOf": [
@@ -18,15 +18,15 @@
               "$ref": "./shared/gen_ai_chat_message.openapi.json#/components/schemas/ChatMessage"
             },
             {
-              "$ref": "#/components/schemas/ExtractInputMessage"
+              "$ref": "#/components/schemas/ExtractRequest"
             }
           ]
         },
         "type": "array"
       },
-      "ExtractInputMessage": {
-        "description": "Represents the request of a `gen_ai.extract` operation: the request body as the caller passed it, without the model. Keys that the caller did not set are left out. The array holds exactly one such message.",
-        "x-otel-deviation": ["OTel does not define this message or any of the definitions it references."],
+      "ExtractRequest": {
+        "description": "Represents the request of a `gen_ai.extract` operation: the request body as the caller passed it, without the model. Keys that the caller did not set are left out. The array holds exactly one such request.",
+        "x-otel-deviation": ["OTel does not define this definition or any of the definitions it references."],
         "properties": {
           "state": {
             "description": "The text that the model reads.",

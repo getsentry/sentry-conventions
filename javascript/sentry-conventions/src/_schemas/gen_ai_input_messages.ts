@@ -26,12 +26,12 @@ export type ExtractFieldType =
 /**
  * Represents the list of input messages sent to the model.
  */
-export type InputMessages = (ChatMessage | ExtractInputMessage)[];
+export type InputMessages = (ChatMessage | ExtractRequest)[];
 
 /**
- * Represents the request of a `gen_ai.extract` operation: the request body as the caller passed it, without the model. Keys that the caller did not set are left out. The array holds exactly one such message.
+ * Represents the request of a `gen_ai.extract` operation: the request body as the caller passed it, without the model. Keys that the caller did not set are left out. The array holds exactly one such request.
  */
-export interface ExtractInputMessage {
+export interface ExtractRequest {
   /**
    * The text that the model reads.
    */

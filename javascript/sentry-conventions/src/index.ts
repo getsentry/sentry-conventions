@@ -16,7 +16,7 @@ export type {
   SystemInstructions,
   TextPart,
   InputMessages,
-  ExtractInputMessage,
+  ExtractRequest,
   ExtractField,
   ExtractFieldType,
   OutputMessages,

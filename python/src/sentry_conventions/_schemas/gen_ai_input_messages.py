@@ -57,7 +57,7 @@ class ExtractField(TypedDict):
     ]
 
 
-class ExtractInputMessage(TypedDict):
+class ExtractRequest(TypedDict):
     state: NotRequired[str]
     fields: dict[str, ExtractField]
     images: NotRequired[list[str]]
@@ -66,4 +66,4 @@ class ExtractInputMessage(TypedDict):
     options: NotRequired[dict[str, Any]]
 
 
-InputMessages: TypeAlias = list[ChatMessage | ExtractInputMessage]
+InputMessages: TypeAlias = list[ChatMessage | ExtractRequest]
