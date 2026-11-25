@@ -56,4 +56,4 @@ class ExtractResponse(TypedDict):
     state_text: NotRequired[str]
 
 
-OutputMessages: TypeAlias = list[ChatMessage | ExtractResponse]
+OutputMessages: TypeAlias = list[ChatMessage] | list[ExtractResponse]

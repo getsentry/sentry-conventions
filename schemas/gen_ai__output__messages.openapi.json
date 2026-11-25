@@ -13,17 +13,22 @@
           "The deprecated finish_reason field is omitted. Finish reasons belong in gen_ai.response.finish_reasons.",
           "Allow ExtractResponse in addition to ChatMessage, since `gen_ai.extract` operations return typed answers instead of chat messages."
         ],
-        "items": {
-          "anyOf": [
-            {
+        "anyOf": [
+          {
+            "items": {
               "$ref": "./shared/gen_ai_chat_message.openapi.json#/components/schemas/ChatMessage"
             },
-            {
+            "type": "array"
+          },
+          {
+            "items": {
               "$ref": "#/components/schemas/ExtractResponse"
-            }
-          ]
-        },
-        "type": "array"
+            },
+            "maxItems": 1,
+            "minItems": 1,
+            "type": "array"
+          }
+        ]
       },
       "ExtractResponse": {
         "description": "Represents the response of a `gen_ai.extract` operation: the response body as the provider returned it, without the model and the usage. The array holds exactly one such response.",
