@@ -16,7 +16,12 @@ from ._metadata_types import (
 )
 
 if TYPE_CHECKING:
-    from ._schemas.gen_ai_input_messages import InputMessages
+    from ._schemas.gen_ai_input_messages import (
+        ExtractField,
+        ExtractFieldType,
+        ExtractRequest,
+        InputMessages,
+    )
     from ._schemas.gen_ai_output_messages import (
         ExtractAnswer,
         ExtractResponse,
@@ -67,6 +72,9 @@ if TYPE_CHECKING:
         "SystemInstructions",
         "TextPart",
         "InputMessages",
+        "ExtractRequest",
+        "ExtractField",
+        "ExtractFieldType",
         "OutputMessages",
         "ExtractResponse",
         "ExtractAnswer",
