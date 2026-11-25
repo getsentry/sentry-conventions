@@ -3708,11 +3708,6 @@ export const SEARCH_MESSAGING__SYSTEM = 'messaging.system';
 export const SEARCH_MESSAGING__URL = 'messaging.url';
 
 /**
- * Search name for {@link attributes.MESSAGING_WEBSOCKET_EVENT_NAME}. `messaging.websocket.event.name`
- */
-export const SEARCH_MESSAGING__WEBSOCKET__EVENT__NAME = 'messaging.websocket.event.name';
-
-/**
  * Search name for {@link attributes.METHOD}. `method`
  *
  * @deprecated Use {@link SEARCH_HTTP__REQUEST__METHOD} (`http.request.method`) instead
@@ -5795,6 +5790,16 @@ export const SEARCH_VERCEL__SOURCE = 'vercel.source';
  */
 export const SEARCH_VERCEL__STATUS_CODE = 'vercel.status_code';
 
+/**
+ * Search name for {@link attributes.WEBSOCKET_EVENT_NAME}. `websocket.event.name`
+ */
+export const SEARCH_WEBSOCKET__EVENT__NAME = 'websocket.event.name';
+
+/**
+ * Search name for {@link attributes.WEBSOCKET_NAMESPACE}. `websocket.namespace`
+ */
+export const SEARCH_WEBSOCKET__NAMESPACE = 'websocket.namespace';
+
 export type AttributeSearchName =
   | typeof SEARCH_ADDRESS
   | typeof SEARCH_AI__CITATIONS
@@ -6457,7 +6462,6 @@ export type AttributeSearchName =
   | typeof SEARCH_MESSAGING__RABBITMQ__ROUTING_KEY
   | typeof SEARCH_MESSAGING__SYSTEM
   | typeof SEARCH_MESSAGING__URL
-  | typeof SEARCH_MESSAGING__WEBSOCKET__EVENT__NAME
   | typeof SEARCH_METHOD
   | typeof SEARCH_MIDDLEWARE__NAME
   | typeof SEARCH_MOBILE__FRAMES_DELAY
@@ -6820,7 +6824,9 @@ export type AttributeSearchName =
   | typeof SEARCH_VERCEL__PROXY__WAF_RULE_ID
   | typeof SEARCH_VERCEL__REQUEST_ID
   | typeof SEARCH_VERCEL__SOURCE
-  | typeof SEARCH_VERCEL__STATUS_CODE;
+  | typeof SEARCH_VERCEL__STATUS_CODE
+  | typeof SEARCH_WEBSOCKET__EVENT__NAME
+  | typeof SEARCH_WEBSOCKET__NAMESPACE;
 
 export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> = {
   address: {
@@ -11167,12 +11173,6 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     brief: 'The connection string of the messaging broker.',
     deprecationChain: ['url.full', 'aws.request.url', 'http.url', 'messaging.url', 'sentry.request.url', 'url'],
   },
-  'messaging.websocket.event.name': {
-    canonicalName: 'messaging.websocket.event.name',
-    type: 'string',
-    brief: 'The name of the event a WebSocket message is dispatched on.',
-    deprecationChain: ['messaging.websocket.event.name'],
-  },
   method: {
     canonicalName: 'http.request.method',
     type: 'string',
@@ -13393,5 +13393,18 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'integer',
     brief: 'HTTP status code of the request (-1 means no response returned and the lambda crashed)',
     deprecationChain: ['vercel.status_code'],
+  },
+  'websocket.event.name': {
+    canonicalName: 'websocket.event.name',
+    type: 'string',
+    brief: 'The name of the event a WebSocket message is dispatched on.',
+    deprecationChain: ['websocket.event.name'],
+  },
+  'websocket.namespace': {
+    canonicalName: 'websocket.namespace',
+    type: 'string',
+    brief:
+      'The namespace a WebSocket message is received on, for protocols that support namespaces, such as Socket.IO.',
+    deprecationChain: ['websocket.namespace'],
   },
 };

@@ -8206,19 +8206,6 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "amqp://guest:guest@localhost:5672"
     """
 
-    # Path: model/attributes/messaging/messaging__websocket__event__name.json
-    MESSAGING_WEBSOCKET_EVENT_NAME = "messaging.websocket.event.name"
-    """The name of the event a WebSocket message is dispatched on.
-
-    Type: str
-    Apply Scrubbing: manual
-    Defined in OTEL: No
-    Visibility: public
-    Example: "message"
-    Example: "joinRoom"
-    Example: "chat:typing"
-    """
-
     # Path: model/attributes/method.json
     METHOD = "method"
     """The HTTP method used.
@@ -12435,6 +12422,31 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: No
     Visibility: public
     Example: 200
+    """
+
+    # Path: model/attributes/websocket/websocket__event__name.json
+    WEBSOCKET_EVENT_NAME = "websocket.event.name"
+    """The name of the event a WebSocket message is dispatched on.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: "message"
+    Example: "joinRoom"
+    Example: "chat:typing"
+    """
+
+    # Path: model/attributes/websocket/websocket__namespace.json
+    WEBSOCKET_NAMESPACE = "websocket.namespace"
+    """The namespace a WebSocket message is received on, for protocols that support namespaces, such as Socket.IO.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: "/"
+    Example: "/chat"
     """
 
 
@@ -25826,26 +25838,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
         ],
     ),
-    "messaging.websocket.event.name": AttributeMetadata(
-        brief="The name of the event a WebSocket message is dispatched on.",
-        type=AttributeType.STRING,
-        keys=("messaging.websocket.event.name",),
-        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
-        is_in_otel=False,
-        visibility=Visibility.PUBLIC,
-        example="message",
-        examples=["message", "joinRoom", "chat:typing"],
-        changelog=[
-            ChangelogEntry(
-                version="next",
-                prs=[836],
-                description="Added messaging.websocket.event.name attribute",
-            ),
-        ],
-        additional_context=[
-            "Set on spans with the `websocket` op. Use `messaging.destination.name` for the namespace (for example `/chat` in Socket.IO) and `messaging.system` for the WebSocket library (for example `socket.io` or `ws`)."
-        ],
-    ),
     "method": AttributeMetadata(
         brief="The HTTP method used.",
         type=AttributeType.STRING,
@@ -32518,6 +32510,40 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.2.0", prs=[163]),
+        ],
+    ),
+    "websocket.event.name": AttributeMetadata(
+        brief="The name of the event a WebSocket message is dispatched on.",
+        type=AttributeType.STRING,
+        keys=("websocket.event.name",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="message",
+        examples=["message", "joinRoom", "chat:typing"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[836],
+                description="Added websocket.event.name attribute",
+            ),
+        ],
+    ),
+    "websocket.namespace": AttributeMetadata(
+        brief="The namespace a WebSocket message is received on, for protocols that support namespaces, such as Socket.IO.",
+        type=AttributeType.STRING,
+        keys=("websocket.namespace",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="/",
+        examples=["/", "/chat"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[836],
+                description="Added websocket.namespace attribute",
+            ),
         ],
     ),
 }
