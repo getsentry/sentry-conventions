@@ -12,17 +12,22 @@
         "x-otel-deviation": [
           "Allow ExtractRequest in addition to ChatMessage, since `gen_ai.extract` operations send a state and field specs instead of chat messages."
         ],
-        "items": {
-          "anyOf": [
-            {
+        "anyOf": [
+          {
+            "items": {
               "$ref": "./shared/gen_ai_chat_message.openapi.json#/components/schemas/ChatMessage"
             },
-            {
+            "type": "array"
+          },
+          {
+            "items": {
               "$ref": "#/components/schemas/ExtractRequest"
-            }
-          ]
-        },
-        "type": "array"
+            },
+            "maxItems": 1,
+            "minItems": 1,
+            "type": "array"
+          }
+        ]
       },
       "ExtractRequest": {
         "description": "Represents the request of a `gen_ai.extract` operation: the request body as the caller passed it, without the model. Keys that the caller did not set are left out. The array holds exactly one such request.",

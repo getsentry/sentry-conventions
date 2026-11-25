@@ -66,4 +66,4 @@ class ExtractRequest(TypedDict):
     options: NotRequired[dict[str, Any]]
 
 
-InputMessages: TypeAlias = list[ChatMessage | ExtractRequest]
+InputMessages: TypeAlias = list[ChatMessage] | list[ExtractRequest]

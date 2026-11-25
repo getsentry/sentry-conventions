@@ -7,6 +7,10 @@
 import type { ChatMessage } from './shared/gen_ai_chat_message';
 
 /**
+ * Represents the list of input messages sent to the model.
+ */
+export type InputMessages = ChatMessage[] | [ExtractRequest];
+/**
  * The type of a field.
  */
 export type ExtractFieldType =
@@ -23,10 +27,6 @@ export type ExtractFieldType =
   | 'list'
   | 'estimate'
   | 'forecast';
-/**
- * Represents the list of input messages sent to the model.
- */
-export type InputMessages = (ChatMessage | ExtractRequest)[];
 
 /**
  * Represents the request of a `gen_ai.extract` operation: the request body as the caller passed it, without the model. Keys that the caller did not set are left out. The array holds exactly one such request.
