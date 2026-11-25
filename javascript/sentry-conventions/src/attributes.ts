@@ -17,12 +17,7 @@ export type {
 
 export type { InputMessages } from './_schemas/gen_ai_input_messages';
 
-export type {
-  OutputMessages,
-  ExtractOutputMessage,
-  ExtractAnswer,
-  ExtractSpan,
-} from './_schemas/gen_ai_output_messages';
+export type { OutputMessages, ExtractResponse, ExtractAnswer, ExtractSpan } from './_schemas/gen_ai_output_messages';
 
 export type { SystemInstructions } from './_schemas/gen_ai_system_instructions';
 

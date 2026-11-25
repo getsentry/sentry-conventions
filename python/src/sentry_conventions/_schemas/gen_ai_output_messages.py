@@ -50,10 +50,10 @@ class ExtractAnswer(TypedDict):
     steps: NotRequired[list[dict[str, Any]]]
 
 
-class ExtractOutputMessage(TypedDict):
+class ExtractResponse(TypedDict):
     answers: dict[str, ExtractAnswer]
     truncated: NotRequired[bool]
     state_text: NotRequired[str]
 
 
-OutputMessages: TypeAlias = list[ChatMessage | ExtractOutputMessage]
+OutputMessages: TypeAlias = list[ChatMessage | ExtractResponse]

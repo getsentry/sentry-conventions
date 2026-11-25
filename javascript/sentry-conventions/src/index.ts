@@ -17,7 +17,7 @@ export type {
   TextPart,
   InputMessages,
   OutputMessages,
-  ExtractOutputMessage,
+  ExtractResponse,
   ExtractAnswer,
   ExtractSpan,
   ChatMessage,
