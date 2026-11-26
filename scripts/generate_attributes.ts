@@ -590,8 +590,7 @@ function writeToPython(parsedAttributes: ParsedAttribute[], outputFilePath: stri
   assertUniqueSearchAliases(allAttributes);
   const attributeKeyChains = deriveAttributeKeyChains(allAttributes);
 
-  // Generate ATTRIBUTE_NAMES class. Deprecated names are only marked in their docstrings and
-  // in ATTRIBUTE_METADATA; reading them doesn't emit a warning.
+  // Generate ATTRIBUTE_NAMES class
   content += 'class ATTRIBUTE_NAMES:\n';
   content += '    """Contains all attribute names as class attributes with their documentation."""\n\n';
 
