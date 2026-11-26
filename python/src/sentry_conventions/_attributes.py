@@ -4839,7 +4839,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     # Path: model/attributes/gen_ai/gen_ai__input__messages.json
     GEN_AI_INPUT_MESSAGES = "gen_ai.input.messages"
-    """The messages passed to the model. It has to be a stringified version of an array of objects in the format `{role: "...", parts: [...]}`. The `role` must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. Each part is an object with a `type`, such as `{type: "text", content: "..."}`. Other part types include `"reasoning"`, `"tool_call"`, and `"tool_call_response"`. Put the model's thinking in a `{type: "reasoning", content: "..."}` part, not a `"text"` part. Sentry shows reasoning separately from user-visible messages. The legacy format `{role, content}` is also accepted. The first example shows this shape. Some operations use a different shape. See the additional context.
+    """The messages passed to the model.
 
     Type: str
     Apply Scrubbing: manual
@@ -19904,7 +19904,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "gen_ai.input.messages": AttributeMetadata(
-        brief='The messages passed to the model. It has to be a stringified version of an array of objects in the format `{role: "...", parts: [...]}`. The `role` must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. Each part is an object with a `type`, such as `{type: "text", content: "..."}`. Other part types include `"reasoning"`, `"tool_call"`, and `"tool_call_response"`. Put the model\'s thinking in a `{type: "reasoning", content: "..."}` part, not a `"text"` part. Sentry shows reasoning separately from user-visible messages. The legacy format `{role, content}` is also accepted. The first example shows this shape. Some operations use a different shape. See the additional context.',
+        brief="The messages passed to the model.",
         type=AttributeType.STRING,
         keys=(
             "gen_ai.input.messages",
@@ -19928,8 +19928,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(
                 version="next",
-                prs=[832],
-                description="Add documents to the extraction message shape for gen_ai.extract",
+                prs=[832, 833],
+                description="Remove informal format descriptions to prevent duplication with the structured schema.",
             ),
             ChangelogEntry(
                 version="0.28.0",
@@ -19946,10 +19946,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
             ChangelogEntry(version="0.5.0", prs=[264]),
             ChangelogEntry(version="0.4.0", prs=[221]),
-        ],
-        additional_context=[
-            'For `gen_ai.decide` operations, the array holds one object `{state: ..., questions: {...}}`. `state` is the evaluated state. `questions` holds the questions keyed by name, as the caller passed them. Replace binary data in `state`, including `data:` URLs, with the string `"[Blob substitute]"`. The second example shows this shape.',
-            'For `gen_ai.extract` operations, the array holds one object `{state?: string, fields: {<name>: <field spec>}, images?: string[], documents?: string[], reference_date?: string, options?: {...}}`. This object is the request body as the caller passed it, without `model`. Do not change the values, and leave out the keys that the caller did not set. Do not record the image data or the document data. Replace each image and each document with the string `"[Blob substitute]"`. `state` is the text that the model reads. `fields` holds the field specs keyed by field name. Set the model in `gen_ai.request.model`. The third example shows this shape.',
         ],
     ),
     "gen_ai.memory.query.text": AttributeMetadata(

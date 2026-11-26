@@ -9,6 +9,24 @@ from typing_extensions import NotRequired
 
 from .shared.gen_ai_chat_message import ChatMessage
 
+
+class NoulCriteria(TypedDict):
+    true: NotRequired[str | dict[str, Any] | list[Any] | None]
+    false: NotRequired[str | dict[str, Any] | list[Any] | None]
+
+
+class ChoiceQuestion(TypedDict):
+    type: Literal["choice"]
+    instructions: NotRequired[str | dict[str, Any] | list[Any] | None]
+    criteria: NotRequired[dict[str, str | dict[str, Any] | list[Any] | None]]
+
+
+class ScoreQuestion(TypedDict):
+    type: Literal["score"]
+    instructions: NotRequired[str | dict[str, Any] | list[Any] | None]
+    criteria: NotRequired[list[str | dict[str, Any] | list[Any]]]
+
+
 ExtractFieldType: TypeAlias = Literal[
     "text",
     "number",
@@ -24,6 +42,12 @@ ExtractFieldType: TypeAlias = Literal[
     "estimate",
     "forecast",
 ]
+
+
+class NoulQuestion(TypedDict):
+    type: Literal["noul"]
+    instructions: NotRequired[str | dict[str, Any] | list[Any] | None]
+    criteria: NotRequired[NoulCriteria | None]
 
 
 class ExtractField(TypedDict):
@@ -57,6 +81,9 @@ class ExtractField(TypedDict):
     ]
 
 
+Question: TypeAlias = NoulQuestion | ChoiceQuestion | ScoreQuestion
+
+
 class ExtractRequest(TypedDict):
     state: NotRequired[str]
     fields: dict[str, ExtractField]
@@ -66,4 +93,11 @@ class ExtractRequest(TypedDict):
     options: NotRequired[dict[str, Any]]
 
 
-InputMessages: TypeAlias = list[ChatMessage] | list[ExtractRequest]
+class DecideRequest(TypedDict):
+    state: NotRequired[str | dict[str, Any] | list[Any]]
+    questions: NotRequired[dict[str, Question]]
+
+
+InputMessages: TypeAlias = (
+    list[ChatMessage] | list[DecideRequest] | list[ExtractRequest]
+)

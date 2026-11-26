@@ -15,7 +15,18 @@ export type {
   Modality,
 } from './_schemas/shared/gen_ai_parts';
 
-export type { InputMessages, ExtractRequest, ExtractField, ExtractFieldType } from './_schemas/gen_ai_input_messages';
+export type {
+  InputMessages,
+  DecideRequest,
+  Question,
+  NoulQuestion,
+  NoulCriteria,
+  ChoiceQuestion,
+  ScoreQuestion,
+  ExtractRequest,
+  ExtractField,
+  ExtractFieldType,
+} from './_schemas/gen_ai_input_messages';
 
 export type { OutputMessages, ExtractResponse, ExtractAnswer, ExtractSpan } from './_schemas/gen_ai_output_messages';
 
@@ -8479,7 +8490,7 @@ export type GEN_AI_FUNCTION_ID_TYPE = string;
 // Path: model/attributes/gen_ai/gen_ai__input__messages.json
 
 /**
- * The messages passed to the model. It has to be a stringified version of an array of objects in the format `{role: "...", parts: [...]}`. The `role` must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. Each part is an object with a `type`, such as `{type: "text", content: "..."}`. Other part types include `"reasoning"`, `"tool_call"`, and `"tool_call_response"`. Put the model's thinking in a `{type: "reasoning", content: "..."}` part, not a `"text"` part. Sentry shows reasoning separately from user-visible messages. The legacy format `{role, content}` is also accepted. The first example shows this shape. Some operations use a different shape. See the additional context. `gen_ai.input.messages`
+ * The messages passed to the model. `gen_ai.input.messages`
  *
  * Attribute Value Type: `string` {@link GEN_AI_INPUT_MESSAGES_TYPE}
  *
@@ -30968,8 +30979,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     changelog: [{ version: '0.5.0', prs: [308], description: 'Added gen_ai.function_id attribute' }],
   },
   'gen_ai.input.messages': {
-    brief:
-      'The messages passed to the model. It has to be a stringified version of an array of objects in the format `{role: "...", parts: [...]}`. The `role` must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. Each part is an object with a `type`, such as `{type: "text", content: "..."}`. Other part types include `"reasoning"`, `"tool_call"`, and `"tool_call_response"`. Put the model\'s thinking in a `{type: "reasoning", content: "..."}` part, not a `"text"` part. Sentry shows reasoning separately from user-visible messages. The legacy format `{role, content}` is also accepted. The first example shows this shape. Some operations use a different shape. See the additional context.',
+    brief: 'The messages passed to the model.',
     type: 'string',
     keys: [
       'gen_ai.input.messages',
@@ -30994,7 +31004,11 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     ],
     aliases: ['ai.texts', 'ai.prompt.messages', 'gen_ai.prompt', 'ai.prompt'],
     changelog: [
-      { version: 'next', prs: [832], description: 'Add documents to the extraction message shape for gen_ai.extract' },
+      {
+        version: 'next',
+        prs: [832, 833],
+        description: 'Remove informal format descriptions to prevent duplication with the structured schema.',
+      },
       {
         version: '0.28.0',
         prs: [728],
@@ -31005,10 +31019,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       { version: '0.21.0', prs: [583], description: 'Added ai.prompt as an alias' },
       { version: '0.5.0', prs: [264] },
       { version: '0.4.0', prs: [221] },
-    ],
-    additionalContext: [
-      'For `gen_ai.decide` operations, the array holds one object `{state: ..., questions: {...}}`. `state` is the evaluated state. `questions` holds the questions keyed by name, as the caller passed them. Replace binary data in `state`, including `data:` URLs, with the string `"[Blob substitute]"`. The second example shows this shape.',
-      'For `gen_ai.extract` operations, the array holds one object `{state?: string, fields: {<name>: <field spec>}, images?: string[], documents?: string[], reference_date?: string, options?: {...}}`. This object is the request body as the caller passed it, without `model`. Do not change the values, and leave out the keys that the caller did not set. Do not record the image data or the document data. Replace each image and each document with the string `"[Blob substitute]"`. `state` is the text that the model reads. `fields` holds the field specs keyed by field name. Set the model in `gen_ai.request.model`. The third example shows this shape.',
     ],
   },
   'gen_ai.memory.query.text': {
