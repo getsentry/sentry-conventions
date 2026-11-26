@@ -1521,6 +1521,11 @@ export const SEARCH_DB__REDIS__KEY = 'db.redis.key';
 export const SEARCH_DB__REDIS__PARAMETERS = 'db.redis.parameters';
 
 /**
+ * Search name for {@link attributes.DB_RESPONSE_RETURNED_ROWS}. `db.response.returned_rows`
+ */
+export const SEARCH_DB__RESPONSE__RETURNED_ROWS = 'db.response.returned_rows';
+
+/**
  * Search name for {@link attributes.DB_RESPONSE_STATUS_CODE}. `db.response.status_code`
  */
 export const SEARCH_DB__RESPONSE__STATUS_CODE = 'db.response.status_code';
@@ -6066,6 +6071,7 @@ export type AttributeSearchName =
   | typeof SEARCH_DB__REDIS__CONNECTION
   | typeof SEARCH_DB__REDIS__KEY
   | typeof SEARCH_DB__REDIS__PARAMETERS
+  | typeof SEARCH_DB__RESPONSE__RETURNED_ROWS
   | typeof SEARCH_DB__RESPONSE__STATUS_CODE
   | typeof SEARCH_DB__SQL__BINDINGS
   | typeof SEARCH_DB__STATEMENT
@@ -8567,6 +8573,12 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     brief: 'The array of command parameters given to a redis command.',
     deprecationChain: ['db.redis.parameters'],
   },
+  'db.response.returned_rows': {
+    canonicalName: 'db.response.returned_rows',
+    type: 'integer',
+    brief: 'The number of rows returned by the database operation.',
+    deprecationChain: ['db.response.returned_rows'],
+  },
   'db.response.status_code': {
     canonicalName: 'db.response.status_code',
     type: 'string',
@@ -9258,8 +9270,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
   'gen_ai.input.messages': {
     canonicalName: 'gen_ai.input.messages',
     type: 'string',
-    brief:
-      'The messages passed to the model. It has to be a stringified version of an array of objects in the format `{role: "...", parts: [...]}`. The `role` must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. Each part is an object with a `type`, such as `{type: "text", content: "..."}`. Other part types include `"reasoning"`, `"tool_call"`, and `"tool_call_response"`. Put the model\'s thinking in a `{type: "reasoning", content: "..."}` part, not a `"text"` part. Sentry shows reasoning separately from user-visible messages. The legacy format `{role, content}` is also accepted. The first example shows this shape. Some operations use a different shape. See the additional context.',
+    brief: 'The messages passed to the model.',
     deprecationChain: [
       'gen_ai.input.messages',
       'ai.input_messages',
@@ -9322,7 +9333,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'gen_ai.output.messages',
     type: 'string',
     brief:
-      'Messages returned by the model where each message represents a specific model response (choice, candidate). It has to be a stringified version of an array of message objects in the format `{role: "assistant", parts: [...]}`, which can include text responses and tool calls. Each part is an object with a `type`, such as `{type: "text", content: "..."}`. Other part types include `"reasoning"` and `"tool_call"`. Put the model\'s thinking in a `{type: "reasoning", content: "..."}` part, not a `"text"` part. Sentry shows reasoning separately from user-visible messages. The first example shows this shape. Some operations use a different shape. See the additional context.',
+      'Messages returned by the model where each message represents a specific model response (choice, candidate).',
     deprecationChain: [
       'gen_ai.output.messages',
       'ai.response.text',

@@ -3,8 +3,87 @@
 
 from __future__ import annotations
 
-from typing import TypeAlias
+from typing import Any, Literal, TypeAlias, TypedDict
+
+from typing_extensions import NotRequired
 
 from .shared.gen_ai_chat_message import ChatMessage
 
-OutputMessages: TypeAlias = list[ChatMessage]
+
+class NoulAnswer(TypedDict):
+    type: Literal["noul"]
+    noul: float
+
+
+class ChoiceAnswer(TypedDict):
+    type: Literal["choice"]
+    choice: str
+    confidence: float
+    probabilities: dict[str, float]
+
+
+class ScoreAnswer(TypedDict):
+    type: Literal["score"]
+    score: float
+    confidence: float
+    legend: dict[str, str | dict[str, Any] | list[Any]]
+    probabilities: dict[str, float]
+
+
+ExtractSpan: TypeAlias = list[int]
+
+
+Answer: TypeAlias = NoulAnswer | ChoiceAnswer | ScoreAnswer
+
+
+class ExtractAnswer(TypedDict):
+    type: str
+    value: Any
+    guess: NotRequired[Any]
+    valid: NotRequired[bool]
+    complete: NotRequired[bool]
+    decoder: NotRequired[str]
+    tokens: NotRequired[int]
+    raw: NotRequired[str]
+    p_null: NotRequired[float]
+    p_null_method: NotRequired[str]
+    p_nulls: NotRequired[list[float]]
+    confidence: NotRequired[float]
+    confidences: NotRequired[list[float]]
+    confidence_method: NotRequired[str]
+    log_probability: NotRequired[float]
+    span: NotRequired[ExtractSpan | None]
+    spans: NotRequired[list[ExtractSpan | None]]
+    property_spans: NotRequired[list[dict[str, ExtractSpan | None]]]
+    span_method: NotRequired[str]
+    grounding_method: NotRequired[str]
+    printed_value: NotRequired[str | None]
+    normalization_method: NotRequired[str]
+    failure_reason: NotRequired[str]
+    null_recovered: NotRequired[bool]
+    retry_input_tokens: NotRequired[int]
+    source: NotRequired[Literal["input", "image", "readout"]]
+    unit: NotRequired[str]
+    mean: NotRequired[float | str]
+    median: NotRequired[float | str]
+    p10: NotRequired[float | str]
+    p90: NotRequired[float | str]
+    p_below: NotRequired[float]
+    p_above: NotRequired[float]
+    quantiles: NotRequired[list[Any]]
+    steps: NotRequired[list[dict[str, Any]]]
+
+
+class DecideResponse(TypedDict):
+    answers: dict[str, Answer]
+
+
+class ExtractResponse(TypedDict):
+    answers: dict[str, ExtractAnswer]
+    truncated: NotRequired[bool]
+    state_text: NotRequired[str]
+
+
+OutputMessages: TypeAlias = (
+    list[ChatMessage] | list[DecideResponse] | list[ExtractResponse]
+)
