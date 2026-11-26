@@ -1,20 +1,7 @@
 import { describe, expect, it } from 'vitest';
-import { readFileSync } from 'node:fs';
 import { renderInlineMarkdown } from './markdown';
 
 describe('renderInlineMarkdown', () => {
-  it('renders code from the reported gen_ai.input.messages description without paragraph wrappers', () => {
-    const attribute = JSON.parse(
-      readFileSync(new URL('../../../model/attributes/gen_ai/gen_ai__input__messages.json', import.meta.url), 'utf8'),
-    );
-    const html = renderInlineMarkdown(attribute.brief);
-    expect(html).toContain('<code>role</code>');
-    expect(html).toContain('<code>&quot;user&quot;</code>');
-    expect(html).toContain('<code>{type: &quot;text&quot;, content: &quot;...&quot;}</code>');
-    expect(html).not.toContain('`');
-    expect(html).not.toContain('<p>');
-  });
-
   it('handles multiple delimiters, escaped backticks, and unmatched backticks', () => {
     expect(renderInlineMarkdown('Use ``a ` b`` and `content`.')).toBe(
       'Use <code>a ` b</code> and <code>content</code>.',
@@ -39,6 +26,7 @@ describe('renderInlineMarkdown', () => {
       '&lt;img src=x onerror=&quot;alert(1)&quot;&gt; <code>&lt;script&gt;alert(1)&lt;/script&gt;</code> &amp; &lt;value&gt;',
     );
     expect(renderInlineMarkdown('&lt;script&gt;')).toBe('&lt;script&gt;');
+    expect(renderInlineMarkdown('`{type: "text"}`')).toBe('<code>{type: &quot;text&quot;}</code>');
   });
 
   it.each(['javascript:alert%281%29', 'data:text/html,test', 'vbscript:test', '//example.com', '/relative'])(

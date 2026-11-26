@@ -9,4 +9,298 @@ import type { ChatMessage } from './shared/gen_ai_chat_message';
 /**
  * Represents the list of input messages sent to the model.
  */
-export type InputMessages = ChatMessage[];
+export type InputMessages = ChatMessage[] | [DecideRequest] | [ExtractRequest];
+/**
+ * A question about the supplied content.
+ */
+export type Question = NoulQuestion | ChoiceQuestion | ScoreQuestion;
+/**
+ * The type of a field.
+ */
+export type ExtractFieldType =
+  | 'text'
+  | 'number'
+  | 'compute'
+  | 'date'
+  | 'time'
+  | 'datetime'
+  | 'duration'
+  | 'boolean'
+  | 'enum'
+  | 'object'
+  | 'list'
+  | 'estimate'
+  | 'forecast';
+
+/**
+ * Represents one or more questions about the content supplied in state.
+ */
+export interface DecideRequest {
+  /**
+   * The content all questions in this request refer to.
+   */
+  state?:
+    | string
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[];
+  /**
+   * Questions to ask about the content, each with a name you choose. The response uses those names to identify the answers.
+   */
+  questions?: {
+    [k: string]: Question;
+  };
+}
+/**
+ * A yes/no question or statement, answered with the probability of yes or true.
+ */
+export interface NoulQuestion {
+  /**
+   * Identifies a yes/no question or statement.
+   */
+  type: 'noul';
+  /**
+   * The yes/no question or statement to evaluate.
+   */
+  instructions?:
+    | string
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | null;
+  /**
+   * Criteria clarifying what counts as a yes or no answer.
+   */
+  criteria?: NoulCriteria | null;
+}
+/**
+ * Criteria defining what counts as a yes or no answer.
+ */
+export interface NoulCriteria {
+  /**
+   * What counts as a yes answer.
+   */
+  true?:
+    | string
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | null;
+  /**
+   * What counts as a no answer.
+   */
+  false?:
+    | string
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | null;
+}
+/**
+ * A question that selects one option from the choices you define.
+ */
+export interface ChoiceQuestion {
+  /**
+   * Identifies a question that selects one of the choices in criteria.
+   */
+  type: 'choice';
+  /**
+   * What the model should decide when choosing an option.
+   */
+  instructions?:
+    | string
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | null;
+  /**
+   * Choice names and descriptions of when each applies. A choice without a description is interpreted by its name alone.
+   */
+  criteria?: {
+    [k: string]:
+      | string
+      | {
+          [k: string]: unknown;
+        }
+      | unknown[]
+      | null;
+  };
+}
+/**
+ * A question that assigns a score using an ordered rubric.
+ */
+export interface ScoreQuestion {
+  /**
+   * Identifies a question that rates the content using the levels in criteria.
+   */
+  type: 'score';
+  /**
+   * What the model should rate.
+   */
+  instructions?:
+    | string
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | null;
+  /**
+   * Ordered descriptions of the score levels. Each description's position determines its score, starting at zero.
+   */
+  criteria?: (
+    | string
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+  )[];
+}
+/**
+ * Represents the request of a `gen_ai.extract` operation: the request body as the caller passed it, without the model. Keys that the caller did not set are left out. The array holds exactly one such request.
+ */
+export interface ExtractRequest {
+  /**
+   * The text that the model reads.
+   */
+  state?: string;
+  /**
+   * The field specs, keyed by field name.
+   */
+  fields: {
+    [k: string]: ExtractField;
+  };
+  /**
+   * The images that the model reads, each as a string.
+   */
+  images?: string[];
+  /**
+   * The PDF documents that the model reads, each as a string.
+   */
+  documents?: string[];
+  /**
+   * The date that anchors dates written without a year.
+   */
+  reference_date?: string;
+  /**
+   * The options that the caller passed to the provider.
+   */
+  options?: {
+    [k: string]: unknown;
+  };
+}
+/**
+ * Represents the spec of one field to extract. The field type sets which keys apply.
+ */
+export interface ExtractField {
+  /**
+   * The type of the field.
+   */
+  type: ExtractFieldType;
+  /**
+   * The instructions that tell the model what the field contains.
+   */
+  instructions?: string;
+  /**
+   * Whether the answer can be null.
+   */
+  nullable?: boolean;
+  /**
+   * The unit of the value, such as `USD` or `days`.
+   */
+  unit?: string;
+  /**
+   * Whether the value must be an integer.
+   */
+  integer?: boolean;
+  /**
+   * The number of decimal places of the value.
+   */
+  decimals?: number;
+  /**
+   * Whether the model can answer from knowledge that is not in the input.
+   */
+  knowledge?: boolean;
+  /**
+   * Whether the answer must be printed in the input.
+   */
+  source_only?: boolean;
+  /**
+   * The minimum length of a text answer.
+   */
+  minLength?: number;
+  /**
+   * The maximum length of a text answer.
+   */
+  maxLength?: number;
+  /**
+   * The regular expression that a text answer must match.
+   */
+  pattern?: string;
+  /**
+   * The minimum value of a number answer.
+   */
+  minimum?: number;
+  /**
+   * The maximum value of a number answer.
+   */
+  maximum?: number;
+  /**
+   * The exclusive minimum value of a number answer.
+   */
+  exclusiveMinimum?: number;
+  /**
+   * The exclusive maximum value of a number answer.
+   */
+  exclusiveMaximum?: number;
+  /**
+   * The permitted values of the answer.
+   */
+  enum?: unknown[];
+  /**
+   * The property specs of an object field, keyed by property name.
+   */
+  properties?: {
+    [k: string]: ExtractField;
+  };
+  /**
+   * The items of a list field: the name of the item type, or the spec of an object item.
+   */
+  items?: string | ExtractField;
+  /**
+   * The maximum number of items in a list answer.
+   */
+  max_items?: number;
+  /**
+   * The lower limit of an estimate or a forecast: a number, or an ISO date.
+   */
+  min?: number | string;
+  /**
+   * The upper limit of an estimate or a forecast: a number, or an ISO date.
+   */
+  max?: number | string;
+  /**
+   * The grid step of an estimate: a number, or `month` or `year`.
+   */
+  step?: number | string;
+  /**
+   * The scale of the estimate grid.
+   */
+  scale?: 'linear' | 'log';
+  /**
+   * The probability of null above which the value is null.
+   */
+  null_threshold?: number;
+  /**
+   * The number of steps of a forecast.
+   */
+  horizon?: number;
+  /**
+   * The interval between the steps of a forecast.
+   */
+  interval?: 'step' | 'minute' | 'hour' | 'day' | 'week' | 'month' | 'quarter' | 'year';
+}

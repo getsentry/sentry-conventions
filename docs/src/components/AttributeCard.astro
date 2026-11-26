@@ -5,6 +5,7 @@ import OtelBadge from './OtelBadge.astro';
 import TypeBadge from './TypeBadge.astro';
 import AttributeLink from './AttributeLink.astro';
 import InfoTooltip from './InfoTooltip.astro';
+import DottedName from './DottedName.astro';
 import type { Attribute } from '../content.config';
 import { parseAttributeId } from '../utils/category';
 import { renderInlineMarkdown } from '../utils/markdown';
@@ -42,9 +43,9 @@ const examples = attribute.examples ?? (attribute.example !== undefined ? [attri
   data-pagefind-body
 >
   <div class="flex flex-wrap items-start justify-between gap-3 mb-3">
-    <h3 class="flex items-center gap-2 text-base m-0" data-pagefind-meta="title">
+    <h3 class="flex flex-wrap items-center gap-2 text-base m-0" data-pagefind-meta="title">
       <a href={`#${anchorId}`} class="anchor-link group/anchor flex items-center gap-1.5 no-underline">
-        <code class="text-base p-0 bg-transparent border-none text-accent" data-pagefind-index-attrs="data-key" data-key={attribute.key}>{attribute.key}</code>
+        <code class="text-base p-0 bg-transparent border-none text-accent" data-pagefind-index-attrs="data-key" data-key={attribute.key}><DottedName name={attribute.key} /></code>
         <svg class="anchor-icon w-4 h-4 text-text-muted opacity-0 group-hover/anchor:opacity-100 transition-opacity" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
           <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
@@ -72,14 +73,14 @@ const examples = attribute.examples ?? (attribute.example !== undefined ? [attri
   
   <div class="flex flex-col gap-2">
     {attribute.apply_scrubbing.reason && (
-      <div class="flex items-baseline gap-3 text-sm">
+      <div class="flex flex-col items-start gap-1 text-sm sm:flex-row sm:items-baseline sm:gap-3">
         <span class="text-text-muted min-w-[100px] flex-shrink-0">Scrubbing Reason</span>
         <span class="text-text-secondary" set:html={renderInlineMarkdown(attribute.apply_scrubbing.reason)} />
       </div>
     )}
     
     {examples.length > 0 && (
-      <div class="flex items-baseline gap-3 text-sm">
+      <div class="flex flex-col items-start gap-1 text-sm sm:flex-row sm:items-baseline sm:gap-3">
         <span class="text-text-muted min-w-[100px] flex-shrink-0">{attribute.examples ? 'Examples' : 'Example'}</span>
         <span class="flex flex-wrap gap-1">
           {examples.map((example) => (
@@ -90,13 +91,13 @@ const examples = attribute.examples ?? (attribute.example !== undefined ? [attri
     )}
     
     {attribute.enum_values && attribute.enum_values.length > 0 && (
-      <div class="flex items-baseline gap-3 text-sm">
+      <div class="flex flex-col items-start gap-1 text-sm sm:flex-row sm:items-baseline sm:gap-3">
         <span class="text-text-muted min-w-[100px] flex-shrink-0">Well-defined Values</span>
         <ul class="flex flex-col gap-1 m-0 list-none p-0">
           {attribute.enum_values.map(({ value, brief }) => (
             <li class="flex items-baseline gap-2">
-              <code class="text-xs">{value}</code>
-              {brief && <span class="text-xs text-text-secondary" set:html={renderInlineMarkdown(brief)} />}
+              <code class="text-xs shrink-0 max-w-full">{value}</code>
+              {brief && <span class="text-xs text-text-secondary min-w-0" set:html={renderInlineMarkdown(brief)} />}
             </li>
           ))}
         </ul>
@@ -104,10 +105,10 @@ const examples = attribute.examples ?? (attribute.example !== undefined ? [attri
     )}
     
     {attribute.alias && attribute.alias.length > 0 && (
-      <div class="flex items-baseline gap-3 text-sm">
+      <div class="flex flex-col items-start gap-1 text-sm sm:flex-row sm:items-baseline sm:gap-3">
         <span class="text-text-muted min-w-[100px] flex-shrink-0">Aliases</span>
-        <span class="text-text-secondary">
-          {attribute.alias.map((a) => <span class="mr-1"><AttributeLink name={a} /></span>)}
+        <span class="flex flex-wrap gap-1">
+          {attribute.alias.map((a) => <AttributeLink name={a} />)}
         </span>
       </div>
     )}
@@ -119,12 +120,12 @@ const examples = attribute.examples ?? (attribute.example !== undefined ? [attri
           <InfoTooltip text="How this attribute is exposed in Sentry search. Query it by this name instead of the attribute key." />
         </div>
         <div class="flex flex-col gap-1.5">
-          <div class="flex items-baseline gap-3 text-sm">
+          <div class="flex flex-col items-start gap-1 text-sm sm:flex-row sm:items-baseline sm:gap-3">
             <span class="text-text-muted min-w-[84px] flex-shrink-0" title="The name to use when querying this attribute in Sentry search">Name</span>
             <code class="text-xs">{attribute.search_alias.name}</code>
           </div>
 
-          <div class="flex items-baseline gap-3 text-sm">
+          <div class="flex flex-col items-start gap-1 text-sm sm:flex-row sm:items-baseline sm:gap-3">
             <span class="text-text-muted min-w-[84px] flex-shrink-0" title="The type Sentry search exposes for this attribute">Type</span>
             {attribute.search_alias.type ? (
               <code class="text-xs">{attribute.search_alias.type}</code>
@@ -136,7 +137,7 @@ const examples = attribute.examples ?? (attribute.example !== undefined ? [attri
           </div>
 
           {attribute.search_alias.deprecated_aliases && attribute.search_alias.deprecated_aliases.length > 0 && (
-            <div class="flex items-baseline gap-3 text-sm">
+            <div class="flex flex-col items-start gap-1 text-sm sm:flex-row sm:items-baseline sm:gap-3">
               <span class="text-text-muted min-w-[84px] flex-shrink-0" title="Deprecated names that are still accepted in search queries">Deprecated</span>
               <span class="flex flex-wrap items-baseline gap-1">
                 {attribute.search_alias.deprecated_aliases.map((a) => (
@@ -150,7 +151,7 @@ const examples = attribute.examples ?? (attribute.example !== undefined ? [attri
     )}
 
     {attribute.has_dynamic_suffix && (
-      <div class="flex items-baseline gap-3 text-sm">
+      <div class="flex flex-col items-start gap-1 text-sm sm:flex-row sm:items-baseline sm:gap-3">
         <span class="text-text-muted min-w-[100px] flex-shrink-0">Dynamic Suffix</span>
         <span class="text-text-secondary">Yes - the key contains dynamic parts</span>
       </div>
