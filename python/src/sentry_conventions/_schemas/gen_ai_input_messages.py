@@ -27,13 +27,70 @@ class ScoreQuestion(TypedDict):
     criteria: NotRequired[list[str | dict[str, Any] | list[Any]]]
 
 
+ExtractFieldType: TypeAlias = Literal[
+    "text",
+    "number",
+    "compute",
+    "date",
+    "time",
+    "datetime",
+    "duration",
+    "boolean",
+    "enum",
+    "object",
+    "list",
+    "estimate",
+    "forecast",
+]
+
+
 class NoulQuestion(TypedDict):
     type: Literal["noul"]
     instructions: NotRequired[str | dict[str, Any] | list[Any] | None]
     criteria: NotRequired[NoulCriteria | None]
 
 
+class ExtractField(TypedDict):
+    type: ExtractFieldType
+    instructions: NotRequired[str]
+    nullable: NotRequired[bool]
+    unit: NotRequired[str]
+    integer: NotRequired[bool]
+    decimals: NotRequired[int]
+    knowledge: NotRequired[bool]
+    source_only: NotRequired[bool]
+    minLength: NotRequired[int]
+    maxLength: NotRequired[int]
+    pattern: NotRequired[str]
+    minimum: NotRequired[float]
+    maximum: NotRequired[float]
+    exclusiveMinimum: NotRequired[float]
+    exclusiveMaximum: NotRequired[float]
+    enum: NotRequired[list[Any]]
+    properties: NotRequired[dict[str, ExtractField]]
+    items: NotRequired[str | ExtractField]
+    max_items: NotRequired[int]
+    min: NotRequired[float | str]
+    max: NotRequired[float | str]
+    step: NotRequired[float | str]
+    scale: NotRequired[Literal["linear", "log"]]
+    null_threshold: NotRequired[float]
+    horizon: NotRequired[int]
+    interval: NotRequired[
+        Literal["step", "minute", "hour", "day", "week", "month", "quarter", "year"]
+    ]
+
+
 Question: TypeAlias = NoulQuestion | ChoiceQuestion | ScoreQuestion
+
+
+class ExtractRequest(TypedDict):
+    state: NotRequired[str]
+    fields: dict[str, ExtractField]
+    images: NotRequired[list[str]]
+    documents: NotRequired[list[str]]
+    reference_date: NotRequired[str]
+    options: NotRequired[dict[str, Any]]
 
 
 class DecideRequest(TypedDict):
@@ -41,4 +98,6 @@ class DecideRequest(TypedDict):
     questions: NotRequired[dict[str, Question]]
 
 
-InputMessages: TypeAlias = list[ChatMessage] | list[DecideRequest]
+InputMessages: TypeAlias = (
+    list[ChatMessage] | list[DecideRequest] | list[ExtractRequest]
+)

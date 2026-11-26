@@ -1,0 +1,34 @@
+{
+  "key": "http.response.delivery_type",
+  "brief": "The delivery type of the resource, as reported by the browser's PerformanceResourceTiming.deliveryType property.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "additional_context": ["Browsers may add more values later."],
+  "is_in_otel": false,
+  "visibility": "public",
+  "examples": ["cache", "navigational-prefetch", ""],
+  "enum_values": [
+    {
+      "value": "cache",
+      "brief": "The resource was retrieved from a cache."
+    },
+    {
+      "value": "navigational-prefetch",
+      "brief": "The resource was retrieved from a prefetched response, for example one that the Speculation Rules API stored."
+    },
+    {
+      "value": "",
+      "brief": "The resource was not retrieved from a cache or by navigational prefetch."
+    }
+  ],
+  "alias": ["http.response_delivery_type"],
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [825],
+      "description": "Added http.response.delivery_type attribute"
+    }
+  ]
+}

@@ -23,9 +23,12 @@ export type {
   NoulCriteria,
   ChoiceQuestion,
   ScoreQuestion,
+  ExtractRequest,
+  ExtractField,
+  ExtractFieldType,
 } from './_schemas/gen_ai_input_messages';
 
-export type { OutputMessages } from './_schemas/gen_ai_output_messages';
+export type { OutputMessages, ExtractResponse, ExtractAnswer, ExtractSpan } from './_schemas/gen_ai_output_messages';
 
 export type { SystemInstructions } from './_schemas/gen_ai_system_instructions';
 
@@ -5945,6 +5948,27 @@ export const DB_REDIS_PARAMETERS = 'db.redis.parameters';
  */
 export type DB_REDIS_PARAMETERS_TYPE = Array<string>;
 
+// Path: model/attributes/db/db__response__returned_rows.json
+
+/**
+ * The number of rows returned by the database operation. `db.response.returned_rows`
+ *
+ * Attribute Value Type: `number` {@link DB_RESPONSE_RETURNED_ROWS_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example 10
+ */
+export const DB_RESPONSE_RETURNED_ROWS = 'db.response.returned_rows';
+
+/**
+ * Type for {@link DB_RESPONSE_RETURNED_ROWS} db.response.returned_rows
+ */
+export type DB_RESPONSE_RETURNED_ROWS_TYPE = number;
+
 // Path: model/attributes/db/db__response__status_code.json
 
 /**
@@ -8466,7 +8490,7 @@ export type GEN_AI_FUNCTION_ID_TYPE = string;
 // Path: model/attributes/gen_ai/gen_ai__input__messages.json
 
 /**
- * The messages passed to the model. It has to be a stringified version of an array of objects in the format `{role: "...", parts: [...]}`. The `role` must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. Each part is an object with a `type`, such as `{type: "text", content: "..."}`. Other part types include `"reasoning"`, `"tool_call"`, and `"tool_call_response"`. Put the model's thinking in a `{type: "reasoning", content: "..."}` part, not a `"text"` part. Sentry shows reasoning separately from user-visible messages. The legacy format `{role, content}` is also accepted. The first example shows this shape. Some operations use a different shape. See the additional context. `gen_ai.input.messages`
+ * The messages passed to the model. `gen_ai.input.messages`
  *
  * Attribute Value Type: `string` {@link GEN_AI_INPUT_MESSAGES_TYPE}
  *
@@ -11410,6 +11434,62 @@ export const HTTP_RESPONSE_CONTENT_LENGTH_UNCOMPRESSED = 'http.response_content_
  * Type for {@link HTTP_RESPONSE_CONTENT_LENGTH_UNCOMPRESSED} http.response_content_length_uncompressed
  */
 export type HTTP_RESPONSE_CONTENT_LENGTH_UNCOMPRESSED_TYPE = number;
+
+// Path: model/attributes/http/http__response__delivery_type.json
+
+/**
+ * The delivery type of the resource, as reported by the browser's PerformanceResourceTiming.deliveryType property. `http.response.delivery_type`
+ *
+ * Attribute Value Type: `string` {@link HTTP_RESPONSE_DELIVERY_TYPE_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Well-defined Values:
+ * - `cache` - The resource was retrieved from a cache.
+ * - `navigational-prefetch` - The resource was retrieved from a prefetched response, for example one that the Speculation Rules API stored.
+ * - `` - The resource was not retrieved from a cache or by navigational prefetch.
+ *
+ * Aliases: {@link _HTTP_RESPONSE_DELIVERY_TYPE} `http.response_delivery_type`
+ *
+ * @example "cache"
+ * @example "navigational-prefetch"
+ * @example ""
+ */
+export const HTTP_RESPONSE_DELIVERY_TYPE = 'http.response.delivery_type';
+
+/**
+ * Type for {@link HTTP_RESPONSE_DELIVERY_TYPE} http.response.delivery_type
+ */
+export type HTTP_RESPONSE_DELIVERY_TYPE_TYPE = string;
+
+// Path: model/attributes/http/http__response_delivery_type.json
+
+/**
+ * The delivery type of the resource, as reported by the browser's PerformanceResourceTiming.deliveryType property. `http.response_delivery_type`
+ *
+ * Attribute Value Type: `string` {@link _HTTP_RESPONSE_DELIVERY_TYPE_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link HTTP_RESPONSE_DELIVERY_TYPE} `http.response.delivery_type`
+ *
+ * @deprecated Use {@link HTTP_RESPONSE_DELIVERY_TYPE} (http.response.delivery_type) instead - Use http.response.delivery_type, which follows the http.response.* namespace.
+ * @example "cache"
+ * @example "navigational-prefetch"
+ * @example ""
+ */
+export const _HTTP_RESPONSE_DELIVERY_TYPE = 'http.response_delivery_type';
+
+/**
+ * Type for {@link _HTTP_RESPONSE_DELIVERY_TYPE} http.response_delivery_type
+ */
+export type _HTTP_RESPONSE_DELIVERY_TYPE_TYPE = string;
 
 // Path: model/attributes/http/http__response__header__content-length.json
 
@@ -22974,6 +23054,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'db.redis.connection': 'string',
   'db.redis.key': 'string',
   'db.redis.parameters': 'string[]',
+  'db.response.returned_rows': 'integer',
   'db.response.status_code': 'string',
   'db.sql.bindings': 'string[]',
   'db.statement': 'string',
@@ -23217,6 +23298,8 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'http.response.body.size': 'integer',
   'http.response_content_length': 'integer',
   'http.response_content_length_uncompressed': 'integer',
+  'http.response.delivery_type': 'string',
+  'http.response_delivery_type': 'string',
   'http.response.header.content-length': 'string',
   'http.response.header.<key>': 'string[]',
   'http.response.size': 'integer',
@@ -23977,6 +24060,7 @@ export type AttributeName =
   | typeof DB_REDIS_CONNECTION
   | typeof DB_REDIS_KEY
   | typeof DB_REDIS_PARAMETERS
+  | typeof DB_RESPONSE_RETURNED_ROWS
   | typeof DB_RESPONSE_STATUS_CODE
   | typeof DB_SQL_BINDINGS
   | typeof DB_STATEMENT
@@ -24220,6 +24304,8 @@ export type AttributeName =
   | typeof HTTP_RESPONSE_BODY_SIZE
   | typeof HTTP_RESPONSE_CONTENT_LENGTH
   | typeof HTTP_RESPONSE_CONTENT_LENGTH_UNCOMPRESSED
+  | typeof HTTP_RESPONSE_DELIVERY_TYPE
+  | typeof _HTTP_RESPONSE_DELIVERY_TYPE
   | typeof HTTP_RESPONSE_HEADER_CONTENT_LENGTH
   | typeof HTTP_RESPONSE_HEADER_KEY
   | typeof HTTP_RESPONSE_SIZE
@@ -29054,6 +29140,19 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: ['test', '*'],
     changelog: [{ version: '0.0.0' }],
   },
+  'db.response.returned_rows': {
+    brief: 'The number of rows returned by the database operation.',
+    type: 'integer',
+    keys: ['db.response.returned_rows'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 10,
+    examples: [10],
+    changelog: [{ version: 'next', prs: [826], description: 'Added db.response.returned_rows attribute' }],
+  },
   'db.response.status_code': {
     brief:
       'Database response status code. The status code returned by the database. Usually it represents an error code, but may also represent partial success, warning, or differentiate between various types of successful outcomes.',
@@ -30880,8 +30979,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     changelog: [{ version: '0.5.0', prs: [308], description: 'Added gen_ai.function_id attribute' }],
   },
   'gen_ai.input.messages': {
-    brief:
-      'The messages passed to the model. It has to be a stringified version of an array of objects in the format `{role: "...", parts: [...]}`. The `role` must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. Each part is an object with a `type`, such as `{type: "text", content: "..."}`. Other part types include `"reasoning"`, `"tool_call"`, and `"tool_call_response"`. Put the model\'s thinking in a `{type: "reasoning", content: "..."}` part, not a `"text"` part. Sentry shows reasoning separately from user-visible messages. The legacy format `{role, content}` is also accepted. The first example shows this shape. Some operations use a different shape. See the additional context.',
+    brief: 'The messages passed to the model.',
     type: 'string',
     keys: [
       'gen_ai.input.messages',
@@ -30907,6 +31005,11 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: ['ai.texts', 'ai.prompt.messages', 'gen_ai.prompt', 'ai.prompt'],
     changelog: [
       {
+        version: 'next',
+        prs: [832, 833],
+        description: 'Remove informal format descriptions to prevent duplication with the structured schema.',
+      },
+      {
         version: '0.28.0',
         prs: [728],
         description:
@@ -30916,10 +31019,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       { version: '0.21.0', prs: [583], description: 'Added ai.prompt as an alias' },
       { version: '0.5.0', prs: [264] },
       { version: '0.4.0', prs: [221] },
-    ],
-    additionalContext: [
-      'For `gen_ai.decide` operations, the array holds one object `{state: ..., questions: {...}}`. `state` is the evaluated state. `questions` holds the questions keyed by name, as the caller passed them. Replace binary data in `state`, including `data:` URLs, with the string `"[Blob substitute]"`. The second example shows this shape.',
-      'For `gen_ai.extract` operations, the array holds one object `{state?: string, fields: {<name>: <field spec>}, images?: string[], reference_date?: string, options?: {...}}`. This object is the request body as the caller passed it, without `model`. Do not change the values, and leave out the keys that the caller did not set. Do not record the image data. Replace each image with the string `"[Blob substitute]"`. `state` is the text that the model reads. `fields` holds the field specs keyed by field name. Set the model in `gen_ai.request.model`. The third example shows this shape.',
     ],
   },
   'gen_ai.memory.query.text': {
@@ -31061,6 +31160,11 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     ],
     aliases: ['ai.response.toolCalls', 'ai.response.text'],
     changelog: [
+      {
+        version: 'next',
+        prs: [835],
+        description: 'Make truncated optional in the extraction message shape for gen_ai.extract',
+      },
       { version: '0.34.0', prs: [802], description: 'Aligned the brief with OTel and added additional context.' },
       {
         version: '0.28.0',
@@ -31075,7 +31179,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'Each message represents a single output choice/candidate generated by the model. Each message corresponds to exactly one generation (choice/candidate) and vice versa - one choice cannot be split across multiple messages or one message cannot contain parts from multiple choices.',
       'When an operation ends in an error, this attribute is only set when the operation produced output, including partial streamed output. Instrumentation does not synthesize output content for a failed operation.',
       'For `gen_ai.decide` operations, the array holds one object `{answers: {...}}`. `answers` holds the answers keyed by question name, as the provider returned them. The second example shows this shape.',
-      'For `gen_ai.extract` operations, the array holds one object `{answers: {<name>: <answer>}, truncated: boolean, state_text?: string}`. This object is the response body as the provider returned it, without `model` and `usage`. Do not change the values. `answers` holds one answer for each field in the input, keyed by field name. A field that the model cannot determine has a `value` of `null`. `span` and `spans` are `[start, end]` character offsets into `state` (or into `state_text`, if the provider returns it), and `end` is exclusive. Set the model in `gen_ai.response.model` and the token counts in `gen_ai.usage.input_tokens` and `gen_ai.usage.output_tokens`. The third example shows this shape.',
+      'For `gen_ai.extract` operations, the array holds one object `{answers: {<name>: <answer>}, truncated?: boolean, state_text?: string}`. This object is the response body as the provider returned it, without `model` and `usage`. Do not change the values. Set `truncated` only when the provider returns it. `answers` holds one answer for each field in the input, keyed by field name. A field that the model cannot determine has a `value` of `null`. `span` and `spans` are `[start, end]` character offsets into `state` (or into `state_text`, if the provider returns it), and `end` is exclusive. Set the model in `gen_ai.response.model` and the token counts in `gen_ai.usage.input_tokens` and `gen_ai.usage.output_tokens`. The third example shows this shape.',
     ],
   },
   'gen_ai.pipeline.name': {
@@ -33273,6 +33377,48 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
         prs: [574],
         description:
           'Added http.response_content_length_uncompressed attribute, deprecated in favor of http.response.body.decoded_size',
+      },
+    ],
+  },
+  'http.response.delivery_type': {
+    brief:
+      "The delivery type of the resource, as reported by the browser's PerformanceResourceTiming.deliveryType property.",
+    type: 'string',
+    keys: ['http.response.delivery_type', 'http.response_delivery_type'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'cache',
+    examples: ['cache', 'navigational-prefetch', ''],
+    aliases: ['http.response_delivery_type'],
+    changelog: [{ version: 'next', prs: [825], description: 'Added http.response.delivery_type attribute' }],
+    additionalContext: ['Browsers may add more values later.'],
+  },
+  'http.response_delivery_type': {
+    brief:
+      "The delivery type of the resource, as reported by the browser's PerformanceResourceTiming.deliveryType property.",
+    type: 'string',
+    keys: ['http.response.delivery_type', 'http.response_delivery_type'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'cache',
+    examples: ['cache', 'navigational-prefetch', ''],
+    deprecation: {
+      replacement: 'http.response.delivery_type',
+      reason: 'Use http.response.delivery_type, which follows the http.response.* namespace.',
+      status: 'backfill',
+    },
+    aliases: ['http.response.delivery_type'],
+    changelog: [
+      {
+        version: 'next',
+        prs: [825],
+        description: 'Added http.response_delivery_type attribute, deprecated in favor of http.response.delivery_type',
       },
     ],
   },
@@ -42146,6 +42292,7 @@ export type Attributes = {
   [DB_REDIS_CONNECTION]?: DB_REDIS_CONNECTION_TYPE;
   [DB_REDIS_KEY]?: DB_REDIS_KEY_TYPE;
   [DB_REDIS_PARAMETERS]?: DB_REDIS_PARAMETERS_TYPE;
+  [DB_RESPONSE_RETURNED_ROWS]?: DB_RESPONSE_RETURNED_ROWS_TYPE;
   [DB_RESPONSE_STATUS_CODE]?: DB_RESPONSE_STATUS_CODE_TYPE;
   [DB_SQL_BINDINGS]?: DB_SQL_BINDINGS_TYPE;
   [DB_STATEMENT]?: DB_STATEMENT_TYPE;
@@ -42389,6 +42536,8 @@ export type Attributes = {
   [HTTP_RESPONSE_BODY_SIZE]?: HTTP_RESPONSE_BODY_SIZE_TYPE;
   [HTTP_RESPONSE_CONTENT_LENGTH]?: HTTP_RESPONSE_CONTENT_LENGTH_TYPE;
   [HTTP_RESPONSE_CONTENT_LENGTH_UNCOMPRESSED]?: HTTP_RESPONSE_CONTENT_LENGTH_UNCOMPRESSED_TYPE;
+  [HTTP_RESPONSE_DELIVERY_TYPE]?: HTTP_RESPONSE_DELIVERY_TYPE_TYPE;
+  [_HTTP_RESPONSE_DELIVERY_TYPE]?: _HTTP_RESPONSE_DELIVERY_TYPE_TYPE;
   [HTTP_RESPONSE_HEADER_CONTENT_LENGTH]?: HTTP_RESPONSE_HEADER_CONTENT_LENGTH_TYPE;
   [HTTP_RESPONSE_HEADER_KEY]?: HTTP_RESPONSE_HEADER_KEY_TYPE;
   [HTTP_RESPONSE_SIZE]?: HTTP_RESPONSE_SIZE_TYPE;

@@ -159,6 +159,7 @@ class _AttributeNamesMeta(type):
         "_HTTP_REQUEST_METHOD",
         "HTTP_RESPONSE_CONTENT_LENGTH",
         "HTTP_RESPONSE_CONTENT_LENGTH_UNCOMPRESSED",
+        "_HTTP_RESPONSE_DELIVERY_TYPE",
         "HTTP_RESPONSE_TRANSFER_SIZE",
         "HTTP_SCHEME",
         "HTTP_SERVER_NAME",
@@ -3497,6 +3498,17 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: ["test","*"]
     """
 
+    # Path: model/attributes/db/db__response__returned_rows.json
+    DB_RESPONSE_RETURNED_ROWS = "db.response.returned_rows"
+    """The number of rows returned by the database operation.
+
+    Type: int
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: 10
+    """
+
     # Path: model/attributes/db/db__response__status_code.json
     DB_RESPONSE_STATUS_CODE = "db.response.status_code"
     """Database response status code. The status code returned by the database. Usually it represents an error code, but may also represent partial success, warning, or differentiate between various types of successful outcomes.
@@ -4827,7 +4839,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     # Path: model/attributes/gen_ai/gen_ai__input__messages.json
     GEN_AI_INPUT_MESSAGES = "gen_ai.input.messages"
-    """The messages passed to the model. It has to be a stringified version of an array of objects in the format `{role: "...", parts: [...]}`. The `role` must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. Each part is an object with a `type`, such as `{type: "text", content: "..."}`. Other part types include `"reasoning"`, `"tool_call"`, and `"tool_call_response"`. Put the model's thinking in a `{type: "reasoning", content: "..."}` part, not a `"text"` part. Sentry shows reasoning separately from user-visible messages. The legacy format `{role, content}` is also accepted. The first example shows this shape. Some operations use a different shape. See the additional context.
+    """The messages passed to the model.
 
     Type: str
     Apply Scrubbing: manual
@@ -6380,6 +6392,24 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: 123
     """
 
+    # Path: model/attributes/http/http__response__delivery_type.json
+    HTTP_RESPONSE_DELIVERY_TYPE = "http.response.delivery_type"
+    """The delivery type of the resource, as reported by the browser's PerformanceResourceTiming.deliveryType property.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Well-defined Values:
+    - `cache` - The resource was retrieved from a cache.
+    - `navigational-prefetch` - The resource was retrieved from a prefetched response, for example one that the Speculation Rules API stored.
+    - `` - The resource was not retrieved from a cache or by navigational prefetch.
+    Aliases: http.response_delivery_type
+    Example: "cache"
+    Example: "navigational-prefetch"
+    Example: ""
+    """
+
     # Path: model/attributes/http/http__response__header__[key].json
     HTTP_RESPONSE_HEADER_KEY = "http.response.header.<key>"
     """HTTP response headers, <key> being the lower-cased, but otherwise unchanged HTTP Header name, the value being the header values.
@@ -6467,6 +6497,21 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Aliases: http.response.body.decoded_size, http.decoded_response_content_length
     DEPRECATED: Use http.response.body.decoded_size instead
     Example: 456
+    """
+
+    # Path: model/attributes/http/http__response_delivery_type.json
+    _HTTP_RESPONSE_DELIVERY_TYPE = "http.response_delivery_type"
+    """The delivery type of the resource, as reported by the browser's PerformanceResourceTiming.deliveryType property.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: http.response.delivery_type
+    DEPRECATED: Use http.response.delivery_type instead - Use http.response.delivery_type, which follows the http.response.* namespace.
+    Example: "cache"
+    Example: "navigational-prefetch"
+    Example: ""
     """
 
     # Path: model/attributes/http/http__response_transfer_size.json
@@ -17627,6 +17672,23 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
+    "db.response.returned_rows": AttributeMetadata(
+        brief="The number of rows returned by the database operation.",
+        type=AttributeType.INTEGER,
+        keys=("db.response.returned_rows",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example=10,
+        examples=[10],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[826],
+                description="Added db.response.returned_rows attribute",
+            ),
+        ],
+    ),
     "db.response.status_code": AttributeMetadata(
         brief="Database response status code. The status code returned by the database. Usually it represents an error code, but may also represent partial success, warning, or differentiate between various types of successful outcomes.",
         type=AttributeType.STRING,
@@ -19842,7 +19904,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "gen_ai.input.messages": AttributeMetadata(
-        brief='The messages passed to the model. It has to be a stringified version of an array of objects in the format `{role: "...", parts: [...]}`. The `role` must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. Each part is an object with a `type`, such as `{type: "text", content: "..."}`. Other part types include `"reasoning"`, `"tool_call"`, and `"tool_call_response"`. Put the model\'s thinking in a `{type: "reasoning", content: "..."}` part, not a `"text"` part. Sentry shows reasoning separately from user-visible messages. The legacy format `{role, content}` is also accepted. The first example shows this shape. Some operations use a different shape. See the additional context.',
+        brief="The messages passed to the model.",
         type=AttributeType.STRING,
         keys=(
             "gen_ai.input.messages",
@@ -19865,6 +19927,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["ai.texts", "ai.prompt.messages", "gen_ai.prompt", "ai.prompt"],
         changelog=[
             ChangelogEntry(
+                version="next",
+                prs=[832, 833],
+                description="Remove informal format descriptions to prevent duplication with the structured schema.",
+            ),
+            ChangelogEntry(
                 version="0.28.0",
                 prs=[728],
                 description="Describe the extraction message shape for gen_ai.extract and move operation-specific shapes to additional context",
@@ -19879,10 +19946,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
             ChangelogEntry(version="0.5.0", prs=[264]),
             ChangelogEntry(version="0.4.0", prs=[221]),
-        ],
-        additional_context=[
-            'For `gen_ai.decide` operations, the array holds one object `{state: ..., questions: {...}}`. `state` is the evaluated state. `questions` holds the questions keyed by name, as the caller passed them. Replace binary data in `state`, including `data:` URLs, with the string `"[Blob substitute]"`. The second example shows this shape.',
-            'For `gen_ai.extract` operations, the array holds one object `{state?: string, fields: {<name>: <field spec>}, images?: string[], reference_date?: string, options?: {...}}`. This object is the request body as the caller passed it, without `model`. Do not change the values, and leave out the keys that the caller did not set. Do not record the image data. Replace each image with the string `"[Blob substitute]"`. `state` is the text that the model reads. `fields` holds the field specs keyed by field name. Set the model in `gen_ai.request.model`. The third example shows this shape.',
         ],
     ),
     "gen_ai.memory.query.text": AttributeMetadata(
@@ -20035,6 +20098,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["ai.response.toolCalls", "ai.response.text"],
         changelog=[
             ChangelogEntry(
+                version="next",
+                prs=[835],
+                description="Make truncated optional in the extraction message shape for gen_ai.extract",
+            ),
+            ChangelogEntry(
                 version="0.34.0",
                 prs=[802],
                 description="Aligned the brief with OTel and added additional context.",
@@ -20055,7 +20123,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "Each message represents a single output choice/candidate generated by the model. Each message corresponds to exactly one generation (choice/candidate) and vice versa - one choice cannot be split across multiple messages or one message cannot contain parts from multiple choices.",
             "When an operation ends in an error, this attribute is only set when the operation produced output, including partial streamed output. Instrumentation does not synthesize output content for a failed operation.",
             "For `gen_ai.decide` operations, the array holds one object `{answers: {...}}`. `answers` holds the answers keyed by question name, as the provider returned them. The second example shows this shape.",
-            "For `gen_ai.extract` operations, the array holds one object `{answers: {<name>: <answer>}, truncated: boolean, state_text?: string}`. This object is the response body as the provider returned it, without `model` and `usage`. Do not change the values. `answers` holds one answer for each field in the input, keyed by field name. A field that the model cannot determine has a `value` of `null`. `span` and `spans` are `[start, end]` character offsets into `state` (or into `state_text`, if the provider returns it), and `end` is exclusive. Set the model in `gen_ai.response.model` and the token counts in `gen_ai.usage.input_tokens` and `gen_ai.usage.output_tokens`. The third example shows this shape.",
+            "For `gen_ai.extract` operations, the array holds one object `{answers: {<name>: <answer>}, truncated?: boolean, state_text?: string}`. This object is the response body as the provider returned it, without `model` and `usage`. Do not change the values. Set `truncated` only when the provider returns it. `answers` holds one answer for each field in the input, keyed by field name. A field that the model cannot determine has a `value` of `null`. `span` and `spans` are `[start, end]` character offsets into `state` (or into `state_text`, if the provider returns it), and `end` is exclusive. Set the model in `gen_ai.response.model` and the token counts in `gen_ai.usage.input_tokens` and `gen_ai.usage.output_tokens`. The third example shows this shape.",
         ],
     ),
     "gen_ai.pipeline.name": AttributeMetadata(
@@ -22600,6 +22668,28 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         search_alias=SearchAlias(name="http.response.body.size", type="byte"),
     ),
+    "http.response.delivery_type": AttributeMetadata(
+        brief="The delivery type of the resource, as reported by the browser's PerformanceResourceTiming.deliveryType property.",
+        type=AttributeType.STRING,
+        keys=(
+            "http.response.delivery_type",
+            "http.response_delivery_type",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="cache",
+        examples=["cache", "navigational-prefetch", ""],
+        aliases=["http.response_delivery_type"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[825],
+                description="Added http.response.delivery_type attribute",
+            ),
+        ],
+        additional_context=["Browsers may add more values later."],
+    ),
     "http.response.header.<key>": AttributeMetadata(
         brief="HTTP response headers, <key> being the lower-cased, but otherwise unchanged HTTP Header name, the value being the header values.",
         type=AttributeType.STRING_ARRAY,
@@ -22749,6 +22839,32 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
                 version="0.21.0",
                 prs=[574],
                 description="Added http.response_content_length_uncompressed attribute, deprecated in favor of http.response.body.decoded_size",
+            ),
+        ],
+    ),
+    "http.response_delivery_type": AttributeMetadata(
+        brief="The delivery type of the resource, as reported by the browser's PerformanceResourceTiming.deliveryType property.",
+        type=AttributeType.STRING,
+        keys=(
+            "http.response.delivery_type",
+            "http.response_delivery_type",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="cache",
+        examples=["cache", "navigational-prefetch", ""],
+        deprecation=DeprecationInfo(
+            replacement="http.response.delivery_type",
+            reason="Use http.response.delivery_type, which follows the http.response.* namespace.",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["http.response.delivery_type"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[825],
+                description="Added http.response_delivery_type attribute, deprecated in favor of http.response.delivery_type",
             ),
         ],
     ),

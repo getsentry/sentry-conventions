@@ -1,0 +1,12 @@
+---
+// Renders a dotted name like `gen_ai.usage.input_tokens` with a line break
+// opportunity after each dot, so long names wrap at segment boundaries on
+// narrow screens instead of mid-word.
+interface Props {
+  name: string;
+}
+
+const parts = Astro.props.name.split('.');
+---
+
+{parts.map((part, i) => (i < parts.length - 1 ? <>{part}.<wbr /></> : part))}
