@@ -9,7 +9,31 @@ from typing_extensions import NotRequired
 
 from .shared.gen_ai_chat_message import ChatMessage
 
+
+class NoulAnswer(TypedDict):
+    type: Literal["noul"]
+    noul: float
+
+
+class ChoiceAnswer(TypedDict):
+    type: Literal["choice"]
+    choice: str
+    confidence: float
+    probabilities: dict[str, float]
+
+
+class ScoreAnswer(TypedDict):
+    type: Literal["score"]
+    score: float
+    confidence: float
+    legend: dict[str, str | dict[str, Any] | list[Any]]
+    probabilities: dict[str, float]
+
+
 ExtractSpan: TypeAlias = list[int]
+
+
+Answer: TypeAlias = NoulAnswer | ChoiceAnswer | ScoreAnswer
 
 
 class ExtractAnswer(TypedDict):
@@ -50,10 +74,16 @@ class ExtractAnswer(TypedDict):
     steps: NotRequired[list[dict[str, Any]]]
 
 
+class DecideResponse(TypedDict):
+    answers: dict[str, Answer]
+
+
 class ExtractResponse(TypedDict):
     answers: dict[str, ExtractAnswer]
     truncated: NotRequired[bool]
     state_text: NotRequired[str]
 
 
-OutputMessages: TypeAlias = list[ChatMessage] | list[ExtractResponse]
+OutputMessages: TypeAlias = (
+    list[ChatMessage] | list[DecideResponse] | list[ExtractResponse]
+)
