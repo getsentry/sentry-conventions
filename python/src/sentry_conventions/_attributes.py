@@ -10676,6 +10676,39 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: 0.5
     """
 
+    # Path: model/attributes/sentry/sentry__severity_number.json
+    SENTRY_SEVERITY_NUMBER = "sentry.severity_number"
+    """The severity of a log, as an OpenTelemetry severity number from 1 to 24. Higher numbers are more severe.
+
+    Type: int
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: 9
+    Example: 13
+    Example: 17
+    """
+
+    # Path: model/attributes/sentry/sentry__severity_text.json
+    SENTRY_SEVERITY_TEXT = "sentry.severity_text"
+    """The severity level of a log, as text.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Well-defined Values:
+    - `trace`
+    - `debug`
+    - `info`
+    - `warn`
+    - `error`
+    - `fatal`
+    Example: "info"
+    Example: "warn"
+    Example: "error"
+    """
+
     # Path: model/attributes/sentry/sentry__source.json
     SENTRY_SOURCE = "sentry.source"
     """The source of a span, also referred to as transaction source.
@@ -29798,6 +29831,55 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.1.0", prs=[102]),
         ],
         search_alias=SearchAlias(name="server_sample_rate"),
+    ),
+    "sentry.severity_number": AttributeMetadata(
+        brief="The severity of a log, as an OpenTelemetry severity number from 1 to 24. Higher numbers are more severe.",
+        type=AttributeType.INTEGER,
+        keys=(
+            "sentry.severity_number",
+            "severity_number",
+            "log.severity_number",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=9,
+        examples=[9, 13, 17],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[831],
+                description="Added sentry.severity_number attribute",
+            ),
+        ],
+        search_alias=SearchAlias(
+            name="severity_number", deprecated_aliases=["log.severity_number"]
+        ),
+    ),
+    "sentry.severity_text": AttributeMetadata(
+        brief="The severity level of a log, as text.",
+        type=AttributeType.STRING,
+        keys=(
+            "sentry.severity_text",
+            "severity",
+            "severity_text",
+            "log.severity_text",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="info",
+        examples=["info", "warn", "error"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[831],
+                description="Added sentry.severity_text attribute",
+            ),
+        ],
+        search_alias=SearchAlias(
+            name="severity", deprecated_aliases=["severity_text", "log.severity_text"]
+        ),
     ),
     "sentry.source": AttributeMetadata(
         brief="The source of a span, also referred to as transaction source.",

@@ -19410,6 +19410,60 @@ export const SENTRY_SERVER_SAMPLE_RATE = 'sentry.server_sample_rate';
  */
 export type SENTRY_SERVER_SAMPLE_RATE_TYPE = number;
 
+// Path: model/attributes/sentry/sentry__severity_number.json
+
+/**
+ * The severity of a log, as an OpenTelemetry severity number from 1 to 24. Higher numbers are more severe. `sentry.severity_number`
+ *
+ * Attribute Value Type: `number` {@link SENTRY_SEVERITY_NUMBER_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example 9
+ * @example 13
+ * @example 17
+ */
+export const SENTRY_SEVERITY_NUMBER = 'sentry.severity_number';
+
+/**
+ * Type for {@link SENTRY_SEVERITY_NUMBER} sentry.severity_number
+ */
+export type SENTRY_SEVERITY_NUMBER_TYPE = number;
+
+// Path: model/attributes/sentry/sentry__severity_text.json
+
+/**
+ * The severity level of a log, as text. `sentry.severity_text`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_SEVERITY_TEXT_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Well-defined Values:
+ * - `trace`
+ * - `debug`
+ * - `info`
+ * - `warn`
+ * - `error`
+ * - `fatal`
+ *
+ * @example "info"
+ * @example "warn"
+ * @example "error"
+ */
+export const SENTRY_SEVERITY_TEXT = 'sentry.severity_text';
+
+/**
+ * Type for {@link SENTRY_SEVERITY_TEXT} sentry.severity_text
+ */
+export type SENTRY_SEVERITY_TEXT_TYPE = string;
+
 // Path: model/attributes/sentry/sentry__source.json
 
 /**
@@ -23659,6 +23713,8 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'sentry.segment.name': 'string',
   'sentry.segment.name.source': 'string',
   'sentry.server_sample_rate': 'double',
+  'sentry.severity_number': 'integer',
+  'sentry.severity_text': 'string',
   'sentry.source': 'string',
   'sentry.span.source': 'string',
   'sentry.status': 'string',
@@ -24665,6 +24721,8 @@ export type AttributeName =
   | typeof SENTRY_SEGMENT_NAME
   | typeof SENTRY_SEGMENT_NAME_SOURCE
   | typeof SENTRY_SERVER_SAMPLE_RATE
+  | typeof SENTRY_SEVERITY_NUMBER
+  | typeof SENTRY_SEVERITY_TEXT
   | typeof SENTRY_SOURCE
   | typeof SENTRY_SPAN_SOURCE
   | typeof SENTRY_STATUS
@@ -39616,6 +39674,40 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       name: 'server_sample_rate',
     },
   },
+  'sentry.severity_number': {
+    brief: 'The severity of a log, as an OpenTelemetry severity number from 1 to 24. Higher numbers are more severe.',
+    type: 'integer',
+    keys: ['sentry.severity_number', 'severity_number', 'log.severity_number'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 9,
+    examples: [9, 13, 17],
+    changelog: [{ version: 'next', prs: [831], description: 'Added sentry.severity_number attribute' }],
+    searchAlias: {
+      name: 'severity_number',
+      deprecatedAliases: ['log.severity_number'],
+    },
+  },
+  'sentry.severity_text': {
+    brief: 'The severity level of a log, as text.',
+    type: 'string',
+    keys: ['sentry.severity_text', 'severity', 'severity_text', 'log.severity_text'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'info',
+    examples: ['info', 'warn', 'error'],
+    changelog: [{ version: 'next', prs: [831], description: 'Added sentry.severity_text attribute' }],
+    searchAlias: {
+      name: 'severity',
+      deprecatedAliases: ['severity_text', 'log.severity_text'],
+    },
+  },
   'sentry.source': {
     brief: 'The source of a span, also referred to as transaction source.',
     type: 'string',
@@ -42895,6 +42987,8 @@ export type Attributes = {
   [SENTRY_SEGMENT_NAME]?: SENTRY_SEGMENT_NAME_TYPE;
   [SENTRY_SEGMENT_NAME_SOURCE]?: SENTRY_SEGMENT_NAME_SOURCE_TYPE;
   [SENTRY_SERVER_SAMPLE_RATE]?: SENTRY_SERVER_SAMPLE_RATE_TYPE;
+  [SENTRY_SEVERITY_NUMBER]?: SENTRY_SEVERITY_NUMBER_TYPE;
+  [SENTRY_SEVERITY_TEXT]?: SENTRY_SEVERITY_TEXT_TYPE;
   [SENTRY_SOURCE]?: SENTRY_SOURCE_TYPE;
   [SENTRY_SPAN_SOURCE]?: SENTRY_SPAN_SOURCE_TYPE;
   [SENTRY_STATUS]?: SENTRY_STATUS_TYPE;
