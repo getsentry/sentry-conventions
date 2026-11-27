@@ -16,7 +16,7 @@
   },
   "changelog": [
     {
-      "version": "next",
+      "version": "0.37.0",
       "prs": [825],
       "description": "Added http.response_delivery_type attribute, deprecated in favor of http.response.delivery_type"
     }

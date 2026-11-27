@@ -1,3 +1,21 @@
+## 0.37.0
+
+### New Features ✨
+
+#### Attributes
+
+- Add schema for `gen_ai.decide` output by @alexander-alderman-webb in [#834](https://github.com/getsentry/sentry-conventions/pull/834)
+- Add schema for `gen_ai.decide` input by @alexander-alderman-webb in [#833](https://github.com/getsentry/sentry-conventions/pull/833)
+- Add schema for `gen_ai.extract` output by @andreiborza and @claude in [#835](https://github.com/getsentry/sentry-conventions/pull/835)
+- Add schema for `gen_ai.extract` input by @andreiborza and @claude in [#832](https://github.com/getsentry/sentry-conventions/pull/832)
+- Add db.response.returned_rows by @BYK with @sentry-junior in [#826](https://github.com/getsentry/sentry-conventions/pull/826)
+- Add http.response.delivery_type and deprecate http.response_delivery_type by @msonnb with @sentry-junior in [#825](https://github.com/getsentry/sentry-conventions/pull/825)
+- Add schema for chat-based `gen_ai.input.messages` by @alexander-alderman-webb in [#820](https://github.com/getsentry/sentry-conventions/pull/820)
+
+### Bug Fixes 🐛
+
+- (docs) Stop long attribute names from overflowing on mobile by @JPeer264 and @Lms24 with @sentry-junior in [#821](https://github.com/getsentry/sentry-conventions/pull/821)
+
 ## 0.36.0
 
 ### New Features ✨

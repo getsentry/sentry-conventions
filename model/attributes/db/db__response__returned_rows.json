@@ -10,7 +10,7 @@
   "examples": [10],
   "changelog": [
     {
-      "version": "next",
+      "version": "0.37.0",
       "prs": [826],
       "description": "Added db.response.returned_rows attribute"
     }
