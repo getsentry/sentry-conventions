@@ -569,7 +569,6 @@ function writeToPython(parsedAttributes: ParsedAttribute[], outputFilePath: stri
     "A collection of attribute names with helpers to retrieve an attribute's metadata, as defined in the Sentry Semantic Conventions registry.";
   content += '"""\n\n';
   content += '# This is an auto-generated file. Do not edit!\n\n';
-  content += 'import warnings\n';
   content += 'from typing import Dict\n\n';
   content += 'from ._metadata_types import (\n';
   content += '    ApplyScrubbing,\n';
@@ -584,7 +583,6 @@ function writeToPython(parsedAttributes: ParsedAttribute[], outputFilePath: stri
   content += ')\n\n';
 
   let metadataDict = '';
-  const deprecatedAttributes: { name: string; replacement?: string }[] = [];
   const allAttributes: AttributeDefinition[] = parsedAttributes.map(({ attributeJson }) => ({
     key: attributeJson.key,
     attributeJson,
@@ -592,40 +590,8 @@ function writeToPython(parsedAttributes: ParsedAttribute[], outputFilePath: stri
   assertUniqueSearchAliases(allAttributes);
   const attributeKeyChains = deriveAttributeKeyChains(allAttributes);
 
-  // First pass: collect deprecated attributes
-  for (const { key, attributeJson } of allAttributes) {
-    if (attributeJson.deprecation) {
-      const constantName = getConstantName(key, true);
-      deprecatedAttributes.push({
-        name: constantName,
-        replacement: attributeJson.deprecation.replacement,
-      });
-    }
-  }
-
-  // Generate metaclass for deprecation warnings
-  content += 'class _AttributeNamesMeta(type):\n';
-  content += '    _deprecated_names = {\n';
-
-  // Generate the set of deprecated attribute names
-  for (const deprecatedAttr of deprecatedAttributes) {
-    content += `        "${deprecatedAttr.name}",\n`;
-  }
-
-  content += '    }\n\n';
-  content += '    def __getattribute__(cls, name: str):\n';
-  content += '        if name == "_deprecated_names":\n';
-  content += '            return super().__getattribute__(name)\n';
-  content += '        if name in cls._deprecated_names:\n';
-  content += '            warnings.warn(\n';
-  content += '                f"{cls.__name__}.{name} is deprecated.",\n';
-  content += '                DeprecationWarning,\n';
-  content += '                stacklevel=2,\n';
-  content += '            )\n';
-  content += '        return super().__getattribute__(name)\n\n';
-
   // Generate ATTRIBUTE_NAMES class
-  content += 'class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):\n';
+  content += 'class ATTRIBUTE_NAMES:\n';
   content += '    """Contains all attribute names as class attributes with their documentation."""\n\n';
 
   // Generate class attributes instead of top-level constants
