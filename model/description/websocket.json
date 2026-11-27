@@ -1,0 +1,12 @@
+{
+  "brief": "WebSocket",
+  "operations": [
+    {
+      "name": "WebSocket message",
+      "brief": "A server handling an incoming WebSocket message.",
+      "ops": ["websocket"],
+      "templates": ["{{websocket.namespace}} {{websocket.event.name}}", "{{websocket.event.name}}"],
+      "examples": ["/chat message", "joinRoom"]
+    }
+  ]
+}

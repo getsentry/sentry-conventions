@@ -5795,6 +5795,16 @@ export const SEARCH_VERCEL__SOURCE = 'vercel.source';
  */
 export const SEARCH_VERCEL__STATUS_CODE = 'vercel.status_code';
 
+/**
+ * Search name for {@link attributes.WEBSOCKET_EVENT_NAME}. `websocket.event.name`
+ */
+export const SEARCH_WEBSOCKET__EVENT__NAME = 'websocket.event.name';
+
+/**
+ * Search name for {@link attributes.WEBSOCKET_NAMESPACE}. `websocket.namespace`
+ */
+export const SEARCH_WEBSOCKET__NAMESPACE = 'websocket.namespace';
+
 export type AttributeSearchName =
   | typeof SEARCH_ADDRESS
   | typeof SEARCH_AI__CITATIONS
@@ -6820,7 +6830,9 @@ export type AttributeSearchName =
   | typeof SEARCH_VERCEL__PROXY__WAF_RULE_ID
   | typeof SEARCH_VERCEL__REQUEST_ID
   | typeof SEARCH_VERCEL__SOURCE
-  | typeof SEARCH_VERCEL__STATUS_CODE;
+  | typeof SEARCH_VERCEL__STATUS_CODE
+  | typeof SEARCH_WEBSOCKET__EVENT__NAME
+  | typeof SEARCH_WEBSOCKET__NAMESPACE;
 
 export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> = {
   address: {
@@ -13392,5 +13404,18 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'integer',
     brief: 'HTTP status code of the request (-1 means no response returned and the lambda crashed)',
     deprecationChain: ['vercel.status_code'],
+  },
+  'websocket.event.name': {
+    canonicalName: 'websocket.event.name',
+    type: 'string',
+    brief: 'The name of the event a WebSocket message is dispatched on.',
+    deprecationChain: ['websocket.event.name'],
+  },
+  'websocket.namespace': {
+    canonicalName: 'websocket.namespace',
+    type: 'string',
+    brief:
+      'The namespace a WebSocket message is received on, for protocols that support namespaces, such as Socket.IO.',
+    deprecationChain: ['websocket.namespace'],
   },
 };

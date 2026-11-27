@@ -1,0 +1,18 @@
+{
+  "key": "websocket.namespace",
+  "brief": "The namespace a WebSocket message is received on, for protocols that support namespaces, such as Socket.IO.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "examples": ["/", "/chat"],
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [836],
+      "description": "Added websocket.namespace attribute"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "key": "websocket.event.name",
+  "brief": "The name of the event a WebSocket message is dispatched on.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "examples": ["message", "joinRoom", "chat:typing"],
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [836],
+      "description": "Added websocket.event.name attribute"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "brief": "WebSocket",
+  "operations": [
+    {
+      "name": "WebSocket message",
+      "brief": "A server handling an incoming WebSocket message. The name contains the namespace, if known, and the event name.",
+      "is_in_otel": false,
+      "ops": ["websocket"],
+      "templates": [
+        "WS {{websocket.namespace}} {{websocket.event.name}}",
+        "WS {{websocket.event.name}}",
+        "WebSocket message"
+      ],
+      "examples": ["WS /chat message", "WS joinRoom", "WebSocket message"]
+    }
+  ]
+}

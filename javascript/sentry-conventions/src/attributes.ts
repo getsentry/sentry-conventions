@@ -22704,6 +22704,51 @@ export const VERCEL_STATUS_CODE = 'vercel.status_code';
  */
 export type VERCEL_STATUS_CODE_TYPE = number;
 
+// Path: model/attributes/websocket/websocket__event__name.json
+
+/**
+ * The name of the event a WebSocket message is dispatched on. `websocket.event.name`
+ *
+ * Attribute Value Type: `string` {@link WEBSOCKET_EVENT_NAME_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "message"
+ * @example "joinRoom"
+ * @example "chat:typing"
+ */
+export const WEBSOCKET_EVENT_NAME = 'websocket.event.name';
+
+/**
+ * Type for {@link WEBSOCKET_EVENT_NAME} websocket.event.name
+ */
+export type WEBSOCKET_EVENT_NAME_TYPE = string;
+
+// Path: model/attributes/websocket/websocket__namespace.json
+
+/**
+ * The namespace a WebSocket message is received on, for protocols that support namespaces, such as Socket.IO. `websocket.namespace`
+ *
+ * Attribute Value Type: `string` {@link WEBSOCKET_NAMESPACE_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "/"
+ * @example "/chat"
+ */
+export const WEBSOCKET_NAMESPACE = 'websocket.namespace';
+
+/**
+ * Type for {@link WEBSOCKET_NAMESPACE} websocket.namespace
+ */
+export type WEBSOCKET_NAMESPACE_TYPE = string;
+
 export type AttributeType =
   | 'string'
   | 'boolean'
@@ -23803,6 +23848,8 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'vercel.request_id': 'string',
   'vercel.source': 'string',
   'vercel.status_code': 'integer',
+  'websocket.event.name': 'string',
+  'websocket.namespace': 'string',
 };
 
 export type AttributeName =
@@ -24808,7 +24855,9 @@ export type AttributeName =
   | typeof VERCEL_PROXY_WAF_RULE_ID
   | typeof VERCEL_REQUEST_ID
   | typeof VERCEL_SOURCE
-  | typeof VERCEL_STATUS_CODE;
+  | typeof VERCEL_STATUS_CODE
+  | typeof WEBSOCKET_EVENT_NAME
+  | typeof WEBSOCKET_NAMESPACE;
 
 export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   address: {
@@ -42031,6 +42080,33 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       { version: '0.2.0', prs: [163] },
     ],
   },
+  'websocket.event.name': {
+    brief: 'The name of the event a WebSocket message is dispatched on.',
+    type: 'string',
+    keys: ['websocket.event.name'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'message',
+    examples: ['message', 'joinRoom', 'chat:typing'],
+    changelog: [{ version: 'next', prs: [836], description: 'Added websocket.event.name attribute' }],
+  },
+  'websocket.namespace': {
+    brief:
+      'The namespace a WebSocket message is received on, for protocols that support namespaces, such as Socket.IO.',
+    type: 'string',
+    keys: ['websocket.namespace'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: '/',
+    examples: ['/', '/chat'],
+    changelog: [{ version: 'next', prs: [836], description: 'Added websocket.namespace attribute' }],
+  },
 };
 
 export type AttributeValue = string | number | boolean | Array<string> | Array<number> | Array<boolean>;
@@ -43039,4 +43115,6 @@ export type Attributes = {
   [VERCEL_REQUEST_ID]?: VERCEL_REQUEST_ID_TYPE;
   [VERCEL_SOURCE]?: VERCEL_SOURCE_TYPE;
   [VERCEL_STATUS_CODE]?: VERCEL_STATUS_CODE_TYPE;
+  [WEBSOCKET_EVENT_NAME]?: WEBSOCKET_EVENT_NAME_TYPE;
+  [WEBSOCKET_NAMESPACE]?: WEBSOCKET_NAMESPACE_TYPE;
 } & Record<string, AttributeValue | undefined>;
