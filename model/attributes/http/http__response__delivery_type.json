@@ -26,7 +26,7 @@
   "alias": ["http.response_delivery_type"],
   "changelog": [
     {
-      "version": "next",
+      "version": "0.37.0",
       "prs": [825],
       "description": "Added http.response.delivery_type attribute"
     }
