@@ -279,12 +279,18 @@ export const UI_LIVEWIRE = 'ui.livewire';
 
 // Description: Database related spans are expected to follow OpenTelemetry's Database semantic conventions when possible.
 
+/**
+ * A database operation, such as a query or command sent to a database
+ */
 export const DB = 'db';
 
+/**
+ * @deprecated Use {@link DB} (db) instead - Use the generic `db` op for all database operations. Describe the operation with the `db.*` span attributes instead.
+ */
 export const DB_QUERY = 'db.query';
 
 /**
- * @deprecated Use {@link DB_QUERY} (db.query) instead - Provider-specific Redis ops are replaced by framework-agnostic ones.
+ * @deprecated Use {@link DB} (db) instead - Provider-specific Redis ops are replaced by framework-agnostic ones.
  */
 export const DB_REDIS = 'db.redis';
 
