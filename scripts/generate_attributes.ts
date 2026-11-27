@@ -1,6 +1,7 @@
 import { execFileSync } from 'node:child_process';
 import * as fs from 'node:fs';
 import * as path from 'node:path';
+import { writeSwiftConstants } from './swift';
 import { compile } from 'json-schema-to-typescript';
 import { getAttributeExamples } from './attribute_examples';
 import type { AttributeJson, AttributeValue } from './types';
@@ -11,6 +12,7 @@ interface GenerateAttributesOptions {
   jsOutputFilePath: string;
   jsSearchOutputFilePath: string;
   pythonOutputFilePath: string;
+  swiftOutputFilePath: string;
 }
 
 type ParsedAttribute = {
@@ -197,6 +199,9 @@ export async function generateAttributes(options?: Partial<GenerateAttributesOpt
     options?.pythonOutputFilePath ?? path.join(repositoryRoot, 'python', 'src', 'sentry_conventions', '_attributes.py');
   const jsSchemaOutputDir = path.join(path.dirname(jsOutputFilePath), '_schemas');
   const pythonSchemaOutputDir = path.join(path.dirname(pythonOutputFilePath), '_schemas');
+  const swiftOutputFilePath =
+    options?.swiftOutputFilePath ??
+    path.join(repositoryRoot, 'swift', 'Sources', 'SentryConventions', 'AttributeNames.swift');
 
   // Get all JSON files recursively
   const attributeFiles = await getAllJsonFiles(attributesDir);
@@ -219,6 +224,9 @@ export async function generateAttributes(options?: Partial<GenerateAttributesOpt
 
   // Generate and write Python code
   writeToPython(parsedAttributes, pythonOutputFilePath);
+
+  // Generate and write Swift code
+  writeToSwift(parsedAttributes, swiftOutputFilePath);
 }
 
 async function getAllJsonFiles(dir: string): Promise<string[]> {
@@ -1610,4 +1618,24 @@ function collectSharedRefs(openapiSource: string) {
     names.add(name!);
   }
   return refs;
+}
+
+function writeToSwift(parsedAttributes: ParsedAttribute[], outputFilePath: string) {
+  writeSwiftConstants(
+    outputFilePath,
+    'AttributeNames',
+    parsedAttributes.map(({ attributeJson: attribute }) => ({
+      key: attribute.key,
+      brief: attribute.brief,
+      dynamic: attribute.has_dynamic_suffix,
+      deprecated: attribute.deprecation
+        ? [
+            attribute.deprecation.replacement ? `Use ${attribute.deprecation.replacement} instead` : '',
+            attribute.deprecation.reason,
+          ]
+            .filter(Boolean)
+            .join(' - ')
+        : undefined,
+    })),
+  );
 }

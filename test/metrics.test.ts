@@ -62,19 +62,30 @@ describe('metric definitions', async () => {
 });
 
 describe('generateMetrics', () => {
-  it('emits a documented constant per metric in JavaScript and Rust', async () => {
+  it('emits a documented constant per metric in JavaScript, Rust, and Swift', async () => {
     const temporaryDirectory = fs.mkdtempSync(path.join(os.tmpdir(), 'sentry-conventions-'));
     const metricsDir = path.join(temporaryDirectory, 'metrics');
     const jsOutputFilePath = path.join(temporaryDirectory, 'metrics.ts');
     const rustOutputFilePath = path.join(temporaryDirectory, 'metrics.rs');
+    const swiftOutputFilePath = path.join(temporaryDirectory, 'MetricNames.swift');
     fs.mkdirSync(path.join(metricsDir, 'example'), { recursive: true });
     fs.writeFileSync(
       path.join(metricsDir, 'example', 'example__memory__used.json'),
       JSON.stringify({ ...metric, attributes: ['example.memory.type'] }),
     );
 
+    fs.writeFileSync(
+      path.join(metricsDir, 'example', 'example__memory__render_time.json'),
+      JSON.stringify({ ...metric, key: 'example.memory.render_time' }),
+    );
+
     try {
-      await generateMetrics({ metricsDir, jsOutputFilePath, rustOutputFilePath });
+      await generateMetrics({
+        metricsDir,
+        jsOutputFilePath,
+        rustOutputFilePath,
+        swiftOutputFilePath,
+      });
 
       expect(fs.readFileSync(jsOutputFilePath, 'utf8')).toContain(
         [
@@ -100,6 +111,10 @@ describe('generateMetrics', () => {
           'pub const EXAMPLE_MEMORY_USED: &str = "example.memory.used";',
         ].join('\n'),
       );
+
+      const swift = fs.readFileSync(swiftOutputFilePath, 'utf8');
+      expect(swift).toContain('public static var exampleMemoryUsed: String { "example.memory.used" }');
+      expect(swift).toContain('public static var exampleMemoryRenderTime: String { "example.memory.render_time" }');
     } finally {
       fs.rmSync(temporaryDirectory, { recursive: true, force: true });
     }

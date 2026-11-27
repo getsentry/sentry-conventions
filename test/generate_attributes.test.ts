@@ -7,15 +7,12 @@ import { describe, expect, it } from 'vitest';
 import { generateAttributes } from '../scripts/generate_attributes';
 
 describe('generateAttributes', () => {
-  it('accepts custom paths for isolated generation', () => {
-    expect(generateAttributes).toHaveLength(1);
-  });
-
   it('preserves middle placeholders as templates without dynamic-suffix base constants', async () => {
     const temporaryDirectory = fs.mkdtempSync(path.join(os.tmpdir(), 'sentry-conventions-'));
     const attributesDir = path.join(temporaryDirectory, 'attributes');
     const jsOutputFilePath = path.join(temporaryDirectory, 'attributes.ts');
     const pythonOutputFilePath = path.join(temporaryDirectory, '_attributes.py');
+    const swiftOutputFilePath = path.join(temporaryDirectory, 'AttributeNames.swift');
     fs.mkdirSync(attributesDir);
     fs.mkdirSync(path.join(temporaryDirectory, '_schemas', 'shared'), { recursive: true });
 
@@ -37,7 +34,12 @@ describe('generateAttributes', () => {
         );
       }
 
-      await generateAttributes({ attributesDir, jsOutputFilePath, pythonOutputFilePath });
+      await generateAttributes({
+        attributesDir,
+        jsOutputFilePath,
+        pythonOutputFilePath,
+        swiftOutputFilePath,
+      });
 
       const javascript = fs.readFileSync(jsOutputFilePath, 'utf8');
       const python = fs.readFileSync(pythonOutputFilePath, 'utf8');
@@ -53,6 +55,11 @@ describe('generateAttributes', () => {
       expect(javascript).not.toContain('MCP_TOOL_RESULT_KEY_CONTENT_BASE');
       expect(python).not.toContain('MCP_TOOL_RESULT_KEY_CONTENT_BASE');
       expect(javascript).toContain("export const MCP_REQUEST_ARGUMENT_KEY_BASE = 'mcp.request.argument';");
+
+      const swift = fs.readFileSync(swiftOutputFilePath, 'utf8');
+      expect(swift).toContain('public static var mcpToolResultKeyContent: String { "mcp.tool.result.<key>.content" }');
+      expect(swift).not.toContain('mcpToolResultKeyContentBase');
+      expect(swift).toContain('public static var mcpRequestArgumentKeyBase: String { "mcp.request.argument" }');
     } finally {
       fs.rmSync(temporaryDirectory, { recursive: true });
     }
@@ -63,6 +70,7 @@ describe('generateAttributes', () => {
     const attributesDir = path.join(temporaryDirectory, 'attributes');
     const jsOutputFilePath = path.join(temporaryDirectory, 'attributes.ts');
     const pythonOutputFilePath = path.join(temporaryDirectory, '_attributes.py');
+    const swiftOutputFilePath = path.join(temporaryDirectory, 'AttributeNames.swift');
     fs.mkdirSync(attributesDir);
     fs.mkdirSync(path.join(temporaryDirectory, '_schemas', 'shared'), { recursive: true });
     fs.writeFileSync(
@@ -91,7 +99,12 @@ describe('generateAttributes', () => {
     );
 
     try {
-      await generateAttributes({ attributesDir, jsOutputFilePath, pythonOutputFilePath });
+      await generateAttributes({
+        attributesDir,
+        jsOutputFilePath,
+        pythonOutputFilePath,
+        swiftOutputFilePath,
+      });
 
       const javascript = fs.readFileSync(jsOutputFilePath, 'utf8');
       expect(javascript).toContain('* @example "first"');
@@ -117,7 +130,9 @@ describe('generateAttributes', () => {
     const temporaryDirectory = fs.mkdtempSync(path.join(os.tmpdir(), 'sentry-conventions-'));
     const attributesDir = path.join(temporaryDirectory, 'attributes');
     const jsOutputFilePath = path.join(temporaryDirectory, 'attributes.ts');
+    const jsSearchOutputFilePath = path.join(temporaryDirectory, 'search.ts');
     const pythonOutputFilePath = path.join(temporaryDirectory, '_attributes.py');
+    const swiftOutputFilePath = path.join(temporaryDirectory, 'AttributeNames.swift');
     fs.mkdirSync(attributesDir);
     fs.mkdirSync(path.join(temporaryDirectory, '_schemas', 'shared'), { recursive: true });
 
@@ -206,10 +221,16 @@ describe('generateAttributes', () => {
     }
 
     try {
-      await generateAttributes({ attributesDir, jsOutputFilePath, pythonOutputFilePath });
+      await generateAttributes({
+        attributesDir,
+        jsOutputFilePath,
+        jsSearchOutputFilePath,
+        pythonOutputFilePath,
+        swiftOutputFilePath,
+      });
 
       const javascript = fs.readFileSync(jsOutputFilePath, 'utf8');
-      const search = fs.readFileSync(path.join(temporaryDirectory, 'search.ts'), 'utf8');
+      const search = fs.readFileSync(jsSearchOutputFilePath, 'utf8');
       const compactMetadataStart = search.indexOf('export const ATTRIBUTE_SEARCH_METADATA');
       const compactMetadataEnd = search.indexOf('\n};', compactMetadataStart);
       const compactMetadata = search.slice(compactMetadataStart, compactMetadataEnd);
@@ -310,6 +331,7 @@ describe('generateAttributes', () => {
     const attributesDir = path.join(temporaryDirectory, 'attributes');
     const jsOutputFilePath = path.join(temporaryDirectory, 'attributes.ts');
     const pythonOutputFilePath = path.join(temporaryDirectory, '_attributes.py');
+    const swiftOutputFilePath = path.join(temporaryDirectory, 'AttributeNames.swift');
     fs.mkdirSync(attributesDir);
     fs.mkdirSync(path.join(temporaryDirectory, '_schemas', 'shared'), { recursive: true });
 
@@ -329,11 +351,97 @@ describe('generateAttributes', () => {
     }
 
     try {
-      await expect(generateAttributes({ attributesDir, jsOutputFilePath, pythonOutputFilePath })).rejects.toThrow(
-        'Duplicate search aliases found:\n  "duplicate.alias": "first.attribute", "second.attribute"',
-      );
+      await expect(
+        generateAttributes({
+          attributesDir,
+          jsOutputFilePath,
+          pythonOutputFilePath,
+          swiftOutputFilePath,
+        }),
+      ).rejects.toThrow('Duplicate search aliases found:\n  "duplicate.alias": "first.attribute", "second.attribute"');
     } finally {
       fs.rmSync(temporaryDirectory, { recursive: true });
     }
   });
+
+  it('rejects ambiguous non-deprecated Swift identifiers instead of silently overwriting a key', async () => {
+    const temporaryDirectory = fs.mkdtempSync(path.join(os.tmpdir(), 'sentry-conventions-'));
+    const attributesDir = path.join(temporaryDirectory, 'attributes');
+    const jsOutputFilePath = path.join(temporaryDirectory, 'attributes.ts');
+    const pythonOutputFilePath = path.join(temporaryDirectory, '_attributes.py');
+    const swiftOutputFilePath = path.join(temporaryDirectory, 'AttributeNames.swift');
+    fs.mkdirSync(attributesDir);
+    fs.mkdirSync(path.join(temporaryDirectory, '_schemas', 'shared'), { recursive: true });
+
+    try {
+      for (const key of ['test.a-b', 'test.a_b']) {
+        fs.writeFileSync(
+          path.join(attributesDir, `${key}.json`),
+          JSON.stringify({
+            key,
+            brief: key,
+            type: 'string',
+            apply_scrubbing: { key: 'auto' },
+            is_in_otel: false,
+          }),
+        );
+      }
+
+      await expect(
+        generateAttributes({ attributesDir, jsOutputFilePath, pythonOutputFilePath, swiftOutputFilePath }),
+      ).rejects.toThrow('collision');
+    } finally {
+      fs.rmSync(temporaryDirectory, { recursive: true });
+    }
+  });
+
+  it('generates distinct lowerCamelCase Swift properties and deprecations deterministically', async () => {
+    const temporaryDirectory = fs.mkdtempSync(path.join(os.tmpdir(), 'sentry-conventions-'));
+    const attributesDir = path.join(temporaryDirectory, 'attributes');
+    const jsOutputFilePath = path.join(temporaryDirectory, 'attributes.ts');
+    const pythonOutputFilePath = path.join(temporaryDirectory, '_attributes.py');
+    const swiftOutputFilePath = path.join(temporaryDirectory, 'AttributeNames.swift');
+    fs.mkdirSync(attributesDir);
+    fs.mkdirSync(path.join(temporaryDirectory, '_schemas', 'shared'), { recursive: true });
+
+    try {
+      const attributes = [
+        { key: 'aws.request_id' },
+        { key: 'sentry.replay_id' },
+        { key: 'replayId', deprecation: { replacement: 'sentry.replay_id', _status: 'backfill' } },
+        { key: 'replay_id', deprecation: { replacement: 'sentry.replay_id', _status: 'backfill' } },
+        { key: 'connectionType' },
+        { key: 'HTTPResponseCode' },
+        { key: 'aws.request.id', deprecation: { replacement: 'aws.request_id', _status: 'backfill' } },
+      ];
+      for (const attribute of attributes) {
+        fs.writeFileSync(
+          path.join(attributesDir, `${attribute.key.replaceAll('.', '__')}.json`),
+          JSON.stringify({
+            brief: attribute.key,
+            type: 'string',
+            apply_scrubbing: { key: 'auto' },
+            is_in_otel: false,
+            ...attribute,
+          }),
+        );
+      }
+
+      await generateAttributes({ attributesDir, jsOutputFilePath, pythonOutputFilePath, swiftOutputFilePath });
+
+      const swift = fs.readFileSync(swiftOutputFilePath, 'utf8');
+      expect(swift).toContain('public static var replayId: String { "replayId" }');
+      expect(swift).toContain('public static var _replayId: String { "replay_id" }');
+      expect(swift).toContain('public static var connectionType: String { "connectionType" }');
+      expect(swift).toContain('public static var httpResponseCode: String { "HTTPResponseCode" }');
+      expect(swift).toContain('public static var awsRequestId: String { "aws.request_id" }');
+      expect(swift).toContain('public static var _awsRequestId: String { "aws.request.id" }');
+      expect(swift).toContain('@available(*, deprecated, message: "Use aws.request_id instead")');
+
+      await generateAttributes({ attributesDir, jsOutputFilePath, pythonOutputFilePath, swiftOutputFilePath });
+      expect(fs.readFileSync(swiftOutputFilePath, 'utf8')).toBe(swift);
+    } finally {
+      fs.rmSync(temporaryDirectory, { recursive: true });
+    }
+  }, 15_000);
 });

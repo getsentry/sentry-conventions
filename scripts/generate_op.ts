@@ -1,11 +1,13 @@
 import * as fs from 'node:fs';
 import * as path from 'node:path';
+import { writeSwiftConstants } from './swift';
 import type { OpFieldJson, OpJson } from './types';
 
 interface GenerateOpsOptions {
   opDir: string;
   jsOutputFilePath: string;
   rustOutputFilePath: string;
+  swiftOutputFilePath: string;
 }
 
 interface OpCategory extends OpJson {
@@ -20,6 +22,9 @@ export async function generateOps(options?: Partial<GenerateOpsOptions>) {
   const jsOutputFilePath =
     options?.jsOutputFilePath ?? path.join(repositoryRoot, 'javascript', 'sentry-conventions', 'src', 'op.ts');
   const rustOutputFilePath = options?.rustOutputFilePath ?? path.join(repositoryRoot, 'rust', 'src', 'op.rs');
+  const swiftOutputFilePath =
+    options?.swiftOutputFilePath ??
+    path.join(repositoryRoot, 'swift', 'Sources', 'SentryConventions', 'SpanOperations.swift');
 
   const opFiles = await fs.promises.readdir(opDir);
   const categories = readCategories(opDir, opFiles);
@@ -28,6 +33,7 @@ export async function generateOps(options?: Partial<GenerateOpsOptions>) {
 
   writeToJs(categories, owners, deprecations, jsOutputFilePath);
   writeToRust(categories, owners, deprecations, rustOutputFilePath);
+  writeToSwift(categories, owners, deprecations, swiftOutputFilePath);
 }
 
 function readCategories(opDir: string, opFiles: string[]): OpCategory[] {
@@ -193,4 +199,30 @@ function writeToJs(
   }
 
   fs.writeFileSync(opFilePath, opContent);
+}
+
+function writeToSwift(
+  categories: OpCategory[],
+  owners: Map<string, string>,
+  deprecations: Map<string, OpDeprecation>,
+  outputFilePath: string,
+) {
+  writeSwiftConstants(
+    outputFilePath,
+    'SpanOperations',
+    categories.flatMap((category) =>
+      ownedFields(category, owners).map((field) => {
+        const deprecation = deprecations.get(field.name);
+        return {
+          key: field.name,
+          brief: field.description,
+          deprecated: deprecation
+            ? [deprecation.replacement ? `Use ${deprecation.replacement} instead` : '', deprecation.note]
+                .filter(Boolean)
+                .join(' - ')
+            : undefined,
+        };
+      }),
+    ),
+  );
 }
