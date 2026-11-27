@@ -19,7 +19,7 @@
   ],
   "changelog": [
     {
-      "version": "next",
+      "version": "0.37.0",
       "prs": [834, 835],
       "description": "Remove informal format descriptions to prevent duplication with the structured schema."
     },

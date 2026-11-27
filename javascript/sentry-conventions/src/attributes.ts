@@ -29210,7 +29210,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 10,
     examples: [10],
-    changelog: [{ version: 'next', prs: [826], description: 'Added db.response.returned_rows attribute' }],
+    changelog: [{ version: '0.37.0', prs: [826], description: 'Added db.response.returned_rows attribute' }],
   },
   'db.response.status_code': {
     brief:
@@ -31064,7 +31064,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: ['ai.texts', 'ai.prompt.messages', 'gen_ai.prompt', 'ai.prompt'],
     changelog: [
       {
-        version: 'next',
+        version: '0.37.0',
         prs: [832, 833],
         description: 'Remove informal format descriptions to prevent duplication with the structured schema.',
       },
@@ -31220,7 +31220,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: ['ai.response.toolCalls', 'ai.response.text'],
     changelog: [
       {
-        version: 'next',
+        version: '0.37.0',
         prs: [834, 835],
         description: 'Remove informal format descriptions to prevent duplication with the structured schema.',
       },
@@ -33450,7 +33450,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'cache',
     examples: ['cache', 'navigational-prefetch', ''],
     aliases: ['http.response_delivery_type'],
-    changelog: [{ version: 'next', prs: [825], description: 'Added http.response.delivery_type attribute' }],
+    changelog: [{ version: '0.37.0', prs: [825], description: 'Added http.response.delivery_type attribute' }],
     additionalContext: ['Browsers may add more values later.'],
   },
   'http.response_delivery_type': {
@@ -33473,7 +33473,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: ['http.response.delivery_type'],
     changelog: [
       {
-        version: 'next',
+        version: '0.37.0',
         prs: [825],
         description: 'Added http.response_delivery_type attribute, deprecated in favor of http.response.delivery_type',
       },

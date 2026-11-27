@@ -17708,7 +17708,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=[10],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.37.0",
                 prs=[826],
                 description="Added db.response.returned_rows attribute",
             ),
@@ -19952,7 +19952,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["ai.texts", "ai.prompt.messages", "gen_ai.prompt", "ai.prompt"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.37.0",
                 prs=[832, 833],
                 description="Remove informal format descriptions to prevent duplication with the structured schema.",
             ),
@@ -20123,7 +20123,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["ai.response.toolCalls", "ai.response.text"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.37.0",
                 prs=[834, 835],
                 description="Remove informal format descriptions to prevent duplication with the structured schema.",
             ),
@@ -22706,7 +22706,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["http.response_delivery_type"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.37.0",
                 prs=[825],
                 description="Added http.response.delivery_type attribute",
             ),
@@ -22885,7 +22885,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["http.response.delivery_type"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.37.0",
                 prs=[825],
                 description="Added http.response_delivery_type attribute, deprecated in favor of http.response.delivery_type",
             ),
